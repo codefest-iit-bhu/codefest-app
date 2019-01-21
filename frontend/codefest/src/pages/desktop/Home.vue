@@ -1,7 +1,7 @@
 <template>
   <div>
     <AppBar/>
-    <Hero/>
+    <!-- <Hero/> -->
     <main :class="$style.wrapper">
       <!-- Introduction -->
       <Intro/>
