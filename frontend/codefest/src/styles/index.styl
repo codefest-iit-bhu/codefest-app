@@ -1,34 +1,39 @@
 @import "./colors.styl";
+@import './theme.styl';
 
 :root
   --radius: 2px
   --transition-duration 300ms
-  --font-header 'Montserrat'
-  --font-list -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif
+  --font-header 'Roboto Mono'
+  --font-list -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, "Courier New", Cantarell, "Helvetica Neue", sans-serif
 
 @font-face
-  font-family 'Montserrat'
-  font-style normal
-  font-display swap
-  font-weight 200
-  src local('Montserrat ExtraLight'), local('Montserrat-ExtraLight'), url(https://fonts.gstatic.com/s/montserrat/v12/JTURjIg1_i6t8kCHKm45_aZA3gnD_vx3rCs.woff2) format('woff2')
-  unicode-range U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD
-
-@font-face
-  font-family 'Montserrat'
+  font-family "Aldo the Apache"
   font-style normal
   font-display swap
   font-weight 800
-  src local('Montserrat ExtraBold'), local('Montserrat-ExtraBold'), url(https://fonts.gstatic.com/s/montserrat/v12/JTURjIg1_i6t8kCHKm45_c5H3gnD_vx3rCs.woff2) format('woff2')
-  unicode-range U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD
+  src url("//db.onlinewebfonts.com/t/9c3f8e8826b7813fad3ff5bf79f2004e.eot"), /* IE9*/
+  url("//db.onlinewebfonts.com/t/9c3f8e8826b7813fad3ff5bf79f2004e.woff2") format("woff2"), /* chrome firefox */
+  url("//db.onlinewebfonts.com/t/9c3f8e8826b7813fad3ff5bf79f2004e.ttf") format("truetype"), /* chrome firefox opera Safari, Android, iOS 4.2+*/
+  url("//db.onlinewebfonts.com/t/9c3f8e8826b7813fad3ff5bf79f2004e.svg#Aldo the Apache") format("svg") /* iOS 4.1- */
 
 @font-face
   font-family 'Roboto Mono'
   font-style normal
   font-display swap
   font-weight 400
-  src local('Roboto Mono'), local('RobotoMono-Regular'), url(https://fonts.gstatic.com/s/robotomono/v5/L0x5DF4xlVMF-BfR8bXMIjhLq3-cXbKD.woff2) format('woff2')
+  src local('Roboto Mono'), local('RobotoMono-Regular'), url(//fonts.gstatic.com/s/robotomono/v5/L0x5DF4xlVMF-BfR8bXMIjhLq3-cXbKD.woff2) format('woff2')
   unicode-range U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD
+
+@font-face
+  font-family: "Courier New"
+  font-style normal
+  font-display swap
+  font-weight 400
+  src: url("//db.onlinewebfonts.com/t/72c75860d89e91a517dfb1e7d308c180.eot"),
+  url("//db.onlinewebfonts.com/t/72c75860d89e91a517dfb1e7d308c180.woff2") format("woff2"),
+  url("//db.onlinewebfonts.com/t/72c75860d89e91a517dfb1e7d308c180.ttf") format("truetype"),
+  url("//db.onlinewebfonts.com/t/72c75860d89e91a517dfb1e7d308c180.svg#Courier New") format("svg")
 
 *
   margin 0
