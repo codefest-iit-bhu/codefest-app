@@ -2,7 +2,7 @@
   <header ref="header" :class="$style.hero">
     <!-- <Nav /> -->
     <div :class="$style.title">
-      <h1 ref="title">Codefest'19</h1>
+      <h1>Codefest'19</h1>
     </div>
     <canvas ref="rains" :class="$style.rains" ></canvas>
   </header>
@@ -67,12 +67,12 @@ export default {
     height 0
     z-index 2
     position relative
-    font-family var(--font-header), var(--font-list)
     text-transform uppercase
     top calc(40% - 2px)
     text-align center
+    font-family 'Aldo the Apache'
     h1
-      font-size 2.875em
+      font-size 72px
       font-weight 800
       line-height 1
       color var(--offwhite)

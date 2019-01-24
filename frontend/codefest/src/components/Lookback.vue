@@ -1,6 +1,6 @@
 <template>
-  <div :class="$style.lookback">
-    <h1 class="section__title">Lookback</h1>
+  <div :class="[$style.lookback, 'sectionContainer']">
+    <h1 class="sectionTitle">Lookback</h1>
     <div :class="$style.cell" v-for="(stat, i) in stats" :key="i">
       <div :class="$style.clip">
         <img :src="stat.image" :class="$style.img">

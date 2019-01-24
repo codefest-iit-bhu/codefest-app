@@ -1,6 +1,6 @@
 <template>
-  <div :class="$style.intro">
-    <h1 class="section__title">A Byte About Us</h1>
+  <div :class="[$style.intro, 'sectionContainer']">
+    <h1 class="sectionTitle">A Byte About Us</h1>
     <p>
       The Department of Computer Science and Engineering, IIT (BHU) Varanasi
       brings to you yet another edition of its annual coding extravaganza, Codefest!
