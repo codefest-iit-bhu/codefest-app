@@ -1,0 +1,20 @@
+:global {
+  div.sectionContainer {
+    h1.sectionTitle {
+      font-family: "Aldo the Apache";
+      font-size: 56px;
+      margin-top: 112px;
+      margin-bottom: 56px;
+
+      ../:nth-child(even) h1.sectionTitle {
+        text-align: start;
+      }
+
+      ../:nth-child(odd) h1.sectionTitle {
+        text-align: end;
+      }
+    }
+  }
+
+
+}
