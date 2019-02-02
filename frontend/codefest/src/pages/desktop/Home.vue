@@ -12,7 +12,7 @@
         <Quote v-for="quote in quotes" :key="quote.id"/>
       </div>
     </main>
-    <Terminal/>
+    <Terminal :current="'~'"/>
     <Footer/>
   </div>
 </template>

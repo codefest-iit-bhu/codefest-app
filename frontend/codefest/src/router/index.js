@@ -13,6 +13,11 @@ export default new Router({
         import(`@pages/${isMobile() ? "mobile" : "desktop"}/Home`)
     },
     {
+      path: "/events",
+      component: () =>
+        import(`@pages/${isMobile() ? "mobile" : "desktop"}/EventList`)
+    },
+    {
       path: "/about",
       component: () => import("@pages/About")
     },

@@ -1,29 +1,96 @@
 <template>
   <div :class="$style.terminal" ref="terminal" @click="$refs.cli.focus()">
-    <div :class="$style.cli">
-      <div :class="$style.breadcrumbs">
-        <a :class="$style.breadcrumbs__step" v-for="(dir, i) in pwd" :key="i">{{ dir }}</a>
-      </div>
-      <input :id="$style.input" type="text" ref="cli" />
+    <div :class="$style.items">
+      <REPL
+        v-for="(item, i) in historyItems"
+        :key="i"
+        :input="item.input"
+        :output="item.output"
+        :pwd="item.pwd"
+      />
+      <REPL :pwd="pwd" :isActive="true" />
     </div>
   </div>
 </template>
 <script>
 import { navigation } from "../js/store";
+import REPL from "./REPL";
 
 export default {
+  props: ["current"],
+  components: {
+    REPL
+  },
   data() {
     return {
-      pwd: navigation.pwd
+      pwd: navigation.getPwdFromCurrent(this.current)
     };
   },
-  computed: {},
+  computed: {
+    historyItems: () => {
+      return [
+        {
+          pwd: ["~"],
+          input: "as",
+          output: "Invalid command."
+        }
+      ];
+    }
+  },
   methods: {
     handleScroll(event) {
       if (window.scrollY / window.innerHeight > 0.5) {
         this.$refs.terminal.classList.add(this.$style.shown);
       } else {
         this.$refs.terminal.classList.remove(this.$style.shown);
+      }
+    },
+    evalInput(cmdLine) {
+      return cmdLine.split(/\s+/);
+    },
+    printOutput(content) {},
+    runChangePage() {
+      return "cd";
+    },
+    runListPage() {
+      let list = navigation.listContents(this.pwd);
+      console.log(list);
+    },
+    getCommandPromise(cmd, args) {
+      var that = this;
+      return new Promise(function(resolve, reject) {
+        try {
+          let result;
+          if (cmd === "cd") {
+            result = that.runChangePage(args);
+          } else if (cmd === "ls") {
+            result = that.runListPage(args);
+          }
+          resolve(result);
+        } catch (error) {
+          reject(error);
+        }
+      });
+    },
+    submitInput(cmdLine) {
+      let words = this.evalInput(cmdLine);
+      if (words.length > 0) {
+        let cmd = words.pop(0);
+        this.getCommandPromise(cmd, words)
+          .then(function(result) {
+            console.log(result);
+          })
+          .catch(function(error) {
+            console.error(error);
+          });
+      }
+    },
+    completeInput(cmdLine) {},
+    collectInput(event) {
+      if (event.keyCode == 13) {
+        // Enter is presed.
+        this.submitInput(event.target.value);
+        event.target.value = "";
       }
     }
   },
@@ -38,12 +105,7 @@ export default {
 @import '../styles/mixins.styl';
 @import '../styles/anims.styl';
 
-$breadcrumb-hovered = $deep-fir;
-$breadcrumb-unselected = $limeade;
-$breadcrumb-arrow = $white;
-$breadcrumb-root = $verdun-green;
-$breadcrumb-text = $white;
-$cli-text = $chartreuse
+$cli-text = $chartreuse;
 
 .terminal {
   background: $black;
@@ -52,97 +114,14 @@ $cli-text = $chartreuse
   z-index: 5;
   box-shadow: 1px -2px 2px 5px white;
   stick('bottom');
-  font-family: 'Courier New'
+  font-family: 'Courier New';
   font-size: 20px;
   font-weight: 800;
-  color: $cli-text
+  color: $cli-text;
   moveAnimation(startDistance: -200px, targetDistance: 0px);
 }
 
-.breadcrumbs {
-  text-align: center;
-  display: inline-block;
-  overflow: hidden;
-  margin-right: 10px;
-
-  &__step {
-    text-decoration: none;
-    outline: none;
-    display: block;
-    float: left;
-    font-size: 18px;
-    line-height: 30px;
-    padding: 0 10px 0 40px;
-    position: relative;
-    background: $breadcrumb-unselected;
-    color: $breadcrumb-text;
-    transition: background 0.5s;
-
-    &:first-child {
-      padding-left: 25px;
-
-      &::before {
-        left: 14px;
-      }
-    }
-
-    &:last-child {
-      border-radius: 0 5px 5px 0;
-      padding-right: 20px;
-
-      &::after {
-        content: none;
-      }
-    }
-
-    // arrow
-    &::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: -18px;
-      width: 30px;
-      height: 30px;
-      transform: scale(0.707) rotate(45deg);
-      z-index: 1;
-      border-radius: 0 5px 0 50px;
-      background: $breadcrumb-unselected;
-      transition: background 0.5s;
-      box-shadow: 2px -2px 0 2px $breadcrumb-arrow;
-    }
-
-    &:hover {
-      color: $breadcrumb-text;
-      background: $breadcrumb-hovered;
-      cursor: pointer;
-
-      &::after {
-        color: $breadcrumb-arrow;
-        background: $breadcrumb-hovered;
-      }
-    }
-  }
-}
-
-.cli {
-  width: 100%;
-  height: 30px;
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-
-  div {
-    height: 100%;
-  }
-
-  #input {
-    background: $transparent;
-    border: none;
-    outline: none;
-    color: unset;
-    font: unset;
-    flex-grow: 1;
-  }
+.items {
 }
 
 .blink {
