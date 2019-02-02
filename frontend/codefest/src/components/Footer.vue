@@ -1,8 +1,8 @@
 <template>
 	<footer :class="$style.footer">
-		<span>Made with </span>
+		<span>Codefest </span>
 		<i :class="$style.heart" />
-		<span> by <a href="https://github.com/lukeed">lukeed</a></span>
+		<span> ' <a href="https://github.com/lukeed">19</a></span>
 	</footer>
 </template>
 
