@@ -1,13 +1,14 @@
 import Vue from "vue";
 import Router from "vue-router";
-import { isMobile } from "../js/utils";
+import {
+  isMobile
+} from "../js/utils";
 
 Vue.use(Router);
 
 export default new Router({
   mode: "history",
-  routes: [
-    {
+  routes: [{
       path: "/",
       component: () =>
         import(`@pages/${isMobile() ? "mobile" : "desktop"}/Home`)
@@ -15,6 +16,10 @@ export default new Router({
     {
       path: "/about",
       component: () => import("@pages/About")
+    },
+    {
+      path: "/events",
+      component: () => import("@pages/Events")
     },
     {
       path: "/blog",

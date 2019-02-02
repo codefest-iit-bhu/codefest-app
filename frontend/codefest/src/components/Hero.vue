@@ -40,7 +40,7 @@ export default {
         drops[i]++;
       }
     }
-    setInterval(draw, 50);
+    setInterval(draw, 33);
   }
 }
 </script>
