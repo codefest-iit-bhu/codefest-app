@@ -1,27 +1,65 @@
 <template>
   <div :class="$style.root">
-    <Events/>
+    <main :class="$style.wrapper">
+      <StandardEvent v-for="(event, i) in events" :key="i" :event="event" :id="i"/>
+    </main>
+    <Terminal :current="'events'"/>
     <Footer/>
   </div>
 </template>
 
 <script>
 import AppBar from "@components/AppBar";
-import Events from "@components/Events";
+import StandardEvent from "@components/StandardEvent";
 import Terminal from "@components/Terminal";
 import Footer from "@components/Footer";
 export default {
   components: {
     AppBar,
-    Events,
+    StandardEvent,
     Terminal,
     Footer
+  },
+  data() {
+    return {
+      events: [
+        {
+          title: "Appathon",
+          summary:
+            "A challenge to blend your creativity to develop a robust mobile app.",
+          image: "../assets/events/appathon.png"
+        },
+        {
+          title: "Enigma",
+          summary:
+            "Solve real-life problems by letting your machine learn patterns.",
+          image: "../assets/events/enigma.png"
+        },
+        {
+          title: "Manthan",
+          summary: "Dive deep in the world of data structures and algorithms.",
+          image: "../assets/events/manthan.png"
+        },
+        {
+          title: "Vista",
+          summary:
+            "Make machines perceive and hone your skills in Computer Vision.",
+          image: "../assets/events/vista.png"
+        },
+        {
+          title: "Perplexed",
+          summary:
+            "Adapt to challenging situations by delving in constrained programming.",
+          image: "../assets/events/perplexed.png"
+        }
+      ]
+    };
   }
 };
 </script>
 <style module lang="stylus">
 .wrapper {
-  width: 100%;
+  width: 80%;
   margin: 0 auto;
   position: relative;
   min-height: calc(55vh - 16px);
@@ -31,7 +69,7 @@ export default {
 }
 
 .root {
-  height: 100%;
+  margin-bottom: 200px;
 }
 
 @media screen and (max-width: 769px) {
