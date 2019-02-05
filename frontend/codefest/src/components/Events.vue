@@ -99,8 +99,12 @@ export default {
       animate(canvas_normal, 1000, -type);
       animate(canvas_glitched, 1000, type);
 
-      context_normal.drawImage(img, 0, 0);
-      context_glitched.drawImage(img, 0, 0);
+      setTimeout(function(){
+        context_normal.clearRect(0, 0, canvas.width, canvas.height);
+        context_glitched.clearRect(0, 0, canvas.width, canvas.height);
+        context_normal.drawImage(img, 0, 0);
+        context_glitched.drawImage(img, 0, 0);
+      }, 1111) 
 
     }
   },
@@ -140,59 +144,59 @@ export default {
 
 #events
   min-height 1400px
-  background #57a300
+  background #555
 
   .cell
-
+    clear both
     box-shadow 0 15px 20px rgba(0, 0, 0, 0.3)
 
     border-radius 100%
-    width 55%
+    width 150px
     height 150px
-    margin 0 0 100px 0
-    padding 0 20px
+    margin-bottom 50px
     background #86ff00
     cursor pointer
+    border-radius 76px
 
     &:hover
-      width 60%
-      transition all 0.1s ease-out
-
-      .info
+      width 70%
+      transition all 0.5s ease-out
+      
+      .glitched_canvas
         display block
-        animation typing 2s steps(40, end), blink-caret .75s step-end infinite
+      
+      .info, .txt
+        display block
+        animation typing 1s steps(40, end), blink-caret .75s step-end infinite
   
     &:nth-child(odd)
       float left
-      border-radius 0 76px 76px 0
+      margin-left 10%
       .normal_canvas, .glitched_canvas
-        float right
+        float left
       .glitched_canvas
-        position relative
-        left 80%
-        top 0
+        float right
       .txt
         text-align left
       
 
     &:nth-child(even)
       float right
-      border-radius 76px 0 0 76px
+      margin-right 10%
       .normal_canvas, .glitched_canvas
-        float left
+        float right
       .glitched_canvas
-        position relative
-        right 80%
-        top 0
+        float left
       .txt
         text-align right
 
     .txt
+      display none
       font-family "Aldo the Apache"
       font-size 50px
       color #555
       text-transform uppercase
-      margin 25px
+      margin 50px
 
     .info
       font-family monospace
@@ -200,7 +204,7 @@ export default {
       line-height 12px
       padding 2px 10px
       display none
-      margin 2px auto
+      margin 2px 50px
       text-align justify
       color #57a330
       overflow hidden
@@ -214,6 +218,7 @@ export default {
       padding 25px
     
     .glitched_canvas
-      opacity: 0;
+      opacity 0
+      display none
         
 </style>
