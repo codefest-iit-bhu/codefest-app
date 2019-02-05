@@ -1,144 +1,79 @@
 <template>
-	<header :class="$style.hero">
-		<Nav />
-		<div :class="$style.titles">
-			<h1>PWA</h1>
-			<h3>Universal Builder</h3>
-		</div>
-		<div ref="shapes" :class="$style.shapes" />
-	</header>
+  <header ref="header" :class="$style.hero">
+    <!-- <Nav /> -->
+    <div :class="$style.title">
+      <h1>Codefest'19</h1>
+    </div>
+    <canvas ref="rains" :class="$style.rains" ></canvas>
+  </header>
 </template>
 
 <script>
-	import Nav from '@components/Nav';
+import Nav from '@components/Nav';
 
-	const SHAPES = ['point', 'square', 'penta', 'circle', 'cross'];
-
-	export default {
-		components: {
-			Nav
-		},
-
-		mounted() {
-			const cls = this.$style.shape;
-			const elem = this.$refs.shapes;
-
-			const ww = elem.clientWidth;
-			const wh = elem.clientHeight;
-			const offset = elem.offsetTop;
-			const steps = wh / 2;
-
-			function Particle() {
-				let y = wh;
-				let dir = Math.random() > 0.5 ? -1 : 1;
-				let fric = Math.random() * 3 + 1;
-				let scale = Math.random() + 0.5;
-				let sine = Math.random() * 60;
-				let x = ww * Math.random();
-
-				let item = document.createElement('span');
-				item.className = cls + ' ' + SHAPES[SHAPES.length * Math.random() | 0];
-				item.style.transform = `translate3d(${x}px,${y}px,0) scale(${scale})`;
-				elem.appendChild(item);
-
-				let height = item.clientHeight;
-				let target = -1 * height;
-
-				return () => {
-					y -= fric;
-					let rot = dir * Math.abs(y + height);
-					let left = x + Math.sin(y * Math.PI / steps) * sine;
-					item.style.transform = `translate3d(${left}px,${y}px,0) scale(${scale}) rotate(${rot}deg)`;
-					return (y > target) || item.remove();
-				}
-			}
-
-			let last = 0;
-			let running = 1;
-			let particles = [];
-
-			window.onblur = window.onfocus = () => {
-				running = document.hasFocus();
-			};
-
-			function update(ms) {
-				let len = particles.length;
-				if (running && len < 50 && (ms - last) > 200) {
-					last = ms;
-					particles.push(Particle());
-				}
-				while (len--) {
-					particles[len]() || particles.splice(len, 1);
-				}
-				requestAnimationFrame(update);
-			}
-
-			update();
-		}
-	}
+export default {
+  components: {
+    Nav
+  },
+  mounted() {
+    const c = this.$refs.rains;
+    var ctx = c.getContext("2d");
+    c.height = window.innerHeight;
+    c.width = window.innerWidth;
+    var code = "{}-+=xyz*&%print$;':<>?/";
+    code = code.split("");
+    var font_size = 40;
+    var columns = 2*c.width/font_size;
+    var drops = [];
+    for(var x = 0; x < columns; x++) drops[x] = 1;
+    function draw(){
+      ctx.fillStyle = "rgba(0, 0, 0, 0.03)";
+      ctx.fillRect(0, 0, c.width, c.height);
+      ctx.fillStyle = "#86ff00";
+      ctx.font = font_size + "px Courier New";
+      for(var i = 0; i < drops.length; i++){
+        var text = code[Math.floor(Math.random()*code.length)];
+        ctx.fillText(text, i*font_size, drops[i]*font_size);
+        
+        if(drops[i]*font_size > c.height && Math.random() > 0.975) drops[i] = 0;
+        
+        drops[i]++;
+      }
+    }
+    setInterval(draw, 33);
+  }
+}
 </script>
 
 <style module lang="styl">
-	.hero
-		position relative
-		background-color var(--offwhite)
-		border-bottom 2px solid var(--blue)
-		max-height 600px
-		min-height 300px
-		height 45vh
-	
-	.shapes
-		width 100%
-		position absolute
-		transform translateZ(0)
-		overflow hidden
-		bottom 0
-		top 0
-	
-	.titles
-		height 0
-		z-index 2
-		position relative
-		font-family var(--font-header), var(--font-list)
-		text-transform uppercase
-		top calc(30% - 56px)
-		text-align center
-		h1
-			font-size 2.875em
-			font-weight 800
-			line-height 1
-		h3
-			line-height 2
-			font-weight 200
-			letter-spacing 2px
-			font-size 1.25em
-			color #5e7283
-	
-	.shape
-		--size 30px
-		position absolute
-		will-change transform
-		background transparent no-repeat center
-		background-size contain
-		height var(--size)
-		width var(--size)
-	
-	:global(.penta)
-		background-image url("@assets/shapes/penta.svg")
-	
-	:global(.point)
-		background-image url("@assets/shapes/point.svg")
-	
-	:global(.square)
-		background-image url("@assets/shapes/square.svg")
-	
-	:global(.cross)
-		background-image url("@assets/shapes/cross.svg")
-	
-	:global(.circle)
-		background-image url("@assets/shapes/circle.svg")
-	
-	@media screen and (max-width: 421px)
-		.shape
-			--size 20px
+@import '../styles/colors.styl';
+
+  .hero
+    position relative
+    background-color $black
+    min-height 300px
+    height 100vh
+  
+  .rains
+    height 100%
+    width 100%
+    position absolute
+    overflow hidden
+    bottom 0
+    top 0
+  
+  .title
+    cursor pointer
+    height 0
+    z-index 2
+    position relative
+    text-transform uppercase
+    top calc(40% - 2px)
+    text-align center
+    font-family 'Aldo the Apache'
+    h1
+      font-size 72px
+      font-weight 800
+      line-height 1
+      color var(--offwhite)
 </style>

@@ -1,15 +1,17 @@
 <template>
-	<div :class="$style.app">
-        <router-view />
-	</div>
+  <div :class="$style.app">
+    <router-view/>
+  </div>
 </template>
 
 <script>
-	export default {
-	}
+export default {};
 </script>
 
 <style module lang="styl">
-	.app
-		position relative
+@import "../styles/colors.styl";
+
+.app {
+  background: $black;
+}
 </style>

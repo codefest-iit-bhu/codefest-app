@@ -6,7 +6,6 @@
     "watch": "pwa watch"
   },
   "dependencies": {
-    "eslint": "^5.12.0",
     "ganalytics": "^3.1.1",
     "sirv-cli": "^0.2.0",
     "vue": "^2.5.0",
@@ -17,8 +16,12 @@
     "@pwa/plugin-gzip": "latest",
     "@pwa/plugin-sw-precache": "latest",
     "@pwa/preset-vue": "latest",
+    "eslint": "^5.12.1",
+    "eslint-loader": "^2.1.1",
     "stylus": "^0.54.0",
-    "stylus-loader": "^3.0.0"
+    "stylus-loader": "^3.0.0",
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.3.1"
   },
   "browserslist": [
     ">0.25%",

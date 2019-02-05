@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <AppBar/>
+  <div :class="$style.root">
+    <!-- <AppBar/> -->
     <Hero/>
     <main :class="$style.wrapper">
       <!-- Introduction -->
@@ -12,7 +12,7 @@
         <Quote v-for="quote in quotes" :key="quote.id"/>
       </div>
     </main>
-    <Terminal/>
+    <Terminal :current="'~'"/>
     <Footer/>
   </div>
 </template>
@@ -53,11 +53,17 @@ export default {
 </script>
 <style module lang="stylus">
 .wrapper {
-  width: 75%;
+  width: 80%;
   margin: 0 auto;
   position: relative;
   min-height: calc(55vh - 16px);
   z-index: 1;
+  font-family: 'Roboto Mono';
+  font-size: 18px;
+}
+
+.root {
+  margin-bottom: 200px;
 }
 
 @media screen and (max-width: 769px) {
