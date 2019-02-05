@@ -99,12 +99,8 @@ export default {
       animate(canvas_normal, 1000, -type);
       animate(canvas_glitched, 1000, type);
 
-      setTimeout(function(){
-        context_normal.clearRect(0, 0, canvas.width, canvas.height);
-        context_glitched.clearRect(0, 0, canvas.width, canvas.height);
-        context_normal.drawImage(img, 0, 0);
-        context_glitched.drawImage(img, 0, 0);
-      }, 1111) 
+      context_normal.drawImage(img, 0, 0);
+      context_glitched.drawImage(img, 0, 0);
 
     }
   },
