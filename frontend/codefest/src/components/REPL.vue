@@ -4,7 +4,8 @@
       <div :class="$style.breadcrumbs">
         <a :class="$style.breadcrumbs__step" v-for="(dir, i) in pwd" :key="i">{{ dir }}</a>
       </div>
-      <input :id="$style.input" type="text" ref="cli" @keydown="collectInput" :value="input">
+      <span v-if="!isActive">{{input}}</span>
+      <input :id="$style.input" type="text" ref="cli" @keydown="collectInput" v-if="isActive">
     </div>
   </div>
 </template>
