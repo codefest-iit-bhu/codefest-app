@@ -4,22 +4,36 @@
       <div :class="$style.breadcrumbs">
         <a :class="$style.breadcrumbs__step" v-for="(dir, i) in pwd" :key="i">{{ dir }}</a>
       </div>
-      <span v-if="!isActive">{{input}}</span>
-      <input :id="$style.input" type="text" ref="cli" @keydown="collectInput" v-if="isActive">
+      <span v-if="!isActive">{{ input }}</span>
+      <input
+        :id="$style.input"
+        type="text"
+        ref="cli"
+        @keydown="collectInput"
+        v-if="isActive"
+        v-model="input"
+      >
+    </div>
+    <div v-if="!!output">
+      <p :class="$style.output">{{ output }}</p>
     </div>
   </div>
 </template>
+
 <script>
+import { navigation, terminal } from "../js/store";
+import { CommandNotFoundError } from "../js/exceptions";
+
 export default {
   props: {
     pwd: {
       type: Array
     },
-    input: {
+    propInput: {
       type: String,
       default: ""
     },
-    output: {
+    propOutput: {
       type: String,
       default: ""
     },
@@ -27,9 +41,79 @@ export default {
       type: Boolean,
       default: false
     }
+  },
+  data() {
+    return {
+      output: this.propOutput,
+      input: this.propInput
+    };
+  },
+  methods: {
+    evalInput(cmdLine) {
+      return cmdLine.split(/\s+/);
+    },
+    submitResult(status, output) {
+      terminal.addToHistory(this.pwd, status, this.input, output);
+    },
+    runChangePage() {
+      return "cd";
+    },
+    runListPage() {
+      let list = navigation.listContents(this.pwd);
+      for (let key in list) {
+      }
+      list.forEach(elem => {
+        let item = elem[0] || elem;
+        console.log(item);
+      });
+    },
+    getCommandPromise(cmd, args) {
+      var that = this;
+      return new Promise(function(resolve, reject) {
+        try {
+          let result;
+          if (cmd === "cd") {
+            result = that.runChangePage(args);
+          } else if (cmd === "ls") {
+            result = that.runListPage(args);
+          } else {
+            reject(new CommandNotFoundError());
+          }
+          resolve(result);
+        } catch (error) {
+          reject(error);
+        }
+      });
+    },
+    submitInput(cmdLine) {
+      let words = this.evalInput(cmdLine);
+      if (words.length > 0) {
+        let cmd = words.pop(0);
+        this.getCommandPromise(cmd, words)
+          .then(result => {
+            this.submitResult(0, result);
+          })
+          .catch(error => {
+            this.submitResult(error.code, error.message);
+          });
+      }
+    },
+    completeInput(cmdLine) {},
+    collectInput(event) {
+      if (!this.isActive) return false;
+      if (event.keyCode == 13) {
+        // Enter is presed.
+        this.submitInput(event.target.value);
+        event.target.value = "";
+      }
+    },
+    focusInput() {
+      if (this.isActive) this.$refs.cli.focus();
+    }
   }
 };
 </script>
+
 <style module lang="stylus">
 @import '../styles/colors.styl';
 @import '../styles/mixins.styl';
@@ -43,6 +127,7 @@ $breadcrumb-text = $white;
 $cli-text = $chartreuse;
 
 .repl {
+  margin-top: 5px;
 }
 
 .breadcrumbs {
@@ -108,6 +193,10 @@ $cli-text = $chartreuse;
       }
     }
   }
+}
+
+.output {
+  margin-top: 5px;
 }
 
 .cli {

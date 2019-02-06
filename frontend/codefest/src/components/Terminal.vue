@@ -1,19 +1,19 @@
 <template>
-  <div :class="$style.terminal" ref="terminal" @click="$refs.cli.focus()">
+  <div :class="$style.terminal" ref="terminal" @click="focusTerminalInput">
     <div :class="$style.items">
       <REPL
         v-for="(item, i) in historyItems"
         :key="i"
-        :input="item.input"
-        :output="item.output"
+        :propInput="item.input"
+        :propOutput="item.output"
         :pwd="item.pwd"
       />
-      <REPL :pwd="pwd" :isActive="true" />
+      <REPL ref="cli" :pwd="pwd" :isActive="true"/>
     </div>
   </div>
 </template>
 <script>
-import { navigation } from "../js/store";
+import { navigation, terminal } from "../js/store";
 import REPL from "./REPL";
 
 export default {
@@ -23,19 +23,9 @@ export default {
   },
   data() {
     return {
-      pwd: navigation.getPwdFromCurrent(this.current)
+      pwd: navigation.getPwdFromCurrent(this.current),
+      historyItems: terminal.getHistory()
     };
-  },
-  computed: {
-    historyItems: () => {
-      return [
-        {
-          pwd: ["~"],
-          input: "as",
-          output: "Invalid command."
-        }
-      ];
-    }
   },
   methods: {
     handleScroll(event) {
@@ -45,53 +35,8 @@ export default {
         this.$refs.terminal.classList.remove(this.$style.shown);
       }
     },
-    evalInput(cmdLine) {
-      return cmdLine.split(/\s+/);
-    },
-    printOutput(content) {},
-    runChangePage() {
-      return "cd";
-    },
-    runListPage() {
-      let list = navigation.listContents(this.pwd);
-      console.log(list);
-    },
-    getCommandPromise(cmd, args) {
-      var that = this;
-      return new Promise(function(resolve, reject) {
-        try {
-          let result;
-          if (cmd === "cd") {
-            result = that.runChangePage(args);
-          } else if (cmd === "ls") {
-            result = that.runListPage(args);
-          }
-          resolve(result);
-        } catch (error) {
-          reject(error);
-        }
-      });
-    },
-    submitInput(cmdLine) {
-      let words = this.evalInput(cmdLine);
-      if (words.length > 0) {
-        let cmd = words.pop(0);
-        this.getCommandPromise(cmd, words)
-          .then(function(result) {
-            console.log(result);
-          })
-          .catch(function(error) {
-            console.error(error);
-          });
-      }
-    },
-    completeInput(cmdLine) {},
-    collectInput(event) {
-      if (event.keyCode == 13) {
-        // Enter is presed.
-        this.submitInput(event.target.value);
-        event.target.value = "";
-      }
+    focusTerminalInput() {
+      this.$refs.cli.focusInput();
     }
   },
   mounted() {
@@ -118,6 +63,7 @@ $cli-text = $chartreuse;
   font-size: 20px;
   font-weight: 800;
   color: $cli-text;
+  overflow-y: auto;
   moveAnimation(startDistance: -200px, targetDistance: 0px);
 }
 

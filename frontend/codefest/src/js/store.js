@@ -29,3 +29,20 @@ export const navigation = {
     return current;
   }
 };
+
+export const terminal = {
+  history: [
+    {
+      pwd: ["~"],
+      status: 127,
+      input: "as",
+      output: "Invalid command."
+    }
+  ],
+  getHistory: function() {
+    return this.history;
+  },
+  addToHistory: function(pwd, status, input, output) {
+    this.history.push({ pwd, status, input, output });
+  }
+};
