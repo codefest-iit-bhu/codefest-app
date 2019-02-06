@@ -11,6 +11,8 @@
       <div class="quotes">
         <Quote v-for="quote in quotes" :key="quote.id"/>
       </div>
+      <!-- Sponsors -->
+      <Sponsors/>
     </main>
     <Terminal :current="'~'"/>
     <Footer/>
@@ -25,12 +27,14 @@ import Quote from "@components/Quote";
 import Terminal from "@components/Terminal";
 import Footer from "@components/Footer";
 import Lookback from "@components/Lookback";
+import Sponsors from "@components/Sponsors";
 export default {
   components: {
     AppBar,
     Hero,
     Intro,
     Lookback,
+    Sponsors,
     Quote,
     Terminal,
     Footer
