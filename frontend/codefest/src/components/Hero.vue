@@ -1,15 +1,14 @@
 <template>
   <header ref="header" :class="$style.hero">
-    <!-- <Nav /> -->
-    <div :class="$style.title">
+    <div ref="title" :class="$style.title">
       <h1>Codefest'19</h1>
     </div>
-    <canvas ref="rains" :class="$style.rains" ></canvas>
+    <canvas ref="rains" :class="$style.rains"></canvas>
   </header>
 </template>
 
 <script>
-import Nav from '@components/Nav';
+import Nav from "@components/Nav";
 
 export default {
   components: {
@@ -23,26 +22,48 @@ export default {
     var code = "{}-+=xyz*&%print$;':<>?/";
     code = code.split("");
     var font_size = 40;
-    var columns = 2*c.width/font_size;
+    var columns = (2 * c.width) / font_size;
     var drops = [];
-    for(var x = 0; x < columns; x++) drops[x] = 1;
-    function draw(){
+    for (var x = 0; x < columns; x++) drops[x] = 1;
+    function draw() {
       ctx.fillStyle = "rgba(0, 0, 0, 0.03)";
       ctx.fillRect(0, 0, c.width, c.height);
       ctx.fillStyle = "#86ff00";
       ctx.font = font_size + "px Courier New";
-      for(var i = 0; i < drops.length; i++){
-        var text = code[Math.floor(Math.random()*code.length)];
-        ctx.fillText(text, i*font_size, drops[i]*font_size);
-        
-        if(drops[i]*font_size > c.height && Math.random() > 0.975) drops[i] = 0;
-        
+      for (var i = 0; i < drops.length; i++) {
+        var text = code[Math.floor(Math.random() * code.length)];
+        ctx.fillText(text, i * font_size, drops[i] * font_size);
+
+        if (drops[i] * font_size > c.height && Math.random() > 0.975)
+          drops[i] = 0;
+
         drops[i]++;
       }
     }
     setInterval(draw, 33);
+
+    window.onscroll = function() {
+      stickOnScroll();
+    };
+
+    var title = this.$refs.title;
+    var offset = title.offsetTop;
+
+    let center = { top: title.style.top, left: title.style.left };
+
+    function stickOnScroll() {
+      if (window.pageYOffset > offset) {
+        title.style.position = "fixed";
+        title.style.top = 0;
+        title.style.left = 0;
+      } else {
+        title.style.position = "absolute";
+        title.style.left = center["left"];
+        title.style.top = center["top"];
+      }
+    }
   }
-}
+};
 </script>
 
 <style module lang="styl">
@@ -53,6 +74,10 @@ export default {
     background-color $black
     min-height 300px
     height 100vh
+    max-width 100%
+    overflow: hidden;
+    padding 10px 16px
+    color #f1f1f1
   
   .rains
     height 100%
@@ -66,11 +91,14 @@ export default {
     cursor pointer
     height 0
     z-index 2
-    position relative
+    position absolute
     text-transform uppercase
-    top calc(40% - 2px)
+    top 40%
+    left 40%
     text-align center
     font-family 'Aldo the Apache'
+    transition left 1s ease-out, font-size 1s ease-out 
+
     h1
       font-size 72px
       font-weight 800

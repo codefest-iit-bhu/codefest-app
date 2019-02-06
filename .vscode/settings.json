@@ -1,4 +1,7 @@
 {
     "editor.tabSize": 2,
-    "files.autoSave": "onFocusChange"
+    "files.autoSave": "onFocusChange",
+    "editor.fontFamily": "'Droid Sans Mono', 'monospace'",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 13
 }

@@ -129,6 +129,10 @@ $cell-collapsed-size = 150px;
     .txt {
       display: block;
     }
+
+    .txt h3 {
+      opacity: 1;
+    }
   }
 
   &.odd {
@@ -174,6 +178,8 @@ $cell-collapsed-size = 150px;
   font-family: 'Aldo the Apache';
   margin-top: 20px;
   font-size: 50px;
+  opacity: 0;
+  transition: opacity 1s ease-out;
 }
 
 .summary {
