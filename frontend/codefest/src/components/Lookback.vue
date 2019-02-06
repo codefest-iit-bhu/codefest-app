@@ -30,28 +30,27 @@ export default {
         {
           name: "Prize Money",
           value: "500,000",
-          image: "../assets/Lookback/25473.png"
+          image: "../assets/Lookback/rupee.png"
         },
         {
           name: "Countries",
           value: "98",
-          image: "../assets/Lookback/mobile-test-studio-locations-icon.png"
+          image: "../assets/Lookback/countries.png"
         },
         {
           name: "Participants",
           value: "24,654",
-          image:
-            "../assets/Lookback/kisspng-computer-icons-internet-forum-discussion-group-blo-5aff15db0bb4c8.818433001526666715048.png"
+          image: "../assets/Lookback/participants.png"
         },
         {
           name: "Unique Visitors",
           value: "328,902",
-          image: "../assets/Lookback/visitor.png"
+          image: "../assets/Lookback/visitors.png"
         },
         {
           name: "Registrations",
           value: "16,302",
-          image: "../assets/Lookback/edit-user-male.png"
+          image: "../assets/Lookback/registrations.png"
         }
       ]
     };
@@ -61,6 +60,7 @@ export default {
 
 <style module lang="styl">
 @import '../styles/theme.styl';
+@import '../styles/colors.styl';
 
 .lookback
 
@@ -69,24 +69,26 @@ export default {
     height 100px
     margin-left auto
     margin-right auto
+    font-family Aldo the Apache
 
     .txt
-      color #86ff00
+      color $chartreuse
       position relative
-      top -70%
+      top -76%
 
     .clip
-      clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)
       background white
       width 100px
       height 100px
-      background #57a300
+      padding 10px
+      background-color $chartreuse
 
     .img
       width 80%
       height 80%
       position relative
-      top -25%
+      top -45%
       left 10%
 
     &:nth-child(2)
@@ -102,6 +104,8 @@ export default {
         margin-right 55%
         text-align right
         float right
+        font-size 25px
+        line-height 28px
       
       .clip
         margin-left 50%
@@ -111,6 +115,8 @@ export default {
         margin-left 55%
         text-align left
         float left
+        line-height 28px
+        font-size 25px
       
       .clip
         margin-left 30%

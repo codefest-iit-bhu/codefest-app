@@ -7,6 +7,8 @@
       <Intro/>
       <!-- Lookback at CF'18 -->
       <Lookback/>
+      <!-- Sponsors -->
+      <Sponsors/>
     </main>
     <Footer/>
   </div>
@@ -16,16 +18,18 @@
 import AppBar from "@components/AppBar";
 import Intro from "@components/Intro";
 import Hero from "@components/Hero";
-import Quote from "@components/Quote";
 import Terminal from "@components/Terminal";
 import Footer from "@components/Footer";
 import Lookback from "@components/Lookback";
+import Sponsors from "@components/Sponsors";
 export default {
   components: {
     AppBar,
     Hero,
     Intro,
     Lookback,
+    Sponsors,
+    Terminal,
     Footer
   },
   data: () => {
