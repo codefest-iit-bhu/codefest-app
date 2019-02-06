@@ -41,6 +41,9 @@ export default {
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
+
+    this.$refs.cli.submitInput("ls");
+    this.$refs.terminal.scrollIntoView();
   },
   dismounted() {}
 };
@@ -75,5 +78,20 @@ $cli-text = $chartreuse;
 }
 
 .shown {
+}
+
+.terminal::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #F5F5F5;
+}
+
+.terminal::-webkit-scrollbar {
+  width: 10px;
+  background-color: #F5F5F5;
+}
+
+.terminal::-webkit-scrollbar-thumb {
+  background-color: #000000;
+  border: 2px solid #555555;
 }
 </style>

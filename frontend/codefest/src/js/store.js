@@ -1,24 +1,25 @@
 export const navigation = {
   hierarchy: {
     "~": {
-      "": "/",
+      "/": "/",
       events: {
-        "": "/events",
+        "/": "/events",
         hackathon: "/events/1"
       },
       sponsors: {
-        "": "/sponsors"
+        "/": "/sponsors"
       },
       gallery: {
-        "": "/gallery"
+        "/": "/gallery"
       },
       dashboard: {
-        "": "/dashboard"
+        "/": "/dashboard"
       }
     }
   },
   getPwdFromCurrent: function(current) {
-    return current.split("/");
+    let rawPath = current.split("/");
+    return rawPath.filter(el => !!el);
   },
   listContents: function(pwd) {
     var current = null;
@@ -27,16 +28,26 @@ export const navigation = {
       else current = this.hierarchy[dir];
     });
     return current;
+  },
+  getTargetPageUrl: function(pwd, targetDir) {
+    let hierarchy = this.listContents(pwd);
+    let route = targetDir.split("/");
+    let currentDir = null;
+    route.forEach(dir => {
+      if (currentDir) currentDir = currentDir[dir];
+      else currentDir = hierarchy[dir];
+    });
+    return currentDir["/"];
   }
 };
 
 export const terminal = {
   history: [
     {
-      pwd: ["~"],
-      status: 127,
-      input: "as",
-      output: "Invalid command."
+      // pwd: ["~"],
+      // status: 127,
+      // input: "as",
+      // output: "Invalid command."
     }
   ],
   getHistory: function() {

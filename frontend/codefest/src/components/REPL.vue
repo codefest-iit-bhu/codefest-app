@@ -14,15 +14,16 @@
         v-model="input"
       >
     </div>
-    <div v-if="!!output">
-      <p :class="$style.output">{{ output }}</p>
+    <div v-if="!!output" :class="$style.output">
+      <component :is="outputHtml"></component>
     </div>
   </div>
 </template>
 
 <script>
+import Vue from "vue";
 import { navigation, terminal } from "../js/store";
-import { CommandNotFoundError } from "../js/exceptions";
+import { CommandNotFoundError, CommandInvalidInput } from "../js/exceptions";
 
 export default {
   props: {
@@ -48,24 +49,54 @@ export default {
       input: this.propInput
     };
   },
+  computed: {
+    outputHtml() {
+      return Vue.compile(this.output);
+    }
+  },
   methods: {
     evalInput(cmdLine) {
       return cmdLine.split(/\s+/);
     },
     submitResult(status, output) {
       terminal.addToHistory(this.pwd, status, this.input, output);
+      this.input = "";
+    },
+    outputAsColumns(list) {
+      var maxColumns = 5;
+      let result = "";
+      for (let i = 0; i < list.length; i++) {
+        if (i % maxColumns === 0) result += "<tr>";
+        result += `<td>${list[i]}</td>`;
+        if (i % maxColumns === maxColumns - 1) result += "</tr>";
+      }
+      return `<table><tbody>${result}</tbody></table>`;
     },
     runChangePage() {
-      return "cd";
+      if (arguments.length === 0) {
+        this.$router.push("/");
+        return;
+      }
+      if (arguments.length > 1)
+        throw new CommandInvalidInput(1, "Invalid arguments provided");
+      let targetDir = arguments[0];
+      let url;
+      try {
+        url = navigation.getTargetPageUrl(this.pwd, targetDir);
+      } catch (error) {
+        throw new CommandInvalidInput(2, "Directory not found.");
+      }
+      this.$router.push(url);
     },
     runListPage() {
       let list = navigation.listContents(this.pwd);
+      let result = [];
       for (let key in list) {
+        let name = key;
+        let url = list[key]["/"] || list["/"];
+        result.push(`<router-link to="${url}">${name}</router-link>`);
       }
-      list.forEach(elem => {
-        let item = elem[0] || elem;
-        console.log(item);
-      });
+      return this.outputAsColumns(result);
     },
     getCommandPromise(cmd, args) {
       var that = this;
@@ -73,22 +104,25 @@ export default {
         try {
           let result;
           if (cmd === "cd") {
-            result = that.runChangePage(args);
+            result = that.runChangePage(...args);
           } else if (cmd === "ls") {
-            result = that.runListPage(args);
+            result = that.runListPage(...args);
           } else {
             reject(new CommandNotFoundError());
           }
           resolve(result);
         } catch (error) {
+          console.error(error);
           reject(error);
         }
       });
     },
     submitInput(cmdLine) {
+      this.input = this.input || cmdLine;
+
       let words = this.evalInput(cmdLine);
       if (words.length > 0) {
-        let cmd = words.pop(0);
+        let cmd = words.splice(0, 1)[0];
         this.getCommandPromise(cmd, words)
           .then(result => {
             this.submitResult(0, result);
@@ -104,7 +138,6 @@ export default {
       if (event.keyCode == 13) {
         // Enter is presed.
         this.submitInput(event.target.value);
-        event.target.value = "";
       }
     },
     focusInput() {
@@ -125,6 +158,7 @@ $breadcrumb-arrow = $white;
 $breadcrumb-root = $verdun-green;
 $breadcrumb-text = $white;
 $cli-text = $chartreuse;
+$output-link = $dodger-blue;
 
 .repl {
   margin-top: 5px;
@@ -197,6 +231,20 @@ $cli-text = $chartreuse;
 
 .output {
   margin-top: 5px;
+
+  table {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  td {
+    width: 120px;
+    padding: 20px;
+  }
+
+  a {
+    color: $output-link;
+  }
 }
 
 .cli {

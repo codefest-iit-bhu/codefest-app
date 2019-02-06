@@ -3,7 +3,6 @@
     <main :class="$style.wrapper">
       <StandardEvent v-for="(event, i) in events" :key="i" :event="event" :id="i"/>
     </main>
-    <Terminal :current="'events'"/>
     <Footer/>
   </div>
 </template>
@@ -11,13 +10,11 @@
 <script>
 import AppBar from "@components/AppBar";
 import StandardEvent from "@components/StandardEvent";
-import Terminal from "@components/Terminal";
 import Footer from "@components/Footer";
 export default {
   components: {
     AppBar,
     StandardEvent,
-    Terminal,
     Footer
   },
   data() {

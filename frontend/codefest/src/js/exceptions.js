@@ -6,6 +6,14 @@ export class CommandBaseError extends Error {
   }
 }
 
+export class CommandInvalidInput extends CommandBaseError {
+  constructor(code, msg, ...args) {
+    super(...args);
+    this.code = code;
+    this.message = msg;
+  }
+}
+
 export class CommandNotFoundError extends CommandBaseError {
   constructor(...args) {
     super(...args);

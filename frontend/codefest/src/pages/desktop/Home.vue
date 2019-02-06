@@ -7,12 +7,7 @@
       <Intro/>
       <!-- Lookback at CF'18 -->
       <Lookback/>
-      <!-- Quotes -->
-      <div class="quotes">
-        <Quote v-for="quote in quotes" :key="quote.id"/>
-      </div>
     </main>
-    <Terminal :current="'~'"/>
     <Footer/>
   </div>
 </template>
@@ -31,23 +26,10 @@ export default {
     Hero,
     Intro,
     Lookback,
-    Quote,
-    Terminal,
     Footer
   },
   data: () => {
-    return {
-      quotes: [
-        {
-          id: 1
-        }
-      ],
-      events: [
-        {
-          id: 1
-        }
-      ]
-    };
+    return {};
   }
 };
 </script>

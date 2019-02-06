@@ -8,16 +8,19 @@ export default new Router({
   mode: "history",
   routes: [
     {
+      name: "~",
       path: "/",
       component: () =>
         import(`@pages/${isMobile() ? "mobile" : "desktop"}/Home`)
     },
     {
+      name: "~/events",
       path: "/events",
       component: () =>
         import(`@pages/${isMobile() ? "mobile" : "desktop"}/EventList`)
     },
     {
+      name: "~/about",
       path: "/about",
       component: () => import("@pages/About")
     },
