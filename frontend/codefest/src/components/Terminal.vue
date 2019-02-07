@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.terminal" ref="terminal" @click="focusTerminalInput">
+  <div :class="$style.terminal" @click="focusTerminalInput">
     <div :class="$style.items">
       <REPL
         v-for="(item, i) in historyItems"
@@ -8,7 +8,7 @@
         :propOutput="item.output"
         :pwd="item.pwd"
       />
-      <REPL ref="cli" :pwd="pwd" :isActive="true"/>
+      <REPL ref="cli" :pwd="pwd" :isActive="true" @pwdChanged="initCommandsOnPageChange"/>
     </div>
   </div>
 </template>
@@ -17,34 +17,54 @@ import { navigation, terminal } from "../js/store";
 import REPL from "./REPL";
 
 export default {
-  props: ["current"],
+  props: ["propCurrent"],
   components: {
     REPL
   },
   data() {
     return {
-      pwd: navigation.getPwdFromCurrent(this.current),
-      historyItems: terminal.getHistory()
+      historyItems: terminal.getHistory(),
+      pwd: []
     };
+  },
+  computed: {
+    current() {
+      return this.propCurrent;
+    }
+  },
+  watch: {
+    current: function(newValue, oldValue) {
+      if (!newValue) return;
+      this.pwd = navigation.getPwdFromCurrent(newValue);
+    }
   },
   methods: {
     handleScroll(event) {
-      if (window.scrollY / window.innerHeight > 0.5) {
-        this.$refs.terminal.classList.add(this.$style.shown);
-      } else {
-        this.$refs.terminal.classList.remove(this.$style.shown);
-      }
+      if (window.scrollY / window.innerHeight > 0.5) this.showTerminal();
+      else this.hideTerminal();
     },
     focusTerminalInput() {
       this.$refs.cli.focusInput();
+    },
+    initCommandsOnPageChange() {
+      this.$refs.cli.submitInput("ls");
+    },
+    showTerminal() {
+      this.$el.classList.add(this.$style.shown);
+      this.$el.scrollIntoView();
+    },
+    hideTerminal() {
+      this.$el.classList.remove(this.$style.shown);
+    },
+    animateScrollShow() {
+      window.addEventListener("scroll", this.handleScroll);
+    },
+    noAnimateScrollShow() {
+      window.removeEventListener("scroll", this.handleScroll);
+      this.showTerminal();
     }
   },
-  mounted() {
-    window.addEventListener("scroll", this.handleScroll);
-
-    this.$refs.cli.submitInput("ls");
-    this.$refs.terminal.scrollIntoView();
-  },
+  mounted() {},
   dismounted() {}
 };
 </script>

@@ -2,7 +2,12 @@
   <div :class="$style.repl">
     <div :class="$style.cli">
       <div :class="$style.breadcrumbs">
-        <a :class="$style.breadcrumbs__step" v-for="(dir, i) in pwd" :key="i">{{ dir }}</a>
+        <router-link
+          to="/"
+          :class="$style.breadcrumbs__step"
+          v-for="(dir, i) in pwd"
+          :key="i"
+        >{{ dir }}</router-link>
       </div>
       <span v-if="!isActive">{{ input }}</span>
       <input
@@ -51,7 +56,7 @@ export default {
   },
   computed: {
     outputHtml() {
-      return Vue.compile(this.output);
+      return Vue.compile(`<div>${this.output}</div>`);
     }
   },
   methods: {
@@ -65,12 +70,8 @@ export default {
     outputAsColumns(list) {
       var maxColumns = 5;
       let result = "";
-      for (let i = 0; i < list.length; i++) {
-        if (i % maxColumns === 0) result += "<tr>";
-        result += `<td>${list[i]}</td>`;
-        if (i % maxColumns === maxColumns - 1) result += "</tr>";
-      }
-      return `<table><tbody>${result}</tbody></table>`;
+      list.forEach(elem => (result += `${elem} `));
+      return `<div class="${this.$style.column}">${result}</div>`;
     },
     runChangePage() {
       if (arguments.length === 0) {
@@ -89,6 +90,7 @@ export default {
       this.$router.push(url);
     },
     runListPage() {
+      if (this.pwd === null) return;
       let list = navigation.listContents(this.pwd);
       let result = [];
       for (let key in list) {
@@ -143,7 +145,13 @@ export default {
     focusInput() {
       if (this.isActive) this.$refs.cli.focus();
     }
-  }
+  },
+  watch: {
+    pwd: function(newPwd, oldPwd) {
+      this.$emit("pwdChanged");
+    }
+  },
+  mounted() {}
 };
 </script>
 
@@ -170,7 +178,7 @@ $output-link = $dodger-blue;
   overflow: hidden;
   margin-right: 10px;
 
-  &__step {
+  a&__step, a&__step:visited {
     text-decoration: none;
     outline: none;
     display: block;
@@ -232,17 +240,20 @@ $output-link = $dodger-blue;
 .output {
   margin-top: 5px;
 
-  table {
-    margin-left: auto;
-    margin-right: auto;
+  .column {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(5, 150px);
+    column-gap: 20px;
+
+    ../ {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 
-  td {
-    width: 120px;
-    padding: 20px;
-  }
-
-  a {
+  a, a:visited {
     color: $output-link;
   }
 }

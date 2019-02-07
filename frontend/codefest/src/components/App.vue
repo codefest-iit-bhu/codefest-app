@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.app">
     <router-view/>
-    <Terminal :current="current" :key="current"/>
+    <Terminal :propCurrent="current" ref="terminal"/>
   </div>
 </template>
 
@@ -14,11 +14,14 @@ export default {
   },
   data() {
     return {
-      current: "~"
+      current: null
     };
   },
   watch: {
     $route(to, from) {
+      let terminal = this.$refs.terminal;
+      if (to.name === "~") terminal.animateScrollShow();
+      else terminal.noAnimateScrollShow();
       this.current = `~${to.path}`;
     }
   }
@@ -30,5 +33,6 @@ export default {
 
 .app {
   background: $black;
+  height: 100%;
 }
 </style>

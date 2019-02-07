@@ -1,7 +1,9 @@
 <template>
   <div :class="$style.root">
+    <AppBar/>
     <main :class="$style.wrapper">
       <StandardEvent v-for="(event, i) in events" :key="i" :event="event" :id="i"/>
+      <div :class="$style.space"></div>
     </main>
     <Footer/>
   </div>
@@ -57,15 +59,15 @@ export default {
 <style module lang="stylus">
 .wrapper {
   width: 80%;
-  margin: 0 auto;
+  margin: 50px auto;
   position: relative;
-  min-height: calc(55vh - 16px);
   z-index: 1;
   font-family: 'Roboto Mono';
   font-size: 18px;
 }
 
 .root {
+  height: 100%;
   margin-bottom: 200px;
 }
 
@@ -73,5 +75,9 @@ export default {
   .wrapper {
     width: 90%;
   }
+}
+
+.space {
+  padding: 20px;
 }
 </style>

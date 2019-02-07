@@ -67,7 +67,6 @@ export default {
       return step();
     },
     glitch(isAppearIn, event) {
-      console.log(event);
       this.animateGlitchOpacity(this.$refs.initialCanvas, 2000, !isAppearIn);
       this.animateGlitchOpacity(this.$refs.finalCanvas, 2000, isAppearIn);
 
@@ -109,13 +108,15 @@ $cell-collapsed-size = 150px;
 
 .event {
   clear: both;
+  z-index: 0;
+  height: $cell-collapsed-size;
 }
 
 .cell {
   clear: both;
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
   width: $cell-collapsed-size;
-  height: $cell-collapsed-size;
+  height: 100%;
   margin-bottom: 50px;
   background: $chartreuse;
   cursor: pointer;

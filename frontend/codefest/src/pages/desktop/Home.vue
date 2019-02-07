@@ -42,7 +42,6 @@ export default {
   width: 80%;
   margin: 0 auto;
   position: relative;
-  min-height: calc(55vh - 16px);
   z-index: 1;
   font-family: 'Roboto Mono';
   font-size: 18px;

@@ -18,6 +18,7 @@ export const navigation = {
     }
   },
   getPwdFromCurrent: function(current) {
+    if (!current) return [];
     let rawPath = current.split("/");
     return rawPath.filter(el => !!el);
   },
@@ -30,6 +31,9 @@ export const navigation = {
     return current;
   },
   getTargetPageUrl: function(pwd, targetDir) {
+    let backNav = targetDir.match(/^(..\/)(..\/)*?/g);
+    console.log(backNav);
+
     let hierarchy = this.listContents(pwd);
     let route = targetDir.split("/");
     let currentDir = null;
@@ -42,14 +46,7 @@ export const navigation = {
 };
 
 export const terminal = {
-  history: [
-    {
-      // pwd: ["~"],
-      // status: 127,
-      // input: "as",
-      // output: "Invalid command."
-    }
-  ],
+  history: [],
   getHistory: function() {
     return this.history;
   },
