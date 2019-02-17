@@ -3,7 +3,7 @@
     <div :class="$style.cli">
       <div :class="$style.breadcrumbs">
         <router-link
-          to="/"
+          :to="breadcrumbLinks[i]"
           :class="$style.breadcrumbs__step"
           v-for="(dir, i) in pwd"
           :key="i"
@@ -57,21 +57,14 @@ export default {
   computed: {
     outputHtml() {
       return Vue.compile(`<div>${this.output}</div>`);
+    },
+    breadcrumbLinks() {
+      return navigation.getLinksFromPwd(this.pwd);
     }
   },
   methods: {
     evalInput(cmdLine) {
       return cmdLine.split(/\s+/);
-    },
-    submitResult(status, output) {
-      terminal.addToHistory(this.pwd, status, this.input, output);
-      this.input = "";
-    },
-    outputAsColumns(list) {
-      var maxColumns = 5;
-      let result = "";
-      list.forEach(elem => (result += `${elem} `));
-      return `<div class="${this.$style.column}">${result}</div>`;
     },
     runChangePage() {
       if (arguments.length === 0) {
@@ -100,38 +93,12 @@ export default {
       }
       return this.outputAsColumns(result);
     },
-    getCommandPromise(cmd, args) {
-      var that = this;
-      return new Promise(function(resolve, reject) {
-        try {
-          let result;
-          if (cmd === "cd") {
-            result = that.runChangePage(...args);
-          } else if (cmd === "ls") {
-            result = that.runListPage(...args);
-          } else {
-            reject(new CommandNotFoundError());
-          }
-          resolve(result);
-        } catch (error) {
-          console.error(error);
-          reject(error);
-        }
-      });
-    },
     submitInput(cmdLine) {
       this.input = this.input || cmdLine;
 
-      let words = this.evalInput(cmdLine);
+      let words = this.evalInput(this.input);
       if (words.length > 0) {
-        let cmd = words.splice(0, 1)[0];
-        this.getCommandPromise(cmd, words)
-          .then(result => {
-            this.submitResult(0, result);
-          })
-          .catch(error => {
-            this.submitResult(error.code, error.message);
-          });
+        this.$emit("onSubmitInput", words);
       }
     },
     completeInput(cmdLine) {},
@@ -144,6 +111,9 @@ export default {
     },
     focusInput() {
       if (this.isActive) this.$refs.cli.focus();
+    },
+    clearInput() {
+      this.input = "";
     }
   },
   watch: {

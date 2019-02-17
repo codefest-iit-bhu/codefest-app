@@ -14,6 +14,14 @@ export class CommandInvalidInput extends CommandBaseError {
   }
 }
 
+export class CommandInvalidEnvironment extends CommandBaseError {
+  constructor(...args) {
+    super(...args);
+    this.code = 111;
+    this.message = "Weirdly, the command is run in a wrong environment.";
+  }
+}
+
 export class CommandNotFoundError extends CommandBaseError {
   constructor(...args) {
     super(...args);

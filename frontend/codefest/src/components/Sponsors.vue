@@ -17,38 +17,20 @@ export default {
     return {
       stats: [
         {
-          image: "../assets/Sponsors/aws.png"
+          image: "assets/Sponsors/aws.png"
         },
         {
-          image: "../assets/Sponsors/av.png"
+          image: "assets/Sponsors/av.png"
         },
         {
-          image: "../assets/Sponsors/top-coder.png"
+          image: "assets/Sponsors/top-coder.png"
         },
         {
-          image: "../assets/Sponsors/eligible.png"
+          image: "assets/Sponsors/eligible.png"
         },
         {
-          image: "../assets/Sponsors/grab-on.png"
-        },
-        {
-          image: "../assets/Sponsors/hackerrank.png"
-        },
-        {
-          image: "../assets/Sponsors/hackerearth.png"
-        },
-        {
-          image: "../assets/Sponsors/ntd-india.png"
-        },
-        {
-          image: "../assets/Sponsors/uber.png"
-        },
-        {
-          image: "../assets/Sponsors/zebronics.png"
-        },
-        {
-          image: "../assets/Sponsors/oh-campus.png"
-        },
+          image: "assets/Sponsors/uber.png"
+        }
       ]
     };
   }

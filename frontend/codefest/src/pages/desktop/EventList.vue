@@ -59,7 +59,8 @@ export default {
 <style module lang="stylus">
 .wrapper {
   width: 80%;
-  margin: 50px auto;
+  margin: 0 auto;
+  padding: 100px 0;
   position: relative;
   z-index: 1;
   font-family: 'Roboto Mono';

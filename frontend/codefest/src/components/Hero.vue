@@ -1,7 +1,7 @@
 <template>
   <header ref="header" :class="$style.hero">
     <div ref="title" :class="$style.title">
-      <h1>Codefest'19</h1>
+      <h1>C0defest'19</h1>
     </div>
     <canvas ref="rains" :class="$style.rains"></canvas>
   </header>
@@ -41,67 +41,48 @@ export default {
       }
     }
     setInterval(draw, 33);
-
-    window.onscroll = function() {
-      stickOnScroll();
-    };
-
-    var title = this.$refs.title;
-    var offset = title.offsetTop;
-
-    let center = { top: title.style.top, left: title.style.left };
-
-    function stickOnScroll() {
-      if (window.pageYOffset > offset) {
-        title.style.position = "fixed";
-        title.style.top = 0;
-        title.style.left = 0;
-      } else {
-        title.style.position = "absolute";
-        title.style.left = center["left"];
-        title.style.top = center["top"];
-      }
-    }
   }
 };
 </script>
 
-<style module lang="styl">
+<style module lang="stylus">
 @import '../styles/colors.styl';
 
-  .hero
-    position relative
-    background-color $black
-    min-height 300px
-    height 100vh
-    max-width 100%
-    overflow: hidden;
-    padding 10px 16px
-    color #f1f1f1
-  
-  .rains
-    height 100%
-    width 100%
-    position absolute
-    overflow hidden
-    bottom 0
-    top 0
-  
-  .title
-    cursor pointer
-    height 0
-    z-index 2
-    position absolute
-    text-transform uppercase
-    top 40%
-    left 40%
-    text-align center
-    font-family 'Aldo the Apache'
-    transition left 1s ease-out, font-size 1s ease-out 
+.hero {
+  position: relative;
+  background-color: $black;
+  min-height: 300px;
+  height: 100vh;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 10px 16px;
+  color: #f1f1f1;
+}
 
-    h1
-      font-size 72px
-      font-weight 800
-      line-height 1
-      color var(--offwhite)
+.rains {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  overflow: hidden;
+  bottom: 0;
+  top: 0;
+}
+
+.title {
+  height: 0;
+  z-index: 2;
+  position: absolute;
+  text-transform: uppercase;
+  top: 40%;
+  left: 40%;
+  text-align: center;
+  font-family: 'Aldo the Apache';
+
+  h1 {
+    font-size: 72px;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--offwhite);
+  }
+}
 </style>

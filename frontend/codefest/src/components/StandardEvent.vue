@@ -67,8 +67,8 @@ export default {
       return step();
     },
     glitch(isAppearIn, event) {
-      this.animateGlitchOpacity(this.$refs.initialCanvas, 2000, !isAppearIn);
-      this.animateGlitchOpacity(this.$refs.finalCanvas, 2000, isAppearIn);
+      this.animateGlitchOpacity(this.$refs.initialCanvas, 1500, !isAppearIn);
+      this.animateGlitchOpacity(this.$refs.finalCanvas, 1500, isAppearIn);
 
       if (isAppearIn)
         animateTyping(this.$refs.eventSummary, this.event.summary);

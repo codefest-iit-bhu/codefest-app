@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.root">
-    <!-- <AppBar/> -->
+    <AppBar :doAnimate="true"/>
     <Hero/>
     <main :class="$style.wrapper">
       <!-- Introduction -->
@@ -44,10 +44,12 @@ export default {
   position: relative;
   z-index: 1;
   font-family: 'Roboto Mono';
+  padding-bottom: 100px;
   font-size: 18px;
 }
 
 .root {
+  height: 100%;
   margin-bottom: 200px;
 }
 

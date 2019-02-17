@@ -5,15 +5,6 @@ export const navigation = {
       events: {
         "/": "/events",
         hackathon: "/events/1"
-      },
-      sponsors: {
-        "/": "/sponsors"
-      },
-      gallery: {
-        "/": "/gallery"
-      },
-      dashboard: {
-        "/": "/dashboard"
       }
     }
   },
@@ -21,6 +12,16 @@ export const navigation = {
     if (!current) return [];
     let rawPath = current.split("/");
     return rawPath.filter(el => !!el);
+  },
+  getLinksFromPwd: function(pwd) {
+    var current = null;
+    var result = [];
+    pwd.forEach(dir => {
+      if (current) current = current[dir];
+      else current = this.hierarchy[dir];
+      result.push(current["/"]);
+    });
+    return result;
   },
   listContents: function(pwd) {
     var current = null;
@@ -32,7 +33,6 @@ export const navigation = {
   },
   getTargetPageUrl: function(pwd, targetDir) {
     let backNav = targetDir.match(/^(..\/)(..\/)*?/g);
-    console.log(backNav);
 
     let hierarchy = this.listContents(pwd);
     let route = targetDir.split("/");

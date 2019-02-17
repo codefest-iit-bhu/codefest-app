@@ -30,27 +30,27 @@ export default {
         {
           name: "Prize Money",
           value: "500,000",
-          image: "../assets/Lookback/rupee.png"
+          image: "assets/Lookback/rupee.png"
         },
         {
           name: "Countries",
           value: "98",
-          image: "../assets/Lookback/countries.png"
+          image: "assets/Lookback/countries.png"
         },
         {
           name: "Participants",
           value: "24,654",
-          image: "../assets/Lookback/participants.png"
+          image: "assets/Lookback/participants.png"
         },
         {
           name: "Unique Visitors",
           value: "328,902",
-          image: "../assets/Lookback/visitors.png"
+          image: "assets/Lookback/visitors.png"
         },
         {
           name: "Registrations",
           value: "16,302",
-          image: "../assets/Lookback/registrations.png"
+          image: "assets/Lookback/registrations.png"
         }
       ]
     };
@@ -58,66 +58,74 @@ export default {
 };
 </script>
 
-<style module lang="styl">
+<style module lang="stylus">
 @import '../styles/theme.styl';
 @import '../styles/colors.styl';
 
-.lookback
+.lookback {
+  .cell {
+    width: 500px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Aldo the Apache;
 
-  .cell
-    width 500px
-    height 100px
-    margin-left auto
-    margin-right auto
-    font-family Aldo the Apache
+    .txt {
+      color: $chartreuse;
+      position: relative;
+      top: -76%;
+      line-height: 28px;
+      font-size: 25px;
+    }
 
-    .txt
-      color $chartreuse
-      position relative
-      top -76%
+    .clip {
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      background: white;
+      width: 100px;
+      height: 100px;
+      padding: 10px;
+      background-color: $chartreuse;
+    }
 
-    .clip
-      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)
-      background white
-      width 100px
-      height 100px
-      padding 10px
-      background-color $chartreuse
+    .img {
+      width: 80%;
+      height: 80%;
+      position: relative;
+      top: -45%;
+      left: 10%;
+    }
 
-    .img
-      width 80%
-      height 80%
-      position relative
-      top -45%
-      left 10%
+    &:nth-child(2) {
+      .img {
+        top: 0;
+        left: 0;
+        margin: 10px;
+      }
+    }
 
-    &:nth-child(2)
-      .img
-        top 0%
-        left 0%
-        width: 80%
-        height: 80%
-        margin: 10px
+    &:nth-child(odd) {
+      .txt {
+        margin-right: 55%;
+        text-align: right;
+        float: right;
+      }
 
-    &:nth-child(odd)
-      .txt
-        margin-right 55%
-        text-align right
-        float right
-        font-size 25px
-        line-height 28px
-      
-      .clip
-        margin-left 50%
+      .clip {
+        margin-left: 50%;
+      }
+    }
 
-    &:nth-child(even)
-      .txt
-        margin-left 55%
-        text-align left
-        float left
-        line-height 28px
-        font-size 25px
-      
-      .clip
-        margin-left 30%
+    &:nth-child(even) {
+      .txt {
+        margin-left: 55%;
+        text-align: left;
+        float: left;
+      }
+
+      .clip {
+        margin-left: 30%;
+      }
+    }
+  }
+}
 </style>

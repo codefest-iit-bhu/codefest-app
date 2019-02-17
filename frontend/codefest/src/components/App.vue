@@ -22,14 +22,14 @@ export default {
       let terminal = this.$refs.terminal;
       if (to.name === "~") terminal.animateScrollShow();
       else terminal.noAnimateScrollShow();
-      this.current = `~${to.path}`;
+      this.current = to.name;
     }
   }
 };
 </script>
 
-<style module lang="styl">
-@import "../styles/colors.styl";
+<style module lang="stylus">
+@import '../styles/colors.styl';
 
 .app {
   background: $black;

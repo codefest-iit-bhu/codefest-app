@@ -8,13 +8,21 @@
         :propOutput="item.output"
         :pwd="item.pwd"
       />
-      <REPL ref="cli" :pwd="pwd" :isActive="true" @pwdChanged="initCommandsOnPageChange"/>
+      <REPL
+        ref="cli"
+        :pwd="pwd"
+        :isActive="true"
+        @pwdChanged="initCommandsOnPageChange"
+        @onSubmitInput="onSubmitInput"
+      />
     </div>
   </div>
 </template>
 <script>
 import { navigation, terminal } from "../js/store";
 import REPL from "./REPL";
+import { CommandList } from "../js/commands.js";
+import { CommandNotFoundError } from "../js/exceptions";
 
 export default {
   props: ["propCurrent"],
@@ -30,6 +38,12 @@ export default {
   computed: {
     current() {
       return this.propCurrent;
+    },
+    environmentVars() {
+      return {
+        pwd: this.pwd,
+        vue: this.$refs.cli
+      };
     }
   },
   watch: {
@@ -62,6 +76,40 @@ export default {
     noAnimateScrollShow() {
       window.removeEventListener("scroll", this.handleScroll);
       this.showTerminal();
+    },
+
+    submitResult(status, output) {
+      terminal.addToHistory(this.pwd, status, this.input, output);
+      this.$refs.cli.clearInput();
+    },
+    getCommandPromise(cmd, args) {
+      var envs = this.environmentVars;
+      return new Promise(function(resolve, reject) {
+        let result = null;
+        for (let i = 0; i < CommandList.length; i++) {
+          if (CommandList[i].isValid(cmd)) {
+            result = new CommandList[i](args, envs);
+            break;
+          }
+        }
+        if (!!result)
+          result
+            .execute()
+            .then(resolve)
+            .catch(reject);
+        else reject(new CommandNotFoundError());
+      });
+    },
+    onSubmitInput(words) {
+      let cmd = words.splice(0, 1)[0];
+      this.getCommandPromise(cmd, words)
+        .then(result => {
+          this.submitResult(0, result);
+        })
+        .catch(error => {
+          console.error(error);
+          this.submitResult(error.code, error.message);
+        });
     }
   },
   mounted() {},
