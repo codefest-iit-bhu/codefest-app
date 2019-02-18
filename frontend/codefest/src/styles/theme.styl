@@ -1,10 +1,11 @@
+@import './colors.styl';
+
 :global {
   div.sectionContainer {
     h1.sectionTitle {
       font-family: "Aldo the Apache";
-      font-size: 56px;
-      margin-top: 112px;
-      margin-bottom: 56px;
+      font-size: 72px;
+      margin-top: 144px;
 
       ../:nth-child(even) h1.sectionTitle {
         text-align: start;
@@ -14,7 +15,25 @@
         text-align: end;
       }
     }
+
+    hr.sectionLine {
+      height: 4px;
+      background-color: $chartreuse;
+      display: block;
+      width: 70%;
+      border: none;
+      margin-top: 36px;
+      margin-bottom: 72px;
+
+      ../:nth-child(even) hr.sectionLine {
+          margin-right:30%;
+          background-image: linear-gradient(to left, $black, $chartreuse);
+        }
+    
+      ../:nth-child(odd) hr.sectionLine {
+          margin-left:30%;
+          background-image: linear-gradient(to right, $black, $chartreuse);
+        }
+    }
   }
-
-
 }

@@ -1,7 +1,11 @@
 <template>
   <header ref="header" :class="$style.hero">
-    <div ref="title" :class="$style.title">
-      <h1>C0defest'19</h1>
+    <div :class="$style.title">
+      <h1 id="heroTitle">
+        code
+        <span>Fest</span>
+        <sup>19</sup>
+      </h1>
     </div>
     <canvas ref="rains" :class="$style.rains"></canvas>
   </header>
@@ -69,20 +73,38 @@ export default {
 }
 
 .title {
-  height: 0;
+  height: 30%;
+  width: 100%;
   z-index: 2;
   position: absolute;
-  text-transform: uppercase;
-  top: 40%;
-  left: 40%;
+  top: 35%;
+  margin: auto;
   text-align: center;
-  font-family: 'Aldo the Apache';
 
   h1 {
-    font-size: 72px;
-    font-weight: 800;
-    line-height: 1;
-    color: var(--offwhite);
+    font-size: 144px;
+    font-family: Ubuntu;
+    font-weight: 300;
+    -webkit-animation: neon 1.5s ease-in-out infinite alternate;
+    -moz-animation: neon 1.5s ease-in-out infinite alternate;
+    animation: neon 1.5s ease-in-out infinite alternate;
+  }
+
+  h1 span {
+    font-size: 180px;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@keyframes neon {
+  from {
+    text-shadow: 0 0 2.5px $white, 0 0 5px $white, 0 0 7.5px $white, 0 0 10px $chartreuse, 0 0 12.5px $chartreuse, 0 0 15px $chartreuse, 0 0 25px $chartreuse;
+  }
+
+  to {
+    text-shadow: 0 0 1px $white, 0 0 2px $white, 0 0 3px $white, 0 0 4px $chartreuse, 0 0 5px $chartreuse, 0 0 6px $chartreuse, 0 0 10px $chartreuse;
   }
 }
 </style>

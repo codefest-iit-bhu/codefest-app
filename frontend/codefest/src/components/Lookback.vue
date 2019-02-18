@@ -1,7 +1,8 @@
 <template>
   <div :class="[$style.lookback, 'sectionContainer']">
     <h1 class="sectionTitle">Lookback</h1>
-    <div :class="$style.cell" v-for="(stat, i) in stats" :key="i">
+    <hr class="sectionLine">
+    <!-- <div :class="$style.cell" v-for="(stat, i) in stats" :key="i">
       <div :class="$style.clip">
         <img :src="stat.image" :class="$style.img">
       </div>
@@ -10,6 +11,27 @@
         <br>
         {{ stat.value }}
       </div>
+    </div>-->
+    <div :class="$style.table">
+      <table>
+        <tr :id="$style.imgRow">
+          <td :class="$style.imgCell" v-for="(stat, i) in stats" :key="i">
+            <div :class="$style.clip">
+              <img :src="stat.image" :class="$style.img">
+            </div>
+          </td>
+        </tr>
+        <tr :id="$style.nameRow">
+          <td :class="$style.dataCell" v-for="(stat, i) in stats" :key="i">
+            <div :class="$style.txt">{{ stat.name }}</div>
+          </td>
+        </tr>
+        <tr :id="$style.valRow">
+          <td :class="$style.dataCell" v-for="(stat, i) in stats" :key="i">
+            <div :class="$style.txt">{{ stat.value }}</div>
+          </td>
+        </tr>
+      </table>
     </div>
     <br>
 
@@ -63,67 +85,52 @@ export default {
 @import '../styles/colors.styl';
 
 .lookback {
-  .cell {
-    width: 500px;
-    height: 100px;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: Aldo the Apache;
-
-    .txt {
-      color: $chartreuse;
-      position: relative;
-      top: -76%;
-      line-height: 28px;
-      font-size: 25px;
-    }
-
-    .clip {
-      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-      background: white;
-      width: 100px;
-      height: 100px;
-      padding: 10px;
-      background-color: $chartreuse;
-    }
-
-    .img {
+  .table {
+    table {
       width: 80%;
-      height: 80%;
-      position: relative;
-      top: -45%;
-      left: 10%;
-    }
+      margin-left: 10%;
 
-    &:nth-child(2) {
-      .img {
-        top: 0;
-        left: 0;
-        margin: 10px;
-      }
-    }
+      #imgRow {
+        .imgCell {
+          width: 200px;
+          height: 200px;
 
-    &:nth-child(odd) {
-      .txt {
-        margin-right: 55%;
-        text-align: right;
-        float: right;
-      }
+          .clip {
+            clip-path: polygon(25% 0%, 75% 0%, 100% 43.3%, 75% 86.6%, 25% 86.6%, 0% 43.3%);
+            background: white;
+            width: 160px;
+            height: 160px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 10px;
+            background-color: $chartreuse;
+          }
 
-      .clip {
-        margin-left: 50%;
-      }
-    }
-
-    &:nth-child(even) {
-      .txt {
-        margin-left: 55%;
-        text-align: left;
-        float: left;
+          .img {
+            width: 70%;
+            position: relative;
+            top: 10%;
+            left: 15%;
+          }
+        }
       }
 
-      .clip {
-        margin-left: 30%;
+      #nameRow, #valRow {
+        .dataCell {
+          font-family: Aldo the Apache;
+          margin-left: auto;
+          margin-right: auto;
+          text-align: center;
+          margin-top: 300px;
+
+          .txt {
+            color: $chartreuse;
+            // position: relative;
+            // top: -76%;
+            line-height: 28px;
+            font-size: 25px;
+          }
+        }
       }
     }
   }
