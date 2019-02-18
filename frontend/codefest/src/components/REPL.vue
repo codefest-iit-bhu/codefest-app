@@ -66,33 +66,6 @@ export default {
     evalInput(cmdLine) {
       return cmdLine.split(/\s+/);
     },
-    runChangePage() {
-      if (arguments.length === 0) {
-        this.$router.push("/");
-        return;
-      }
-      if (arguments.length > 1)
-        throw new CommandInvalidInput(1, "Invalid arguments provided");
-      let targetDir = arguments[0];
-      let url;
-      try {
-        url = navigation.getTargetPageUrl(this.pwd, targetDir);
-      } catch (error) {
-        throw new CommandInvalidInput(2, "Directory not found.");
-      }
-      this.$router.push(url);
-    },
-    runListPage() {
-      if (this.pwd === null) return;
-      let list = navigation.listContents(this.pwd);
-      let result = [];
-      for (let key in list) {
-        let name = key;
-        let url = list[key]["/"] || list["/"];
-        result.push(`<router-link to="${url}">${name}</router-link>`);
-      }
-      return this.outputAsColumns(result);
-    },
     submitInput(cmdLine) {
       this.input = this.input || cmdLine;
 

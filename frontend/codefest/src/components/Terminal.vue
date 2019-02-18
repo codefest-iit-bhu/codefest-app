@@ -1,5 +1,8 @@
 <template>
-  <div :class="$style.terminal" @click="focusTerminalInput">
+  <div
+    :class="[$style.terminal, terminalStateStyle, terminalShownStyle]"
+    @click="focusTerminalInput"
+  >
     <div :class="$style.items">
       <REPL
         v-for="(item, i) in historyItems"
@@ -31,6 +34,8 @@ export default {
   },
   data() {
     return {
+      isShown: false,
+      isExpanded: false,
       historyItems: terminal.getHistory(),
       pwd: []
     };
@@ -44,6 +49,12 @@ export default {
         pwd: this.pwd,
         vue: this.$refs.cli
       };
+    },
+    terminalStateStyle() {
+      return this.isExpanded ? this.$style.expanded : this.$style.collapsed;
+    },
+    terminalShownStyle() {
+      return this.isShown ? this.$style.shown : "";
     }
   },
   watch: {
@@ -57,18 +68,26 @@ export default {
       if (window.scrollY / window.innerHeight > 0.5) this.showTerminal();
       else this.hideTerminal();
     },
-    focusTerminalInput() {
-      this.$refs.cli.focusInput();
+    focusTerminalInput(event) {
+      if (event.target.tagName !== "A") {
+        this.$refs.cli.focusInput();
+        this.changeTerminalState(true);
+      }
     },
     initCommandsOnPageChange() {
       this.$refs.cli.submitInput("ls");
     },
     showTerminal() {
-      this.$el.classList.add(this.$style.shown);
-      this.$el.scrollIntoView();
+      this.isShown = true;
     },
     hideTerminal() {
-      this.$el.classList.remove(this.$style.shown);
+      this.isShown = false;
+    },
+    changeTerminalState(state) {
+      if (state && !this.isExpanded) {
+        this.$refs.cli.submitInput("help");
+      }
+      this.isExpanded = state;
     },
     animateScrollShow() {
       window.addEventListener("scroll", this.handleScroll);
@@ -79,8 +98,13 @@ export default {
     },
 
     submitResult(status, output) {
-      terminal.addToHistory(this.pwd, status, this.input, output);
+      let input = this.$refs.cli.input;
+      terminal.addToHistory(this.pwd, status, input, output);
       this.$refs.cli.clearInput();
+
+      this.$nextTick(() => {
+        this.$el.scrollTop = this.$el.scrollHeight;
+      });
     },
     getCommandPromise(cmd, args) {
       var envs = this.environmentVars;
@@ -112,7 +136,11 @@ export default {
         });
     }
   },
-  mounted() {},
+  mounted() {
+    // document
+    //   .querySelector("a")
+    //   .addEventListener("click", event => event.stopPropagation());
+  },
   dismounted() {}
 };
 </script>
@@ -122,10 +150,11 @@ export default {
 @import '../styles/anims.styl';
 
 $cli-text = $chartreuse;
+$expanded-height = 200px;
+$collapsed-height = 90px;
 
 .terminal {
   background: $black;
-  height: 200px;
   width: 100%;
   z-index: 5;
   box-shadow: 1px -2px 2px 5px white;
@@ -135,10 +164,21 @@ $cli-text = $chartreuse;
   font-weight: 800;
   color: $cli-text;
   overflow-y: auto;
-  moveAnimation(startDistance: -200px, targetDistance: 0px);
+
+  &.expanded {
+    height: $expanded-height;
+    moveAnimation(startDistance: (-($expanded-height)), targetDistance: 0px);
+  }
+
+  &.collapsed {
+    height: $collapsed-height;
+    moveAnimation(startDistance: (-($collapsed-height)), targetDistance: 0px);
+  }
 }
 
 .items {
+  height: 100%;
+  width: 100%;
 }
 
 .blink {

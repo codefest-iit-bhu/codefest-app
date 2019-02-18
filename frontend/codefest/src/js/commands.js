@@ -1,6 +1,5 @@
-import { navigation } from "./store";
-import "./exceptions";
-import { CommandInvalidEnvironment } from "./exceptions";
+import { navigation, terminal } from "./store";
+import * as Exception from "./exceptions";
 
 class BaseCommand extends Object {
   constructor(args, envs) {
@@ -14,7 +13,9 @@ class BaseCommand extends Object {
     return new Promise(function(resolve, reject) {
       try {
         that.validateInput();
-        resolve(that.run().html());
+        let result = that.run();
+        if (result) resolve(result.html());
+        else resolve("");
       } catch (error) {
         reject(error);
       }
@@ -59,29 +60,94 @@ class ColumnOutput extends BaseOutput {
   }
 }
 
-export class ListDirCommand extends BaseCommand {
+class ListDirCommand extends BaseCommand {
   static getCommandName() {
     return "ls";
   }
 
+  validateInput() {
+    if (this.args.length > 1)
+      throw new Exception.CommandInvalidInput(1, "Invalid arguments provided");
+  }
+
   run() {
     let pwd = this.envs.pwd;
-    if (!pwd) throw new CommandInvalidEnvironment();
+    if (!pwd) throw new Exception.CommandInvalidEnvironment();
     let list = navigation.listContents(pwd);
+
+    let targetDir = this.args[0];
+    if (targetDir) {
+      if (!list[targetDir])
+        throw new Exception.CommandInvalidInput(2, "Directory not found.");
+      list = navigation.listContents(pwd.concat(targetDir));
+    }
+
     let result = [];
     for (let key in list) {
-      let name = key;
-      let url = list[key]["/"] || list["/"];
-      result.push(`<router-link to="${url}">${name}</router-link>`);
+      if (!list[key]) continue;
+      result.push(`<router-link to="${list[key]}">${key}</router-link>`);
     }
     return new ColumnOutput(result, this.envs);
   }
 }
 
-export class ChangeDirCommand extends BaseCommand {
+class ChangeDirCommand extends BaseCommand {
   static getCommandName() {
     return "cd";
   }
+
+  validateInput() {
+    if (this.args.length > 1)
+      throw new Exception.CommandInvalidInput(1, "Invalid arguments provided");
+  }
+
+  run() {
+    let vue = this.envs.vue;
+    let pwd = this.envs.pwd;
+    if (this.args.length === 0) {
+      vue.$router.push("/");
+      return;
+    }
+    let targetDir = this.args[0];
+    let url;
+    try {
+      url = navigation.getTargetPageUrl(pwd, targetDir);
+    } catch (error) {
+      throw new Exception.CommandInvalidInput(2, "Directory not found.");
+    }
+    if (!url)
+      throw new Exception.CommandInvalidInput(2, "Directory not found.");
+    vue.$router.push(url);
+  }
 }
 
-export const CommandList = [ListDirCommand, ChangeDirCommand];
+class ClearCommand extends BaseCommand {
+  static getCommandName() {
+    return "clear";
+  }
+
+  run() {
+    terminal.clearHistory();
+  }
+}
+
+class HelpCommand extends BaseCommand {
+  static getCommandName() {
+    return "help";
+  }
+
+  run() {
+    return new BaseOutput(
+      `Glad that you are one of the geeky nerds to visit this site and use this terminal!
+    It is just a pretty basic shell and has only 4 simple commands - ls, cd, clear and help (the one with this output).`,
+      this.envs
+    );
+  }
+}
+
+export const CommandList = [
+  ListDirCommand,
+  ChangeDirCommand,
+  ClearCommand,
+  HelpCommand
+];
