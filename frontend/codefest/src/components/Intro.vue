@@ -1,6 +1,7 @@
 <template>
   <div :class="[$style.intro, 'sectionContainer']">
     <h1 class="sectionTitle">A Byte About Us</h1>
+    <hr class="sectionLine">
     <p>
       The Department of Computer Science and Engineering, IIT (BHU) Varanasi
       brings to you yet another edition of its annual coding extravaganza, Codefest!
@@ -18,6 +19,10 @@ export default {};
 </script>
 
 <style module lang="styl">
-.intro {
+@import "../styles/mixins.styl";
+@import "../styles/colors.styl";
+
+.intro p {
+  text-align: justify;
 }
 </style>

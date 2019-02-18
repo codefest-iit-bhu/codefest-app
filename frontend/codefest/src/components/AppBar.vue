@@ -42,10 +42,10 @@ export default {
 @import '../styles/mixins.styl';
 @import '../styles/colors.styl';
 
-$appbar-height = 40px;
-$notch-height = 75px;
-$notch-width = 200px;
-$appbar-color = #242424;
+$appbar-height = 50px;
+$notch-height = 100px;
+$notch-width = 320px;
+$appbar-color = $black;
 $notch-color = #222222;
 $appbar-glow-color = $chartreuse;
 
@@ -62,7 +62,7 @@ $appbar-glow-color = $chartreuse;
   .nav {
     height: $appbar-height;
     background: $appbar-color;
-    box-shadow: $appbar-glow-color 0 1px 4px 1px;
+    box-shadow: $appbar-glow-color 0 2px 10px 3px;
   }
 
   .notch {
@@ -79,7 +79,7 @@ $appbar-glow-color = $chartreuse;
     .logo {
       position: absolute;
       bottom: 1px;
-      left: 1px;
+      left: 2px;
       padding: 20px 20px 0 25px;
       clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
       background: $notch-color;
@@ -88,7 +88,8 @@ $appbar-glow-color = $chartreuse;
     }
 
     img {
-      width: 100%;
+      width: 80%;
+      margin-left: 10%;
     }
   }
 }
