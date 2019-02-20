@@ -21,8 +21,7 @@ export default {
   watch: {
     $route(to, from) {
       let terminal = this.$refs.terminal;
-      if (to.name === "~") terminal.animateScrollShow();
-      else terminal.noAnimateScrollShow();
+      terminal.animateScrollShow();
       this.current = to.name;
     }
   }
