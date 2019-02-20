@@ -3,9 +3,9 @@
     <div :class="$style.nav"></div>
     <div :class="$style.notch">
       <div :class="$style.logo">
-        <a href="/">
+        <router-link to="/">
           <img src="assets/logo.png">
-        </a>
+        </router-link>
       </div>
     </div>
   </div>

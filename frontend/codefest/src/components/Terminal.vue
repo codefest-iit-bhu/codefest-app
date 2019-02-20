@@ -17,6 +17,7 @@
         :isActive="true"
         @pwdChanged="initCommandsOnPageChange"
         @onSubmitInput="onSubmitInput"
+        @onBlurInput="collapseTerminal"
       />
     </div>
   </div>
@@ -28,14 +29,26 @@ import { CommandList } from "../js/commands.js";
 import { CommandNotFoundError } from "../js/exceptions";
 
 export default {
-  props: ["propCurrent"],
+  props: {
+    propCurrent: {
+      type: String
+    },
+    isExpanded: {
+      type: Boolean,
+      default: false
+    }
+  },
   components: {
     REPL
+  },
+  model: {
+    prop: "isExpanded",
+    event: "onTerminalStateChanged"
   },
   data() {
     return {
       isShown: false,
-      isExpanded: false,
+      isHelpShown: false,
       historyItems: terminal.getHistory(),
       pwd: []
     };
@@ -83,13 +96,19 @@ export default {
     hideTerminal() {
       this.isShown = false;
     },
+    collapseTerminal() {
+      this.changeTerminalState(false);
+      this.scrollToBottom();
+    },
     changeTerminalState(state) {
-      if (state && !this.isExpanded) {
+      if (state && !this.isExpanded && !this.isHelpShown) {
         this.$refs.cli.submitInput("help");
+        this.isHelpShown = true;
       }
-      this.isExpanded = state;
+      this.$emit("onTerminalStateChanged", state);
     },
     animateScrollShow() {
+      this.hideTerminal();
       window.addEventListener("scroll", this.handleScroll);
     },
     noAnimateScrollShow() {
@@ -101,7 +120,9 @@ export default {
       let input = this.$refs.cli.input;
       terminal.addToHistory(this.pwd, status, input, output);
       this.$refs.cli.clearInput();
-
+      this.scrollToBottom();
+    },
+    scrollToBottom() {
       this.$nextTick(() => {
         this.$el.scrollTop = this.$el.scrollHeight;
       });
@@ -136,11 +157,7 @@ export default {
         });
     }
   },
-  mounted() {
-    // document
-    //   .querySelector("a")
-    //   .addEventListener("click", event => event.stopPropagation());
-  },
+  mounted() {},
   dismounted() {}
 };
 </script>

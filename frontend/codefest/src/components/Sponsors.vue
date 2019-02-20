@@ -1,6 +1,6 @@
 <template>
   <div :class="[$style.sponsors, 'sectionContainer']">
-    <h1 class="sectionTitle">Sponsors</h1>
+    <h1 class="sectionTitle">Past Sponsors</h1>
     <hr class="sectionLine">
     <div :class="$style.container">
       <div :class="$style.cell" v-for="(stat, i) in stats" :key="i">

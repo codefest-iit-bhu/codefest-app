@@ -23,8 +23,7 @@ export default {
     var ctx = c.getContext("2d");
     c.height = window.innerHeight;
     c.width = window.innerWidth;
-    var code = "{}-+=xyz*&%print$;':<>?/";
-    code = code.split("");
+    var code = "01{}-+=xyz*&%$<>?/\\89".split("");
     var font_size = 40;
     var columns = (2 * c.width) / font_size;
     var drops = [];
@@ -43,8 +42,9 @@ export default {
 
         drops[i]++;
       }
+      requestAnimationFrame(draw);
     }
-    setInterval(draw, 33);
+    draw();
   }
 };
 </script>
@@ -95,6 +95,11 @@ export default {
     font-weight: 500;
     margin: 0;
     padding: 0;
+  }
+
+  h1 sup {
+    font-size: 100px;
+    font-weight: 100;
   }
 }
 
