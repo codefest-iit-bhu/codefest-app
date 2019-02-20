@@ -118,7 +118,6 @@ class ChangeDirCommand extends BaseCommand {
         throw new Exception.CommandInvalidInput(2, "Directory not found.");
     }
     vue.$router.push(url);
-    vue.$nextTick(() => window.scrollTo(0, 0));
   }
 }
 

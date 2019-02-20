@@ -3,12 +3,12 @@
     <div :class="$style.nav">
       <ul :class="$style.rNav">
         <li :class="$style.link">
-          <a href="https://goo.gl/DrCFHB">
+          <a href="https://goo.gl/DrCFHB" target="_blank">
             <span class="fa fa-circle fa-xs" aria-hidden="true"></span>Brochure
           </a>
         </li>
         <li :class="$style.link">
-          <a href="https://goo.gl/forms/RyjmY7i002oUHivu2">
+          <a href="https://goo.gl/forms/RyjmY7i002oUHivu2" target="_blank">
             <span class="fa fa-circle fa-xs" aria-hidden="true"></span>
             Sponsor Us
           </a>
