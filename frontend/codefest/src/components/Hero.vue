@@ -25,7 +25,7 @@ export default {
     c.width = window.innerWidth;
     var code = "{}-+=xyz*&%print$;':<>?/";
     code = code.split("");
-    var font_size = 40;
+    var font_size = 25;
     var columns = (2 * c.width) / font_size;
     var drops = [];
     for (var x = 0; x < columns; x++) drops[x] = 1;
