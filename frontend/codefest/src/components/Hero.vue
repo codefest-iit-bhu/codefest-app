@@ -51,6 +51,8 @@ export default {
 
 <style module lang="stylus">
 @import '../styles/colors.styl';
+@import '../styles/anims.styl';
+
 
 .hero {
   position: relative;
@@ -95,16 +97,6 @@ export default {
     font-weight: 500;
     margin: 0;
     padding: 0;
-  }
-}
-
-@keyframes neon {
-  from {
-    text-shadow: 0 0 2.5px $white, 0 0 5px $white, 0 0 7.5px $white, 0 0 10px $chartreuse, 0 0 12.5px $chartreuse, 0 0 15px $chartreuse, 0 0 25px $chartreuse;
-  }
-
-  to {
-    text-shadow: 0 0 1px $white, 0 0 2px $white, 0 0 3px $white, 0 0 4px $chartreuse, 0 0 5px $chartreuse, 0 0 6px $chartreuse, 0 0 10px $chartreuse;
   }
 }
 </style>

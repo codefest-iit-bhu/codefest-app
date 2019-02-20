@@ -18,7 +18,6 @@
 import AppBar from "@components/AppBar";
 import Intro from "@components/Intro";
 import Hero from "@components/Hero";
-import Terminal from "@components/Terminal";
 import Footer from "@components/Footer";
 import Lookback from "@components/Lookback";
 import Sponsors from "@components/Sponsors";
@@ -29,7 +28,6 @@ export default {
     Intro,
     Lookback,
     Sponsors,
-    Terminal,
     Footer
   },
   data: () => {
