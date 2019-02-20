@@ -1,27 +1,38 @@
 <template>
   <footer :class="$style.footer">
-    <span>Codefest</span>
     <i :class="$style.heart"/>
-    <span>' 19</span>
+    <span>Codefest' 19</span>
+    
+    <span :class="$style.socialIcons">
+      <a>
+        <img src="@assets/social_facebook.svg">
+      </a>
+      <a>
+        <img src="@assets/social_twitter.svg">
+      </a>
+      <a>
+        <img src="@assets/social_instagram.svg">
+      </a>
+    </span>
   </footer>
 </template>
 
 <script>
-export default {
-  //
-};
+export default {};
 </script>
 
 <style module lang="stylus">
+@import '../styles/colors.styl';
+
 .footer {
   font-size: 60%;
   font-weight: 800;
-  background: #263238;
+  background: $outer-space;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   font-family: var(--font-header);
   border-top: 2px solid rgba(34, 40, 49, 0.3);
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba($white, 0.65);
   justify-content: center;
   align-items: center;
   display: flex;
@@ -37,6 +48,16 @@ export default {
   a {
     &:hover {
       color: rgba(255, 255, 255, 1);
+    }
+  }
+
+  .socialIcons {
+    margin-left: 5px;
+
+    a {
+      position: relative;
+      width: 30px;
+      height: 30px;
     }
   }
 }

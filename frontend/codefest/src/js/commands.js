@@ -104,20 +104,21 @@ class ChangeDirCommand extends BaseCommand {
   run() {
     let vue = this.envs.vue;
     let pwd = this.envs.pwd;
-    if (this.args.length === 0) {
-      vue.$router.push("/");
-      return;
-    }
-    let targetDir = this.args[0];
     let url;
-    try {
-      url = navigation.getTargetPageUrl(pwd, targetDir);
-    } catch (error) {
-      throw new Exception.CommandInvalidInput(2, "Directory not found.");
+    if (this.args.length === 0) {
+      url = "/";
+    } else {
+      let targetDir = this.args[0];
+      try {
+        url = navigation.getTargetPageUrl(pwd, targetDir);
+      } catch (error) {
+        throw new Exception.CommandInvalidInput(2, "Directory not found.");
+      }
+      if (!url)
+        throw new Exception.CommandInvalidInput(2, "Directory not found.");
     }
-    if (!url)
-      throw new Exception.CommandInvalidInput(2, "Directory not found.");
     vue.$router.push(url);
+    vue.$nextTick(() => window.scrollTo(0, 0));
   }
 }
 

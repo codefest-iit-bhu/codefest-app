@@ -15,6 +15,7 @@
         type="text"
         ref="cli"
         @keydown="collectInput"
+        @blur="onUnfocusInput"
         v-if="isActive"
         v-model="input"
       >
@@ -87,6 +88,9 @@ export default {
     },
     clearInput() {
       this.input = "";
+    },
+    onUnfocusInput() {
+      this.$emit("onBlurInput");
     }
   },
   watch: {
@@ -106,7 +110,6 @@ export default {
 $breadcrumb-hovered = $deep-fir;
 $breadcrumb-unselected = $limeade;
 $breadcrumb-arrow = $white;
-$breadcrumb-root = $verdun-green;
 $breadcrumb-text = $white;
 $cli-text = $chartreuse;
 $output-link = $dodger-blue;

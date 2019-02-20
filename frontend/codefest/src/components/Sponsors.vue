@@ -1,6 +1,6 @@
 <template>
   <div :class="[$style.sponsors, 'sectionContainer']">
-    <h1 class="sectionTitle">Sponsors</h1>
+    <h1 class="sectionTitle">Past Sponsors</h1>
     <hr class="sectionLine">
     <div :class="$style.container">
       <div :class="$style.cell" v-for="(stat, i) in stats" :key="i">
@@ -21,16 +21,16 @@ export default {
           image: "assets/Sponsors/aws.png"
         },
         {
-          image: "assets/Sponsors/av.png"
+          image: "assets/Sponsors/eligible.png"
+        },
+        {
+          image: "assets/Sponsors/uber.png"
         },
         {
           image: "assets/Sponsors/top-coder.png"
         },
         {
-          image: "assets/Sponsors/eligible.png"
-        },
-        {
-          image: "assets/Sponsors/uber.png"
+          image: "assets/Sponsors/av.png"
         }
       ]
     };

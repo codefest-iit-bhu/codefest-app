@@ -48,7 +48,6 @@ export default {
 
 .root {
   height: 100%;
-  margin-bottom: 200px;
 }
 
 @media screen and (max-width: 769px) {
