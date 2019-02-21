@@ -55,6 +55,7 @@ export default {
 <style module lang="stylus">
 @import '../styles/mixins.styl';
 @import '../styles/colors.styl';
+@import '../styles/anims.styl';
 
 $appbar-height = 50px;
 $notch-height = 100px;
@@ -110,9 +111,7 @@ $appbar-glow-color = $chartreuse;
         a:hover span {
           opacity: 1;
           color: $white;
-          -webkit-animation: neon 1s ease-in-out infinite alternate;
-          -moz-animation: neon 1s ease-in-out infinite alternate;
-          animation: neon 1s ease-in-out infinite alternate;
+          animation: neon-text 1s ease-in-out infinite alternate;
         }
       }
     }
@@ -148,15 +147,5 @@ $appbar-glow-color = $chartreuse;
 }
 
 .shown {
-}
-
-@keyframes neon {
-  from {
-    text-shadow: 0 0 2.5px $white, 0 0 5px $white, 0 0 7.5px $white, 0 0 10px $chartreuse, 0 0 12.5px $chartreuse, 0 0 15px $chartreuse, 0 0 25px $chartreuse;
-  }
-
-  to {
-    text-shadow: 0 0 1px $white, 0 0 2px $white, 0 0 3px $white, 0 0 4px $chartreuse, 0 0 5px $chartreuse, 0 0 6px $chartreuse, 0 0 10px $chartreuse;
-  }
 }
 </style>

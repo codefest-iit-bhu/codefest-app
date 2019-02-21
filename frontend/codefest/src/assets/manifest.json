@@ -6,9 +6,11 @@
   "theme_color": "#1e88e5",
   "display": "standalone",
   "start_url": "/",
-  "icons": [{
-    "src": "/assets/icon.png",
-    "type": "image/png",
-    "sizes": "512x512"
-  }]
+  "icons": [
+    {
+      "src": "/assets/favicon.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
 }

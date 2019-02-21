@@ -1,8 +1,8 @@
 <template>
   <div :class="$style.root">
-    <AppBar :doAnimate="true"/>
+    <AppBar/>
     <main :class="$style.wrapper">
-      <SpecialEvent />
+      <SpecialEvent/>
       <StandardEvent v-for="(event, i) in events" :key="i" :event="event" :id="i"/>
       <div :class="$style.space"></div>
     </main>
@@ -34,7 +34,7 @@ export default {
         {
           title: "Capture The Flag",
           summary:
-            "A platform for the aspiring and existing hackers to get acquainted with the real world computer security practices.",
+            "A platform for the aspiring hackers to get acquainted with the real computer security practices.",
           image: "../assets/events/ctf.png"
         },
         {
@@ -57,17 +57,20 @@ export default {
         },
         {
           title: "Manthan",
-          summary: "Compete with some of the best competitive programmers of the world as you dive deep in the world of data structures and algorithms.",
+          summary:
+            "Compete with the best competitive programmers of the world in the world of data structures and algorithms.",
           image: "../assets/events/manthan.png"
         },
         {
-          title: "Mathamania",
-          summary: "Push your limits and gear up your brain by solving some challenging mathematical problems.",
+          title: "Mathmania",
+          summary:
+            "Push your limits and gear up your brain by solving some challenging mathematical problems.",
           image: "../assets/events/mathamania.png"
         },
         {
           title: "Linguipedia",
-          summary: "Test your understanding of natural language processing by assessing how well your computer understands it.",
+          summary:
+            "Solve challenging problems in the field of Natural Language Processing.",
           image: "../assets/events/linguipedia.png"
         },
         {
@@ -85,7 +88,7 @@ export default {
 .wrapper {
   width: 80%;
   margin: 0 auto;
-  padding: 120px 0;
+  padding: 200px 20px 50px 20px;
   position: relative;
   z-index: 1;
   font-family: 'Roboto Mono';

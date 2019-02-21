@@ -2,13 +2,18 @@
   <header ref="header" :class="$style.hero">
     <div id="hero">
       <div :class="$style.logoContainer">
-        <img :class="$style.logo" src="../assets/events/hackathon.png">
+        <img :class="$style.logo" src="@assets/events/hackathon-special.png">
       </div>
       <br>
       <div :class="$style.title">
         <h1>Onsite Hackathon</h1>
         <br>
-        <div>This a very special event of codefest 19 exclusively for vella people.</div>
+        <div>
+          <p>
+            Join the Codefest '19 team to bring out the absolute best ideas and implementations from some of the best developers in the country,
+            while they join us for a 24 hours long hackathon under a single roof.
+          </p>
+        </div>
       </div>
     </div>
   </header>
@@ -37,17 +42,16 @@ export default {
   max-width: 100%;
   overflow: hidden;
   padding: 10px 16px;
-  color: #f1f1f1;
   text-align: center;
 }
 
 .logoContainer {
-  background: $white;
   width: 20%;
+  border: 2px solid $chartreuse;
   min-width: 100px;
   border-radius: 100%;
   margin: 20px auto 40px;
-  animation: neon2 1.5s ease-in-out infinite alternate;
+  animation: neon-box 1.5s ease-in-out infinite alternate;
 }
 
 .logo {
