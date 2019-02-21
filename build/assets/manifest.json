@@ -1,0 +1,16 @@
+{
+  "name": "CodeFest 2019",
+  "short_name": "CF",
+  "background_color": "#3E82F7",
+  "orientation": "portrait",
+  "theme_color": "#1e88e5",
+  "display": "standalone",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/assets/favicon.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

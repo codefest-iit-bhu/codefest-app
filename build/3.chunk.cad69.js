@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[3],{zatr:function(e,t,n){"use strict";n.r(t);var i={},s=n("psIG"),l=Object(s.a)(i,function(){var e=this.$createElement;return(this._self._c||e)("div",[this._v("Mobile")])},[],!1,null,null,null);l.options.__file="Home.vue";t.default=l.exports}}]);
+//# sourceMappingURL=3.chunk.cad69.js.map

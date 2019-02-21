@@ -1,0 +1,21 @@
+{
+  "name": "codefest19",
+  "version": "1.0.0",
+  "description": "Dummy package for Codefest 19 app.",
+  "main": "index.js",
+  "scripts": {
+    "start": "sirv build -s -p $PORT"
+  },
+  "dependencies": {
+    "ganalytics": "^3.1.1",
+    "sirv-cli": "^0.2.0",
+    "vue": "^2.6.6",
+    "vue-router": "^3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com-shivanshs9:shivanshs9/codefest19.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
