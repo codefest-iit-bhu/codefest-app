@@ -53,7 +53,6 @@ export default {
 @import '../styles/colors.styl';
 @import '../styles/anims.styl';
 
-
 .hero {
   position: relative;
   background-color: $black;
@@ -87,21 +86,19 @@ export default {
     font-size: 144px;
     font-family: Ubuntu;
     font-weight: 300;
-    -webkit-animation: neon 1.5s ease-in-out infinite alternate;
-    -moz-animation: neon 1.5s ease-in-out infinite alternate;
-    animation: neon 1.5s ease-in-out infinite alternate;
+    animation: neon-text 1.5s ease-in-out infinite alternate;
   }
 
   h1 span {
     font-size: 180px;
-    font-weight: 500;
+    font-weight: 600;
     margin: 0;
     padding: 0;
   }
 
   h1 sup {
     font-size: 100px;
-    font-weight: 100;
+    font-weight: 300;
   }
 }
 </style>

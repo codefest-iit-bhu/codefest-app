@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { animateErasing, animateTyping, getRandom } from "../js/utils";
+import { TypingAnim, getRandom } from "../js/utils";
 
 export default {
   props: ["event", "id"],
@@ -70,9 +70,8 @@ export default {
       this.animateGlitchOpacity(this.$refs.initialCanvas, 1500, !isAppearIn);
       this.animateGlitchOpacity(this.$refs.finalCanvas, 1500, isAppearIn);
 
-      if (isAppearIn)
-        animateTyping(this.$refs.eventSummary, this.event.summary);
-      else animateErasing(this.$refs.eventSummary, this.event.summary);
+      if (isAppearIn) this.animTyping.type();
+      else this.animTyping.erase();
     }
   },
   mounted() {
@@ -90,6 +89,11 @@ export default {
       drawInCanvas(this.$refs.initialCanvas, img);
       drawInCanvas(this.$refs.finalCanvas, img);
     };
+
+    this.animTyping = new TypingAnim(
+      this.$refs.eventSummary,
+      this.event.summary
+    );
   },
   computed: {
     eventCellClass() {
@@ -179,6 +183,7 @@ $cell-collapsed-size = 150px;
   font-family: 'Aldo the Apache';
   margin-top: 20px;
   font-size: 50px;
+  white-space: nowrap;
   opacity: 0;
   transition: opacity 1s ease-out;
 }
@@ -187,7 +192,7 @@ $cell-collapsed-size = 150px;
   font-family: 'Courier New';
   padding: 2px 10px;
   text-align: justify;
-  overflow: hidden;
+  font-weight: 600;
 }
 
 .normalCanvas, .glitchedCanvas {

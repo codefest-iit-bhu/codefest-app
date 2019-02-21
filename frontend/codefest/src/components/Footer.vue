@@ -4,14 +4,23 @@
     <span>Codefest' 19</span>
     
     <span :class="$style.socialIcons">
-      <a>
-        <img src="@assets/social_facebook.svg">
+      <a href="https://www.facebook.com/codefest/">
+        <span class="fa-stack fa-lg">
+          <!-- <i class="fa fa-circle-notch fa-stack-2x"></i> -->
+          <i class="fab fa-facebook-f fa-stack-1x"></i>
+        </span>
       </a>
-      <a>
-        <img src="@assets/social_twitter.svg">
+      <a href="https://twitter.com/c0defest">
+        <span class="fa-stack fa-lg">
+          <!-- <i class="fa fa-circle-notch fa-stack-2x"></i> -->
+          <i class="fab fa-twitter fa-stack-1x"></i>
+        </span>
       </a>
-      <a>
-        <img src="@assets/social_instagram.svg">
+      <a href="https://www.instagram.com/c0defest/?hl=en">
+        <span class="fa-stack fa-lg">
+          <!-- <i class="fa fa-circle-notch fa-rotate fa-stack-2x"></i> -->
+          <i class="fab fa-instagram fa-stack-1x"></i>
+        </span>
       </a>
     </span>
   </footer>
@@ -36,7 +45,7 @@ export default {};
   justify-content: center;
   align-items: center;
   display: flex;
-  height: 48px;
+  height: 52px;
 
   span {
     a {
@@ -52,7 +61,8 @@ export default {};
   }
 
   .socialIcons {
-    margin-left: 5px;
+    margin-left: 10px;
+    margin-bottom: 5px;
 
     a {
       position: relative;
