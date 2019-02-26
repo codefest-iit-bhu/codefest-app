@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "build": "pwa export --routes /events,/",
+    "build": "pwa build",
     "start": "sirv build -s",
     "watch": "pwa watch"
   },
