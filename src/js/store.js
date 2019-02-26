@@ -4,16 +4,12 @@ export const navigation = {
       ".": "/",
       events: {
         ".": "/events"
-        // hackathon: {
-        //   ".": "/events/1"
-        // }
       }
-      // team: {
-      //   ".": "/team"
-      // },
-      // dashboard: {
-      //   ".": "/dashboard"
-      // }
+    },
+    "404": {
+      "~": {
+        ".": "/"
+      }
     }
   },
   getPwdFromCurrent: function(current) {
@@ -27,7 +23,7 @@ export const navigation = {
     pwd.forEach(dir => {
       if (current) current = current[dir];
       else current = this.hierarchy[dir];
-      result.push(current["."]);
+      result.push(current["."] || "/");
     });
     return result;
   },

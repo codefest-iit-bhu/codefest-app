@@ -1,4 +1,4 @@
-## CodeFest 2019
+## CodeFest 2019 [![Netlify Status](https://api.netlify.com/api/v1/badges/53f4e75c-af73-4abb-8e9e-e24c579fa1b7/deploy-status)](https://app.netlify.com/sites/codefest19/deploys)
 
 ### FRONTEND
 

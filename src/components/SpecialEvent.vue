@@ -1,6 +1,6 @@
 <template>
-  <header ref="header" :class="$style.hero">
-    <div id="hero">
+  <header :class="$style.hero">
+    <div>
       <div :class="$style.logoContainer">
         <img :class="$style.logo" src="@assets/events/hackathon-special.png">
       </div>

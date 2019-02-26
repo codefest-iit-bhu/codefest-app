@@ -26,6 +26,14 @@ const router = new Router({
         title: "CodeFest '19 | Events",
         metaTags: []
       }
+    },
+    {
+      name: "404",
+      path: "/*",
+      component: () => import(`@pages/404`),
+      meta: {
+        title: "CodeFest '19 | 404"
+      }
     }
   ],
   scrollBehavior(to, from, savedPosition) {

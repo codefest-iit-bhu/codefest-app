@@ -21,8 +21,12 @@ export default {
   watch: {
     $route(to, from) {
       let terminal = this.$refs.terminal;
-      terminal.animateScrollShow();
       this.current = to.name;
+      this.$nextTick(() => {
+        if (document.body.clientHeight > window.innerHeight)
+          terminal.animateScrollShow();
+        else terminal.noAnimateScrollShow();
+      });
     }
   }
 };
@@ -31,8 +35,11 @@ export default {
 <style module lang="stylus">
 @import '../styles/colors.styl';
 
-.app {
+body {
   background: $black;
+}
+
+.app {
   height: 100%;
   width: 100%;
 }
