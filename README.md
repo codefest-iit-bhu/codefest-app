@@ -4,5 +4,6 @@
 
 The repository hosts the backend and frontend code for CodeFest 2019 web app.
 
-Backend is build using Django Web Framework.
-Frontend is build using Vue.Js Framework.
+Backend is built using Django Web Framework, and its code is in the **backend** branch.
+Frontend is built using Vue.Js Framework, and its code is in the **frontend** branch.
+
