@@ -1,0 +1,11 @@
+[[redirects]]
+  # For our Rest API.
+  from = "/api/*"
+  to = "https://api.codefest.tech/:splat"
+  status = 200
+
+[[redirects]]
+  # For our VueJs SPA.
+  from = "/*"
+  to = "/index.html"
+  status = 200

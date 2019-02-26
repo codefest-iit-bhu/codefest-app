@@ -1,0 +1,13 @@
+stick(position = 'top') {
+  position: fixed;
+  {position}: 0;
+}
+
+moveAnimation(side = 'bottom', startDistance = 0, targetDistance = 0) {
+  {side}: startDistance
+  transition: all 350ms;
+
+  &.shown {
+    {side}: targetDistance
+  }
+}

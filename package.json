@@ -1,0 +1,43 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "pwa build",
+    "start": "sirv build -s",
+    "watch": "pwa watch"
+  },
+  "dependencies": {
+    "ganalytics": "^3.1.1",
+    "sirv-cli": "^0.2.0",
+    "vue": "~2.6.7",
+    "vue-router": "~3.0.0",
+    "vue-template-compiler": "~2.6.7"
+  },
+  "devDependencies": {
+    "@pwa/cli": "latest",
+    "@pwa/plugin-gzip": "latest",
+    "@pwa/plugin-sw-precache": "latest",
+    "@pwa/preset-vue": "latest",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babelify": "^10.0.0",
+    "eslint": "^5.12.1",
+    "eslint-loader": "^2.1.1",
+    "stylus": "^0.54.0",
+    "stylus-loader": "^3.0.0",
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.3.1"
+  },
+  "browserslist": [
+    ">0.25%",
+    "last 1 version",
+    "not ie_mob 11",
+    "not ie 11",
+    "not dead"
+  ],
+  "name": "codefest",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

@@ -1,0 +1,42 @@
+@keyframes blink {
+  from {
+    opacity 0
+  }
+  to {
+    opacity 1
+  }
+}
+
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
+}
+
+
+@keyframes neon-text {
+  from {
+    text-shadow: 0 0 2.5px $white, 0 0 5px $white, 0 0 7.5px $white, 0 0 10px $chartreuse, 0 0 12.5px $chartreuse, 0 0 15px $chartreuse, 0 0 25px $chartreuse;
+  }
+
+  to {
+    text-shadow: 0 0 1px $white, 0 0 2px $white, 0 0 3px $white, 0 0 4px $chartreuse, 0 0 5px $chartreuse, 0 0 6px $chartreuse, 0 0 10px $chartreuse;
+  }
+}
+
+
+@keyframes neon-box {
+  from {
+    box-shadow: 0 0 15px $white, 0 0 17.5px $white, 0 0 10px $chartreuse, 0 0 52.5px $chartreuse, 0 0 55px $limeade, 0 0 70px $limeade, 0 0 90px $limeade;
+  }
+
+  to {
+    box-shadow: 0 0 1px $white, 0 0 2px $white, 0 0 3px $white, 0 0 6px $white, 0 0 8px $chartreuse, 0 0 12px $chartreuse, 0 0 20px $limeade, 0 0 30px $limeade, 0 0 55px $limeade, 0 0 70px $limeade;
+  }
+}
