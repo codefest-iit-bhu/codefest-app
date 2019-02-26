@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    // this aligns with Vue's browser support
+    // this aligns with Vue browser support
     "target": "es5",
     // this enables stricter inference for data properties on `this`
     "strict": true,
