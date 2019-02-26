@@ -59,9 +59,9 @@ $cell-size = 200px;
     }
 
     .img {
-      width: 75%;
-      height: 75%;
-      margin: ($cell-size / 9);
+      width: 100%;
+      height: 100%;
+      margin: auto;
       transform:rotate(-45deg);
     }
   }
