@@ -46,6 +46,7 @@ export default {};
   align-items: center;
   display: flex;
   height: 52px;
+  margin-top: 20px;
 
   span {
     a {

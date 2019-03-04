@@ -41,7 +41,7 @@ export default {
   height: 100vh;
   max-width: 100%;
   overflow: hidden;
-  padding: 10px 16px;
+  padding: 10vh 16px;
   text-align: center;
 }
 

@@ -1,7 +1,10 @@
 <template>
-  <div :class="$style.event">
+  <div :class="[$style.event, eventCellClass]">
+    <div :class="$style.whiteTitle">
+      <h3>{{ event.title }}</h3>
+    </div>
     <div
-      :class="[$style.cell, eventCellClass]"
+      :class="$style.cell"
       @mouseenter="glitch(true, $event)"
       @mouseleave="glitch(false, $event)"
     >
@@ -67,8 +70,8 @@ export default {
       return step();
     },
     glitch(isAppearIn, event) {
-      this.animateGlitchOpacity(this.$refs.initialCanvas, 1500, !isAppearIn);
-      this.animateGlitchOpacity(this.$refs.finalCanvas, 1500, isAppearIn);
+      this.animateGlitchOpacity(this.$refs.initialCanvas, 800, !isAppearIn);
+      this.animateGlitchOpacity(this.$refs.finalCanvas, 800, isAppearIn);
 
       if (isAppearIn) this.animTyping.type();
       else this.animTyping.erase();
@@ -114,6 +117,16 @@ $cell-collapsed-size = 150px;
   clear: both;
   z-index: 0;
   height: $cell-collapsed-size;
+  position: relative;
+}
+
+.whiteTitle {
+  color: $white;
+  font-family: 'Aldo the Apache';
+  margin-top: 0;
+  font-size: 30px;
+  position: absolute;
+  top: ($cell-collapsed-size / 2);
 }
 
 .cell {
@@ -125,7 +138,8 @@ $cell-collapsed-size = 150px;
   background: $chartreuse;
   cursor: pointer;
   border-radius: ($cell-collapsed-size / 2);
-  transition: width 3s ease-out;
+  transition: width 2.5s ease-out;
+  position: absolute;
 
   &:hover {
     width: 70%;
@@ -136,12 +150,14 @@ $cell-collapsed-size = 150px;
     }
 
     .txt h3 {
-      opacity: 1;
+      opacity: 0;
     }
   }
+}
 
-  &.odd {
-    float: left;
+&.odd {
+  .cell {
+    left: 0;
 
     .normalCanvas {
       float: left;
@@ -156,8 +172,14 @@ $cell-collapsed-size = 150px;
     }
   }
 
-  &.even {
-    float: right;
+  .whiteTitle {
+    left: 200px;
+  }
+}
+
+&.even {
+  .cell {
+    right: 0;
 
     .normalCanvas {
       float: right;
@@ -171,6 +193,10 @@ $cell-collapsed-size = 150px;
       text-align: right;
     }
   }
+
+  .whiteTitle {
+    right: 200px;
+  }
 }
 
 .txt {
@@ -181,7 +207,6 @@ $cell-collapsed-size = 150px;
 
 .txt h3 {
   font-family: 'Aldo the Apache';
-  margin-top: 20px;
   font-size: 50px;
   white-space: nowrap;
   opacity: 0;

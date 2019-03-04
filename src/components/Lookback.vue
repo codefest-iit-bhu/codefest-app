@@ -88,7 +88,7 @@ export default {
   .table {
     table {
       width: 80%;
-      margin-left: 10%;
+      margin: auto;
 
       #imgRow {
         .imgCell {

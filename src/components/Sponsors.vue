@@ -44,35 +44,25 @@ export default {
 @import '../styles/colors.styl';
 
 $cell-size = 200px;
-
+ 
 .sponsors
   .cell {
     width: $cell-size;
     height: $cell-size;
 
     .clip {
-      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
       background-color: white;
-      width: 100%;
-      height: 100%;
+      transform:rotate(45deg);
+      width: 70%;
+      height: 70%;
+      border-radius: 25px;
     }
 
     .img {
-      width: 75%;
-      height: 75%;
-      margin: ($cell-size / 8);
-    }
-
-    &:nth-child(odd) {
-      .clip {
-        float right
-    }
-    }
-
-    &:nth-child(even) {
-      .clip {
-        float left 
-    }
+      width: 100%;
+      height: 100%;
+      margin: auto;
+      transform:rotate(-45deg);
     }
   }
 

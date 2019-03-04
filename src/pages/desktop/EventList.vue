@@ -4,7 +4,6 @@
     <main :class="$style.wrapper">
       <SpecialEvent/>
       <StandardEvent v-for="(event, i) in events" :key="i" :event="event" :id="i"/>
-      <div :class="$style.space"></div>
     </main>
     <Footer/>
   </div>
@@ -88,7 +87,7 @@ export default {
 .wrapper {
   width: 80%;
   margin: 0 auto;
-  padding: 200px 20px 50px 20px;
+  padding: 100px 20px 50px 20px;
   position: relative;
   z-index: 1;
   font-family: 'Roboto Mono';
@@ -103,9 +102,5 @@ export default {
   .wrapper {
     width: 90%;
   }
-}
-
-.space {
-  padding: 20px;
 }
 </style>
