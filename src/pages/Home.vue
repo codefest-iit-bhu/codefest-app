@@ -1,42 +1,60 @@
 <template>
-	<div>
-		<Window />
-
-		<Feats />
-
-		<section :class="$style.section">
-			<h2>Installation</h2>
-			<Code text="npm install --global @pwa/cli" />
-			<Code :offset="true" label="OR" text="yarn global add @pwa/cli" />
-		</section>
-
-		<section :class="$style.section">
-			<h2>Commands</h2>
-			<Code label="Scaffold a new project!" text="pwa init" />
-			<Code label="Run development/live-reload server" text="pwa watch" />
-			<Code label="Build production bundle(s)" text="pwa build" />
-			<Code label="Generate static HTML exports" text="pwa export" />
-		</section>
-	</div>
+  <div :class="$style.root">
+    <AppBar :doAnimate="true"/>
+    <mq-layout mq="lg+">
+      <Hero/>
+    </mq-layout>
+    <main :class="$style.wrapper">
+      <!-- Introduction -->
+      <Intro/>
+      <!-- Lookback at CF'18 -->
+      <Lookback/>
+      <!-- Sponsors -->
+      <Sponsors/>
+    </main>
+    <Footer/>
+  </div>
 </template>
 
 <script>
-	import Code from '@components/Code';
-	import Window from '@components/Window';
-	import Feats from '@components/Feats';
-
-	export default {
-		components: {
-			Window,
-			Feats,
-			Code
-		}
-	}
+import AppBar from "@components/AppBar";
+import Intro from "@components/Intro";
+import Hero from "@components/Hero";
+import Footer from "@components/Footer";
+import Lookback from "@components/Lookback";
+import Sponsors from "@components/Sponsors";
+export default {
+  components: {
+    AppBar,
+    Hero,
+    Intro,
+    Lookback,
+    Sponsors,
+    Footer
+  },
+  data: () => {
+    return {};
+  }
+};
 </script>
+<style module lang="stylus">
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  font-family: 'Roboto Mono';
+  padding-bottom: 100px;
+  font-size: 18px;
+}
 
-<style module lang="styl">
-	.section
-		padding-bottom 64px
-		h2
-			margin-bottom 16px
+.root {
+  height: 100%;
+}
+
+@media screen and (max-width: 769px) {
+  .wrapper {
+    width: 90%;
+  }
+}
 </style>

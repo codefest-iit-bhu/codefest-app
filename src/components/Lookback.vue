@@ -2,46 +2,16 @@
   <div :class="[$style.lookback, 'sectionContainer']">
     <h1 class="sectionTitle">Lookback</h1>
     <hr class="sectionLine">
-    <!-- <div :class="$style.cell" v-for="(stat, i) in stats" :key="i">
-      <div :class="$style.clip">
-        <img :src="stat.image" :class="$style.img">
-      </div>
-      <div :class="$style.txt">
-        {{ stat.name }}
-        <br>
-        {{ stat.value }}
-      </div>
-    </div>-->
-    <div :class="$style.table">
-      <table>
-        <tr :id="$style.imgRow">
-          <td :class="$style.imgCell" v-for="(stat, i) in stats" :key="i">
-            <div :class="$style.clip">
-              <img :src="stat.image" :class="$style.img">
-            </div>
-          </td>
-        </tr>
-        <tr :id="$style.nameRow">
-          <td :class="$style.dataCell" v-for="(stat, i) in stats" :key="i">
-            <div :class="$style.txt">{{ stat.name }}</div>
-          </td>
-        </tr>
-        <tr :id="$style.valRow">
-          <td :class="$style.dataCell" v-for="(stat, i) in stats" :key="i">
-            <div :class="$style.txt">{{ stat.value }}</div>
-          </td>
-        </tr>
-      </table>
-    </div>
-    <br>
 
-    <!-- <svg class="clip-svg">
-      <defs>
-        <clipPath id="hexagon-clip" clipPathUnits="objectBoundingBox">
-          <polygon points="0.25 0.05, 0.75 0.05, 1 0.5, 0.75 0.95, 0.25 0.95, 0 0.5" />
-        </clipPath>
-      </defs>
-    </svg>-->
+    <div :class="$style.container">
+      <div :class="$style.stat" v-for="(stat, i) in stats" :key="i">
+        <div :class="$style.clip">
+          <img :src="stat.image" :class="$style.img">
+        </div>
+        <div :class="$style.name">{{ stat.name }}</div>
+        <div :class="$style.value">{{ stat.value }}</div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -85,53 +55,45 @@ export default {
 @import '../styles/colors.styl';
 
 .lookback {
-  .table {
-    table {
-      width: 80%;
-      margin: auto;
+  .container {
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    grid-template-rows: 200px;
+    grid-column-gap: 30px;
+    grid-row-gap: 50px;
+    justify-content: space-evenly;
+  }
 
-      #imgRow {
-        .imgCell {
-          width: 200px;
-          height: 200px;
+  .stat {
+    width: 200px;
+    height: 200px;
 
-          .clip {
-            clip-path: polygon(25% 0%, 75% 0%, 100% 43.3%, 75% 86.6%, 25% 86.6%, 0% 43.3%);
-            background: white;
-            width: 160px;
-            height: 160px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 10px;
-            background-color: $chartreuse;
-          }
+    .clip {
+      clip-path: polygon(25% 0%, 75% 0%, 100% 43.3%, 75% 86.6%, 25% 86.6%, 0% 43.3%);
+      background: white;
+      width: 160px;
+      height: 160px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 10px;
+      background-color: $chartreuse;
+    }
 
-          .img {
-            width: 70%;
-            position: relative;
-            top: 10%;
-            left: 15%;
-          }
-        }
-      }
+    .img {
+      width: 70%;
+      position: relative;
+      top: 10%;
+      left: 15%;
+    }
 
-      #nameRow, #valRow {
-        .dataCell {
-          font-family: Aldo the Apache;
-          margin-left: auto;
-          margin-right: auto;
-          text-align: center;
-          margin-top: 300px;
-
-          .txt {
-            color: $chartreuse;
-            // position: relative;
-            // top: -76%;
-            line-height: 28px;
-            font-size: 25px;
-          }
-        }
-      }
+    .name, .value {
+      font-family: Aldo the Apache;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      color: $chartreuse;
+      line-height: 28px;
+      font-size: 25px;
     }
   }
 }

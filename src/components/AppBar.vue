@@ -1,6 +1,14 @@
 <template>
-  <div :class="[$style.appbar, doAnimate ? $style.animate : '']">
+  <div :class="[$style.appbar, doAnimate ? $style.animate : '', $mq]">
     <div :class="$style.nav">
+      <ul :class="$style.lNav">
+        <li :class="$style.link">
+          <router-link to="/events">
+            Events
+            <span class="fa fa-circle fa-xs" aria-hidden="true"></span>
+          </router-link>
+        </li>
+      </ul>
       <ul :class="$style.rNav">
         <li :class="$style.link">
           <a href="https://goo.gl/DrCFHB" target="_blank">
@@ -78,41 +86,46 @@ $appbar-glow-color = $chartreuse;
     height: $appbar-height;
     background: $appbar-color;
     box-shadow: $appbar-glow-color 0 2px 10px 3px;
+    font-family: 'Aldo the Apache';
+    font-size: 25px;
 
     .rNav {
       float: right;
-      font-family: Aldo the Apache;
-      font-size: 25px;
       margin: 5px 20px 0 0;
+    }
 
-      .link {
-        display: inline-block;
-        padding-top: 10px;
+    .lNav {
+      float: left;
+      margin: 5px 20px 0 0;
+    }
 
-        a {
-          color: $white;
-          padding: 10px 10px;
-          margin-left: 5px;
-          text-decoration: none;
-          transition: 0.5s;
-        }
+    .link {
+      display: inline-block;
+      padding-top: 10px;
 
-        a span {
-          margin-right: 15px;
-          color: $white;
-          opacity: 0;
-          font-size: 16px;
-        }
+      a {
+        color: $white;
+        padding: 10px 10px;
+        margin-left: 5px;
+        text-decoration: none;
+        transition: 0.5s;
+      }
 
-        a:hover {
-          color: $chartreuse;
-        }
+      a span {
+        margin-right: 15px;
+        color: $white;
+        opacity: 0;
+        font-size: 16px;
+      }
 
-        a:hover span {
-          opacity: 1;
-          color: $white;
-          animation: neon-text 1s ease-in-out infinite alternate;
-        }
+      a:hover {
+        color: $chartreuse;
+      }
+
+      a:hover span {
+        opacity: 1;
+        color: $white;
+        animation: neon-text 1s ease-in-out infinite alternate;
       }
     }
   }

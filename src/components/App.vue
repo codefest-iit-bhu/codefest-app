@@ -1,7 +1,12 @@
 <template>
-  <div :class="$style.app" :style="`padding-bottom: ${this.terminalExpanded ? '200px' : '90px'}`">
+  <div :class="$style.app" :style="`padding-bottom: ${this.appBottomPadding}`">
     <router-view/>
-    <Terminal :propCurrent="current" v-model="terminalExpanded" ref="terminal"/>
+    <Terminal
+      :propCurrent="current"
+      v-model="terminalExpanded"
+      ref="terminal"
+      v-if="shouldShowTerminal"
+    />
   </div>
 </template>
 
@@ -18,15 +23,29 @@ export default {
       terminalExpanded: false
     };
   },
+  computed: {
+    shouldShowTerminal: function() {
+      return !(this.$mq === "sm" || this.$mq === "xs");
+    },
+    appBottomPadding: function() {
+      if (this.shouldShowTerminal)
+        return this.terminalExpanded ? "200px" : "90px";
+      else return "0px";
+    }
+  },
   watch: {
     $route(to, from) {
       let terminal = this.$refs.terminal;
+      if (!terminal) return;
       this.current = to.name;
       this.$nextTick(() => {
         if (document.body.clientHeight > window.innerHeight)
           terminal.animateScrollShow();
         else terminal.noAnimateScrollShow();
       });
+    },
+    $mq(to, from) {
+      console.log(`$mq = ${to} <- ${from};`);
     }
   }
 };
@@ -35,11 +54,22 @@ export default {
 <style module lang="stylus">
 @import '../styles/colors.styl';
 
+:root {
+  --base-font: 12px;
+}
+
+@media (max-width: 767) {
+  :root {
+    --base-font: 8px;
+  }
+}
+
 body {
   background: $black;
 }
 
 .app {
+  font-size: var(--base-font);
   height: 100%;
   width: 100%;
 }

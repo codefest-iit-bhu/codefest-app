@@ -2,9 +2,7 @@
   <header ref="header" :class="$style.hero">
     <div :class="$style.title">
       <h1 id="heroTitle">
-        code
-        <span>Fest</span>
-        <sup>19</sup>
+        code<span>Fest</span><sup>19</sup>
       </h1>
     </div>
     <canvas ref="rains" :class="$style.rains"></canvas>

@@ -10,8 +10,7 @@ const router = new Router({
     {
       name: "~",
       path: "/",
-      component: () =>
-        import(`@pages/${isMobile() ? "mobile" : "desktop"}/Home`),
+      component: () => import(`@pages/Home`),
       meta: {
         title: "CodeFest '19 | IIT (BHU) Varanasi",
         metaTags: []
@@ -20,8 +19,7 @@ const router = new Router({
     {
       name: "~/events",
       path: "/events",
-      component: () =>
-        import(`@pages/${isMobile() ? "mobile" : "desktop"}/EventList`),
+      component: () => import(`@pages/EventList`),
       meta: {
         title: "CodeFest '19 | Events",
         metaTags: []

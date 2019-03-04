@@ -1,6 +1,54 @@
 <template>
-  <div>Mobile</div>
+  <div :class="$style.root">
+    <AppBar/>
+    <main :class="$style.wrapper">
+      <!-- Introduction -->
+      <Intro/>
+      <!-- Lookback at CF'18 -->
+      <Lookback/>
+      <!-- Sponsors -->
+      <Sponsors/>
+    </main>
+    <Footer/>
+  </div>
 </template>
 <script>
-export default {};
+import AppBar from "@components/AppBar";
+import Intro from "@components/Intro";
+import Footer from "@components/Footer";
+import Lookback from "@components/Lookback";
+import Sponsors from "@components/Sponsors";
+export default {
+  components: {
+    AppBar,
+    Intro,
+    Lookback,
+    Sponsors,
+    Footer
+  },
+  data: () => {
+    return {};
+  }
+};
 </script>
+<style module lang="stylus">
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  font-family: 'Roboto Mono';
+  padding-bottom: 100px;
+  font-size: 18px;
+}
+
+.root {
+  height: 100%;
+}
+
+@media screen and (max-width: 769px) {
+  .wrapper {
+    width: 90%;
+  }
+}
+</style>

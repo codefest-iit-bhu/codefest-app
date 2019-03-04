@@ -9,6 +9,7 @@
     "ganalytics": "^3.1.1",
     "sirv-cli": "^0.2.0",
     "vue": "~2.6.7",
+    "vue-mq": "^1.0.1",
     "vue-router": "~3.0.0",
     "vue-template-compiler": "~2.6.7"
   },
