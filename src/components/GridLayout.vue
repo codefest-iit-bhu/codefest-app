@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div :class="$style.container">
+    <div :class="$style.container" :style="gridStyle">
       <div :class="$style.itemWrapper" v-for="(slot, i) in Object.keys($slots)" :key="i">
         <slot :name="slot"></slot>
       </div>
@@ -15,12 +15,20 @@ export default {
       default: 3
     },
     itemWidth: {
-      type: Number,
-      default: 200
+      type: String,
+      default: "200px"
     },
     itemHeight: {
-      type: Number,
-      default: 200
+      type: String,
+      default: "200px"
+    }
+  },
+  computed: {
+    gridStyle() {
+      return {
+        "grid-template-columns": `repeat(${this.columns}, ${this.itemWidth})`,
+        "grid-template-rows": `${this.itemHeight}`
+      };
     }
   }
 };

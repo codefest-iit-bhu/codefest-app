@@ -49,22 +49,14 @@
       <div :class="$style.sidebar" ref="sidebar">
         <Slide :isOpen="isSidebarOpen" @closeSideBar="onCloseSideBar">
           <li :class="$style.link">
-            <router-link to="/events">
-              Events
-              <span class="fa fa-circle fa-xs" aria-hidden="true"></span>
-            </router-link>
+            <router-link to="/events">Events</router-link>
           </li>
 
           <li :class="$style.link">
-            <a href="https://goo.gl/DrCFHB" target="_blank">
-              <span class="fa fa-circle fa-xs" aria-hidden="true"></span>Brochure
-            </a>
+            <a href="https://goo.gl/DrCFHB" target="_blank">Brochure</a>
           </li>
           <li :class="$style.link">
-            <a href="https://goo.gl/forms/RyjmY7i002oUHivu2" target="_blank">
-              <span class="fa fa-circle fa-xs" aria-hidden="true"></span>
-              Sponsor Us
-            </a>
+            <a href="https://goo.gl/forms/RyjmY7i002oUHivu2" target="_blank">Sponsor Us</a>
           </li>
         </Slide>
       </div>
@@ -246,13 +238,27 @@ $sidebar-width = 250px;
 }
 
 .sidebar {
-  .nav {
-    margin: 5px;
+  margin: 5px;
 
-    .links {
-      font-family: 'Aldo the Apache';
-      font-size: 14px;
+  .link {
+    font-family: 'Aldo the Apache';
+    font-size: 14px;
+
+    a {
+      color: $white;
+      padding: 10px 10px;
+      margin-left: 5px;
+      text-decoration: none;
+      transition: 0.5s;
     }
+
+    a:hover {
+      color: $chartreuse;
+    }
+  }
+
+  .link:hover {
+    background: rgb(63, 63, 65);
   }
 }
 </style>

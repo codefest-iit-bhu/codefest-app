@@ -496,7 +496,7 @@ export default {
     z-index: 1000; /* Stay on top */
     top: 0;
     left: 0;
-    background-color: rgb(63, 63, 65); /* Black */
+    background-color: rgba(63, 63, 65, 0.5); /* Black */
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 60px; /* Place content 60px from the top */
     overflow-y: auto;

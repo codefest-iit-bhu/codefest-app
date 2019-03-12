@@ -30,7 +30,7 @@ export default {
           image: "assets/Sponsors/top-coder.png"
         },
         {
-          image: "assets/Sponsors/av.png"
+          image: "assets/Sponsors/uber.png"
         }
       ]
     };

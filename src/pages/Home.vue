@@ -10,7 +10,7 @@
       <!-- Lookback at CF'18 -->
       <Lookback/>
       <!-- Sponsors -->
-      <Sponsors/>
+      <!-- <Sponsors/> -->
     </main>
     <Footer/>
   </div>
