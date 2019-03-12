@@ -1,6 +1,6 @@
 <template>
   <div :class="[$style.intro, 'sectionContainer']">
-    <h1 class="sectionTitle">A Byte About Us</h1>
+    <h1 class="sectionTitle" :class="$mq">A Byte About Us</h1>
     <hr class="sectionLine">
     <p>
       The Department of Computer Science and Engineering, IIT (BHU) Varanasi

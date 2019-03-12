@@ -58,7 +58,7 @@ export default {
   --base-font: 12px;
 }
 
-@media (max-width: 767) {
+@media (max-width: 767px) {
   :root {
     --base-font: 8px;
   }
