@@ -46,3 +46,14 @@ export class TypingAnim {
     return this._erase();
   }
 }
+
+export const interpolateEaseOutQuad = function(
+  currentTime,
+  startValue,
+  endValue,
+  animationDuration
+) {
+  endValue = endValue - startValue;
+  currentTime /= animationDuration;
+  return -endValue * currentTime * (currentTime - 2) + startValue;
+};
