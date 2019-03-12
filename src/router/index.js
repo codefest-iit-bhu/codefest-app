@@ -26,13 +26,21 @@ const router = new Router({
       }
     },
     {
+      name: "~/eventsdetails",
+      path: "/eventsdetails",
+      component: () => import(`@pages/EventsDetails`),
+      meta: {
+        title: "CodeFest '19 | Event Details"
+      }
+    },
+    {
       name: "404",
       path: "/*",
       component: () => import(`@pages/404`),
       meta: {
         title: "CodeFest '19 | 404"
       }
-    }
+    },
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) return savedPosition;
