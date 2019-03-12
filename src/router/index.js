@@ -1,14 +1,13 @@
 import Vue from "vue";
 import Router from "vue-router";
-import {
-  isMobile
-} from "../js/utils";
+import { isMobile } from "../js/utils";
 
 Vue.use(Router);
 
 const router = new Router({
   mode: "history",
-  routes: [{
+  routes: [
+    {
       name: "~",
       path: "/",
       component: () => import(`@pages/Home`),
@@ -45,6 +44,15 @@ const router = new Router({
       }
     },
     {
+      name: "~/event",
+      path: "/event",
+      component: () => import(`@pages/EventsDetails`),
+      meta: {
+        title: "CodeFest '19 | Event",
+        metaTags: []
+      }
+    },
+    {
       name: "404",
       path: "/*",
       component: () => import(`@pages/404`),
@@ -55,10 +63,11 @@ const router = new Router({
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) return savedPosition;
-    else return {
-      x: 0,
-      y: 0
-    };
+    else
+      return {
+        x: 0,
+        y: 0
+      };
   }
 });
 
