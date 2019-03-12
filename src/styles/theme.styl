@@ -4,8 +4,15 @@
   div.sectionContainer {
     h1.sectionTitle {
       font-family: "Aldo the Apache";
-      font-size: 72px;
-      margin-top: 144px;
+
+      &.sm { 
+        font-size: 56px;
+        margin-top: 72px; 
+      }
+      &.lg, &.xl, &.md {
+        font-size: 72px;
+        margin-top: 144px; 
+      }
 
       ../:nth-child(even) h1.sectionTitle {
         text-align: start;

@@ -1,21 +1,28 @@
 <template>
   <div :class="[$style.lookback, 'sectionContainer']">
-    <h1 class="sectionTitle">Lookback</h1>
+    <h1 class="sectionTitle" :class="$mq">Lookback</h1>
     <hr class="sectionLine">
 
     <div :class="$style.container">
-      <div :class="$style.stat" v-for="(stat, i) in stats" :key="i">
-        <div :class="$style.clip">
-          <img :src="stat.image" :class="$style.img">
+      <GridLayout :columns="5">
+        <div :class="$style.stat" v-for="(stat, i) in this.stats" :key="i" :slot="`item${i}`">
+          <div :class="$style.clip">
+            <img :src="stat.image" :class="$style.img">
+          </div>
+          <div :class="$style.name">{{ stat.name }}</div>
+          <div :class="$style.value">{{ stat.value }}</div>
         </div>
-        <div :class="$style.name">{{ stat.name }}</div>
-        <div :class="$style.value">{{ stat.value }}</div>
-      </div>
+      </GridLayout>
     </div>
   </div>
 </template>
 <script>
+import GridLayout from "./GridLayout";
+
 export default {
+  components: {
+    GridLayout
+  },
   data() {
     return {
       stats: [
@@ -56,17 +63,18 @@ export default {
 
 .lookback {
   .container {
-    display: grid;
-    grid-template-columns: 200px 200px 200px;
-    grid-template-rows: 200px;
-    grid-column-gap: 30px;
-    grid-row-gap: 50px;
-    justify-content: space-evenly;
   }
 
   .stat {
     width: 200px;
     height: 200px;
+
+    &:nth-child(odd) {
+      &::before {
+        content: '';
+        width: 100px;
+      }
+    }
 
     .clip {
       clip-path: polygon(25% 0%, 75% 0%, 100% 43.3%, 75% 86.6%, 25% 86.6%, 0% 43.3%);
