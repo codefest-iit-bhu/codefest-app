@@ -21,7 +21,7 @@
   </div>
 </template>
 <script>
-import GridLayout from "./GridLayout";
+import GridLayout from "./layouts/GridLayout";
 
 export default {
   components: {

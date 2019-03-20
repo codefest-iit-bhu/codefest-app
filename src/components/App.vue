@@ -35,7 +35,7 @@ export default {
   },
   watch: {
     $route(to, from) {
-      let terminal = this.$refs.terminal;
+      const { terminal } = this.$refs;
       if (!terminal) return;
       this.current = to.name;
       this.$nextTick(() => {

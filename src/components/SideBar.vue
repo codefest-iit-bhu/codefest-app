@@ -16,7 +16,7 @@
     </div>
     <div
       id="bm-backdrop"
-      v-if="isSideBarOpen"
+      v-if="showBackdrop"
       :style="getOpacityStyle(state.backdropOpacity)"
       @click="closeMenu"
     ></div>
@@ -24,20 +24,20 @@
 </template>
 
 <script>
-import { interpolateEaseOutQuad } from "../js/utils.js";
-import { setInterval } from "core-js";
-
 export default {
   data() {
     return {
-      isSideBarOpen: false
+      isSideBarOpen: false,
+      backdropOpacity: 0,
+      transform: 0,
+      showBackdrop: false
     };
   },
   computed: {
     state() {
       return {
-        transform: 0,
-        backdropOpacity: 0,
+        transform: this.transform,
+        backdropOpacity: this.backdropOpacity,
         isTouched: false
       };
     },
@@ -87,13 +87,13 @@ export default {
       type: Number,
       default: 30
     },
-    backdropOpacity: {
+    propBackdropOpacity: {
       type: Number,
       default: 0.5
     },
     animationDuration: {
       type: Number,
-      default: 300
+      default: 0.3
     },
     dragStartSensitivity: {
       type: Number,
@@ -110,15 +110,12 @@ export default {
   },
   methods: {
     openMenu() {
-      const {
-        transform: startTransform,
-        backdropOpacity: startOpacity
-      } = this.state;
+      const { transform: startTransform } = this.$data;
 
       const {
         animationDuration: fullAnimationDuration,
         width,
-        backdropOpacity,
+        propBackdropOpacity: backdropOpacity,
         extraClosePixels
       } = this.$props;
 
@@ -133,40 +130,31 @@ export default {
           this.animation.lastSpeed;
       }
 
-      const transformAnimationFn = currentTime =>
-        interpolateEaseOutQuad(
-          currentTime,
-          startTransform,
-          width,
-          animationDuration
-        );
+      const transformAnim = {
+        transform: width
+      };
 
-      const opacityAnimationFn = currentTime =>
-        interpolateEaseOutQuad(
-          currentTime,
-          startOpacity,
-          backdropOpacity,
-          animationDuration
-        );
+      const opacityAnim = {
+        backdropOpacity
+      };
 
-      const onAnimationEnd = () => {
-        this.setBusyState(false);
-        this.isSideBarOpen = true;
-        this.$emit("openSideBar");
+      const animHandlers = {
+        onComplete: () => {
+          this.isSideBarOpen = true;
+          this.$emit("openSideBar");
+        },
+        onStart: () => (this.showBackdrop = true)
       };
 
       this.animateSidebar(
         animationDuration,
-        transformAnimationFn,
-        opacityAnimationFn,
-        onAnimationEnd
+        transformAnim,
+        opacityAnim,
+        animHandlers
       );
     },
     closeMenu() {
-      const {
-        transform: startTransform,
-        backdropOpacity: startOpacity
-      } = this.state;
+      const { transform: startTransform } = this.state;
 
       const {
         animationDuration: fullAnimationDuration,
@@ -185,28 +173,27 @@ export default {
           Math.abs(this.animation.lastSpeed);
       }
 
-      const transformAnimationFn = currentTime =>
-        interpolateEaseOutQuad(
-          currentTime,
-          startTransform,
-          -1 * extraClosePixels,
-          animationDuration
-        );
+      const transformAnim = {
+        transform: -1 * extraClosePixels
+      };
 
-      const opacityAnimationFn = currentTime =>
-        interpolateEaseOutQuad(currentTime, startOpacity, 0, animationDuration);
+      const opacityAnim = {
+        backdropOpacity: 0
+      };
 
-      const onAnimationEnd = () => {
-        this.setBusyState(false);
-        this.$emit("closeSideBar");
-        this.isSideBarOpen = false;
+      const animHandlers = {
+        onComplete: () => {
+          this.isSideBarOpen = false;
+          this.showBackdrop = false;
+          this.$emit("closeSideBar");
+        }
       };
 
       this.animateSidebar(
         animationDuration,
-        transformAnimationFn,
-        opacityAnimationFn,
-        onAnimationEnd
+        transformAnim,
+        opacityAnim,
+        animHandlers
       );
     },
     closeMenuOnEsc(e) {
@@ -330,78 +317,28 @@ export default {
     setTouchState(isTouched) {
       this.$emit("onTouch", isTouched);
     },
-    setBusyState(isBusy) {
-      this.$emit("onBusy", isBusy);
-    },
     expandTo(px) {
       px = Math.min(px, this.$props.width);
-      const opacity = (this.$props.backdropOpacity * px) / this.$props.width;
+      const opacity =
+        (this.$props.propBackdropOpacity * px) / this.$props.width;
 
-      this.state.transform = px;
-      this.state.backdropOpacity = opacity;
+      this.transform = px;
+      this.backdropOpacity = opacity;
     },
     animateSidebar(
       animationDuration,
-      transformAnimationFn,
-      opacityAnimationFn,
-      onAnimationEnd
+      transformAnimationData,
+      opacityAnimationData,
+      animationHandlers
     ) {
-      const { lastAnimationId } = this.animation;
-      let animationStartTime = null;
-      let animationId = lastAnimationId + 1;
-      this.animation.lastAnimationId = animationId;
-      this.setBusyState(true);
-
-      const animate = time => {
-        if (animationId !== this.animation.lastAnimationId) {
-          console.log(1);
-          // looks like a new animation triggered while this was in progress... ignore this one.
-          return;
-        }
-        if (animationDuration === 0) {
-          console.log(2);
-          // nothing to animate, just finish it already
-          onAnimationEnd();
-          return;
-        }
-
-        let timePassed = 0;
-        if (animationStartTime === null) {
-          animationStartTime = time;
-        } else {
-          timePassed = Math.min(time - animationStartTime, animationDuration);
-        }
-        console.log("anim:" + timePassed);
-
-        this.$nextTick(() => {
-          const targetOpacity = opacityAnimationFn(timePassed);
-          const targetTransform = transformAnimationFn(timePassed);
-
-          this.state.transform = targetTransform;
-          this.state.backdropOpacity = targetOpacity;
+      const Anim = window.TweenMax;
+      if (Anim) {
+        Anim.to(this.$data, animationDuration, {
+          ...transformAnimationData,
+          ...opacityAnimationData,
+          ...animationHandlers,
+          ease: Power4.easeOut
         });
-
-        if (timePassed < animationDuration) {
-          window.requestAnimationFrame(animate);
-        } else {
-          console.log(3);
-          onAnimationEnd();
-        }
-      };
-      window.requestAnimationFrame(animate);
-    },
-    documentClick(e) {
-      let target = null;
-      if (e && e.target) {
-        target = e.target;
-      }
-      if (
-        target.className !== "bm-menu" &&
-        target.className !== "bm-toggle" &&
-        this.isSideBarOpen &&
-        !this.disableOutsideClick
-      ) {
-        this.closeMenu();
       }
     },
     getOpacityStyle(opacity) {
@@ -410,6 +347,7 @@ export default {
     getTransformXStyle(px) {
       const { width } = this.$props;
       return {
+        width: `${width}px`,
         transform: `translate3d(${px - width}px, 0, 0)`
       };
     }
@@ -424,15 +362,13 @@ export default {
     }
   },
   created() {
-    this.state.transform = -1 * this.$props.extraClosePixels;
+    this.transform = -1 * this.extraClosePixels;
     // document.addEventListener("touchstart", this.touchstart, {
     //   passive: false
     // });
-    // document.addEventListener("click", this.documentClick);
   },
   destroyed() {
     document.removeEventListener("keyup", this.closeMenuOnEsc);
-    // document.removeEventListener("click", this.documentClick);
     document.removeEventListener("touchstart", this.touchstart);
   },
   watch: {
@@ -491,7 +427,6 @@ export default {
 
   .bm-menu {
     height: 100%; /* 100% Full-height */
-    width: 300px;
     position: fixed; /* Stay in place */
     z-index: 1000; /* Stay on top */
     top: 0;

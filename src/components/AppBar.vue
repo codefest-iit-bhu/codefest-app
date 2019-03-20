@@ -28,15 +28,15 @@
         </mq-layout>
         <mq-layout :mq="['xs', 'sm', 'md']">
           <ul :class="$style.lNav">
-            <li>
-              <a href="#" :id="$style.toggleSidebar" class="bm-toggle" @click="openSidebar">
+            <li :id="$style.toggleSidebar">
+              <a href="#" class="bm-toggle" @click="openSidebar">
                 <i class="fa fa-bars"></i>
               </a>
             </li>
           </ul>
         </mq-layout>
       </div>
-      <div :class="$style.notch">
+      <div :class="[$style.notch, $style[$mq]]">
         <div :class="$style.logo">
           <router-link to="/">
             <img src="assets/logo.png">
@@ -47,7 +47,7 @@
     <mq-layout :mq="['xs', 'sm', 'md']">
       <!-- Show sidebar only for smaller devices. -->
       <div :class="$style.sidebar" ref="sidebar">
-        <Slide :isOpen="isSidebarOpen" @closeSideBar="onCloseSideBar">
+        <Slide :isOpen="isSidebarOpen" @closeSideBar="onCloseSideBar" :width="sideBarWidth">
           <li :class="$style.link">
             <router-link to="/events">Events</router-link>
           </li>
@@ -74,6 +74,12 @@ export default {
     return {
       isSidebarOpen: false
     };
+  },
+  computed: {
+    sideBarWidth() {
+      if (this.$mq === "xs" || this.$mq === "sm") return window.innerWidth;
+      else return 300;
+    }
   },
   props: {
     doAnimate: {
@@ -134,7 +140,7 @@ $appbar-height = 50px;
 $notch-height = 100px;
 $notch-width = 320px;
 $appbar-color = $black;
-$notch-color = #222222;
+$notch-color = $mine-shaft;
 $appbar-glow-color = $chartreuse;
 $sidebar-width = 250px;
 
@@ -199,9 +205,12 @@ $sidebar-width = 250px;
     }
 
     #toggleSidebar {
-      margin-left: 5px;
-      text-decoration: none;
-      color: $white;
+      margin: 5px 10px;
+
+      a {
+        text-decoration: none;
+        color: $white;
+      }
     }
   }
 
@@ -225,6 +234,16 @@ $sidebar-width = 250px;
       background: $notch-color;
       height: 100%;
       width: $notch-width - 2 * @left;
+    }
+
+    &.sm, &.xs {
+      height: 80%;
+      width: 0.75 * $notch-width;
+
+      .logo {
+        left: 2px;
+        width: 0.75 * $notch-width - 2 * @left;
+      }
     }
 
     img {
