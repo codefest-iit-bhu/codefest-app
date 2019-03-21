@@ -3,7 +3,7 @@
     <AppBar/>
     <main :class="$style.wrapper">
       <SpecialEvent/>
-      <StandardEvent v-for="(event, i) in events" :key="i" :event="event" :id="i"/>
+      <StandardEvent v-for="(event, i) in events" :key="i" :event="event" :id="i" :keepOpen="$mq === 'xs' || $mq === 'sm'"/>
     </main>
     <Footer/>
   </div>
@@ -25,10 +25,10 @@ export default {
     return {
       events: [
         {
-          title: "Appathon",
+          title: "Manthan",
           summary:
-            "A challenge to blend your creativity and programming skills to develop a robust mobile app.",
-          image: "../assets/events/appathon.png"
+            "Compete with the best competitive programmers of the world in the world of data structures and algorithms.",
+          image: "../assets/events/manthan.png"
         },
         {
           title: "Capture The Flag",
@@ -37,28 +37,10 @@ export default {
           image: "../assets/events/ctf.png"
         },
         {
-          title: "Decipher",
-          summary:
-            "Cryptographic challenges for those having a knack for solving puzzles and cracking codes.",
-          image: "../assets/events/decipher.png"
-        },
-        {
           title: "Enigma",
           summary:
             "Solve real-life problems by letting your machine learn patterns in the data for you.",
           image: "../assets/events/enigma.png"
-        },
-        {
-          title: "Vista",
-          summary:
-            "Make machines understand how we perceive and hone your skills in Computer Vision.",
-          image: "../assets/events/vista.png"
-        },
-        {
-          title: "Manthan",
-          summary:
-            "Compete with the best competitive programmers of the world in the world of data structures and algorithms.",
-          image: "../assets/events/manthan.png"
         },
         {
           title: "Mathmania",
@@ -67,27 +49,42 @@ export default {
           image: "../assets/events/mathamania.png"
         },
         {
-          title: "Linguipedia",
+          title: "Decipher",
           summary:
-            "Solve challenging problems in the field of Natural Language Processing.",
-          image: "../assets/events/linguipedia.png"
+            "Cryptographic challenges for those having a knack for solving puzzles and cracking codes.",
+          image: "../assets/events/decipher.png"
+        },
+        {
+          title: "Vista",
+          summary:
+            "Make machines understand how we perceive and hone your skills in Computer Vision.",
+          image: "../assets/events/vista.png"
         },
         {
           title: "Perplexed",
           summary:
             "Adapt to challenging situations by trying your hands at constrained programming.",
           image: "../assets/events/perplexed.png"
+        },
+        {
+          title: "Linguipedia",
+          summary:
+            "Solve challenging problems in the field of Natural Language Processing.",
+          image: "../assets/events/linguipedia.png"
         }
       ]
     };
   }
 };
 </script>
+
 <style module lang="stylus">
+@import '~@styles/mixins';
+
 .wrapper {
   width: 80%;
   margin: 0 auto;
-  padding: 100px 20px 50px 20px;
+  padding: 100px 0 50px;
   position: relative;
   z-index: 1;
   font-family: 'Roboto Mono';

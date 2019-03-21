@@ -1,23 +1,18 @@
 <template>
-  <div :class="[$style.lookback, 'sectionContainer']">
-    <h1 class="sectionTitle" :class="$mq">Lookback</h1>
-    <hr class="sectionLine">
-
-    <div :class="$style.container">
-      <GridLayout
-        :columns="$mq | mq({xs: 1, sm: 2, md: 3, lg: 5, xl: 5})"
-        itemWidth="200px"
-        itemHeight="200px"
-      >
-        <div :class="$style.stat" v-for="(stat, i) in this.stats" :key="i" :slot="`item${i}`">
-          <div :class="$style.clip">
-            <img :src="stat.image" :class="$style.img">
-          </div>
-          <div :class="$style.name">{{ stat.name }}</div>
-          <div :class="$style.value">{{ stat.value }}</div>
+  <div :class="$style.lookback">
+    <GridLayout
+      :columns="$mq | mq({xs: 1, sm: 2, md: 3, lg: 5, xl: 5})"
+      itemWidth="200px"
+      itemHeight="200px"
+    >
+      <div :class="$style.stat" v-for="(stat, i) in this.stats" :key="i" :slot="`item${i}`">
+        <div :class="$style.clip">
+          <img :src="stat.image" :class="$style.img">
         </div>
-      </GridLayout>
-    </div>
+        <div :class="$style.name">{{ stat.name }}</div>
+        <div :class="$style.value">{{ stat.value }}</div>
+      </div>
+    </GridLayout>
   </div>
 </template>
 <script>
@@ -62,13 +57,9 @@ export default {
 </script>
 
 <style module lang="stylus">
-@import '../styles/theme.styl';
-@import '../styles/colors.styl';
+@require '~@styles/theme';
 
 .lookback {
-  .container {
-  }
-
   .stat {
     width: 200px;
     height: 200px;

@@ -51,9 +51,8 @@ export default {
 </script>
 
 <style module lang="stylus">
-@import '~@styles/theme.styl';
-@import '~@styles/anims.styl';
-@import '~@styles/colors.styl';
+@import '~@styles/theme';
+@import '~@styles/anims';
 
 $tab-width = 150px;
 $tab-height = 30px;

@@ -103,9 +103,9 @@ export default {
 </script>
 
 <style module lang="stylus">
-@import '../styles/colors.styl';
-@import '../styles/mixins.styl';
-@import '../styles/anims.styl';
+@require '~@styles/theme';
+@require '~@styles/mixins';
+@require '~@styles/anims';
 
 $breadcrumb-hovered = $deep-fir;
 $breadcrumb-unselected = $limeade;

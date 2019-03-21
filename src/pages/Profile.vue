@@ -112,9 +112,8 @@ export default {
 };
 </script>
 <style module lang="stylus">
-@import '../styles/theme.styl';
-@import '../styles/anims.styl';
-@import '../styles/colors.styl';
+@require '~@styles/theme';
+@require '~@styles/anims';
 
 .formContainer {
   background: #111;

@@ -21,8 +21,8 @@ export default {
 </script>
 
 <style module lang="stylus">
-@import '../styles/colors';
-@import '../styles/anims';
+@require '~@styles/theme';
+@require '~@styles/anims';
 
 .wrapper {
   width: 80%;

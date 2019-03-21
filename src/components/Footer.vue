@@ -31,10 +31,11 @@ export default {};
 </script>
 
 <style module lang="stylus">
-@import '../styles/colors.styl';
+@require '~@styles/theme';
+@require '~@styles/mixins';
 
 .footer {
-  font-size: 60%;
+  font-size: 10px;
   font-weight: 800;
   background: $outer-space;
   letter-spacing: 0.5px;
@@ -47,6 +48,8 @@ export default {};
   display: flex;
   height: 52px;
   margin-top: 20px;
+  width: 100%;
+  bottom: 0;
 
   span {
     a {

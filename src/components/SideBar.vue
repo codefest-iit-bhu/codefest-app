@@ -402,7 +402,7 @@ export default {
 </script>
 
 <style lang="stylus">
-@import '../styles/colors.styl';
+@require '~@styles/theme';
 
 :global {
   .cross-style {

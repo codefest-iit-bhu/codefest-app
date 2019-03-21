@@ -33,43 +33,40 @@ export default {
       else return "0px";
     }
   },
-  watch: {
-    $route(to, from) {
+  methods: {
+    showTerminal() {
       const { terminal } = this.$refs;
       if (!terminal) return;
+      if (document.body.clientHeight > window.innerHeight)
+        terminal.animateScrollShow();
+      else terminal.noAnimateScrollShow();
+    }
+  },
+  watch: {
+    $route(to, from) {
       this.current = to.name;
       this.$nextTick(() => {
-        if (document.body.clientHeight > window.innerHeight)
-          terminal.animateScrollShow();
-        else terminal.noAnimateScrollShow();
+        this.showTerminal();
       });
     },
     $mq(to, from) {
       console.log(`$mq = ${to} <- ${from};`);
+      this.$nextTick(() => {
+        this.showTerminal();
+      });
     }
   }
 };
 </script>
 
 <style module lang="stylus">
-@import '../styles/colors.styl';
-
-:root {
-  --base-font: 12px;
-}
-
-@media (max-width: 767px) {
-  :root {
-    --base-font: 8px;
-  }
-}
+@require '~@styles/theme';
 
 body {
   background: $black;
 }
 
 .app {
-  font-size: var(--base-font);
   height: 100%;
   width: 100%;
 }

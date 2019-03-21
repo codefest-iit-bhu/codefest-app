@@ -38,21 +38,20 @@ export default {
 };
 </script>
 
-<style module lang="styl">
-@import '../styles/theme.styl';
-@import '../styles/mixins.styl';
-@import '../styles/colors.styl';
+<style module lang="stylus">
+@require '~@styles/theme';
+@require '~@styles/mixins';
 
 $cell-size = 200px;
- 
-.sponsors
+
+.sponsors {
   .cell {
     width: $cell-size;
     height: $cell-size;
 
     .clip {
       background-color: white;
-      transform:rotate(45deg);
+      transform: rotate(45deg);
       width: 70%;
       height: 70%;
       border-radius: 25px;
@@ -62,7 +61,7 @@ $cell-size = 200px;
       width: 100%;
       height: 100%;
       margin: auto;
-      transform:rotate(-45deg);
+      transform: rotate(-45deg);
     }
   }
 
@@ -74,4 +73,5 @@ $cell-size = 200px;
     grid-row-gap: 30px;
     justify-content: space-evenly;
   }
+}
 </style>

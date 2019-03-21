@@ -28,9 +28,8 @@ export default {
 </script>
 
 <style lang="stylus" module>
-@import '../styles/theme.styl';
-@import '../styles/anims.styl';
-@import '../styles/colors.styl';
+@require '~@styles/theme';
+@require '~@styles/anims';
 
 $cell-collapsed-size = 150px;
 

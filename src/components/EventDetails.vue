@@ -16,7 +16,9 @@
 
     <div :class="$style.ps">
       <h4 :class="$style.title">Problem Statement</h4>
-      <p :class="$style.link"><a href="#">{{event.link}}</a></p>
+      <p :class="$style.link">
+        <a href="#">{{event.link}}</a>
+      </p>
     </div>
 
     <div :class="$style.contacts">
@@ -33,7 +35,6 @@
       <h4 :class="$style.title">FAQ</h4>
       <p :class="$style.text">{{event.faq}}</p>
     </div>
-
   </div>
 </template>
 
@@ -43,7 +44,8 @@ export default {
     return {
       event: {
         title: "Appathon",
-        summary: "A challenge to blend your creativity and programming skills to develop a robust mobile app.",
+        summary:
+          "A challenge to blend your creativity and programming skills to develop a robust mobile app.",
         rules: "Coming Soon",
         link: "codefest.tech/appathon",
         coordinators: [
@@ -56,21 +58,18 @@ export default {
             email: "gauthamph.motherboard.cse17@itbhu.ac.in"
           }
         ],
-        faq: "Coming Soon",
-      },
+        faq: "Coming Soon"
+      }
     };
   }
 };
 </script>
 
 <style lang="stylus" module>
-@import '../styles/theme.styl';
-@import '../styles/anims.styl';
-@import '../styles/colors.styl';
-
+@require '~@styles/theme';
+@require '~@styles/anims';
 
 .event {
-
   .whiteTitle {
     color: $white;
     font-family: 'Aldo the Apache';
@@ -78,13 +77,14 @@ export default {
     font-size: 40px;
     text-align: center;
   }
-  
+
   .summary {
     .title {
       font-family: 'Aldo the Apache';
       font-size: 30px;
       margin-top: 20px;
     }
+
     .text {
       font-size: 20px;
       margin-top: 10px;
@@ -98,6 +98,7 @@ export default {
       font-size: 30px;
       margin-top: 20px;
     }
+
     .text {
       font-size: 20px;
       margin-top: 10px;
@@ -111,11 +112,14 @@ export default {
       font-size: 30px;
       margin-top: 20px;
     }
+
     .link {
       text-align: center;
+
       a {
         color: $chartreuse;
-      }    
+      }
+
       font-size: 20px;
       margin-top: 10px;
       margin-bottom: 10px;
@@ -128,6 +132,7 @@ export default {
       font-size: 30px;
       margin-top: 20px;
     }
+
     .container {
       display: grid;
       grid-template-columns: 50% 50%;
@@ -136,8 +141,9 @@ export default {
       grid-row-gap: 50px;
       justify-content: space-evenly;
     }
-    .stat{
-      .name,.email{
+
+    .stat {
+      .name, .email {
         font-family: 'ubuntu';
         font-weight: bold;
         margin-top: 20px;
@@ -147,7 +153,7 @@ export default {
         font-size: 20px;
       }
     }
-  }  
+  }
 
   .faq {
     .title {
@@ -155,6 +161,7 @@ export default {
       font-size: 30px;
       margin-top: 20px;
     }
+
     .text {
       font-size: 20px;
       margin-top: 10px;

@@ -2,7 +2,9 @@
   <header ref="header" :class="$style.hero">
     <div :class="$style.title">
       <h1 id="heroTitle">
-        code<span>Fest</span><sup>19</sup>
+        code
+        <span>Fest</span>
+        <sup>19</sup>
       </h1>
     </div>
     <canvas ref="rains" :class="$style.rains"></canvas>
@@ -10,12 +12,8 @@
 </template>
 
 <script>
-import Nav from "@components/Nav";
-
 export default {
-  components: {
-    Nav
-  },
+  components: {},
   mounted() {
     const c = this.$refs.rains;
     var ctx = c.getContext("2d");
@@ -48,8 +46,8 @@ export default {
 </script>
 
 <style module lang="stylus">
-@import '../styles/colors.styl';
-@import '../styles/anims.styl';
+@require '~@styles/theme';
+@require '~@styles/anims';
 
 .hero {
   position: relative;

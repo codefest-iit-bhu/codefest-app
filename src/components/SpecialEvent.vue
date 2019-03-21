@@ -1,45 +1,38 @@
 <template>
-  <header :class="$style.hero">
+  <div :class="$style.hero">
     <div>
       <div :class="$style.logoContainer">
         <img :class="$style.logo" src="@assets/events/hackathon-special.png">
       </div>
-      <br>
-      <div :class="$style.title">
+      <div :class="[$style.title, $style[$mq]]">
         <h1>Onsite Hackathon</h1>
-        <br>
-        <div>
-          <p>
-            Join the Codefest '19 team to bring out the absolute best ideas and implementations from some of the best developers in the country,
-            while they join us for a 24 hours long hackathon under a single roof.
-          </p>
-        </div>
+        <p>
+          Join the Codefest '19 team to bring out the absolute best ideas and implementations from some of the best developers in the country,
+          while they join us for a 24 hours long hackathon under a single roof.
+        </p>
       </div>
     </div>
-  </header>
+  </div>
 </template>
 
 <script>
-import Nav from "@components/Nav";
-
 export default {
-  components: {
-    Nav
-  },
+  components: {},
   mounted() {}
 };
 </script>
 
 <style module lang="stylus">
-@import '../styles/colors.styl';
-@import '../styles/anims.styl';
+@require '~@styles/theme';
+@require '~@styles/anims';
+@require '~@styles/mixins';
 
 .hero {
   position: relative;
   background-color: $black;
   min-height: 300px;
   height: 100vh;
-  max-width: 100%;
+  width: 100%;
   overflow: hidden;
   padding: 10vh 16px;
   text-align: center;
@@ -59,15 +52,16 @@ export default {
 }
 
 .title {
-  height: 30%;
   width: 100%;
-  margin: auto;
+  margin: 30px auto 0;
   text-align: center;
 
   h1 {
-    font-size: 50px;
     font-family: 'Aldo the Apache';
-    font-weight: 300;
+  }
+
+  &.xs, &.sm {
+    font-size: 14px;
   }
 }
 </style>

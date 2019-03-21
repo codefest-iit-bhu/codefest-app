@@ -1,3 +1,5 @@
+@require "~@styles/theme";
+
 stick(position = 'top') {
   position: fixed;
   {position}: 0;
@@ -10,4 +12,8 @@ moveAnimation(side = 'bottom', startDistance = 0, targetDistance = 0) {
   &.shown {
     {side}: targetDistance
   }
+}
+
+font-size(value) {
+  font-size: unit((value / $base-font), 'rem')
 }

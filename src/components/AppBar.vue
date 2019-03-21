@@ -132,9 +132,9 @@ export default {
 };
 </script>
 <style module lang="stylus">
-@import '../styles/mixins.styl';
-@import '../styles/colors.styl';
-@import '../styles/anims.styl';
+@require '~@styles/mixins';
+@require '~@styles/theme';
+@require '~@styles/anims';
 
 $appbar-height = 50px;
 $notch-height = 100px;
@@ -174,8 +174,11 @@ $sidebar-width = 250px;
       margin: 5px 20px 0 0;
     }
 
-    .link {
+    li {
       display: inline-block;
+    }
+
+    .link {
       padding-top: 10px;
 
       a {

@@ -1,34 +1,52 @@
 <template>
-  <div :class="[$style.event, eventCellClass]">
-    <div :class="$style.whiteTitle">
-      <h3>{{ event.title }}</h3>
-    </div>
-    <div
-      :class="$style.cell"
-      @mouseenter="glitch(true, $event)"
-      @mouseleave="glitch(false, $event)"
-    >
-      <canvas :class="$style.normalCanvas" ref="initialCanvas"/>
-      <canvas :class="$style.glitchedCanvas" ref="finalCanvas"/>
-      <div :class="$style.txt">
+  <div :class="[$style.event, $style[$mq], eventActiveClass]">
+    <div :class="eventCellClass">
+      <div :class="$style.whiteTitle">
         <h3>{{ event.title }}</h3>
-        <br>
-        <p :class="$style.summary">
-          <span ref="eventSummary"></span>
-          <span :class="$style.blink">|</span>
-        </p>
+      </div>
+      <div :class="$style.cell" @mouseenter="shouldOpen = true" @mouseleave="shouldOpen = false">
+        <canvas :class="$style.normalCanvas" ref="initialCanvas"/>
+        <canvas :class="$style.glitchedCanvas" ref="finalCanvas"/>
+        <div :class="$style.txt">
+          <p :class="$style.summary">
+            <span ref="eventSummary"></span>
+            <span :class="$style.blink">|</span>
+          </p>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { TypingAnim, getRandom } from "../js/utils";
+// TODO: Use GSAP to animate everything, instead of CSS + JS hybrid.
+import { TypingAnim, getRandom } from "@js/utils";
 
 export default {
-  props: ["event", "id"],
+  data() {
+    return {
+      shouldOpen: false,
+      isOpen: false
+    };
+  },
+  props: {
+    event: {
+      required: true,
+      type: Object
+    },
+    id: {
+      required: true,
+      type: Number
+    },
+    keepOpen: {
+      required: false,
+      type: Boolean,
+      default: false
+    }
+  },
   methods: {
     animateGlitchOpacity(canvas, duration, isAppearIn) {
+      var that = this;
       var image = this.image;
       var verticalSlices = Math.round(image.height / 20);
       var maxHorizOffset = 30;
@@ -65,11 +83,15 @@ export default {
         else {
           context.clearRect(0, 0, canvas.width, canvas.height);
           context.drawImage(image, 0, 0);
+          that.isOpen = isAppearIn;
         }
       };
       return step();
     },
     glitch(isAppearIn, event) {
+      if (!this.image) {
+        return;
+      }
       this.animateGlitchOpacity(this.$refs.initialCanvas, 800, !isAppearIn);
       this.animateGlitchOpacity(this.$refs.finalCanvas, 800, isAppearIn);
 
@@ -85,117 +107,126 @@ export default {
       context.drawImage(image, 0, 0);
     }
 
+    this.animTyping = new TypingAnim(
+      this.$refs.eventSummary,
+      this.event.summary
+    );
+
     var img = new Image();
     img.src = this.event.image;
     img.onload = () => {
       this.image = img;
       drawInCanvas(this.$refs.initialCanvas, img);
       drawInCanvas(this.$refs.finalCanvas, img);
+      if (this.keepOpen) {
+        this.$nextTick(() => (this.shouldOpen = true));
+      }
     };
-
-    this.animTyping = new TypingAnim(
-      this.$refs.eventSummary,
-      this.event.summary
-    );
   },
   computed: {
     eventCellClass() {
       return this.id % 2 == 0 ? this.$style.even : this.$style.odd;
+    },
+    eventActiveClass() {
+      return this.isOpen || this.shouldOpen ? this.$style.visible : "";
+    }
+  },
+  watch: {
+    shouldOpen: function(shouldOpen, oldVal) {
+      if (oldVal == shouldOpen) return;
+      this.glitch(shouldOpen);
     }
   }
 };
 </script>
 
 <style lang="stylus" module>
-@import '../styles/theme.styl';
-@import '../styles/anims.styl';
-@import '../styles/colors.styl';
+@require '~@styles/theme';
+@require '~@styles/anims';
+@require '~@styles/mixins';
 
 $cell-collapsed-size = 150px;
 
 .event {
+  --event-size: $cell-collapsed-size;
   clear: both;
   z-index: 0;
-  height: $cell-collapsed-size;
+  height: var(--event-size);
   position: relative;
+  margin: 0 20px 50px;
 }
 
 .whiteTitle {
   color: $white;
   font-family: 'Aldo the Apache';
-  margin-top: 0;
-  font-size: 30px;
-  position: absolute;
-  top: ($cell-collapsed-size / 2);
+
+  h3 {
+    font-size: 32px;
+  }
 }
 
 .cell {
   clear: both;
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
-  width: $cell-collapsed-size;
+  width: var(--event-size);
   height: 100%;
-  margin-bottom: 50px;
   background: $chartreuse;
   cursor: pointer;
-  border-radius: ($cell-collapsed-size / 2);
+  border-radius: calc((var(--event-size) / 2));
   transition: width 2.5s ease-out;
-  position: absolute;
 
   &:hover {
-    width: 70%;
     transition-duration: 0.5s;
-
-    .txt {
-      display: block;
-    }
-
-    .txt h3 {
-      opacity: 0;
-    }
   }
 }
 
-&.odd {
-  .cell {
-    left: 0;
+.odd {
+  height: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: center;
 
-    .normalCanvas {
-      float: left;
-    }
+  .normalCanvas {
+    float: left;
+  }
 
-    .glitchedCanvas {
-      float: right;
-    }
+  .glitchedCanvas {
+    float: right;
+  }
 
-    .txt {
-      text-align: left;
-    }
+  .txt {
+    text-align: left;
   }
 
   .whiteTitle {
-    left: 200px;
+    order: 2;
+    margin-left: 15px;
   }
 }
 
-&.even {
-  .cell {
-    right: 0;
+.even {
+  height: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-end;
+  align-items: center;
 
-    .normalCanvas {
-      float: right;
-    }
+  .normalCanvas {
+    float: right;
+  }
 
-    .glitchedCanvas {
-      float: left;
-    }
+  .glitchedCanvas {
+    float: left;
+  }
 
-    .txt {
-      text-align: right;
-    }
+  .txt {
+    text-align: right;
   }
 
   .whiteTitle {
-    right: 200px;
+    order: 0;
+    margin-right: 15px;
   }
 }
 
@@ -203,26 +234,24 @@ $cell-collapsed-size = 150px;
   color: $black;
   font-size: 16px;
   pointer-events: none;
-}
-
-.txt h3 {
-  font-family: 'Aldo the Apache';
-  font-size: 50px;
-  white-space: nowrap;
+  align-items: center;
+  height: 100%;
+  display: flex;
+  transition: opacity 400ms;
   opacity: 0;
-  transition: opacity 1s ease-out;
-}
 
-.summary {
-  font-family: 'Courier New';
-  padding: 2px 10px;
-  text-align: justify;
-  font-weight: 600;
+  .summary {
+    font-family: 'Courier New';
+    padding: 2px 10px;
+    text-align: justify;
+    font-weight: 600;
+    vertical-align: middle;
+  }
 }
 
 .normalCanvas, .glitchedCanvas {
-  width: $cell-collapsed-size;
-  height: $cell-collapsed-size;
+  width: var(--event-size);
+  height: var(--event-size);
   padding: 35px;
 }
 
@@ -233,5 +262,29 @@ $cell-collapsed-size = 150px;
 
 .blink {
   animation: blink 500ms infinite alternate;
+}
+
+.event {
+  &.xs, &.sm {
+    --event-size: 0.75 * $cell-collapsed-size;
+
+    .whiteTitle h3 {
+      font-size: 24px;
+    }
+
+    .txt {
+      font-size: 12px;
+    }
+  }
+
+  &.visible {
+    .txt {
+      opacity: 1;
+    }
+
+    .cell {
+      width: 70%;
+    }
+  }
 }
 </style>
