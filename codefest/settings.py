@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'website',
+    'Auth',
     'rest_framework',
     'rest_framework.authtoken',
 
@@ -122,7 +123,7 @@ REST_FRAMEWORK = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -136,3 +137,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles/')
+
+import firebase_admin
+from firebase_admin import credentials
+
+cred = credentials.Certificate(os.path.join(BASE_DIR,'codefest19-firebase-adminsdk-yzr10-ed3ec09af8.json'))
+default_app = firebase_admin.initialize_app(cred)
