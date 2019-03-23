@@ -14,9 +14,21 @@ class Event(models.Model):
     def __str__(self):
         return self.name
 
+class EventDetail(models.Model):
+    title=models.CharField(max_length=50)
+    event=models.ForeignKey(Event,on_delete=models.CASCADE)
+    content=models.TextField()
+    priority=models.IntegerField()
+
+    def __str__(self):
+        return self.title + " for " + self.event.name 
+
 class Institute(models.Model):
     name=models.CharField(max_length=200)
     is_active=models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name
 
 class Profile(models.Model):
 
@@ -49,38 +61,21 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.first_name+" - "+self.institute_name
 
-class Team(models.Model):
-    name=models.CharField(max_length=100)
-    event=models.ForeignKey(Event,on_delete=models.CASCADE)
-    all_members=models.ManyToManyField(Profile,related_name="team_members")
-    creator=models.ForeignKey(Profile,related_name="team_creator",on_delete=models.CASCADE)
-    is_active=models.BooleanField(default=False)
-    def __str__(self):
-        return self.creator.user.first_name+" - "+self.event.name+" - "+self.creator.institute_name
-
-class TeamInvitation(models.Model):
-    leader=models.ForeignKey(Profile,related_name='sent_invitations',on_delete=models.CASCADE)
-    team=models.ForeignKey(Team,on_delete=models.CASCADE)
-    to=models.ForeignKey(Profile,related_name='received_invitations',on_delete=models.CASCADE)
-    event=models.ForeignKey(Event,on_delete=models.CASCADE)
-    def __str__(self):
-        return self.team.name+" - "+self.to.user.first_name
-
-class EmailConfirmationKey(models.Model):
-    user=models.OneToOneField(Profile,on_delete=models.CASCADE)
-    key=models.CharField(max_length=200)
+# class Team(models.Model):
+#     name=models.CharField(max_length=100)
+#     event=models.ForeignKey(Event,on_delete=models.CASCADE)
+#     all_members=models.ManyToManyField(Profile,related_name="team_members")
+#     creator=models.ForeignKey(Profile,related_name="team_creator",on_delete=models.CASCADE)
+#     is_active=models.BooleanField(default=False)
     
-    def __str__(self):
-        return self.user.user.first_name+" from "+ self.user.college.name
+#     def __str__(self):
+#         return self.creator.user.first_name+" - "+self.event.name+" - "+self.creator.institute_name
 
-    def getConfirmationKey(self):
-        chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
-        secret_key = get_random_string(20, chars)
-        return hashlib.sha256((secret_key + str(self.user.referral_code)).encode('utf-8')).hexdigest()
+# class TeamInvitation(models.Model):
+#     leader=models.ForeignKey(Profile,related_name='sent_invitations',on_delete=models.CASCADE)
+#     team=models.ForeignKey(Team,on_delete=models.CASCADE)
+#     to=models.ForeignKey(Profile,related_name='received_invitations',on_delete=models.CASCADE)
+#     event=models.ForeignKey(Event,on_delete=models.CASCADE)
+#     def __str__(self):
+#         return self.team.name+" - "+self.to.user.first_name
 
-class PasswordResetKey(models.Model):
-    user=models.OneToOneField(Profile,on_delete=models.CASCADE)
-    key=models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.user.user.first_name+" from "+ self.user.college.name

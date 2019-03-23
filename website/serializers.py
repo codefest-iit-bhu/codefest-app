@@ -1,17 +1,20 @@
 from rest_framework import serializers
 from .models import *
-class TeamSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Team
-        fields=['name','event','all_members','creator','is_active']
-
-class InvitationSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model=TeamInvitation
-        fields=['leader','team','to','event']
 
 class InstituteSerializer(serializers.ModelSerializer):
     class Meta:
         model=Institute
+        fields=['name']
 
-class RegistrationSerialzer(serializers.)
+
+class EventDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=EventDetail
+        fields=['title','content','priority']   
+        ordering=['priority']    
+
+class EventSerializer(serializers.ModelSerializer):
+    details=EventDetailSerializer(source='eventdetail_set',read_only=True,many=True)
+    class Meta:
+        model = Event
+        fields=['name','is_registration_on','min_members','max_members','details']
