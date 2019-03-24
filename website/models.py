@@ -60,27 +60,30 @@ class Profile(models.Model):
     is_profile_complete=models.BooleanField(default=False)
 
     def __str__(self):
-        return self.user.first_name + " - "+self.institute_name
+        return self.user.first_name + " from "+self.institute_name
 
 
 class ValidReferral(models.Model):
     by=models.ForeignKey(Profile,on_delete=models.CASCADE,related_name="referred_people")
     to=models.OneToOneField(Profile,on_delete=models.CASCADE,related_name="referral")
-# class Team(models.Model):
-#     name=models.CharField(max_length=100)
-#     event=models.ForeignKey(Event,on_delete=models.CASCADE)
-#     all_members=models.ManyToManyField(Profile,related_name="team_members")
-#     creator=models.ForeignKey(Profile,related_name="team_creator",on_delete=models.CASCADE)
-#     is_active=models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.by+" referred "+self.to
+
+class Team(models.Model):
+    name=models.CharField(max_length=100)
+    event=models.ForeignKey(Event,on_delete=models.CASCADE)
+    members=models.ManyToManyField(Profile,through='Membership',related_name="team_members")
+    creator=models.ForeignKey(Profile,related_name="teams_created",on_delete=models.CASCADE)
+    is_active=models.BooleanField(default=False)
     
-#     def __str__(self):
-#         return self.creator.user.first_name+" - "+self.event.name+" - "+self.creator.institute_name
+    def __str__(self):
+        return self.name + " for event " + self.event
 
-# class TeamInvitation(models.Model):
-#     leader=models.ForeignKey(Profile,related_name='sent_invitations',on_delete=models.CASCADE)
-#     team=models.ForeignKey(Team,on_delete=models.CASCADE)
-#     to=models.ForeignKey(Profile,related_name='received_invitations',on_delete=models.CASCADE)
-#     event=models.ForeignKey(Event,on_delete=models.CASCADE)
-#     def __str__(self):
-#         return self.team.name+" - "+self.to.user.first_name
+class Membership(models.Model):
+    team=models.ForeignKey(Team,on_delete=models.CASCADE)
+    profile=models.ForeignKey(Profile,on_delete=models.CASCADE)
+    is_accepted=models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.profile+" from team "+ self.team

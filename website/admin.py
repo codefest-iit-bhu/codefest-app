@@ -4,6 +4,7 @@ from .models import *
 admin.site.register(Profile)
 admin.site.register(Institute)
 admin.site.register(EventDetail)
+admin.site.register(ValidReferral)
 
 class EventDetailInline(admin.TabularInline):
     model=EventDetail
@@ -13,3 +14,11 @@ class EventDetailInline(admin.TabularInline):
 class EventAdmin(admin.ModelAdmin):
     list_display=('name','is_registration_on')
     inlines=[EventDetailInline]
+
+class MembershipInline(admin.TabularInline):
+    model=Membership
+
+@admin.register(Team)
+class TeamAdmin(admin.ModelAdmin):
+    list_display=('name','event','is_active')
+    inlines=(MembershipInline,)
