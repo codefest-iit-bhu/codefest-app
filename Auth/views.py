@@ -27,6 +27,7 @@ class LoginView(generics.GenericAPIView):
         validated_data=self.serializer.validated_data
         self.user = validated_data['user']
         self.verification_status = validated_data['is_verified']
+        self.is_profile_complete = validated_data['is_profile_complete']
         self.token = create_auth_token(self.user)
 
     def get_response(self):
@@ -34,6 +35,7 @@ class LoginView(generics.GenericAPIView):
             'user_id': self.user.pk,
             'token': self.token,
             'verification_status':self.verification_status,
+            'is_profile_complete':self.is_profile_complete,
         }
         return Response(response_data, status=status.HTTP_200_OK)
 

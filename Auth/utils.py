@@ -47,3 +47,4 @@ class FirebaseAPI:
     def get_email_confirmation_status(cls,uid):
         return auth.get_user(uid).email_verified
         
+

@@ -48,7 +48,7 @@ class Profile(models.Model):
     referral_code=models.UUIDField(default=uuid.uuid4)
     institute_name=models.ForeignKey(Institute,on_delete=models.SET_NULL,null=True) # can be school,college. leave blank for professionals 
     # year , if school, implies class, undergrad&masters == yearofpassing, professional==experience
-    study_year=models.PositiveIntegerField()
+    study_year=models.PositiveIntegerField(blank=True,null=True)
     # degree to be null for school
     degree=models.CharField(max_length=30,blank=True,null=True)
     # to be used only by undergrad and postgrad students
@@ -57,10 +57,15 @@ class Profile(models.Model):
     phone=models.CharField(max_length=15,blank=True)
     gender=models.IntegerField(null=True,choices=GENDER_CHOICES)
     resume=models.FileField(upload_to='media/resumes',null=True,blank=True)
+    is_profile_complete=models.BooleanField(default=False)
 
     def __str__(self):
-        return self.user.first_name+" - "+self.institute_name
+        return self.user.first_name + " - "+self.institute_name
 
+
+class ValidReferral(models.Model):
+    by=models.ForeignKey(Profile,on_delete=models.CASCADE,related_name="referred_people")
+    to=models.OneToOneField(Profile,on_delete=models.CASCADE,related_name="referral")
 # class Team(models.Model):
 #     name=models.CharField(max_length=100)
 #     event=models.ForeignKey(Event,on_delete=models.CASCADE)
