@@ -1,6 +1,6 @@
 <template>
   <form :class="$style.form">
-    <div v-for="field in form.fields" :class="$style.fieldContainer">
+    <div v-for="(i, field) in form.fields" :key="i" :class="$style.fieldContainer">
       <label v-bind:for="field.name" :class="$style.label">{{field.label}}</label>
       <input
         v-bind:type="field.type"

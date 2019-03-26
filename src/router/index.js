@@ -1,13 +1,14 @@
 import Vue from "vue";
 import Router from "vue-router";
-import { isMobile } from "../js/utils";
+import {
+  isMobile
+} from "../js/utils";
 
 Vue.use(Router);
 
 const router = new Router({
   mode: "history",
-  routes: [
-    {
+  routes: [{
       name: "~",
       path: "/",
       component: () => import(`@pages/Home`),
@@ -25,6 +26,16 @@ const router = new Router({
         metaTags: []
       }
     },
+    {
+      name: "~/timeline",
+      path: "/timeline",
+      component: () => import(`@pages/Timeline`),
+      meta: {
+        title: "CodeFest '19 | Timeline",
+        metaTags: []
+      }
+    },
+
     {
       name: "~/login",
       path: "/login",
