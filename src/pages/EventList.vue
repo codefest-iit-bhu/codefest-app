@@ -3,7 +3,13 @@
     <AppBar/>
     <main :class="$style.wrapper">
       <SpecialEvent/>
-      <StandardEvent v-for="(event, i) in events" :key="i" :event="event" :id="i" :keepOpen="$mq === 'xs' || $mq === 'sm'"/>
+      <StandardEvent
+        v-for="(event, i) in events"
+        :key="i"
+        :event="event"
+        :id="i"
+        :keepOpen="$mq === 'xs' || $mq === 'sm'"
+      />
     </main>
     <Footer/>
   </div>
@@ -14,6 +20,7 @@ import AppBar from "@components/AppBar";
 import SpecialEvent from "@components/SpecialEvent";
 import StandardEvent from "@components/StandardEvent";
 import Footer from "@components/Footer";
+
 export default {
   components: {
     AppBar,
@@ -27,13 +34,13 @@ export default {
         {
           title: "Manthan",
           summary:
-            "Compete with the best competitive programmers of the world in the world of data structures and algorithms.",
+            "Compete with the best competitive programmers of the world in data structures and algorithms.",
           image: "../assets/events/manthan.png"
         },
         {
           title: "Capture The Flag",
           summary:
-            "A platform for the aspiring hackers to get acquainted with the real computer security practices.",
+            "A platform for the aspiring hackers to get acquainted with real computer security practices.",
           image: "../assets/events/ctf.png"
         },
         {

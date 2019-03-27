@@ -53,6 +53,11 @@ const router = new Router({
       }
     },
     {
+      name: "~/test",
+      path: "/dummy",
+      component: () => import("@pages/Test")
+    },
+    {
       name: "404",
       path: "/*",
       component: () => import(`@pages/404`),

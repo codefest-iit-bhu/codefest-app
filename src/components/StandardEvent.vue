@@ -4,9 +4,23 @@
       <div :class="$style.whiteTitle">
         <h3>{{ event.title }}</h3>
       </div>
-      <div :class="$style.cell" @mouseenter="shouldOpen = true" @mouseleave="shouldOpen = false">
-        <canvas :class="$style.normalCanvas" ref="initialCanvas"/>
-        <canvas :class="$style.glitchedCanvas" ref="finalCanvas"/>
+      <div
+        :class="$style.cell"
+        :style="eventWidthStyle"
+        @mouseenter="toggleOpen"
+        @mouseleave="toggleOpen"
+      >
+        <canvas
+          :class="$style.normalCanvas"
+          ref="initialCanvas"
+          :style="canvasOpacityStyle(true)"
+          v-if="!isMinimal"
+        />
+        <canvas
+          :class="$style.glitchedCanvas"
+          ref="finalCanvas"
+          :style="canvasOpacityStyle(false)"
+        />
         <div :class="$style.txt">
           <p :class="$style.summary">
             <span ref="eventSummary"></span>
@@ -19,14 +33,15 @@
 </template>
 
 <script>
-// TODO: Use GSAP to animate everything, instead of CSS + JS hybrid.
 import { TypingAnim, getRandom } from "@js/utils";
 
 export default {
   data() {
     return {
       shouldOpen: false,
-      isOpen: false
+      openProgress: 0,
+      maxWidth: 0,
+      minSize: 0
     };
   },
   props: {
@@ -46,6 +61,7 @@ export default {
   },
   methods: {
     animateGlitchOpacity(canvas, duration, isAppearIn) {
+      if (!canvas) return;
       var that = this;
       var image = this.image;
       var verticalSlices = Math.round(image.height / 20);
@@ -83,24 +99,41 @@ export default {
         else {
           context.clearRect(0, 0, canvas.width, canvas.height);
           context.drawImage(image, 0, 0);
-          that.isOpen = isAppearIn;
         }
       };
       return step();
     },
-    glitch(isAppearIn, event) {
+    glitch(isAppearIn) {
       if (!this.image) {
         return;
       }
-      this.animateGlitchOpacity(this.$refs.initialCanvas, 800, !isAppearIn);
-      this.animateGlitchOpacity(this.$refs.finalCanvas, 800, isAppearIn);
+      const { initialCanvas, finalCanvas } = this.$refs;
+      this.animateGlitchOpacity(initialCanvas, 800, !isAppearIn);
+      this.animateGlitchOpacity(finalCanvas, 800, isAppearIn);
+    },
+    canvasOpacityStyle(isNormalCanvas) {
+      return {
+        opacity: isNormalCanvas ? 1 - this.openProgress : this.openProgress
+      };
+    },
+    toggleEvent(shouldOpen) {
+      TweenLite.to(this.$data, 0.8, { openProgress: shouldOpen ? 1 : 0 });
+      this.glitch(shouldOpen);
 
-      if (isAppearIn) this.animTyping.type();
+      if (shouldOpen) this.animTyping.type();
       else this.animTyping.erase();
+    },
+    toggleOpen() {
+      if (!this.isMinimal) this.shouldOpen = !this.shouldOpen;
+    },
+    resetState() {
+      this.maxWidth = (this.isMinimal ? 1.0 : 0.7) * window.innerWidth;
+      this.minSize = this.isMinimal ? 0.75 * 150 : 150;
     }
   },
   mounted() {
     function drawInCanvas(canvas, image) {
+      if (!canvas) return;
       var context = canvas.getContext("2d");
       canvas.setAttribute("width", image.width);
       canvas.setAttribute("height", image.height);
@@ -116,12 +149,16 @@ export default {
     img.src = this.event.image;
     img.onload = () => {
       this.image = img;
-      drawInCanvas(this.$refs.initialCanvas, img);
-      drawInCanvas(this.$refs.finalCanvas, img);
+      const { initialCanvas, finalCanvas } = this.$refs;
+      drawInCanvas(initialCanvas, img);
+      drawInCanvas(finalCanvas, img);
       if (this.keepOpen) {
         this.$nextTick(() => (this.shouldOpen = true));
       }
     };
+  },
+  beforeMount() {
+    this.resetState();
   },
   computed: {
     eventCellClass() {
@@ -129,12 +166,32 @@ export default {
     },
     eventActiveClass() {
       return this.isOpen || this.shouldOpen ? this.$style.visible : "";
+    },
+    eventWidthStyle() {
+      const width = Math.max(this.minSize, this.openProgress * this.maxWidth);
+      return {
+        width: `${width}px`
+      };
+    },
+    eventTitleStyle() {
+      const marginLeft = this.isMinimal ? undefined : "15px";
+      const marginTop = this.isMinimal ? "15px" : undefined;
+      return { marginLeft, marginTop };
+    },
+    isOpen() {
+      return this.openProgress === 1;
+    },
+    isMinimal() {
+      return this.$mq === "xs" || this.$mq === "sm";
     }
   },
   watch: {
     shouldOpen: function(shouldOpen, oldVal) {
       if (oldVal == shouldOpen) return;
-      this.glitch(shouldOpen);
+      this.toggleEvent(shouldOpen);
+    },
+    $mq: function() {
+      this.resetState();
     }
   }
 };
@@ -149,11 +206,9 @@ $cell-collapsed-size = 150px;
 
 .event {
   --event-size: $cell-collapsed-size;
-  clear: both;
-  z-index: 0;
   height: var(--event-size);
   position: relative;
-  margin: 0 20px 50px;
+  margin: 0 20px 25px;
 }
 
 .whiteTitle {
@@ -166,24 +221,17 @@ $cell-collapsed-size = 150px;
 }
 
 .cell {
-  clear: both;
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
   width: var(--event-size);
   height: 100%;
   background: $chartreuse;
   cursor: pointer;
   border-radius: calc((var(--event-size) / 2));
-  transition: width 2.5s ease-out;
-
-  &:hover {
-    transition-duration: 0.5s;
-  }
 }
 
 .odd {
   height: 100%;
   display: flex;
-  flex-flow: row;
   justify-content: flex-start;
   align-items: center;
 
@@ -197,6 +245,7 @@ $cell-collapsed-size = 150px;
 
   .txt {
     text-align: left;
+    left: 10px;
   }
 
   .whiteTitle {
@@ -208,7 +257,6 @@ $cell-collapsed-size = 150px;
 .even {
   height: 100%;
   display: flex;
-  flex-flow: row;
   justify-content: flex-end;
   align-items: center;
 
@@ -222,6 +270,7 @@ $cell-collapsed-size = 150px;
 
   .txt {
     text-align: right;
+    left: -15px;
   }
 
   .whiteTitle {
@@ -239,6 +288,8 @@ $cell-collapsed-size = 150px;
   display: flex;
   transition: opacity 400ms;
   opacity: 0;
+  overflow: visible;
+  position: relative;
 
   .summary {
     font-family: 'Courier New';
@@ -250,9 +301,9 @@ $cell-collapsed-size = 150px;
 }
 
 .normalCanvas, .glitchedCanvas {
-  width: var(--event-size);
-  height: var(--event-size);
-  padding: 35px;
+  width: calc((var(--event-size) / 1));
+  height: calc((var(--event-size) / 1));
+  padding: 30px;
 }
 
 .glitchedCanvas {
@@ -267,13 +318,30 @@ $cell-collapsed-size = 150px;
 .event {
   &.xs, &.sm {
     --event-size: 0.75 * $cell-collapsed-size;
+    margin: 0 20px 60px;
 
-    .whiteTitle h3 {
-      font-size: 24px;
+    .whiteTitle {
+      margin: 15px 0 0 0;
+
+      h3 {
+        font-size: 24px;
+      }
     }
 
     .txt {
       font-size: 12px;
+    }
+
+    .odd {
+      justify-content: flex-end;
+
+      .whiteTitle {
+        order: -1;
+      }
+    }
+
+    .even, .odd {
+      flex-flow: column;
     }
   }
 
