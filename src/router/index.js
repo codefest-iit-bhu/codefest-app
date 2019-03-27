@@ -58,6 +58,15 @@ const router = new Router({
       component: () => import("@pages/Test")
     },
     {
+      name: "~/hacksplore",
+      path: "/hacksplore",
+      component: () => import(`@pages/Hacksplore`),
+      meta: {
+        title: "Hacksplore",
+        metaTags: []
+      }
+    },
+    {
       name: "404",
       path: "/*",
       component: () => import(`@pages/404`),
