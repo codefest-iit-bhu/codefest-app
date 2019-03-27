@@ -13,12 +13,18 @@
             <span>
               <i class="fa fa-calendar-alt" aria-hidden="true"></i>
               {{event.date}}
+              <span class="$style.time">{{event.time}}</span>
             </span>
           </div>
           <div :class="$style.event">
-            <span style="display:inline">{{event.title}}</span>
-            <span style="display:inline">
+            <span>
               <img :src="event.image">
+            </span>
+            <span>
+              <h4>{{event.title}}</h4>
+              <div
+                :class="$style.summary"
+              >Lorem Ipusm Dolor is quite old now. Lets use Codefest Ipsum Rupee</div>
             </span>
           </div>
         </div>
@@ -159,6 +165,10 @@ export default {
 
     &:first-child {
       height: 50px;
+
+      &:before {
+        display: none;
+      }
     }
 
     &:before {
@@ -167,9 +177,9 @@ export default {
       width: 20px;
       height: 20px;
       left: calc(50% - 8px);
+      top: 30px;
       background-color: white;
       border: 1px solid $chartreuse;
-      top: calc(50% - 10px);
       border-radius: 50%;
       z-index: 1;
     }
@@ -204,9 +214,10 @@ export default {
     }
 
     .date {
-      left: calc(50% - 150px);
-      width: 150px;
-      height: 50px;
+      top: 0;
+      left: calc(50% - 200px);
+      width: 200px;
+      height: 70px;
       padding: 0;
       line-height: 50px;
       background: white;
@@ -216,32 +227,63 @@ export default {
 
     .event {
       border-radius: 5px;
-      left: calc(50% + 20px);
-      top: 25px;
+      left: calc(50% + 25px);
       padding: 5px;
       background: $chartreuse;
       height: 80px;
-      width: 200px;
+      width: 300px;
       min-width: 100px;
-      justify-content: right;
-      font-family: 'Roboto Mono';
+      display: flex;
+      justify-content: left;
+      flex-direction: row;
 
       img {
         width: 50px;
         height: 50px;
       }
 
+      .summary {
+        font-size: 12px;
+        margin: auto 5px;
+      }
+
+      span {
+        h4 {
+          margin: 0;
+          text-align: center;
+          font: 14pt Ubuntu;
+        }
+      }
+
       &:before {
         content: ' ';
         height: 0;
         position: absolute;
-        top: 18px;
+        top: 30px;
         width: 0;
         z-index: 1;
         left: -10px;
         border: medium solid white;
         border-width: 10px 10px 10px 0;
         border-color: transparent $chartreuse transparent transparent;
+      }
+    }
+
+    @media screen and (max-width: 900px) {
+      .date, .event {
+        width: 40%;
+      }
+
+      .date {
+        left: 10%;
+      }
+
+      .event {
+        left: cal(50% + 25px);
+
+        .summary {
+          display: none;
+        }
       }
     }
   }
