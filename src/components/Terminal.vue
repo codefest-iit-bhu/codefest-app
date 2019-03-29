@@ -23,10 +23,10 @@
   </div>
 </template>
 <script>
-import { navigation, terminal } from "../js/store";
+import { navigation, terminal } from "@js/store/navigation";
 import REPL from "./REPL";
-import { CommandList } from "../js/commands.js";
-import { CommandNotFoundError } from "../js/exceptions";
+import { CommandList } from "@js/commands";
+import { CommandNotFoundError } from "@js/exceptions";
 
 export default {
   props: {

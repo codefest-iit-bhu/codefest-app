@@ -1,4 +1,4 @@
-import { navigation, terminal } from "./store";
+import { navigation, terminal } from "./store/navigation";
 import * as Exception from "./exceptions";
 
 class BaseCommand extends Object {
