@@ -7,6 +7,9 @@
       <div :class="[$style.faqList, $style[$mq]]">
       <Q v-for="(event, i) in events" :key="i" :item="event" :id="i"/>
       </div>
+      <div :class="$style.img">
+        <img src="assets/faq.svg"/>
+      </div>
     </main>
   </div>
 </template>
@@ -21,16 +24,14 @@ export default {
     return {
       events: [
         {
-          question: "Aur beta ... papa ko bhule to nhi?",
+          question: "How to reach Varanasi/IIT(BHU)?",
           answer:
-            "Baap se mazak nhi.",
-          image: "assets/chevron-down.svg"
+            "Google Lanka BHU..",
         },
         {
           question: "Capture The Flag",
           answer:
             "A platform for the aspiring hackers to get acquainted with the real computer security practices.",
-          image: "assets/chevron-down.svg"
         },
       ]
     };
@@ -46,6 +47,11 @@ export default {
   position: relative;
   font-family: 'Roboto Mono';
   font-size: 18px;
+  
+  .img{
+    width 500px;
+    height 500px;
+  }
 }
 
 .root {
