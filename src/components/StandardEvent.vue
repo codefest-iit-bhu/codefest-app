@@ -9,6 +9,7 @@
         :style="eventWidthStyle"
         @mouseenter="toggleOpen"
         @mouseleave="toggleOpen"
+        @click="navigateToDetails"
       >
         <canvas
           :class="$style.normalCanvas"
@@ -129,6 +130,9 @@ export default {
     resetState() {
       this.maxWidth = (this.isMinimal ? 1.0 : 0.7) * window.innerWidth;
       this.minSize = this.isMinimal ? 0.75 * 150 : 150;
+    },
+    navigateToDetails() {
+      this.$router.push(`/events/${this.event.name}`);
     }
   },
   mounted() {
@@ -146,7 +150,7 @@ export default {
     );
 
     var img = new Image();
-    img.src = this.event.image;
+    img.src = this.event.icon;
     img.onload = () => {
       this.image = img;
       const { initialCanvas, finalCanvas } = this.$refs;
