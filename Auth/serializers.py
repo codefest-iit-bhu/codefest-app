@@ -6,7 +6,7 @@ from django.conf import settings
 from rest_framework.exceptions import ParseError
 
 class LoginSerializer(serializers.Serializer):
-    id_token = serializers.CharField(max_length=2400, required=False)
+    id_token = serializers.CharField(max_length=2400)
     provider_token = serializers.CharField(max_length=2400, required=False)
 
     def validate_access_token(self, access_token):
@@ -101,21 +101,37 @@ class RegisterSerializer(serializers.Serializer):
     def save(self):
         data = self.validated_data
         jwt = data.get('id_token')
+        print(jwt)
         uid = jwt['uid']
         provider = FirebaseAPI.get_provider(jwt)
-        provider_uid = FirebaseAPI.get_provider_uid(jwt, provider)
+        provider_uid = None
+        if provider !=VerifiedAccount.AUTH_EMAIL_PROVIDER:
+            provider_uid = FirebaseAPI.get_provider_uid(jwt, provider)
         user = self.get_user(data,uid)
         try:
             user.validate_unique()
         except Exception as e:
             raise serializers.ValidationError(detail=e.message_dict)
+        user.save()
         account, _ = VerifiedAccount.objects.get_or_create(
-            uid=uid, user=user, provider=provider, provider_uid=provider_uid,
-            provider_token=data.get('provider_token'))
+            uid=uid, user=user, provider=provider, provider_uid=provider_uid)
         if provider == VerifiedAccount.AUTH_EMAIL_PROVIDER:
             account.is_verified=False
             account.save()
         profile,_ = Profile.objects.get_or_create(user=user,referred_by=data.get('applied_referral_code',None))
         profile.save()
-        user.save()
         return user
+
+
+class RegisterResponseSerializer(serializers.Serializer):
+    user_id = serializers.IntegerField()
+    token = serializers.CharField(max_length = 500)
+    verification_status = serializers.BooleanField()
+
+
+
+class LoginResponseSerializer(serializers.Serializer):
+    user_id= serializers.IntegerField()
+    token = serializers.CharField(max_length=500)
+    verification_status = serializers.BooleanField()
+    is_profile_complete = serializers.BooleanField()
