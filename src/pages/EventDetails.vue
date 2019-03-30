@@ -2,14 +2,7 @@
   <div :class="$style.root">
     <AppBar/>
     <main :class="$style.wrapper">
-      <SpecialEvent/>
-      <StandardEvent
-        v-for="(event, i) in events"
-        :key="i"
-        :event="event"
-        :id="i"
-        :keepOpen="$mq === 'xs' || $mq === 'sm'"
-      />
+      <StandardEventDetails :event="events[currentEventIndex]"/>
     </main>
     <Footer/>
   </div>
@@ -17,31 +10,37 @@
 
 <script>
 import AppBar from "@components/AppBar";
-import SpecialEvent from "@components/SpecialEvent";
-import StandardEvent from "@components/StandardEvent";
+import StandardEventDetails from "@components/StandardEventDetails";
 import Footer from "@components/Footer";
 import events from "@js/store/events";
-
 export default {
   components: {
     AppBar,
-    SpecialEvent,
-    StandardEvent,
+    StandardEventDetails,
     Footer
   },
   data() {
     return events;
+  },
+  computed: {
+    currentEventIndex() {
+      const urlName = this.$route.params.name;
+      let i = this.events.findIndex(event => event.name === urlName);
+      if (i === -1) {
+        this.$router.replace("/404");
+        return;
+      }
+      return i;
+    }
   }
 };
 </script>
 
 <style module lang="stylus">
-@import '~@styles/mixins';
-
 .wrapper {
   width: 80%;
   margin: 0 auto;
-  padding: 100px 0 50px;
+  padding: 100px 20px 50px 20px;
   position: relative;
   z-index: 1;
   font-family: 'Roboto Mono';
