@@ -34,7 +34,10 @@ class FirebaseAPI:
             email
         """
         provider = jwt['firebase']['sign_in_provider']
-        if provider not in VerifiedAccount.AUTH_PROVIDERS_CHOICE:
+        if provider not in [VerifiedAccount.AUTH_FACEBOOK_PROVIDER, 
+        VerifiedAccount.AUTH_EMAIL_PROVIDER, 
+        VerifiedAccount.AUTH_GITHUB_PROVIDER, 
+        VerifiedAccount.AUTH_GOOGLE_PROVIDER]:
             raise ValidationError('Given provider not supported')
         return provider
 

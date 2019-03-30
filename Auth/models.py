@@ -6,7 +6,7 @@ class VerifiedAccount(models.Model):
     AUTH_FACEBOOK_PROVIDER = 'facebook.com'
     AUTH_GOOGLE_PROVIDER = 'google.com'
     AUTH_GITHUB_PROVIDER  = 'github.com'
-    AUTH_EMAIL_PROVIDER = 'email'
+    AUTH_EMAIL_PROVIDER = 'password'
 
     AUTH_PROVIDERS_CHOICE = (
         (AUTH_FACEBOOK_PROVIDER, 'Facebook'),
@@ -20,7 +20,7 @@ class VerifiedAccount(models.Model):
         User, on_delete=models.CASCADE,
         related_name='verified_account', related_query_name='account')
     provider = models.CharField(choices=AUTH_PROVIDERS_CHOICE, max_length=15)
-    provider_uid = models.CharField(max_length=64)
+    provider_uid = models.CharField(max_length=64, null=True, blank=True)
     is_verified = models.BooleanField(default=True)
 
     class Meta:
