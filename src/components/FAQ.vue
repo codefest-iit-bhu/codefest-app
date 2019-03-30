@@ -1,16 +1,6 @@
 <template>
-  <div :class="$style.root">
-    <div :class="$style.title">
-      <h2>Hacksplore FAQ</h2>
-    </div>
-    <main :class="$style.wrapper">
-      <div :class="[$style.faqList, $style[$mq]]">
-      <Q v-for="(event, i) in events" :key="i" :item="event" :id="i"/>
-      </div>
-      <div :class="$style.img">
-        <img src="assets/faq.svg"/>
-      </div>
-    </main>
+  <div :class="[$style.faqList, $style[$mq]]">
+    <Q v-for="(item, i) in faqItems" :key="i" :item="item"/>
   </div>
 </template>
 
@@ -18,62 +8,20 @@
 import Q from "@components/Q";
 export default {
   components: {
-    Q,
+    Q
   },
-  data() {
-    return {
-      events: [
-        {
-          question: "How to reach Varanasi/IIT(BHU)?",
-          answer:
-            "Google Lanka BHU..",
-        },
-        {
-          question: "Capture The Flag",
-          answer:
-            "A platform for the aspiring hackers to get acquainted with the real computer security practices.",
-        },
-      ]
-    };
+  props: {
+    faqItems: {
+      type: Array,
+      required: true
+    }
   }
 };
 </script>
 
 <style module lang="stylus">
-.wrapper {
-  text-align: right;
-  width: 100%;
-  padding: 20px 20px 20px 20px;
-  position: relative;
-  font-family: 'Roboto Mono';
-  font-size: 18px;
-  
-  .img{
-    width 500px;
-    height 500px;
-  }
-}
-
-.root {
-  height: 100%;
-  .title{
-
-    h2{
-      font-family: 'Aldo the Apache';
-      font-size: 40px;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-  }
-}
-
 .faqList {
-  width: 50%;
-  float right;
-
-  &.xs, &.sm {
-    width: 100%;
-  }
+  width: 100%;
 }
 
 @media screen and (max-width: 769px) {
