@@ -1,16 +1,15 @@
 <template>
-<Registerbtn />
+  <Registerbtn text="Coming soon"/>
 </template>
 
 <script>
-import Registerbtn from '@components/Registerbtn'
+import Registerbtn from "@components/Registerbtn";
 export default {
-    components : {
-        Registerbtn,
-    }
+  components: {
+    Registerbtn
+  }
 };
 </script>
 
 <style module lang="stylus">
-
 </style>
