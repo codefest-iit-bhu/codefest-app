@@ -17,14 +17,11 @@
             </span>
           </div>
           <div :class="$style.event">
-            <span>
+            <!-- <span>
               <img :src="event.image">
-            </span>
+            </span> -->
             <span>
               <h4>{{event.title}}</h4>
-              <div
-                :class="$style.summary"
-              >Lorem Ipusm Dolor is quite old now. Lets use Codefest Ipsum Rupee</div>
             </span>
           </div>
         </div>
@@ -46,49 +43,35 @@ export default {
     return {
       timeline: [
         {
-          date: "20 March",
-          title: "Appathon",
-          summary:
-            "A challenge to blend your creativity and programming skills to develop a robust mobile app.",
-          image: "../assets/events/appathon.png"
-        },
-        {
-          date: "25 March",
-          title: "Capture The Flag",
-          summary:
-            "A platform for the aspiring hackers to get acquainted with the real computer security practices.",
-          image: "../assets/events/ctf.png"
-        },
-        {
-          date: "26 March",
+          date: "30 March",
           title: "Decipher",
           summary:
             "Cryptographic challenges for those having a knack for solving puzzles and cracking codes.",
           image: "../assets/events/decipher.png"
         },
         {
-          date: "27 March",
+          date: "31 March",
           title: "Enigma",
           summary:
             "Solve real-life problems by letting your machine learn patterns in the data for you.",
           image: "../assets/events/enigma.png"
         },
         {
-          date: "28 March",
+          date: "1 April",
           title: "Vista",
           summary:
             "Make machines understand how we perceive and hone your skills in Computer Vision.",
           image: "../assets/events/vista.png"
         },
         {
-          date: "29 March",
+          date: "2 April",
           title: "Manthan",
           summary:
             "Compete with the best competitive programmers of the world in the world of data structures and algorithms.",
           image: "../assets/events/manthan.png"
         },
         {
-          date: "30 March",
+          date: "3 April",
           title: "Mathmania",
           summary:
             "Push your limits and gear up your brain by solving some challenging mathematical problems.",
@@ -139,25 +122,27 @@ export default {
 }
 
 .timeline {
+  position: relative;
   height: 100%;
-  width: 100%;
-  margin: auto;
+  width: 35%;
+  padding: 0 5%;
+  margin-bottom: 50px;
+  float: left;
 
   &:after {
     content: '';
     position: absolute;
     width: 20px;
     height: 20px;
-    left: calc(50% - 7px);
     background-color: white;
     border: 1px solid $chartreuse;
-    bottom: 30px;
+    left: 45px;
+    bottom: -10px;
     border-radius: 50%;
     z-index: -1;
   }
 
   .eventContainer {
-    align-items: center;
     margin: 0 auto;
     padding: 0;
     position: relative;
@@ -176,7 +161,7 @@ export default {
       position: absolute;
       width: 20px;
       height: 20px;
-      left: calc(50% - 8px);
+      left: -8px
       top: 30px;
       background-color: white;
       border: 1px solid $chartreuse;
@@ -192,7 +177,7 @@ export default {
       border-right: 5px solid white;
       top: 0;
       bottom: 0;
-      left: 50%;
+      left: 0
     }
 
     &.done {
@@ -206,40 +191,41 @@ export default {
     }
 
     .date, .event {
-      position: absolute;
-      display: flex;
-      flex-direction: column;
-      // margin: 15px auto;
-      color: black;
+      position: relative;
+      background: transparent;
+      margin: 0;
+      color: white;
+      border-radius: 4px;
     }
 
     .date {
       top: 0;
-      left: calc(50% - 200px);
+      left: 25px
       width: 200px;
-      height: 70px;
+      height: 30px;
+      line-height 20px;
       padding: 0;
-      line-height: 50px;
-      background: white;
+      margin-bottom: 2px;
+      font-size: 14px;
+      line-height: 30px;
       text-align: center;
-      border-radius: 5px 0 0 5px;
+      border: 1px solid $chartreuse;
     }
 
     .event {
       border-radius: 5px;
-      left: calc(50% + 25px);
+      top: 0;
+      left: 25px
       padding: 5px;
-      background: $chartreuse;
-      height: 80px;
+      height: 60px;
       width: 300px;
+
       min-width: 100px;
-      display: flex;
-      justify-content: left;
-      flex-direction: row;
 
       img {
-        width: 50px;
-        height: 50px;
+        width: 30px;
+        height: 30px;
+        float: left;
       }
 
       .summary {
@@ -250,23 +236,10 @@ export default {
       span {
         h4 {
           margin: 0;
-          text-align: center;
-          font: 14pt Ubuntu;
+          font: 16px Ubuntu;
         }
       }
 
-      &:before {
-        content: ' ';
-        height: 0;
-        position: absolute;
-        top: 30px;
-        width: 0;
-        z-index: 1;
-        left: -10px;
-        border: medium solid white;
-        border-width: 10px 10px 10px 0;
-        border-color: transparent $chartreuse transparent transparent;
-      }
     }
 
     @media screen and (max-width: 900px) {
