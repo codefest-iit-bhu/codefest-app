@@ -1,12 +1,16 @@
 <template>
-  <div :class="$style.faqItem">
-    <div :class="[$style.question,$style[$mq]]" @click="toggleQues">
+  <div :class="[$style.faqItem, $style[$mq]]">
+    <div :class="$style.question" @click="toggleQues">
       <p>
         {{item.question}}
-        <i class="fa fa-chevron-down" :style="chevronRotateStyle" aria-hidden="true"></i>
+        <i
+          class="fa fa-chevron-down"
+          :style="chevronRotateStyle"
+          aria-hidden="true"
+        ></i>
       </p>
     </div>
-    <div :class="[$style.answer,$style[$mq]]" :style="answerHeightStyle">
+    <div :class="$style.answer" :style="answerHeightStyle" ref="answer">
       <p>{{item.answer}}</p>
     </div>
   </div>
@@ -18,7 +22,7 @@ export default {
     return {
       open: false,
       openProgress: 0,
-      maxHeight: 100
+      maxHeight: -1
     };
   },
 
@@ -43,7 +47,7 @@ export default {
       return this.openProgress * 180;
     },
     answerHeightStyle() {
-      return { height: `${this.height}px` };
+      return this.maxHeight >= 0 ? { height: ` ${this.height}px` } : {};
     },
     chevronRotateStyle() {
       return { transform: `rotate(${this.angle}deg)` };
@@ -54,6 +58,9 @@ export default {
     open: function(val) {
       TweenLite.to(this.$data, 0.4, { openProgress: val ? 1 : 0 });
     }
+  },
+  mounted() {
+    this.maxHeight = this.$refs.answer.offsetHeight;
   }
 };
 </script>
@@ -81,7 +88,7 @@ export default {
       right: 0px;
     }
 
-    &.xs, &.sm {
+    ^[0].xs, ^[0].sm {
       font-size: 15px;
     }
   }
@@ -93,7 +100,7 @@ export default {
     clear: both;
     font-family: 'Roboto mono';
 
-    &.xs, &.sm {
+    ^[0].xs, ^[0].sm {
       font-size: 13px;
     }
   }
