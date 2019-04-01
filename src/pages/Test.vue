@@ -1,7 +1,14 @@
-<template></template>
+<template>
+  <Registerbtn text="Coming soon"/>
+</template>
 
 <script>
-export default {};
+import Registerbtn from "@components/Registerbtn";
+export default {
+  components: {
+    Registerbtn
+  }
+};
 </script>
 
 <style module lang="stylus">
