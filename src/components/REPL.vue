@@ -28,8 +28,8 @@
 
 <script>
 import Vue from "vue";
-import { navigation, terminal } from "../js/store";
-import { CommandNotFoundError, CommandInvalidInput } from "../js/exceptions";
+import { navigation, terminal } from "@js/store/navigation";
+import { CommandNotFoundError, CommandInvalidInput } from "@js/exceptions";
 
 export default {
   props: {

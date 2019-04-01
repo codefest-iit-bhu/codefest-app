@@ -3,28 +3,7 @@
     <AppBar/>
     <main :class="$style.wrapper">
       <div :class="$style.timeline">
-        <div :class="[$style.eventContainer, $style.done]"></div>
-        <div
-          v-for="(event,i) in timeline"
-          :class="[$style.eventContainer, isDone(i)?$style.done:'']"
-          :key="i"
-        >
-          <div :class="$style.date">
-            <span>
-              <i class="fa fa-calendar-alt" aria-hidden="true"></i>
-              {{event.date}}
-              <span class="$style.time">{{event.time}}</span>
-            </span>
-          </div>
-          <div :class="$style.event">
-            <!-- <span>
-              <img :src="event.image">
-            </span> -->
-            <span>
-              <h4>{{event.title}}</h4>
-            </span>
-          </div>
-        </div>
+          <Checkpoint v-for="(checkpointData,i) in timeline" :key="i" :checkpointData="checkpointData" />
       </div>
     </main>
     <Footer/>
@@ -33,66 +12,77 @@
 
 <script>
 import AppBar from "@components/AppBar";
+import Checkpoint from "@components/Checkpoint";
 import Footer from "@components/Footer";
+
 export default {
   components: {
     AppBar,
+    Checkpoint,
     Footer
   },
   data() {
     return {
       timeline: [
         {
-          date: "30 March",
+          major: true,
+          start: new Date(2019, 2, 28, 12, 0),
+          end: new Date(2019, 2, 28, 15, 0),
+          title: "Start",
+          summary:
+            "Compete with the best competitive programmers of the world in the world of data structures and algorithms.",
+          image: ""
+        },
+        {
+          major: false,
+          start: new Date(2019, 2, 29, 12, 0),
+          end: new Date(2019, 2, 29, 15, 0),
           title: "Decipher",
           summary:
             "Cryptographic challenges for those having a knack for solving puzzles and cracking codes.",
           image: "../assets/events/decipher.png"
         },
         {
-          date: "31 March",
+          major: false,
+          start: new Date(2019, 2, 30, 12, 0),
+          end: new Date(2019, 2, 30, 15, 0),
           title: "Enigma",
           summary:
             "Solve real-life problems by letting your machine learn patterns in the data for you.",
           image: "../assets/events/enigma.png"
         },
         {
-          date: "1 April",
+          major: false,
+          start: new Date(2019, 2, 31, 12, 0),
+          end: new Date(2019, 2, 31, 15, 0),
           title: "Vista",
           summary:
             "Make machines understand how we perceive and hone your skills in Computer Vision.",
           image: "../assets/events/vista.png"
         },
         {
-          date: "2 April",
-          title: "Manthan",
+          major: true,
+          start: new Date(2019, 3, 1, 12, 0),
+          end: new Date(2019, 3, 1, 15, 0),
+          title: "Submission",
           summary:
             "Compete with the best competitive programmers of the world in the world of data structures and algorithms.",
           image: "../assets/events/manthan.png"
         },
         {
-          date: "3 April",
-          title: "Mathmania",
+          major: false,
+          start: new Date(2019, 3, 2, 12, 0),
+          end: null,
+          title: "Results",
           summary:
             "Push your limits and gear up your brain by solving some challenging mathematical problems.",
           image: "../assets/events/mathamania.png"
-        },
-        {
-          date: "2 August",
-          title: "Linguipedia",
-          summary:
-            "Solve challenging problems in the field of Natural Language Processing.",
-          image: "../assets/events/linguipedia.png"
-        },
-        {
-          date: "2 August",
-          title: "Perplexed",
-          summary:
-            "Adapt to challenging situations by trying your hands at constrained programming.",
-          image: "../assets/events/perplexed.png"
         }
       ]
     };
+  },
+  computed: {
+    
   },
   methods: {
     isDone(i) {
@@ -129,142 +119,6 @@ export default {
   margin-bottom: 50px;
   float: left;
 
-  &:after {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: white;
-    border: 1px solid $chartreuse;
-    left: 45px;
-    bottom: -10px;
-    border-radius: 50%;
-    z-index: -1;
-  }
-
-  .eventContainer {
-    margin: 0 auto;
-    padding: 0;
-    position: relative;
-    height: 100px;
-
-    &:first-child {
-      height: 50px;
-
-      &:before {
-        display: none;
-      }
-    }
-
-    &:before {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      left: -8px
-      top: 30px;
-      background-color: white;
-      border: 1px solid $chartreuse;
-      border-radius: 50%;
-      z-index: 1;
-    }
-
-    &:after {
-      content: '';
-      position: absolute;
-      margin: auto;
-      z-index: -2;
-      border-right: 5px solid white;
-      top: 0;
-      bottom: 0;
-      left: 0
-    }
-
-    &.done {
-      &:after {
-        border-color: $chartreuse;
-      }
-
-      &:before {
-        background: $chartreuse;
-      }
-    }
-
-    .date, .event {
-      position: relative;
-      background: transparent;
-      margin: 0;
-      color: white;
-      border-radius: 4px;
-    }
-
-    .date {
-      top: 0;
-      left: 25px
-      width: 200px;
-      height: 30px;
-      line-height 20px;
-      padding: 0;
-      margin-bottom: 2px;
-      font-size: 14px;
-      line-height: 30px;
-      text-align: center;
-      border: 1px solid $chartreuse;
-    }
-
-    .event {
-      border-radius: 5px;
-      top: 0;
-      left: 25px
-      padding: 5px;
-      height: 60px;
-      width: 300px;
-
-      min-width: 100px;
-
-      img {
-        width: 30px;
-        height: 30px;
-        float: left;
-      }
-
-      .summary {
-        font-size: 12px;
-        margin: auto 5px;
-      }
-
-      span {
-        h4 {
-          margin: 0;
-          font: 16px Ubuntu;
-        }
-      }
-
-    }
-
-    @media screen and (max-width: 900px) {
-      .date, .event {
-        width: 40%;
-      }
-
-      .date {
-        left: 10%;
-      }
-
-      .event {
-        left: cal(50% + 25px);
-
-        .summary {
-          display: none;
-        }
-      }
-    }
-  }
 }
 
-@media screen and (max-width: 769px) {
-  .wrapper {
-    width: 90%;
-  }
-}
 </style>

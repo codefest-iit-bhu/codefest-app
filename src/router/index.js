@@ -35,7 +35,15 @@ const router = new Router({
         metaTags: []
       }
     },
-
+    {
+      name: "~/events/name",
+      path: "/events/:name",
+      component: () => import("@pages/EventDetails"),
+      meta: {
+        title: "CodeFest '19 | Event",
+        metaTags: []
+      }
+    },
     {
       name: "~/login",
       path: "/login",
@@ -55,11 +63,16 @@ const router = new Router({
       }
     },
     {
-      name: "~/event",
-      path: "/event",
-      component: () => import(`@pages/EventsDetails`),
+      name: "~/test",
+      path: "/dummy",
+      component: () => import("@pages/Test")
+    },
+    {
+      name: "~/hacksplore",
+      path: "/hacksplore",
+      component: () => import(`@pages/Hacksplore`),
       meta: {
-        title: "CodeFest '19 | Event",
+        title: "Hacksplore",
         metaTags: []
       }
     },
