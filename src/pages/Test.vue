@@ -1,12 +1,21 @@
 <template>
-  <FloatingButton text="Coming soon"/>
+  <div>
+    <SectionLayout title="Sponsors">
+      <Sponsors/>
+    </SectionLayout>
+    <FloatingButton text="Coming soon"/>
+  </div>
 </template>
 
 <script>
 import FloatingButton from "@components/FloatingButton";
+import Sponsors from "@components/Sponsors";
+import SectionLayout from "@components/layouts/SectionLayout";
 export default {
   components: {
-    FloatingButton
+    FloatingButton,
+    Sponsors,
+    SectionLayout
   }
 };
 </script>
