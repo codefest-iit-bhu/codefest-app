@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import AppBar from "@components/AppBar";
+import AppBar from "@components/Menu/AppBar";
 import SectionLayout from "@components/layouts/SectionLayout";
 import Hero from "@components/Hero";
 import Footer from "@components/Footer";
@@ -59,7 +59,7 @@ export default {
   position: relative;
   z-index: 1;
   font-family: 'Roboto Mono';
-  padding-bottom: 100px;
+  padding: 100px 0;
   font-size: 18px;
 }
 

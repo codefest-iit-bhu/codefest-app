@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import AppBar from "@components/AppBar";
+import AppBar from "@components/Menu/AppBar";
 import StandardEventDetails from "@components/StandardEventDetails";
 import Footer from "@components/Footer";
 import events from "@js/store/events";

@@ -28,9 +28,15 @@ export default {
 @require '~@styles/mixins';
 
 div.sectionContainer {
+  margin: 36px 0;
+
   h1.sectionTitle {
     font-family: 'Aldo the Apache';
-    margin-top: 144px;
+    padding: 12px 0;
+
+    &.lg, &.xl {
+      padding-top: 36px;
+    }
 
     ~/:nth-child(even) h1.sectionTitle {
       text-align: start;
@@ -47,8 +53,7 @@ div.sectionContainer {
     display: block;
     width: 70%;
     border: none;
-    margin-top: 36px;
-    margin-bottom: 72px;
+    margin: 12px 0 36px;
 
     ~/:nth-child(even) hr.sectionLine {
       margin-right: 30%;

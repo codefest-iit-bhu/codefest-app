@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import AppBar from "@components/AppBar";
+import AppBar from "@components/Menu/AppBar";
 import Form from "@components/Form";
 import Footer from "@components/Footer";
 import TabLayout from "@components/layouts/TabLayout";

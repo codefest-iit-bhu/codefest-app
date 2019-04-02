@@ -1,19 +1,25 @@
 <template>
   <div :class="[$style.root, $style[$mq]]">
+    <AppBar/>
     <main :class="$style.wrapper">
       <FAQ/>
+      <Timeline/>
     </main>
   </div>
 </template>
 
 <script>
+import AppBar from "@components/haxplore/AppBar";
+import Timeline from "@components/haxplore/Timeline";
 import FAQ from "@components/haxplore/FAQ";
 import Footer from "@components/Footer";
 import SectionLayout from "@components/layouts/SectionLayout";
 
 export default {
   components: {
+    AppBar,
     FAQ,
+    Timeline,
     SectionLayout
   },
   data() {

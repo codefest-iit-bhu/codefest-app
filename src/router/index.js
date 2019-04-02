@@ -26,15 +26,6 @@ const router = new Router({
       }
     },
     {
-      name: "~/timeline",
-      path: "/timeline",
-      component: () => import(`@pages/Timeline`),
-      meta: {
-        title: "CodeFest '19 | Timeline",
-        metaTags: []
-      }
-    },
-    {
       name: "~/events/name",
       path: "/events/:name",
       component: () => import("@pages/EventDetails"),

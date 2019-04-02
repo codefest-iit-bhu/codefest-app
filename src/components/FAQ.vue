@@ -1,14 +1,14 @@
 <template>
   <div :class="[$style.faqList, $style[$mq]]">
-    <Q v-for="(item, i) in faqItems" :key="i" :item="item" ref="faqs" :index="i" @onToggleQuestion="closeOtherQuestions"/>
+    <QuesAns v-for="(item, i) in faqItems" :key="i" :item="item" ref="faqs" :index="i" @onToggleQuestion="closeOtherQuestions"/>
   </div>
 </template>
 
 <script>
-import Q from "@components/Q";
+import QuesAns from "@components/QuesAns";
 export default {
   components: {
-    Q
+    QuesAns
   },
   props: {
     faqItems: {

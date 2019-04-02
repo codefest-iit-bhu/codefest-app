@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import AppBar from "@components/AppBar";
+import AppBar from "@components/Menu/AppBar";
 import SpecialEvent from "@components/SpecialEvent";
 import StandardEvent from "@components/StandardEvent";
 import Footer from "@components/Footer";
@@ -36,12 +36,12 @@ export default {
 </script>
 
 <style module lang="stylus">
-@import '~@styles/mixins';
+@require '~@styles/mixins';
 
 .wrapper {
   width: 80%;
   margin: 0 auto;
-  padding: 100px 0 50px;
+  padding: 100px 0;
   position: relative;
   z-index: 1;
   font-family: 'Roboto Mono';

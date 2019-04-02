@@ -3,7 +3,7 @@
     <div :class="[$style.faqContainer, $style[$mq]]">
       <ResponsiveTwoColumnLayout>
         <div :class="$style.faqHeader" slot="left">
-          <img src="assets/faq.svg">
+          <img src="@assets/haxplore/faq.svg">
           <div :class="$style.faqMessage">
             Have any more Questions?
             <br>Reach out to us at any time.
