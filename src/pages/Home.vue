@@ -22,6 +22,9 @@
         <Lookback/>
       </SectionLayout>
       <!-- Sponsors -->
+      <SectionLayout title="Sponsors">
+        <Sponsors/>
+      </SectionLayout>
       <!-- <Sponsors/> -->
     </main>
     <Footer/>
