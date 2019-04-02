@@ -58,6 +58,14 @@ export default {
 
   h1 {
     font-family: 'Aldo the Apache';
+    letter-spacing: 3px;
+    font-size: 54px;
+    padding-top: 16px;
+  }
+
+  p {
+    font-family: 'Quicksand';
+    font-weight: 500;
   }
 
   &.xs, &.sm {

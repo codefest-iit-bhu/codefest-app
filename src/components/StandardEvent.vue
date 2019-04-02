@@ -296,7 +296,7 @@ $cell-collapsed-size = 150px;
   position: relative;
 
   .summary {
-    font-family: 'Courier New';
+    font-family: 'Quicksand';
     padding: 2px 10px;
     text-align: justify;
     font-weight: 600;

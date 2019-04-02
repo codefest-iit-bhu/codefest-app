@@ -90,7 +90,8 @@ export default {
     }
 
     .name, .value {
-      font-family: Aldo the Apache;
+      font-family: 'Quicksand';
+      font-weight: 500;
       margin-left: auto;
       margin-right: auto;
       text-align: center;

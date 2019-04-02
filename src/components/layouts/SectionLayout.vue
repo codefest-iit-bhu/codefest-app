@@ -33,6 +33,9 @@ div.sectionContainer {
   h1.sectionTitle {
     font-family: 'Aldo the Apache';
     padding: 12px 0;
+    letter-spacing: 2px;
+    font-size: 64px;
+    margin-top: 144px;
 
     &.lg, &.xl {
       padding-top: 36px;

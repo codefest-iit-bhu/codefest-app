@@ -58,8 +58,10 @@ export default {
   margin: 0 auto;
   position: relative;
   z-index: 1;
-  font-family: 'Roboto Mono';
-  padding: 100px 0;
+  font-family: 'Quicksand';
+  font-weight: 500;
+  font-kerning: auto;
+  padding: 100px;
   font-size: 18px;
 }
 

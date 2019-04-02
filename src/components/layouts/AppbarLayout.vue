@@ -91,7 +91,7 @@ $appbar-glow-color = $chartreuse;
     height: $appbar-height;
     background: $appbar-color;
     box-shadow: $appbar-glow-color 0 2px 10px 3px;
-    font-family: 'Aldo the Apache';
+    font-family: 'Roboto Slab';
     font-size: 25px;
 
     .rNav {

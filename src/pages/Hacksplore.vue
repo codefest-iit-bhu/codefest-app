@@ -4,6 +4,7 @@
     <main :class="$style.wrapper">
       <FAQ/>
       <Timeline/>
+      <Prizes/>
     </main>
   </div>
 </template>
@@ -12,6 +13,7 @@
 import AppBar from "@components/haxplore/AppBar";
 import Timeline from "@components/haxplore/Timeline";
 import FAQ from "@components/haxplore/FAQ";
+import Prizes from "@components/haxplore/Prizes";
 import Footer from "@components/Footer";
 import SectionLayout from "@components/layouts/SectionLayout";
 
@@ -20,6 +22,7 @@ export default {
     AppBar,
     FAQ,
     Timeline,
+    Prizes,
     SectionLayout
   },
   data() {
