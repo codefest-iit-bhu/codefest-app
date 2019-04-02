@@ -1,12 +1,12 @@
 <template>
-  <Registerbtn text="Coming soon"/>
+  <FloatingButton text="Coming soon"/>
 </template>
 
 <script>
-import Registerbtn from "@components/Registerbtn";
+import FloatingButton from "@components/FloatingButton";
 export default {
   components: {
-    Registerbtn
+    FloatingButton
   }
 };
 </script>

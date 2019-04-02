@@ -1,14 +1,13 @@
 import Vue from "vue";
 import Router from "vue-router";
-import {
-  isMobile
-} from "../js/utils";
+import { isMobile } from "../js/utils";
 
 Vue.use(Router);
 
 const router = new Router({
   mode: "history",
-  routes: [{
+  routes: [
+    {
       name: "~",
       path: "/",
       component: () => import(`@pages/Home`),
@@ -68,12 +67,13 @@ const router = new Router({
       component: () => import("@pages/Test")
     },
     {
-      name: "~/hacksplore",
-      path: "/hacksplore",
+      name: "~/haxplore",
+      path: "/haxplore",
       component: () => import(`@pages/Hacksplore`),
       meta: {
-        title: "Hacksplore",
-        metaTags: []
+        title: "Haxplore",
+        metaTags: [],
+        noTerminal: true
       }
     },
     {

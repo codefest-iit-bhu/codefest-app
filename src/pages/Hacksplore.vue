@@ -1,58 +1,23 @@
 <template>
   <div :class="[$style.root, $style[$mq]]">
     <main :class="$style.wrapper">
-      <SectionLayout title="FAQ" id="faq">
-        <div :class="$style.faqContainer">
-          <div :class="$style.faqHeader">
-            <img src="assets/faq.svg">
-            <div :class="$style.faqMessage">
-              Have any more Questions?
-              <br>Reach out to us at any time.
-              <br>
-              <br>codefest@iitbhu.ac.in
-              <br>facebook.com/codefest
-              <br>
-            </div>
-          </div>
-          <FAQ :class="$style.faqList" :faqItems="faq"/>
-        </div>
-      </SectionLayout>
+      <FAQ/>
     </main>
   </div>
 </template>
 
 <script>
-import FAQ from "@components/FAQ";
+import FAQ from "@components/haxplore/FAQ";
 import Footer from "@components/Footer";
 import SectionLayout from "@components/layouts/SectionLayout";
+
 export default {
   components: {
     FAQ,
     SectionLayout
   },
   data() {
-    return {
-      faq: [
-        {
-          question: "How to reach Varanasi/IIT(BHU)?",
-          answer: "Google Lanka BHU.."
-        },
-        {
-          question: "Capture The Flag",
-          answer:
-            "A platform for the aspiring hackers to get acquainted with  dsfjks kx ksjn nksn ksnf so n snno real computer security practices."
-        },
-        {
-          question: "Capture The Flag",
-          answer:
-            "A platform for the aspiring hackers to get acquainted with the real computer security practices."
-        },
-        {
-          question: "How to reach Varanasi/IIT(BHU)?",
-          answer: "Google Lanka BHU.."
-        }
-      ]
-    };
+    return {};
   }
 };
 </script>
@@ -71,10 +36,6 @@ export default {
   width: 100%;
   font-family: 'ubuntu';
   font-size: 20px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
 
   .faqHeader {
     line-height: 30px;
@@ -86,18 +47,11 @@ export default {
       height: 300px;
     }
   }
-
-  .faqList {
-    width: 50%;
-  }
 }
 
 .root.xs, .root.sm {
   .faqContainer {
     margin-top: 50px;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
 
     .faqHeader {
       display: flex;
@@ -118,7 +72,6 @@ export default {
 
     .faqList {
       margin: 20px 0;
-      width: 100%;
     }
   }
 }
