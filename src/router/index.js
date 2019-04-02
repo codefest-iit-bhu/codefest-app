@@ -26,6 +26,15 @@ const router = new Router({
       }
     },
     {
+      name: "~/timeline",
+      path: "/timeline",
+      component: () => import(`@pages/Timeline`),
+      meta: {
+        title: "CodeFest '19 | Timeline",
+        metaTags: []
+      }
+    },
+    {
       name: "~/events/name",
       path: "/events/:name",
       component: () => import("@pages/EventDetails"),
@@ -58,12 +67,13 @@ const router = new Router({
       component: () => import("@pages/Test")
     },
     {
-      name: "~/hacksplore",
-      path: "/hacksplore",
+      name: "~/haxplore",
+      path: "/haxplore",
       component: () => import(`@pages/Hacksplore`),
       meta: {
-        title: "Hacksplore",
-        metaTags: []
+        title: "Haxplore",
+        metaTags: [],
+        noTerminal: true
       }
     },
     {

@@ -1,6 +1,6 @@
 <template>
   <div :class="[$style.faqList, $style[$mq]]">
-    <Q v-for="(item, i) in faqItems" :key="i" :item="item"/>
+    <Q v-for="(item, i) in faqItems" :key="i" :item="item" ref="faqs" :index="i" @onToggleQuestion="closeOtherQuestions"/>
   </div>
 </template>
 
@@ -14,6 +14,15 @@ export default {
     faqItems: {
       type: Array,
       required: true
+    }
+  },
+  methods: {
+    closeOtherQuestions(index, isOpen) {
+      let { faqs } = this.$refs;
+      faqs.forEach((faq, i) => {
+        if (i != index)
+          faq.open = false
+      })
     }
   }
 };

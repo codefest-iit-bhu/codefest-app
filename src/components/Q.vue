@@ -30,12 +30,17 @@ export default {
     item: {
       required: true,
       type: Object
+    },
+    index: {
+      required: true,
+      type: Number
     }
   },
 
   methods: {
     toggleQues: function() {
       this.open = !this.open;
+      this.$emit("onToggleQuestion", this.index, this.open);
     }
   },
 
@@ -60,7 +65,7 @@ export default {
     }
   },
   mounted() {
-    this.maxHeight = this.$refs.answer.offsetHeight;
+    this.maxHeight = this.$refs.answer.offsetHeight + 10;
   }
 };
 </script>

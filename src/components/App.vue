@@ -25,7 +25,11 @@ export default {
   },
   computed: {
     shouldShowTerminal: function() {
-      return !(this.$mq === "sm" || this.$mq === "xs");
+      return !(
+        this.$mq === "sm" ||
+        this.$mq === "xs" ||
+        this.$route.meta.noTerminal
+      );
     },
     appBottomPadding: function() {
       if (this.shouldShowTerminal)
