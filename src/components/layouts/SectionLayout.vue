@@ -30,6 +30,8 @@ export default {
 div.sectionContainer {
   h1.sectionTitle {
     font-family: 'Aldo the Apache';
+    letter-spacing: 2px;
+    font-size: 64px;
     margin-top: 144px;
 
     ~/:nth-child(even) h1.sectionTitle {

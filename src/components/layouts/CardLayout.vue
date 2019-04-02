@@ -18,11 +18,21 @@ export default {
       type: Boolean,
       default: false,
       required: false
+    },
+
+    isRounded: {
+      type: Boolean,
+      default: false,
+      required: false
     }
   },
   computed: {
     cardClass() {
-      return this.isPrimary ? this.$style.cardLarge : this.$style.cardSmall;
+      return {
+        [this.$style.cardLarge]: this.isPrimary,
+        [this.$style.cardSmall]: !this.isPrimary,
+        [this.$style.rounded]: this.isRounded
+      };
     }
   }
 };
@@ -62,6 +72,10 @@ whiteCard() {
       width: 0.75 * $card-small-size;
       height: 0.75 * $card-small-size;
     }
+  }
+
+  .rounded {
+    border-radius: 10px;
   }
 
   .card {

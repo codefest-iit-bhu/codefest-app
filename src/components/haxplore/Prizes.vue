@@ -1,9 +1,13 @@
 <template>
   <SectionLayout title="Prizes" id="prizes">
-    <GridLayout columns="3">
-      <CardLayout>
-        <img src="@assets/faq.svg" slot="header">
-        <h3 slot="content">2nd position - $30K</h3>
+    <GridLayout
+      :columns="$mq | mq({xs: 1, sm: 2, md: 3, lg: 3, xl: 3})"
+      itemWidth="300px"
+      itemHeight="300px"
+    >
+      <CardLayout v-for="(stat,i) in this.stats" :key="i" :slot="`item${i}`" isRounded="True">
+        <img src="stat.image" slot="header">
+        <h3 slot="content">{{ stat.text }}</h3>
       </CardLayout>
     </GridLayout>
   </SectionLayout>
@@ -19,6 +23,42 @@ export default {
     SectionLayout,
     GridLayout,
     CardLayout
+  },
+  data() {
+    return {
+      stats: [
+        {
+          name: "Prize Money",
+          image: "@assets/Lookback/rupee.png",
+          text: "1st Prize"
+        },
+        {
+          name: "Prize Money",
+          image: "@assets/Lookback/rupee.png",
+          text: "2nd Prize"
+        },
+        {
+          name: "Prize Money",
+          image: "@assets/Lookback/rupee.png",
+          text: "3rd Prize"
+        },
+        {
+          name: "Prize Money",
+          image: "@assets/Lookback/rupee.png",
+          text: "4th Prize"
+        },
+        {
+          name: "Prize Money",
+          image: "@assets/Lookback/rupee.png",
+          text: "5th Prize"
+        },
+        {
+          name: "Prize Money",
+          image: "@assets/Lookback/rupee.png",
+          text: "6th, 7th, 8th Prize"
+        }
+      ]
+    };
   }
 };
 </script>

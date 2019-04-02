@@ -161,7 +161,8 @@ $sidebar-width = 250px;
     height: $appbar-height;
     background: $appbar-color;
     box-shadow: $appbar-glow-color 0 2px 10px 3px;
-    font-family: 'Aldo the Apache';
+    font-family: 'Roboto Slab';
+    font-weight: 700;
     font-size: 25px;
 
     .rNav {
@@ -194,6 +195,7 @@ $sidebar-width = 250px;
         color: $white;
         opacity: 0;
         font-size: 16px;
+        margin-top: 0;
       }
 
       a:hover {
@@ -263,7 +265,7 @@ $sidebar-width = 250px;
   margin: 5px;
 
   .link {
-    font-family: 'Aldo the Apache';
+    font-family: 'Roboto Slab';
     font-size: 14px;
 
     a {
