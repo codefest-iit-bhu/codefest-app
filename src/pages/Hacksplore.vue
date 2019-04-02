@@ -2,18 +2,21 @@
   <div :class="[$style.root, $style[$mq]]">
     <main :class="$style.wrapper">
       <FAQ/>
+      <Prizes/>
     </main>
   </div>
 </template>
 
 <script>
 import FAQ from "@components/haxplore/FAQ";
+import Prizes from "@components/haxplore/Prizes";
 import Footer from "@components/Footer";
 import SectionLayout from "@components/layouts/SectionLayout";
 
 export default {
   components: {
     FAQ,
+    Prizes,
     SectionLayout
   },
   data() {
