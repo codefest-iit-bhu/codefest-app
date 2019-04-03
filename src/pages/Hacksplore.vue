@@ -2,6 +2,7 @@
   <div :class="[$style.root, $style[$mq]]">
     <AppBar/>
     <main :class="$style.wrapper">
+      <About/>
       <FAQ/>
       <Timeline/>
       <Prizes/>
@@ -11,6 +12,7 @@
 
 <script>
 import AppBar from "@components/haxplore/AppBar";
+import About from "@components/haxplore/About";
 import Timeline from "@components/haxplore/Timeline";
 import FAQ from "@components/haxplore/FAQ";
 import Prizes from "@components/haxplore/Prizes";
@@ -20,6 +22,7 @@ import SectionLayout from "@components/layouts/SectionLayout";
 export default {
   components: {
     AppBar,
+    About,
     FAQ,
     Timeline,
     Prizes,

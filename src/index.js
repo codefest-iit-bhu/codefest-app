@@ -2,6 +2,8 @@ import Vue from "vue";
 import GAnalytics from "ganalytics";
 import App from "@components/App";
 import vueMq from "vue-mq";
+import VueYoutube from 'vue-youtube'
+
 import router from "./router";
 import "./styles/index.styl";
 
@@ -18,16 +20,23 @@ Vue.use(vueMq, {
   }
 });
 
+Vue.use(VueYoutube)
+
 // Mount w/ Hydration
 // ~> because HTML already exists from`pwa export`
 // @see https://ssr.vuejs.org/guide/hydration.html
-new Vue({ router, render }).$mount("#app", true);
+new Vue({
+  router,
+  render
+}).$mount("#app", true);
 
 if (process.env.NODE_ENV === "production") {
   window.ga = new GAnalytics("UA-72222745-1");
 
   router.afterEach(nxt => {
-    ga.send("pageview", { dp: nxt.path });
+    ga.send("pageview", {
+      dp: nxt.path
+    });
   });
 
   // Service Worker registration
