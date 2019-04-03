@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.landing">
+  <div :class="[$style.landing, $style[$mq]]" id="landing">
     <div :class="$style.hero">
       <div :class="$style.logo">
         <img :id="$style.top" src="@assets/haxplore/logo-landing.svg">
@@ -31,13 +31,13 @@ export default {
   mounted() {
     this.animTyping = new TypingAnim(
       this.$refs.tagline,
-      "Imagine. Create. Iterate"
+      "Imagine. Create. Iterate."
     );
 
     window.setInterval(() => {
       this.isTyped ? this.animTyping.erase() : this.animTyping.type();
       this.isTyped = !this.isTyped;
-    }, 3000);
+    }, 2000);
     this.animTyping.type();
     this.isTyped = true;
   }
@@ -68,6 +68,21 @@ export default {
       width: 900px;
       height: 600px;
       margin: 60px auto 20px;
+
+      ~/.md ^[1..-1] {
+        width: 700px;
+        height: 462px;
+      }
+
+      ~/.sm ^[1..-1] {
+        width: 500px;
+        height: 330px;
+      }
+
+      ~/.xs ^[1..-1] {
+        width: 400px;
+        height: 264px;
+      }
 
       #top {
         width: 60%;

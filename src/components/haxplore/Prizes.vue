@@ -38,7 +38,7 @@
           </span>
         </CardLayout>
         <CardLayout :class="$style.prize__consolation" :extraCardClass="$style.whiteCard">
-          <img src="@assets/haxplore/prize-third.svg" slot="header">
+          <img src="@assets/haxplore/prize-consolation.png" slot="header">
           <span :class="$style.txt" slot="content">
             <h2>Zebronics goodies</h2>
             <h4>6th, 7th & 8th Prize</h4>
@@ -99,6 +99,29 @@ export default {
     user-select: none;
     justify-content: center;
 
+    img {
+      width: 100%;
+      height: 100%;
+      padding: 20px 0;
+      margin: 0 auto;
+    }
+
+    .txt {
+      width: 100%;
+      text-align: center;
+      font-family: 'Roboto Slab';
+
+      h2, h4 {
+        margin: 0.5em;
+      }
+
+      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+        h2 {
+          font-size: 21px;
+        }
+      }
+    }
+
     .prize {
       &__first {
         order: 0;
@@ -134,33 +157,15 @@ export default {
       &__fourth, &__fifth, &__consolation {
         flex: 1 1 calc((100% / 3));
         height: 250px;
+
+        img {
+          width: unset;
+        }
       }
 
       &__girls, &__bhu {
         flex: 0 1 calc((100% / 2.5));
         height: 250px;
-      }
-    }
-
-    img {
-      width: 100%;
-      height: 100%;
-      padding: 20px 0;
-    }
-
-    .txt {
-      width: 100%;
-      text-align: center;
-      font-family: 'Roboto Slab';
-
-      h2, h4 {
-        margin: 0.5em;
-      }
-
-      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-        h2 {
-          font-size: 21px;
-        }
       }
     }
   }
@@ -170,6 +175,7 @@ export default {
     height: 90%;
     box-shadow: 0 0 10px $chartreuse;
     border-radius: 5px;
+    text-align: center;
 
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
       width: 95%;

@@ -21,11 +21,9 @@
       <SectionLayout title="Lookback">
         <Lookback/>
       </SectionLayout>
-      <!-- Sponsors -->
-      <SectionLayout title="Sponsors">
+      <!-- <SectionLayout title="Sponsors">
         <Sponsors/>
-      </SectionLayout>
-      <!-- <Sponsors/> -->
+      </SectionLayout>-->
     </main>
     <Footer/>
   </div>

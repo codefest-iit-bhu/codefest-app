@@ -1,11 +1,11 @@
 <template>
-  <div :class="[$style.root, $style[$mq]]" id="landing">
+  <div :class="[$style.root, $style[$mq]]">
     <AppBar>
       <ul v-scroll-spy-active="{class: $style.active}" v-scroll-spy-link>
-        <li :key="item" v-for="item in titles">
+        <li :key="i" v-for="(item, i) in titles">
           <a>
             <span class="fa fa-circle fa-xs" aria-hidden="true"></span>
-            {{item}}
+            {{ item }}
           </a>
         </li>
       </ul>
@@ -16,8 +16,10 @@
         <FAQ/>
         <Timeline/>
         <Prizes/>
+        <Sponsors/>
       </div>
     </main>
+    <Footer/>
   </div>
 </template>
 
@@ -27,6 +29,7 @@ import Timeline from "@components/haxplore/Timeline";
 import FAQ from "@components/haxplore/FAQ";
 import Landing from "@components/haxplore/Landing";
 import Prizes from "@components/haxplore/Prizes";
+import Sponsors from "@components/Sponsors";
 import Footer from "@components/Footer";
 import SectionLayout from "@components/layouts/SectionLayout";
 
@@ -37,12 +40,14 @@ export default {
     Timeline,
     Prizes,
     SectionLayout,
-    Landing
+    Landing,
+    Sponsors,
+    Footer
   },
   data() {
     return {
       section: 0,
-      titles: ["FAQ", "Timeline", "Prizes"]
+      titles: ["FAQ", "Timeline", "Prizes", "Sponsors"]
     };
   }
 };

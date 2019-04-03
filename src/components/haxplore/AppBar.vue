@@ -12,9 +12,9 @@
         <slot></slot>
       </mq-layout>
 
-      <mq-layout :mq="['xs', 'sm',]">
+      <mq-layout :mq="['xs', 'sm']">
         <Slide :isOpen="isSidebarOpen" @closeSideBar="onCloseSideBar" :width="sideBarWidth">
-          <img src="@assets/haxplore/text-based-green.svg" :class="$style.sidebarLogo">
+          <img src="@assets/haxplore/logo-text.svg" :class="$style.sidebarLogo">
           <slot></slot>
         </Slide>
       </mq-layout>
@@ -64,93 +64,73 @@ export default {
     a {
       text-decoration: none;
       color: $white;
+      text-decoration: none;
+      color: $white;
+      transition: 0.5s;
     }
   }
 
   .sidebar {
-    margin: auto;
+    margin: 0 auto;
 
-    a {
-      font: 16px 'Roboto Slab';
-    }
-  }
+    ul {
+      list-style: none;
 
-  &.xs, &.sm {
-    .sidebar {
-      .sidebarLogo {
-        width: 250px;
-        margin: auto;
-      }
+      li {
+        margin: 20px auto;
+        display: block !important;
 
-      ul {
-        padding-top: 10px;
+        a {
+          font: 500 18px 'Roboto Slab';
+          color: $white;
+          text-decoration: none;
+          cursor: pointer;
 
-        li {
-          margin: 5px auto;
-          display: block !important;
-
-          a {
+          span {
             color: $white;
-            margin: auto;
-            text-decoration: none;
-            transition: 0.5s;
+            font-size: 14px;
+            margin-right: 5px;
           }
 
-          a span {
-            display: none;
-          }
-
-          a:hover {
+          &:hover {
             color: $chartreuse;
           }
         }
-      }
-    }
-  }
 
-  &.md, &.lg, &.xl {
-    .sidebar {
-      position: fixed;
-      top: calc(50% - 75px);
-      right: 20px;
-      max-width: 230px;
-      font-size: 18px;
-
-      ul {
-        padding: 0;
-        list-style: none;
-
-        li {
-          margin-bottom: 20px;
-          padding-right: 5px;
-
+        &.active {
           a {
-            font: 14px 'Roboto Slab';
-            color: $white;
-            text-decoration: none;
-            cursor: pointer;
-            transition: 0.5s;
+            color: $chartreuse;
+            font-weight: bold;
 
             span {
-              margin-right: 5px;
               color: $white;
-              font-size: 14px;
-            }
-          }
-
-          &.active {
-            a {
-              color: $chartreuse;
-              font-weight: bold;
-
-              span {
-                color: $white;
-                animation: neon-text 1s ease-in-out infinite alternate;
-              }
+              animation: neon-text 1s ease-in-out infinite alternate;
             }
           }
         }
       }
+    }
+
+    .sidebarLogo {
+      width: 250px;
+      margin: auto;
+    }
+
+    ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+      ul {
+        padding-top: 10px;
+      }
+    }
+
+    ~/.md ^[1..-1], ~/.lg ^[1..-1], ~/.xl ^[1..-1] {
+      position: fixed;
+      right: 20px;
+      width: 150px;
+      padding: 20px;
+      display: flex;
+      flex-flow: column;
+      justify-content: space-around;
+      height: 100%;
     }
   }
 }
