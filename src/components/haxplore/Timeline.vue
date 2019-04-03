@@ -91,8 +91,8 @@ export default {
       height: 500px;
 
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-        width: 300px;
-        height: 300px;
+        width: 250px;
+        height: 250px;
       }
     }
   }

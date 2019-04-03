@@ -82,6 +82,7 @@ $appbar-glow-color = $chartreuse;
   width: 100%;
   z-index: 10;
   stick('top');
+  user-select: none;
 
   &.animate {
     moveAnimation(side: 'top', startDistance: (-($notch-height)), targetDistance: 0px);

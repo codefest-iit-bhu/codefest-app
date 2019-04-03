@@ -14,24 +14,17 @@
 <script>
 export default {
   props: {
-    isPrimary: {
-      type: Boolean,
-      default: false,
-      required: false
-    },
-
-    isRounded: {
-      type: Boolean,
-      default: false,
+    extraCardClass: {
+      type: String,
+      default: null,
       required: false
     }
   },
   computed: {
     cardClass() {
       return {
-        [this.$style.cardLarge]: this.isPrimary,
-        [this.$style.cardSmall]: !this.isPrimary,
-        [this.$style.rounded]: this.isRounded
+        [this.$style.card]: true,
+        [this.extraCardClass]: !!this.extraCardClass
       };
     }
   }
@@ -52,33 +45,20 @@ whiteCard() {
 }
 
 .cardWrapper {
-  .cardLarge {
-    whiteCard();
-    width: $card-large-size;
-    height: $card-large-size;
-
-    ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-      width: 0.75 * $card-large-size;
-      height: 0.75 * $card-large-size;
-    }
-  }
-
-  .cardSmall {
-    whiteCard();
-    width: $card-small-size;
-    height: $card-small-size;
-
-    ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-      width: 0.75 * $card-small-size;
-      height: 0.75 * $card-small-size;
-    }
-  }
-
-  .rounded {
-    border-radius: 10px;
-  }
+  width: 100%;
+  height: 100%;
 
   .card {
+    whiteCard();
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+
+    ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+      width: 75%;
+      height: 75%;
+    }
+
     &__header {
       height: 60%;
       overflow: hidden;

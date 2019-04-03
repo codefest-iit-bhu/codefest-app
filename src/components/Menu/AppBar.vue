@@ -129,7 +129,7 @@ export default {
   margin: 5px;
 
   .link {
-    font: 'Roboto Slab' 14px;
+    font: 14px 'Roboto Slab';
 
     a {
       color: $white;
