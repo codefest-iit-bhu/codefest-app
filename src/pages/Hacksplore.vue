@@ -1,6 +1,7 @@
 <template>
   <div :class="[$style.root, $style[$mq]]">
     <AppBar/>
+    <Landing/>
     <main :class="$style.wrapper">
       <About/>
       <FAQ/>
@@ -15,6 +16,7 @@ import AppBar from "@components/haxplore/AppBar";
 import About from "@components/haxplore/About";
 import Timeline from "@components/haxplore/Timeline";
 import FAQ from "@components/haxplore/FAQ";
+import Landing from "@components/haxplore/Landing";
 import Prizes from "@components/haxplore/Prizes";
 import Footer from "@components/Footer";
 import SectionLayout from "@components/layouts/SectionLayout";
@@ -26,10 +28,8 @@ export default {
     FAQ,
     Timeline,
     Prizes,
-    SectionLayout
-  },
-  data() {
-    return {};
+    SectionLayout,
+    Landing
   }
 };
 </script>
@@ -38,15 +38,15 @@ export default {
 .wrapper {
   width: 80%;
   margin: 0 auto;
-  padding: 20px 20px 50px 20px;
+  padding: 50px 0;
+  z-index: 1;
   position: relative;
-  font-family: 'Roboto Mono';
-  font-size: 18px;
+  font: 500 18px 'Quicksand';
+  font-kerning: auto;
 }
 
 .faqContainer {
   width: 100%;
-  font-family: 'ubuntu';
   font-size: 20px;
 
   .faqHeader {

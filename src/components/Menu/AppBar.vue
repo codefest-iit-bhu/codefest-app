@@ -77,6 +77,7 @@ export default {
 <style module lang="stylus">
 @require '~@styles/mixins';
 @require '~@styles/theme';
+@require '~@styles/anims';
 
 .wrapper {
   li {
@@ -84,8 +85,6 @@ export default {
   }
 
   .link {
-    padding-top: 10px;
-
     a {
       color: $white;
       padding: 10px 10px;

@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { TypingAnim, getRandom } from "@js/utils";
+import { TypingAnim, getRandom, isMinimal } from "@js/utils";
 
 export default {
   data() {
@@ -186,7 +186,7 @@ export default {
       return this.openProgress === 1;
     },
     isMinimal() {
-      return this.$mq === "xs" || this.$mq === "sm";
+      return isMinimal(this.$mq)
     }
   },
   watch: {

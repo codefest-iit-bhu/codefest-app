@@ -168,7 +168,7 @@ export default {
   .whiteCard {
     width: 90%;
     height: 90%;
-    box-shadow: 0 0 7px $white;
+    box-shadow: 0 0 10px $chartreuse;
     border-radius: 5px;
 
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {

@@ -59,9 +59,9 @@ $image-expand-width = 18px;
       width: auto;
     }
   }
-}
 
-i {
-  margin-top: (($btn-height - 18px) / 2);
+  i {
+    margin-top: (($btn-height - 18px) / 2);
+  }
 }
 </style>

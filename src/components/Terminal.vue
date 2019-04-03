@@ -24,9 +24,9 @@
 </template>
 <script>
 import { navigation, terminal } from "@js/store/navigation";
-import REPL from "./REPL";
 import { CommandList } from "@js/commands";
 import { CommandNotFoundError } from "@js/exceptions";
+import REPL from "./REPL";
 
 export default {
   props: {
@@ -156,9 +156,7 @@ export default {
           this.submitResult(error.code, error.message);
         });
     }
-  },
-  mounted() {},
-  dismounted() {}
+  }
 };
 </script>
 <style module lang="stylus">
