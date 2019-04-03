@@ -1,18 +1,27 @@
 <template>
   <div :class="[$style.root, $style[$mq]]">
-    <AppBar/>
+    <AppBar>
+      <ul v-scroll-spy-active="{class: $style.active}" v-scroll-spy-link>
+        <li :key="item" v-for="item in titles">
+          <a>
+            <span class="fa fa-circle fa-xs" aria-hidden="true"></span>
+            {{item}}
+          </a>
+        </li>
+      </ul>
+    </AppBar>
     <main :class="$style.wrapper">
-      <About/>
-      <FAQ/>
-      <Timeline/>
-      <Prizes/>
+      <div v-scroll-spy>
+        <FAQ/>
+        <Timeline/>
+        <Prizes/>
+      </div>
     </main>
   </div>
 </template>
 
 <script>
 import AppBar from "@components/haxplore/AppBar";
-import About from "@components/haxplore/About";
 import Timeline from "@components/haxplore/Timeline";
 import FAQ from "@components/haxplore/FAQ";
 import Prizes from "@components/haxplore/Prizes";
@@ -22,19 +31,24 @@ import SectionLayout from "@components/layouts/SectionLayout";
 export default {
   components: {
     AppBar,
-    About,
     FAQ,
     Timeline,
     Prizes,
     SectionLayout
   },
   data() {
-    return {};
+    return {
+      section: 0,
+      titles: ["FAQ", "Timeline", "Prizes"]
+    };
   }
 };
 </script>
 
 <style module lang="stylus">
+@require '~@styles/theme';
+@require '~@styles/anims';
+
 .wrapper {
   width: 80%;
   margin: 0 auto;
@@ -84,6 +98,18 @@ export default {
 
     .faqList {
       margin: 20px 0;
+    }
+  }
+}
+
+.active {
+  a {
+    color: $chartreuse !important;
+    font-weight: bold;
+
+    span {
+      color: $white;
+      animation: neon-text 1s ease-in-out infinite alternate;
     }
   }
 }

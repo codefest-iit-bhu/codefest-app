@@ -130,6 +130,7 @@ export default {
 
   .link {
     font: 14px 'Roboto Slab';
+    display: block;
 
     a {
       color: $white;

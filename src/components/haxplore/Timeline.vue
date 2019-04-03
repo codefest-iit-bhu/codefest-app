@@ -50,23 +50,23 @@ export default {
         },
         {
           isMajor: false,
-          start: new Date(2019, 3, 31, 12, 0),
-          end: new Date(2019, 3, 31, 15, 0),
+          start: new Date(2019, 3, 1, 12, 0),
+          end: new Date(2019, 3, 1, 15, 0),
           title: "Vista",
           summary:
             "Make machines understand how we perceive and hone your skills in Computer Vision."
         },
         {
           isMajor: true,
-          start: new Date(2019, 3, 1, 12, 0),
-          end: new Date(2019, 3, 1, 15, 0),
+          start: new Date(2019, 3, 10, 12, 0),
+          end: new Date(2019, 3, 10, 15, 0),
           title: "Submission",
           summary:
             "Compete with the best competitive programmers of the world in the world of data structures and algorithms."
         },
         {
           isMajor: false,
-          start: new Date(2019, 3, 2, 12, 0),
+          start: new Date(2019, 3, 20, 12, 0),
           title: "Results",
           summary:
             "Push your limits and gear up your brain by solving some challenging mathematical problems."

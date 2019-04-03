@@ -3,9 +3,9 @@ import GAnalytics from "ganalytics";
 import App from "@components/App";
 import vueMq from "vue-mq";
 import VueYoutube from 'vue-youtube'
-
 import router from "./router";
 import "./styles/index.styl";
+import scrollSpy from "vue2-scrollspy"
 
 Vue.config.productionTip = false;
 const render = h => h(App);
@@ -19,6 +19,8 @@ Vue.use(vueMq, {
     xl: Infinity
   }
 });
+
+Vue.use(scrollSpy, {});
 
 Vue.use(VueYoutube)
 
