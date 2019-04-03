@@ -11,7 +11,7 @@
       </p>
     </div>
     <div :class="$style.answer" :style="answerHeightStyle" ref="answer">
-      <p>{{item.answer}}</p>
+      <slot></slot>
     </div>
   </div>
 </template>
@@ -81,6 +81,10 @@ export default {
   text-align: left;
   clear: both;
   border-bottom: 2px solid $chartreuse;
+
+  a {
+    color: $dodger-blue;
+  }
 
   .question {
     font-size: 20px;
