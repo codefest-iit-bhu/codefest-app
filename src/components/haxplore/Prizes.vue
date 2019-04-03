@@ -24,14 +24,14 @@
           </span>
         </CardLayout>
         <CardLayout :class="$style.prize__fourth" :extraCardClass="$style.whiteCard">
-          <img src="@assets/haxplore/prize-third.svg" slot="header">
+          <img src="@assets/haxplore/prize-fourth.png" slot="header">
           <span :class="$style.txt" slot="content">
             <h2>Kindle</h2>
             <h4>Fourth Prize</h4>
           </span>
         </CardLayout>
         <CardLayout :class="$style.prize__fifth" :extraCardClass="$style.whiteCard">
-          <img src="@assets/haxplore/prize-third.svg" slot="header">
+          <img src="@assets/haxplore/prize-fifth.jpg" slot="header">
           <span :class="$style.txt" slot="content">
             <h2>Echo Dot</h2>
             <h4>Fifth Prize</h4>
@@ -46,14 +46,14 @@
         </CardLayout>
 
         <CardLayout :class="$style.prize__girls" :extraCardClass="$style.whiteCard">
-          <img src="@assets/haxplore/prize-third.svg" slot="header">
+          <img src="@assets/haxplore/prize-girls.svg" slot="header">
           <span :class="$style.txt" slot="content">
             <h2>Rs 5, 000</h2>
             <h4>Best All girls</h4>
           </span>
         </CardLayout>
         <CardLayout :class="$style.prize__bhu" :extraCardClass="$style.whiteCard">
-          <img src="@assets/haxplore/prize-third.svg" slot="header">
+          <img src="@assets/haxplore/prize-iitbhu.svg" slot="header">
           <span :class="$style.txt" slot="content">
             <h2>Rs 5, 000</h2>
             <h4>Best IIT (BHU)</h4>

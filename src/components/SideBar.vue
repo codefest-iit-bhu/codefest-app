@@ -408,7 +408,7 @@ export default {
   .cross-style {
     position: absolute;
     top: 12px;
-    right: 2px;
+    right: 20px;
     cursor: pointer;
   }
 
@@ -426,6 +426,7 @@ export default {
   }
 
   .bm-menu {
+    padding-left: 10%;
     height: 100%; /* 100% Full-height */
     position: fixed; /* Stay in place */
     z-index: 1000; /* Stay on top */
@@ -445,12 +446,10 @@ export default {
 
   .bm-item-list {
     color: #b8b7ad;
-    margin-left: 10%;
     font-size: 20px;
   }
 
   .bm-item-list > * {
-    display: flex;
     text-decoration: none;
     padding: 0.7em;
   }
