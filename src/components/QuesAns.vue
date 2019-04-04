@@ -93,6 +93,7 @@ export default {
     cursor: pointer;
     font-family: 'ubuntu';
     font-weight: bold;
+    user-select: none;
 
     i {
       position: absolute;
