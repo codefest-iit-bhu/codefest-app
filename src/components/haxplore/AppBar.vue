@@ -8,14 +8,18 @@
       </li>
     </AppbarLayout>
     <div :class="$style.sidebar" ref="sidebar">
-      <mq-layout mq="md+">
-        <slot></slot>
+      <mq-layout mq="md+" v-show="isSideNavigationShown">
+        <ul v-scroll-spy-active="{class: $style.active}" v-scroll-spy-link>
+          <slot></slot>
+        </ul>
       </mq-layout>
 
       <mq-layout :mq="['xs', 'sm']">
         <Slide :isOpen="isSidebarOpen" @closeSideBar="onCloseSideBar" :width="sideBarWidth">
           <img src="@assets/haxplore/logo-text.svg" :class="$style.sidebarLogo">
-          <slot></slot>
+          <ul v-scroll-spy-active="{class: $style.active}" v-scroll-spy-link>
+            <slot></slot>
+          </ul>
         </Slide>
       </mq-layout>
     </div>
@@ -23,6 +27,9 @@
 </template>
 
 <script>
+import { TweenLite } from "gsap";
+import { isMinimal } from "@js/utils";
+
 import AppbarLayout from "@components/layouts/AppbarLayout";
 import Slide from "@components/Menu/Slide";
 
@@ -31,14 +38,26 @@ export default {
     AppbarLayout,
     Slide
   },
+  props: {
+    shouldShowSideNavigation: {
+      type: Boolean,
+      default: true,
+      required: false
+    }
+  },
   data() {
     return {
-      isSidebarOpen: false
+      isSidebarOpen: false,
+      isSideNavigationShown: true,
+      sideNavigationIdleTimeout: 1,
+      doHideOnIdle: true,
+      lastScrollEventTime: 0,
+      isSideNavigationIdle: false
     };
   },
   computed: {
     sideBarWidth() {
-      if (this.$mq === "xs" || this.$mq === "sm") return window.innerWidth;
+      if (isMinimal(this.$mq)) return window.innerWidth;
       else return 300;
     }
   },
@@ -48,6 +67,54 @@ export default {
     },
     onCloseSideBar() {
       this.isSidebarOpen = false;
+    },
+    animateSideNav(val) {
+      const { sidebar } = this.$refs;
+
+      TweenLite.to(sidebar, 0.8, {
+        right: val
+      });
+    },
+    handleScroll(event) {
+      const { sideNavigationIdleTimeout } = this.$data;
+      this.lastScrollEventTime = new Date().getTime() / 1000;
+      this.isSideNavigationIdle = false;
+      setTimeout(() => {
+        const now = new Date().getTime() / 1000;
+        console.log(now - this.lastScrollEventTime);
+        if (now - this.lastScrollEventTime >= sideNavigationIdleTimeout) {
+          this.isSideNavigationIdle = true;
+        }
+      }, sideNavigationIdleTimeout);
+    }
+  },
+  mounted() {
+    const { doHideOnIdle, shouldShowSideNavigation } = this.$data;
+    this.isSideNavigationShown = shouldShowSideNavigation;
+    this.isSideNavigationIdle = false;
+    if (doHideOnIdle) window.addEventListener("scroll", this.handleScroll);
+    else window.removeEventListener("scroll", this.handleScroll);
+  },
+  watch: {
+    shouldShowSideNavigation: function(to, from) {
+      if (to === from) return;
+      const { sidebar } = this.$refs;
+      const finalRight = to ? 20 : -140;
+      const onStart = () => {
+        if (to) this.isSideNavigationShown = true;
+      };
+      const onComplete = () => {
+        if (!to) this.isSideNavigationShown = false;
+      };
+      TweenLite.to(sidebar, 0.8, {
+        right: finalRight,
+        onStart,
+        onComplete
+      });
+    },
+    isSideNavigationIdle: function(to, from) {
+      if (to === from) return;
+      this.animateSideNav(to ? 20 : -70);
     }
   }
 };
@@ -64,8 +131,6 @@ export default {
     a {
       text-decoration: none;
       color: $white;
-      text-decoration: none;
-      color: $white;
       transition: 0.5s;
     }
   }
@@ -78,7 +143,7 @@ export default {
 
       li {
         margin: 20px auto;
-        display: block !important;
+        display: block;
 
         a {
           font: 500 18px 'Roboto Slab';
@@ -124,7 +189,8 @@ export default {
 
     ~/.md ^[1..-1], ~/.lg ^[1..-1], ~/.xl ^[1..-1] {
       position: fixed;
-      right: 20px;
+      right: -140px;
+      top: 0;
       width: 150px;
       padding: 20px;
       display: flex;

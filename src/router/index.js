@@ -62,7 +62,7 @@ const router = new Router({
       path: "/haxplore",
       component: () => import(`@pages/Hacksplore`),
       meta: {
-        title: "Haxplore",
+        title: "CodeFest '19 | HaXplore",
         metaTags: [],
         noTerminal: true
       }

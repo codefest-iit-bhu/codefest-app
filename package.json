@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "ganalytics": "^3.1.1",
+    "gsap": "^2.1.2",
     "sirv-cli": "^0.2.0",
     "vue": "~2.6.7",
     "vue-mq": "^1.0.1",

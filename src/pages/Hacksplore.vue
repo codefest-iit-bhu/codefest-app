@@ -1,22 +1,21 @@
 <template>
   <div :class="[$style.root, $style[$mq]]">
-    <AppBar>
-      <ul v-scroll-spy-active="{class: $style.active}" v-scroll-spy-link>
-        <li :key="i" v-for="(item, i) in titles">
-          <a>
-            <span class="fa fa-circle fa-xs" aria-hidden="true"></span>
-            {{ item }}
-          </a>
-        </li>
-      </ul>
+    <AppBar :shouldShowSideNavigation="isLargeNavOpen">
+      <li :key="i" v-for="(title, i) in titles" v-show="!!title">
+        <a>
+          <span class="fa fa-circle fa-xs" aria-hidden="true"></span>
+          {{ title }}
+        </a>
+      </li>
     </AppBar>
     <Landing/>
     <main :class="$style.wrapper">
-      <div v-scroll-spy>
+      <div v-scroll-spy="{data: 'section'}">
+        <div></div>
         <FAQ/>
         <Timeline/>
         <Prizes/>
-        <Sponsors/>
+        <!-- <Sponsors/> -->
       </div>
     </main>
     <Footer/>
@@ -29,7 +28,7 @@ import Timeline from "@components/haxplore/Timeline";
 import FAQ from "@components/haxplore/FAQ";
 import Landing from "@components/haxplore/Landing";
 import Prizes from "@components/haxplore/Prizes";
-import Sponsors from "@components/Sponsors";
+// import Sponsors from "@components/Sponsors";
 import Footer from "@components/Footer";
 import SectionLayout from "@components/layouts/SectionLayout";
 
@@ -41,14 +40,19 @@ export default {
     Prizes,
     SectionLayout,
     Landing,
-    Sponsors,
+    // Sponsors,
     Footer
   },
   data() {
     return {
       section: 0,
-      titles: ["FAQ", "Timeline", "Prizes", "Sponsors"]
+      titles: [null, "FAQ", "Timeline", "Prizes", "Sponsors"]
     };
+  },
+  computed: {
+    isLargeNavOpen() {
+      return this.section > 0;
+    }
   }
 };
 </script>
@@ -106,18 +110,6 @@ export default {
 
     .faqList {
       margin: 20px 0;
-    }
-  }
-}
-
-.active {
-  a {
-    color: $chartreuse !important;
-    font-weight: bold;
-
-    span {
-      color: $white;
-      animation: neon-text 1s ease-in-out infinite alternate;
     }
   }
 }

@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import { TweenMax } from "gsap";
+
 export default {
   data() {
     return {
@@ -331,15 +333,12 @@ export default {
       opacityAnimationData,
       animationHandlers
     ) {
-      const Anim = window.TweenMax;
-      if (Anim) {
-        Anim.to(this.$data, animationDuration, {
-          ...transformAnimationData,
-          ...opacityAnimationData,
-          ...animationHandlers,
-          ease: Power4.easeOut
-        });
-      }
+      TweenMax.to(this.$data, animationDuration, {
+        ...transformAnimationData,
+        ...opacityAnimationData,
+        ...animationHandlers,
+        ease: Power4.easeOut
+      });
     },
     getOpacityStyle(opacity) {
       return { opacity };
