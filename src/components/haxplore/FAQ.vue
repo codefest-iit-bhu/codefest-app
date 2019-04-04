@@ -140,27 +140,35 @@ export default {
 
 .faqContainer {
   width: 100%;
-  font-family: 'ubuntu';
   font-size: 20px;
 
   .faqHeader {
     line-height: 30px;
     font-weight: bold;
     text-align: center;
+    font-family: 'Quicksand';
 
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
       display: flex;
-      flex-direction: row;
-      align-items: flex-end;
+      flex-direction: column;
+      // align-items: flex-end;
+      text-align: center;
+      margin-bottom: 16px;
     }
 
     img {
       width: 300px;
       height: 300px;
 
-      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-        width: 100px;
-        height: 100px;
+      ~/.xs ^[1..-1] {
+        width: 70%;
+        margin: 0 auto;
+      }
+
+      ~/.sm ^[1..-1] {
+        width: 50%;
+        margin: 0 auto;
+        margin-bottom: 16px;
       }
     }
   }
@@ -177,7 +185,7 @@ export default {
 
   .faqMessage {
     a {
-      color: $dodger-blue;
+      color: $chartreuse;
     }
 
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {

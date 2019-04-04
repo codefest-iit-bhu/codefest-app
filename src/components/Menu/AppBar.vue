@@ -5,17 +5,17 @@
       <li :class="$style.link" slot="left" v-if="['lg', 'xl'].includes(this.$mq)">
         <router-link to="/events">
           Events
-          <span class="fa fa-circle fa-xs" aria-hidden="true"></span>
+          <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
         </router-link>
       </li>
       <li :class="$style.link" slot="right" v-if="['lg', 'xl'].includes(this.$mq)">
         <a href="https://goo.gl/DrCFHB" target="_blank">
-          <span class="fa fa-circle fa-xs" aria-hidden="true"></span>Brochure
+          <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>Brochure
         </a>
       </li>
       <li :class="$style.link" slot="right" v-if="['lg', 'xl'].includes(this.$mq)">
         <a href="https://goo.gl/forms/RyjmY7i002oUHivu2" target="_blank">
-          <span class="fa fa-circle fa-xs" aria-hidden="true"></span>
+          <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
           Sponsor Us
         </a>
       </li>
@@ -85,6 +85,10 @@ export default {
   }
 
   .link {
+    .awesome {
+      border-radius: 10px;
+    }
+
     a {
       color: $white;
       padding: 10px 10px;
@@ -106,8 +110,8 @@ export default {
 
     a:hover span {
       opacity: 1;
-      color: $white;
-      animation: neon-text 1s ease-in-out infinite alternate;
+      color: transparent;
+      animation: timeline-border 1s ease-in-out infinite alternate;
     }
   }
 
