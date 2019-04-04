@@ -80,8 +80,8 @@ export default {
       }
 
       ~/.xs ^[1..-1] {
-        width: 400px;
-        height: 264px;
+        width: 320px;
+        height: 212px;
       }
 
       #top {

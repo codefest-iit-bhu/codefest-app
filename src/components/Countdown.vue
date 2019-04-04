@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.countdown">
+  <div :class="[$style.countdown, $style[$mq]]">
     <div :class="$style.block">
       <div :class="$style.value">{{ days | double_digit }}</div>
       <!-- <div :class="$style.txt">Days</div> -->
@@ -98,6 +98,10 @@ export default {
       text-align: center;
       font-size: 50px;
       font-weight: 600;
+
+      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+        font-size: 24px;
+      }
     }
   }
 }

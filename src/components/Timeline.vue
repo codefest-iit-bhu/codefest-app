@@ -24,9 +24,10 @@ export default {
 .timeline {
   position: relative;
   height: 100%;
-  width: 35%;
+  width: 40%;
   padding: 0 5%;
   margin-bottom: 50px;
+  margin-left: 10%;
   float: left;
 }
 </style>

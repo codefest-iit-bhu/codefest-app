@@ -72,6 +72,7 @@ $line-filled-background = $chartreuse;
 $circle-border-color = $chartreuse;
 $circle-empty-background = $white;
 $circle-filled-background = $chartreuse;
+$circle-transparent-background = transparent;
 
 .checkpointWrapper {
   margin: 0 auto;
@@ -95,11 +96,16 @@ $circle-filled-background = $chartreuse;
       background-color: $circle-filled-background;
     }
 
+    ~/.notdone^[1..-1] {
+      background-color: $circle-transparent-background;
+      border: 3px solid $chartreuse70;
+    }
+
     ~/.major^[1..-1] {
       left: -8px;
       width: $circle-large-size;
       height: $circle-large-size;
-      animation: neon-box 1.5s ease-in-out infinite alternate;
+      animation: timeline-border 1.5s ease-in-out infinite alternate;
     }
   }
 
@@ -147,15 +153,23 @@ $circle-filled-background = $chartreuse;
 
   .dateTime {
     width: 200px;
-    height: 30px;
-    padding: 0 5px;
+    height: 36px;
+    padding: 2px 5px;
     font-size: 14px;
     line-height: 30px;
     text-align: center;
-    border: 1px solid $chartreuse;
+    border: 2px solid $chartreuse;
+    border-radius: 4px;
+    font-family: 'Quicksand';
+    font-weight: 600;
+
+    i {
+      padding-right: 5px;
+    }
 
     ~/.major ^[1..-1] {
       width: 150px;
+      border-radius: 18px;
     }
   }
 
