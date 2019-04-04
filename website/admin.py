@@ -5,7 +5,7 @@ admin.site.register(Profile)
 admin.site.register(Institute)
 admin.site.register(EventDetail)
 admin.site.register(ValidReferral)
-
+admin.site.register(Membership)
 class EventDetailInline(admin.TabularInline):
     model=EventDetail
 

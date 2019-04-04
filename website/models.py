@@ -5,7 +5,7 @@ from django.utils.crypto import get_random_string
 from django.core.exceptions import ValidationError
 import hashlib
 from hashids import Hashids
-hashids = Hashids()
+hashids = Hashids(min_length=7)
 from Auth.utils import FirebaseAPI
 
 # Create your models here.
@@ -15,12 +15,16 @@ class Event(models.Model):
     max_members=models.PositiveIntegerField(default=1)
     is_registration_on=models.BooleanField(default=True)
 
-    def create_team(self , user , t_name):
+    def create_team(self , profile , t_name):
 
-        team = Team.objects.create(event=self , creator = user,name=t_name)
+        team = Team.objects.create(event=self , creator = profile,name=t_name)
 
         team.access_code = hashids.encode(team.id)
+        if self.max_members==1:
+            team.is_active=True
         team.save()
+        member = Membership.objects.create(team=team, profile=profile)
+        return team
 
     def __str__(self):
         return self.name 
@@ -71,7 +75,9 @@ class Profile(models.Model):
     is_profile_complete=models.BooleanField(default=False)
 
     def __str__(self):
-        return self.user.first_name + " from "+self.institute_name
+        if self.institute_name!=None and self.user.first_name!=None:
+            return self.user.first_name + " from "+self.institute_name
+        return "PROFILE#"+str(self.id)
 
     def get_or_set_profile_status(self, toSet=False):
         if toSet:
@@ -93,7 +99,7 @@ class ValidReferral(models.Model):
         unique_together = ('by','to')
 
     def __str__(self):
-        return self.by+" referred "+self.to
+        return str(self.by)+" referred "+str(self.to)
 
 class Team(models.Model):
     name=models.CharField(max_length=100)
@@ -104,18 +110,18 @@ class Team(models.Model):
     access_code = models.CharField(unique=True , max_length=10 , default='uninitialized')
  
     def __str__(self):          
-        return self.name + " for event " + self.event
+        return self.name + " for event " + str(self.event)
 
     def total_members(self):
         return Membership.objects.filter(team=self).count()
 
-    def join_team(self, user, acc_code):
+    def join_team(self, profile, acc_code):
         if acc_code == self.access_code and self.total_members() < self.event.max_members:
             if self.total_members() +1 >= self.event.min_members:
                 self.is_active=True
                 self.save()
             
-            return Membership.objects.create(team=self,profile=user)
+            return Membership.objects.create(team=self,profile=profile)
         
         else :
             raise(ValidationError("Maximum Size of Team reached"))
@@ -140,4 +146,6 @@ class Membership(models.Model):
 
 
     def __str__(self):
-        return self.profile+" from team "+ self.team
+        if self.profile!=None:
+            return str(self.profile)+" from team "+ str(self.team)
+        return "Member ID#"+str(self.id)

@@ -58,3 +58,64 @@ class ProfileSerializer(serializers.Serializer):
         profile.get_or_set_profile_status(toSet=True)
         profile.save()
         return profile
+
+class TeamCreationSerializer(serializers.Serializer):
+    event = serializers.PrimaryKeyRelatedField(queryset=Event.objects.all())
+    team_name = serializers.CharField()
+
+    def validate(self, attrs):
+        name = attrs['team_name']
+        if len(name)<2:
+            raise serializers.ValidationError("Team name must be of atleast 2 characters")
+        event = attrs['event']
+        user =  self.context['request'].user
+        if Team.objects.filter(name=name, event=event).count()!=0:
+            raise serializers.ValidationError("Team name unavailable")
+        
+        if Membership.objects.filter(team__event=event, profile=user.profile).count()!=0:
+            raise serializers.ValidationError("You cannot be part of more than one team for the same event")
+            
+        return_dict={}
+        return_dict['team_name']=name
+        return_dict['event']=event
+        return_dict['user'] = user
+        return return_dict
+
+    def  save(self):
+        data = self.validated_data
+        team_name=data['team_name']
+        event = data['event']
+        user = data['user']
+        return event.create_team(user.profile, team_name)
+
+class TeamJoinSerializer(serializers.Serializer):
+    access_code = serializers.CharField()
+
+    def validate(self, data):
+        access_code=data.access_code
+        user =  self.context['request'].user
+        if Team.objects.filter(access_code=access_code).count()==0:
+            raise serializers.ValidationError("Invalid Access Code")
+
+        team = Team.objects.get(access_code=access_code)
+        event =team.event
+        if Membership.objects.filter(team__event=event, profile=user.profile).count()!=0:
+            raise serializers.ValidationError("You cannot be part of more than one team for the same event")
+
+        return_dict ={}
+        return_dict['team']=team
+        return_dict['user'] = user
+        return_dict['access_code']=access_code
+        return return_dict
+    def save(self):
+        data = self.validated_data
+        user = data['user']
+        access_code = data['access_code']
+        team=data['team']
+        team.join_team(user.profile, access_code)
+        return team
+
+class TeamDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model =Team
+        fields=('name', 'event', 'members', 'creator', 'is_active', 'access_code')
