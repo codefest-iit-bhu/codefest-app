@@ -8,7 +8,7 @@
         :key="i"
         :event="event"
         :id="i"
-        :keepOpen="$mq === 'xs' || $mq === 'sm'"
+        :keepOpen="isMinimal"
       />
     </main>
     <Footer/>
@@ -21,6 +21,7 @@ import SpecialEvent from "@components/SpecialEvent";
 import StandardEvent from "@components/StandardEvent";
 import Footer from "@components/Footer";
 import events from "@js/store/events";
+import { isMinimal } from "@js/utils";
 
 export default {
   components: {
@@ -31,6 +32,11 @@ export default {
   },
   data() {
     return events;
+  },
+  computed: {
+    isMinimal() {
+      return isMinimal(this.$mq);
+    }
   }
 };
 </script>

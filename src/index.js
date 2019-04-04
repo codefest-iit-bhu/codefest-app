@@ -16,7 +16,8 @@ Vue.use(vueMq, {
     sm: 767,
     md: 991,
     lg: 1200,
-    xl: Infinity
+    xl: 1920,
+    xxl: Infinity
   }
 });
 
