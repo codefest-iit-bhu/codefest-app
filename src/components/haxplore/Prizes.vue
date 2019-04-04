@@ -60,7 +60,7 @@
           </span>
         </CardLayout>
       </div>
-      <CardLayout :class="$style.benefits" :extraCardClass="$style.whiteCard">
+      <CardLayout :class="$style.benefits" :extraCardClass="$style.assured">
         <p slot="header">
           HaXplore is going to be the ultimate pit-stop for developers. From taking care of your accomodation to providing you with savoury treats; food facilities and refreshments throughout the competition. Don't worry about your travel costs as well, we'll have them covered for you!
           And even if you don't win anything, fret not my friend! You'll go home with loads of goodies, a lot of experience and memories for a lifetime.
@@ -183,7 +183,7 @@ export default {
   .whiteCard {
     width: 90%;
     height: 90%;
-    box-shadow: 0 0 20px $chartreuse inset;
+    box-shadow: 8px 8px #bcbcbc;
     border-radius: 5px;
     text-align: center;
 
@@ -191,6 +191,19 @@ export default {
     // background: transparent;
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
       width: 95%;
+    }
+  }
+
+  .assured {
+    background: transparent;
+    margin-top: 36px;
+    box-shadow: 0 0 10px $chartreuse inset;
+    border-radius: 10px;
+
+    p {
+      padding: 0 20px;
+      background: transparent;
+      color: $white;
     }
   }
 

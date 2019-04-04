@@ -159,7 +159,7 @@ $circle-transparent-background = transparent;
     line-height: 30px;
     text-align: center;
     border: 2px solid $chartreuse;
-    border-radius: 4px;
+    border-radius: 18px;
     font-family: 'Quicksand';
     font-weight: 600;
 
@@ -169,7 +169,7 @@ $circle-transparent-background = transparent;
 
     ~/.major ^[1..-1] {
       width: 150px;
-      border-radius: 18px;
+      border-radius: 4px;
     }
   }
 
@@ -178,7 +178,8 @@ $circle-transparent-background = transparent;
 
     span h4 {
       margin: 0;
-      font: 16px Ubuntu;
+      font-family: 'Roboto Slab';
+      font-size: 18px;
     }
   }
 }

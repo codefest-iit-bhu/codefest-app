@@ -54,6 +54,8 @@ export default {};
   z-index: 20;
 
   span {
+    font-family: 'Quicksand';
+
     a {
       color: inherit;
       transition: color var(--transition-duration);
