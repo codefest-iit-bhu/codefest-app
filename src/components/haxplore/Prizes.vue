@@ -163,9 +163,19 @@ export default {
         }
       }
 
+      &__consolation {
+        ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+          flex: 1 1 calc((100% / 0.8));
+        }
+      }
+
       &__girls, &__bhu {
         flex: 0 1 calc((100% / 2.5));
         height: 250px;
+
+        ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+          flex: 0 1 calc((100% / 2));
+        }
       }
     }
   }
@@ -173,10 +183,12 @@ export default {
   .whiteCard {
     width: 90%;
     height: 90%;
-    box-shadow: 0 0 10px $chartreuse;
+    box-shadow: 0 0 20px $chartreuse inset;
     border-radius: 5px;
     text-align: center;
 
+    // color: $chartreuse;
+    // background: transparent;
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
       width: 95%;
     }

@@ -82,18 +82,36 @@ export default {
 
 .timelineContainer {
   width: 100%;
-  font-family: 'ubuntu';
+  font-family: 'Roboto Slab';
   font-size: 20px;
 
   .timelineHeader {
+    margin-top: 78px;
+
     img {
-      width: 500px;
-      height: 500px;
+      width: 600px;
+      height: 600px;
+
+      ~/.lg ^[1..-1] {
+        width: 500px;
+        height: 500px;
+      }
+
+      ~/.md ^[1..-1] {
+        width: 80%;
+        margin-left: 10%;
+        // height: 400px;
+      }
 
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-        width: 250px;
-        height: 250px;
+        width: 70%;
+        height: 300px;
+        margin-left: 15%;
       }
+    }
+
+    ~/.xs ^[1..-1] {
+      margin-top: 0px;
     }
   }
 }
