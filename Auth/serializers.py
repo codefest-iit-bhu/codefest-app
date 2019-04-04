@@ -29,24 +29,12 @@ class LoginSerializer(serializers.Serializer):
                 raise serializers.ValidationError('No such account exists')
             
             user = account.user
-            if provider == VerifiedAccount.AUTH_EMAIL_PROVIDER:
-                if not account.is_verified:
-                    account.is_verified=FirebaseAPI.get_email_confirmation_status(uid)
-                    account.save()
             # add the verification status to the validated data 
-            attrs['is_verified']=account.is_verified   
+            attrs['is_verified']=account.get_verified_status()   
             profile=user.profile
             # because we also need the frontend to know if the profile is complete
-            attrs['is_profile_complete']=profile.is_profile_complete
-            """
-            If used a referral code, and if account is verfied, and if profile is complete,
-            then add the referral to the referral model which is final
-            """ 
-
-            if profile.is_profile_complete and profile.referred_by and attrs['is_verified']:
-                if not hasattr(profile,'referral'):
-                    referral=ValidReferral.objects.create(by=profile.referred_by,to=profile)
-
+            # this line automatically applies referral code if needed
+            attrs['is_profile_complete']=profile.get_or_set_profile_status()
             if provider_token:
                 account.provider_token = provider_token
                 account.save()
@@ -115,6 +103,7 @@ class RegisterSerializer(serializers.Serializer):
         user.save()
         account, _ = VerifiedAccount.objects.get_or_create(
             uid=uid, user=user, provider=provider, provider_uid=provider_uid)
+
         if provider == VerifiedAccount.AUTH_EMAIL_PROVIDER:
             account.is_verified=False
             account.save()
