@@ -10,7 +10,7 @@
           v-for="(x, index) in 2"
           :key="x"
           class="bm-cross"
-          :style="{ position: 'absolute', width: '3px', height: '14px',transform: index === 1 ? 'rotate(45deg)' : 'rotate(-45deg)'}"
+          :style="{ position: 'absolute', width: '3px', height: '24px',transform: index === 1 ? 'rotate(45deg)' : 'rotate(-45deg)'}"
         ></span>
       </span>
     </div>
@@ -24,8 +24,6 @@
 </template>
 
 <script>
-import { TweenMax } from "gsap";
-
 export default {
   data() {
     return {
@@ -407,8 +405,9 @@ export default {
   .cross-style {
     position: absolute;
     top: 12px;
-    right: 20px;
+    left: 12px;
     cursor: pointer;
+    padding-left: 7px;
   }
 
   .bm-cross {
@@ -416,8 +415,8 @@ export default {
   }
 
   .bm-cross-button {
-    height: 24px;
-    width: 24px;
+    height: 30px;
+    width: 30px;
   }
 
   .bm-cross-button.hidden {

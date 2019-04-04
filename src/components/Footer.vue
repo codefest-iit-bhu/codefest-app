@@ -2,7 +2,7 @@
   <footer :class="$style.footer">
     <i :class="$style.heart"/>
     <span>Codefest' 19</span>
-    
+
     <span :class="$style.socialIcons">
       <a href="https://www.facebook.com/codefest/">
         <span class="fa-stack fa-lg">
@@ -49,7 +49,9 @@ export default {};
   height: 52px;
   margin-top: 20px;
   width: 100%;
+  position: absolute;
   bottom: 0;
+  z-index: 20;
 
   span {
     a {

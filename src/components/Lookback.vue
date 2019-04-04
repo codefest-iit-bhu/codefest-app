@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.lookback">
     <GridLayout
-      :columns="$mq | mq({xs: 1, sm: 2, md: 3, lg: 5, xl: 5})"
+      :columns="$mq | mq({xs: 1, sm: 2, md: 3, lg: 4, xl: 5})"
       itemWidth="200px"
       itemHeight="200px"
     >

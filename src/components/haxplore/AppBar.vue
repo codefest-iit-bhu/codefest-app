@@ -6,17 +6,41 @@
           <i class="fa fa-bars"></i>
         </a>
       </li>
+      <li :class="$style.appbarLogo" slot="left" v-if="shouldShowCollegeLogo">
+        <img src="@assets/logo-dcse.png">
+      </li>
+      <li :class="$style.appbarLogo" slot="right" v-if="shouldShowCollegeLogo">
+        <img src="@assets/logo-iitbhu.png">
+      </li>
+      <li
+        :class="$style.appbarLogo"
+        :id="$style.haxploreLogo"
+        slot="left"
+        v-if="shouldShowEventLogo"
+        @click="$emit('scrollTop')"
+      >
+        <img src="@assets/haxplore/logo-text.svg">
+      </li>
     </AppbarLayout>
     <div :class="$style.sidebar" ref="sidebar">
       <mq-layout mq="md+" v-show="isSideNavigationShown">
-        <ul v-scroll-spy-active="{class: $style.active}" v-scroll-spy-link>
+        <ul
+          v-scroll-spy-active="{class: $style.active}"
+          v-scroll-spy-link
+          @mouseover="isSideNavigationIdle = false"
+          @mouseleave="isSideNavigationIdle = true"
+        >
           <slot></slot>
         </ul>
       </mq-layout>
 
       <mq-layout :mq="['xs', 'sm']">
         <Slide :isOpen="isSidebarOpen" @closeSideBar="onCloseSideBar" :width="sideBarWidth">
-          <img src="@assets/haxplore/logo-text.svg" :class="$style.sidebarLogo">
+          <img
+            src="@assets/haxplore/logo-text.svg"
+            :class="$style.sidebarLogo"
+            @click="$emit('scrollTop')"
+          >
           <ul v-scroll-spy-active="{class: $style.active}" v-scroll-spy-link>
             <slot></slot>
           </ul>
@@ -27,7 +51,6 @@
 </template>
 
 <script>
-import { TweenLite } from "gsap";
 import { isMinimal } from "@js/utils";
 
 import AppbarLayout from "@components/layouts/AppbarLayout";
@@ -42,6 +65,11 @@ export default {
     shouldShowSideNavigation: {
       type: Boolean,
       default: true,
+      required: false
+    },
+    shouldShowHaxploreLogo: {
+      type: Boolean,
+      default: false,
       required: false
     }
   },
@@ -59,6 +87,15 @@ export default {
     sideBarWidth() {
       if (isMinimal(this.$mq)) return window.innerWidth;
       else return 300;
+    },
+    isMinimal() {
+      return isMinimal(this.$mq);
+    },
+    shouldShowCollegeLogo() {
+      return !this.isMinimal && !this.shouldShowHaxploreLogo;
+    },
+    shouldShowEventLogo() {
+      return !this.isMinimal && this.shouldShowHaxploreLogo;
     }
   },
   methods: {
@@ -80,6 +117,7 @@ export default {
       this.lastScrollEventTime = new Date().getTime();
       this.isSideNavigationIdle = false;
       setTimeout(() => {
+        if (this.isSideNavigationIdle) return;
         const now = new Date().getTime();
         if (now - this.lastScrollEventTime >= sideNavigationIdleTimeout) {
           this.isSideNavigationIdle = true;
@@ -98,7 +136,7 @@ export default {
     shouldShowSideNavigation: function(to, from) {
       if (to === from) return;
       const { sidebar } = this.$refs;
-      const finalRight = to ? 20 : -140;
+      const finalRight = to ? 0 : -140;
       const onStart = () => {
         if (to) this.isSideNavigationShown = true;
       };
@@ -113,7 +151,8 @@ export default {
     },
     isSideNavigationIdle: function(to, from) {
       if (to === from) return;
-      this.animateSideNav(to ? -100 : 20);
+      if (to && !this.shouldShowSideNavigation) return;
+      this.animateSideNav(to ? -100 : 0);
     }
   }
 };
@@ -135,6 +174,22 @@ export default {
     }
   }
 
+  .appbarLogo {
+    display: inline-block;
+    height: 100%;
+    padding: 5px;
+    margin: 0 10px;
+
+    img {
+      height: inherit;
+    }
+
+    &#haxploreLogo img {
+      padding: 10px 0;
+      cursor: pointer;
+    }
+  }
+
   .sidebar {
     margin: 0 auto;
 
@@ -146,7 +201,7 @@ export default {
         display: block;
 
         a {
-          font: 500 18px 'Roboto Slab';
+          font: 500 20px 'Roboto Slab';
           color: $white;
           text-decoration: none;
           cursor: pointer;
@@ -178,6 +233,7 @@ export default {
 
     .sidebarLogo {
       width: 250px;
+      cursor: pointer;
       margin: auto;
     }
 
@@ -191,12 +247,17 @@ export default {
       position: fixed;
       right: -140px;
       top: 0;
-      width: 150px;
-      padding: 20px;
+      width: 140px;
+      padding: 15px;
       display: flex;
       flex-flow: column;
       justify-content: space-around;
       height: 100%;
+      z-index: 9;
+    }
+
+    ~/.md ^[1..-1], ~/.lg ^[1..-1] {
+      background: linear-gradient(to right, alpha($mine-shaft, 0.8), alpha($mine-shaft, 0.1));
     }
   }
 }

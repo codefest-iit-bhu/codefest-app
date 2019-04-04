@@ -85,12 +85,15 @@ export default {
   }
 
   .link {
+    height: 100%;
+
     a {
+      height: inherit;
       color: $white;
-      padding: 10px 10px;
-      margin-left: 5px;
+      padding: 0 15px;
       text-decoration: none;
       transition: 0.5s;
+      vertical-align: middle;
     }
 
     a span {
@@ -133,8 +136,7 @@ export default {
 
     a {
       color: $white;
-      padding: 10px 10px;
-      margin-left: 5px;
+      margin-left: 15px;
       text-decoration: none;
       transition: 0.5s;
     }

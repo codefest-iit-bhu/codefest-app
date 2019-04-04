@@ -25,11 +25,9 @@ export default {
   },
   computed: {
     shouldShowTerminal: function() {
-      return !(
-        this.$mq === "sm" ||
-        this.$mq === "xs" ||
-        this.$route.meta.noTerminal
-      );
+      let { noTerminal } = this.$route.meta;
+      noTerminal = Object.is(noTerminal, undefined) ? true : noTerminal;
+      return !(this.$mq === "sm" || this.$mq === "xs" || noTerminal);
     },
     appBottomPadding: function() {
       if (this.shouldShowTerminal)

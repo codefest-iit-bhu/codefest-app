@@ -70,6 +70,9 @@ export default {
       return this.isShown ? this.$style.shown : "";
     }
   },
+  mounted() {
+    this.pwd = navigation.getPwdFromCurrent(this.current);
+  },
   watch: {
     current: function(newValue, oldValue) {
       if (!newValue) return;
@@ -117,7 +120,9 @@ export default {
     },
 
     submitResult(status, output) {
-      let input = this.$refs.cli.input;
+      const { cli } = this.$refs;
+      if (!cli) return;
+      const input = cli.input;
       terminal.addToHistory(this.pwd, status, input, output);
       this.$refs.cli.clearInput();
       this.scrollToBottom();
@@ -171,12 +176,10 @@ $collapsed-height = 90px;
 .terminal {
   background: $black;
   width: 100%;
-  z-index: 5;
+  z-index: 25;
   box-shadow: 1px -2px 2px 5px white;
   stick('bottom');
-  font-family: 'Courier New';
-  font-size: 20px;
-  font-weight: 800;
+  font: 800 18px 'Courier New';
   color: $cli-text;
   overflow-y: auto;
 

@@ -34,7 +34,6 @@
 </template>
 
 <script>
-import { TweenLite } from "gsap";
 import { TypingAnim, getRandom, isMinimal } from "@js/utils";
 
 export default {
@@ -187,7 +186,7 @@ export default {
       return this.openProgress === 1;
     },
     isMinimal() {
-      return isMinimal(this.$mq)
+      return isMinimal(this.$mq);
     }
   },
   watch: {

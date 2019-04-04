@@ -1,6 +1,10 @@
 <template>
   <div :class="[$style.root, $style[$mq]]">
-    <AppBar :shouldShowSideNavigation="isLargeNavOpen">
+    <AppBar
+      :shouldShowSideNavigation="isPastLanding"
+      :shouldShowHaxploreLogo="isPastLanding"
+      @scrollTop="scrollToTop"
+    >
       <li :key="i" v-for="(title, i) in titles" v-show="!!title">
         <a>
           <span class="fa fa-circle fa-xs" aria-hidden="true"></span>
@@ -10,7 +14,7 @@
     </AppBar>
     <Landing/>
     <main :class="$style.wrapper">
-      <div v-scroll-spy="{data: 'section'}">
+      <div v-scroll-spy="{data: 'section'}" ref="scroller">
         <div></div>
         <FAQ/>
         <Timeline/>
@@ -50,8 +54,13 @@ export default {
     };
   },
   computed: {
-    isLargeNavOpen() {
+    isPastLanding() {
       return this.section > 0;
+    }
+  },
+  methods: {
+    scrollToTop() {
+      TweenLite.to(window, 1, { scrollTo: 0, ease: Power4.easeInOut });
     }
   }
 };
