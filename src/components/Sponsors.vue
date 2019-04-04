@@ -1,36 +1,51 @@
 <template>
-  <div :class="[$style.sponsors, 'sectionContainer']">
-    <center>
-      <div :class="$style.titleContainer">
-        <div :class="$style.titleImg">
-          <!-- Image Here -->
+  <SectionLayout title="Sponsors" id="sponsors">
+    <div :class="[$style.sponsors, 'sectionContainer']">
+      <!-- <center>
+        <div :class="$style.titleContainer">
+          <div :class="$style.titleImg">
+          </div>
+          <div :class="$style.titleTxt">Title Sponsor</div>
         </div>
-        <div :class="$style.titleTxt">Title Sponsor</div>
+      </center>
+      <div :class="$style.container">
+        <GridLayout
+          :columns="$mq | mq({xs: 1, sm: 2, md: 3, lg: 4, xl: 5})"
+          itemWidth="200px"
+          itemHeight="200px"
+        >
+          <div :class="$style.cell" v-for="(stat, i) in stats" :key="i" :slot="`item${i}`">
+            <center>
+              <div :class="$style.clip">
+                <img :src="stat.image" :class="$style.img">
+              </div>
+              <br>
+              <span :class="$style.txt">{{ stat.text }}</span>
+            </center>
+          </div>
+        </GridLayout>
+      </div>-->
+      <div :class="$style.txt">
+        <h4>TBA</h4>
       </div>
-    </center>
-    <div :class="$style.container">
-      <GridLayout
-        :columns="$mq | mq({xs: 1, sm: 2, md: 3, lg: 4, xl: 5})"
-        itemWidth="200px"
-        itemHeight="200px"
-      >
-        <div :class="$style.cell" v-for="(stat, i) in stats" :key="i" :slot="`item${i}`">
-          <center>
-            <div :class="$style.clip">
-              <img :src="stat.image" :class="$style.img">
-            </div>
-            <br>
-            <span :class="$style.txt">{{ stat.text }}</span>
-          </center>
-        </div>
-      </GridLayout>
+      <div :class="$style.link">
+        <a href="https://goo.gl/forms/RyjmY7i002oUHivu2" :class="$style.linkText">
+          <h4>Sponsor Us</h4>
+        </a>
+      </div>
     </div>
-  </div>
+  </SectionLayout>
 </template>
 
 <script>
 import GridLayout from "./layouts/GridLayout";
+import SectionLayout from "@components/layouts/SectionLayout";
+
 export default {
+  components: {
+    SectionLayout,
+    GridLayout
+  },
   data() {
     return {
       stats: [
@@ -60,9 +75,6 @@ export default {
         }
       ]
     };
-  },
-  components: {
-    GridLayout
   }
 };
 </script>
@@ -76,6 +88,44 @@ $box-height = 200px;
 $box-width = 300px;
 
 .sponsors {
+  .link {
+    margin: auto;
+    width: 290px;
+    height: auto;
+    padding: 24px;
+    border-radius: 50px;
+    animation: neon-box 1.5s ease-in-out infinite alternate;
+    border: 2px solid $chartreuse;
+    text-align: center;
+    cursor: pointer;
+
+    .linkText {
+      color: $chartreuse;
+      display: inline;
+      text-decoration: none;
+
+      h4 {
+        font-family: 'Aldo the Apache';
+        font-size: 30px;
+        margin: 0;
+      }
+    }
+
+    &:hover {
+      box-shadow: inset 0px 0px 20px $chartreuse;
+    }
+  }
+
+  .txt {
+    text-align: center;
+
+    h4 {
+      font-family: 'Quicksand';
+      font-weight: bold;
+      font-size: 30px;
+    }
+  }
+
   .cell {
     width: $cell-size;
     height: $cell-size;

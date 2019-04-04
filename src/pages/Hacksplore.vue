@@ -19,7 +19,7 @@
         <FAQ/>
         <Timeline/>
         <Prizes/>
-        <!-- <Sponsors/> -->
+        <Sponsors/>
       </div>
     </main>
     <Footer/>
@@ -32,7 +32,7 @@ import Timeline from "@components/haxplore/Timeline";
 import FAQ from "@components/haxplore/FAQ";
 import Landing from "@components/haxplore/Landing";
 import Prizes from "@components/haxplore/Prizes";
-// import Sponsors from "@components/Sponsors";
+import Sponsors from "@components/Sponsors";
 import Footer from "@components/Footer";
 import SectionLayout from "@components/layouts/SectionLayout";
 
@@ -44,7 +44,7 @@ export default {
     Prizes,
     SectionLayout,
     Landing,
-    // Sponsors,
+    Sponsors,
     Footer
   },
   data() {

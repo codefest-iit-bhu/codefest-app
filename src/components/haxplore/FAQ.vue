@@ -22,20 +22,16 @@
           <p
             slot="0"
           >Any college student, pursuing undergraduate, post-graduate or PhD, can be a part of HaXplore.</p>
-          <p slot="1">
-            Register on
-            <a href="https://devfolio.co/">Devfolio</a>, form your team and complete your application.
-            Short-listed teams will be invited for the onsite event.
-          </p>
+          <p slot="1">Details to be released soon.</p>
           <p slot="2">No, it’s absolutely free of cost.</p>
           <p slot="3">Form a team, comprising of minimum 2 and maximum 3 members.</p>
           <p slot="4">
             Individual participants will not be shortlisted. Only complete teams will be considered for shortlisting.
             Further details to be released soon!
           </p>
-          <div slot="5">
-            <p>Yes, the travel reimbursement will be provided based on your distance.</p>
-            <table :class="$style.travel">
+          <!-- <div slot="5"> -->
+          <p slot="5">Yes, the travel reimbursement will be provided to everyone.</p>
+          <!-- <table :class="$style.travel">
               <tr>
                 <td>0-200 km</td>
                 <td>Rs. 500/person</td>
@@ -52,8 +48,8 @@
                 <td>More than 1000 km</td>
                 <td>Rs. 1500/person</td>
               </tr>
-            </table>
-          </div>
+          </table>-->
+          <!-- </div> -->
           <p slot="6">
             Full 3 meals would be provided for 2 days, Saturday and Sunday. Snacks would be provided regularly
             during the entire course of the hackathon. Accommodation will be provided from Friday evening to Monday morning.
@@ -165,16 +161,15 @@ export default {
     }
   }
 
-  .travel {
-    width: 100%;
+  // .travel {
+  // width: 100%;
 
-    tr, td {
-      height: 50px;
-      text-align: center;
-      border: 1px solid $chartreuse;
-    }
-  }
-
+  // tr, td {
+  // height: 50px;
+  // text-align: center;
+  // border: 1px solid $chartreuse;
+  // }
+  // }
   .faqMessage {
     a {
       color: $dodger-blue;
