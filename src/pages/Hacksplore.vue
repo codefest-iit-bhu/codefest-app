@@ -22,7 +22,7 @@
         <Sponsors/>
       </div>
     </main>
-    <Footer/>
+    <FooterN/>
   </div>
 </template>
 
@@ -33,7 +33,7 @@ import FAQ from "@components/haxplore/FAQ";
 import Landing from "@components/haxplore/Landing";
 import Prizes from "@components/haxplore/Prizes";
 import Sponsors from "@components/Sponsors";
-import Footer from "@components/Footer";
+import FooterN from "@components/haxplore/FooterN";
 import SectionLayout from "@components/layouts/SectionLayout";
 
 export default {
@@ -45,7 +45,7 @@ export default {
     SectionLayout,
     Landing,
     Sponsors,
-    Footer
+    FooterN
   },
   data() {
     return {

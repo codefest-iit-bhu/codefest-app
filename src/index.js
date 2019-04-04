@@ -1,6 +1,6 @@
 import Vue from "vue";
 import GAnalytics from "ganalytics";
-import App from "@components/App";
+import App from "./App";
 import vueMq from "vue-mq";
 import VueYoutube from "vue-youtube";
 import router from "./router";
@@ -46,6 +46,6 @@ if (process.env.NODE_ENV === "production") {
 
   // Service Worker registration
   if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("/sw.js");
+    navigator.serviceWorker.register("./sw.js");
   }
 }

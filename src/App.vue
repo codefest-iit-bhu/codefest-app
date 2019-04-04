@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import Terminal from "../components/Terminal";
+import Terminal from "@components/Terminal";
 
 export default {
   components: {
