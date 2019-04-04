@@ -1,7 +1,6 @@
 from firebase_admin import auth
 from rest_framework.status import HTTP_422_UNPROCESSABLE_ENTITY
 from rest_framework.exceptions import ValidationError
-from .models import VerifiedAccount
 
 class FirebaseAPI:
 
@@ -31,9 +30,10 @@ class FirebaseAPI:
             google.com
             facebook.com
             github.com
-            email
+            password
         """
         provider = jwt['firebase']['sign_in_provider']
+        from .models import VerifiedAccount
         if provider not in [VerifiedAccount.AUTH_FACEBOOK_PROVIDER, 
         VerifiedAccount.AUTH_EMAIL_PROVIDER, 
         VerifiedAccount.AUTH_GITHUB_PROVIDER, 

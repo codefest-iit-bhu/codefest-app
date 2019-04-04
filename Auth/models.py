@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from .utils import FirebaseAPI
 # Create your models here.
 
 class VerifiedAccount(models.Model):
@@ -29,4 +30,10 @@ class VerifiedAccount(models.Model):
 
     def __str__(self):
         return f'{self.user} from {self.provider}'
-
+    
+    def get_verified_status(self):
+        if self.is_verified:
+            return True
+        self.is_verified = FirebaseAPI.get_email_confirmation_status(self.uid)
+        self.save()
+        return self.is_verified

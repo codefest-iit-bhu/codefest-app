@@ -55,6 +55,6 @@ class ProfileSerializer(serializers.Serializer):
         profile.country=data.get('country')
         profile.phone=data.get('phone')
         profile.gender=data.get('gender')
-        profile.is_profile_complete=True
+        profile.get_or_set_profile_status(toSet=True)
         profile.save()
         return profile
