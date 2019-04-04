@@ -49,7 +49,7 @@ export default {
     return {
       isSidebarOpen: false,
       isSideNavigationShown: true,
-      sideNavigationIdleTimeout: 1,
+      sideNavigationIdleTimeout: 1000,
       doHideOnIdle: true,
       lastScrollEventTime: 0,
       isSideNavigationIdle: false
@@ -77,11 +77,10 @@ export default {
     },
     handleScroll(event) {
       const { sideNavigationIdleTimeout } = this.$data;
-      this.lastScrollEventTime = new Date().getTime() / 1000;
+      this.lastScrollEventTime = new Date().getTime();
       this.isSideNavigationIdle = false;
       setTimeout(() => {
-        const now = new Date().getTime() / 1000;
-        console.log(now - this.lastScrollEventTime);
+        const now = new Date().getTime();
         if (now - this.lastScrollEventTime >= sideNavigationIdleTimeout) {
           this.isSideNavigationIdle = true;
         }
@@ -114,7 +113,7 @@ export default {
     },
     isSideNavigationIdle: function(to, from) {
       if (to === from) return;
-      this.animateSideNav(to ? 20 : -70);
+      this.animateSideNav(to ? -100 : 20);
     }
   }
 };
@@ -123,6 +122,7 @@ export default {
 <style module lang="stylus">
 @require '~@styles/mixins';
 @require '~@styles/theme';
+@require '~@styles/anims';
 
 .wrapper {
   #toggleSidebar {
