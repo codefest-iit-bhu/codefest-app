@@ -88,6 +88,7 @@ export default {
       margin: 10px auto;
       height: 32px;
       font: 26px 'Ubuntu';
+      text-align: center;
     }
 
     ~/.xs .tagline, ~/.sm .tagline {
@@ -108,6 +109,7 @@ export default {
 
         ~/.xs ^[1..-1] {
           content: '';
+          margin: unset;
         }
       }
 

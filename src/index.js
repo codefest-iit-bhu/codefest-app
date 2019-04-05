@@ -43,9 +43,9 @@ if (process.env.NODE_ENV === "production") {
       dp: nxt.path
     });
   });
+}
 
-  // Service Worker registration
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("./sw.js");
-  }
+// Service Worker registration
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("./sw.js");
 }
