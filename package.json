@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "build": "pwa build",
+    "build": "pwa build && rm build/*.map && rm build/*.map.gz",
     "start": "sirv build -s",
     "watch": "pwa watch"
   },

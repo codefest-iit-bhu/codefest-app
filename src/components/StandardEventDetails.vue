@@ -61,7 +61,7 @@
 
 <script>
 import TabLayout from "@components/layouts/TabLayout";
-import { Object } from "core-js";
+
 export default {
   components: {
     TabLayout

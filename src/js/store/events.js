@@ -7,19 +7,10 @@ export default {
         "A challenge to blend your creativity and programming skills to develop a robust mobile app.",
       shortDescription: "Coming Soon",
       longDescription: "Coming Soon",
-      rules: ["Dont fuck with mayank", "Dont forget rule 1"],
+      rules: [],
       link: "codefest.tech/events/appathon",
       icon: "/assets/events/appathon.png",
-      coordinators: [
-        {
-          name: "Mayank Vinod Pathroliya",
-          email: "mayank.vpathroliya.cse17@itbhu.ac.in"
-        },
-        {
-          name: "Parbhash Kumar",
-          email: "parbhash.kumar.cse17@itbhu.ac.in"
-        }
-      ],
+      coordinators: [],
       faq: [
         {
           question: "Question 1?",
@@ -38,19 +29,10 @@ export default {
         "Solve real-life problems by letting your machine learn patterns in the data for you.",
       shortDescription: "Coming Soon",
       longDescription: "Coming Soon",
-      rules: [""],
+      rules: [],
       link: "codefest.tech/events/enigma",
       icon: "/assets/events/enigma.png",
-      coordinators: [
-        {
-          name: "Mayank Vinod Pathroliya",
-          email: "mayank.vpathroliya.cse17@itbhu.ac.in"
-        },
-        {
-          name: "Parbhash Kumar",
-          email: "parbhash.kumar.cse17@itbhu.ac.in"
-        }
-      ],
+      coordinators: [],
       faq: [
         {
           question: "",
@@ -68,16 +50,7 @@ export default {
       rules: [""],
       link: "codefest.tech/events/vista",
       icon: "/assets/events/vista.png",
-      coordinators: [
-        {
-          name: "Mayank Vinod Pathroliya",
-          email: "mayank.vpathroliya.cse17@itbhu.ac.in"
-        },
-        {
-          name: "Parbhash Kumar",
-          email: "parbhash.kumar.cse17@itbhu.ac.in"
-        }
-      ],
+      coordinators: [],
       faq: [
         {
           question: "",
@@ -95,16 +68,7 @@ export default {
       rules: [""],
       link: "codefest.tech/events/manthan",
       icon: "/assets/events/manthan.png",
-      coordinators: [
-        {
-          name: "Mayank Vinod Pathroliya",
-          email: "mayank.vpathroliya.cse17@itbhu.ac.in"
-        },
-        {
-          name: "Parbhash Kumar",
-          email: "parbhash.kumar.cse17@itbhu.ac.in"
-        }
-      ],
+      coordinators: [],
       faq: [
         {
           question: "",
@@ -122,16 +86,7 @@ export default {
       rules: [""],
       link: "codefest.tech/events/linguipedia",
       icon: "/assets/events/linguipedia.png",
-      coordinators: [
-        {
-          name: "Mayank Vinod Pathroliya",
-          email: "mayank.vpathroliya.cse17@itbhu.ac.in"
-        },
-        {
-          name: "Parbhash Kumar",
-          email: "parbhash.kumar.cse17@itbhu.ac.in"
-        }
-      ],
+      coordinators: [],
       faq: [
         {
           question: "",
@@ -149,16 +104,7 @@ export default {
       rules: [""],
       link: "codefest.tech/events/perplexed",
       icon: "/assets/events/perplexed.png",
-      coordinators: [
-        {
-          name: "Mayank Vinod Pathroliya",
-          email: "mayank.vpathroliya.cse17@itbhu.ac.in"
-        },
-        {
-          name: "Parbhash Kumar",
-          email: "parbhash.kumar.cse17@itbhu.ac.in"
-        }
-      ],
+      coordinators: [],
       faq: [
         {
           question: "",
@@ -176,16 +122,7 @@ export default {
       rules: [""],
       link: "codefest.tech/events/mathmania",
       icon: "/assets/events/mathamania.png",
-      coordinators: [
-        {
-          name: "Mayank Vinod Pathroliya",
-          email: "mayank.vpathroliya.cse17@itbhu.ac.in"
-        },
-        {
-          name: "Parbhash Kumar",
-          email: "parbhash.kumar.cse17@itbhu.ac.in"
-        }
-      ],
+      coordinators: [],
       faq: [
         {
           question: "",
@@ -203,16 +140,7 @@ export default {
       rules: [""],
       link: "codefest.tech/events/ctf",
       icon: "/assets/events/ctf.png",
-      coordinators: [
-        {
-          name: "Mayank Vinod Pathroliya",
-          email: "mayank.vpathroliya.cse17@itbhu.ac.in"
-        },
-        {
-          name: "Parbhash Kumar",
-          email: "parbhash.kumar.cse17@itbhu.ac.in"
-        }
-      ],
+      coordinators: [],
       faq: [
         {
           question: "",
@@ -230,16 +158,7 @@ export default {
       rules: [""],
       link: "codefest.tech/events/decipher",
       icon: "/assets/events/decipher.png",
-      coordinators: [
-        {
-          name: "Mayank Vinod Pathroliya",
-          email: "mayank.vpathroliya.cse17@itbhu.ac.in"
-        },
-        {
-          name: "Parbhash Kumar",
-          email: "parbhash.kumar.cse17@itbhu.ac.in"
-        }
-      ],
+      coordinators: [],
       faq: [
         {
           question: "",
