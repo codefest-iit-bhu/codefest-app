@@ -23,9 +23,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '=t9h+9&(5&($pquh4xmt)a6#we71njnzn$biobz!m-(ydf2iuj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+DEBUG = os.environ.get('DEBUG',True)
+ALLOWED_HOSTS = ['codefest-api.herokuapp.com']
 
 
 # Application definition
