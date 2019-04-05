@@ -5,6 +5,7 @@ certifi==2018.11.29
 chardet==3.0.4
 coreapi==2.3.3
 coreschema==0.0.4
+dj-database-url==0.5.0
 Django==2.1.5
 django-rest-framework==0.1.0
 djangorestframework==3.9.0
@@ -18,6 +19,7 @@ google-cloud-storage==1.14.0
 google-resumable-media==0.3.2
 googleapis-common-protos==1.5.8
 grpcio==1.18.0
+gunicorn==19.9.0
 hashids==1.2.0
 idna==2.8
 inflection==0.3.1
@@ -29,6 +31,7 @@ MarkupSafe==1.1.0
 mccabe==0.6.1
 msgpack==0.6.1
 protobuf==3.6.1
+psycopg2-binary==2.8
 pyasn1==0.4.5
 pyasn1-modules==0.2.4
 pylint==2.3.1

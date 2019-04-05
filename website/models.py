@@ -129,13 +129,16 @@ class Team(models.Model):
     def leave_team(self , user):
         if user == self.creator:
             self.delete()
+            return 0
         else:
-            if self.total_members() <= self.event.min_members:
+            total_members = self.total_members()
+            if  total_members <= self.event.min_members:
                 self.is_active=False
                 self.save()
 
             ins  = Membership.objects.get(team=self,profile=user)
             ins.delete()
+            return total_members-1
 
 class Membership(models.Model):
     team=models.ForeignKey(Team,on_delete=models.CASCADE)

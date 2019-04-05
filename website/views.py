@@ -68,3 +68,20 @@ class TeamJoinView(generics.GenericAPIView):
         team = seld.serializer.save()
         response = TeamDetailSerializer(team)
         return Response(response.data, status = status.HTTP_200_OK)
+
+class TeamLeaveView(generics.GenericAPIView):
+    permission_classes = []
+    serializer_class = TeamLeaveSerializer
+
+    def get_queryset(self):
+        pass
+    
+    def post(self, request, *args, **kwargs):
+        self.request = request
+        self.serializer = self.get_serializer(data = request.data)
+        self.serializer.is_valid(raise_exception=True)
+        (team, num_members) = self.serializer.save()
+        if num_members ==0:
+            return Response({}, status=status.HTTP_200_OK)
+        response = TeamDetailSerializer(team)
+        return Response(response.data, status = status.HTTP_200_OK)

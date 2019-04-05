@@ -92,7 +92,7 @@ class TeamJoinSerializer(serializers.Serializer):
     access_code = serializers.CharField()
 
     def validate(self, data):
-        access_code=data.access_code
+        access_code=data['access_code']
         user =  self.context['request'].user
         if Team.objects.filter(access_code=access_code).count()==0:
             raise serializers.ValidationError("Invalid Access Code")
@@ -114,6 +114,31 @@ class TeamJoinSerializer(serializers.Serializer):
         team=data['team']
         team.join_team(user.profile, access_code)
         return team
+
+
+class TeamLeaveSerializer(serializers.Serializer):
+    access_code = serializers.CharField()
+
+    def validate(self, data):
+        access_code= data['access_code']
+        user =  self.context['request'].user
+        if Team.objects.filter(access_code=access_code).count()==0:
+            raise serializers.ValidationError("Invalid Access Code")
+
+        team = Team.objects.get(access_code=access_code)
+        if Membership.objects.filter(team = team , profile = user.profile).count()==0:
+            raise serializers.ValidationError("Not a member of requested team")
+        return_dict={}
+        return_dict['team']=team
+        return_dict['user']=user
+        return return_dict
+    
+    def save(self):
+        data = self.validated_data
+        user = data['user']
+        team = data['team']
+        remaining_members = team.leave_team(user.profile)
+        return (team, remaining_members)
 
 class TeamDetailSerializer(serializers.ModelSerializer):
     class Meta:
