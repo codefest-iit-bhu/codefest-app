@@ -107,7 +107,7 @@ class Team(models.Model):
     members=models.ManyToManyField(Profile,through='Membership',related_name="team_members")
     creator=models.ForeignKey(Profile,related_name="teams_created",on_delete=models.CASCADE)
     is_active=models.BooleanField(default=False)
-    access_code = models.CharField(unique=True , max_length=10 , default='uninitialized')
+    access_code = models.CharField(unique=True , max_length=100 , default='uninitialized')
  
     def __str__(self):          
         return self.name + " for event " + str(self.event)
