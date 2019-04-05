@@ -22,7 +22,8 @@ class EventListView(generics.ListAPIView):
     queryset=Event.objects.all()
 
 class ProfileView(generics.GenericAPIView):
-    permission_classes=[]
+    permission_classes=[permissions.IsAuthenticated]
+    authentication_classes= [authentication.TokenAuthentication, authentication.SessionAuthentication]
     serializer_class=ProfileSerializer
 
     def get_queryset(self):
@@ -38,7 +39,8 @@ class ProfileView(generics.GenericAPIView):
         return Response({},status=status.HTTP_200_OK)
 
 class TeamCreationView(generics.GenericAPIView):
-    permission_classes = []
+    permission_classes = [permissions.IsAuthenticated]
+    authentication_classes = [authentication.TokenAuthentication,authentication.SessionAuthentication]
     serializer_class = TeamCreationSerializer
 
     def get_queryset(self):
@@ -55,7 +57,8 @@ class TeamCreationView(generics.GenericAPIView):
         return Response(response.data, status=status.HTTP_200_OK)
 
 class TeamJoinView(generics.GenericAPIView):
-    permission_classes = []
+    permission_classes = [permissions.IsAuthenticated]
+    authentication_classes = [authentication.TokenAuthentication, authentication.SessionAuthentication]
     serializer_class = TeamJoinSerializer
 
     def get_queryset(self):
@@ -70,7 +73,8 @@ class TeamJoinView(generics.GenericAPIView):
         return Response(response.data, status = status.HTTP_200_OK)
 
 class TeamLeaveView(generics.GenericAPIView):
-    permission_classes = []
+    permission_classes = [permissions.IsAuthenticated]
+    authentication_classes = [authentication.TokenAuthentication,authentication.SessionAuthentication]
     serializer_class = TeamLeaveSerializer
 
     def get_queryset(self):
