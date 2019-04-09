@@ -1,6 +1,13 @@
 <template>
   <div :class="$style.root">
-    <AppBar/>
+    <AppBar @scrollTop="scrollToTop">
+      <li v-for="(event,i) in events" :key="i" :class="i==currentEventIndex?$style.active:''">
+        <router-link :to="'/events/'+event.name">
+          <span class="fa fa-circle fa-xs" aria-hidden="true"></span>
+          {{event.title}}
+        </router-link>
+      </li>
+    </AppBar>
     <main :class="$style.wrapper">
       <StandardEventDetails :event="events[currentEventIndex]"/>
     </main>
@@ -32,11 +39,20 @@ export default {
       }
       return i;
     }
+  },
+  methods: {
+    scrollToTop() {
+      TweenLite.to(window, 1, { scrollTo: 0, ease: Power4.easeInOut });
+    }
   }
 };
 </script>
 
 <style module lang="stylus">
+@require '~@styles/mixins';
+@require '~@styles/theme';
+@require '~@styles/anims';
+
 .wrapper {
   width: 80%;
   margin: 0 auto;
@@ -49,6 +65,18 @@ export default {
 
 .root {
   height: 100%;
+}
+
+.active {
+  a {
+    color: $chartreuse;
+    font-weight: bold;
+
+    span {
+      color: $white;
+      animation: neon-text 1s ease-in-out infinite alternate;
+    }
+  }
 }
 
 @media screen and (max-width: 769px) {
