@@ -131,7 +131,7 @@ export default {
         color: $white;
         font-family: 'Aldo the Apache';
         text-align: right;
-        font-size: 84px;
+        font-size: 50px;
         margin: 0;
         float: right;
         padding-top: 30px;
@@ -148,7 +148,7 @@ export default {
   }
 
   .rightHr {
-    margin-top: 36px;
+    margin-top: 5px;
     margin-bottom: 72px;
     margin-left: 30%;
     background-image: linear-gradient(to right, $black, $chartreuse);
@@ -161,7 +161,7 @@ export default {
   }
 
   .eventDesc {
-    margin-bottom: 144px;
+    margin-bottom: 100px;
 
     .descContainer {
       padding: 36px;
@@ -209,7 +209,7 @@ export default {
 
   .ps {
     .link {
-      margin: auto;
+      margin: 0 auto 60px;
       width: 290px;
       height: auto;
       padding: 24px;
@@ -217,6 +217,10 @@ export default {
       box-shadow: inset 0px 0px 20px $chartreuse;
       animation: neon-box 1.5s ease-in-out infinite alternate;
       border: 2px solid $chartreuse;
+
+      a {
+        text-decoration: none;
+      }
 
       .linkText {
         font-family: 'Aldo the Apache';
