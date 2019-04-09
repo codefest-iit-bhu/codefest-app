@@ -54,7 +54,7 @@ export default {
 @require '~@styles/anims';
 
 .wrapper {
-  width: 80%;
+  width: 75%;
   margin: 0 auto;
   padding: 100px 20px 50px 20px;
   position: relative;
