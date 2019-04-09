@@ -1,20 +1,23 @@
 import Vue from "vue";
 import Router from "vue-router";
-import { isMobile } from "../js/utils";
+import {
+  isMobile
+} from "../js/utils";
+import firebase from 'firebase';
 
 Vue.use(Router);
 
 const router = new Router({
   mode: "history",
-  routes: [
-    {
+  routes: [{
       name: "~",
       path: "/",
       component: () => import(`@pages/Home`),
       meta: {
         title: "CodeFest '19 | IIT (BHU) Varanasi",
         metaTags: [],
-        noTerminal: false
+        noTerminal: false,
+        requiresAuth: true
       }
     },
     {
@@ -138,6 +141,13 @@ router.beforeEach((to, from, next) => {
     })
     // Add the meta tags to the document head.
     .forEach(tag => document.head.appendChild(tag));
+
+  // const currentUser = firebase.auth().currentUser;
+  // const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+
+  // if (requiresAuth && !currentUser) next('login');
+  // else if (!requiresAuth && currentUser) next('~');
+  // else next();
 
   next();
 });

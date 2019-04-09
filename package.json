@@ -6,6 +6,7 @@
     "watch": "pwa watch"
   },
   "dependencies": {
+    "firebase": "^5.9.3",
     "ganalytics": "^3.1.1",
     "sirv-cli": "^0.2.0",
     "vue": "~2.6.7",
