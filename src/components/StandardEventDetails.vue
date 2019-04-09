@@ -61,7 +61,7 @@
 
 <script>
 import TabLayout from "@components/layouts/TabLayout";
-import { Object } from "core-js";
+
 export default {
   components: {
     TabLayout
@@ -131,7 +131,7 @@ export default {
         color: $white;
         font-family: 'Aldo the Apache';
         text-align: right;
-        font-size: 96px;
+        font-size: 84px;
         margin: 0;
         float: right;
         padding-top: 30px;
@@ -177,10 +177,18 @@ export default {
         font-size: 20px;
         margin-top: 36px;
         margin-bottom: 10px;
+        font-family: 'Quicksand';
+        font-weight: 500;
       }
 
       ul {
         padding-left: 25px;
+
+        .ruleText {
+          font-family: 'Quicksand';
+          font-weight: 500;
+          margin-bottom: 10px;
+        }
       }
 
       .stat {
@@ -192,6 +200,8 @@ export default {
 
         .email, .answer {
           margin-bottom: 20px;
+          font-family: 'Quicksand';
+          font-weight: 500;
         }
       }
     }

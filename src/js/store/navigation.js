@@ -4,6 +4,9 @@ export const navigation = {
       ".": "/",
       events: {
         ".": "/events"
+      },
+      haxplore: {
+        ".": "/haxplore"
       }
     },
     "404": {

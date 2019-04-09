@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { TypingAnim, getRandom } from "@js/utils";
+import { TypingAnim, getRandom, isMinimal } from "@js/utils";
 
 export default {
   data() {
@@ -186,7 +186,7 @@ export default {
       return this.openProgress === 1;
     },
     isMinimal() {
-      return this.$mq === "xs" || this.$mq === "sm";
+      return isMinimal(this.$mq);
     }
   },
   watch: {
@@ -296,7 +296,7 @@ $cell-collapsed-size = 150px;
   position: relative;
 
   .summary {
-    font-family: 'Courier New';
+    font-family: 'Quicksand';
     padding: 2px 10px;
     text-align: justify;
     font-weight: 600;

@@ -51,8 +51,8 @@ export default {
 </script>
 
 <style module lang="stylus">
-@import '~@styles/theme';
-@import '~@styles/anims';
+@require '~@styles/theme';
+@require '~@styles/anims';
 
 $tab-width = 150px;
 $tab-height = 30px;
@@ -75,6 +75,8 @@ $tab-height = 30px;
       position: absolute;
       top: 0;
       background: $chartreuse;
+      font-family: 'Roboto Slab';
+      font-weight: 500;
       clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
       height: $tab-height;
       line-height: 30px;

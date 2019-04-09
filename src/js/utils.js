@@ -10,8 +10,22 @@ export const isMobile = function() {
   }
 };
 
+export const isMinimal = function(mq) {
+  return mq === "xs" || mq === "sm";
+};
+
 export const getRandom = function(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+export const formatDateTo12HoursTime = function(date) {
+  if (!(date instanceof Date))
+    throw Error(`Date value expected, got ${date.constructor.name}`);
+  return date.toLocaleString("en-us", {
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true
+  });
 };
 
 export class TypingAnim {

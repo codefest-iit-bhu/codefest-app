@@ -1,14 +1,23 @@
 <template>
   <div :class="[$style.faqList, $style[$mq]]">
-    <Q v-for="(item, i) in faqItems" :key="i" :item="item" ref="faqs" :index="i" @onToggleQuestion="closeOtherQuestions"/>
+    <QuesAns
+      v-for="(item, i) in faqItems"
+      :key="i"
+      :item="item"
+      ref="faqs"
+      :index="i"
+      @onToggleQuestion="closeOtherQuestions"
+    >
+      <slot :name="i"></slot>
+    </QuesAns>
   </div>
 </template>
 
 <script>
-import Q from "@components/Q";
+import QuesAns from "@components/QuesAns";
 export default {
   components: {
-    Q
+    QuesAns
   },
   props: {
     faqItems: {
@@ -20,9 +29,8 @@ export default {
     closeOtherQuestions(index, isOpen) {
       let { faqs } = this.$refs;
       faqs.forEach((faq, i) => {
-        if (i != index)
-          faq.open = false
-      })
+        if (i != index) faq.open = false;
+      });
     }
   }
 };

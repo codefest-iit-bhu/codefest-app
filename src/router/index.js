@@ -13,7 +13,8 @@ const router = new Router({
       component: () => import(`@pages/Home`),
       meta: {
         title: "CodeFest '19 | IIT (BHU) Varanasi",
-        metaTags: []
+        metaTags: [],
+        noTerminal: false
       }
     },
     {
@@ -22,16 +23,8 @@ const router = new Router({
       component: () => import(`@pages/EventList`),
       meta: {
         title: "CodeFest '19 | Events",
-        metaTags: []
-      }
-    },
-    {
-      name: "~/timeline",
-      path: "/timeline",
-      component: () => import(`@pages/Timeline`),
-      meta: {
-        title: "CodeFest '19 | Timeline",
-        metaTags: []
+        metaTags: [],
+        noTerminal: false
       }
     },
     {
@@ -40,7 +33,8 @@ const router = new Router({
       component: () => import("@pages/EventDetails"),
       meta: {
         title: "CodeFest '19 | Event",
-        metaTags: []
+        metaTags: [],
+        noTerminal: false
       }
     },
     {
@@ -49,7 +43,8 @@ const router = new Router({
       component: () => import(`@pages/Login`),
       meta: {
         title: "CodeFest '19 | Login",
-        metaTags: []
+        metaTags: [],
+        noTerminal: false
       }
     },
     {
@@ -58,7 +53,18 @@ const router = new Router({
       component: () => import(`@pages/Profile`),
       meta: {
         title: "CodeFest '19 | Profile",
-        metaTags: []
+        metaTags: [],
+        noTerminal: false
+      }
+    },
+    {
+      name: "~/haxplore",
+      path: "/haxplore",
+      component: () => import(`@pages/Hacksplore`),
+      meta: {
+        title: "CodeFest '19 | HaXplore",
+        metaTags: [],
+        noTerminal: true
       }
     },
     {
@@ -67,21 +73,12 @@ const router = new Router({
       component: () => import("@pages/Test")
     },
     {
-      name: "~/haxplore",
-      path: "/haxplore",
-      component: () => import(`@pages/Hacksplore`),
-      meta: {
-        title: "Haxplore",
-        metaTags: [],
-        noTerminal: true
-      }
-    },
-    {
       name: "404",
       path: "/*",
       component: () => import(`@pages/404`),
       meta: {
-        title: "CodeFest '19 | 404"
+        title: "CodeFest '19 | 404",
+        noTerminal: false
       }
     }
   ],

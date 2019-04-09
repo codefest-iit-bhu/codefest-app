@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <div :class="$style.container" :style="gridStyle">
-      <div :class="$style.itemWrapper" v-for="(slot, i) in Object.keys($slots)" :key="i">
-        <slot :name="slot"></slot>
-      </div>
+  <div :class="$style.container" :style="gridStyle">
+    <div :class="$style.itemWrapper" v-for="(slot, i) in Object.keys($slots)" :key="i">
+      <slot :name="slot"></slot>
     </div>
   </div>
 </template>

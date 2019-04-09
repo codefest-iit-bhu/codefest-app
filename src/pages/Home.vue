@@ -21,18 +21,16 @@
       <SectionLayout title="Lookback">
         <Lookback/>
       </SectionLayout>
-      <!-- Sponsors -->
-      <SectionLayout title="Sponsors">
+      <!-- <SectionLayout title="Sponsors">
         <Sponsors/>
-      </SectionLayout>
-      <!-- <Sponsors/> -->
+      </SectionLayout>-->
     </main>
     <Footer/>
   </div>
 </template>
 
 <script>
-import AppBar from "@components/AppBar";
+import AppBar from "@components/Menu/AppBar";
 import SectionLayout from "@components/layouts/SectionLayout";
 import Hero from "@components/Hero";
 import Footer from "@components/Footer";
@@ -61,9 +59,8 @@ export default {
   margin: 0 auto;
   position: relative;
   z-index: 1;
-  font-family: 'Roboto Mono';
-  padding-bottom: 100px;
-  font-size: 18px;
+  font: 500 18px 'Quicksand';
+  padding: 100px 0;
 }
 
 .root {

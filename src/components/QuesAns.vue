@@ -11,7 +11,7 @@
       </p>
     </div>
     <div :class="$style.answer" :style="answerHeightStyle" ref="answer">
-      <p>{{item.answer}}</p>
+      <slot></slot>
     </div>
   </div>
 </template>
@@ -82,11 +82,15 @@ export default {
   clear: both;
   border-bottom: 2px solid $chartreuse;
 
+  a {
+    color: $chartreuse;
+  }
+
   .question {
-    font-size: 20px;
     cursor: pointer;
-    font-family: 'ubuntu';
+    font-family: 'Roboto Slab';
     font-weight: bold;
+    user-select: none;
 
     i {
       position: absolute;
@@ -94,7 +98,9 @@ export default {
     }
 
     ^[0].xs, ^[0].sm {
-      font-size: 15px;
+      p {
+        font-size: 14px;
+      }
     }
   }
 
@@ -103,7 +109,7 @@ export default {
     overflow: hidden;
     width: 100%;
     clear: both;
-    font-family: 'Roboto mono';
+    font-family: 'Quicksand';
 
     ^[0].xs, ^[0].sm {
       font-size: 13px;

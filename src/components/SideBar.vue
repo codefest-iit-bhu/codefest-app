@@ -10,7 +10,7 @@
           v-for="(x, index) in 2"
           :key="x"
           class="bm-cross"
-          :style="{ position: 'absolute', width: '3px', height: '14px',transform: index === 1 ? 'rotate(45deg)' : 'rotate(-45deg)'}"
+          :style="{ position: 'absolute', width: '3px', height: '24px',transform: index === 1 ? 'rotate(45deg)' : 'rotate(-45deg)'}"
         ></span>
       </span>
     </div>
@@ -331,15 +331,12 @@ export default {
       opacityAnimationData,
       animationHandlers
     ) {
-      const Anim = window.TweenMax;
-      if (Anim) {
-        Anim.to(this.$data, animationDuration, {
-          ...transformAnimationData,
-          ...opacityAnimationData,
-          ...animationHandlers,
-          ease: Power4.easeOut
-        });
-      }
+      TweenMax.to(this.$data, animationDuration, {
+        ...transformAnimationData,
+        ...opacityAnimationData,
+        ...animationHandlers,
+        ease: Power4.easeOut
+      });
     },
     getOpacityStyle(opacity) {
       return { opacity };
@@ -408,8 +405,9 @@ export default {
   .cross-style {
     position: absolute;
     top: 12px;
-    right: 2px;
+    left: 12px;
     cursor: pointer;
+    padding-left: 7px;
   }
 
   .bm-cross {
@@ -417,8 +415,8 @@ export default {
   }
 
   .bm-cross-button {
-    height: 24px;
-    width: 24px;
+    height: 30px;
+    width: 30px;
   }
 
   .bm-cross-button.hidden {
@@ -426,6 +424,7 @@ export default {
   }
 
   .bm-menu {
+    padding-left: 10%;
     height: 100%; /* 100% Full-height */
     position: fixed; /* Stay in place */
     z-index: 1000; /* Stay on top */
@@ -445,12 +444,10 @@ export default {
 
   .bm-item-list {
     color: #b8b7ad;
-    margin-left: 10%;
     font-size: 20px;
   }
 
   .bm-item-list > * {
-    display: flex;
     text-decoration: none;
     padding: 0.7em;
   }

@@ -8,7 +8,7 @@
         :key="i"
         :event="event"
         :id="i"
-        :keepOpen="$mq === 'xs' || $mq === 'sm'"
+        :keepOpen="isMinimal"
       />
     </main>
     <Footer/>
@@ -16,11 +16,12 @@
 </template>
 
 <script>
-import AppBar from "@components/AppBar";
+import AppBar from "@components/Menu/AppBar";
 import SpecialEvent from "@components/SpecialEvent";
 import StandardEvent from "@components/StandardEvent";
 import Footer from "@components/Footer";
 import events from "@js/store/events";
+import { isMinimal } from "@js/utils";
 
 export default {
   components: {
@@ -31,17 +32,22 @@ export default {
   },
   data() {
     return events;
+  },
+  computed: {
+    isMinimal() {
+      return isMinimal(this.$mq);
+    }
   }
 };
 </script>
 
 <style module lang="stylus">
-@import '~@styles/mixins';
+@require '~@styles/mixins';
 
 .wrapper {
   width: 80%;
   margin: 0 auto;
-  padding: 100px 0 50px;
+  padding: 100px 0;
   position: relative;
   z-index: 1;
   font-family: 'Roboto Mono';

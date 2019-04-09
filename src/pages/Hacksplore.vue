@@ -1,40 +1,87 @@
 <template>
   <div :class="[$style.root, $style[$mq]]">
+    <AppBar
+      :shouldShowSideNavigation="isPastLanding"
+      :shouldShowHaxploreLogo="isPastLanding"
+      @scrollTop="scrollToTop"
+    >
+      <li :key="i" v-for="(title, i) in titles" v-show="!!title">
+        <a>
+          <span class="fa fa-circle fa-xs" aria-hidden="true"></span>
+          {{ title }}
+        </a>
+      </li>
+    </AppBar>
+    <Landing/>
     <main :class="$style.wrapper">
-      <FAQ/>
+      <div v-scroll-spy="{data: 'section'}" ref="scroller">
+        <div></div>
+        <FAQ/>
+        <Timeline/>
+        <Prizes/>
+        <Sponsors/>
+      </div>
     </main>
+    <FooterN/>
   </div>
 </template>
 
 <script>
+import AppBar from "@components/haxplore/AppBar";
+import Timeline from "@components/haxplore/Timeline";
 import FAQ from "@components/haxplore/FAQ";
-import Footer from "@components/Footer";
+import Landing from "@components/haxplore/Landing";
+import Prizes from "@components/haxplore/Prizes";
+import Sponsors from "@components/Sponsors";
+import FooterN from "@components/haxplore/FooterN";
 import SectionLayout from "@components/layouts/SectionLayout";
 
 export default {
   components: {
+    AppBar,
     FAQ,
-    SectionLayout
+    Timeline,
+    Prizes,
+    SectionLayout,
+    Landing,
+    Sponsors,
+    FooterN
   },
   data() {
-    return {};
+    return {
+      section: 0,
+      titles: [null, "FAQ", "Timeline", "Prizes"]
+    };
+  },
+  computed: {
+    isPastLanding() {
+      return this.section > 0;
+    }
+  },
+  methods: {
+    scrollToTop() {
+      TweenLite.to(window, 1, { scrollTo: 0, ease: Power4.easeInOut });
+    }
   }
 };
 </script>
 
 <style module lang="stylus">
+@require '~@styles/theme';
+@require '~@styles/anims';
+
 .wrapper {
   width: 80%;
   margin: 0 auto;
-  padding: 20px 20px 50px 20px;
+  padding: 50px 0;
+  z-index: 1;
   position: relative;
-  font-family: 'Roboto Mono';
-  font-size: 18px;
+  font: 500 18px 'Quicksand';
+  font-kerning: auto;
 }
 
 .faqContainer {
   width: 100%;
-  font-family: 'ubuntu';
   font-size: 20px;
 
   .faqHeader {

@@ -1,16 +1,23 @@
 <template>
-  <div :class="$style.floatBtn" @click="$emit('onClick')">
+  <div :class="[$style.floatBtn, animateClass]" @click="$emit('onClick')">
     <i class="fas fa-user-plus" :class="$style.btn"></i>
     <span :class="$style.txt">{{ text }}</span>
   </div>
 </template>
 
 <script>
+import { isMinimal } from "@js/utils";
+
 export default {
   props: {
     text: {
       required: true,
       type: String
+    }
+  },
+  computed: {
+    animateClass() {
+      return isMinimal(this.$mq) ? "" : this.$style.animate;
     }
   }
 };
@@ -52,16 +59,16 @@ $image-expand-width = 18px;
     margin-left: 5px;
   }
 
-  &:hover {
+  &.animate:hover {
     width: $btn-expand-width;
 
     .btn {
       width: auto;
     }
   }
-}
 
-i {
-  margin-top: (($btn-height - 18px) / 2);
+  i {
+    margin-top: (($btn-height - 18px) / 2);
+  }
 }
 </style>

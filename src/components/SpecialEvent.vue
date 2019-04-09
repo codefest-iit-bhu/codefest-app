@@ -1,10 +1,12 @@
 <template>
-  <div :class="$style.hero">
+  <div :class="[$style.hero, $style[$mq]]">
     <div>
-      <div :class="$style.logoContainer">
-        <img :class="$style.logo" src="@assets/events/hackathon-special.png">
-      </div>
-      <div :class="[$style.title, $style[$mq]]">
+      <router-link to="haxplore">
+        <div :class="$style.logoContainer">
+          <img :class="$style.logo" src="@assets/haxplore/logo-landing.svg">
+        </div>
+      </router-link>
+      <div :class="$style.title">
         <h1>Onsite Hackathon</h1>
         <p>
           Join the Codefest '19 team to bring out the absolute best ideas and implementations from some of the best developers in the country,
@@ -36,32 +38,61 @@ export default {
   overflow: hidden;
   padding: 10vh 16px;
   text-align: center;
-}
 
-.logoContainer {
-  width: 20%;
-  border: 2px solid $chartreuse;
-  min-width: 100px;
-  border-radius: 100%;
-  margin: 20px auto 40px;
-  animation: neon-box 1.5s ease-in-out infinite alternate;
-}
+  .logoContainer {
+    width: 20%;
+    border: 2px solid $chartreuse;
+    min-width: 100px;
+    border-radius: 100%;
+    margin: 20px auto 40px;
+    animation: neon-box 1.5s ease-in-out infinite alternate;
 
-.logo {
-  width: 100%;
-}
+    .logo {
+      width: 90%;
+      height: 90%;
 
-.title {
-  width: 100%;
-  margin: 30px auto 0;
-  text-align: center;
+      ~/.xxl ^[1..-1] {
+        padding: 60px;
+      }
 
-  h1 {
-    font-family: 'Aldo the Apache';
+      ~/.xl ^[1..-1] {
+        padding: 35px;
+      }
+
+      ~/.lg ^[1..-1] {
+        padding: 30px;
+      }
+
+      ~/.md ^[1..-1] {
+        padding: 20px;
+      }
+
+      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+        padding: 15px;
+      }
+    }
   }
 
-  &.xs, &.sm {
-    font-size: 14px;
+  .title {
+    width: 100%;
+    margin: 30px auto 0;
+    text-align: center;
+
+    h1 {
+      font-family: 'Aldo the Apache';
+      letter-spacing: 3px;
+      font-size: 54px;
+      padding-top: 16px;
+    }
+
+    p {
+      font-family: 'Quicksand';
+      font-weight: 500;
+    }
+
+    ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+      font-size: 14px;
+    }
   }
 }
 </style>

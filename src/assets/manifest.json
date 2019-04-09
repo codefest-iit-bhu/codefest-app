@@ -1,16 +1,19 @@
 {
+  "manifest_version": 1,
+  "version": "0.0.1",
   "name": "CodeFest 2019",
   "short_name": "CF",
-  "background_color": "#3E82F7",
+  "description": "Computer Science department fest organised at IIT(BHU), India.",
+  "background_color": "#222222",
   "orientation": "portrait",
-  "theme_color": "#1e88e5",
+  "theme_color": "#86FF00",
   "display": "standalone",
   "start_url": "/",
   "icons": [
     {
       "src": "/assets/favicon.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "72x72"
     }
   ]
 }
