@@ -1,23 +1,15 @@
 <template>
-  <div :class="$style.testimonial">
-    <div :class="$style.avatar">
-      <img src="@assets/haxplore/prize-second.svg">
-    </div>
-    <div :class="$style.textbox">
-      <div :class="$style.corner">
-        <svg :class="$style.svgcorner">
-          <path></path>
-        </svg>
+  <div :class="[$style.testimonials, $style[$mq]]">
+    <div :class="$style.testimonial" v-for="(stat, i) in this.stats" :key="i">
+      <div :class="$style.avatar">
+        <img :src="stat.image">
       </div>
-      <div :class="$style.text">
-        <h3>Gennady Korotokevich ( Tourist )</h3>
-        <p>
-          Manthan had some good problems and it was prepared very well.
-          I loved the idea of hosting Mathmania at Topcoder!
-          The problems were interesting too.
-          Perplexed had some nice problems as well.
-          Overall I enjoyed all three events -- thanks a lot!
-        </p>
+      <div :class="$style.textbox">
+        <div :class="$style.corner"></div>
+        <div :class="$style.text">
+          <h3>{{ stat.name }}</h3>
+          <p>{{ stat.comment }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -63,71 +55,136 @@ export default {
 <style module lang="stylus">
 @require '~@styles/theme';
 
-$t-ht = 120px;
+$ht = 120px;
+$rd = 60px;
 
-.testimonial {
-  height: $t-ht;
-  width: 100%;
-  display: flex;
-  flex-flow: row;
-  flex-wrap: no-wrap;
+.testimonials {
+  --item-height: $ht;
+  --item-round: $rd;
 
-  .avatar {
-    order: 0;
-    border-radius: ($t-ht / 2);
-    height: $t-ht;
-    width: $t-ht;
-    flex-basis: $t-ht;
-    margin-left: 20px;
-    background: $white;
-    padding: 5px;
-
-    img {
-      height: $t-ht-10px;
-      width: $t-ht-10px;
-    }
+  &.xs {
+    --item-height: 2 * $ht;
+    --item-round: $rd * 0.5;
   }
 
-  .textbox {
-    order: 1;
-    height: $t-ht;
+  &.sm {
+    --item-height: 1.2 * $ht;
+    --item-round: $rd * 0.66;
+  }
+
+  &.md, &.lg {
+    --item-height: 1.5 * $ht;
+  }
+
+  .testimonial {
+    height: var(--item-height);
+    width: 80%;
+    margin-left: 10%;
     display: flex;
-    flex-flow: row;
+    flex-wrap: no-wrap;
+    margin-bottom: 40px;
+    margin-top: 40px;
 
-    .corner {
-      order: 2;
-      background: transparent;
+    .avatar {
+      order: 0;
+      border-radius: var(--item-round);
+      height: calc(var(--item-round) * 2);
+      width: calc(var(--item-round) * 2);
+      background: $white;
+      padding: calc((var(--item-round) / 5));
 
-      .svgcorner {
-        viewBox: 0 0 ($t-ht / 2) $t-ht;
-        width: ($t-ht / 2);
-        height: $t-ht;
+      img {
+        height: calc(var(--item-round) * 1.6);
+        width: calc(var(--item-round) * 1.6);
+      }
+    }
 
-        // background: transparent;
-        path {
-          fill: $white;
-          stroke: none;
-          d: path('M 60, 60 A 60, 60, 0, 0, 1, 0, 120 L 60, 120 L 60, 60');
+    .textbox {
+      order: 1;
+      height: var(--item-height);
+      display: flex;
+      flex-flow: row;
+
+      .corner {
+        order: 2;
+        min-width: var(--item-round);
+        height: var(--item-round);
+        background-repeat: no-repeat;
+      }
+
+      .text {
+        order: 3;
+        background: $chartreuse;
+        padding: 10px calc(var(--item-round) * 0.66);
+
+        h3 {
+          color: $black;
+          margin: 0;
+          font-family: 'Roboto Slab';
+
+          ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+            font-size: 14px;
+          }
+        }
+
+        p {
+          color: $black;
+          font-size: 14px;
+
+          ~/.xs ^[1..-1], ~/.sm ^[1..-1], ~/.md ^[1..-1] {
+            font-size: 12px;
+          }
         }
       }
     }
 
-    .text {
-      order: 3;
-      border-top-left-radius: ($t-ht / 2);
-      border-bottom-right-radius: $t-ht;
-      background: $white;
-      padding: 15px ($t-ht / 2);
+    ~/.xs ^[1..-1] {
+      width: 95%;
+      margin-left: 2.5%;
+    }
+  }
 
-      h3 {
-        color: $black;
-        margin: 0;
-        font-family: 'Roboto Slab';
+  .testimonial:nth-child(odd) {
+    flex-flow: row;
+
+    .textbox {
+      flex-flow: row;
+
+      .corner {
+        background-image: url('@assets/corner-odd.svg');
       }
 
-      p {
-        color: $black;
-        font-size: 14px;
+      .text {
+        border-bottom-left-radius: var(--item-round);
+        border-bottom-right-radius: calc(2 * var(--item-round));
+
+        ~/.xs ^[1..-1], ~/.md ^[1..-1] {
+          border-bottom-right-radius: var(--item-round);
+          border-top-right-radius: var(--item-round);
+        }
+      }
+    }
+  }
+
+  .testimonial:nth-child(even) {
+    flex-flow: row-reverse;
+
+    .textbox {
+      flex-flow: row-reverse;
+      text-align: right;
+
+      .corner {
+        background-image: url('@assets/corner-even.svg');
+      }
+
+      .text {
+        border-bottom-right-radius: var(--item-round);
+        border-bottom-left-radius: calc(2 * var(--item-round));
+
+        ~/.xs ^[1..-1], ~/.md ^[1..-1] {
+          border-bottom-left-radius: var(--item-round);
+          border-top-left-radius: var(--item-round);
+        }
       }
     }
   }
