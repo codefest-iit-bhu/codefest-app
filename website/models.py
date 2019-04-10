@@ -38,13 +38,6 @@ class EventDetail(models.Model):
     def __str__(self):
         return self.title + " for " + self.event.name 
 
-class Institute(models.Model):
-    name=models.CharField(max_length=200)
-    is_active=models.BooleanField(default=False)
-
-    def __str__(self):
-        return self.name
-
 class Profile(models.Model):
 
     GENDER_CHOICES=(
@@ -53,15 +46,15 @@ class Profile(models.Model):
         (2,'Others/Not Specified'),
     )
     INSTITUTE_TYPE_CHOICES=(
-        (0,'Undergrad'),
+        (0,'College'),
         (1,'School'),
-        (2,'Grad'),
-        (3,'Professional'),
+        (2,'Professional'),
     )
     user=models.OneToOneField(User,on_delete=models.CASCADE)
     referred_by=models.OneToOneField('Profile',null=True,related_name="referred",on_delete=models.DO_NOTHING)
     referral_code=models.UUIDField(default=uuid.uuid4)
-    institute_name=models.ForeignKey(Institute,on_delete=models.SET_NULL,null=True) # can be school,college. leave blank for professionals 
+    institute_type = models.IntegerField(null=True, choices=INSTITUTE_TYPE_CHOICES)
+    institute_name=models.CharField(max_length=128, null=True)# can be school,college. last institute for professionals 
     # year , if school, implies class, undergrad&masters == yearofpassing, professional==experience
     study_year=models.PositiveIntegerField(blank=True,null=True)
     # degree to be null for school

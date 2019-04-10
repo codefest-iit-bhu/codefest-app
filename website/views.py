@@ -8,13 +8,6 @@ from .serializers import *
 from .models import *
 import json
 
-class InstituteListView(generics.ListAPIView):
-    authentication_classes=[]
-    permission_classes=[]
-    serializer_class=InstituteSerializer
-    queryset=Institute.objects.filter(is_active=True)
-
-
 class EventListView(generics.ListAPIView):
     authentication_classes=[]
     permission_classes=[]

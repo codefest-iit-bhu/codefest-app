@@ -2,11 +2,6 @@ from rest_framework import serializers
 from .models import *
 from django.core.validators import RegexValidator
 
-class InstituteSerializer(serializers.ModelSerializer):
-    class Meta:
-        model=Institute
-        fields=['name']
-
 
 class EventDetailSerializer(serializers.ModelSerializer):
     class Meta:
@@ -21,7 +16,7 @@ class EventSerializer(serializers.ModelSerializer):
         fields=['name','is_registration_on','min_members','max_members','details']
 
 class ProfileSerializer(serializers.Serializer):
-    institute=serializers.PrimaryKeyRelatedField(queryset=Institute.objects.all())
+    institute=serializers.CharField(max_length=128, required=True)
     study_year=serializers.IntegerField(required=False)
     degree=serializers.CharField(max_length=50,required=False)
     branch=serializers.CharField(max_length=100,required=False)
