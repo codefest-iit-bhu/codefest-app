@@ -72,7 +72,7 @@ $tab-height = 30px;
   .tabsContainer {
     border-radius: 0 20px 0px 0;
     position: relative;
-    overflow: auto;
+    overflow-x: scroll;
     width: 100%;
     height: $tab-height;
     float: left;
@@ -108,10 +108,6 @@ $tab-height = 30px;
         color: white;
         z-index: 25;
       }
-
-      .tabContent {
-        display: block;
-      }
     }
   }
 
@@ -125,14 +121,12 @@ $tab-height = 30px;
       top: $tab-height;
       border: 1px solid $chartreuse;
       border-radius: 0 0 10px 10px;
-      box-shadow: inset 0px 0px 20px $chartreuse;
+      box-shadow: inset 0px 0px 15px $chartreuse;
       background: $cod-gray;
     }
 
-    .active {
-      .tabContent {
-        display: block;
-      }
+    .active .tabContent {
+      display: block;
     }
   }
 }

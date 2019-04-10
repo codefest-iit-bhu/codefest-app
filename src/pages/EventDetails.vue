@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.root">
     <AppBar @scrollTop="scrollToTop">
-      <li v-for="(event,i) in events" :key="i" :class="i==currentEventIndex?$style.active:''">
+      <li v-for="(event,i) in events" :key="i" :class="{[$style.active]: i === currentEventIndex}">
         <router-link :to="'/events/'+event.name">
           <span class="fa fa-circle fa-xs" aria-hidden="true"></span>
           {{event.title}}

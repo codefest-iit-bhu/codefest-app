@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.root">
-    <AppBar :doAnimate="true"/>
+    <AppBar :doAnimate="true" :isSideNavigationShown="false"/>
     <mq-layout mq="lg+">
       <Hero/>
     </mq-layout>
@@ -21,9 +21,7 @@
       <SectionLayout title="Lookback">
         <Lookback/>
       </SectionLayout>
-      <!-- <SectionLayout title="Sponsors">
-        <Sponsors/>
-      </SectionLayout>-->
+      <Sponsors/>
     </main>
     <Footer/>
   </div>

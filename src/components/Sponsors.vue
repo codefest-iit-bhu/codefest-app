@@ -29,7 +29,7 @@
         <h4>TBA</h4>
       </div>
       <div :class="$style.link">
-        <a href="https://goo.gl/forms/RyjmY7i002oUHivu2" :class="$style.linkText">
+        <a href="https://goo.gl/forms/RyjmY7i002oUHivu2" :class="$style.linkText" target="_blank">
           <h4>Sponsor Us</h4>
         </a>
       </div>
@@ -94,7 +94,6 @@ $box-width = 300px;
     height: auto;
     padding: 24px;
     border-radius: 50px;
-    animation: neon-box 1.5s ease-in-out infinite alternate;
     border: 2px solid $chartreuse;
     text-align: center;
     cursor: pointer;
@@ -112,7 +111,7 @@ $box-width = 300px;
     }
 
     &:hover {
-      box-shadow: inset 0px 0px 20px $chartreuse;
+      box-shadow: inset 0px 0px 10px $chartreuse;
     }
   }
 

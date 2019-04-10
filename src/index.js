@@ -1,11 +1,14 @@
 import Vue from "vue";
 import GAnalytics from "ganalytics";
-import App from "./App";
 import vueMq from "vue-mq";
 import VueYoutube from "vue-youtube";
-import router from "./router";
-import "./styles/index.styl";
 import scrollSpy, { Easing } from "vue2-scrollspy";
+
+import App from "./App";
+import router from "./router";
+import filters from "./plugins/filters";
+
+import "./styles/index.styl";
 
 Vue.config.productionTip = false;
 const render = h => h(App);
@@ -26,6 +29,8 @@ Vue.use(scrollSpy, {
 });
 
 Vue.use(VueYoutube);
+
+Vue.use(filters);
 
 // Mount w/ Hydration
 // ~> because HTML already exists from`pwa export`

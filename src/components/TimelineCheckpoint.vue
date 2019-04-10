@@ -105,7 +105,7 @@ $circle-transparent-background = transparent;
       left: -8px;
       width: $circle-large-size;
       height: $circle-large-size;
-      animation: timeline-border 1.5s ease-in-out infinite alternate;
+      animation: timeline-border-green 1.5s ease-in-out infinite alternate;
     }
   }
 

@@ -46,7 +46,7 @@ export default {
   },
   watch: {
     $route(to, from) {
-      this.current = to.name;
+      this.current = to.path;
       this.$nextTick(() => {
         this.showTerminal();
       });

@@ -188,8 +188,8 @@ $output-link = $dodger-blue;
 
   .column {
     display: grid;
-    grid-auto-flow: column;
     grid-template-columns: repeat(5, 150px);
+    grid-row-gap: 10px;
     column-gap: 20px;
 
     ../ {

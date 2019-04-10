@@ -1,6 +1,6 @@
 <template>
   <div :class="[$style.event, $style[$mq], eventActiveClass]">
-    <div :class="eventCellClass">
+    <div :class="eventCellClass" @click="navigateToDetails">
       <div :class="$style.whiteTitle">
         <h3>{{ event.title }}</h3>
       </div>
@@ -9,7 +9,6 @@
         :style="eventWidthStyle"
         @mouseenter="toggleOpen"
         @mouseleave="toggleOpen"
-        @click="navigateToDetails"
       >
         <canvas
           :class="$style.normalCanvas"
@@ -213,6 +212,7 @@ $cell-collapsed-size = 150px;
   height: var(--event-size);
   position: relative;
   margin: 0 20px 25px;
+  cursor: pointer;
 }
 
 .whiteTitle {
@@ -229,7 +229,6 @@ $cell-collapsed-size = 150px;
   width: var(--event-size);
   height: 100%;
   background: $chartreuse;
-  cursor: pointer;
   border-radius: calc((var(--event-size) / 2));
 }
 
@@ -356,6 +355,10 @@ $cell-collapsed-size = 150px;
 
     .cell {
       width: 70%;
+    }
+
+    &.md .cell, &.lg .cell, &.xl .cell {
+      animation: timeline-border-white 1s ease-in-out infinite alternate;
     }
   }
 }

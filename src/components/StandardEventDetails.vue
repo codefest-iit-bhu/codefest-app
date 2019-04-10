@@ -1,50 +1,52 @@
 <template>
-  <div :class="$style.event">
+  <div :class="[$style.event, $style[$mq]]">
     <div :class="$style.whiteHead">
       <div :class="$style.eventLogo">
         <img :src="event.icon">
       </div>
-      <div :class="$style.eventTitle">
-        <p>{{event.title}}</p>
-      </div>
+      <span :class="$style.eventTitle">{{event.title}}</span>
     </div>
     <hr :class="$style.rightHr">
 
     <div :class="$style.eventDesc">
       <TabLayout :tabs="tabs">
-        <div :class="$style.descContainer" slot="summary">
-          <h4 :class="$style.tabTitle">Summary</h4>
+        <div :class="$style.tabContainer" slot="description">
+          <h4 :class="$style.tabTitle">Description</h4>
           <hr :class="$style.leftHr">
-          <p :class="$style.text">{{event.summary}}</p>
+          <p :class="$style.text">{{ event.description }}</p>
         </div>
 
-        <div :class="$style.descContainer" slot="rules">
+        <div :class="$style.tabContainer" slot="rules">
           <h4 :class="$style.tabTitle">Rules</h4>
           <hr :class="$style.leftHr">
-          <p :class="$style.text"></p>
           <ul>
-            <li :class="$style.ruleText" v-for="(rule, i) in event.rules" :key="i">{{ rule }}</li>
+            <li
+              :class="$style.ruleText"
+              v-for="(rule, i) in event.rules"
+              :key="i"
+              :inner-html.prop="rule | anchor"
+            ></li>
           </ul>
         </div>
 
-        <div :class="$style.descContainer" slot="contact">
+        <div :class="$style.tabContainer" slot="contact">
           <h4 :class="$style.tabTitle">Co-ordinators</h4>
           <hr :class="$style.leftHr">
-          <p :class="$style.text"></p>
-          <div :class="$style.stat" v-for="(stat, i) in event.coordinators" :key="i">
-            <div :class="$style.name">{{ stat.name }}</div>
-            <div :class="$style.email">{{ stat.email }}</div>
-          </div>
+          <ul>
+            <li
+              :class="$style.ruleText"
+              v-for="(coordinator, i) in event.coordinators"
+              :key="i"
+              :inner-html.prop="coordinator | anchor"
+            ></li>
+          </ul>
         </div>
 
-        <div :class="$style.descContainer" slot="faq">
+        <div :class="$style.tabContainer" slot="faq">
           <h4 :class="$style.tabTitle">FAQ</h4>
           <hr :class="$style.leftHr">
-          <p :class="$style.text"></p>
-          <div :class="$style.stat" v-for="(stat, i) in event.faq" :key="i">
-            <div :class="$style.question">{{ stat.question }}</div>
-            <div :class="$style.answer">{{ stat.answer }}</div>
-          </div>
+          <p :class="$style.text" :inner-html.prop="event.faqIntro | anchor">}</p>
+          <FAQ :faqItems="event.faq"/>
         </div>
       </TabLayout>
     </div>
@@ -61,10 +63,12 @@
 
 <script>
 import TabLayout from "@components/layouts/TabLayout";
+import FAQ from "@components/FAQ";
 
 export default {
   components: {
-    TabLayout
+    TabLayout,
+    FAQ
   },
   props: {
     event: {
@@ -75,7 +79,7 @@ export default {
     return {
       tabs: [
         {
-          name: "summary",
+          name: "description",
           title: "Summary"
         },
         {
@@ -102,13 +106,15 @@ export default {
 @require '~@styles/mixins';
 
 .event {
+  padding-top: 16px;
+
   .whiteHead {
-    margin-top: 64px;
     height: 108px;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
+    align-items: center;
 
     .eventLogo {
       order: -2;
@@ -119,22 +125,27 @@ export default {
       padding: 18px;
 
       img {
-        height: 72px;
+        height: 100%;
         margin: 0;
+      }
+
+      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+        width: 72px;
+        height: 72px;
       }
     }
 
     .eventTitle {
       order: -1;
+      color: $white;
+      font-family: 'Aldo the Apache';
+      text-align: right;
+      font-size: 50px;
+      margin: 0;
+      float: right;
 
-      p {
-        color: $white;
-        font-family: 'Aldo the Apache';
-        text-align: right;
-        font-size: 50px;
-        margin: 0;
-        float: right;
-        padding-top: 30px;
+      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+        font-size: 36px;
       }
     }
   }
@@ -163,11 +174,11 @@ export default {
   .eventDesc {
     margin-bottom: 100px;
 
-    .descContainer {
+    .tabContainer {
       padding: 36px;
 
       .tabTitle {
-        font-size: 48px;
+        font-size: 36px;
         font-family: 'Aldo the Apache';
         margin-top: 12px;
         margin-bottom: 18px;
@@ -176,7 +187,7 @@ export default {
       .text {
         font-size: 20px;
         margin-top: 36px;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
         font-family: 'Quicksand';
         font-weight: 500;
       }
@@ -188,20 +199,6 @@ export default {
           font-family: 'Quicksand';
           font-weight: 500;
           margin-bottom: 10px;
-        }
-      }
-
-      .stat {
-        .name, .question {
-          font-family: 'Aldo the Apache';
-          font-size: 28px;
-          margin-bottom: 12px;
-        }
-
-        .email, .answer {
-          margin-bottom: 20px;
-          font-family: 'Quicksand';
-          font-weight: 500;
         }
       }
     }
@@ -217,6 +214,14 @@ export default {
       box-shadow: inset 0px 0px 20px $chartreuse;
       animation: neon-box 1.5s ease-in-out infinite alternate;
       border: 2px solid $chartreuse;
+
+      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+        width: 220px;
+
+        .linkText {
+          font-size: 21px;
+        }
+      }
 
       a {
         text-decoration: none;
@@ -241,18 +246,6 @@ export default {
       grid-column-gap: 30px;
       grid-row-gap: 50px;
       justify-content: space-evenly;
-    }
-
-    .stat {
-      .name, .email {
-        font-family: 'ubuntu';
-        font-weight: bold;
-        margin-top: 20px;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-        font-size: 20px;
-      }
     }
   }
 }

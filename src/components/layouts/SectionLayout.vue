@@ -41,6 +41,10 @@ div.sectionContainer {
       padding-top: 36px;
     }
 
+    &.xs, &.sm, &.md {
+      margin-top: 72px;
+    }
+
     ~/:nth-child(even) h1.sectionTitle {
       text-align: start;
     }
