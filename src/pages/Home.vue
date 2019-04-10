@@ -21,10 +21,10 @@
       <SectionLayout title="Lookback">
         <Lookback/>
       </SectionLayout>
-      <Sponsors/>
       <SectionLayout title="Testimonials">
         <Testimonials/>
       </SectionLayout>
+      <Sponsors/>
     </main>
     <Footer/>
   </div>
