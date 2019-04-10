@@ -3,6 +3,7 @@ import GAnalytics from "ganalytics";
 import vueMq from "vue-mq";
 import VueYoutube from "vue-youtube";
 import scrollSpy, { Easing } from "vue2-scrollspy";
+import firebase from "firebase";
 
 import App from "./App";
 import router from "./router";
@@ -35,7 +36,7 @@ Vue.use(filters);
 // Mount w/ Hydration
 // ~> because HTML already exists from`pwa export`
 // @see https://ssr.vuejs.org/guide/hydration.html
-new Vue({
+const app = new Vue({
   router,
   render
 }).$mount("#app", true);
@@ -54,3 +55,14 @@ if (process.env.NODE_ENV === "production") {
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("./sw.js");
 }
+
+const config = {
+  apiKey: "AIzaSyDgx3hMDrBTQ6ci9hKg0MMmbR36rBaH6Bo",
+  authDomain: "codefest19.firebaseapp.com",
+  databaseURL: "https://codefest19.firebaseio.com",
+  projectId: "codefest19",
+  storageBucket: "codefest19.appspot.com",
+  messagingSenderId: "800543243585"
+};
+
+firebase.initializeApp(config);

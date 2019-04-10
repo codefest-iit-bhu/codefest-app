@@ -26,21 +26,21 @@ export default {
     return {
       timeline: [
         {
-          isMajor: false,
+          isMajor: true,
           start: new Date(2019, 7, 23, 12, 0),
           end: null,
           title: "TBA",
           summary: ""
         },
         {
-          isMajor: false,
+          isMajor: true,
           start: new Date(2019, 7, 24, 12, 0),
           end: null,
           title: "TBA",
           summary: ""
         },
         {
-          isMajor: false,
+          isMajor: true,
           start: new Date(2019, 7, 25, 12, 0),
           title: "TBA",
           summary: ""
