@@ -68,24 +68,26 @@ class TeamJoinView(generics.GenericAPIView):
         self.request = request
         self.serializer = self.get_serializer(data = request.data)
         self.serializer.is_valid(raise_exception=True)
-        team = seld.serializer.save()
+        team = self.serializer.save()
         response = TeamDetailSerializer(team)
         return Response(response.data, status = status.HTTP_200_OK)
 
-class TeamLeaveView(generics.GenericAPIView):
+class TeamLeaveView(generics.DestroyAPIView):
     permission_classes = [permissions.IsAuthenticated]
-    authentication_classes = [authentication.TokenAuthentication,authentication.SessionAuthentication]
-    serializer_class = TeamLeaveSerializer
-
-    def get_queryset(self):
-        pass
+    authentication_classes = [authentication.TokenAuthentication, authentication.SessionAuthentication]
+    lookup_url_kwarg = 'pk'
+    queryset = Team.objects.all()
     
-    def post(self, request, *args, **kwargs):
+    def perform_destroy(self, instance):
+        try:
+            member = Membership.objects.get(team = instance, profile  = self.request.user.profile)
+        except Membership.DoesNotExist:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        instance.leave_team(self.request.user.profile)
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+    def destroy(self, request, *args, **kwargs):
         self.request = request
-        self.serializer = self.get_serializer(data = request.data)
-        self.serializer.is_valid(raise_exception=True)
-        (team, num_members) = self.serializer.save()
-        if num_members ==0:
-            return Response({}, status=status.HTTP_200_OK)
-        response = TeamDetailSerializer(team)
-        return Response(response.data, status = status.HTTP_200_OK)
+        instance = self.get_object()
+        return self.perform_destroy(instance)
+    

@@ -5,7 +5,7 @@ from django.utils.crypto import get_random_string
 from django.core.exceptions import ValidationError
 import hashlib
 from hashids import Hashids
-hashids = Hashids(min_length=7)
+hashids = Hashids(min_length=7, salt='Dalla')
 from Auth.utils import FirebaseAPI
 
 # Create your models here.
@@ -68,7 +68,7 @@ class Profile(models.Model):
     degree=models.CharField(max_length=30,blank=True,null=True)
     # to be used only by undergrad and postgrad students
     branch=models.CharField(max_length=30,blank=True,null=True)
-    country=models.CharField(max_length=40,null=True,blank=True)
+    country=models.CharField(max_length=4, default='IN')
     phone=models.CharField(max_length=15,blank=True)
     gender=models.IntegerField(null=True,choices=GENDER_CHOICES)
     resume=models.FileField(upload_to='media/resumes',null=True,blank=True)
@@ -126,8 +126,8 @@ class Team(models.Model):
         else :
             raise(ValidationError("Maximum Size of Team reached"))
 
-    def leave_team(self , user):
-        if user == self.creator:
+    def leave_team(self , profile):
+        if profile == self.creator:
             self.delete()
             return 0
         else:
@@ -136,7 +136,7 @@ class Team(models.Model):
                 self.is_active=False
                 self.save()
 
-            ins  = Membership.objects.get(team=self,profile=user)
+            ins  = Membership.objects.get(team=self,profile=profile)
             ins.delete()
             return total_members-1
 
