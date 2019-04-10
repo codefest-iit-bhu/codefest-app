@@ -22,6 +22,9 @@
         <Lookback/>
       </SectionLayout>
       <Sponsors/>
+      <SectionLayout title="Testimonials">
+        <Testimonials/>
+      </SectionLayout>
     </main>
     <Footer/>
   </div>
@@ -34,6 +37,7 @@ import Hero from "@components/Hero";
 import Footer from "@components/Footer";
 import Lookback from "@components/Lookback";
 import Sponsors from "@components/Sponsors";
+import Testimonials from "@components/Testimonials";
 export default {
   components: {
     AppBar,
@@ -41,7 +45,8 @@ export default {
     SectionLayout,
     Lookback,
     Sponsors,
-    Footer
+    Footer,
+    Testimonials
   },
   data: () => {
     return {};

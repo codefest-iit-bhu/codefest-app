@@ -45,6 +45,10 @@ div.sectionContainer {
       margin-top: 72px;
     }
 
+    &.xs {
+      font-size: 56px;
+    }
+
     ~/:nth-child(even) h1.sectionTitle {
       text-align: start;
     }
