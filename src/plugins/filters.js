@@ -4,7 +4,7 @@ export default {
   install(Vue) {
     Vue.filter("anchor", value => {
       return anchorme(value, {
-        truncate: [20, 5]
+        truncate: [12, 5]
       });
     });
   }

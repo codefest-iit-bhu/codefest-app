@@ -53,7 +53,7 @@ export default {
   data() {
     return {
       section: 0,
-      titles: [null, "About", "FAQ", "Timeline", "Prizes"]
+      titles: [null, "About", "FAQ", "Timeline", "Prizes", "Sponsors"]
     };
   },
   computed: {
