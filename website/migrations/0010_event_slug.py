@@ -14,6 +14,5 @@ class Migration(migrations.Migration):
             model_name='event',
             name='slug',
             field=models.SlugField(default='def'),
-            preserve_default=False,
         ),
     ]
