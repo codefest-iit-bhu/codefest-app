@@ -5,7 +5,7 @@
       <div :class="$style.authContainer">
         <TabLayout :tabs="tabs">
           <div :class="$style.formContainer" slot="login">
-            <form :class="$style.form" @submit.prevent="login">
+            <form :class="$style.form" @submit.prevent="emailLogin">
               <div :class="$style.fieldContainer">
                 <label for="email" :class="$style.label">email</label>
                 <input type="email" :class="$style.field" v-model="email">
@@ -35,10 +35,14 @@
           </div>
 
           <div :class="$style.formContainer" slot="register">
-            <form :class="$style.form" @submit.prevent="register">
+            <form :class="$style.form" @submit.prevent="emailRegister">
               <div :class="$style.fieldContainer">
+                <label for="name" :class="$style.label">name</label>
+                <input type="text" id="name" name="name" :class="$style.field" v-model="name">
+                <br>
                 <label for="email" :class="$style.label">email</label>
-                <input type="email" :class="$style.field" v-model="email">
+                <input type="email" id="email" name="email" :class="$style.field" v-model="email">
+                <br>
                 <label for="password" :class="$style.label">password</label>
                 <input type="password" :class="$style.field" v-model="password">
               </div>
@@ -81,6 +85,7 @@ export default {
   },
   data() {
     return {
+      name: "",
       email: "",
       password: "",
       tabs: [
@@ -96,23 +101,23 @@ export default {
     };
   },
   methods: {
-    login() {
+    emailLogin() {
       firebase
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
-        .then(user => {
-          this.$router.replace({ name: "~" });
+        .then(result => {
+          this.successfulAuth(result);
         })
         .catch(err => {
           alert(err.message);
         });
     },
-    register() {
+    emailRegister() {
       firebase
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
-        .then(user => {
-          this.$router.replace({ name: "~" });
+        .then(result => {
+          this.successfulAuth(result);
         })
         .catch(err => {
           alert(err.message);
@@ -120,17 +125,42 @@ export default {
     },
     googleLogin() {
       const provider = new firebase.auth.GoogleAuthProvider();
-      firebase.auth
+      this.socialLogin(provider);
+    },
+    fbLogin() {
+      const provider = new firebase.auth.FacebookAuthProvider();
+      this.socialLogin(provider);
+    },
+    gitHubLogin() {
+      const provider = new firebase.auth.GithubAuthProvider();
+      this.socialLogin(provider);
+    },
+    socialLogin(provider) {
+      firebase
+        .auth()
         .signInWithPopup(provider)
         .then(result => {
-          this.$router.replace("~");
+          this.successfulAuth(result);
         })
         .catch(err => {
           alert(err.message);
         });
     },
-    fbLogin() {},
-    gitHubLogin() {}
+    successfulAuth(result) {
+      const { isNewUser } = result.additionalUserInfo;
+      const { providerId } = result.user;
+      result.user
+        .getIdToken(true)
+        .then(function(idToken) {
+          if (isNewUser) this._register(idToken, providerId, this.name);
+          else this._login(idToken, providerId);
+        })
+        .catch(err => {
+          alert(err.message);
+        });
+    },
+    _login(idToken, providerId) {},
+    _register(idToken, providerId, name) {}
   }
 };
 </script>

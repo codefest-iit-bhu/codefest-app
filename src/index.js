@@ -2,7 +2,9 @@ import Vue from "vue";
 import GAnalytics from "ganalytics";
 import vueMq from "vue-mq";
 import VueYoutube from "vue-youtube";
-import scrollSpy, { Easing } from "vue2-scrollspy";
+import scrollSpy, {
+  Easing
+} from "vue2-scrollspy";
 import firebase from "firebase";
 
 import App from "./App";
