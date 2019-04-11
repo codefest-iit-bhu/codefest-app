@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -143,3 +144,14 @@ from firebase_admin import credentials
 
 cred = credentials.Certificate(os.path.join(BASE_DIR,'codefest19-firebase-adminsdk-yzr10-ed3ec09af8.json'))
 default_app = firebase_admin.initialize_app(cred)
+
+CORS_ORIGIN_WHITELIST = (
+    'codefest.tech',
+    '127.0.0.1:8080',
+    'localhost:8000',
+)
+CSRF_TRUSTED_ORIGINS = (
+    'codefest.tech',
+    '127.0.0.1:8080',
+    'localhost:8000',
+)

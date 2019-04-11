@@ -22,14 +22,14 @@ class ProfileView(generics.GenericAPIView):
     def get_queryset(self):
         pass
 
-    def post(self, request, *args, **kwargs):
+    def put(self, request, *args, **kwargs):
         self.request=request
         self.serializer = self.get_serializer(
             data=request.data , context={'request': request}
         )
         self.serializer.is_valid(raise_exception=True)
         self.profile=self.serializer.save(request=request)
-        return Response({},status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_200_OK)
 
 class TeamCreationView(generics.GenericAPIView):
     permission_classes = [permissions.IsAuthenticated]
