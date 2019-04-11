@@ -9,8 +9,8 @@ from .models import *
 import json
 
 class EventListView(generics.ListAPIView):
-    authentication_classes=[]
-    permission_classes=[]
+    permission_classes=[permissions.IsAuthenticated]
+    authentication_classes= [authentication.TokenAuthentication, authentication.SessionAuthentication]
     serializer_class=EventSerializer
     queryset=Event.objects.all()
 
@@ -83,4 +83,4 @@ class TeamLeaveView(generics.DestroyAPIView):
         self.request = request
         instance = self.get_object()
         return self.perform_destroy(instance)
-    
+  

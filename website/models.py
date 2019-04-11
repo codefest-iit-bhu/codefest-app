@@ -7,14 +7,15 @@ import hashlib
 from hashids import Hashids
 hashids = Hashids(min_length=7, salt='Dalla')
 from Auth.utils import FirebaseAPI
-
+from django.utils.functional import cached_property
 # Create your models here.
 class Event(models.Model):
     name=models.CharField(max_length=20)
     min_members=models.PositiveIntegerField(default=1)
     max_members=models.PositiveIntegerField(default=1)
     is_registration_on=models.BooleanField(default=True)
-
+    slug = models.SlugField(max_length=50)
+    
     def create_team(self , profile , t_name):
 
         team = Team.objects.create(event=self , creator = profile,name=t_name)
@@ -66,6 +67,10 @@ class Profile(models.Model):
     gender=models.IntegerField(null=True,choices=GENDER_CHOICES)
     resume=models.FileField(upload_to='media/resumes',null=True,blank=True)
     is_profile_complete=models.BooleanField(default=False)
+
+    @cached_property
+    def name(self):
+        return f'{self.user.first_name} {self.user.last_name}'
 
     def __str__(self):
         if self.institute_name!=None and self.user.first_name!=None:

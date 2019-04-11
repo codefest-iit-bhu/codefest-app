@@ -1,19 +1,16 @@
 from rest_framework import serializers
 from .models import *
 from django.core.validators import RegexValidator
+from drf_yasg.utils import swagger_serializer_method
 
 
-class EventDetailSerializer(serializers.ModelSerializer):
-    class Meta:
-        model=EventDetail
-        fields=['title','content','priority']   
-        ordering=['priority']    
+# class EventDetailSerializer(serializers.ModelSerializer):
+    
+#     class Meta:
+#         model=EventDetail
+#         fields=['title','content','priority']   
+#         ordering=['priority']    
 
-class EventSerializer(serializers.ModelSerializer):
-    details=EventDetailSerializer(source='eventdetail_set',read_only=True,many=True)
-    class Meta:
-        model = Event
-        fields=['name','is_registration_on','min_members','max_members','details']
 
 class ProfileSerializer(serializers.Serializer):
     institute=serializers.CharField(max_length=128, required=True)
@@ -111,7 +108,31 @@ class TeamJoinSerializer(serializers.Serializer):
         return team
 
 
+class MemberSerializer(serializers.ModelSerializer):
+    class Meta:
+        model= Profile
+        fields=('id', 'name')
+
 class TeamDetailSerializer(serializers.ModelSerializer):
+    members = MemberSerializer(many=True)
+    
     class Meta:
         model =Team
         fields='__all__'
+
+
+class EventSerializer(serializers.ModelSerializer):
+    # details=EventDetailSerializer(source='eventdetail_set',read_only=True,many=True)
+    team = serializers.SerializerMethodField()
+    class Meta:
+        model = Event
+        fields=['name','slug', 'is_registration_on','min_members','max_members','team']
+
+    @swagger_serializer_method(serializer_or_field=TeamDetailSerializer)
+    def get_team(self, obj):
+        profile = self.context['request'].user.profile
+        try:
+            team = profile.team_members.get(event = obj)
+        except:
+            return None
+        return TeamDetailSerializer(team).data
