@@ -14,7 +14,7 @@ class Event(models.Model):
     min_members=models.PositiveIntegerField(default=1)
     max_members=models.PositiveIntegerField(default=1)
     is_registration_on=models.BooleanField(default=True)
-    slug = models.SlugField(max_length=50)
+    slug = models.SlugField(max_length=50, default = 'default')
     
     def create_team(self , profile , t_name):
 
