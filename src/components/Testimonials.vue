@@ -35,7 +35,7 @@ export default {
                     I really enjoy spending time on Codefest hackathons.\
                     This will help in my career growth as well.\
                     I am extremely happy to get rank 1 on enigma, I never thought of this can happen.",
-          image: "assets/Testimonial/rupee.png"
+          image: "assets/Testimonial/raj-shukla.jpeg"
         },
         {
           name: "Infosec IIT R",
@@ -97,6 +97,7 @@ $rd = 60px;
         height: calc(var(--item-round) * 1.6);
         width: calc(var(--item-round) * 1.6);
         border-radius: 60px;
+        object-fit: cover;
       }
     }
 
