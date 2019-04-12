@@ -47,8 +47,8 @@ class Profile(models.Model):
         (2,'Others/Not Specified'),
     )
     INSTITUTE_TYPE_CHOICES=(
-        (0,'College'),
-        (1,'School'),
+        (0,'School'),
+        (1,'College'),
         (2,'Professional'),
     )
     user=models.OneToOneField(User,on_delete=models.CASCADE)
