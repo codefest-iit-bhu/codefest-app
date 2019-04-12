@@ -41,6 +41,13 @@ export default {
     toggleQues: function() {
       this.open = !this.open;
       this.$emit("onToggleQuestion", this.index, this.open);
+    },
+    initHeight() {
+      const { answer } = this.$refs;
+      if (answer.offsetHeight > 0) {
+        this.maxHeight = answer.offsetHeight + 10;
+        clearInterval(this.heightInterval);
+      }
     }
   },
 
@@ -65,7 +72,10 @@ export default {
     }
   },
   mounted() {
-    this.maxHeight = this.$refs.answer.offsetHeight + 10;
+    this.heightInterval = setInterval(this.initHeight.bind(this), 200);
+  },
+  destroyed() {
+    clearInterval(this.heightInterval);
   }
 };
 </script>

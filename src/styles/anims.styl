@@ -7,18 +7,15 @@
   }
 }
 
-
 @keyframes typing {
   from { width: 0 }
   to { width: 100% }
 }
 
-
 @keyframes blink-caret {
   from, to { border-color: transparent }
   50% { border-color: orange; }
 }
-
 
 @keyframes neon-text {
   from {
@@ -30,7 +27,6 @@
   }
 }
 
-
 @keyframes neon-box {
   from {
     box-shadow: 0 0 15px $white, 0 0 17.5px $white, 0 0 10px $chartreuse, 0 0 52.5px $chartreuse, 0 0 55px $limeade, 0 0 70px $limeade, 0 0 90px $limeade;
@@ -41,12 +37,22 @@
   }
 }
 
-@keyframes timeline-border {
+@keyframes timeline-border-green {
   from {
-    box-shadow: 0 0 0 2px rgba(134,255,0, 0.7);
+    box-shadow: 0 0 0 2px alpha($chartreuse, 0.5)
   }
 
   to {
-    box-shadow: 0 0 0 5px rgba(134,255,0, 0.7);
+    box-shadow: 0 0 0 5px alpha($chartreuse, 0.5)
   }
+}
+
+@keyframes timeline-border-white {
+  from {
+    box-shadow: 0 0 0 2px alpha($white, 0.5)
   }
+
+  to {
+    box-shadow: 0 0 0 5px alpha($white, 0.5)
+  }
+}

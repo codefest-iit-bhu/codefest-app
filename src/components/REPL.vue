@@ -28,7 +28,7 @@
 
 <script>
 import Vue from "vue";
-import { navigation, terminal } from "@js/store/navigation";
+import { navigation, terminal } from "@store/navigation";
 import { CommandNotFoundError, CommandInvalidInput } from "@js/exceptions";
 
 export default {
@@ -188,8 +188,8 @@ $output-link = $dodger-blue;
 
   .column {
     display: grid;
-    grid-auto-flow: column;
     grid-template-columns: repeat(5, 150px);
+    grid-row-gap: 10px;
     column-gap: 20px;
 
     ../ {

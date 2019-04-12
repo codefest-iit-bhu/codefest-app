@@ -1,5 +1,5 @@
 <template>
-  <div :class="[$style.floatBtn, animateClass]" @click="$emit('onClick')">
+  <div :class="[$style.floatBtn, animateClass]" @click="$emit('click')">
     <i class="fas fa-user-plus" :class="$style.btn"></i>
     <span :class="$style.txt">{{ text }}</span>
   </div>

@@ -97,10 +97,12 @@ $appbar-glow-color = $chartreuse;
 
     .rNav {
       float: right;
+      padding-right: 10px;
     }
 
     .lNav {
       float: left;
+      padding-left: 10px;
     }
 
     .lNav, .rNav {

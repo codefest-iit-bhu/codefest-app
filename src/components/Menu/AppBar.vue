@@ -1,21 +1,21 @@
 <template>
   <div :class="[$style.wrapper, $style[$mq]]">
     <AppbarLayout v-bind="this.$attrs">
-      <li :class="$style.link" slot="left" v-if="['lg', 'xl'].includes(this.$mq)">
+      <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl'].includes(this.$mq)">
         <router-link to="/events">
           Events
           <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
         </router-link>
       </li>
-      <li :class="$style.link" slot="right" v-if="['lg', 'xl'].includes(this.$mq)">
+      <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl'].includes(this.$mq)">
+        <router-link to="/haxplore">
+          HaXplore
+          <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
+        </router-link>
+      </li>
+      <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl'].includes(this.$mq)">
         <a href="https://goo.gl/DrCFHB" target="_blank">
           <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>Brochure
-        </a>
-      </li>
-      <li :class="$style.link" slot="right" v-if="['lg', 'xl'].includes(this.$mq)">
-        <a href="https://goo.gl/forms/RyjmY7i002oUHivu2" target="_blank">
-          <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
-          Sponsor Us
         </a>
       </li>
       <li :id="$style.toggleSidebar" slot="left" v-if="['xs', 'sm'].includes(this.$mq)">
@@ -25,7 +25,7 @@
       </li>
     </AppbarLayout>
     <div :class="$style.sidebar" ref="sidebar">
-      <mq-layout mq="md+" v-show="isSideNavigationShown">
+      <mq-layout mq="md+" v-show="isSideNavigationShown" :class="$style.sidebarBack">
         <ul @mouseover="isSideNavigationIdle = false" @mouseleave="isSideNavigationIdle = true">
           <slot></slot>
         </ul>
@@ -40,12 +40,14 @@
                 <slot></slot>
               </div>
             </li>
-
             <li :class="$style.link">
-              <a href="https://goo.gl/DrCFHB" target="_blank">Brochure</a>
+              <router-link to="/haxplore">
+                HaXplore
+                <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
+              </router-link>
             </li>
             <li :class="$style.link">
-              <a href="https://goo.gl/forms/RyjmY7i002oUHivu2" target="_blank">Sponsor Us</a>
+              <a href="https://goo.gl/DrCFHB" target="_blank">Brochure</a>
             </li>
           </ul>
         </Slide>
@@ -65,11 +67,16 @@ export default {
     AppbarLayout,
     Slide
   },
-  props: {},
+  props: {
+    isSideNavigationShown: {
+      type: Boolean,
+      default: true,
+      required: false
+    }
+  },
   data() {
     return {
       isSidebarOpen: false,
-      isSideNavigationShown: true,
       sideNavigationIdleTimeout: 1000,
       doHideOnIdle: true,
       lastScrollEventTime: 0,
@@ -111,7 +118,6 @@ export default {
   },
   mounted() {
     const { doHideOnIdle } = this.$data;
-    this.isSideNavigationShown = true;
     this.isSideNavigationIdle = false;
     if (doHideOnIdle) window.addEventListener("scroll", this.handleScroll);
     else window.removeEventListener("scroll", this.handleScroll);
@@ -145,7 +151,7 @@ export default {
     a {
       height: inherit;
       color: $white;
-      padding: 0 15px;
+      padding: 0 5px;
       text-decoration: none;
       transition: 0.5s;
       vertical-align: middle;
@@ -158,6 +164,10 @@ export default {
       font-size: 16px;
     }
 
+    ~/.xs ^[1..-1] a, ~/.sm ^[1..-1] a, ~/.md ^[1..-1] a {
+      font-size: 20px;
+    }
+
     a:hover {
       color: $chartreuse;
     }
@@ -165,7 +175,7 @@ export default {
     a:hover span {
       opacity: 1;
       color: transparent;
-      animation: timeline-border 1s ease-in-out infinite alternate;
+      animation: timeline-border-green 1s ease-in-out infinite alternate;
     }
   }
 
@@ -214,11 +224,13 @@ export default {
         }
 
         a, .eventList a {
-          font: 500 14px 'Roboto Slab';
+          font: 500 16px 'Roboto Slab';
           color: $white;
           text-decoration: none;
           cursor: pointer;
-          padding-left: 10px;
+          padding: 10px;
+          display: inline-block;
+          width: 100%;
 
           span {
             color: $white;
@@ -228,6 +240,7 @@ export default {
 
           &:hover {
             color: $chartreuse;
+            background: rgba(63, 63, 65, 0.7);
           }
         }
 
@@ -241,6 +254,17 @@ export default {
               animation: neon-text 1s ease-in-out infinite alternate;
             }
           }
+        }
+      }
+    }
+
+    .sidebarBack {
+      li a {
+        padding: unset;
+        padding-left: 10px;
+
+        &:hover {
+          background: unset;
         }
       }
     }
@@ -278,7 +302,7 @@ export default {
       }
     }
 
-    ~/.md ^[1..-1], ~/.lg ^[1..-1] {
+    ~/.md ^[1..-1] .sidebarBack, ~/.lg ^[1..-1] .sidebarBack {
       background: linear-gradient(to right, alpha($mine-shaft, 0.8), alpha($mine-shaft, 0.1));
     }
   }

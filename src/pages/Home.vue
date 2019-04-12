@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.root">
-    <AppBar :doAnimate="true"/>
+    <AppBar :doAnimate="true" :isSideNavigationShown="false"/>
     <mq-layout mq="lg+">
       <Hero/>
     </mq-layout>
@@ -21,9 +21,10 @@
       <SectionLayout title="Lookback">
         <Lookback/>
       </SectionLayout>
-      <!-- <SectionLayout title="Sponsors">
-        <Sponsors/>
-      </SectionLayout>-->
+      <SectionLayout title="Testimonials">
+        <Testimonials/>
+      </SectionLayout>
+      <Sponsors/>
     </main>
     <Footer/>
   </div>
@@ -36,6 +37,7 @@ import Hero from "@components/Hero";
 import Footer from "@components/Footer";
 import Lookback from "@components/Lookback";
 import Sponsors from "@components/Sponsors";
+import Testimonials from "@components/Testimonials";
 export default {
   components: {
     AppBar,
@@ -43,7 +45,8 @@ export default {
     SectionLayout,
     Lookback,
     Sponsors,
-    Footer
+    Footer,
+    Testimonials
   },
   data: () => {
     return {};

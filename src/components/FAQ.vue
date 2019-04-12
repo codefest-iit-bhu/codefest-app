@@ -8,7 +8,9 @@
       :index="i"
       @onToggleQuestion="closeOtherQuestions"
     >
-      <slot :name="i"></slot>
+      <slot :name="i">
+        <p :inner-html.prop="item.answer | anchor"></p>
+      </slot>
     </QuesAns>
   </div>
 </template>

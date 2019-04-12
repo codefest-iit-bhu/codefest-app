@@ -3,7 +3,31 @@ export const navigation = {
     "~": {
       ".": "/",
       events: {
-        ".": "/events"
+        ".": "/events",
+        enigma: {
+          ".": "/events/enigma"
+        },
+        vista: {
+          ".": "/events/vista"
+        },
+        manthan: {
+          ".": "/events/manthan"
+        },
+        linguipedia: {
+          ".": "/events/linguipedia"
+        },
+        perplexed: {
+          ".": "/events/perplexed"
+        },
+        mathmania: {
+          ".": "/events/mathmania"
+        },
+        ctf: {
+          ".": "/events/ctf"
+        }
+      },
+      haxplore: {
+        ".": "/haxplore"
       }
     },
     "404": {
@@ -14,7 +38,8 @@ export const navigation = {
   },
   getPwdFromCurrent: function(current) {
     if (!current) return [];
-    let rawPath = current.split("/");
+    const rawPath = current.split("/");
+    rawPath[0] = "~";
     return rawPath.filter(el => !!el);
   },
   getLinksFromPwd: function(pwd) {

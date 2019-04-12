@@ -16,6 +16,7 @@
     <main :class="$style.wrapper">
       <div v-scroll-spy="{data: 'section'}" ref="scroller">
         <div></div>
+        <About/>
         <FAQ/>
         <Timeline/>
         <Prizes/>
@@ -29,6 +30,7 @@
 <script>
 import AppBar from "@components/haxplore/AppBar";
 import Timeline from "@components/haxplore/Timeline";
+import About from "@components/haxplore/About";
 import FAQ from "@components/haxplore/FAQ";
 import Landing from "@components/haxplore/Landing";
 import Prizes from "@components/haxplore/Prizes";
@@ -39,6 +41,7 @@ import SectionLayout from "@components/layouts/SectionLayout";
 export default {
   components: {
     AppBar,
+    About,
     FAQ,
     Timeline,
     Prizes,
@@ -50,7 +53,7 @@ export default {
   data() {
     return {
       section: 0,
-      titles: [null, "FAQ", "Timeline", "Prizes"]
+      titles: [null, "About", "FAQ", "Timeline", "Prizes", "Sponsors"]
     };
   },
   computed: {

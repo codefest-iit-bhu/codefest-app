@@ -1,29 +1,37 @@
 <template>
-  <div
-    :class="[$style.terminal, terminalStateStyle, terminalShownStyle]"
-    @click="focusTerminalInput"
-  >
-    <div :class="$style.items">
-      <REPL
-        v-for="(item, i) in historyItems"
-        :key="i"
-        :propInput="item.input"
-        :propOutput="item.output"
-        :pwd="item.pwd"
-      />
-      <REPL
-        ref="cli"
-        :pwd="pwd"
-        :isActive="true"
-        @pwdChanged="initCommandsOnPageChange"
-        @onSubmitInput="onSubmitInput"
-        @onBlurInput="collapseTerminal"
-      />
+  <div>
+    <div :class="[$style.closeBtn,hideEvent,expandEvent]" @click="isShown = false">
+      <i class="fas fa-chevron-down"></i>
+    </div>
+    <div :class="[$style.openBtn,showEvent]" @click="isShown = true">
+      <i class="fas fa-chevron-up"></i>
+    </div>
+    <div
+      :class="[$style.terminal, terminalStateStyle, terminalShownStyle]"
+      @click="focusTerminalInput"
+    >
+      <div :class="$style.items">
+        <REPL
+          v-for="(item, i) in historyItems"
+          :key="i"
+          :propInput="item.input"
+          :propOutput="item.output"
+          :pwd="item.pwd"
+        />
+        <REPL
+          ref="cli"
+          :pwd="pwd"
+          :isActive="true"
+          @pwdChanged="initCommandsOnPageChange"
+          @onSubmitInput="onSubmitInput"
+          @onBlurInput="collapseTerminal"
+        />
+      </div>
     </div>
   </div>
 </template>
 <script>
-import { navigation, terminal } from "@js/store/navigation";
+import { navigation, terminal } from "@store/navigation";
 import { CommandList } from "@js/commands";
 import { CommandNotFoundError } from "@js/exceptions";
 import REPL from "./REPL";
@@ -68,6 +76,15 @@ export default {
     },
     terminalShownStyle() {
       return this.isShown ? this.$style.shown : "";
+    },
+    hideEvent() {
+      return this.isShown ? "" : this.$style.hideBtn;
+    },
+    showEvent() {
+      return this.isShown ? this.$style.hideBtn : "";
+    },
+    expandEvent() {
+      return this.isExpanded ? this.$style.moveUp : "";
     }
   },
   mounted() {
@@ -219,5 +236,41 @@ $collapsed-height = 90px;
 .terminal::-webkit-scrollbar-thumb {
   background-color: #000000;
   border: 2px solid #555555;
+}
+
+.closeBtn {
+  position: fixed;
+  right: 3px;
+  z-index: 999;
+  bottom: 100px;
+  color: $chartreuse;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.hideBtn {
+    display: none;
+  }
+
+  &.moveUp {
+    bottom: 210px;
+  }
+}
+
+.openBtn {
+  position: fixed;
+  right: 3px;
+  z-index: 999;
+  bottom: 10px;
+  color: $chartreuse;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.hideBtn {
+    display: none;
+  }
 }
 </style>

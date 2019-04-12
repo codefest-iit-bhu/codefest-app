@@ -5,32 +5,63 @@
       <div :class="$style.authContainer">
         <TabLayout :tabs="tabs">
           <div :class="$style.formContainer" slot="login">
-            <Form :form="loginForm" :id="login" ref="login" :class="$style.login"/>
+            <form :class="$style.form" @submit.prevent="emailLogin">
+              <div :class="$style.fieldContainer">
+                <label for="email" :class="$style.label">email</label>
+                <input type="email" :class="$style.field" v-model="email">
+                <label for="password" :class="$style.label">password</label>
+                <input type="password" :class="$style.field" v-model="password">
+              </div>
+              <div :class="$style.forgotPasswd">
+                <a href="#">Forgot Password</a>
+              </div>
+              <div :class="$style.btnStyle">
+                <button value=">" :class="$style.submit">
+                  <i class="fas fa-arrow-circle-right"></i>
+                </button>
+              </div>
+            </form>
             <div :class="$style.social">
-              <a href="#">
-                <img src="assets/social/google.png" :class="$style.socialButton">
-              </a>
-              <a href="#">
-                <img src="assets/social/facebook.png" :class="$style.socialButton">
-              </a>
-              <a href="#">
-                <img src="assets/social/github.png" :class="$style.socialButton">
-              </a>
+              <button @click="googleLogin" :class="$style.socialButton">
+                <img src="@assets/social/google.png">
+              </button>
+              <button @click="fbLogin" :class="$style.socialButton">
+                <img src="@assets/social/facebook.png">
+              </button>
+              <button @click="gitHubLogin" :class="$style.socialButton">
+                <img src="@assets/social/github.png">
+              </button>
             </div>
           </div>
 
           <div :class="$style.formContainer" slot="register">
-            <Form :form="registerForm" :id="register" ref="register" :class="$style.register"/>
+            <form :class="$style.form" @submit.prevent="emailRegister">
+              <div :class="$style.fieldContainer">
+                <label for="name" :class="$style.label">name</label>
+                <input type="text" id="name" name="name" :class="$style.field" v-model="name">
+                <br>
+                <label for="email" :class="$style.label">email</label>
+                <input type="email" id="email" name="email" :class="$style.field" v-model="email">
+                <br>
+                <label for="password" :class="$style.label">password</label>
+                <input type="password" :class="$style.field" v-model="password">
+              </div>
+              <div :class="$style.btnStyle">
+                <button value=">" :class="$style.submit">
+                  <i class="fas fa-arrow-circle-right"></i>
+                </button>
+              </div>
+            </form>
             <div :class="$style.social">
-              <a href="#">
-                <img src="assets/social/google.png" :class="$style.socialButton">
-              </a>
-              <a href="#">
-                <img src="assets/social/facebook.png" :class="$style.socialButton">
-              </a>
-              <a href="#">
-                <img src="assets/social/github.png" :class="$style.socialButton">
-              </a>
+              <button @click="googleLogin" :class="$style.socialButton">
+                <img src="@assets/social/google.png">
+              </button>
+              <button @click="fbLogin" :class="$style.socialButton">
+                <img src="@assets/social/facebook.png">
+              </button>
+              <button @click="gitHubLogin" :class="$style.socialButton">
+                <img src="@assets/social/github.png">
+              </button>
             </div>
           </div>
         </TabLayout>
@@ -42,19 +73,21 @@
 
 <script>
 import AppBar from "@components/Menu/AppBar";
-import Form from "@components/Form";
 import Footer from "@components/Footer";
 import TabLayout from "@components/layouts/TabLayout";
+import firebase from "firebase";
+
 export default {
   components: {
     AppBar,
-    Form,
     Footer,
     TabLayout
   },
-  methods: {},
   data() {
     return {
+      name: "",
+      email: "",
+      password: "",
       tabs: [
         {
           name: "login",
@@ -64,48 +97,70 @@ export default {
           name: "register",
           title: "Register"
         }
-      ],
-      loginForm: {
-        fields: [
-          {
-            label: "email",
-            name: "email",
-            type: "text"
-          },
-          {
-            label: "password",
-            name: "password",
-            type: "password"
-          }
-        ],
-        submitText: "login"
-      },
-      registerForm: {
-        fields: [
-          {
-            label: "name",
-            name: "name",
-            type: "text"
-          },
-          {
-            label: "email",
-            name: "email",
-            type: "text"
-          },
-          {
-            label: "password",
-            name: "password",
-            type: "password"
-          },
-          {
-            label: "confirm password",
-            name: "confirm-password",
-            type: "password"
-          }
-        ],
-        submitText: "register"
-      }
+      ]
     };
+  },
+  methods: {
+    emailLogin() {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(this.email, this.password)
+        .then(result => {
+          this.successfulAuth(result);
+        })
+        .catch(err => {
+          alert(err.message);
+        });
+    },
+    emailRegister() {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(this.email, this.password)
+        .then(result => {
+          this.successfulAuth(result);
+        })
+        .catch(err => {
+          alert(err.message);
+        });
+    },
+    googleLogin() {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      this.socialLogin(provider);
+    },
+    fbLogin() {
+      const provider = new firebase.auth.FacebookAuthProvider();
+      this.socialLogin(provider);
+    },
+    gitHubLogin() {
+      const provider = new firebase.auth.GithubAuthProvider();
+      this.socialLogin(provider);
+    },
+    socialLogin(provider) {
+      firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then(result => {
+          this.successfulAuth(result);
+        })
+        .catch(err => {
+          alert(err.message);
+        });
+    },
+    successfulAuth(result) {
+      const { isNewUser } = result.additionalUserInfo;
+      const { providerId } = result.user;
+      result.user
+        .getIdToken(true)
+        .then(function(idToken) {
+          if (isNewUser) this._register(idToken, providerId, this.name);
+          else this._login(idToken, providerId);
+        })
+        .catch(err => {
+          alert(err.message);
+        });
+    },
+    _login(idToken, providerId) {},
+    _register(idToken, providerId, name) {}
   }
 };
 </script>
@@ -136,6 +191,67 @@ export default {
   height: 100%;
 }
 
+.form {
+  margin: 50px;
+}
+
+.fieldContainer {
+  width: 100%;
+  margin-bottom: 20px;
+  text-align: right;
+}
+
+.field {
+  clear: both;
+  height: 30px;
+  color: white;
+  border: 0;
+  outline: 0;
+  max-width: 400px;
+  width: 100%;
+  font-size: 16px;
+  background: #fff2;
+  border-radius: 5px;
+  padding-left: 5px;
+  margin-bottom: 20px;
+}
+
+.label {
+  float: left;
+  color: white;
+  text-align: right;
+  height: 30px;
+}
+
+.forgotPasswd {
+  width: 100%;
+  text-align: right;
+
+  a {
+    color: $chartreuse;
+  }
+}
+
+.btnStyle {
+  text-align: center;
+}
+
+.submit {
+  border: 0;
+  background: transparent;
+  color: $white;
+  border-radius: 100%;
+  font-size: 40px;
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+  text-align: center;
+
+  &:hover {
+    color: $chartreuse;
+  }
+}
+
 .social {
   width: 100%;
   max-width: 600px;
@@ -147,9 +263,18 @@ export default {
   border-top: 1px solid $chartreuse;
 
   .socialButton {
-    margin: 10px;
-    width: 40px;
-    height: 40px;
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+
+    img {
+      margin: 10px;
+      width: 40px;
+      height: 40px;
+    }
   }
 }
 
