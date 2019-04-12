@@ -4,7 +4,7 @@ from .models import *
 from website.models import Profile,ValidReferral
 from django.conf import settings
 from rest_framework.exceptions import ParseError
-
+import requests
 class LoginSerializer(serializers.Serializer):
     id_token = serializers.CharField(max_length=2400)
     provider_token = serializers.CharField(max_length=2400, required=False)
@@ -80,7 +80,7 @@ class RegisterSerializer(serializers.Serializer):
         
     def validate_g_recaptcha_response(self, token):
         data= {
-            'secret':settingS.GOOGLE_RECAPTCHA_SECRET_KEY,
+            'secret':settings.GOOGLE_RECAPTCHA_SECRET_KEY,
             'response':token
         }
         response = requests.post(settings.GOOGLE_RECAPTCHA_URL, data = data)
