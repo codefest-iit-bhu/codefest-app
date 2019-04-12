@@ -55,11 +55,11 @@ class LoginSerializer(serializers.Serializer):
 class RegisterSerializer(serializers.Serializer):
     
     id_token = serializers.CharField(max_length=2400, required=True)
-    provider_token = serializers.CharField(max_length=2400, required=False)
+    # provider_token = serializers.CharField(max_length=2400, required=False)
     first_name = serializers.CharField(max_length=40, allow_blank=False)
-    last_name = serializers.CharField(max_length=100, allow_blank=True)
-    applied_referral_code = serializers.CharField(max_length=500,required=False)
-    g_recaptcha_response = serializers.CharField(max_length=500, required=True)
+    last_name = serializers.CharField(max_length=100, allow_blank=True, required=False)
+    applied_referral_code = serializers.CharField(max_length=500,required=False, allow_blank=True)
+    # g_recaptcha_response = serializers.CharField(max_length=500, required=True)
 
     def validate_id_token(self, access_token):
         return FirebaseAPI.verify_id_token(access_token)
@@ -70,7 +70,7 @@ class RegisterSerializer(serializers.Serializer):
         return name
 
     def validate_applied_referral_code(self,code):
-        if code==None:
+        if code is None or code=="":
             return None
         try:
             referred_by=Profile.objects.get(refferal_code=code)
@@ -78,22 +78,22 @@ class RegisterSerializer(serializers.Serializer):
             raise serializers.ValidationError("Invalid Referral Code")
         return referred_by
         
-    def validate_g_recaptcha_response(self, token):
-        data= {
-            'secret':settings.GOOGLE_RECAPTCHA_SECRET_KEY,
-            'response':token
-        }
-        response = requests.post(settings.GOOGLE_RECAPTCHA_URL, data = data)
-        response = response.json()
-        if response['success'] and response['score']>=0.5:
-            return
-        raise serializers.ValidationError("Captcha could not be verified. Please try again.")
+    # def validate_g_recaptcha_response(self, token):
+    #     data= {
+    #         'secret':settings.GOOGLE_RECAPTCHA_SECRET_KEY,
+    #         'response':token
+    #     }
+    #     response = requests.post(settings.GOOGLE_RECAPTCHA_URL, data = data)
+    #     response = response.json()
+    #     if response['success'] and response['score']>=0.5:
+    #         return
+    #     raise serializers.ValidationError("Captcha could not be verified. Please try again.")
 
     def get_user(self, data,uid):
         user = User()
         user.username = uid
         user.first_name = data.get('first_name')
-        user.last_name = data.get('last_name')
+        user.last_name = data.get('last_name',"")
         user.gender = data.get('gender')
         return user
 
@@ -101,12 +101,12 @@ class RegisterSerializer(serializers.Serializer):
     def save(self):
         data = self.validated_data
         jwt = data.get('id_token')
-        print(jwt)
+        # print(jwt)
         uid = jwt['uid']
         provider = FirebaseAPI.get_provider(jwt)
-        provider_uid = None
-        if provider !=VerifiedAccount.AUTH_EMAIL_PROVIDER:
-            provider_uid = FirebaseAPI.get_provider_uid(jwt, provider)
+        # provider_uid = None
+        # if provider !=VerifiedAccount.AUTH_EMAIL_PROVIDER:
+        #     provider_uid = FirebaseAPI.get_provider_uid(jwt, provider)
         user = self.get_user(data,uid)
         try:
             user.validate_unique()
@@ -114,12 +114,17 @@ class RegisterSerializer(serializers.Serializer):
             raise serializers.ValidationError(detail=e.message_dict)
         user.save()
         account, _ = VerifiedAccount.objects.get_or_create(
-            uid=uid, user=user, provider=provider, provider_uid=provider_uid)
+            uid=uid, user=user, provider=provider)
 
         if provider == VerifiedAccount.AUTH_EMAIL_PROVIDER:
             account.is_verified=False
             account.save()
-        profile,_ = Profile.objects.get_or_create(user=user,referred_by=data.get('applied_referral_code',None))
+        
+        try:
+            referred_by = Profile.objects.get(referral_code = data.get('applied_referral_code'))
+        except:
+            referred_by = None
+        profile,_ = Profile.objects.get_or_create(user=user,referred_by=referred_by)
         profile.save()
         return user
 

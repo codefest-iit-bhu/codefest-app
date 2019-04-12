@@ -13,9 +13,9 @@ class FirebaseAPI:
             raise ValidationError(
                 'Invalid Firebase ID Token.', HTTP_422_UNPROCESSABLE_ENTITY)
 
-    @classmethod
-    def get_provider_uid(cls, jwt, provider):
-        return jwt['firebase']['identities'][provider][0]
+    # @classmethod
+    # def get_provider_uid(cls, jwt, provider):
+    #     return jwt['firebase']['identities'][provider][0]
 
     @classmethod
     def get_provider(cls, jwt):

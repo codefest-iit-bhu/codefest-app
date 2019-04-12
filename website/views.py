@@ -5,6 +5,7 @@ from rest_framework import authentication,permissions,generics,mixins,status
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from .serializers import *
+from website.permissions import AllowCompleteAndVerified
 from .models import *
 import json
 
@@ -14,22 +15,14 @@ class EventListView(generics.ListAPIView):
     serializer_class=EventSerializer
     queryset=Event.objects.all()
 
-class ProfileView(generics.GenericAPIView):
+class ProfileView(generics.RetrieveUpdateAPIView):
     permission_classes=[permissions.IsAuthenticated]
     authentication_classes= [authentication.TokenAuthentication, authentication.SessionAuthentication]
     serializer_class=ProfileSerializer
 
-    def get_queryset(self):
-        pass
+    def get_object(self):
+        return self.request.user.profile
 
-    def put(self, request, *args, **kwargs):
-        self.request=request
-        self.serializer = self.get_serializer(
-            data=request.data , context={'request': request}
-        )
-        self.serializer.is_valid(raise_exception=True)
-        self.profile=self.serializer.save(request=request)
-        return Response(status=status.HTTP_200_OK)
 
 class TeamCreationView(generics.GenericAPIView):
     permission_classes = [permissions.IsAuthenticated]

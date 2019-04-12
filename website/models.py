@@ -52,7 +52,7 @@ class Profile(models.Model):
         (2,'Professional'),
     )
     user=models.OneToOneField(User,on_delete=models.CASCADE)
-    referred_by=models.OneToOneField('Profile',null=True,related_name="referred",on_delete=models.DO_NOTHING)
+    referred_by=models.ForeignKey('Profile',null=True,related_name="referred",on_delete=models.SET_NULL)
     referral_code=models.UUIDField(default=uuid.uuid4)
     institute_type = models.IntegerField(null=True, choices=INSTITUTE_TYPE_CHOICES)
     institute_name=models.CharField(max_length=128, null=True)# can be school,college. last institute for professionals 
@@ -82,7 +82,11 @@ class Profile(models.Model):
             self.is_profile_complete = True
             self.save()
         profile_status = self.is_profile_complete
-        email_status = self.user.verified_account.get_verified_status()
+        email_status = False
+        try:
+            email = self.user.verified_account.get_verified_status()
+        except Exception:
+            pass
         if not profile_status or not email_status:
             return False
         if self.referred_by !=None:

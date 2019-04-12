@@ -4,8 +4,9 @@ from django.core.validators import RegexValidator
 from drf_yasg.utils import swagger_serializer_method
 
 
-class ProfileSerializer(serializers.Serializer):
-    institute=serializers.CharField(max_length=128, required=True)
+class ProfileSerializer(serializers.ModelSerializer):
+    name = serializers.CharField(max_length=128, read_only=True, required=False)
+    institute_name=serializers.CharField(max_length=128, required=True)
     study_year=serializers.IntegerField(required=False)
     degree=serializers.CharField(max_length=50,required=False)
     branch=serializers.CharField(max_length=100,required=False)
@@ -19,6 +20,11 @@ class ProfileSerializer(serializers.Serializer):
         choices=Profile.GENDER_CHOICES,
         required=True
     )
+    is_profile_complete = serializers.BooleanField(read_only=True)
+
+    class Meta:
+        model = Profile
+        fields = ('name','institute_name', 'study_year', 'degree', 'branch', 'country', 'institute_type', 'phone', 'gender','is_profile_complete')
 
     def validate_phone(self,number):
         phone_regex = RegexValidator(
@@ -32,21 +38,10 @@ class ProfileSerializer(serializers.Serializer):
         if year<1:
             raise serializers.ValidationError("Incorrect Year Specified")
         return year
- 
-    def save(self,request):
-        data=self.validated_data
-        profile,created=Profile.objects.get_or_create(user=request.user)
-        profile.institute_name=data.get('institute')
-        profile.study_year=data.get('study_year')
-        profile.degree=data.get('degree')
-        profile.branch=data.get('branch')
-        profile.country=data.get('country')
-        profile.phone=data.get('phone')
-        profile.gender=data.get('gender')
-        profile.institute_type=data.get('institute_type')
-        profile.get_or_set_profile_status(toSet=True)
-        profile.save()
-        return profile
+
+    def update(self, instance, data):
+        instance.get_or_set_profile_status(toSet=True)
+        return super().update(instance, data)
 
 class TeamCreationSerializer(serializers.Serializer):
     event = serializers.PrimaryKeyRelatedField(queryset=Event.objects.all())
@@ -131,7 +126,7 @@ class RemoveFromTeamSerializer(serializers.Serializer):
             raise serializers.ValidationError("User not creator of requested team")
         if team.creator == member:
             raise serializers.ValidationError("Team creator cannot remove self from team. Use team leave option instead.") 
-        if len(Membership.objects.filter(team=team, profile=member))==0:
+        if Membership.objects.filter(team=team, profile=member).count()==0:
             raise serializers.ValidationError("Requested user to remove not a part of requested team.")
         return return_dict
     
