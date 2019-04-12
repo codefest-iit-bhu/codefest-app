@@ -76,6 +76,8 @@ $tab-height = 30px;
     width: 100%;
     height: $tab-height;
     float: left;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 
     &::-webkit-scrollbar {
       display: none;
