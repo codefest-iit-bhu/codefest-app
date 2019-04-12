@@ -155,3 +155,5 @@ CSRF_TRUSTED_ORIGINS = (
     '127.0.0.1:8080',
     'localhost:8000',
 )
+GOOGLE_RECAPTCHA_SECRET_KEY = '6LepxJ0UAAAAANLQShxNGGenv0xKlAZ1v8c1DXAq'
+GOOGLE_RECAPTCHA_URL = 'https://www.google.com/recaptcha/api/siteverify'
