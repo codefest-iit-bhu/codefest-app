@@ -28,7 +28,7 @@
 
 <script>
 import Vue from "vue";
-import { navigation, terminal } from "@js/store/navigation";
+import { navigation, terminal } from "@store/navigation";
 import { CommandNotFoundError, CommandInvalidInput } from "@js/exceptions";
 
 export default {

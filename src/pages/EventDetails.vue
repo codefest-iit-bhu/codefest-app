@@ -19,7 +19,7 @@
 import AppBar from "@components/Menu/AppBar";
 import StandardEventDetails from "@components/StandardEventDetails";
 import Footer from "@components/Footer";
-import events from "@js/store/events";
+import events from "@store/events";
 export default {
   components: {
     AppBar,

@@ -1,24 +1,24 @@
 <template>
   <div>
-    <SectionLayout title="Sponsors">
-      <Sponsors/>
-    </SectionLayout>
-    <FloatingButton text="Coming soon"/>
+    <FloatingButton text="Coming soon" @click="runTest"/>
   </div>
 </template>
 
 <script>
 import FloatingButton from "@components/FloatingButton";
-import Sponsors from "@components/Sponsors";
-import SectionLayout from "@components/layouts/SectionLayout";
+import API from "@js/api";
+
 export default {
   components: {
-    FloatingButton,
-    Sponsors,
-    SectionLayout
+    FloatingButton
+  },
+  methods: {
+    runTest() {
+      console.log("fetching...");
+      this.$store.dispatch("login", {});
+    }
   }
 };
 </script>
 
-<style module lang="stylus">
-</style>
+<style module lang="stylus"></style>

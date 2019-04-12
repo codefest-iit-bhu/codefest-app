@@ -2,14 +2,14 @@ import Vue from "vue";
 import GAnalytics from "ganalytics";
 import vueMq from "vue-mq";
 import VueYoutube from "vue-youtube";
-import scrollSpy, {
-  Easing
-} from "vue2-scrollspy";
+import scrollSpy, { Easing } from "vue2-scrollspy";
 import firebase from "firebase";
+import { VueReCaptcha } from "vue-recaptcha-v3";
 
 import App from "./App";
 import router from "./router";
 import filters from "./plugins/filters";
+import store from "./store";
 
 import "./styles/index.styl";
 
@@ -33,6 +33,13 @@ Vue.use(scrollSpy, {
 
 Vue.use(VueYoutube);
 
+Vue.use(VueReCaptcha, {
+  siteKey: "6LepxJ0UAAAAAMGBO1-1PxqQ_Y3TuJGt5DHp5cHk",
+  loaderOptions: {
+    useRecaptchaNet: true
+  }
+});
+
 Vue.use(filters);
 
 // Mount w/ Hydration
@@ -40,6 +47,7 @@ Vue.use(filters);
 // @see https://ssr.vuejs.org/guide/hydration.html
 const app = new Vue({
   router,
+  store,
   render
 }).$mount("#app", true);
 

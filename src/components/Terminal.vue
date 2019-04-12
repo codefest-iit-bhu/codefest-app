@@ -31,7 +31,7 @@
   </div>
 </template>
 <script>
-import { navigation, terminal } from "@js/store/navigation";
+import { navigation, terminal } from "@store/navigation";
 import { CommandList } from "@js/commands";
 import { CommandNotFoundError } from "@js/exceptions";
 import REPL from "./REPL";

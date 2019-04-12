@@ -7,16 +7,18 @@
   },
   "dependencies": {
     "anchorme": "^1.1.2",
-    "frisbee": "^2.0.8",
     "firebase": "^5.9.3",
+    "frisbee": "^2.0.8",
     "ganalytics": "^3.1.1",
     "sirv-cli": "^0.2.0",
     "vue": "~2.6.7",
     "vue-mq": "^1.0.1",
+    "vue-recaptcha-v3": "^1.4.0",
     "vue-router": "~3.0.0",
     "vue-template-compiler": "~2.6.7",
     "vue-youtube": "^1.3.4",
-    "vue2-scrollspy": "^2.3.1"
+    "vue2-scrollspy": "^2.3.1",
+    "vuex": "^3.1.0"
   },
   "devDependencies": {
     "@pwa/cli": "latest",
