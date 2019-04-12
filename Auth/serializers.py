@@ -85,9 +85,9 @@ class RegisterSerializer(serializers.Serializer):
         }
         response = requests.post(settings.GOOGLE_RECAPTCHA_URL, data = data)
         response = response.json()
-        if not response['success']:
-            raise serializers.ValidationError("Captcha could not be verified. Please try again.")
-        return
+        if response['success'] and response['score']>=0.5:
+            return
+        raise serializers.ValidationError("Captcha could not be verified. Please try again.")
 
     def get_user(self, data,uid):
         user = User()
