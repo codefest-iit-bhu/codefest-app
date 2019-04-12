@@ -83,4 +83,30 @@ class TeamLeaveView(generics.DestroyAPIView):
         self.request = request
         instance = self.get_object()
         return self.perform_destroy(instance)
-  
+
+
+class RemoveFromTeamView(generics.GenericAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    authentication_classes = [authentication.TokenAuthentication, authentication.SessionAuthentication]
+    lookup_url_kwarg = 'pk'
+    queryset = Team.objects.all()
+    serializer_class = RemoveFromTeamSerializer
+    
+    def get_serializer_context(self):
+        """
+        Extra context provided to the serializer class.
+        """
+        return {
+            'request': self.request,
+            'format': self.format_kwarg,
+            'view': self,
+            'team':self.get_object(),
+        }
+    
+    def put(self, request, *args, **kwargs):
+        self.request = request
+        self.serializer = self.get_serializer(data = request.data)
+        self.serializer.is_valid(raise_exception=True)
+        team= self.serializer.delete()
+        response = TeamDetailSerializer(team)
+        return Response(response.data, status=status.HTTP_200_OK)

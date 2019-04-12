@@ -4,14 +4,6 @@ from django.core.validators import RegexValidator
 from drf_yasg.utils import swagger_serializer_method
 
 
-# class EventDetailSerializer(serializers.ModelSerializer):
-    
-#     class Meta:
-#         model=EventDetail
-#         fields=['title','content','priority']   
-#         ordering=['priority']    
-
-
 class ProfileSerializer(serializers.Serializer):
     institute=serializers.CharField(max_length=128, required=True)
     study_year=serializers.IntegerField(required=False)
@@ -19,6 +11,10 @@ class ProfileSerializer(serializers.Serializer):
     branch=serializers.CharField(max_length=100,required=False)
     country=serializers.CharField(max_length=100,required=True)
     phone=serializers.CharField(max_length=15,required=True)
+    institute_type = serializers.ChoiceField(
+        choices=Profile.INSTITUTE_TYPE_CHOICES,
+        required=True
+    )
     gender=serializers.ChoiceField(
         choices=Profile.GENDER_CHOICES,
         required=True
@@ -47,6 +43,7 @@ class ProfileSerializer(serializers.Serializer):
         profile.country=data.get('country')
         profile.phone=data.get('phone')
         profile.gender=data.get('gender')
+        profile.institute_type=data.get('institute_type')
         profile.get_or_set_profile_status(toSet=True)
         profile.save()
         return profile
@@ -120,9 +117,31 @@ class TeamDetailSerializer(serializers.ModelSerializer):
         model =Team
         fields='__all__'
 
+class RemoveFromTeamSerializer(serializers.Serializer):
+    member = serializers.PrimaryKeyRelatedField(queryset = Profile.objects.all(), required=True)
+
+    def validate(self, attrs):
+        profile = self.context['request'].user.profile
+        team = self.context['team']
+        member = attrs['member']
+        return_dict={}
+        return_dict['team']=team
+        return_dict['member'] = member
+        if not team.creator == profile:
+            raise serializers.ValidationError("User not creator of requested team")
+        if team.creator == member:
+            raise serializers.ValidationError("Team creator cannot remove self from team. Use team leave option instead.") 
+        if len(Membership.objects.filter(team=team, profile=member))==0:
+            raise serializers.ValidationError("Requested user to remove not a part of requested team.")
+        return return_dict
+    
+    def delete(self):
+        data = self.validated_data
+        team = data['team']
+        team.leave_team(data['member'])
+        return team    
 
 class EventSerializer(serializers.ModelSerializer):
-    # details=EventDetailSerializer(source='eventdetail_set',read_only=True,many=True)
     team = serializers.SerializerMethodField()
     class Meta:
         model = Event

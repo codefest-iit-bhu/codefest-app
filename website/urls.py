@@ -6,4 +6,5 @@ urlpatterns = [
     path('teams/create/', TeamCreationView.as_view()),
     path('teams/join', TeamJoinView.as_view()),
     path('teams/<int:pk>/', TeamLeaveView.as_view()),
+    path('teams/<int:pk>/remove/', RemoveFromTeamView.as_view()),
 ]
