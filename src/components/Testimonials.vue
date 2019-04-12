@@ -26,7 +26,7 @@ export default {
             "Manthan had some good problems and it was prepared very well. \
                       I loved the idea of hosting Mathmania at Topcoder! The problems were interesting too. \
                       Perplexed had some nice problems as well. Overall I enjoyed all three events -- thanks a lot! ",
-          image: "assets/Lookback/rupee.png"
+          image: "assets/Testimonial/tourist.jpeg"
         },
         {
           name: "Raj Shukla",
@@ -35,7 +35,7 @@ export default {
                     I really enjoy spending time on Codefest hackathons.\
                     This will help in my career growth as well.\
                     I am extremely happy to get rank 1 on enigma, I never thought of this can happen.",
-          image: "assets/Lookback/rupee.png"
+          image: "assets/Testimonial/raj-shukla.jpeg"
         },
         {
           name: "Infosec IIT R",
@@ -44,7 +44,7 @@ export default {
               Some of the challenges were a bit tough others were easy. \
               I will definitely recommend others to take part in this CTF \
               and also encourage organizers to conduct such events more often.",
-          image: "assets/Lookback/rupee.png"
+          image: "assets/Testimonial/infosec.jpeg"
         }
       ]
     };
@@ -96,6 +96,8 @@ $rd = 60px;
       img {
         height: calc(var(--item-round) * 1.6);
         width: calc(var(--item-round) * 1.6);
+        border-radius: 60px;
+        object-fit: cover;
       }
     }
 
@@ -150,7 +152,7 @@ $rd = 60px;
       flex-flow: row;
 
       .corner {
-        background-image: url('@assets/corner-odd.svg');
+        background-image: url('@assets/Testimonial/corner-odd.svg');
       }
 
       .text {
@@ -173,7 +175,7 @@ $rd = 60px;
       text-align: right;
 
       .corner {
-        background-image: url('@assets/corner-even.svg');
+        background-image: url('@assets/Testimonial/corner-even.svg');
       }
 
       .text {
