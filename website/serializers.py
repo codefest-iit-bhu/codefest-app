@@ -21,10 +21,11 @@ class ProfileSerializer(serializers.ModelSerializer):
         required=True
     )
     is_profile_complete = serializers.BooleanField(read_only=True)
-
+    referral_code = serializers.CharField(max_length=200,read_only=True)
+    
     class Meta:
         model = Profile
-        fields = ('name','institute_name', 'study_year', 'degree', 'branch', 'country', 'institute_type', 'phone', 'gender','is_profile_complete')
+        fields = ('name','institute_name', 'study_year', 'degree', 'branch', 'country', 'institute_type', 'phone', 'gender','is_profile_complete', 'referral_code')
 
     def validate_phone(self,number):
         phone_regex = RegexValidator(
