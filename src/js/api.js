@@ -1,4 +1,5 @@
 import Frisbee from "frisbee";
+import { MakeQuerablePromise } from "@js/utils";
 
 const api = new Frisbee({
   baseURI: "https://codefest-api.herokuapp.com",
@@ -8,10 +9,34 @@ const api = new Frisbee({
   }
 });
 
+const getApiOptions = function(token, body) {
+  const options = {};
+  if (token) {
+    options["headers"] = {
+      Authorization: `Token ${token}`
+    };
+  }
+  if (body) options["body"] = body;
+  return options;
+};
+
+const apiWrapper = function(promise) {
+  return MakeQuerablePromise(
+    new Promise((resolve, reject) => {
+      promise
+        .then(response => {
+          if (response.status == STATUS.SUCCESS) resolve(response);
+          else reject(response);
+        })
+        .catch(reject);
+    })
+  );
+};
+
 export const STATUS = {
   NONE: "none",
-  LOADING: "loading",
   SUCCESS: "success",
+  ERROR_BAD_REQUEST: "error.bad_request",
   ERROR_NOT_FOUND: "error.not_found",
   ERROR_UNAUTHENTICATED: "error.unauthenticated",
   ERROR_FORBIDDEN: "error.unauthorized",
@@ -30,10 +55,6 @@ export class Response extends Object {
     return new Response(data, STATUS.SUCCESS, null);
   }
 
-  static loading() {
-    return new Response(null, STATUS.LOADING, null);
-  }
-
   static clientError(err) {
     return new Response(null, STATUS.ERROR_UNKNOWN, err.message);
   }
@@ -41,12 +62,16 @@ export class Response extends Object {
   static responseError(response) {
     const { message } = response.err;
     switch (response.status) {
+      case 400:
+        return new Response(null, STATUS.ERROR_BAD_REQUEST, message);
       case 401:
         return new Response(null, STATUS.ERROR_UNAUTHENTICATED, message);
       case 403:
         return new Response(null, STATUS.ERROR_FORBIDDEN, message);
       case 404:
         return new Response(null, STATUS.ERROR_NOT_FOUND, message);
+      default:
+        return new Response(null, STATUS.ERROR_UNKNOWN, message);
     }
   }
 
@@ -69,21 +94,16 @@ api.interceptor.register({
 });
 
 export default {
-  fetch(url, token) {
-    return new Promise((resolve, reject) => {
-      const options = {
-        headers: {
-          Authorization: `Token ${token}`
-        }
-      };
-      resolve(Response.loading());
-      api
-        .get(url, options)
-        .then(response => {
-          if (response.status == STATUS.SUCCESS) resolve(response);
-          else reject(response);
-        })
-        .catch(response => reject(response));
-    });
+  fetch(url, { token, body }) {
+    return apiWrapper(api.get(url, getApiOptions(token, body)));
+  },
+  post(url, { token, body }) {
+    return apiWrapper(api.post(url, getApiOptions(token, body)));
+  },
+  put(url, { token, body }) {
+    return apiWrapper(api.put(url, getApiOptions(token, body)));
+  },
+  delete(url, { token, body }) {
+    return apiWrapper(api.delete(url, getApiOptions(token, body)));
   }
 };

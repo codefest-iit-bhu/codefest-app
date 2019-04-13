@@ -1,15 +1,13 @@
 import Vue from "vue";
 import Router from "vue-router";
-import {
-  isMobile
-} from "../js/utils";
-import firebase from 'firebase';
+import store from "@store";
 
 Vue.use(Router);
 
 const router = new Router({
   mode: "history",
-  routes: [{
+  routes: [
+    {
       name: "~",
       path: "/",
       component: () => import(`@pages/Home`),
@@ -48,6 +46,17 @@ const router = new Router({
         title: "CodeFest '19 | Login",
         metaTags: [],
         noTerminal: false
+      }
+    },
+    {
+      name: "~/dashboard",
+      path: "/dashboard",
+      component: () => import(`@pages/Dashboard`),
+      meta: {
+        title: "CodeFest '19 | Dashboard",
+        metaTags: [],
+        noTerminal: false,
+        requiresAuth: true
       }
     },
     {
@@ -142,12 +151,14 @@ router.beforeEach((to, from, next) => {
     // Add the meta tags to the document head.
     .forEach(tag => document.head.appendChild(tag));
 
-  // const currentUser = firebase.auth().currentUser;
-  // const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-
-  // if (requiresAuth && !currentUser) next('login');
-  // else if (!requiresAuth && currentUser) next('~');
-  // else next();
+  // Handle secure routes
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (store.getters.isLoggedIn) return next();
+    return next({
+      name: "~/login",
+      query: { redirect: to.fullPath }
+    });
+  }
 
   next();
 });
