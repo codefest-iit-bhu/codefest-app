@@ -61,6 +61,16 @@ const router = new Router({
       }
     },
     {
+      name: "~/profile-edit",
+      path: "/profile-edit",
+      component: () => import(`@pages/ProfileEdit`),
+      meta: {
+        title: "CodeFest '19 | Profile Edit",
+        metaTags: [],
+        noTerminal: false
+      }
+    },
+    {
       name: "~/haxplore",
       path: "/haxplore",
       component: () => import(`@pages/Hacksplore`),
