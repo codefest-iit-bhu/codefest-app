@@ -12,10 +12,16 @@ export default {
   components: {
     FloatingButton
   },
+  data() {
+    return {
+      loading: false
+    };
+  },
   methods: {
     runTest() {
       console.log("fetching...");
-      this.$store.dispatch("login", {});
+      this.$store.dispatch("login", this.$data, {}).then(console.log);
+      console.log(this.$data);
     }
   }
 };
