@@ -1,40 +1,61 @@
 import { KEY_AUTH_TOKEN } from "@js/constants";
-import API, { Response } from "@js/api";
+import API, { Response, STATUS } from "@js/api";
 
 function getTokenFromStorage() {
   return localStorage.getItem(KEY_AUTH_TOKEN);
 }
 
-function putTokenToStorage() {}
+function putTokenToStorage(token) {
+  localStorage.setItem(KEY_AUTH_TOKEN, token);
+}
 
 export default {
   state: {
     token: getTokenFromStorage() || "",
-    user: {},
-    authResponse: null
+    userId: -1
+  },
+  getters: {
+    isLoggedIn: state => {
+      return !!state.token;
+    },
+    authToken: state => state.token
   },
   mutations: {
-    AUTH_REQUEST() {
-      state.authResponse = Response.loading();
+    AUTH_SUCCESS(state, data) {
+      const { token, user_id } = data;
+      state.token = token;
+      state.userId = user_id;
+      putTokenToStorage(token);
     },
-    AUTH_SUCCESS(response) {
-      state.authResponse = response;
-      const { data } = response;
-      state.token = data.token;
-    },
-    AUTH_ERROR(response) {
-      state.authResponse = response;
-    },
-    AUTH_LOGOUT() {
+    AUTH_LOGOUT(state) {
       state.token = "";
-      state.authResponse = Response.success(null);
     }
   },
   actions: {
-    login({ state, commit, rootState }, data) {
-      API.fetch("events/", state.token)
-        .then(console.log)
-        .catch(console.log);
+    login({ state, commit }, { idToken }) {
+      const body = {
+        id_token: idToken
+      };
+      return API.post("login/", { body }).then(response => {
+        commit("AUTH_SUCCESS", response.data);
+        return response;
+      });
+    },
+    register({ state, commit }, { idToken, name, referralCode }) {
+      const names = name.split(/\s+/);
+      const body = {
+        id_token: idToken,
+        first_name: names[0],
+        last_name: names.length > 0 ? names[1] : "",
+        applied_referral_code: referralCode
+      };
+      return API.post("register/", { body }).then(response => {
+        commit("AUTH_SUCCESS", response.data);
+        return response;
+      });
+    },
+    logout({ state, commit }) {
+      commit("AUTH_LOGOUT");
     }
   }
 };

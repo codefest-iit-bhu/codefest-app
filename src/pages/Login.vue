@@ -8,9 +8,10 @@
             <form :class="$style.form" @submit.prevent="emailLogin">
               <div :class="$style.fieldContainer">
                 <label for="email" :class="$style.label">email</label>
-                <input type="email" :class="$style.field" v-model="email">
+                <input type="email" :class="$style.field" v-model="email" required>
+                <br>
                 <label for="password" :class="$style.label">password</label>
-                <input type="password" :class="$style.field" v-model="password">
+                <input type="password" :class="$style.field" v-model="password" required>
               </div>
               <div :class="$style.forgotPasswd">
                 <a href="#">Forgot Password</a>
@@ -37,14 +38,37 @@
           <div :class="$style.formContainer" slot="register">
             <form :class="$style.form" @submit.prevent="emailRegister">
               <div :class="$style.fieldContainer">
-                <label for="name" :class="$style.label">name</label>
-                <input type="text" id="name" name="name" :class="$style.field" v-model="name">
+                <label for="name" :class="$style.label">name *</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  :class="$style.field"
+                  v-model="name"
+                  required
+                >
                 <br>
-                <label for="email" :class="$style.label">email</label>
-                <input type="email" id="email" name="email" :class="$style.field" v-model="email">
+                <label for="email" :class="$style.label">email *</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  :class="$style.field"
+                  v-model="email"
+                  required
+                >
                 <br>
-                <label for="password" :class="$style.label">password</label>
-                <input type="password" :class="$style.field" v-model="password">
+                <label for="password" :class="$style.label">password *</label>
+                <input type="password" :class="$style.field" v-model="password" required>
+                <br>
+                <label for="referral" :class="$style.label">referral code</label>
+                <input
+                  type="text"
+                  id="referral"
+                  name="referral"
+                  :class="$style.field"
+                  v-model="referral"
+                >
               </div>
               <div :class="$style.btnStyle">
                 <button value=">" :class="$style.submit">
@@ -88,6 +112,7 @@ export default {
       name: "",
       email: "",
       password: "",
+      referral: "",
       tabs: [
         {
           name: "login",
@@ -97,7 +122,8 @@ export default {
           name: "register",
           title: "Register"
         }
-      ]
+      ],
+      loading: false
     };
   },
   methods: {
@@ -106,7 +132,7 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then(result => {
-          this.successfulAuth(result);
+          this.successfulAuth(result, true);
         })
         .catch(err => {
           alert(err.message);
@@ -117,7 +143,7 @@ export default {
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(result => {
-          this.successfulAuth(result);
+          this.successfulAuth(result, true);
         })
         .catch(err => {
           alert(err.message);
@@ -140,27 +166,59 @@ export default {
         .auth()
         .signInWithPopup(provider)
         .then(result => {
-          this.successfulAuth(result);
+          this.successfulAuth(result, false);
         })
         .catch(err => {
           alert(err.message);
         });
     },
-    successfulAuth(result) {
+    successfulAuth(result, byEmail) {
       const { isNewUser } = result.additionalUserInfo;
-      const { providerId } = result.user;
       result.user
         .getIdToken(true)
-        .then(function(idToken) {
-          if (isNewUser) this._register(idToken, providerId, this.name);
-          else this._login(idToken, providerId);
+        .then(idToken => {
+          if (isNewUser)
+            this._register(
+              idToken,
+              byEmail ? this.name : result.user.displayName,
+              this.referral
+            );
+          else this._login(idToken);
         })
         .catch(err => {
           alert(err.message);
+          result.user.delete();
         });
     },
-    _login(idToken, providerId) {},
-    _register(idToken, providerId, name) {}
+    _login(idToken) {
+      this.loading = true;
+      this.$store
+        .dispatch("login", { idToken })
+        .then(_ => {
+          this.loading = false;
+          this.onRedirectAuth(_);
+        })
+        .catch(_ => (this.loading = false));
+    },
+    _register(idToken, name, referralCode) {
+      this.loading = true;
+      this.$store
+        .dispatch("register", {
+          idToken,
+          name,
+          referralCode
+        })
+        .then(_ => {
+          this.loading = false;
+          this.onRedirectAuth(_);
+        })
+        .catch(_ => (this.loading = false));
+    },
+    onRedirectAuth() {
+      console.log(arguments[0]);
+      const path = this.$route.query.redirect || "/";
+      this.$router.push({ path });
+    }
   }
 };
 </script>
