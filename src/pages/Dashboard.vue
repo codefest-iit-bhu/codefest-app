@@ -3,6 +3,7 @@
     <AppBar :isSideNavigationShown="false"/>
     <main :class="$style.wrapper">
       <DashboardEvent v-if="isEventsView"/>
+      <DashboardProfile :profile="profile" v-if="isHomeView"/>
     </main>
     <Footer/>
   </div>
@@ -13,13 +14,20 @@ import API from "@js/api";
 
 import AppBar from "@components/Menu/AppBar";
 import DashboardEvent from "@components/dashboard/DashboardEvent";
+import DashboardProfile from "@components/dashboard/DashboardProfile";
 import Footer from "@components/Footer";
 
 export default {
   components: {
     AppBar,
     DashboardEvent,
+    DashboardProfile,
     Footer
+  },
+  data() {
+    return {
+      profile: {}
+    };
   },
   props: {
     isHomeView: false,
@@ -30,9 +38,10 @@ export default {
     API.fetch("profile/")
       .then(({ data }) => {
         if (!data.is_profile_complete) {
-          alert("Not Complete!");
+          console.log("Not Complete!");
         }
         console.log(data);
+        this.profile = data;
       })
       .catch(console.log);
   }

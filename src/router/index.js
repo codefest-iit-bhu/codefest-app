@@ -6,8 +6,7 @@ Vue.use(Router);
 
 const router = new Router({
   mode: "history",
-  routes: [
-    {
+  routes: [{
       name: "~",
       path: "/",
       component: () => import(`@pages/Home`),
@@ -15,7 +14,6 @@ const router = new Router({
         title: "CodeFest '19 | IIT (BHU) Varanasi",
         metaTags: [],
         noTerminal: false,
-        requiresAuth: true
       }
     },
     {
@@ -163,7 +161,9 @@ router.beforeEach((to, from, next) => {
     if (store.getters.isLoggedIn) return next();
     return next({
       name: "~/login",
-      query: { redirect: to.fullPath }
+      query: {
+        redirect: to.fullPath
+      }
     });
   }
 

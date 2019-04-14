@@ -1,4 +1,4 @@
-export const isMobile = function() {
+export const isMobile = function () {
   if (
     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
       navigator.userAgent
@@ -10,15 +10,15 @@ export const isMobile = function() {
   }
 };
 
-export const isMinimal = function(mq) {
+export const isMinimal = function (mq) {
   return mq === "xs" || mq === "sm";
 };
 
-export const getRandom = function(min, max) {
+export const getRandom = function (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-export const formatDateTo12HoursTime = function(date) {
+export const formatDateTo12HoursTime = function (date) {
   if (!(date instanceof Date))
     throw Error(`Date value expected, got ${date.constructor.name}`);
   return date.toLocaleString("en-us", {
@@ -26,6 +26,29 @@ export const formatDateTo12HoursTime = function(date) {
     minute: "numeric",
     hour12: true
   });
+};
+
+// Source: https://hackernoon.com/copying-text-to-clipboard-with-javascript-df4d4988697f
+export const copyToClipboard = str => {
+  const el = document.createElement('textarea'); // Create a <textarea> element
+  el.value = str; // Set its value to the string that you want copied
+  el.setAttribute('readonly', ''); // Make it readonly to be tamper-proof
+  el.style.position = 'absolute';
+  el.style.left = '-9999px'; // Move outside the screen to make it invisible
+  document.body.appendChild(el); // Append the <textarea> element to the HTML document
+  const selected =
+    document.getSelection().rangeCount > 0 // Check if there is any content selected previously
+    ?
+    document.getSelection().getRangeAt(0) // Store selection if found
+    :
+    false; // Mark as false to know no selection existed before
+  el.select(); // Select the <textarea> content
+  document.execCommand('copy'); // Copy - only works as a result of a user action (e.g. click events)
+  document.body.removeChild(el); // Remove the <textarea> element
+  if (selected) { // If a selection existed before copying
+    document.getSelection().removeAllRanges(); // Unselect everything on the HTML document
+    document.getSelection().addRange(selected); // Restore the original selection
+  }
 };
 
 /**
@@ -44,25 +67,25 @@ export function MakeQuerablePromise(promise) {
 
   // Observe the promise, saving the fulfillment in a closure scope.
   const result = promise.then(
-    function(v) {
+    function (v) {
       isFulfilled = true;
       isPending = false;
       return v;
     },
-    function(e) {
+    function (e) {
       isRejected = true;
       isPending = false;
       throw e;
     }
   );
 
-  result.isFulfilled = function() {
+  result.isFulfilled = function () {
     return isFulfilled;
   };
-  result.isPending = function() {
+  result.isPending = function () {
     return isPending;
   };
-  result.isRejected = function() {
+  result.isRejected = function () {
     return isRejected;
   };
   return result;
@@ -101,7 +124,7 @@ export class TypingAnim {
   }
 }
 
-export const interpolateEaseOutQuad = function(
+export const interpolateEaseOutQuad = function (
   currentTime,
   startValue,
   endValue,
