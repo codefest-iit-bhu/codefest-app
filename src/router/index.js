@@ -6,14 +6,15 @@ Vue.use(Router);
 
 const router = new Router({
   mode: "history",
-  routes: [{
+  routes: [
+    {
       name: "~",
       path: "/",
       component: () => import(`@pages/Home`),
       meta: {
         title: "CodeFest '19 | IIT (BHU) Varanasi",
         metaTags: [],
-        noTerminal: false,
+        noTerminal: false
       }
     },
     {
@@ -71,6 +72,17 @@ const router = new Router({
         title: "CodeFest '19 | Event Registration",
         metaTags: [],
         noTerminal: true,
+        requiresAuth: true
+      }
+    },
+    {
+      name: "~/profile/edit",
+      path: "/profile/edit",
+      component: () => import(`@pages/ProfileEdit`),
+      meta: {
+        title: "CodeFest '19 | Profile Edit",
+        metaTags: [],
+        noTerminal: false,
         requiresAuth: true
       }
     },

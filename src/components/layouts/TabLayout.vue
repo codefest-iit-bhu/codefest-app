@@ -123,9 +123,9 @@ $tab-height = 30px;
       display: none;
       position: relative;
       top: $tab-height;
-      border: 1px solid $chartreuse;
+      border: 1px solid $limeade;
       border-radius: 0 0 10px 10px;
-      box-shadow: inset 0px 0px 15px $chartreuse;
+      box-shadow: inset 0px -2px 15px $chartreuse;
       background: $cod-gray;
     }
 

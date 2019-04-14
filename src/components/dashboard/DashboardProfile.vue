@@ -24,10 +24,10 @@
           </ResponsiveTwoColumnLayout>
         </div>
 
-        <div :class="$style.link">
-          <a href="/edit-profile" :class="$style.linkText">
+        <div :class="$style.link" @click="$router.push('/profile/edit')">
+          <span :class="$style.linkText">
             <h4>Edit Profile</h4>
-          </a>
+          </span>
         </div>
       </SectionLayout>
     </main>
@@ -47,6 +47,7 @@ export default {
   computed: {
     retrieveInitials() {
       const { name } = this.profile;
+      if (!name) return;
       const newName = name.split(/\s+/);
       return newName[0][0] + newName[1][0];
     }
