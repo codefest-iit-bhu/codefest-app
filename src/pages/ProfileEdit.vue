@@ -10,11 +10,11 @@
               <div :class="$style.fieldsContainer">
                 <div :class="$style.field">
                   <label for="name" :class="$style.label">name</label>
-                  <input type="test" :class="$style.field" value v-model="name" required>
+                  <input type="text" id="name" :class="$style.field" value v-model="name" required>
                 </div>
                 <div :class="$style.field">
                   <label for="gender" :class="$style.label">gender</label>
-                  <select :class="$style.field" v-model="gender" required>
+                  <select :class="$style.field" v-model="gender" id="gender" required>
                     <option value="0">Male</option>
                     <option value="1">Female</option>
                     <option value="2">Others</option>
@@ -22,14 +22,20 @@
                 </div>
                 <div :class="$style.field">
                   <label for="phone" :class="$style.label">phone</label>
-                  <input type="phone" :class="$style.field" v-model="phone" required>
+                  <input type="phone" id="phone" :class="$style.field" v-model="phone" required>
                 </div>
                 <div :class="$style.field">
                   <label for="country" :class="$style.label">country</label>
-                  <input type="country" :class="$style.field" v-model="country" required>
+                  <input
+                    type="country"
+                    id="country"
+                    :class="$style.field"
+                    v-model="country"
+                    required
+                  >
                 </div>
                 <div :class="$style.field">
-                  <label for="instituteType" :class="$style.label">institute type</label>
+                  <label for="instituteType" id="instituteType" :class="$style.label">institute type</label>
                   <select :class="$style.field" v-model="instituteType" required>
                     <option value="0">School</option>
                     <option value="1">College</option>
@@ -43,14 +49,14 @@
               <div :class="$style.fieldsContainer">
                 <div :class="$style.field">
                   <label for="institute" :class="$style.label">institute</label>
-                  <input type="text" v-model="institute">
+                  <input type="text" id="institute" v-model="institute">
                 </div>
                 <div :class="$style.field">
-                  <label for="year" :class="$style.label">year</label>
+                  <label for="year" id="year" :class="$style.label">year</label>
                   <input type="number" name="year" :class="$style.field" v-model="year">
                 </div>
                 <div :class="$style.field">
-                  <label for="branch" :class="$style.label">branch</label>
+                  <label for="branch" id="branch" :class="$style.label">branch</label>
                   <select type="text" name="branch" :class="$style.field" v-model="branch">
                     <option value="cse">CSE</option>
                     <option value="noncse">Non-CSE</option>
@@ -58,7 +64,7 @@
                 </div>
                 <div :class="$style.field">
                   <label for="degree" :class="$style.label">degree</label>
-                  <input type="degree" :class="$style.field" v-model="degree">
+                  <input type="degree" id="degree" :class="$style.field" v-model="degree">
                 </div>
               </div>
             </div>
@@ -66,7 +72,7 @@
               <h3>handles</h3>
               <div :class="$style.fieldsContainer">
                 <div :class="$style.field">
-                  <label for="codeforce" :class="$style.label">codeforces</label>
+                  <label for="codeforces" :class="$style.label">codeforces</label>
                   <input type="text" v-model="codeforces">
                 </div>
               </div>
@@ -83,6 +89,7 @@
               <i class="fas fa-circle" @click="nav(2)" :class="navIndex==2?$style.active:''"></i>
             </div>
           </form>
+          <datalist id="json-datalist"></datalist>
         </div>
       </div>
     </main>
@@ -125,6 +132,38 @@ export default {
         console.log(data);
       })
       .catch(console.log);
+  },
+  mounted() {
+    var dataList = document.getElementById("json-datalist");
+    var input = document.getElementById("institute");
+    input.setAttribute("list", "json-datalist");
+
+    let url = "assets/institutes.json";
+
+    var request = new XMLHttpRequest();
+
+    request.onreadystatechange = function(response) {
+      if (request.readyState === 4) {
+        if (request.status === 200) {
+          var jsonOptions = JSON.parse(request.responseText);
+
+          jsonOptions.forEach(function(item) {
+            var option = document.createElement("option");
+            option.value = item.name;
+            dataList.appendChild(option);
+          });
+
+          input.placeholder = "";
+        } else {
+          input.placeholder = "error";
+        }
+      }
+    };
+
+    input.placeholder = "";
+
+    request.open("GET", url, true);
+    request.send();
   }
 };
 </script>
