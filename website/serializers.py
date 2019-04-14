@@ -141,7 +141,7 @@ class EventSerializer(serializers.ModelSerializer):
     team = serializers.SerializerMethodField()
     class Meta:
         model = Event
-        fields=['name','slug', 'is_registration_on','min_members','max_members','team']
+        fields=['id','name','slug', 'is_registration_on','min_members','max_members','team']
 
     @swagger_serializer_method(serializer_or_field=TeamDetailSerializer)
     def get_team(self, obj):
