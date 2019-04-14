@@ -1,18 +1,18 @@
 <template>
-  <div>
-    <div :class="$style.registerBox">
-      <div :class="$style.title">
-        <span :class="$style.txt">{{ eventTitle }}</span>
-        <span :class="$style.txt2">
-          <a :href="eventLink">View Details</a>
-        </span>
-      </div>
+  <div :class="[$style.eventBox, $style[$mq]]">
+    <div :class="$style.title">
+      <span :class="$style.txt">{{ event.title }}</span>
+      <span :class="$style.txt2">
+        <router-link :to="event.link">View Details</router-link>
+      </span>
+    </div>
+    <div :class="$style.registerWrapper" v-if="showRegistration">
       <div :class="$style.btnBox">
         <button
           :class="$style.btn"
           @click="displayBtnClick"
-          :data-btn="`#${eventTitle}__teamName`"
-          :id="`#${eventTitle}__createTeam`"
+          :data-input-target="`#${event.name}__teamName`"
+          :id="`#${event.name}__createTeam`"
         >Create Team</button>
         <div :class="$style.behindBtn">
           <input
@@ -20,11 +20,16 @@
             :class="[$style.field]"
             placeholder="Team Name"
             @blur="inputBtnBlur"
-            :data-input="`#${eventTitle}__createTeam`"
+            :data-button-target="`#${event.name}__createTeam`"
             v-model="teamName"
-            :id="`#${eventTitle}__teamName`"
+            :id="`#${event.name}__teamName`"
           >
-          <button value=">" :class="[$style.submit]">
+          <button
+            value=">"
+            :class="$style.submit"
+            :data-event-id="event.id"
+            @click="submitCreateTeam"
+          >
             <i class="fas fa-arrow-circle-right"></i>
           </button>
         </div>
@@ -36,25 +41,31 @@
         <button
           :class="$style.btn"
           @click="displayBtnClick"
-          :data-btn="`#${eventTitle}__accessCode`"
-          :id="`#${eventTitle}__joinTeam`"
+          :data-input-target="`#${event.name}__accessCode`"
+          :id="`#${event.name}__joinTeam`"
         >Join Team</button>
         <div :class="$style.behindBtn">
           <input
             type="text"
             :class="[$style.field]"
-            :data-input="`#${eventTitle}__joinTeam`"
+            :data-button-target="`#${event.name}__joinTeam`"
             placeholder="Access Code"
             v-model="accessCode"
             @blur="inputBtnBlur"
-            :id="`#${eventTitle}__accessCode`"
+            :id="`#${event.name}__accessCode`"
           >
-          <button value=">" :class="[$style.submit]">
+          <button
+            value=">"
+            :class="$style.submit"
+            :data-event-id="event.id"
+            @click="submitJoinTeam"
+          >
             <i class="fas fa-arrow-circle-right"></i>
           </button>
         </div>
       </div>
     </div>
+    <div :class="$style.teamWrapper" v-else>Team</div>
   </div>
 </template>
 <script>
@@ -65,12 +76,21 @@ export default {
       accessCode: ""
     };
   },
-  props: ["eventTitle", "eventLink"],
-  computed: {},
+  props: {
+    event: {
+      type: Object,
+      required: true
+    }
+  },
+  computed: {
+    showRegistration() {
+      return !this.event.team;
+    }
+  },
   methods: {
     displayBtnClick(e) {
       const { target: btn } = e;
-      const inputId = btn.getAttribute("data-btn");
+      const inputId = btn.getAttribute("data-input-target");
       btn.style.animation = "none";
       document.getElementById(inputId).focus();
       btn.classList.add(this.$style.animateHideBtn);
@@ -79,7 +99,7 @@ export default {
       btn.style.animation = null;
     },
     inputBtnBlur(e) {
-      const btnId = e.target.getAttribute("data-input");
+      const btnId = e.target.getAttribute("data-button-target");
 
       const btn = document.getElementById(btnId);
       btn.style.animation = "none";
@@ -87,7 +107,11 @@ export default {
       // Trigger reflow of element to restart CSS animation (source: https://stackoverflow.com/a/45036752/10623486)
       btn.offsetWidth;
       btn.style.animation = null;
-    }
+    },
+    submitCreateTeam() {
+      this.$store.dispatch("createEventTeam");
+    },
+    submitJoinTeam() {}
   },
   mounted() {
     document
@@ -99,29 +123,32 @@ export default {
 <style module lang = "stylus" >
 @require '~@styles/theme';
 
-$box-height = 250px;
-$box-width = 350px;
+$box-large-width = 350px;
+$box-small-width = 280px;
 $btn-width = 240px;
 
-.registerBox {
-  height: $box-height;
-  width: $box-width;
+.eventBox {
+  --event-team-box-width: $box-large-width;
+  --event-team-button-width: $btn-width;
+  width: var(--event-team-box-width);
+  padding: 10px 10px 20px;
   border: 1px solid $chartreuse;
+
+  &.xs, &.sm {
+    --event-team-box-width: $box-small-width;
+  }
 }
 
 .title {
   height: 50px;
-  padding-top: 7px;
 
   .txt {
     font-size: 23px;
-    margin-left: 7px;
     font-family: 'Aldo the Apache';
   }
 
   .txt2 {
     float: right;
-    margin-right: 7px;
   }
 }
 
@@ -129,8 +156,7 @@ $btn-width = 240px;
   height: 50px;
   position: relative;
   text-align: center;
-  /* height: 60px; */
-  width: $btn-width;
+  width: var(--event-team-button-width);
 }
 
 .btn {
@@ -138,8 +164,7 @@ $btn-width = 240px;
   z-index: 5;
   width: 100%;
   top: 0;
-  left: (($box-width - $btn-width) / 2);
-  /*  */
+  left: calc(((var(--event-team-box-width) - var(--event-team-button-width)) / 2));
   background-color: black;
   border: 1px solid $chartreuse;
   color: $chartreuse;
@@ -176,7 +201,7 @@ $btn-width = 240px;
   color: white;
   border: 0;
   outline: 0;
-  max-width: ($btn-width - 50px);
+  max-width: calc(var(--event-team-button-width) - 50px);
   font-size: 16px;
   background: #fff2;
   border-radius: 5px;
@@ -214,7 +239,7 @@ $btn-width = 240px;
   position: absolute;
   width: 100%;
   top: 0;
-  left: (($box-width - $btn-width) / 2);
+  left: calc(((var(--event-team-box-width) - var(--event-team-button-width)) / 2));
   z-index: 4;
 }
 

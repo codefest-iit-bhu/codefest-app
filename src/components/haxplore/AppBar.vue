@@ -243,11 +243,11 @@ export default {
       }
     }
 
-    ~/.md ^[1..-1], ~/.lg ^[1..-1], ~/.xl ^[1..-1] {
+    ~/.md ^[1..-1], ~/.lg ^[1..-1], ~/.xl ^[1..-1], ~/.xxl ^[1..-1] {
       position: fixed;
       right: -140px;
       top: 0;
-      width: 140px;
+      width: 150px;
       padding: 15px;
       display: flex;
       flex-flow: column;

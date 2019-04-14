@@ -130,10 +130,6 @@ export default {
   }
 
   .faqMessage {
-    a {
-      color: $chartreuse;
-    }
-
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
       font-size: 13px;
       line-height: 20px;

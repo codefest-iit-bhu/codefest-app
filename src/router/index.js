@@ -52,21 +52,28 @@ const router = new Router({
       name: "~/dashboard",
       path: "/dashboard",
       component: () => import(`@pages/Dashboard`),
+      props: {
+        isHomeView: true
+      },
       meta: {
         title: "CodeFest '19 | Dashboard",
         metaTags: [],
-        noTerminal: false,
+        noTerminal: true,
         requiresAuth: true
       }
     },
     {
-      name: "~/profile",
-      path: "/profile",
-      component: () => import(`@pages/Profile`),
+      name: "~/dashboard/events",
+      path: "/dashboard/events",
+      component: () => import(`@pages/Dashboard`),
+      props: {
+        isEventsView: true
+      },
       meta: {
-        title: "CodeFest '19 | Profile",
+        title: "CodeFest '19 | Event Registration",
         metaTags: [],
-        noTerminal: false
+        noTerminal: true,
+        requiresAuth: true
       }
     },
     {

@@ -37,7 +37,7 @@ div.sectionContainer {
     font-size: 64px;
     margin-top: 144px;
 
-    &.lg, &.xl {
+    &.lg, &.xl, &.xxl {
       padding-top: 36px;
     }
 

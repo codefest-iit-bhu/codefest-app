@@ -32,6 +32,7 @@ import Footer from "@components/Footer";
 import Lookback from "@components/Lookback";
 import Sponsors from "@components/Sponsors";
 import Testimonials from "@components/Testimonials";
+
 export default {
   components: {
     AppBar,

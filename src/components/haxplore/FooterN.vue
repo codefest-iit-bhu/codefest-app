@@ -55,7 +55,6 @@ export default {};
   flex-wrap: wrap;
   margin-top: 20px;
   width: 100%;
-  bottom: 0;
 
   .logo {
     width: 100%;

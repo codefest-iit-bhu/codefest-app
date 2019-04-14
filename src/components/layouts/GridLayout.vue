@@ -24,8 +24,9 @@ export default {
   computed: {
     gridStyle() {
       return {
-        "grid-template-columns": `repeat(${this.columns}, ${this.itemWidth})`,
-        "grid-template-rows": `${this.itemHeight}`
+        "grid-template-columns": `repeat(auto-fit, minmax(${
+          this.itemWidth
+        }, 1fr))`
       };
     }
   }
@@ -34,13 +35,12 @@ export default {
 <style module lang="stylus">
 .container {
   display: grid;
-  grid-template-columns: 300px; // 200px 200px;
-  grid-template-rows: 200px;
   grid-column-gap: 30px;
   grid-row-gap: 50px;
   justify-content: space-evenly;
 
   .itemWrapper {
+    margin: 0 auto;
   }
 }
 </style>

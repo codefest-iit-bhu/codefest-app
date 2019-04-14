@@ -49,8 +49,6 @@ export default {};
   height: 52px;
   margin-top: 20px;
   width: 100%;
-  position: absolute;
-  bottom: 0;
   z-index: 20;
 
   span {

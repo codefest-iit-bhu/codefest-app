@@ -18,6 +18,7 @@ const render = h => h(App);
 
 Vue.use(vueMq, {
   breakpoints: {
+    __: 320,
     xs: 575,
     sm: 767,
     md: 991,

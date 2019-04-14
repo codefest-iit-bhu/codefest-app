@@ -1,10 +1,6 @@
 <template>
   <div :class="$style.lookback">
-    <GridLayout
-      :columns="$mq | mq({xs: 1, sm: 2, md: 3, lg: 4, xl: 5})"
-      itemWidth="200px"
-      itemHeight="200px"
-    >
+    <GridLayout itemWidth="250px">
       <div :class="$style.stat" v-for="(stat, i) in this.stats" :key="i" :slot="`item${i}`">
         <div :class="$style.clip">
           <img :src="stat.image" :class="$style.img">

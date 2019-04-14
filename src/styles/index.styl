@@ -41,14 +41,6 @@
   url("//db.onlinewebfonts.com/t/72c75860d89e91a517dfb1e7d308c180.ttf") format("truetype"),
   url("//db.onlinewebfonts.com/t/72c75860d89e91a517dfb1e7d308c180.svg#Courier New") format("svg")
 
-img {
-    user-select: none
-}
-
-.grecaptcha-badge {
-    display: none !important;
-}
-
 :global {
   /* =============================================================================
     HTML5 display definitions
@@ -564,16 +556,25 @@ img {
     font-family var(--font-list)
     font-size var(--base-font)
     -webkit-font-smoothing antialiased
+    height: 100%
   }
 
   a {
-    color rgb(0,100,200)
+    color: $chartreuse;
     text-decoration none
     &:hover {
       text-decoration underline
     }
     &:visited {
-      color rgb(0,80,160)
+      color $chartreuse;
     }
+  }
+
+  img {
+    user-select: none
+  }
+
+  .grecaptcha-badge {
+    display: none !important;
   }
 }

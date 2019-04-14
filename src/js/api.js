@@ -1,5 +1,6 @@
 import Frisbee from "frisbee";
 import { MakeQuerablePromise } from "@js/utils";
+import store from "@store";
 
 const api = new Frisbee({
   baseURI: "https://codefest-api.herokuapp.com",
@@ -9,8 +10,9 @@ const api = new Frisbee({
   }
 });
 
-const getApiOptions = function(token, body) {
+const getApiOptions = function({ body }) {
   const options = {};
+  const token = store.getters.authToken;
   if (token) {
     options["headers"] = {
       Authorization: `Token ${token}`
@@ -25,6 +27,8 @@ const apiWrapper = function(promise) {
     new Promise((resolve, reject) => {
       promise
         .then(response => {
+          if (response.status == STATUS.ERROR_UNAUTHENTICATED)
+            store.dispatch("logout");
           if (response.status == STATUS.SUCCESS) resolve(response);
           else reject(response);
         })
@@ -94,16 +98,16 @@ api.interceptor.register({
 });
 
 export default {
-  fetch(url, { token, body }) {
-    return apiWrapper(api.get(url, getApiOptions(token, body)));
+  fetch(url, options = {}) {
+    return apiWrapper(api.get(url, getApiOptions(options)));
   },
-  post(url, { token, body }) {
-    return apiWrapper(api.post(url, getApiOptions(token, body)));
+  post(url, options = {}) {
+    return apiWrapper(api.post(url, getApiOptions(options)));
   },
-  put(url, { token, body }) {
-    return apiWrapper(api.put(url, getApiOptions(token, body)));
+  put(url, options = {}) {
+    return apiWrapper(api.put(url, getApiOptions(options)));
   },
-  delete(url, { token, body }) {
-    return apiWrapper(api.delete(url, getApiOptions(token, body)));
+  delete(url, options = {}) {
+    return apiWrapper(api.delete(url, getApiOptions(options)));
   }
 };

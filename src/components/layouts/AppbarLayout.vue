@@ -47,7 +47,7 @@ export default {
     },
     handleAnimation(mq) {
       if (!this.$props.doAnimate) return;
-      if (mq === "lg" || mq === "xl") this.animateScrollShow();
+      if (["lg", "xl", "xxl"].includes(this.$mq)) this.animateScrollShow();
       else {
         this.noAnimateScrollShow();
         this.showAppbar();

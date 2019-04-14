@@ -73,12 +73,16 @@ $tab-height = 30px;
     border-radius: 0 20px 0px 0;
     position: relative;
     overflow-x: scroll;
+    overflow-y: hidden;
     width: 100%;
     height: $tab-height;
     float: left;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
 
     &::-webkit-scrollbar {
-      display: none;
+      width: 0;
+      height: 0;
     }
 
     .tabWrapper {
