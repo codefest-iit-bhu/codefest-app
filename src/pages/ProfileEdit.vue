@@ -102,6 +102,7 @@ import AppBar from "@components/Menu/AppBar";
 import Footer from "@components/Footer";
 import TabLayout from "@components/layouts/TabLayout";
 import firebase from "firebase";
+import API from "@js/api";
 
 export default {
   components: {
