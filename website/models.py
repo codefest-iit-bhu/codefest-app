@@ -5,12 +5,19 @@ from django.utils.crypto import get_random_string
 from django.core.exceptions import ValidationError
 import hashlib
 from hashids import Hashids
-hashids = Hashids(min_length=7, salt='Dalla')
+hashids_team = Hashids(min_length=7, salt='Dalla')
+Hashids_referral = Hashids(min_length=5, salt="SomeRandomShit")
 from Auth.utils import FirebaseAPI
 from django.utils.functional import cached_property
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 # Create your models here.
+
+def generate_referral_code():
+    code = Hashids_referral.encode(Profile.objects.latest('id').id)
+    code+=get_random_string(3, Hashids.ALPHABET)
+    return code
+
 class Event(models.Model):
     name=models.CharField(max_length=20)
     min_members=models.PositiveIntegerField(default=1)
@@ -22,7 +29,7 @@ class Event(models.Model):
 
         team = Team.objects.create(event=self , creator = profile,name=t_name)
 
-        team.access_code = hashids.encode(team.id)
+        team.access_code = hashids_team.encode(team.id)
         if self.max_members==1:
             team.is_active=True
         team.save()
@@ -55,7 +62,7 @@ class Profile(models.Model):
     )
     user=models.OneToOneField(User,on_delete=models.CASCADE)
     referred_by=models.ForeignKey('Profile',null=True,related_name="referred",on_delete=models.SET_NULL)
-    referral_code=models.UUIDField(default=uuid.uuid4)
+    referral_code=models.CharField(max_length=50,default=generate_referral_code)
     institute_type = models.IntegerField(null=True, choices=INSTITUTE_TYPE_CHOICES)
     institute_name=models.CharField(max_length=128, null=True)# can be school,college. last institute for professionals 
     # year , if school, implies class, undergrad&masters == yearofpassing, professional==experience
