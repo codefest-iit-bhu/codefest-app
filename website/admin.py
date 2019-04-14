@@ -5,6 +5,7 @@ admin.site.register(Profile)
 admin.site.register(EventDetail)
 admin.site.register(ValidReferral)
 admin.site.register(Membership)
+admin.site.register(Handles)
 class EventDetailInline(admin.TabularInline):
     model=EventDetail
 
@@ -21,3 +22,4 @@ class MembershipInline(admin.TabularInline):
 class TeamAdmin(admin.ModelAdmin):
     list_display=('name','event','is_active')
     inlines=(MembershipInline,)
+

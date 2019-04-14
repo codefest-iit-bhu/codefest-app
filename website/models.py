@@ -8,6 +8,8 @@ from hashids import Hashids
 hashids = Hashids(min_length=7, salt='Dalla')
 from Auth.utils import FirebaseAPI
 from django.utils.functional import cached_property
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 # Create your models here.
 class Event(models.Model):
     name=models.CharField(max_length=20)
@@ -154,3 +156,24 @@ class Membership(models.Model):
         if self.profile!=None:
             return str(self.profile)+" from team "+ str(self.team)
         return "Member ID#"+str(self.id)
+
+class Handles(models.Model):
+    profile = models.OneToOneField(Profile, on_delete=models.CASCADE, related_name="handles")
+    codeforces = models.CharField(max_length = 100, null=True, blank=True)
+    codechef = models.CharField(max_length = 100, null=True, blank=True)
+    hackerrank = models.CharField(max_length = 100, null=True, blank=True)
+    hackerearth = models.CharField(max_length = 100, null=True, blank=True)
+    analyticsvidya = models.CharField(max_length = 100, null=True, blank=True)
+    topcoder = models.CharField(max_length = 100, null=True, blank=True)
+    dev_folio = models.CharField(max_length = 100, null=True, blank=True)
+    
+    def __str__(self):
+        return f'Handles of {self.profile}'
+    class Meta:
+        verbose_name_plural = "Handles"
+
+@receiver(post_save, sender = Profile)
+def create_profile_handles(sender, instance, created, **kwargs):
+    if created:
+        Handles.objects.create(profile=instance)
+

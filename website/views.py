@@ -25,7 +25,7 @@ class ProfileView(generics.RetrieveUpdateAPIView):
 
 
 class TeamCreationView(generics.GenericAPIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated, AllowCompleteAndVerified]
     authentication_classes = [authentication.TokenAuthentication,authentication.SessionAuthentication]
     serializer_class = TeamCreationSerializer
 
@@ -43,7 +43,7 @@ class TeamCreationView(generics.GenericAPIView):
         return Response(response.data, status=status.HTTP_200_OK)
 
 class TeamJoinView(generics.GenericAPIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated, AllowCompleteAndVerified]
     authentication_classes = [authentication.TokenAuthentication, authentication.SessionAuthentication]
     serializer_class = TeamJoinSerializer
 
@@ -59,7 +59,7 @@ class TeamJoinView(generics.GenericAPIView):
         return Response(response.data, status = status.HTTP_200_OK)
 
 class TeamLeaveView(generics.DestroyAPIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated, AllowCompleteAndVerified]
     authentication_classes = [authentication.TokenAuthentication, authentication.SessionAuthentication]
     lookup_url_kwarg = 'pk'
     queryset = Team.objects.all()
@@ -79,7 +79,7 @@ class TeamLeaveView(generics.DestroyAPIView):
 
 
 class RemoveFromTeamView(generics.GenericAPIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated, AllowCompleteAndVerified]
     authentication_classes = [authentication.TokenAuthentication, authentication.SessionAuthentication]
     lookup_url_kwarg = 'pk'
     queryset = Team.objects.all()
@@ -103,3 +103,13 @@ class RemoveFromTeamView(generics.GenericAPIView):
         team= self.serializer.delete()
         response = TeamDetailSerializer(team)
         return Response(response.data, status=status.HTTP_200_OK)
+
+class HandlesView(generics.RetrieveUpdateAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    authentication_classes = [authentication.TokenAuthentication, authentication.SessionAuthentication]
+    serializer_class = HandleSerializer
+    
+    def get_queryset(self):
+        pass
+    def get_object(self):
+        return self.request.user.profile.handles

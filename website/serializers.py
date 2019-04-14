@@ -151,3 +151,9 @@ class EventSerializer(serializers.ModelSerializer):
         except:
             return None
         return TeamDetailSerializer(team).data
+
+class HandleSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model= Handles
+        exclude = ('id',)
