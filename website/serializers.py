@@ -25,7 +25,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Profile
-        fields = ('name','institute_name', 'study_year', 'degree', 'branch', 'country', 'institute_type', 'phone', 'gender','is_profile_complete', 'referral_code')
+        fields = ('id','name','institute_name', 'study_year', 'degree', 'branch', 'country', 'institute_type', 'phone', 'gender','is_profile_complete', 'referral_code')
 
     def validate_phone(self,number):
         phone_regex = RegexValidator(
@@ -156,4 +156,4 @@ class HandleSerializer(serializers.ModelSerializer):
     
     class Meta:
         model= Handles
-        exclude = ('id',)
+        exclude = ('id','profile')
