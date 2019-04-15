@@ -8,8 +8,8 @@ class ProfileSerializer(serializers.ModelSerializer):
     name = serializers.CharField(max_length=128, read_only=True, required=False)
     institute_name=serializers.CharField(max_length=128, required=True)
     study_year=serializers.IntegerField(required=False)
-    degree=serializers.CharField(max_length=50,required=False)
-    branch=serializers.CharField(max_length=100,required=False)
+    degree=serializers.CharField(max_length=50,required=False, allow_blank=True)
+    branch=serializers.CharField(max_length=100,required=False, allow_blank=True)
     country=serializers.CharField(max_length=100,required=True)
     phone=serializers.CharField(max_length=15,required=True)
     institute_type = serializers.ChoiceField(
@@ -108,10 +108,19 @@ class MemberSerializer(serializers.ModelSerializer):
 
 class TeamDetailSerializer(serializers.ModelSerializer):
     members = MemberSerializer(many=True)
-    
+    creator = serializers.SerializerMethodField()
+
     class Meta:
         model =Team
         fields='__all__'
+
+    @swagger_serializer_method(serializer_or_field=serializers.BooleanField)
+    def get_creator(self, obj):
+        profile = self.context['request'].user.profile
+        if obj.creator == profile:
+            return True
+        else:
+            return False
 
 class RemoveFromTeamSerializer(serializers.Serializer):
     member = serializers.PrimaryKeyRelatedField(queryset = Profile.objects.all(), required=True)
@@ -150,7 +159,7 @@ class EventSerializer(serializers.ModelSerializer):
             team = profile.team_members.get(event = obj)
         except:
             return None
-        return TeamDetailSerializer(team).data
+        return TeamDetailSerializer(team, context=self.context).data
 
 class HandleSerializer(serializers.ModelSerializer):
     
