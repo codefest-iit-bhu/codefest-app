@@ -60,15 +60,6 @@
                 <br>
                 <label for="password" :class="$style.label">password *</label>
                 <input type="password" :class="$style.field" v-model="password" required>
-                <br>
-                <label for="referral" :class="$style.label">referral code</label>
-                <input
-                  type="text"
-                  id="referral"
-                  name="referral"
-                  :class="$style.field"
-                  v-model="referral"
-                >
               </div>
               <div :class="$style.btnStyle">
                 <button value=">" :class="$style.submit">
@@ -112,7 +103,7 @@ export default {
       name: "",
       email: "",
       password: "",
-      referral: "",
+      referral: this.$route.query.referral || "",
       tabs: [
         {
           name: "login",
@@ -219,7 +210,8 @@ export default {
       const path = this.$route.query.redirect || "/";
       this.$router.push({ path });
     }
-  }
+  },
+  mounted() {}
 };
 </script>
 <style module lang="stylus">
