@@ -128,13 +128,13 @@ class RemoveFromTeamSerializer(serializers.Serializer):
     member = serializers.PrimaryKeyRelatedField(queryset = Profile.objects.all(), required=True)
 
     def validate(self, attrs):
-        profile = self.context['request'].user.profile
+        user_profile = self.context['request'].user.profile
         team = self.context['team']
         member = attrs['member']
         return_dict={}
         return_dict['team']=team
         return_dict['member'] = member
-        if not team.creator == profile:
+        if not team.creator == user_profile:
             raise serializers.ValidationError("User not creator of requested team")
         if team.creator == member:
             raise serializers.ValidationError("Team creator cannot remove self from team. Use team leave option instead.") 
