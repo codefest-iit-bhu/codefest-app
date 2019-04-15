@@ -25,7 +25,9 @@ class ProfileSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Profile
-        fields = ('id','name','institute_name', 'study_year', 'degree', 'branch', 'country', 'institute_type', 'phone', 'gender','is_profile_complete', 'referral_code')
+        fields = ('id','name','institute_name', 'study_year', 'degree', 'branch',
+             'country', 'institute_type', 'phone', 'gender',
+             'is_profile_complete', 'referral_code','num_referrals')
 
     def validate_phone(self,number):
         phone_regex = RegexValidator(

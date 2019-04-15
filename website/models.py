@@ -80,6 +80,10 @@ class Profile(models.Model):
     @cached_property
     def name(self):
         return f'{self.user.first_name} {self.user.last_name}'
+    
+    @cached_property
+    def num_referrals(self):
+        return self.referred_people.count()
 
     def __str__(self):
         if self.institute_name!=None and self.user.first_name!=None:
