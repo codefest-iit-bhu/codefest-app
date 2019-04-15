@@ -73,7 +73,7 @@ class RegisterSerializer(serializers.Serializer):
         if code is None or code=="":
             return None
         try:
-            referred_by=Profile.objects.get(refferal_code=code)
+            referred_by=Profile.objects.get(referral_code=code)
         except:
             raise serializers.ValidationError("Invalid Referral Code")
         return referred_by
