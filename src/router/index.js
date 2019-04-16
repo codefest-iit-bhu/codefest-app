@@ -44,7 +44,7 @@ const router = new Router({
       meta: {
         title: "CodeFest '19 | Login",
         metaTags: [],
-        noTerminal: false
+        noTerminal: true
       }
     },
     {

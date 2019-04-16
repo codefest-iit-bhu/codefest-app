@@ -13,17 +13,32 @@
           <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
         </router-link>
       </li>
-      <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)" v-show="showDashboardActions">
+      <li
+        :class="$style.link"
+        slot="right"
+        v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
+        v-show="showDashboardActions"
+      >
         <router-link to="/dashboard">
           <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>Dashboard
         </router-link>
       </li>
-      <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)" v-show="showDashboardActions">
+      <li
+        :class="$style.link"
+        slot="right"
+        v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
+        v-show="showDashboardActions"
+      >
         <a @click="authLogout">
           <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>Logout
         </a>
       </li>
-      <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)" v-show="!showDashboardActions">
+      <li
+        :class="$style.link"
+        slot="right"
+        v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
+        v-show="!showDashboardActions"
+      >
         <router-link to="/login">
           <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>Login
         </router-link>
@@ -45,7 +60,7 @@
 
       <mq-layout :mq="['xs', 'sm']">
         <Slide :isOpen="isSidebarOpen" @closeSideBar="onCloseSideBar" :width="sideBarWidth">
-          <ul>
+          <ul :class="$style.sidebarList">
             <li :class="$style.link">
               <router-link to="/events">Events</router-link>
               <div :class="$style.subList">
@@ -58,7 +73,7 @@
                 <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
               </router-link>
             </li>
-            <li :class="$style.link" v-if="showDashboardActions">
+            <li :class="$style.link" v-show="showDashboardActions">
               <router-link to="/dashboard">
                 Dashboard
                 <div :class="$style.subList">
@@ -66,8 +81,11 @@
                 </div>
               </router-link>
             </li>
-            <li :class="$style.link">
-              <a href="https://goo.gl/DrCFHB" target="_blank">Brochure</a>
+            <li :class="$style.link" v-show="!showDashboardActions">
+              <router-link to="/login">Login</router-link>
+            </li>
+            <li :class="$style.link" v-show="showDashboardActions">
+              <a @click="authLogout">Logout</a>
             </li>
           </ul>
         </Slide>
@@ -140,8 +158,7 @@ export default {
     },
     authLogout() {
       this.$store.dispatch("logout");
-      if (this.$route.meta.requiresAuth)
-        this.$router.push({ name: '~' })
+      if (this.$route.meta.requiresAuth) this.$router.push({ name: "~/login" });
     }
   },
   mounted() {

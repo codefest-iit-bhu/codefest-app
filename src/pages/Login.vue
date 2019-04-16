@@ -30,7 +30,7 @@
                 </span>
               </div>
               <div :class="$style.forgotPasswd">
-                <a href="/password/reset">Forgot Password</a>
+                <router-link to="/password/reset">Forgot Password?</router-link>
               </div>
               <div :class="$style.btnStyle">
                 <button value=">" :class="$style.submit">
@@ -372,6 +372,7 @@ export default {
 .forgotPasswd {
   width: 100%;
   text-align: right;
+  margin-bottom: 20px;
 
   a {
     color: $chartreuse;
