@@ -1,5 +1,5 @@
 <template>
-  <GridLayout :itemWidth="eventCardWidth">
+  <GridLayout :itemWidth="eventCardWidth" :class="$style.eventWrapper">
     <EventTeam
       v-for="(event, i) in events"
       :key="i"
@@ -46,6 +46,10 @@ export default {
 </script>
 
 <style module lang="stylus">
-.eventCard {
+.eventWrapper {
+  margin-top: 40px;
+
+  .eventCard {
+  }
 }
 </style>

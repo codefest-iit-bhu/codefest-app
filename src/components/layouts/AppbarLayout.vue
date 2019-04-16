@@ -110,6 +110,10 @@ $appbar-glow-color = $chartreuse;
       margin: 0;
       margin-bottom: 20px;
     }
+
+    ul {
+      list-style: none;
+    }
   }
 
   .notch {

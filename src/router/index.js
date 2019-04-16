@@ -82,7 +82,7 @@ const router = new Router({
       meta: {
         title: "CodeFest '19 | Profile Edit",
         metaTags: [],
-        noTerminal: false,
+        noTerminal: true,
         requiresAuth: true
       }
     },

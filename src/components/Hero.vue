@@ -1,6 +1,6 @@
 <template>
   <header ref="header" :class="$style.hero">
-    <div :class="$style.title">
+    <div class="absolute-center" :class="$style.title">
       <h1 id="heroTitle">
         code
         <span>Fest</span>
@@ -73,8 +73,6 @@ export default {
   height: 30%;
   width: 100%;
   z-index: 2;
-  position: absolute;
-  top: 35%;
   margin: auto;
   text-align: center;
 

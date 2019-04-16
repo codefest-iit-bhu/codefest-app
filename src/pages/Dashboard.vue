@@ -1,6 +1,19 @@
 <template>
   <div :class="[$style.root, $style[$mq]]">
-    <AppBar :isSideNavigationShown="false"/>
+    <AppBar :isSideNavigationShown="true">
+      <li :class="{[$style.active]: isHomeView}" slot="dashboard">
+        <router-link to="/dashboard">
+          <span class="fa fa-circle fa-xs" aria-hidden="true"></span>
+          Profile
+        </router-link>
+      </li>
+      <li :class="{[$style.active]: isEventsView}" slot="dashboard">
+        <router-link to="/dashboard/events">
+          <span class="fa fa-circle fa-xs" aria-hidden="true"></span>
+          Events
+        </router-link>
+      </li>
+    </AppBar>
     <main :class="$style.wrapper">
       <DashboardEvent v-if="isEventsView"/>
       <DashboardProfile :profile="profile" v-if="isHomeView"/>
@@ -31,7 +44,6 @@ export default {
   },
   props: {
     isHomeView: false,
-    isProfileEditView: false,
     isEventsView: false
   },
   created() {
@@ -49,6 +61,8 @@ export default {
 </script>
 
 <style module lang="stylus">
+@require '~@styles/theme';
+@require '~@styles/anims';
 @require '~@styles/mixins';
 
 .root {
@@ -60,7 +74,19 @@ export default {
     position: relative;
     z-index: 1;
     font: 500 18px 'Quicksand';
-    padding: 140px 0 100px;
+    padding: 100px 0;
+  }
+
+  .active {
+    a {
+      color: $chartreuse;
+      font-weight: bold;
+
+      span {
+        color: $white;
+        animation: neon-text 1s ease-in-out infinite alternate;
+      }
+    }
   }
 }
 

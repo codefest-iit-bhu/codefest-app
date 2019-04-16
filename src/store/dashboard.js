@@ -18,6 +18,21 @@ export default {
         team_name: teamName
       };
       return API.post("teams/create/", { body });
+    },
+    joinEventTeam({ state }, { eventId, accessCode }) {
+      const body = {
+        access_code: accessCode
+      };
+      return API.post("teams/join/", { body });
+    },
+    removeMemberFromTeam({ state }, { teamId, memberId }) {
+      const body = {
+        member: memberId
+      };
+      return API.post(`teams/${teamId}/remove/`, { body });
+    },
+    leaveTeam({ state }, { teamId }) {
+      return API.delete(`teams/${teamId}/`);
     }
   }
 };

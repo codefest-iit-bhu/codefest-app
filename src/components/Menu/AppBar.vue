@@ -14,9 +14,9 @@
         </router-link>
       </li>
       <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
-        <a href="https://goo.gl/DrCFHB" target="_blank">
-          <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>Brochure
-        </a>
+        <router-link to="/dashboard" v-show="showDashboardActions">
+          <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>Dashboard
+        </router-link>
       </li>
       <li :id="$style.toggleSidebar" slot="left" v-if="['xs', 'sm'].includes(this.$mq)">
         <a class="bm-toggle" @click="openSidebar">
@@ -27,7 +27,9 @@
     <div :class="$style.sidebar" ref="sidebar">
       <mq-layout mq="md+" v-show="isSideNavigationShown" :class="$style.sidebarBack">
         <ul @mouseover="isSideNavigationIdle = false" @mouseleave="isSideNavigationIdle = true">
-          <slot></slot>
+          <template v-for="slot in Object.keys($slots)">
+            <slot :name="slot"></slot>
+          </template>
         </ul>
       </mq-layout>
 
@@ -36,14 +38,22 @@
           <ul>
             <li :class="$style.link">
               <router-link to="/events">Events</router-link>
-              <div :class="$style.eventList">
-                <slot></slot>
+              <div :class="$style.subList">
+                <slot name="events"></slot>
               </div>
             </li>
             <li :class="$style.link">
               <router-link to="/haxplore">
                 HaXplore
                 <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
+              </router-link>
+            </li>
+            <li :class="$style.link" v-if="showDashboardActions">
+              <router-link to="/dashboard">
+                Dashboard
+                <div :class="$style.subList">
+                  <slot name="dashboard"></slot>
+                </div>
               </router-link>
             </li>
             <li :class="$style.link">
@@ -87,6 +97,9 @@ export default {
     sideBarWidth() {
       if (isMinimal(this.$mq)) return window.innerWidth;
       else return 300;
+    },
+    showDashboardActions() {
+      return this.$store.getters.isLoggedIn;
     }
   },
   methods: {
@@ -215,7 +228,7 @@ export default {
         margin: 20px auto;
         display: block;
 
-        .eventList {
+        .subList {
           margin: 10px 0 0 10px;
 
           li {
@@ -223,7 +236,7 @@ export default {
           }
         }
 
-        a, .eventList a {
+        a, .subList a {
           font: 500 16px 'Roboto Slab';
           color: $white;
           text-decoration: none;
@@ -244,7 +257,7 @@ export default {
           }
         }
 
-        &.active, .eventList li.active {
+        &.active, .subList li.active {
           a {
             color: $chartreuse;
             font-weight: bold;

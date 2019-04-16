@@ -1,36 +1,34 @@
 <template>
-  <div :class="$style.root">
-    <main :class="$style.wrapper">
-      <SectionLayout title="My Profile">
-        <div :class="$style.profile">
-          <ResponsiveTwoColumnLayout :isRightAbove="true">
-            <div :class="$style.about" slot="left">
-              <!-- <div :class="$style.card" v-for="(item ,i) in this.items" :key="i">
+  <div :class="$style.container">
+    <SectionLayout title="My Profile">
+      <div :class="$style.profile">
+        <ResponsiveTwoColumnLayout :isRightAbove="true">
+          <div :class="$style.about" slot="left">
+            <!-- <div :class="$style.card" v-for="(item ,i) in this.items" :key="i">
               <div :class="$style.label">{{item.key}}</div>
               <div :class="$style.value">{{item.value}}</div>
-              </div>-->
-              <div :class="$style.box">
-                <span :class="$style.key">Referral Code</span>
-                <span :class="$style.value">{{profile.referral_code}}</span>
-                <i class="fas fa-copy" :class="$style.copyIcon" @click="clickToCopy"></i>
-              </div>
+            </div>-->
+            <div :class="$style.box">
+              <span :class="$style.key">Referral Code</span>
+              <span :class="$style.value">{{profile.referral_code}}</span>
+              <i class="fas fa-copy" :class="$style.copyIcon" @click="clickToCopy"></i>
             </div>
-            <div :class="$style.dp" slot="right">
-              <div :class="$style.img">
-                <span class="absolute-center">{{retrieveInitials}}</span>
-              </div>
-              <span :class="$style.name">{{profile.name}}</span>
+          </div>
+          <div :class="$style.dp" slot="right">
+            <div :class="$style.img">
+              <span class="absolute-center">{{retrieveInitials}}</span>
             </div>
-          </ResponsiveTwoColumnLayout>
-        </div>
+            <span :class="$style.name">{{profile.name}}</span>
+          </div>
+        </ResponsiveTwoColumnLayout>
+      </div>
 
-        <div :class="$style.link" @click="$router.push('/profile/edit')">
-          <span :class="$style.linkText">
-            <h4>Edit Profile</h4>
-          </span>
-        </div>
-      </SectionLayout>
-    </main>
+      <div :class="$style.link" @click="$router.push('/profile/edit')">
+        <span :class="$style.linkText">
+          <h4>Edit Profile</h4>
+        </span>
+      </div>
+    </SectionLayout>
   </div>
 </template>
 
@@ -69,18 +67,8 @@ export default {
 <style module lang="stylus">
 @require '~@styles/theme';
 
-.root {
+.container {
   height: 100%;
-}
-
-.wrapper {
-  width: 80%;
-  margin: 0 auto;
-  padding: 50px 0;
-  z-index: 1;
-  position: relative;
-  font: 500 18px 'Quicksand';
-  font-kerning: auto;
 }
 
 .link {
@@ -158,7 +146,8 @@ export default {
   }
 
   .dp {
-    text-align: center;
+    text-align: right;
+    float: right;
 
     .img {
       margin: 15px auto;
