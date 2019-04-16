@@ -14,7 +14,10 @@ from django.db.models.signals import post_save
 # Create your models here.
 
 def generate_referral_code():
-    code = Hashids_referral.encode(Profile.objects.latest('id').id)
+    try:
+        code = Hashids_referral.encode(Profile.objects.latest('id').id)
+    except Profile.DoesNotExist:
+        code = Hashids_referral.encode(0)
     code+=get_random_string(3, Hashids.ALPHABET)
     return code
 
