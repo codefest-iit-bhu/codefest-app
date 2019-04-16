@@ -96,12 +96,14 @@ class RemoveFromTeamView(generics.GenericAPIView):
             'team':self.get_object(),
         }
     
-    def put(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         self.request = request
         self.serializer = self.get_serializer(data = request.data)
         self.serializer.is_valid(raise_exception=True)
         team= self.serializer.delete()
-        response = TeamDetailSerializer(team, context= self.get_serializer_context())
+        response = TeamDetailSerializer(team, context={
+            'request':request,
+        })
         return Response(response.data, status=status.HTTP_200_OK)
 
 class HandlesView(generics.RetrieveUpdateAPIView):
