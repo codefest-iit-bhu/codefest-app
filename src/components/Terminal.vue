@@ -196,7 +196,7 @@ $collapsed-height = 90px;
   z-index: 25;
   box-shadow: 1px -2px 2px 5px white;
   stick('bottom');
-  font: 800 18px 'Courier New';
+  font: 400 18px 'Roboto Slab';
   color: $cli-text;
   overflow-y: auto;
 

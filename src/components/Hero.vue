@@ -68,7 +68,7 @@ export default {
         ctx.fillStyle = "rgba(0, 0, 0, 0.03)";
         ctx.fillRect(0, 0, c.width, c.height);
         ctx.fillStyle = "#86ff00";
-        ctx.font = font_size + "px Courier New";
+        ctx.font = font_size + "px Roboto Slab";
         for (var i = 0; i < drops.length; i++) {
           var text = code[Math.floor(Math.random() * code.length)];
           ctx.fillText(text, i * font_size, drops[i] * font_size);

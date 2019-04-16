@@ -24,27 +24,27 @@ export default {
         {
           name: "Prize Money",
           value: "500,000",
-          image: "assets/Lookback/rupee.png"
+          image: "assets/Lookback/lb_prize.svg"
         },
         {
           name: "Countries",
           value: "98",
-          image: "assets/Lookback/countries.png"
+          image: "assets/Lookback/lb_countries.svg"
         },
         {
           name: "Participants",
           value: "24,654",
-          image: "assets/Lookback/participants.png"
+          image: "assets/Lookback/lb_participant.svg"
         },
         {
           name: "Unique Visitors",
           value: "328,902",
-          image: "assets/Lookback/visitors.png"
+          image: "assets/Lookback/lb_visitor.svg"
         },
         {
           name: "Registrations",
           value: "16,302",
-          image: "assets/Lookback/registrations.png"
+          image: "assets/Lookback/lb_registration.svg"
         }
       ]
     };
@@ -80,6 +80,7 @@ export default {
 
     .img {
       width: 70%;
+      height: 70%;
       position: relative;
       top: 10%;
       left: 15%;
