@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.lookback">
-    <GridLayout itemWidth="250px">
+    <GridLayout itemWidth="220px">
       <div :class="$style.stat" v-for="(stat, i) in this.stats" :key="i" :slot="`item${i}`">
         <div :class="$style.clip">
           <img :src="stat.image" :class="$style.img">

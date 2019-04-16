@@ -116,31 +116,32 @@ $tab-height = 30px;
         }
       }
 
-    .active {
-      .tabTitle {
-        background: $chartreuse;
-        color: white;
-        z-index: 25;
+      .active {
+        .tabTitle {
+          background: $chartreuse;
+          color: white;
+          z-index: 25;
+        }
       }
     }
-  }
 
-  .panelsContainer {
-    margin: 0;
-    padding: 0;
+    .panelsContainer {
+      margin: 0;
+      padding: 0;
 
-    .tabContent {
-      display: none;
-      position: relative;
-      top: $tab-height;
-      border: 1px solid $limeade;
-      border-radius: 0 0 10px 10px;
-      box-shadow: inset 0px -2px 15px $chartreuse;
-      background: $cod-gray;
-    }
+      .tabContent {
+        display: none;
+        position: relative;
+        top: $tab-height;
+        border: 1px solid $limeade;
+        border-radius: 0 0 10px 10px;
+        box-shadow: inset 0px -2px 15px $chartreuse;
+        background: $cod-gray;
+      }
 
-    .active .tabContent {
-      display: block;
+      .active .tabContent {
+        display: block;
+      }
     }
   }
 }

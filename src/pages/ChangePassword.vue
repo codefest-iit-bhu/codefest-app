@@ -6,37 +6,41 @@
         <div :class="$style.formContainer" slot="basic">
           <form :class="$style.form" @submit.prevent="submitForm">
             <div :class="$style.card">
-              <h3>Reset Password</h3>
+              <h3>Change Password</h3>
               <div :class="$style.fieldsContainer">
                 <div :class="$style.field">
-                  <label for="currentPasswd" :class="$style.label">current password</label>
-                  <input
-                    type="password"
-                    id="currentPasswd"
-                    :class="$style.field"
-                    v-model="currentPasswd"
-                    required
-                  >
+                  <label for="old__password" :class="$style.label">current password</label>
+                  <span :class="$style.fieldWrapper">
+                    <input
+                      type="password"
+                      id="old__password"
+                      :class="$style.field"
+                      v-model="currentPasswd"
+                      required
+                    >
+                    <i
+                      class="fas"
+                      :class="isPasswordVisible('old__password') ? 'fa-eye' : 'fa-eye-slash'"
+                      @click="togglePasswordVisibility('old__password')"
+                    ></i>
+                  </span>
                 </div>
                 <div :class="$style.field">
-                  <label for="newPasswd" :class="$style.label">new password</label>
-                  <input
-                    type="password"
-                    id="newPasswd"
-                    :class="$style.field"
-                    v-model="newPasswd"
-                    required
-                  >
-                </div>
-                <div :class="$style.field">
-                  <label for="confirmPasswd" :class="$style.label">retype new password</label>
-                  <input
-                    type="password"
-                    id="confirmPasswd"
-                    :class="$style.field"
-                    v-model="confirmPasswd"
-                    required
-                  >
+                  <label for="new__password" :class="$style.label">new password</label>
+                  <span :class="$style.fieldWrapper">
+                    <input
+                      type="password"
+                      id="new__password"
+                      :class="$style.field"
+                      v-model="newPasswd"
+                      required
+                    >
+                    <i
+                      class="fas"
+                      :class="isPasswordVisible('new__password') ? 'fa-eye' : 'fa-eye-slash'"
+                      @click="togglePasswordVisibility('new__password')"
+                    ></i>
+                  </span>
                 </div>
               </div>
               <div :class="$style.btnStyle">
@@ -53,12 +57,13 @@
   </div>
 </template>
 
-    <script>
+<script>
+import firebase from "firebase";
+import API from "@js/api";
+
 import AppBar from "@components/Menu/AppBar";
 import Footer from "@components/Footer";
 import TabLayout from "@components/layouts/TabLayout";
-import firebase from "firebase";
-import API from "@js/api";
 
 export default {
   components: {
@@ -70,27 +75,45 @@ export default {
     return {
       currentPasswd: "",
       newPasswd: "",
-      confirmPasswd: ""
+      __stubbed: 0
     };
+  },
+  computed: {
+    isPasswordVisible() {
+      this.$data.__stubbed; // To make this computed data reactive.
+      return inputId => {
+        const inputElem = document.getElementById(inputId);
+        if (inputElem) return inputElem.type !== "password";
+      };
+    }
   },
   methods: {
     submitForm() {
       var user = firebase.auth().currentUser;
-      if (this.newPasswd == this.confirmPasswd)
-        user
-          .reauthenticateAndRetrieveDataWithCredential(this.currentPasswd)
-          .then(_ => {
-            user
-              .updatePassword(this.newPassword)
-              .then(_ => {})
-              .catch(console.log);
-          })
-          .catch(console.log);
-      else alert("Passwords do not match.");
+      user
+        .reauthenticateAndRetrieveDataWithCredential(this.currentPasswd)
+        .then(_ => {
+          user
+            .updatePassword(this.newPassword)
+            .then(_ => {
+              this.$toasted.global.success({
+                message: `Successfully updated password!`
+              });
+            })
+            .catch(err => {
+              this.$toasted.global.error_post({ message: err.message });
+            });
+        })
+        .catch(err => {
+          this.$toasted.global.error_post({ message: err.message });
+        });
+    },
+    togglePasswordVisibility(inputId) {
+      const inputElem = document.getElementById(inputId);
+      inputElem.type = inputElem.type === "password" ? "text" : "password";
+      this.$data.__stubbed++;
     }
-  },
-  created() {},
-  mounted() {}
+  }
 };
 </script>
     <style module lang="stylus">
@@ -213,6 +236,18 @@ export default {
             margin-bottom: 15px;
           }
 
+          .fieldWrapper {
+            width: 100%;
+            position: relative;
+
+            i {
+              top: 0;
+              right: 7px;
+              position: absolute;
+              cursor: pointer;
+            }
+          }
+
           option {
             color: black;
           }
@@ -259,32 +294,6 @@ export default {
 
             &:hover {
               color: $chartreuse;
-            }
-          }
-        }
-
-        .social {
-          width: 100%;
-          max-width: 600px;
-          margin: auto;
-          text-align: center;
-          padding: 5px;
-          margin-top: 20px;
-          border: 0;
-          border-top: 1px solid $chartreuse;
-
-          .socialButton {
-            background-color: Transparent;
-            background-repeat: no-repeat;
-            border: none;
-            cursor: pointer;
-            overflow: hidden;
-            outline: none;
-
-            img {
-              margin: 10px;
-              width: 40px;
-              height: 40px;
             }
           }
         }
