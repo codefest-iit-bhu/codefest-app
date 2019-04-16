@@ -6,8 +6,7 @@ Vue.use(Router);
 
 const router = new Router({
   mode: "history",
-  routes: [
-    {
+  routes: [{
       name: "~",
       path: "/",
       component: () => import(`@pages/Home`),
@@ -43,6 +42,16 @@ const router = new Router({
       component: () => import(`@pages/Login`),
       meta: {
         title: "CodeFest '19 | Login",
+        metaTags: [],
+        noTerminal: false
+      }
+    },
+    {
+      name: "~/auth/reset",
+      path: "/auth/reset",
+      component: () => import(`@pages/ResetPassword`),
+      meta: {
+        title: "CodeFest '19 | Reset Password",
         metaTags: [],
         noTerminal: false
       }

@@ -32,7 +32,9 @@
                 <div :class="$style.field">
                   <label for="phone" :class="$style.label">phone</label>
                   <input
-                    type="phone"
+                    type="tel"
+                    pattern="[+0-9]{10,15}"
+                    placeholder="(e.g. +910000000000)"
                     id="phone"
                     :class="$style.field"
                     v-model="profile.phone"
@@ -59,13 +61,13 @@
                   >
                     <option value="0">School student</option>
                     <option value="1">College student</option>
-                    <option value="2">Proffesional</option>
+                    <option value="2">Professional</option>
                   </select>
                 </div>
                 <div :class="$style.btnStyle">
-                  <span @click="nav('academic')" :class="$style.next">
+                  <button @click="nav('academic')" :class="$style.next">
                     <i class="fas fa-arrow-circle-right"></i>
-                  </span>
+                  </button>
                 </div>
               </div>
             </div>
@@ -102,9 +104,9 @@
                 </div>
               </div>
               <div :class="$style.btnStyle">
-                <span @click="nav('handles')" :class="$style.next">
+                <button @click="nav('handles')" :class="$style.next">
                   <i class="fas fa-arrow-circle-right"></i>
-                </span>
+                </button>
               </div>
             </div>
             <div :class="$style.card" id="handles" v-show="curId=='handles'">
@@ -224,7 +226,13 @@ export default {
         if (!this.isDisabled[id]) this.curId = id;
       } else document.querySelectorAll("form button")[0].click();
     },
-    fillDropdown(dataUrl, dataDiv, dropdown) {
+    fillDropdown(
+      dataUrl,
+      dataDiv,
+      dropdown,
+      valuefield = "name",
+      datafield = "name"
+    ) {
       var dataList = document.getElementById(dataDiv);
       var input = document.getElementById(dropdown);
       input.setAttribute("list", dataDiv);
@@ -240,7 +248,8 @@ export default {
 
             jsonOptions.forEach(function(item) {
               var option = document.createElement("option");
-              option.value = item.name;
+              option.value = item[valuefield];
+              option.innerHTML = item[datafield];
               dataList.appendChild(option);
             });
 
@@ -296,7 +305,13 @@ export default {
       "instituteList",
       "institute_name"
     );
-    this.fillDropdown("assets/countries.json", "countryList", "country");
+    this.fillDropdown(
+      "assets/countries.json",
+      "countryList",
+      "country",
+      "code",
+      "name"
+    );
     this.fillDropdown("assets/branches.json", "branchList", "branch");
   }
 };
