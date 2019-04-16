@@ -3,9 +3,7 @@ import anchorme from "anchorme";
 export default {
   install(Vue) {
     Vue.filter("anchor", value => {
-      return anchorme(value, {
-        truncate: [12, 5]
-      });
+      return anchorme(value, {});
     });
   }
 };

@@ -9,7 +9,6 @@ export default {
       icon: "/assets/events/ctf.png",
       description:
         "Capture The Flag (CTF) invites all hackers to show off their skills on a global platform. The problems have been designed taking into account recent technological advances in the field of cyber security and will capture the imagination of both beginners and expert hackers.This contest will let you learn and understand the importance of the security practises being followed across the globe and make you to come up with more exciting solutions to the existing security norms. So let’s get ready to explore the real world computer security arena",
-      rules: [],
       coordinators: ["Shreyansh Singh - shreyansh.singh.cse16@itbhu.ac.in"],
       faq: [
         {
@@ -31,7 +30,8 @@ export default {
         },
         {
           question: "What is the team size?",
-          answer: "Only individual participation is allowed in this event."
+          answer:
+            "Maximum of 2 members can participate in this event. To add the second member create team and share your team unique number with your friend."
         }
       ]
     },
@@ -44,7 +44,6 @@ export default {
       icon: "/assets/events/enigma.png",
       description:
         'Listening to the data is important, but so is experience and intuition. After all, what is intuition at its best but large amounts of data of all kinds filtered through a human brain rather than a math model? Thus, Codefest in association with Eligible presents you to its Machine Learning Event "Enigma". As Big Data is the hottest trend in the tech industry at the moment, machine learning is incredibly powerful to make predictions or calculate suggestions based on large amounts of data. It has its place everywhere now, be it driverless cars, biometric systems, recommendation systems and countless other fields.In the event, the data analysts need to design a model which learns by itself and provide efficient solutions to real life problems.',
-      rules: [],
       coordinators: [
         "Anurag Tyagi - anurag.tyagi.cse16@itbhu.ac.in",
         "Suyash Shukla - suyash.shukla.cse16@itbhu.ac.in"
@@ -70,7 +69,8 @@ export default {
         },
         {
           question: "What is the team size?",
-          answer: "Only individual participation is allowed in this event."
+          answer:
+            "Maximum of 2 members can participate in this event. To add the second member create team and share your team unique number with your friend."
         }
       ]
     },
@@ -83,7 +83,6 @@ export default {
       icon: "/assets/events/linguipedia.png",
       description:
         "In the modern age of information when the internet is cornucopia of conversation among humans and accumulated data from these communications is voluminous, understanding the nature of language has been of such paramount importance. Join the Codefest'19 Team in untangling the mystery of human expression by becoming a part of Linguipedia. Solve challenging problems in the field of natural language processing and text analytics, machine translations. sentiment analysis and many more.",
-      rules: [],
       coordinators: [
         "Abhinav Gupta - abhinav.gupta.cse16@itbhu.ac.in",
         "Avi Chawla - avi.chawla.cse16@itbhu.ac.in"
@@ -109,7 +108,8 @@ export default {
         },
         {
           question: "What is the team size?",
-          answer: "Only individual participation is allowed in this event."
+          answer:
+            "Maximum of 2 members can participate in this event. To add the second member create team and share your team unique number with your friend."
         }
       ]
     },
@@ -120,7 +120,6 @@ export default {
         "Push your limits and gear up your brain by solving some challenging mathematical problems.",
       description:
         "Mathmania is a programming contest wherein a contestant is put to test his mathematical reasoning. Although Mathematical insights and tricks would help you find the logic in the problem, programming will be your way out for the full solution. Mathmania brings a delectable collection of problems which we guarantee will be a delight for the mathematical geeks. So charge up your brains and get ready for Codefest's mathematical fiesta!",
-      rules: [],
       link: "/events/mathmania",
       icon: "/assets/events/mathamania.png",
       coordinators: [
@@ -160,9 +159,6 @@ export default {
         "Compete with the best competitive programmers of the world in data structures and algorithms.",
       description:
         "This contest invites all the competitive programmers to put on their coding hats and pull out their coding swords. Manthan offers a problem set which is diverse and covers all aspects of data structures and algorithms, in which even a beginner could attempt a few problems and even the best coders would find it tough to crack the hard ones.",
-      rules: [
-        "Detailed rules of the contest can be found here - https://codeforces.com/blog/entry/4088."
-      ],
       link: "/events/manthan",
       icon: "/assets/events/manthan.png",
       coordinators: [
@@ -172,6 +168,11 @@ export default {
       faqIntro:
         "All the FAQ’s regarding the contest can be found here - https://codeforces.com/help",
       faq: [
+        {
+          question: "What are the rules?",
+          answer:
+            "Detailed rules of the contest can be found here - https://codeforces.com/blog/entry/4088."
+        },
         {
           question: "Will the event be online?",
           answer:
@@ -206,7 +207,6 @@ export default {
       icon: "/assets/events/perplexed.png",
       description:
         "Perplexed is one of the most innovative events of Codefest, whose target is not only gauge a contestant's coding abilities, but also how one tackles different situations and constraints.The problemset will include all mind boggling coding problems, ranging from code obfuscation to stricter memory limits, character limits, time limits, etc.This contest will be an individual contest and the contest duration is 5 hours",
-      rules: [],
       coordinators: [
         "Naveen Punjabi -naveen.punjabi.cse16@itbhu.ac.in",
         "Deepak Gour - deepakk.gour.cse16@itbhu.ac.in"
@@ -245,7 +245,6 @@ export default {
       icon: "/assets/events/vista.png",
       description:
         "The soaring vision perception over the years with the accelerating computation ability has made it possible to fabricate challenges tasks like autonomous vehicles. With limitless data to learn from and various applications to apply to, the need to make machines understand and react similar to how we perceive has become predominant in reaching complete Artificial Intelligence with this. With this aim in sight, and to give you a glimpse of the mesmerizing world of Computer Vision, Codefest'19 brings to you Vista. Join us and try your hands on challenging problems involving object detection, image segmentation, object classification, motion tracking and many more.",
-      rules: [],
       coordinators: [
         "Keshav Kumar - keshav.kumar.cse16@itbhu.ac.in",
         "Suyash Shukla - suyash.shukla.cse16@itbhu.ac.in"
@@ -271,7 +270,8 @@ export default {
         },
         {
           question: "What is the team size?",
-          answer: "Only individual participation is allowed in this event."
+          answer:
+            "Maximum of 2 members can participate in this event. To add the second member create team and share your team unique number with your friend."
         }
       ]
     }
