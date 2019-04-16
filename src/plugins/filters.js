@@ -3,7 +3,7 @@ import anchorme from "anchorme";
 export default {
   install(Vue) {
     Vue.filter("anchor", value => {
-      return anchorme(value, {});
+      return anchorme(value);
     });
   }
 };

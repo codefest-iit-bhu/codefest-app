@@ -32,7 +32,7 @@
         <div :class="$style.tabContainer" slot="faq">
           <h4 :class="$style.tabTitle">FAQ</h4>
           <hr :class="$style.leftHr">
-          <p :class="$style.text" :inner-html.prop="event.faqIntro | anchor">}</p>
+          <!-- <p :class="$style.text" :inner-html.prop="event.faqIntro | anchor">}</p> -->
           <FAQ :faqItems="event.faq"/>
         </div>
       </TabLayout>
@@ -187,7 +187,6 @@ export default {
 
           &:before {
             content: ' ';
-            display: block;
           }
         }
       }

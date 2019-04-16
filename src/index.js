@@ -56,7 +56,7 @@ Vue.use(vueMq, {
     xs: 575,
     sm: 767,
     md: 991,
-    lg: 1200,
+    lg: 1367,
     xl: 1920,
     xxl: Infinity
   }

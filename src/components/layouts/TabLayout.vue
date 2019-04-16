@@ -51,7 +51,7 @@ export default {
     },
     tabStyle: function(index) {
       return {
-        left: `${index * 95}px`
+        left: `${index * 120}px`
       };
     },
     alignTab: function(index) {
@@ -68,7 +68,7 @@ export default {
 @require '~@styles/theme';
 @require '~@styles/anims';
 
-$tab-width = 120px;
+$tab-width = 150px;
 $tab-height = 30px;
 
 .tabbedWindow {
@@ -94,29 +94,17 @@ $tab-height = 30px;
         z-index: 20;
         cursor: pointer;
         background: $limeade;
-        font: 12pt 'Roboto Slab';
+        font-family: 'Roboto Slab';
         font-weight: 500;
         clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
         height: $tab-height;
-        position: absolute;
-        top: 0;
-
-        .tabTitle {
-          z-index: 20;
-          cursor: pointer;
-          background: $limeade;
-          font-family: 'Roboto Slab';
-          font-weight: 500;
-          clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
-          height: $tab-height;
-          line-height: 30px;
-          width: $tab-width;
-          text-align: center;
-          color: $black;
-        }
+        line-height: 30px;
+        width: $tab-width;
+        text-align: center;
+        color: $black;
       }
 
-      .active {
+      &.active {
         .tabTitle {
           background: $chartreuse;
           color: white;
@@ -124,24 +112,24 @@ $tab-height = 30px;
         }
       }
     }
+  }
 
-    .panelsContainer {
-      margin: 0;
-      padding: 0;
+  .panelsContainer {
+    margin: 0;
+    padding: 0;
 
-      .tabContent {
-        display: none;
-        position: relative;
-        top: $tab-height;
-        border: 1px solid $limeade;
-        border-radius: 0 0 10px 10px;
-        box-shadow: inset 0px -2px 15px $chartreuse;
-        background: $cod-gray;
-      }
+    .tabContent {
+      display: none;
+      position: relative;
+      top: $tab-height;
+      border: 1px solid $limeade;
+      border-radius: 0 0 10px 10px;
+      box-shadow: inset 0px -2px 15px $chartreuse;
+      background: $cod-gray;
+    }
 
-      .active .tabContent {
-        display: block;
-      }
+    .active .tabContent {
+      display: block;
     }
   }
 }
