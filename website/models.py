@@ -184,8 +184,3 @@ class Handles(models.Model):
     class Meta:
         verbose_name_plural = "Handles"
 
-@receiver(post_save, sender = Profile)
-def create_profile_handles(sender, instance, created, **kwargs):
-    if created:
-        Handles.objects.create(profile=instance)
-

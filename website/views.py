@@ -114,4 +114,4 @@ class HandlesView(generics.RetrieveUpdateAPIView):
     def get_queryset(self):
         pass
     def get_object(self):
-        return self.request.user.profile.handles
+        return Handles.objects.get_or_create(profile=self.request.user.profile)[0]
