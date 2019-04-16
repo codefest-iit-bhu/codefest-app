@@ -86,9 +86,10 @@ class Profile(models.Model):
         return self.referred_people.count()
 
     def __str__(self):
-        if self.institute_name!=None and self.user.first_name!=None:
-            return self.user.first_name + " from "+self.institute_name
-        return "PROFILE#"+str(self.id)
+        # if self.institute_name!=None and self.user.first_name!=None:
+        #     return self.user.first_name + " from "+self.institute_name
+        # return "PROFILE#"+str(self.id)
+        return f'{self.user.first_name}:{self.id} from {self.institute_name}'
 
     def get_or_set_profile_status(self, toSet=False):
         if toSet:
