@@ -22,12 +22,17 @@ class ProfileSerializer(serializers.ModelSerializer):
     )
     is_profile_complete = serializers.BooleanField(read_only=True)
     referral_code = serializers.CharField(max_length=200,read_only=True)
-    
+    provider = serializers.SerializerMethodField()
+
     class Meta:
         model = Profile
         fields = ('id','name','institute_name', 'study_year', 'degree', 'branch',
              'country', 'institute_type', 'phone', 'gender',
-             'is_profile_complete', 'referral_code','num_referrals')
+             'is_profile_complete', 'referral_code','num_referrals','provider')
+
+    @swagger_serializer_method(serializer_or_field=serializers.CharField)
+    def get_provider(self, obj):
+        return obj.user.verified_account.provider
 
     def validate_phone(self,number):
         phone_regex = RegexValidator(
