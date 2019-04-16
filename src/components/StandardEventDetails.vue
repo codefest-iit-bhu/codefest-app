@@ -16,19 +16,6 @@
           <p :class="$style.text">{{ event.description }}</p>
         </div>
 
-        <div :class="$style.tabContainer" slot="rules">
-          <h4 :class="$style.tabTitle">Rules</h4>
-          <hr :class="$style.leftHr">
-          <ul>
-            <li
-              :class="$style.ruleText"
-              v-for="(rule, i) in event.rules"
-              :key="i"
-              :inner-html.prop="rule | anchor"
-            ></li>
-          </ul>
-        </div>
-
         <div :class="$style.tabContainer" slot="contact">
           <h4 :class="$style.tabTitle">Co-ordinators</h4>
           <hr :class="$style.leftHr">
@@ -51,24 +38,20 @@
       </TabLayout>
     </div>
 
-    <div :class="$style.ps">
-      <div :class="$style.link">
-        <a href="#">
-          <h4 :class="$style.linkText">Problem Statement</h4>
-        </a>
-      </div>
-    </div>
+    <FloatingButton :link="'~/dashboard/events'" text="Register"/>
   </div>
 </template>
 
 <script>
 import TabLayout from "@components/layouts/TabLayout";
 import FAQ from "@components/FAQ";
+import FloatingButton from "@components/FloatingButton";
 
 export default {
   components: {
     TabLayout,
-    FAQ
+    FAQ,
+    FloatingButton
   },
   props: {
     event: {
@@ -81,10 +64,6 @@ export default {
         {
           name: "description",
           title: "Summary"
-        },
-        {
-          name: "rules",
-          title: "Rules"
         },
         {
           name: "contact",
@@ -185,7 +164,6 @@ export default {
       }
 
       .text {
-        font-size: 20px;
         margin-top: 36px;
         margin-bottom: 20px;
         font-family: 'Quicksand';
@@ -199,6 +177,18 @@ export default {
           font-family: 'Quicksand';
           font-weight: 500;
           margin-bottom: 10px;
+        }
+      }
+
+      .text, .ruleText {
+        a {
+          word-break: break-all;
+          font-size: 14px;
+
+          &:before {
+            content: ' ';
+            display: block;
+          }
         }
       }
     }

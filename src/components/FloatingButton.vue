@@ -1,5 +1,5 @@
 <template>
-  <div :class="[$style.floatBtn, animateClass]" @click="$emit('click')">
+  <div :class="[$style.floatBtn, animateClass]" @click="openLink">
     <i class="fas fa-user-plus" :class="$style.btn"></i>
     <span :class="$style.txt">{{ text }}</span>
   </div>
@@ -13,11 +13,21 @@ export default {
     text: {
       required: true,
       type: String
+    },
+    link: {
+      required: false,
+      type: String,
+      default: null
     }
   },
   computed: {
     animateClass() {
       return isMinimal(this.$mq) ? "" : this.$style.animate;
+    }
+  },
+  methods: {
+    openLink() {
+      if (this.link != null) this.$router.push({ name: this.link });
     }
   }
 };
