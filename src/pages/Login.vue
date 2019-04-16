@@ -155,10 +155,7 @@ export default {
     socialLogin(provider) {
       firebase
         .auth()
-        .signInWithPopup(provider)
-        .then(result => {
-          this.successfulAuth(result, false);
-        })
+        .signInWithRedirect(provider)
         .catch(err => {
           alert(err.message);
         });
@@ -211,7 +208,14 @@ export default {
       this.$router.push({ path });
     }
   },
-  mounted() {}
+  created() {
+    firebase
+      .auth()
+      .getRedirectResult()
+      .then(result => {
+        if (result.credential) this.successfulAuth(result, false);
+      });
+  }
 };
 </script>
 <style module lang="stylus">
