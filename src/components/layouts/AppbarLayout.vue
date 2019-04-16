@@ -10,9 +10,7 @@
     </div>
     <div :class="$style.notch">
       <div :class="$style.logo">
-        <router-link to="/">
-          <img src="assets/cf19-white-logo.svg">
-        </router-link>
+        <slot name="notch"/>
       </div>
     </div>
   </div>

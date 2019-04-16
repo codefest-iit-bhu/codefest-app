@@ -48,6 +48,9 @@
           <i class="fa fa-bars"></i>
         </a>
       </li>
+      <router-link to="/" slot="notch">
+        <img src="assets/cf19-white-logo.svg" @click="clickNotch">
+      </router-link>
     </AppbarLayout>
     <div :class="$style.sidebar" ref="sidebar">
       <mq-layout mq="md+" v-show="isSideNavigationShown" :class="$style.sidebarBack">
@@ -143,6 +146,9 @@ export default {
       TweenLite.to(sidebar, 0.8, {
         right: val
       });
+    },
+    clickNotch() {
+      if (this.$route.name === "~") this.$emit("scrollTop");
     },
     handleScroll(event) {
       const { sideNavigationIdleTimeout } = this.$data;

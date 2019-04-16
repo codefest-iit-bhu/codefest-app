@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.root">
-    <AppBar :doAnimate="true" :isSideNavigationShown="false"/>
+    <AppBar :doAnimate="true" :isSideNavigationShown="false" @scrollTop="scrollToTop"/>
     <Hero/>
     <main :class="$style.wrapper">
       <!-- Introduction -->
@@ -43,8 +43,10 @@ export default {
     Footer,
     Testimonials
   },
-  data: () => {
-    return {};
+  methods: {
+    scrollToTop() {
+      TweenLite.to(window, 1, { scrollTo: 0, ease: Power4.easeInOut });
+    }
   }
 };
 </script>

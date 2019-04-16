@@ -21,6 +21,12 @@
       >
         <img src="@assets/haxplore/logo-text.svg">
       </li>
+      <router-link to="/" slot="notch" v-if="!isMinimal">
+        <img src="assets/cf19-white-logo.svg">
+      </router-link>
+      <router-link to="/haxplore" slot="notch" v-else>
+        <img src="assets/haxplore/logo-text.svg" @click="$emit('scrollTop')">
+      </router-link>
     </AppbarLayout>
     <div :class="$style.sidebar" ref="sidebar">
       <mq-layout mq="md+" v-show="isSideNavigationShown">
