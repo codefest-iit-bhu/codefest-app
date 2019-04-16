@@ -39,7 +39,7 @@ class TeamCreationView(generics.GenericAPIView):
         )
         self.serializer.is_valid(raise_exception=True)
         team = self.serializer.save()
-        response = TeamDetailSerializer(team)
+        response = TeamDetailSerializer(team, context=self.get_serializer_context())
         return Response(response.data, status=status.HTTP_200_OK)
 
 class TeamJoinView(generics.GenericAPIView):
@@ -55,7 +55,7 @@ class TeamJoinView(generics.GenericAPIView):
         self.serializer = self.get_serializer(data = request.data)
         self.serializer.is_valid(raise_exception=True)
         team = self.serializer.save()
-        response = TeamDetailSerializer(team)
+        response = TeamDetailSerializer(team, context=self.get_serializer_context())
         return Response(response.data, status = status.HTTP_200_OK)
 
 class TeamLeaveView(generics.DestroyAPIView):
