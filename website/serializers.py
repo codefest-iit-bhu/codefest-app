@@ -7,9 +7,9 @@ from drf_yasg.utils import swagger_serializer_method
 class ProfileSerializer(serializers.ModelSerializer):
     name = serializers.CharField(max_length=128, read_only=True, required=False)
     institute_name=serializers.CharField(max_length=128, required=True)
-    study_year=serializers.IntegerField(required=False)
-    degree=serializers.CharField(max_length=50,required=False, allow_blank=True)
-    branch=serializers.CharField(max_length=100,required=False, allow_blank=True)
+    study_year=serializers.IntegerField(required=True)
+    degree=serializers.CharField(max_length=50,required=False, allow_blank=True, default="", allow_null=True)
+    branch=serializers.CharField(max_length=100,required=False, allow_blank=True, default="", allow_null=True)
     country=serializers.CharField(max_length=100,required=True)
     phone=serializers.CharField(max_length=15,required=True)
     institute_type = serializers.ChoiceField(

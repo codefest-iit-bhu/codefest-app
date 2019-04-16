@@ -64,17 +64,17 @@ class Profile(models.Model):
     referred_by=models.ForeignKey('Profile',null=True,related_name="referred",on_delete=models.SET_NULL)
     referral_code=models.CharField(max_length=50, unique=True, default=generate_referral_code)
     institute_type = models.IntegerField(null=True, choices=INSTITUTE_TYPE_CHOICES)
-    institute_name=models.CharField(max_length=128, null=True)# can be school,college. last institute for professionals 
+    institute_name=models.CharField(max_length=128,default="")# can be school,college. last institute for professionals 
     # year , if school, implies class, undergrad&masters == yearofpassing, professional==experience
-    study_year=models.PositiveIntegerField(blank=True,null=True)
+    study_year=models.PositiveIntegerField(null=True)
     # degree to be null for school
-    degree=models.CharField(max_length=30,blank=True,null=True)
+    degree=models.CharField(max_length=30,blank=True,default="")
     # to be used only by undergrad and postgrad students
-    branch=models.CharField(max_length=30,blank=True,null=True)
+    branch=models.CharField(max_length=30,blank=True,default="")
     country=models.CharField(max_length=4, default='IN')
-    phone=models.CharField(max_length=15,blank=True)
+    phone=models.CharField(max_length=15,blank=True, default="")
     gender=models.IntegerField(null=True,choices=GENDER_CHOICES)
-    resume=models.FileField(upload_to='media/resumes',null=True,blank=True)
+    resume=models.FileField(upload_to='media/resumes',null=True)
     is_profile_complete=models.BooleanField(default=False)
 
     @cached_property
@@ -82,13 +82,10 @@ class Profile(models.Model):
         return f'{self.user.first_name} {self.user.last_name}'
     
     @cached_property
-    def num_referrals(self):
+    def num_referrals(self) -> int:
         return self.referred_people.count()
 
     def __str__(self):
-        # if self.institute_name!=None and self.user.first_name!=None:
-        #     return self.user.first_name + " from "+self.institute_name
-        # return "PROFILE#"+str(self.id)
         return f'{self.user.first_name}:{self.id} from {self.institute_name}'
 
     def get_or_set_profile_status(self, toSet=False):
