@@ -174,6 +174,8 @@ export default {
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(result => {
           this.successfulAuth(result, true);
+
+          result.user.sendEmailVerification().then(() => {});
         })
         .catch(err => {
           this.loading = false;
