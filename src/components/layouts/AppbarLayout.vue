@@ -11,7 +11,7 @@
     <div :class="$style.notch">
       <div :class="$style.logo">
         <router-link to="/">
-          <img src="assets/logo.png">
+          <img src="assets/cf19-white-logo.svg">
         </router-link>
       </div>
     </div>

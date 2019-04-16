@@ -1,9 +1,7 @@
 <template>
   <div :class="$style.root">
     <AppBar :doAnimate="true" :isSideNavigationShown="false"/>
-    <mq-layout mq="lg+">
-      <Hero/>
-    </mq-layout>
+    <Hero/>
     <main :class="$style.wrapper">
       <!-- Introduction -->
       <SectionLayout title="A Byte About Us" :contentStyle="{'text-align': 'justify'}">
