@@ -92,6 +92,7 @@
               class="fas fa-times"
               :class="$style.removeIcon"
               :data-member-id="member.id"
+              :data-index="i"
               @click="deleteMember"
               v-if="isTeamLeader"
             ></i>
@@ -207,9 +208,9 @@ export default {
       this.startLoading();
       this.$store
         .dispatch("joinEventTeam", { accessCode: this.accessCode })
-        .then(_ => {
+        .then(({ data }) => {
           this.stopLoading();
-          console.log(_);
+          this.event.team = data;
         })
         .catch(err => {
           this.stopLoading();
@@ -219,6 +220,7 @@ export default {
     deleteMember(e) {
       this.startLoading();
       const memberId = e.target.getAttribute("data-member-id");
+      const memberIndex = e.target.getAttribute("data-index");
       this.$store
         .dispatch("removeMemberFromTeam", {
           teamId: this.team.id,
@@ -226,6 +228,7 @@ export default {
         })
         .then(_ => {
           this.stopLoading();
+          this.teamMembers.splice(memberIndex, 1)
         })
         .catch(err => {
           this.stopLoading();
@@ -430,7 +433,8 @@ $btn-width = 240px;
         list-style: none;
       }
 
-      li {
+      .teamMember {
+        margin-bottom: 5px;
         vertical-align: middle;
 
         .removeIcon {

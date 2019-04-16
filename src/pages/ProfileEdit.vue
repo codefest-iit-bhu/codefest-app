@@ -272,7 +272,7 @@ export default {
     }
   },
   created() {
-    API.fetch("profile/", { token: this.$store.getters.authToken })
+    API.fetch("profile/")
       .then(({ data }) => {
         this.profile = data;
         if (!data.is_profile_complete) {
@@ -284,7 +284,7 @@ export default {
         }
       })
       .catch(console.log);
-    API.fetch("profile/handles/", { token: this.$store.getters.authToken })
+    API.fetch("profile/handles/")
       .then(({ data }) => {
         this.handles = data;
       })

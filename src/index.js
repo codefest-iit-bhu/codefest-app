@@ -36,7 +36,7 @@ Vue.toasted.register(
     const msg = payload.message || "Something went wrong!";
     return `Oops... ${msg}`;
   },
-  { icon: "exclamation-circle", type: "error" }
+  { icon: "exclamation-circle", type: "error", duration: 5000 }
 );
 
 Vue.toasted.register(

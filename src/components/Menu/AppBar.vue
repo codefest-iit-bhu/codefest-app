@@ -13,9 +13,19 @@
           <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
         </router-link>
       </li>
-      <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
-        <router-link to="/dashboard" v-show="showDashboardActions">
+      <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)" v-show="showDashboardActions">
+        <router-link to="/dashboard">
           <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>Dashboard
+        </router-link>
+      </li>
+      <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)" v-show="showDashboardActions">
+        <a @click="authLogout">
+          <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>Logout
+        </a>
+      </li>
+      <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)" v-show="!showDashboardActions">
+        <router-link to="/login">
+          <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>Login
         </router-link>
       </li>
       <li :id="$style.toggleSidebar" slot="left" v-if="['xs', 'sm'].includes(this.$mq)">
@@ -127,6 +137,11 @@ export default {
           this.isSideNavigationIdle = true;
         }
       }, sideNavigationIdleTimeout);
+    },
+    authLogout() {
+      this.$store.dispatch("logout");
+      if (this.$route.meta.requiresAuth)
+        this.$router.push({ name: '~' })
     }
   },
   mounted() {
@@ -162,6 +177,7 @@ export default {
     }
 
     a {
+      cursor: pointer;
       height: inherit;
       color: $white;
       padding: 0 5px;

@@ -169,8 +169,10 @@ router.beforeEach((to, from, next) => {
     .forEach(tag => document.head.appendChild(tag));
 
   // Handle secure routes
+  const { isLoggedIn } = store.getters;
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (store.getters.isLoggedIn) return next();
+    if (isLoggedIn) return next();
+
     return next({
       name: "~/login",
       query: {
@@ -178,6 +180,7 @@ router.beforeEach((to, from, next) => {
       }
     });
   }
+  if (isLoggedIn && to.name === "~/login") return next({ name: "~/dashboard" });
 
   next();
 });

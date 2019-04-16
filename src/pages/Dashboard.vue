@@ -50,7 +50,7 @@ export default {
     API.fetch("profile/")
       .then(({ data }) => {
         if (!data.is_profile_complete) {
-          console.log("Not Complete!");
+          this.$router.replace("/profile/edit");
         }
         console.log(data);
         this.profile = data;

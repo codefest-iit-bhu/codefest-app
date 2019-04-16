@@ -1,12 +1,15 @@
 import { KEY_AUTH_TOKEN } from "@js/constants";
 import API, { Response, STATUS } from "@js/api";
 
+import firebase from "firebase";
+
 function getTokenFromStorage() {
   return localStorage.getItem(KEY_AUTH_TOKEN);
 }
 
 function putTokenToStorage(token) {
-  localStorage.setItem(KEY_AUTH_TOKEN, token);
+  if (!token) localStorage.removeItem(KEY_AUTH_TOKEN);
+  else localStorage.setItem(KEY_AUTH_TOKEN, token);
 }
 
 export default {
@@ -29,6 +32,7 @@ export default {
     },
     AUTH_LOGOUT(state) {
       state.token = "";
+      putTokenToStorage(null);
     }
   },
   actions: {
@@ -55,6 +59,11 @@ export default {
       });
     },
     logout({ state, commit }) {
+      firebase
+        .auth()
+        .signOut()
+        .then(console.log)
+        .catch(console.log);
       commit("AUTH_LOGOUT");
     }
   }

@@ -10,8 +10,10 @@
             </div>-->
             <div :class="$style.box">
               <span :class="$style.key">Referral Code</span>
-              <span :class="$style.value">{{profile.referral_code}}</span>
-              <i class="fas fa-copy" :class="$style.copyIcon" @click="clickToCopy"></i>
+              <span :class="$style.value">
+                <router-link :to="routerLocation">{{ profile.referral_code }}</router-link>
+              </span>
+              <i class="fas fa-clipboard" :class="$style.copyIcon" @click="clickToCopy"></i>
             </div>
           </div>
           <div :class="$style.dp" slot="right">
@@ -34,9 +36,11 @@
 
 <script>
 import { copyToClipboard } from "@js/utils";
+import { SITE_URL } from "@js/constants";
 
 import SectionLayout from "@components/layouts/SectionLayout";
 import ResponsiveTwoColumnLayout from "@components/layouts/ResponsiveTwoColumnLayout";
+
 export default {
   components: {
     SectionLayout,
@@ -48,6 +52,14 @@ export default {
       if (!name) return;
       const newName = name.split(/\s+/);
       return newName[0][0] + newName[1][0];
+    },
+    routerLocation() {
+      return {
+        name: "~/login",
+        query: {
+          referral: this.profile.referral_code
+        }
+      };
     }
   },
   props: {
@@ -58,7 +70,12 @@ export default {
   },
   methods: {
     clickToCopy: function() {
-      copyToClipboard(this.profile.referral_code);
+      const referral = this.profile.referral_code;
+      const referralShareLink = this.$router.resolve(this.routerLocation).href;
+      copyToClipboard(`${SITE_URL}${referralShareLink}`);
+      this.$toasted.global.success({
+        message: `Copied "${referralShareLink}"!`
+      });
     }
   }
 };
@@ -117,7 +134,7 @@ export default {
 
       .copyIcon {
         cursor: pointer;
-        margin-right: 5px;
+        margin-right: 10px;
         margin-top: 10px;
         float: right;
       }
