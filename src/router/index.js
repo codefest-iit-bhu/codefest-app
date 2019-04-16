@@ -6,8 +6,7 @@ Vue.use(Router);
 
 const router = new Router({
   mode: "history",
-  routes: [
-    {
+  routes: [{
       name: "~",
       path: "/",
       component: () => import(`@pages/Home`),
@@ -97,6 +96,16 @@ const router = new Router({
       }
     },
     {
+      name: "~/forgotpassword",
+      path: "/password/reset",
+      component: () => import(`@components/ForgotPassword`),
+      meta: {
+        title: "Forgot Password",
+        metaTags: [],
+        noTerminal: false
+      }
+    },
+    {
       name: "~/test",
       path: "/dummy",
       component: () => import("@pages/Test")
@@ -169,7 +178,9 @@ router.beforeEach((to, from, next) => {
     .forEach(tag => document.head.appendChild(tag));
 
   // Handle secure routes
-  const { isLoggedIn } = store.getters;
+  const {
+    isLoggedIn
+  } = store.getters;
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (isLoggedIn) return next();
 
@@ -180,7 +191,9 @@ router.beforeEach((to, from, next) => {
       }
     });
   }
-  if (isLoggedIn && to.name === "~/login") return next({ name: "~/dashboard" });
+  if (isLoggedIn && to.name === "~/login") return next({
+    name: "~/dashboard"
+  });
 
   next();
 });
