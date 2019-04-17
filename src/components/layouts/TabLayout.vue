@@ -105,14 +105,14 @@ $tab-height = 30px;
         line-height: 30px;
         width: $tab-width;
         text-align: center;
-        color: $black;
+        color: $white;
       }
     }
 
     .active {
       .tabTitle {
         background: $chartreuse;
-        color: white;
+        color: $black;
         z-index: 25;
       }
     }

@@ -7,7 +7,11 @@
         </div>
       </router-link>
       <div :class="$style.title">
-        <h1>Onsite Hackathon</h1>
+        <a>
+          <router-link to="haxplore">
+            <h1>HAXPLORE</h1>
+          </router-link>
+        </a>
         <p>
           Join the Codefest '19 team to bring out the absolute best ideas and implementations from some of the best developers in the country,
           while they join us for a 24 hours long hackathon under a single roof.
@@ -52,7 +56,7 @@ export default {
       height: 90%;
 
       ~/.xxl ^[1..-1] {
-        padding: 60px;
+        padding: 80px;
       }
 
       ~/.xl ^[1..-1] {
@@ -77,6 +81,10 @@ export default {
     width: 100%;
     margin: 30px auto 0;
     text-align: center;
+
+    a:hover {
+      text-decoration: none;
+    }
 
     h1 {
       font-family: 'Aldo the Apache';
