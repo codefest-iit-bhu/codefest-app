@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.root">
+  <div :class="[$style.root, $style[$mq]]">
     <AppBar/>
     <main :class="$style.wrapper">
       <div :class="$style.authContainer">
@@ -65,7 +65,7 @@
                   </select>
                 </div>
                 <div :class="$style.btnStyle">
-                  <button @click="nav('academic')" :class="$style.next">
+                  <button type="button" @click="nav('academic')" :class="$style.next">
                     <i class="fas fa-arrow-circle-right"></i>
                   </button>
                 </div>
@@ -91,7 +91,9 @@
                     type="number"
                     id="study_year"
                     name="study_year"
+                    min="1"
                     v-model="profile.study_year"
+                    required
                   >
                 </div>
                 <div :class="$style.field" v-show="profile.institute_type==1">
@@ -104,7 +106,7 @@
                 </div>
               </div>
               <div :class="$style.btnStyle">
-                <button @click="nav('handles')" :class="$style.next">
+                <button type="button" @click="nav('handles')" :class="$style.next">
                   <i class="fas fa-arrow-circle-right"></i>
                 </button>
               </div>
@@ -142,7 +144,9 @@
                 </div>
               </div>
               <div :class="$style.btnStyle">
-                <button type="submit" name="submit" value=">" :class="$style.submit">Save</button>
+                <button type="submit" name="submit" value=">" :class="$style.next">
+                  <i class="fas fa-save"></i>
+                </button>
               </div>
             </div>
 
@@ -224,7 +228,7 @@ export default {
         (this.curId == null || this.navIds[id] <= this.navIds[this.curId])
       ) {
         if (!this.isDisabled[id]) this.curId = id;
-      } else document.querySelectorAll("form button")[0].click();
+      } else document.querySelectorAll("form button[type='submit']")[0].click();
     },
     fillDropdown(
       dataUrl,
@@ -266,15 +270,16 @@ export default {
       request.send();
     },
     submitForm() {
-      if (!this.profile.is_profile_complete) {
-        API.put("profile/", {
-          body: this.profile
-        }).catch(console.log);
-      }
       API.put("profile/handles/", {
         body: this.handles
       })
         .then(resp => {
+          if (!this.profile.is_profile_complete) {
+            API.put("profile/", {
+              body: this.profile
+            }).catch(console.log);
+          }
+
           this.$router.push({ name: "~/dashboard" });
         })
         .catch(console.log);
@@ -316,209 +321,212 @@ export default {
   }
 };
 </script>
-    <style module lang="stylus">
-    @require '~@styles/theme';
-    @require '~@styles/anims';
+<style module lang="stylus">
+@require '~@styles/theme';
+@require '~@styles/anims';
 
-    .authContainer {
-      font-size: 16px;
-      font-family: courier, monospace;
-      max-width: 700px;
+.authContainer {
+  font-size: 16px;
+  font-family: courier, monospace;
+  max-width: 700px;
+  margin: 50px auto;
+  width: 100%;
+}
+
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+  padding: 100px 0;
+  position: relative;
+  top: 0;
+  z-index: 1;
+  font-family: 'Roboto Mono';
+  font-size: 18px;
+}
+
+.root {
+  height: 100%;
+}
+
+.form {
+  margin: 20px;
+  position: relative;
+  border: 1px solid $chartreuse;
+  border-radius: 5px;
+  box-shadow: inset 0px 0px 15px $chartreuse;
+  background: #111;
+
+  .formNav {
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid $chartreuse;
+    padding: 20px;
+    margin: 0;
+
+    i {
+      cursor: pointer;
+
+      &.active {
+        color: $chartreuse;
+      }
+    }
+  }
+
+  .card {
+    padding: 10px 20px;
+    min-height: 400px;
+    margin: 5px;
+    width: 100%;
+    position: relative;
+
+    h3 {
+      color: $chartreuse;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .loader {
       margin: auto;
-      width: 100%;
+      position: absolute;
+      top: calc(50% - 60px);
+      left: calc(50% - 30px);
+      border: 5px solid $white;
+      border-radius: 50%;
+      border-top: 5px solid $chartreuse;
+      width: 60px;
+      height: 60px;
+      -webkit-animation: spin 2s linear infinite; /* Safari */
+      animation: spin 2s linear infinite;
     }
 
-    .wrapper {
-      width: 80%;
-      margin: 0 auto;
-      padding: 100px 0;
-      position: relative;
-      top: 0;
-      z-index: 1;
-      font-family: 'Roboto Mono';
-      font-size: 18px;
-    }
-
-    .root {
-      height: 100%;
-    }
-
-    .form {
-      margin: 20px;
-      min-height: 400px;
-      position: relative;
-      border: 1px solid $chartreuse;
-      border-radius: 4px 4px 0 0;
-      box-shadow: inset 0px 0px 15px $chartreuse;
-
-      .formNav {
-        width: 100%;
-        position: absolute;
-        bottom: 0;
-        text-align: center;
-        border-top: 1px solid $chartreuse;
-        padding: 20px;
-        margin: 0;
-        border-radius: 0 0 4px 4px;
-
-        i {
-          cursor: pointer;
-
-          &.active {
-            color: $chartreuse;
-          }
-        }
+    @keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
       }
 
-      .card {
-        padding: 20px;
-        margin: 10px;
+      100% {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .fieldsContainer {
+      width: 100%;
+      padding: 5px;
+      margin: 5px auto;
+      text-align: right;
+    }
+
+    .field {
+      margin: 10px auto;
+      margin-top: 20px;
+      text-align: center;
+
+      input, select {
+        text-align: left;
+        display: inline-block;
+        height: 30px;
+        width: calc(100% - 120px);
+        color: white;
+        border: 0;
+        outline: 0;
+        margin: auto;
+        font-size: 16px;
+        border-radius: 5px;
+        padding-left: 5px;
+        background: #fff2;
+      }
+
+      .fieldWrapper {
         width: 100%;
-        min-height: 500px;
         position: relative;
 
-        h3 {
-          color: $chartreuse;
-          text-align: center;
-          text-transform: uppercase;
-        }
-
-        .loader {
-          margin: auto;
+        i {
+          top: 0;
+          right: 7px;
           position: absolute;
-          top: calc(50% - 60px);
-          left: calc(50% - 30px);
-          border: 5px solid $white;
-          border-radius: 50%;
-          border-top: 5px solid $chartreuse;
-          width: 60px;
-          height: 60px;
-          -webkit-animation: spin 2s linear infinite; /* Safari */
-          animation: spin 2s linear infinite;
+          cursor: pointer;
         }
+      }
 
-        @keyframes spin {
-          0% {
-            -webkit-transform: rotate(0deg);
-          }
+      option {
+        color: black;
+      }
 
-          100% {
-            -webkit-transform: rotate(360deg);
-          }
-        }
+      .label {
+        display: inline-block;
+        text-align: left;
+        width: 100px;
+        color: white;
+        height: 30px;
+      }
+    }
 
-        @keyframes spin {
-          0% {
-            transform: rotate(0deg);
-          }
+    .btnStyle {
+      text-align: center;
 
-          100% {
-            transform: rotate(360deg);
-          }
-        }
+      .next {
+        border: 0;
+        background: transparent;
+        color: $white;
+        border-radius: 100%;
+        font-size: 30px;
+        height: 30px;
+        width: 30px;
+        cursor: pointer;
+        text-align: center;
 
-        .fieldsContainer {
-          width: 100%;
-          margin-bottom: 15px;
-          text-align: right;
-        }
-
-        .field {
-          input, select {
-            height: 30px;
-            color: white;
-            border: 0;
-            outline: 0;
-            max-width: 400px;
-            width: 100%;
-            font-size: 16px;
-            background: #fff2;
-            border-radius: 5px;
-            padding-left: 5px;
-            margin-bottom: 15px;
-          }
-
-          option {
-            color: black;
-          }
-
-          .label {
-            float: left;
-            clear: both;
-            color: white;
-            text-align: right;
-            height: 30px;
-            margin-bottom: 15px;
-          }
-        }
-
-        .btnStyle {
-          text-align: center;
-
-          .submit {
-            border-radius: 4px;
-            background: $chartreuse;
-            color: black;
-            border: 1px solid $limeade;
-            height: 30px;
-            width: 70px;
-            cursor: pointer;
-            text-align: center;
-
-            &:hover {
-              background: $limeade;
-              color: $white;
-            }
-          }
-
-          .next {
-            border: 0;
-            background: transparent;
-            color: $white;
-            border-radius: 100%;
-            font-size: 30px;
-            height: 30px;
-            width: 30px;
-            cursor: pointer;
-            text-align: center;
-
-            &:hover {
-              color: $chartreuse;
-            }
-          }
-        }
-
-        .social {
-          width: 100%;
-          max-width: 600px;
-          margin: auto;
-          text-align: center;
-          padding: 5px;
-          margin-top: 20px;
-          border: 0;
-          border-top: 1px solid $chartreuse;
-
-          .socialButton {
-            background-color: Transparent;
-            background-repeat: no-repeat;
-            border: none;
-            cursor: pointer;
-            overflow: hidden;
-            outline: none;
-
-            img {
-              margin: 10px;
-              width: 40px;
-              height: 40px;
-            }
-          }
+        &:hover {
+          color: $chartreuse;
         }
       }
     }
 
-    @media screen and (max-width: 769px) {
-      .wrapper {
-        width: 90%;
+    .social {
+      width: 100%;
+      max-width: 600px;
+      margin: auto;
+      text-align: center;
+      padding: 5px;
+      margin-top: 20px;
+      border: 0;
+      border-top: 1px solid $chartreuse;
+
+      .socialButton {
+        background-color: Transparent;
+        background-repeat: no-repeat;
+        border: none;
+        cursor: pointer;
+        overflow: hidden;
+        outline: none;
+
+        img {
+          margin: 10px;
+          width: 40px;
+          height: 40px;
+        }
       }
     }
+  }
+}
+
+.xs, .sm {
+  .form {
+    .field {
+      input, select, .label {
+        font-size: 16px;
+        width: 100%;
+      }
+    }
+  }
+}
 </style>
