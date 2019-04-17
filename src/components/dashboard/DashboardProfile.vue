@@ -1,36 +1,71 @@
 <template>
-  <div :class="$style.container">
-    <SectionLayout title="My Profile">
-      <div :class="$style.profile">
-        <ResponsiveTwoColumnLayout :isRightAbove="true">
-          <div :class="$style.about" slot="left">
-            <!-- <div :class="$style.card" v-for="(item ,i) in this.items" :key="i">
+  <div :class="[$style.container, $style[$mq]]">
+    <div :class="$style.profilehead">
+      <div :class="$style.userinit">
+        <p>{{retrieveInitials}}</p>
+      </div>
+      <span :class="$style.username">{{profile.name}}</span>
+    </div>
+    <hr :class="$style.rightHr">
+    <div :class="$style.profile">
+      <!-- <ResponsiveTwoColumnLayout :isRightAbove="true">
+        <div :class="$style.about" slot="left">
+          <div :class="$style.card" v-for="(item ,i) in this.items" :key="i">
               <div :class="$style.label">{{item.key}}</div>
               <div :class="$style.value">{{item.value}}</div>
-            </div>-->
-            <div :class="$style.box">
-              <span :class="$style.key">Referral Code</span>
-              <span :class="$style.value">
-                <router-link :to="routerLocation">{{ profile.referral_code }}</router-link>
-              </span>
-              <i class="fas fa-clipboard" :class="$style.copyIcon" @click="clickToCopy"></i>
-            </div>
           </div>
-          <div :class="$style.dp" slot="right">
-            <div :class="$style.img">
-              <span class="absolute-center">{{retrieveInitials}}</span>
-            </div>
-            <span :class="$style.name">{{profile.name}}</span>
+          <div :class="$style.box">
+            <span :class="$style.key">Referral Link</span>
+            <span :class="$style.value">
+              <router-link :to="routerLocation">{{ profile.referral_code }}</router-link>
+            </span>
+            <i class="fas fa-clipboard" :class="$style.copyIcon" @click="clickToCopy"></i>
           </div>
-        </ResponsiveTwoColumnLayout>
+        </div>
+        <div :class="$style.dp" slot="right">
+          <div :class="$style.img">
+            <span class="absolute-center">{{retrieveInitials}}</span>
+          </div>
+          <span :class="$style.name">{{profile.name}}</span>
+        </div>
+      </ResponsiveTwoColumnLayout>-->
+      <div :class="$style.about">
+        <div :class="$style.box">
+          <span :class="$style.key">Referral Link</span>
+          <span :class="$style.value">
+            <router-link :to="routerLocation">{{ profile.referral_code }}</router-link>
+          </span>
+          <i class="fas fa-clipboard" :class="$style.copyIcon" @click="clickToCopy"></i>
+        </div>
+        <p
+          :class="$style.helptext"
+        >*Referral code is something something and it is used for something something.*</p>
+        <div :class="$style.profileinfo">
+          <div :class="$style.row">
+            <span :class="$style.pkey">Name</span>
+            <span :class="$style.pvalue">{{ profile.name }}</span>
+          </div>
+          <div :class="$style.row">
+            <span :class="$style.pkey">Country</span>
+            <span :class="$style.pvalue">{{ profile.country }}</span>
+          </div>
+          <div :class="$style.row">
+            <span :class="$style.pkey">Phone</span>
+            <span :class="$style.pvalue">{{ profile.phone}}</span>
+          </div>
+          <div v-if="profile.institute_type == 1" :class="$style.row">
+            <span :class="$style.pkey">Institute Name</span>
+            <span :class="$style.pvalue">{{ profile.institute_name }}</span>
+          </div>
+        </div>
       </div>
+    </div>
 
-      <div :class="$style.link" @click="$router.push('/profile/edit')">
-        <span :class="$style.linkText">
-          <h4>Edit Profile</h4>
-        </span>
-      </div>
-    </SectionLayout>
+    <div :class="$style.link" @click="$router.push('/profile/edit')">
+      <span :class="$style.linkText">
+        <h4>Edit Profile</h4>
+      </span>
+    </div>
   </div>
 </template>
 
@@ -49,9 +84,12 @@ export default {
   computed: {
     retrieveInitials() {
       const { name } = this.profile;
+      console.log(this.profile);
       if (!name) return;
       const newName = name.split(/\s+/);
-      return newName[0][0] + newName[1][0];
+      if (typeof newName[1][0] !== "undefined")
+        return newName[0][0] + newName[1][0];
+      return newName[0][0];
     },
     routerLocation() {
       return {
@@ -86,6 +124,67 @@ export default {
 
 .container {
   height: 100%;
+  padding-top: 50px;
+
+  .profilehead {
+    height: 108px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+
+    .userinit {
+      order: -2;
+      background: $chartreuse;
+      border-radius: 50%;
+      width: 108px;
+      height: 108px;
+      padding: 18px;
+      font: 72px 'Aldo the Apache';
+      color: $black;
+
+      p {
+        text-align: center;
+        width: 100%;
+        margin-top: 5px;
+      }
+
+      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+        width: 72px;
+        height: 72px;
+      }
+    }
+
+    .username {
+      order: -1;
+      color: $white;
+      font-family: 'Aldo the Apache';
+      text-align: right;
+      font-size: 50px;
+      margin: 0;
+      float: right;
+
+      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+        font-size: 36px;
+      }
+    }
+  }
+
+  hr {
+    height: 4px;
+    background-color: $chartreuse;
+    display: block;
+    width: 70%;
+    border: none;
+  }
+
+  .rightHr {
+    margin-top: 5px;
+    margin-bottom: 72px;
+    margin-left: 30%;
+    background-image: linear-gradient(to right, $black, $chartreuse);
+  }
 }
 
 .link {
@@ -123,18 +222,19 @@ export default {
   .about {
     text-align: center;
     margin: 15px;
-    width: inherit;
+    width: 100%;
 
     .box {
-      border: 2px solid $chartreuse;
-      border-radius: 20px;
+      border: 2px solid $limeade;
+      border-radius: 100px;
       text-align: center;
       height: 50px;
-      width: 100%;
+      width: 60%;
+      margin-left: 20%;
 
       .copyIcon {
         cursor: pointer;
-        margin-right: 10px;
+        margin-right: 20px;
         margin-top: 10px;
         float: right;
       }
@@ -143,9 +243,11 @@ export default {
         display: inline-block;
         float: left;
         font-weight: bold;
+        font-family: 'Roboto Slab';
         font-size: 24px;
-        padding: 15px;
+        padding: 8px 15px;
         height: 100%;
+        color: $black;
         border-radius: inherit;
         border-bottom-right-radius: 0;
         border-top-right-radius: 0;
@@ -155,33 +257,57 @@ export default {
 
       .value {
         display: inline-block;
-        font-size: 14px;
-        padding: 15px;
+        font-size: 18px;
+        font-family: 'Quicksand';
+        padding: 12px;
         height: 100%;
+      }
+
+      ~/.md ^[1..-1] {
+        width: 100%;
+        margin-left: 0%;
       }
     }
   }
 
-  .dp {
-    text-align: right;
-    float: right;
+  .helptext {
+    font-size: 12px;
+  }
 
-    .img {
-      margin: 15px auto;
-      position: relative;
-      background-image: url('@assets/dp.png');
-      background-size: cover;
-      width: 150px;
-      height: 150px;
-      font-size: 30px;
-      font-weight: bold;
-    }
+  .profileinfo {
+    width: 60%;
+    margin-left: 20%;
 
-    .name {
-      float: left;
-      font-size: 30px;
-      font-weight: bold;
-      width: 100%;
+    .row {
+      // clip-path: polygon(4% 0, 100% 0, 96% 100%, 0 100%);
+      transform: skew(30deg);
+      border: solid 2px $limeade;
+      margin-top: 10px;
+      margin-bottom: 10px;
+
+      .pkey {
+        width: 30%;
+        background: $limeade;
+        display: inline-block;
+        float: left;
+        font-weight: bold;
+        font-family: 'Roboto Slab';
+        font-size: 16px;
+        padding: 8px 15px;
+        height: 100%;
+        color: $black;
+        background: alpha($chartreuse, 0.7);
+      }
+
+      .pvalue {
+        width: 70%;
+        transform: skew(-30deg);
+        display: inline-block;
+        font-size: 16px;
+        font-family: 'Quicksand';
+        padding: 8px;
+        height: 100%;
+      }
     }
   }
 }
