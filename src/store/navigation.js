@@ -28,6 +28,9 @@ export const navigation = {
       },
       haxplore: {
         ".": "/haxplore"
+      },
+      dashboard: {
+        ".": "/dashboard"
       }
     },
     "404": {

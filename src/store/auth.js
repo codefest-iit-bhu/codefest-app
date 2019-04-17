@@ -45,13 +45,17 @@ export default {
         return response;
       });
     },
-    register({ state, commit }, { idToken, name, referralCode }) {
+    register(
+      { state, commit },
+      { idToken, name, referralCode, recaptchaToken }
+    ) {
       const names = name.split(/\s+/);
       const body = {
         id_token: idToken,
         first_name: names[0],
         last_name: names.length > 0 ? names[1] : "",
-        applied_referral_code: referralCode
+        applied_referral_code: referralCode,
+        g_recaptcha_response: recaptchaToken
       };
       return API.post("register/", { body }).then(response => {
         commit("AUTH_SUCCESS", response.data);

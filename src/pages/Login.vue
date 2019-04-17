@@ -212,11 +212,14 @@ export default {
         .getIdToken(true)
         .then(idToken => {
           if (isNewUser)
-            this._register(
-              idToken,
-              byEmail ? this.name : result.user.displayName,
-              this.referral
-            );
+            this.$recaptcha("login").then(token => {
+              this._register(
+                idToken,
+                byEmail ? this.name : result.user.displayName,
+                this.referral,
+                token
+              );
+            });
           else this._login(idToken);
         })
         .catch(err => {
@@ -237,12 +240,13 @@ export default {
           this.$toasted.global.error_post({ message: err.message });
         });
     },
-    _register(idToken, name, referralCode) {
+    _register(idToken, name, referralCode, recaptchaToken) {
       this.$store
         .dispatch("register", {
           idToken,
           name,
-          referralCode
+          referralCode,
+          recaptchaToken
         })
         .then(_ => {
           this.loading = false;

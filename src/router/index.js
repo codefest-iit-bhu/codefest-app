@@ -114,7 +114,7 @@ const router = new Router({
       meta: {
         title: "Forgot Password",
         metaTags: [],
-        noTerminal: false
+        noTerminal: true
       }
     },
     {
@@ -128,7 +128,7 @@ const router = new Router({
       component: () => import(`@pages/404`),
       meta: {
         title: "CodeFest '19 | 404",
-        noTerminal: false
+        noTerminal: true
       }
     }
   ],

@@ -8,27 +8,6 @@
     </div>
     <hr :class="$style.rightHr">
     <div :class="$style.profile">
-      <!-- <ResponsiveTwoColumnLayout :isRightAbove="true">
-        <div :class="$style.about" slot="left">
-          <div :class="$style.card" v-for="(item ,i) in this.items" :key="i">
-              <div :class="$style.label">{{item.key}}</div>
-              <div :class="$style.value">{{item.value}}</div>
-          </div>
-          <div :class="$style.box">
-            <span :class="$style.key">Referral Link</span>
-            <span :class="$style.value">
-              <router-link :to="routerLocation">{{ profile.referral_code }}</router-link>
-            </span>
-            <i class="fas fa-clipboard" :class="$style.copyIcon" @click="clickToCopy"></i>
-          </div>
-        </div>
-        <div :class="$style.dp" slot="right">
-          <div :class="$style.img">
-            <span class="absolute-center">{{retrieveInitials}}</span>
-          </div>
-          <span :class="$style.name">{{profile.name}}</span>
-        </div>
-      </ResponsiveTwoColumnLayout>-->
       <div :class="$style.about">
         <div :class="$style.box">
           <span :class="$style.key">Referral Link</span>
@@ -39,32 +18,51 @@
         </div>
         <p
           :class="$style.helptext"
-        >*Referral code is something something and it is used for something something.*</p>
+        >Share the above referral link with your contacts to win exciting goodies!</p>
         <div :class="$style.profileinfo">
           <div :class="$style.row">
-            <span :class="$style.pkey">Name</span>
+            <span :class="$style.pkey">
+              <span>Name</span>
+            </span>
             <span :class="$style.pvalue">{{ profile.name }}</span>
           </div>
           <div :class="$style.row">
-            <span :class="$style.pkey">Country</span>
+            <span :class="$style.pkey">
+              <span>Country</span>
+            </span>
             <span :class="$style.pvalue">{{ profile.country }}</span>
           </div>
           <div :class="$style.row">
-            <span :class="$style.pkey">Phone</span>
+            <span :class="$style.pkey">
+              <span>Phone</span>
+            </span>
             <span :class="$style.pvalue">{{ profile.phone}}</span>
           </div>
           <div v-if="profile.institute_type == 1" :class="$style.row">
-            <span :class="$style.pkey">Institute Name</span>
+            <span :class="$style.pkey">
+              <span>Institute Name</span>
+            </span>
             <span :class="$style.pvalue">{{ profile.institute_name }}</span>
           </div>
         </div>
       </div>
     </div>
 
-    <div :class="$style.link" @click="$router.push('/profile/edit')">
-      <span :class="$style.linkText">
-        <h4>Edit Profile</h4>
-      </span>
+    <div :class="$style.actionButtons">
+      <div :class="$style.link" @click="$router.push('/profile/edit')">
+        <span :class="$style.linkText">
+          <h4>Edit Profile</h4>
+        </span>
+      </div>
+      <div
+        :class="$style.link"
+        @click="$router.push('/password/change')"
+        v-if="profile.provider === 'password'"
+      >
+        <span :class="$style.linkText">
+          <h4>Change Password</h4>
+        </span>
+      </div>
     </div>
   </div>
 </template>
@@ -187,15 +185,20 @@ export default {
   }
 }
 
-.link {
+.actionButtons {
   margin: 40px auto;
-  width: 290px;
-  height: auto;
-  padding: 24px;
+  text-align: center;
+}
+
+.link {
+  margin: 0 10px;
+  width: 220px;
+  padding: 18px;
   border-radius: 50px;
   border: 2px solid $chartreuse;
   text-align: center;
   cursor: pointer;
+  display: inline-block;
 
   .linkText {
     color: $chartreuse;
@@ -204,7 +207,7 @@ export default {
 
     h4 {
       font-family: 'Aldo the Apache';
-      font-size: 30px;
+      font-size: 22px;
       margin: 0;
     }
   }
@@ -271,7 +274,7 @@ export default {
   }
 
   .helptext {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .profileinfo {
@@ -297,6 +300,11 @@ export default {
         height: 100%;
         color: $black;
         background: alpha($chartreuse, 0.7);
+
+        span {
+          display: inline-block;
+          transform: skew(-30deg);
+        }
       }
 
       .pvalue {

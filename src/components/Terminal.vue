@@ -49,7 +49,7 @@ export default {
   },
   model: {
     prop: "isExpanded",
-    event: "onTerminalStateChanged"
+    event: "onTerminalExpand"
   },
   data() {
     return {
@@ -98,7 +98,11 @@ export default {
     focusTerminalInput(event) {
       if (event.target.tagName !== "A") {
         this.$refs.cli.focusInput();
-        this.changeTerminalState(true);
+        if (!this.isExpanded && !this.isHelpShown) {
+          this.$refs.cli.submitInput("help");
+          this.isHelpShown = true;
+        }
+        this.$emit("onTerminalExpand", true);
       }
     },
     initCommandsOnPageChange() {
@@ -106,20 +110,17 @@ export default {
     },
     showTerminal() {
       if (this.shouldShow) this.isShown = true;
+      this.changeTerminalState(true);
     },
     hideTerminal() {
-      this.isExpanded = false;
       this.isShown = false;
+      this.changeTerminalState(false);
     },
     collapseTerminal() {
-      this.changeTerminalState(false);
       this.scrollToBottom();
+      this.$emit("onTerminalExpand", false);
     },
     changeTerminalState(state) {
-      if (state && !this.isExpanded && !this.isHelpShown) {
-        this.$refs.cli.submitInput("help");
-        this.isHelpShown = true;
-      }
       this.$emit("onTerminalStateChanged", state);
     },
     animateScrollShow() {
@@ -203,7 +204,7 @@ $collapsed-height = 90px;
   clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%);
   background: $chartreuse;
   color: $chartreuse;
-  right: 0px;
+  right: 5px;
   top: -30px;
   z-index: 26;
   cursor: pointer;
