@@ -183,142 +183,140 @@ export default {
     margin-left: 30%;
     background-image: linear-gradient(to right, $black, $chartreuse);
   }
-}
 
-.actionButtons {
-  margin: 40px auto;
-  text-align: center;
-}
+  .actionButtons {
+    margin: 40px auto;
+    text-align: center;
+  }
 
-.link {
-  margin: 0 10px;
-  width: 220px;
-  padding: 18px;
-  border-radius: 50px;
-  border: 2px solid $chartreuse;
-  text-align: center;
-  cursor: pointer;
-  display: inline-block;
+  .link {
+    margin: 0 10px;
+    width: 220px;
+    padding: 18px;
+    border-radius: 50px;
+    border: 2px solid $chartreuse;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
 
-  .linkText {
-    color: $chartreuse;
-    display: inline;
-    text-decoration: none;
+    .linkText {
+      color: $chartreuse;
+      display: inline;
+      text-decoration: none;
 
-    h4 {
-      font-family: 'Aldo the Apache';
-      font-size: 22px;
-      margin: 0;
+      h4 {
+        font-family: 'Aldo the Apache';
+        font-size: 22px;
+        margin: 0;
+      }
+    }
+
+    &:hover {
+      box-shadow: inset 0px 0px 10px $chartreuse;
     }
   }
 
-  &:hover {
-    box-shadow: inset 0px 0px 10px $chartreuse;
-  }
-}
+  .profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 
-.profile {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-
-  .about {
-    text-align: center;
-    margin: 15px;
-    width: 100%;
-
-    .box {
-      border: 2px solid $limeade;
-      border-radius: 100px;
+    .about {
       text-align: center;
-      height: 50px;
+      margin: 15px;
+      width: 100%;
+
+      .box {
+        border: 2px solid $limeade;
+        border-radius: 100px;
+        text-align: center;
+        height: 50px;
+        width: 60%;
+        margin-left: 20%;
+
+        .copyIcon {
+          cursor: pointer;
+          margin-right: 20px;
+          margin-top: 10px;
+          float: right;
+        }
+
+        .key {
+          display: inline-block;
+          float: left;
+          font-weight: bold;
+          font-family: 'Roboto Slab';
+          font-size: 24px;
+          padding: 8px 15px;
+          height: 100%;
+          color: $black;
+          border-radius: inherit;
+          border-bottom-right-radius: 0;
+          border-top-right-radius: 0;
+          border-right: 1px solid $chartreuse;
+          background: alpha($chartreuse, 0.7);
+        }
+
+        .value {
+          display: inline-block;
+          font-size: 18px;
+          font-family: 'Quicksand';
+          padding: 12px;
+          height: 100%;
+        }
+
+        ~/.md ^[1..-1] {
+          width: 100%;
+          margin-left: 0%;
+        }
+      }
+    }
+
+    .helptext {
+      font-size: 14px;
+    }
+
+    .profileinfo {
       width: 60%;
       margin-left: 20%;
 
-      .copyIcon {
-        cursor: pointer;
-        margin-right: 20px;
+      .row {
+        // clip-path: polygon(4% 0, 100% 0, 96% 100%, 0 100%);
+        transform: skew(30deg);
+        border: solid 2px $limeade;
         margin-top: 10px;
-        float: right;
-      }
+        margin-bottom: 10px;
 
-      .key {
-        display: inline-block;
-        float: left;
-        font-weight: bold;
-        font-family: 'Roboto Slab';
-        font-size: 24px;
-        padding: 8px 15px;
-        height: 100%;
-        color: $black;
-        border-radius: inherit;
-        border-bottom-right-radius: 0;
-        border-top-right-radius: 0;
-        border-right: 1px solid $chartreuse;
-        background: alpha($chartreuse, 0.7);
-      }
-
-      .value {
-        display: inline-block;
-        font-size: 18px;
-        font-family: 'Quicksand';
-        padding: 12px;
-        height: 100%;
-      }
-
-      ~/.md ^[1..-1] {
-        width: 100%;
-        margin-left: 0%;
-      }
-    }
-  }
-
-  .helptext {
-    font-size: 14px;
-  }
-
-  .profileinfo {
-    width: 60%;
-    margin-left: 20%;
-
-    .row {
-      // clip-path: polygon(4% 0, 100% 0, 96% 100%, 0 100%);
-      transform: skew(30deg);
-      border: solid 2px $limeade;
-      margin-top: 10px;
-      margin-bottom: 10px;
-
-      .pkey {
-        width: 30%;
-        background: $limeade;
-        display: inline-block;
-        float: left;
-        font-weight: bold;
-        font-family: 'Roboto Slab';
-        font-size: 16px;
-        padding: 8px 15px;
-        height: 100%;
-        color: $black;
-        background: alpha($chartreuse, 0.7);
-
-        span {
+        .pkey {
+          width: 30%;
+          background: $limeade;
           display: inline-block;
-          transform: skew(-30deg);
-        }
-      }
+          float: left;
+          font-weight: bold;
+          font-family: 'Roboto Slab';
+          font-size: 16px;
+          padding: 8px 15px;
+          height: 100%;
+          color: $black;
+          background: alpha($chartreuse, 0.7);
 
-      .pvalue {
-        width: 70%;
-        transform: skew(-30deg);
-        display: inline-block;
-        font-size: 16px;
-        font-family: 'Quicksand';
-        padding: 8px;
-        height: 100%;
+          span {
+            display: inline-block;
+            transform: skew(-30deg);
+          }
+        }
+
+        .pvalue {
+          width: 70%;
+          transform: skew(-30deg);
+          display: inline-block;
+          font-size: 16px;
+          font-family: 'Quicksand';
+          padding: 8px;
+          height: 100%;
+        }
       }
     }
   }
 }
 </style>
-
-

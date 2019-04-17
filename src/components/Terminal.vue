@@ -7,7 +7,7 @@
         </span>
       </div>
     </button>
-    <div :class="$style.items" @click="focusTerminalInput">
+    <div :class="$style.items" @click="focusTerminalInput" ref="history">
       <REPL
         v-for="(item, i) in historyItems"
         :key="i"
@@ -151,9 +151,9 @@ export default {
       this.scrollToBottom();
     },
     scrollToBottom() {
-      const { terminal } = this.$refs;
+      const { history } = this.$refs;
       this.$nextTick(() => {
-        terminal.scrollTop = terminal.scrollHeight;
+        history.scrollTop = history.scrollHeight;
       });
     },
     getCommandPromise(cmd, args) {

@@ -19,7 +19,7 @@
       </span>
       <!-- <Countdown :until="hackathonStart" :class="$style.landing__countdown"/> -->
     </div>
-    <FloatingButton text="Register"/>
+    <!-- <FloatingButton text="Register"/> -->
   </div>
 </template>
 
