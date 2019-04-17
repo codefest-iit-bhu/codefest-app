@@ -17,6 +17,7 @@
 
 <script>
 import QuesAns from "@components/QuesAns";
+
 export default {
   components: {
     QuesAns

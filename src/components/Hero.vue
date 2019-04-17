@@ -51,10 +51,10 @@
 
 <script>
 import { TypingAnim } from "@js/utils";
+
 export default {
-  components: {},
-  mounted() {
-    if (["xl", "lg", "xxl"].includes(this.$mq)) {
+  methods: {
+    initMatrixRain() {
       const c = this.$refs.rains;
       var ctx = c.getContext("2d");
       c.height = window.innerHeight;
@@ -81,7 +81,15 @@ export default {
         requestAnimationFrame(draw);
       }
       draw();
+    },
+    tryMatrixRain() {
+      if (["lg", "xl", "xxl"].includes(this.$mq)) {
+        this.initMatrixRain();
+      }
     }
+  },
+  mounted() {
+    this.tryMatrixRain();
 
     this.animTyping = new TypingAnim(
       this.$refs.tagline,
@@ -94,6 +102,11 @@ export default {
     }, 2000);
     this.animTyping.type();
     this.isTyped = true;
+  },
+  watch: {
+    $mq: function() {
+      setTimeout(this.tryMatrixRain.bind(this), 500);
+    }
   }
 };
 </script>

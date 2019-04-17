@@ -82,6 +82,13 @@ export const navigation = {
       targetDir = targetDir.slice(backNav[0].length);
     }
 
+    if (
+      targetDir[0] !== "/" &&
+      !([".", "~"].includes(targetDir[0]) && targetDir[1] === "/")
+    ) {
+      targetDir = `./${targetDir}`;
+    }
+
     let currentDir = null;
     if (pwd && pwd.length > 0) {
       let hierarchy = this.getCurrentNav(pwd);

@@ -89,7 +89,7 @@ $appbar-glow-color = $chartreuse;
   .nav {
     height: $appbar-height;
     background: $appbar-color;
-    box-shadow: $appbar-glow-color 0 2px 10px 3px;
+    box-shadow: $appbar-glow-color 0 1px 10px 3px;
     font-family: 'Roboto Slab';
     font-size: 25px;
 
@@ -118,8 +118,7 @@ $appbar-glow-color = $chartreuse;
     position: relative;
     top: -($appbar-height);
     clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     width: $notch-width;
     height: 100%;
     z-index: 11;
