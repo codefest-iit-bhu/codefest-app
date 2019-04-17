@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.root">
+  <div :class="[$style.root, $style[$mq]]">
     <AppBar/>
     <main :class="$style.wrapper">
       <div :class="$style.authContainer">
@@ -11,13 +11,7 @@
                 <div :class="$style.field">
                   <label for="old__password" :class="$style.label">current password</label>
                   <span :class="$style.fieldWrapper">
-                    <input
-                      type="password"
-                      id="old__password"
-                      :class="$style.field"
-                      v-model="currentPasswd"
-                      required
-                    >
+                    <input type="password" id="old__password" v-model="currentPasswd" required>
                     <i
                       class="fas"
                       :class="isPasswordVisible('old__password') ? 'fa-eye' : 'fa-eye-slash'"
@@ -28,13 +22,7 @@
                 <div :class="$style.field">
                   <label for="new__password" :class="$style.label">new password</label>
                   <span :class="$style.fieldWrapper">
-                    <input
-                      type="password"
-                      id="new__password"
-                      :class="$style.field"
-                      v-model="newPasswd"
-                      required
-                    >
+                    <input type="password" id="new__password" v-model="newPasswd" required>
                     <i
                       class="fas"
                       :class="isPasswordVisible('new__password') ? 'fa-eye' : 'fa-eye-slash'"
@@ -116,193 +104,178 @@ export default {
   }
 };
 </script>
-    <style module lang="stylus">
-    @require '~@styles/theme';
-    @require '~@styles/anims';
+<style module lang="stylus">
+@require '~@styles/theme';
+@require '~@styles/anims';
 
-    .authContainer {
-      font-size: 16px;
-      font-family: courier, monospace;
-      max-width: 700px;
-      margin: 50px auto;
+.authContainer {
+  font-size: 16px;
+  font-family: courier, monospace;
+  max-width: 700px;
+  margin: 50px auto;
+  width: 100%;
+}
+
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+  padding: 100px 0;
+  position: relative;
+  top: 0;
+  z-index: 1;
+  font-family: 'Roboto Mono';
+  font-size: 18px;
+}
+
+.root {
+  height: 100%;
+}
+
+.form {
+  margin: 20px;
+  position: relative;
+  border: 1px solid $chartreuse;
+  border-radius: 5px;
+  box-shadow: inset 0px 0px 15px $chartreuse;
+  background: #111;
+
+  .formNav {
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid $chartreuse;
+    padding: 20px;
+    margin: 0;
+
+    i {
+      cursor: pointer;
+
+      &.active {
+        color: $chartreuse;
+      }
+    }
+  }
+
+  .card {
+    padding: 10px 20px;
+    min-height: 300px;
+    margin: 5px;
+    width: 100%;
+    position: relative;
+
+    h3 {
+      color: $chartreuse;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .fieldsContainer {
       width: 100%;
+      padding: 5px;
+      margin: 5px auto;
+      text-align: right;
     }
 
-    .wrapper {
-      width: 80%;
-      margin: 0 auto;
-      padding: 100px 0;
-      position: relative;
-      top: 0;
-      z-index: 1;
-      font-family: 'Roboto Mono';
-      font-size: 18px;
-    }
+    .field {
+      margin: 10px auto;
+      margin-top: 20px;
+      text-align: center;
 
-    .root {
-      height: 100%;
-    }
-
-    .form {
-      margin: 20px;
-      position: relative;
-      border: 1px solid $chartreuse;
-      border-radius: 4px 4px 0 0;
-      box-shadow: inset 0px 0px 15px $chartreuse;
-
-      .formNav {
-        width: 100%;
-        position: absolute;
-        bottom: 0;
-        text-align: center;
-        border-top: 1px solid $chartreuse;
-        padding: 20px;
-        margin: 0;
-        border-radius: 0 0 4px 4px;
-
-        i {
-          cursor: pointer;
-
-          &.active {
-            color: $chartreuse;
-          }
-        }
+      input, select {
+        text-align: left;
+        display: inline-block;
+        height: 30px;
+        width: calc(100% - 120px);
+        color: white;
+        border: 0;
+        outline: 0;
+        margin: auto;
+        font-size: 16px;
+        border-radius: 5px;
+        padding-left: 5px;
+        background: #fff2;
       }
 
-      .card {
-        padding: 20px;
-        margin: 10px;
+      .fieldWrapper {
         width: 100%;
         position: relative;
 
-        h3 {
-          color: $chartreuse;
-          text-align: center;
-          text-transform: uppercase;
-        }
-
-        .loader {
-          margin: auto;
+        i {
+          top: 0;
+          right: 7px;
           position: absolute;
-          top: calc(50% - 60px);
-          left: calc(50% - 30px);
-          border: 5px solid $white;
-          border-radius: 50%;
-          border-top: 5px solid $chartreuse;
-          width: 60px;
-          height: 60px;
-          -webkit-animation: spin 2s linear infinite; /* Safari */
-          animation: spin 2s linear infinite;
+          cursor: pointer;
         }
+      }
 
-        @keyframes spin {
-          0% {
-            -webkit-transform: rotate(0deg);
-          }
+      option {
+        color: black;
+      }
 
-          100% {
-            -webkit-transform: rotate(360deg);
-          }
-        }
+      .label {
+        display: inline-block;
+        text-align: left;
+        width: 100px;
+        color: white;
+        height: 30px;
+      }
+    }
 
-        @keyframes spin {
-          0% {
-            transform: rotate(0deg);
-          }
+    .btnStyle {
+      text-align: center;
 
-          100% {
-            transform: rotate(360deg);
-          }
-        }
+      .next {
+        border: 0;
+        background: transparent;
+        color: $white;
+        border-radius: 100%;
+        font-size: 30px;
+        height: 30px;
+        width: 30px;
+        cursor: pointer;
+        text-align: center;
 
-        .fieldsContainer {
-          width: 100%;
-          margin-bottom: 15px;
-          text-align: right;
-        }
-
-        .field {
-          input, select {
-            height: 30px;
-            color: white;
-            border: 0;
-            outline: 0;
-            max-width: 400px;
-            width: 100%;
-            font-size: 16px;
-            background: #fff2;
-            border-radius: 5px;
-            padding-left: 5px;
-            margin-bottom: 15px;
-          }
-
-          .fieldWrapper {
-            width: 100%;
-            position: relative;
-
-            i {
-              top: 0;
-              right: 7px;
-              position: absolute;
-              cursor: pointer;
-            }
-          }
-
-          option {
-            color: black;
-          }
-
-          .label {
-            float: left;
-            clear: both;
-            color: white;
-            text-align: right;
-            height: 30px;
-            margin-bottom: 15px;
-          }
-        }
-
-        .btnStyle {
-          text-align: center;
-
-          .submit {
-            border-radius: 4px;
-            background: $chartreuse;
-            color: black;
-            border: 1px solid $limeade;
-            height: 30px;
-            width: 70px;
-            cursor: pointer;
-            text-align: center;
-
-            &:hover {
-              background: $limeade;
-              color: $white;
-            }
-          }
-
-          .next {
-            border: 0;
-            background: transparent;
-            color: $white;
-            border-radius: 100%;
-            font-size: 30px;
-            height: 30px;
-            width: 30px;
-            cursor: pointer;
-            text-align: center;
-
-            &:hover {
-              color: $chartreuse;
-            }
-          }
+        &:hover {
+          color: $chartreuse;
         }
       }
     }
 
-    @media screen and (max-width: 769px) {
-      .wrapper {
-        width: 90%;
+    .social {
+      width: 100%;
+      max-width: 600px;
+      margin: auto;
+      text-align: center;
+      padding: 5px;
+      margin-top: 20px;
+      border: 0;
+      border-top: 1px solid $chartreuse;
+
+      .socialButton {
+        background-color: Transparent;
+        background-repeat: no-repeat;
+        border: none;
+        cursor: pointer;
+        overflow: hidden;
+        outline: none;
+
+        img {
+          margin: 10px;
+          width: 40px;
+          height: 40px;
+        }
       }
     }
+  }
+}
+
+.xs, .sm {
+  .form {
+    .field {
+      input, select, .label {
+        font-size: 16px;
+        width: 100%;
+      }
+    }
+  }
+}
 </style>
