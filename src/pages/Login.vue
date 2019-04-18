@@ -5,16 +5,32 @@
       <div :class="$style.authContainer">
         <TabLayout :tabs="tabs">
           <div :class="$style.formContainer" slot="login">
+            <BarLoader :loading="loading" color="#86FF00" :height="10" :class="$style.loader"/>
             <form :class="$style.form" @submit.prevent="emailLogin">
               <div :class="$style.fieldContainer">
                 <label for="email" :class="$style.label">email</label>
                 <input type="email" :class="$style.field" v-model="email" required>
                 <br>
                 <label for="password" :class="$style.label">password</label>
-                <input type="password" :class="$style.field" v-model="password" required>
+                <span :class="$style.fieldWrapper">
+                  <input
+                    type="password"
+                    :class="$style.field"
+                    v-model="password"
+                    id="login__password"
+                    pattern=".{6,}"
+                    title="Must be greater than 6 letters."
+                    required
+                  >
+                  <i
+                    class="fas"
+                    :class="isPasswordVisible('login__password') ? 'fa-eye' : 'fa-eye-slash'"
+                    @click="togglePasswordVisibility('login__password')"
+                  ></i>
+                </span>
               </div>
               <div :class="$style.forgotPasswd">
-                <a href="#">Forgot Password</a>
+                <router-link to="/password/reset">Forgot Password?</router-link>
               </div>
               <div :class="$style.btnStyle">
                 <button value=">" :class="$style.submit">
@@ -36,9 +52,10 @@
           </div>
 
           <div :class="$style.formContainer" slot="register">
+            <BarLoader :loading="loading" color="#86FF00" :height="10" :class="$style.loader"/>
             <form :class="$style.form" @submit.prevent="emailRegister">
               <div :class="$style.fieldContainer">
-                <label for="name" :class="$style.label">name *</label>
+                <label for="name" :class="$style.label">name</label>
                 <input
                   type="text"
                   id="name"
@@ -48,7 +65,7 @@
                   required
                 >
                 <br>
-                <label for="email" :class="$style.label">email *</label>
+                <label for="email" :class="$style.label">email</label>
                 <input
                   type="email"
                   id="email"
@@ -58,17 +75,23 @@
                   required
                 >
                 <br>
-                <label for="password" :class="$style.label">password *</label>
-                <input type="password" :class="$style.field" v-model="password" required>
-                <br>
-                <label for="referral" :class="$style.label">referral code</label>
-                <input
-                  type="text"
-                  id="referral"
-                  name="referral"
-                  :class="$style.field"
-                  v-model="referral"
-                >
+                <label for="password" :class="$style.label">password</label>
+                <span :class="$style.fieldWrapper">
+                  <input
+                    type="password"
+                    :class="$style.field"
+                    v-model="password"
+                    id="register__password"
+                    pattern=".{6,}"
+                    title="Must be greater than 6 letters."
+                    required
+                  >
+                  <i
+                    class="fas"
+                    :class="isPasswordVisible('register__password') ? 'fa-eye' : 'fa-eye-slash'"
+                    @click="togglePasswordVisibility('register__password')"
+                  ></i>
+                </span>
               </div>
               <div :class="$style.btnStyle">
                 <button value=">" :class="$style.submit">
@@ -96,23 +119,26 @@
 </template>
 
 <script>
+import firebase from "firebase";
+
 import AppBar from "@components/Menu/AppBar";
 import Footer from "@components/Footer";
 import TabLayout from "@components/layouts/TabLayout";
-import firebase from "firebase";
+import { BarLoader } from "@saeris/vue-spinners";
 
 export default {
   components: {
     AppBar,
     Footer,
-    TabLayout
+    TabLayout,
+    BarLoader
   },
   data() {
     return {
       name: "",
       email: "",
       password: "",
-      referral: "",
+      referral: this.$route.query.referral || "",
       tabs: [
         {
           name: "login",
@@ -123,11 +149,13 @@ export default {
           title: "Register"
         }
       ],
-      loading: false
+      loading: false,
+      __stubbed: 0
     };
   },
   methods: {
     emailLogin() {
+      this.loading = true;
       firebase
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
@@ -135,18 +163,23 @@ export default {
           this.successfulAuth(result, true);
         })
         .catch(err => {
-          alert(err.message);
+          this.loading = false;
+          this.$toasted.global.error_post({ message: err.message });
         });
     },
     emailRegister() {
+      this.loading = true;
       firebase
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(result => {
           this.successfulAuth(result, true);
+
+          result.user.sendEmailVerification().then(() => {});
         })
         .catch(err => {
-          alert(err.message);
+          this.loading = false;
+          this.$toasted.global.error_post({ message: err.message });
         });
     },
     googleLogin() {
@@ -162,63 +195,102 @@ export default {
       this.socialLogin(provider);
     },
     socialLogin(provider) {
+      this.loading = true;
       firebase
         .auth()
-        .signInWithPopup(provider)
-        .then(result => {
-          this.successfulAuth(result, false);
-        })
+        .signInWithRedirect(provider)
         .catch(err => {
-          alert(err.message);
+          this.loading = false;
+          this.$toasted.global.error_post({ message: err.message });
         });
     },
     successfulAuth(result, byEmail) {
+      this.loading = true;
       const { isNewUser } = result.additionalUserInfo;
+
       result.user
         .getIdToken(true)
         .then(idToken => {
           if (isNewUser)
-            this._register(
-              idToken,
-              byEmail ? this.name : result.user.displayName,
-              this.referral
-            );
+            this.$recaptcha("login").then(token => {
+              this._register(
+                idToken,
+                byEmail ? this.name : result.user.displayName,
+                this.referral,
+                token
+              );
+            });
           else this._login(idToken);
         })
         .catch(err => {
-          alert(err.message);
+          this.loading = false;
+          this.$toasted.global.error_post({ message: err.message });
           result.user.delete();
         });
     },
     _login(idToken) {
-      this.loading = true;
       this.$store
         .dispatch("login", { idToken })
         .then(_ => {
           this.loading = false;
-          this.onRedirectAuth(_);
+          this.onRedirectAuth(false);
         })
-        .catch(_ => (this.loading = false));
+        .catch(err => {
+          this.loading = false;
+          this.$toasted.global.error_post({ message: err.message });
+        });
     },
-    _register(idToken, name, referralCode) {
-      this.loading = true;
+    _register(idToken, name, referralCode, recaptchaToken) {
       this.$store
         .dispatch("register", {
           idToken,
           name,
-          referralCode
+          referralCode,
+          recaptchaToken
         })
         .then(_ => {
           this.loading = false;
-          this.onRedirectAuth(_);
+          this.onRedirectAuth(true);
         })
-        .catch(_ => (this.loading = false));
+        .catch(err => {
+          this.loading = false;
+          this.$toasted.global.error_post({ message: err.message });
+        });
     },
-    onRedirectAuth() {
-      console.log(arguments[0]);
-      const path = this.$route.query.redirect || "/";
+    onRedirectAuth(isRegistered) {
+      const path =
+        this.$route.query.redirect ||
+        (isRegistered ? "/profile/edit" : "/dashboard");
       this.$router.push({ path });
+    },
+    togglePasswordVisibility(inputId) {
+      const inputElem = document.getElementById(inputId);
+      inputElem.type = inputElem.type === "password" ? "text" : "password";
+      this.$data.__stubbed++;
     }
+  },
+  computed: {
+    isPasswordVisible() {
+      this.$data.__stubbed; // To make this computed data reactive.
+      return inputId => {
+        const inputElem = document.getElementById(inputId);
+        if (inputElem) return inputElem.type !== "password";
+      };
+    }
+  },
+  created() {
+    this.loading = true;
+    firebase
+      .auth()
+      .getRedirectResult()
+      .then(result => {
+        if (!result.user) this.loading = false;
+        else if (result.credential) this.successfulAuth(result, false);
+      })
+      .catch(err => {
+        this.loading = false;
+        this.$toasted.global.error_post({ message: err.message });
+      });
   }
 };
 </script>
@@ -249,6 +321,14 @@ export default {
   height: 100%;
 }
 
+.formContainer {
+  .loader {
+    width: 100%;
+    position: absolute;
+    top: 0;
+  }
+}
+
 .form {
   margin: 50px;
 }
@@ -268,7 +348,7 @@ export default {
   max-width: 400px;
   width: 100%;
   font-size: 16px;
-  background: #fff2;
+  background-color: #fff2;
   border-radius: 5px;
   padding-left: 5px;
   margin-bottom: 20px;
@@ -281,9 +361,22 @@ export default {
   height: 30px;
 }
 
+.fieldWrapper {
+  width: 100%;
+  position: relative;
+
+  i {
+    top: 0;
+    right: 7px;
+    position: absolute;
+    cursor: pointer;
+  }
+}
+
 .forgotPasswd {
   width: 100%;
   text-align: right;
+  margin-bottom: 20px;
 
   a {
     color: $chartreuse;

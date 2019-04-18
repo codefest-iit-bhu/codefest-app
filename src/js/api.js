@@ -1,5 +1,6 @@
 import Frisbee from "frisbee";
 import { MakeQuerablePromise } from "@js/utils";
+import store from "@store";
 
 const api = new Frisbee({
   baseURI: "https://codefest-api.herokuapp.com",
@@ -9,8 +10,9 @@ const api = new Frisbee({
   }
 });
 
-const getApiOptions = function(token, body) {
+const getApiOptions = function({ body }) {
   const options = {};
+  const token = store.getters.authToken;
   if (token) {
     options["headers"] = {
       Authorization: `Token ${token}`
@@ -25,6 +27,8 @@ const apiWrapper = function(promise) {
     new Promise((resolve, reject) => {
       promise
         .then(response => {
+          if (response.status == STATUS.ERROR_UNAUTHENTICATED)
+            store.dispatch("logout");
           if (response.status == STATUS.SUCCESS) resolve(response);
           else reject(response);
         })
@@ -60,10 +64,13 @@ export class Response extends Object {
   }
 
   static responseError(response) {
-    const { message } = response.err;
+    const message =
+      response.body.detail ||
+      response.body.non_field_errors[0] ||
+      response.err.message;
     switch (response.status) {
       case 400:
-        return new Response(null, STATUS.ERROR_BAD_REQUEST, message);
+        return new Response(response.body, STATUS.ERROR_BAD_REQUEST, message);
       case 401:
         return new Response(null, STATUS.ERROR_UNAUTHENTICATED, message);
       case 403:
@@ -71,7 +78,7 @@ export class Response extends Object {
       case 404:
         return new Response(null, STATUS.ERROR_NOT_FOUND, message);
       default:
-        return new Response(null, STATUS.ERROR_UNKNOWN, message);
+        return new Response(response.body, STATUS.ERROR_UNKNOWN, message);
     }
   }
 
@@ -94,16 +101,16 @@ api.interceptor.register({
 });
 
 export default {
-  fetch(url, { token, body }) {
-    return apiWrapper(api.get(url, getApiOptions(token, body)));
+  fetch(url, options = {}) {
+    return apiWrapper(api.get(url, getApiOptions(options)));
   },
-  post(url, { token, body }) {
-    return apiWrapper(api.post(url, getApiOptions(token, body)));
+  post(url, options = {}) {
+    return apiWrapper(api.post(url, getApiOptions(options)));
   },
-  put(url, { token, body }) {
-    return apiWrapper(api.put(url, getApiOptions(token, body)));
+  put(url, options = {}) {
+    return apiWrapper(api.put(url, getApiOptions(options)));
   },
-  delete(url, { token, body }) {
-    return apiWrapper(api.delete(url, getApiOptions(token, body)));
+  delete(url, options = {}) {
+    return apiWrapper(api.del(url, getApiOptions(options)));
   }
 };

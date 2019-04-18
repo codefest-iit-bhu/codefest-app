@@ -5,6 +5,12 @@
   status = 200
 
 [[redirects]]
+  # For robots.txt
+  from = "/robots.txt"
+  to = "/assets/robots.txt"
+  status = 200
+
+[[redirects]]
   # For our VueJs SPA.
   from = "/*"
   to = "/index.html"

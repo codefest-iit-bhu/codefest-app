@@ -1,39 +1,37 @@
 <template>
-  <div>
-    <div :class="[$style.closeBtn,hideEvent,expandEvent]" @click="isShown = false">
-      <i class="fas fa-chevron-down"></i>
-    </div>
-    <div :class="[$style.openBtn,showEvent]" @click="isShown = true">
-      <i class="fas fa-chevron-up"></i>
-    </div>
-    <div
-      :class="[$style.terminal, terminalStateStyle, terminalShownStyle]"
-      @click="focusTerminalInput"
-    >
-      <div :class="$style.items">
-        <REPL
-          v-for="(item, i) in historyItems"
-          :key="i"
-          :propInput="item.input"
-          :propOutput="item.output"
-          :pwd="item.pwd"
-        />
-        <REPL
-          ref="cli"
-          :pwd="pwd"
-          :isActive="true"
-          @pwdChanged="initCommandsOnPageChange"
-          @onSubmitInput="onSubmitInput"
-          @onBlurInput="collapseTerminal"
-        />
+  <div :class="[$style.terminal, terminalStateStyle, terminalShownStyle]" ref="terminal">
+    <button :class="$style.togglebtn" @click="toggleShowTerminal">
+      <div>
+        <span class="absolute-center">
+          <i class="fas fa-chevron-down" :style="chevronRotateStyle"></i>
+        </span>
       </div>
+    </button>
+    <div :class="$style.items" @click="focusTerminalInput" ref="history">
+      <REPL
+        v-for="(item, i) in historyItems"
+        :key="i"
+        :propInput="item.input"
+        :propOutput="item.output"
+        :pwd="item.pwd"
+      />
+      <REPL
+        ref="cli"
+        :pwd="pwd"
+        :isActive="true"
+        @pwdChanged="initCommandsOnPageChange"
+        @onSubmitInput="onSubmitInput"
+        @onBlurInput="collapseTerminal"
+      />
     </div>
   </div>
 </template>
+
 <script>
 import { navigation, terminal } from "@store/navigation";
 import { CommandList } from "@js/commands";
 import { CommandNotFoundError } from "@js/exceptions";
+
 import REPL from "./REPL";
 
 export default {
@@ -51,12 +49,14 @@ export default {
   },
   model: {
     prop: "isExpanded",
-    event: "onTerminalStateChanged"
+    event: "onTerminalExpand"
   },
   data() {
     return {
+      shouldShow: true,
       isShown: false,
       isHelpShown: false,
+      angle: 0,
       historyItems: terminal.getHistory(),
       pwd: []
     };
@@ -77,14 +77,8 @@ export default {
     terminalShownStyle() {
       return this.isShown ? this.$style.shown : "";
     },
-    hideEvent() {
-      return this.isShown ? "" : this.$style.hideBtn;
-    },
-    showEvent() {
-      return this.isShown ? this.$style.hideBtn : "";
-    },
-    expandEvent() {
-      return this.isExpanded ? this.$style.moveUp : "";
+    chevronRotateStyle() {
+      return { transform: `rotate(${this.angle}deg)` };
     }
   },
   mounted() {
@@ -104,27 +98,29 @@ export default {
     focusTerminalInput(event) {
       if (event.target.tagName !== "A") {
         this.$refs.cli.focusInput();
-        this.changeTerminalState(true);
+        if (!this.isExpanded && !this.isHelpShown) {
+          this.$refs.cli.submitInput("help");
+          this.isHelpShown = true;
+        }
+        this.$emit("onTerminalExpand", true);
       }
     },
     initCommandsOnPageChange() {
       this.$refs.cli.submitInput("ls");
     },
     showTerminal() {
-      this.isShown = true;
+      if (this.shouldShow) this.isShown = true;
+      this.changeTerminalState(true);
     },
     hideTerminal() {
       this.isShown = false;
+      this.changeTerminalState(false);
     },
     collapseTerminal() {
-      this.changeTerminalState(false);
       this.scrollToBottom();
+      this.$emit("onTerminalExpand", false);
     },
     changeTerminalState(state) {
-      if (state && !this.isExpanded && !this.isHelpShown) {
-        this.$refs.cli.submitInput("help");
-        this.isHelpShown = true;
-      }
       this.$emit("onTerminalStateChanged", state);
     },
     animateScrollShow() {
@@ -134,6 +130,16 @@ export default {
     noAnimateScrollShow() {
       window.removeEventListener("scroll", this.handleScroll);
       this.showTerminal();
+    },
+    toggleShowTerminal() {
+      this.shouldShow = !this.shouldShow;
+      if (this.shouldShow) {
+        TweenLite.to(this.$data, 0.35, { angle: 0 });
+        this.showTerminal();
+      } else {
+        TweenLite.to(this.$data, 0.35, { angle: 180 });
+        this.hideTerminal();
+      }
     },
 
     submitResult(status, output) {
@@ -145,8 +151,9 @@ export default {
       this.scrollToBottom();
     },
     scrollToBottom() {
+      const { history } = this.$refs;
       this.$nextTick(() => {
-        this.$el.scrollTop = this.$el.scrollHeight;
+        history.scrollTop = history.scrollHeight;
       });
     },
     getCommandPromise(cmd, args) {
@@ -190,15 +197,35 @@ $cli-text = $chartreuse;
 $expanded-height = 200px;
 $collapsed-height = 90px;
 
+.togglebtn {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%);
+  background: $chartreuse;
+  color: $chartreuse;
+  right: 5px;
+  top: -30px;
+  z-index: 26;
+  cursor: pointer;
+  padding: 0.5px;
+
+  div {
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%);
+    background: $cod-gray;
+  }
+}
+
 .terminal {
   background: $black;
   width: 100%;
   z-index: 25;
-  box-shadow: 1px -2px 2px 5px white;
+  box-shadow: $chartreuse 0 -1px 10px 3px;
   stick('bottom');
-  font: 800 18px 'Courier New';
+  font: 400 18px 'Roboto Slab';
   color: $cli-text;
-  overflow-y: auto;
 
   &.expanded {
     height: $expanded-height;
@@ -214,6 +241,22 @@ $collapsed-height = 90px;
 .items {
   height: 100%;
   width: 100%;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+  }
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    background-color: #F5F5F5;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border: 2px solid #555555;
+  }
 }
 
 .blink {
@@ -221,56 +264,5 @@ $collapsed-height = 90px;
 }
 
 .shown {
-}
-
-.terminal::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: #F5F5F5;
-}
-
-.terminal::-webkit-scrollbar {
-  width: 10px;
-  background-color: #F5F5F5;
-}
-
-.terminal::-webkit-scrollbar-thumb {
-  background-color: #000000;
-  border: 2px solid #555555;
-}
-
-.closeBtn {
-  position: fixed;
-  right: 3px;
-  z-index: 999;
-  bottom: 100px;
-  color: $chartreuse;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  &.hideBtn {
-    display: none;
-  }
-
-  &.moveUp {
-    bottom: 210px;
-  }
-}
-
-.openBtn {
-  position: fixed;
-  right: 3px;
-  z-index: 999;
-  bottom: 10px;
-  color: $chartreuse;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  &.hideBtn {
-    display: none;
-  }
 }
 </style>

@@ -21,6 +21,12 @@
       >
         <img src="@assets/haxplore/logo-text.svg">
       </li>
+      <router-link to="/" slot="notch" v-if="!isMinimal">
+        <img src="assets/cf19-white-logo.svg">
+      </router-link>
+      <router-link to="/haxplore" slot="notch" v-else>
+        <img src="assets/haxplore/logo-text.svg" @click="$emit('scrollTop')">
+      </router-link>
     </AppbarLayout>
     <div :class="$style.sidebar" ref="sidebar">
       <mq-layout mq="md+" v-show="isSideNavigationShown">
@@ -243,11 +249,11 @@ export default {
       }
     }
 
-    ~/.md ^[1..-1], ~/.lg ^[1..-1], ~/.xl ^[1..-1] {
+    ~/.md ^[1..-1], ~/.lg ^[1..-1], ~/.xl ^[1..-1], ~/.xxl ^[1..-1] {
       position: fixed;
       right: -140px;
       top: 0;
-      width: 140px;
+      width: 150px;
       padding: 15px;
       display: flex;
       flex-flow: column;

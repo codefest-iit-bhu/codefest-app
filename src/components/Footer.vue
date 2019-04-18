@@ -1,8 +1,12 @@
 <template>
   <footer :class="$style.footer">
+    <div :class="$style.logo">
+      <div :class="$style.image">
+        <img src="@assets/logo.png">
+      </div>
+      <p>Copyright © CodeFest'19</p>
+    </div>
     <i :class="$style.heart"/>
-    <span>Codefest' 19</span>
-
     <span :class="$style.socialIcons">
       <a href="https://www.facebook.com/codefest/">
         <span class="fa-stack fa-lg">
@@ -37,21 +41,38 @@ export default {};
 .footer {
   font-size: 10px;
   font-weight: 800;
-  background: $outer-space;
+  background: $mine-shaft;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  font-family: var(--font-header);
+  font-family: 'Quicksand';
   border-top: 2px solid rgba(34, 40, 49, 0.3);
   color: rgba($white, 0.65);
   justify-content: center;
   align-items: center;
   display: flex;
-  height: 52px;
+  flex-flow: row;
+  flex-wrap: wrap;
   margin-top: 20px;
   width: 100%;
-  position: absolute;
-  bottom: 0;
-  z-index: 20;
+
+  .logo {
+    width: 100%;
+    margin-top: 20px;
+
+    .image {
+      width: 160px;
+      margin: 0 auto;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    p {
+      text-align: center;
+      color: $white;
+    }
+  }
 
   span {
     font-family: 'Quicksand';
@@ -81,11 +102,12 @@ export default {};
 }
 
 .heart {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
+  display: inline;
   background: transparent url('@assets/twitter_heart.png') no-repeat;
   background-size: 2900%;
-  margin: 0 -8px;
+  margin: 0 0;
 
   &:hover {
     background-position: right;

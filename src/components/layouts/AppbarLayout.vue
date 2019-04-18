@@ -10,9 +10,7 @@
     </div>
     <div :class="$style.notch">
       <div :class="$style.logo">
-        <router-link to="/">
-          <img src="assets/logo.png">
-        </router-link>
+        <slot name="notch"/>
       </div>
     </div>
   </div>
@@ -47,7 +45,7 @@ export default {
     },
     handleAnimation(mq) {
       if (!this.$props.doAnimate) return;
-      if (mq === "lg" || mq === "xl") this.animateScrollShow();
+      if (["lg", "xl", "xxl"].includes(this.$mq)) this.animateScrollShow();
       else {
         this.noAnimateScrollShow();
         this.showAppbar();
@@ -91,7 +89,7 @@ $appbar-glow-color = $chartreuse;
   .nav {
     height: $appbar-height;
     background: $appbar-color;
-    box-shadow: $appbar-glow-color 0 2px 10px 3px;
+    box-shadow: $appbar-glow-color 0 1px 10px 3px;
     font-family: 'Roboto Slab';
     font-size: 25px;
 
@@ -110,14 +108,17 @@ $appbar-glow-color = $chartreuse;
       margin: 0;
       margin-bottom: 20px;
     }
+
+    ul {
+      list-style: none;
+    }
   }
 
   .notch {
     position: relative;
     top: -($appbar-height);
     clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     width: $notch-width;
     height: 100%;
     z-index: 11;

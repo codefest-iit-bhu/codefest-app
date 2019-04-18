@@ -28,6 +28,9 @@ export const navigation = {
       },
       haxplore: {
         ".": "/haxplore"
+      },
+      dashboard: {
+        ".": "/dashboard"
       }
     },
     "404": {
@@ -80,6 +83,13 @@ export const navigation = {
     if (backNav) {
       pwd = pwd.slice(0, -backNav[0].split("/").length);
       targetDir = targetDir.slice(backNav[0].length);
+    }
+
+    if (
+      targetDir[0] !== "/" &&
+      !([".", "~"].includes(targetDir[0]) && targetDir[1] === "/")
+    ) {
+      targetDir = `./${targetDir}`;
     }
 
     let currentDir = null;

@@ -40,7 +40,7 @@
         <CardLayout :class="$style.prize__consolation" :extraCardClass="$style.whiteCard">
           <img src="@assets/haxplore/prize-consolation.png" slot="header">
           <span :class="$style.txt" slot="content">
-            <h2>Zebronics goodies</h2>
+            <h2>Gadgets</h2>
             <h4>6th, 7th & 8th Prize</h4>
           </span>
         </CardLayout>

@@ -6,16 +6,14 @@ Vue.use(Router);
 
 const router = new Router({
   mode: "history",
-  routes: [
-    {
+  routes: [{
       name: "~",
       path: "/",
       component: () => import(`@pages/Home`),
       meta: {
         title: "CodeFest '19 | IIT (BHU) Varanasi",
         metaTags: [],
-        noTerminal: false,
-        requiresAuth: true
+        noTerminal: false
       }
     },
     {
@@ -45,28 +43,57 @@ const router = new Router({
       meta: {
         title: "CodeFest '19 | Login",
         metaTags: [],
-        noTerminal: false
+        noTerminal: true
       }
     },
     {
-      name: "~/dashboard",
-      path: "/dashboard",
-      component: () => import(`@pages/Dashboard`),
+      name: "~/password/change",
+      path: "/password/change",
+      component: () => import(`@pages/ChangePassword`),
       meta: {
-        title: "CodeFest '19 | Dashboard",
+        title: "CodeFest '19 | Change Password",
         metaTags: [],
         noTerminal: false,
         requiresAuth: true
       }
     },
     {
-      name: "~/profile",
-      path: "/profile",
-      component: () => import(`@pages/Profile`),
+      name: "~/dashboard",
+      path: "/dashboard",
+      component: () => import(`@pages/Dashboard`),
+      props: {
+        isHomeView: true
+      },
       meta: {
-        title: "CodeFest '19 | Profile",
+        title: "CodeFest '19 | Dashboard",
         metaTags: [],
-        noTerminal: false
+        noTerminal: true,
+        requiresAuth: true
+      }
+    },
+    {
+      name: "~/dashboard/events",
+      path: "/dashboard/events",
+      component: () => import(`@pages/Dashboard`),
+      props: {
+        isEventsView: true
+      },
+      meta: {
+        title: "CodeFest '19 | Event Registration",
+        metaTags: [],
+        noTerminal: true,
+        requiresAuth: true
+      }
+    },
+    {
+      name: "~/profile/edit",
+      path: "/profile/edit",
+      component: () => import(`@pages/ProfileEdit`),
+      meta: {
+        title: "CodeFest '19 | Profile Edit",
+        metaTags: [],
+        noTerminal: true,
+        requiresAuth: true
       }
     },
     {
@@ -75,6 +102,16 @@ const router = new Router({
       component: () => import(`@pages/Hacksplore`),
       meta: {
         title: "CodeFest '19 | HaXplore",
+        metaTags: [],
+        noTerminal: true
+      }
+    },
+    {
+      name: "~/password/reset",
+      path: "/password/reset",
+      component: () => import(`@components/ForgotPassword`),
+      meta: {
+        title: "Forgot Password",
         metaTags: [],
         noTerminal: true
       }
@@ -90,7 +127,7 @@ const router = new Router({
       component: () => import(`@pages/404`),
       meta: {
         title: "CodeFest '19 | 404",
-        noTerminal: false
+        noTerminal: true
       }
     }
   ],
@@ -152,13 +189,23 @@ router.beforeEach((to, from, next) => {
     .forEach(tag => document.head.appendChild(tag));
 
   // Handle secure routes
+  const {
+    isLoggedIn
+  } = store.getters;
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (store.getters.isLoggedIn) return next();
+    if (isLoggedIn) return next();
+
     return next({
       name: "~/login",
-      query: { redirect: to.fullPath }
+      query: {
+        redirect: to.fullPath
+      }
     });
   }
+  if (isLoggedIn && to.name === "~/login")
+    return next({
+      name: "~/dashboard"
+    });
 
   next();
 });

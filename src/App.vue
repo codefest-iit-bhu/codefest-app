@@ -6,6 +6,7 @@
       v-model="terminalExpanded"
       ref="terminal"
       v-if="shouldShowTerminal"
+      @onTerminalStateChanged="terminalStateChanged"
     />
   </div>
 </template>
@@ -20,7 +21,8 @@ export default {
   data() {
     return {
       current: null,
-      terminalExpanded: false
+      terminalExpanded: false,
+      isTerminalShown: true
     };
   },
   computed: {
@@ -30,7 +32,7 @@ export default {
       return !(this.$mq === "sm" || this.$mq === "xs" || noTerminal);
     },
     appBottomPadding: function() {
-      if (this.shouldShowTerminal)
+      if (this.shouldShowTerminal && this.isTerminalShown)
         return this.terminalExpanded ? "200px" : "90px";
       else return "0px";
     }
@@ -39,9 +41,14 @@ export default {
     showTerminal() {
       const { terminal } = this.$refs;
       if (!terminal) return;
-      if (document.body.clientHeight > window.innerHeight)
+      console.log(document.body.clientHeight)
+      console.log(1.5 * window.innerHeight)
+      if (document.body.clientHeight > 1.5 * window.innerHeight)
         terminal.animateScrollShow();
       else terminal.noAnimateScrollShow();
+    },
+    terminalStateChanged(isShown) {
+      this.isTerminalShown = isShown;
     }
   },
   watch: {

@@ -1,43 +1,73 @@
 <template>
   <div :class="[$style.wrapper, $style[$mq]]">
     <AppbarLayout v-bind="this.$attrs">
-      <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl'].includes(this.$mq)">
+      <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
         <router-link to="/events">
           Events
           <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
         </router-link>
       </li>
-      <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl'].includes(this.$mq)">
+      <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
         <router-link to="/haxplore">
           HaXplore
           <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
         </router-link>
       </li>
-      <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl'].includes(this.$mq)">
-        <a href="https://goo.gl/DrCFHB" target="_blank">
-          <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>Brochure
+      <li
+        :class="$style.link"
+        slot="right"
+        v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
+        v-show="showDashboardActions"
+      >
+        <router-link to="/dashboard">
+          <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>Dashboard
+        </router-link>
+      </li>
+      <li
+        :class="$style.link"
+        slot="right"
+        v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
+        v-show="showDashboardActions"
+      >
+        <a @click="authLogout">
+          <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>Logout
         </a>
+      </li>
+      <li
+        :class="$style.link"
+        slot="right"
+        v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
+        v-show="!showDashboardActions"
+      >
+        <router-link to="/login">
+          <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>Login
+        </router-link>
       </li>
       <li :id="$style.toggleSidebar" slot="left" v-if="['xs', 'sm'].includes(this.$mq)">
         <a class="bm-toggle" @click="openSidebar">
           <i class="fa fa-bars"></i>
         </a>
       </li>
+      <router-link to="/" slot="notch">
+        <img src="assets/cf19-white-logo.svg" @click="clickNotch">
+      </router-link>
     </AppbarLayout>
     <div :class="$style.sidebar" ref="sidebar">
       <mq-layout mq="md+" v-show="isSideNavigationShown" :class="$style.sidebarBack">
         <ul @mouseover="isSideNavigationIdle = false" @mouseleave="isSideNavigationIdle = true">
-          <slot></slot>
+          <template v-for="slot in Object.keys($slots)">
+            <slot :name="slot"></slot>
+          </template>
         </ul>
       </mq-layout>
 
       <mq-layout :mq="['xs', 'sm']">
         <Slide :isOpen="isSidebarOpen" @closeSideBar="onCloseSideBar" :width="sideBarWidth">
-          <ul>
+          <ul :class="$style.sidebarList">
             <li :class="$style.link">
               <router-link to="/events">Events</router-link>
-              <div :class="$style.eventList">
-                <slot></slot>
+              <div :class="$style.subList">
+                <slot name="events"></slot>
               </div>
             </li>
             <li :class="$style.link">
@@ -46,8 +76,19 @@
                 <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
               </router-link>
             </li>
-            <li :class="$style.link">
-              <a href="https://goo.gl/DrCFHB" target="_blank">Brochure</a>
+            <li :class="$style.link" v-show="showDashboardActions">
+              <router-link to="/dashboard">
+                Dashboard
+                <div :class="$style.subList">
+                  <slot name="dashboard"></slot>
+                </div>
+              </router-link>
+            </li>
+            <li :class="$style.link" v-show="!showDashboardActions">
+              <router-link to="/login">Login</router-link>
+            </li>
+            <li :class="$style.link" v-show="showDashboardActions">
+              <a @click="authLogout">Logout</a>
             </li>
           </ul>
         </Slide>
@@ -87,6 +128,9 @@ export default {
     sideBarWidth() {
       if (isMinimal(this.$mq)) return window.innerWidth;
       else return 300;
+    },
+    showDashboardActions() {
+      return this.$store.getters.isLoggedIn;
     }
   },
   methods: {
@@ -103,6 +147,9 @@ export default {
         right: val
       });
     },
+    clickNotch() {
+      if (this.$route.name === "~") this.$emit("scrollTop");
+    },
     handleScroll(event) {
       const { sideNavigationIdleTimeout } = this.$data;
       this.lastScrollEventTime = new Date().getTime();
@@ -114,6 +161,10 @@ export default {
           this.isSideNavigationIdle = true;
         }
       }, sideNavigationIdleTimeout);
+    },
+    authLogout() {
+      this.$store.dispatch("logout");
+      if (this.$route.meta.requiresAuth) this.$router.push({ name: "~/login" });
     }
   },
   mounted() {
@@ -149,6 +200,7 @@ export default {
     }
 
     a {
+      cursor: pointer;
       height: inherit;
       color: $white;
       padding: 0 5px;
@@ -215,7 +267,7 @@ export default {
         margin: 20px auto;
         display: block;
 
-        .eventList {
+        .subList {
           margin: 10px 0 0 10px;
 
           li {
@@ -223,7 +275,7 @@ export default {
           }
         }
 
-        a, .eventList a {
+        a, .subList a {
           font: 500 16px 'Roboto Slab';
           color: $white;
           text-decoration: none;
@@ -244,7 +296,7 @@ export default {
           }
         }
 
-        &.active, .eventList li.active {
+        &.active, .subList li.active {
           a {
             color: $chartreuse;
             font-weight: bold;
@@ -281,7 +333,7 @@ export default {
       }
     }
 
-    ~/.md ^[1..-1], ~/.lg ^[1..-1], ~/.xl ^[1..-1] {
+    ~/.md ^[1..-1], ~/.lg ^[1..-1], ~/.xl ^[1..-1], ~/.xxl ^[1..-1] {
       position: fixed;
       right: -130px;
       top: 0;

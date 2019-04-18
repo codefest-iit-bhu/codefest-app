@@ -1,14 +1,16 @@
 <template>
   <div :class="$style.tabbedWindow">
     <div :class="$style.tabsContainer">
-      <div
-        :class="  [$style.tabWrapper, isActiveTab(i)]"
-        :id="`${idPrefix}_${i}`"
-        v-for="(tab, i) in tabs"
-        :key="i"
-        :style="tabStyle(i)"
-      >
-        <div :class="$style.tabTitle" @click="toggleTab(i)">{{ tab.title }}</div>
+      <div ref="tabWrapper">
+        <div
+          :class="  [$style.tabWrapper, isActiveTab(i)]"
+          :id="`${idPrefix}_${i}`"
+          v-for="(tab, i) in tabs"
+          :key="i"
+          :style="tabStyle(i)"
+        >
+          <div :class="$style.tabTitle" @click="toggleTab(i);" :id="tab.title">{{ tab.title }}</div>
+        </div>
       </div>
     </div>
 
@@ -47,12 +49,20 @@ export default {
   },
   methods: {
     toggleTab: function(index) {
+      if (this.tabs.length * 130 > window.innerWidth) this.alignTab(index);
       this.currentTab = index;
     },
     tabStyle: function(index) {
       return {
-        left: `${index * 120}px`
+        left: `${index * 100}px`
       };
+    },
+    alignTab: function(index) {
+      const tab = document.getElementById(`${this.idPrefix}_${index}`);
+      const tabWidth = tab.offsetWidth;
+      let xDiff = (index - this.currentTab) * (window.innerWidth * 0.2);
+      if (xDiff < 0) xDiff = 0;
+      this.$refs.tabWrapper.style.transform = `translateX(${-xDiff}px)`;
     }
   }
 };
@@ -62,7 +72,7 @@ export default {
 @require '~@styles/theme';
 @require '~@styles/anims';
 
-$tab-width = 150px;
+$tab-width = 130px;
 $tab-height = 30px;
 
 .tabbedWindow {
@@ -72,14 +82,11 @@ $tab-height = 30px;
   .tabsContainer {
     border-radius: 0 20px 0px 0;
     position: relative;
-    overflow-x: scroll;
+    overflow-x: hidden;
+    overflow-y: hidden;
     width: 100%;
     height: $tab-height;
     float: left;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
 
     .tabWrapper {
       width: 100%;
@@ -90,22 +97,22 @@ $tab-height = 30px;
       .tabTitle {
         z-index: 20;
         cursor: pointer;
-        background: $chartreuse;
-        font-family: 'Roboto Slab';
+        background: $limeade;
+        font: 12pt 'Roboto Slab';
         font-weight: 500;
         clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
         height: $tab-height;
         line-height: 30px;
         width: $tab-width;
         text-align: center;
-        color: $black;
+        color: $white;
       }
     }
 
     .active {
       .tabTitle {
-        background: $limeade;
-        color: white;
+        background: $chartreuse;
+        color: $black;
         z-index: 25;
       }
     }
@@ -119,9 +126,9 @@ $tab-height = 30px;
       display: none;
       position: relative;
       top: $tab-height;
-      border: 1px solid $chartreuse;
+      border: 1px solid $limeade;
       border-radius: 0 0 10px 10px;
-      box-shadow: inset 0px 0px 15px $chartreuse;
+      box-shadow: inset 0px -2px 15px $chartreuse;
       background: $cod-gray;
     }
 
