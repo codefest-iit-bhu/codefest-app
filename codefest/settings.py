@@ -158,3 +158,5 @@ CSRF_TRUSTED_ORIGINS = (
 )
 GOOGLE_RECAPTCHA_SECRET_KEY = config('GOOGLE_RECAPTCHA_SECRET_KEY')
 GOOGLE_RECAPTCHA_URL = 'https://www.google.com/recaptcha/api/siteverify'
+
+SENDGRID_API_KEY = config('SENDGRID_API_KEY')
