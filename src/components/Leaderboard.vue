@@ -5,8 +5,8 @@
       <div :class="$style.tablecell">Name</div>
       <div :class="$style.tablecell">Referals</div>
     </div>
-    <div :class="[$style.tablerow,$style.positions]" v-for="person in people">
-      <div :class="$style.tablecell">{{ person.rank }}</div>
+    <div :class="[$style.tablerow,$style.positions]" v-for="(person,index) in people">
+      <div :class="$style.tablecell">{{ index + 1 }}</div>
       <div :class="$style.tablecell">{{ person.name }}</div>
       <div :class="$style.tablecell">{{ person.referrals }}</div>
     </div>
@@ -19,13 +19,15 @@ export default {
       people: [
         {
           name: "Nishant Mittal",
-          referrals: 256,
-          rank: 1
+          referrals: 256
         },
         {
           name: "ABC",
-          referrals: 150,
-          rank: 2
+          referrals: 150
+        },
+        {
+          name: "nishantwrp",
+          referrals: 140
         }
       ]
     };
