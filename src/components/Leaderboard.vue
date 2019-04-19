@@ -1,36 +1,33 @@
 <template>
-  <div :class="$style.leaderboard">
-    <div :class="[$style.headings,$style.tablerow]">
-      <div :class="$style.tablecell">Rank</div>
-      <div :class="$style.tablecell">Name</div>
-      <div :class="$style.tablecell">Referals</div>
+  <SectionLayout title="Leaderboard" id="container">
+    <div :class="[$style.leaderboard, $style[$mq]]" id="leaderboard">
+      <table>
+        <tr :class="$style.tablerow">
+          <th :class="[$style.col1, $style.head]">Rank</th>
+          <th :class="[$style.col2, $style.head]">Name</th>
+          <th :class="[$style.col3, $style.head]">Referrals</th>
+        </tr>
+        <tr v-for="(person, i) in leaderboard" :key="i" :class="$style.tablerow">
+          <td :class="[$style.col1, ]">{{ i + 1 }}</td>
+          <td :class="[$style.col2, ]">{{ person.name }}</td>
+          <td :class="[$style.col3, ]">{{ person.referral_count }}</td>
+        </tr>
+      </table>
     </div>
-    <div :class="[$style.tablerow,$style.positions]" v-for="(person,index) in people">
-      <div :class="$style.tablecell">{{ index + 1 }}</div>
-      <div :class="$style.tablecell">{{ person.name }}</div>
-      <div :class="$style.tablecell">{{ person.referrals }}</div>
-    </div>
-  </div>
+  </SectionLayout>
 </template>
 <script>
+import SectionLayout from "@components/layouts/SectionLayout";
+
 export default {
-  data() {
-    return {
-      people: [
-        {
-          name: "Nishant Mittal",
-          referrals: 256
-        },
-        {
-          name: "ABC",
-          referrals: 150
-        },
-        {
-          name: "nishantwrp",
-          referrals: 140
-        }
-      ]
-    };
+  components: {
+    SectionLayout
+  },
+  props: {
+    leaderboard: {
+      required: true,
+      type: Array
+    }
   }
 };
 </script>
@@ -40,32 +37,47 @@ export default {
 
 .leaderboard {
   text-align: center;
-  display: grid;
-  grid-gap: 20px;
-  grid-auto-rows: 40px;
-  width: 700px;
+  margin: auto;
+  width: 600px;
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 0 20px $chartreuse inset;
 
-  .tablerow {
-    display: grid;
-    grid-template-columns: 1fr 4fr 4fr;
+  .col1, .col3 {
+    width: 100px;
 
-    .tablecell {
-      overflow: hidden;
+    ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+      width: 50px;
     }
   }
 
-  .headings {
-    font-family: 'Aldo the Apache';
-    font-size: 20px;
+  .col2 {
+    width: 400px;
+
+    ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+      width: 200px;
+    }
+  }
+
+  ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+    width: 300px;
+  }
+
+  .head {
+    font-family: 'Roboto Slab';
     color: $chartreuse;
+    padding: 15px 0;
+    font-size: 20px;
     border-bottom: 1px solid $chartreuse;
   }
 
-  .positions {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: $chartreuse;
-    font-size: 18px;
-    // border-bottom: 1px solid $chartreuse;
+  .tablerow {
+    td {
+      font-family: 'Quicksand';
+      font-size: 16px;
+      padding: 10px 0 0;
+      font-weight: 600;
+    }
   }
 }
 </style>
