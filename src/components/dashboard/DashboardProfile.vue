@@ -9,11 +9,16 @@
     <hr :class="$style.rightHr">
     <div :class="$style.profile">
       <div :class="$style.about">
+        <div :class="[$style.countdiv, is_verified]">
+          <span :class="$style.reftext">Referral Count</span>
+          <span :class="$style.refcount">{{ profile.num_referrals }}</span>
+        </div>
         <div :class="$style.box">
           <span :class="$style.key">Referral Link</span>
-          <span :class="$style.value">
+          <span :class="$style.value" v-if="['md', 'lg', 'xl'].includes(this.$mq)">
             <router-link :to="routerLocation">{{ profile.referral_code }}</router-link>
           </span>
+          <span v-else></span>
           <i class="fas fa-clipboard" :class="$style.copyIcon" @click="clickToCopy"></i>
         </div>
         <p
@@ -37,6 +42,12 @@
               <span>Phone</span>
             </span>
             <span :class="$style.pvalue">{{ profile.phone}}</span>
+          </div>
+          <div :class="$style.row">
+            <span :class="$style.pkey">
+              <span>Email</span>
+            </span>
+            <span :class="$style.pvalue">{{ profile.email }}</span>
           </div>
           <div v-if="profile.institute_type == 1" :class="$style.row">
             <span :class="$style.pkey">
@@ -82,13 +93,21 @@ export default {
   computed: {
     retrieveInitials() {
       const { name } = this.profile;
-      console.log(this.profile);
       if (!name) return;
       const newName = name.split(/\s+/);
       if (typeof newName[1][0] !== "undefined")
         return newName[0][0] + newName[1][0];
       return newName[0][0];
     },
+
+    is_verified() {
+      if (this.profile.is_verified == true) {
+        return this.$style.verified;
+      } else {
+        return this.$style.notverified;
+      }
+    },
+
     routerLocation() {
       return {
         name: "~/login",
@@ -119,6 +138,7 @@ export default {
 
 <style module lang="stylus">
 @require '~@styles/theme';
+@require '~@styles/anims';
 
 .container {
   height: 100%;
@@ -214,6 +234,10 @@ export default {
     &:hover {
       box-shadow: inset 0px 0px 10px $chartreuse;
     }
+
+    ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+      margin-bottom: 30px;
+    }
   }
 
   .profile {
@@ -241,33 +265,63 @@ export default {
           float: right;
         }
 
-        .key {
-          display: inline-block;
-          float: left;
-          font-weight: bold;
-          font-family: 'Roboto Slab';
-          font-size: 24px;
-          padding: 8px 15px;
-          height: 100%;
-          color: $black;
-          border-radius: inherit;
-          border-bottom-right-radius: 0;
-          border-top-right-radius: 0;
-          border-right: 1px solid $chartreuse;
-          background: alpha($chartreuse, 0.7);
-        }
+        ~/.lg ^[1..-1], ~/.xl ^[1..-1], ~/.md ^[1..-1] {
+          .key {
+            display: inline-block;
+            float: left;
+            font-weight: bold;
+            font-family: 'Roboto Slab';
+            font-size: 24px;
+            padding: 8px 15px;
+            height: 100%;
+            color: $black;
+            border-radius: inherit;
+            border-bottom-right-radius: 0;
+            border-top-right-radius: 0;
+            border-right: 1px solid $chartreuse;
+            background: alpha($chartreuse, 0.7);
+          }
 
-        .value {
-          display: inline-block;
-          font-size: 18px;
-          font-family: 'Quicksand';
-          padding: 12px;
-          height: 100%;
+          .value {
+            display: inline-block;
+            font-size: 18px;
+            font-family: 'Quicksand';
+            padding: 12px;
+            height: 100%;
+          }
         }
 
         ~/.md ^[1..-1] {
           width: 100%;
           margin-left: 0%;
+        }
+
+        ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+          display: flex;
+          flex-flow: column;
+          width: 200px;
+          height: 200px;
+          border-radius: 30px;
+          border: 3px solid $chartreuse;
+          animation: timeline-border-green 1s ease-in-out infinite alternate;
+          margin: auto;
+
+          .key {
+            display: inline-block;
+            width: 100%;
+            font-weight: bold;
+            font-family: 'Roboto Slab';
+            font-size: 24px;
+            padding: 8px 15px;
+            color: $white;
+          }
+
+          .copyIcon {
+            width: 100%;
+            font-size: 60px;
+            padding: 24px 0;
+            color: $chartreuse;
+          }
         }
       }
     }
@@ -276,26 +330,66 @@ export default {
       font-size: 14px;
     }
 
+    .countdiv {
+      width: 200px;
+      height: 200px;
+      border-radius: 30px;
+      margin: auto;
+      margin-top: 50px;
+      margin-bottom: 50px;
+      display: flex;
+      flex-flow: column;
+      transition-property: width, height;
+      transition: all 2s ease-in-out;
+
+      .reftext {
+        order: 0;
+        height: 50px;
+        color: $white;
+        padding: 15px 0;
+        font: 600 20px 'Roboto Slab';
+      }
+
+      .refcount {
+        height: 150px;
+        order: 1;
+        padding: 30px 0;
+        font: 600 60px 'Roboto Slab';
+        color: $chartreuse;
+      }
+    }
+
+    .verified {
+      border: 3px solid $chartreuse;
+      animation: timeline-border-green 1s ease-in-out infinite alternate;
+    }
+
+    .notverified {
+      border: 3px solid red;
+      animation: timeline-border-white 1s ease-in-out infinite alternate;
+    }
+
     .profileinfo {
-      width: 60%;
-      margin-left: 20%;
+      width: 800px;
+      margin: auto;
 
       .row {
-        // clip-path: polygon(4% 0, 100% 0, 96% 100%, 0 100%);
         transform: skew(30deg);
         border: solid 2px $limeade;
-        margin-top: 10px;
-        margin-bottom: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 16px;
+        display: flex;
+        flex-flow: row;
 
         .pkey {
           width: 30%;
           background: $limeade;
           display: inline-block;
-          float: left;
+          order: 1;
           font-weight: bold;
           font-family: 'Roboto Slab';
-          font-size: 16px;
-          padding: 8px 15px;
+          padding: 6px 15px;
           height: 100%;
           color: $black;
           background: alpha($chartreuse, 0.7);
@@ -308,13 +402,43 @@ export default {
 
         .pvalue {
           width: 70%;
+          order: 2;
           transform: skew(-30deg);
           display: inline-block;
-          font-size: 16px;
           font-family: 'Quicksand';
-          padding: 8px;
+          padding: 6px;
           height: 100%;
         }
+      }
+
+      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+        .row {
+          width: 100%;
+          flex-flow: column;
+          font-size: 12px;
+
+          .pkey {
+            order: 1;
+            width: 100%;
+          }
+
+          .pvalue {
+            order: 2;
+            width: 100%;
+          }
+        }
+      }
+
+      ~/.xs ^[1..-1] {
+        width: 240px;
+      }
+
+      ~/.sm ^[1..-1] {
+        width: 300px;
+      }
+
+      ~/.md ^[1..-1] {
+        width: 550px;
       }
     }
   }

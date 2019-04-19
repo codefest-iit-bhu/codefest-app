@@ -17,6 +17,7 @@
           <i class="far fa-calendar-alt"></i> 23 - 25 August, 2019
         </span>
       </span>
+      <span :class="$style.register">Registrations will be open soon.</span>
       <!-- <Countdown :until="hackathonStart" :class="$style.landing__countdown"/> -->
     </div>
     <!-- <FloatingButton text="Register"/> -->
@@ -87,12 +88,35 @@ export default {
     .tagline, .venue {
       margin: 10px auto;
       height: 32px;
-      font: 26px 'Ubuntu';
+      font: 24px 'Ubuntu';
       text-align: center;
     }
 
+    ~/.lg .tagline, ~/.md .tagline {
+      font-size: 18px;
+      margin-bottom: 0;
+      margin-top: 6px;
+      margin: auto;
+    }
+
     ~/.xs .tagline, ~/.sm .tagline {
-      font-size: 20px;
+      font-size: 14px;
+    }
+
+    .register {
+      margin: auto;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      height: auto;
+      padding: 10px 20px;
+      border-radius: 50px;
+      border: 2px solid $chartreuse;
+      text-align: center;
+      cursor: pointer;
+      color: $chartreuse;
+      font-family: 'Roboto Slab';
+      font-weight: 600;
+      box-shadow: inset 0px 0px 10px $chartreuse;
     }
 
     .venue {
@@ -113,31 +137,38 @@ export default {
         }
       }
 
-      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+      ~/.md ^[1..-1], ~/.lg ^[1..-1] {
         font-size: 16px;
+      }
+
+      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+        font-size: 14px;
       }
     }
 
     .logo {
       width: 800px;
-      height: 528px;
+      height: 500px;
       margin: 60px auto 0;
 
       ~/.lg ^[1..-1] {
-        width: 700px;
-        height: 462px;
+        width: 500px;
+        height: 312.5px;
+        margin: 30px auto 0;
 
         #base {
-          top: -70px;
+          top: -60px;
         }
       }
 
       ~/.md ^[1..-1] {
-        width: 700px;
-        height: 462px;
+        width: 500x;
+        height: 312.5px;
+        margin: 30px auto 0;
 
         #base {
-          top: -70px;
+          top: -60px;
+          width: 600px;
         }
       }
 
