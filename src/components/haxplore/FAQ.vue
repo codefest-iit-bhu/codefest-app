@@ -10,9 +10,9 @@
             <br>
             <br>
             <a
-              href="mailto:codefest@iitbhu.ac.in?subject = Query&body = Message"
+              href="mailto:events.codefest@iitbhu.ac.in?subject = Query&body = Message"
               :class="$style.email"
-            >codefest@iitbhu.ac.in</a>
+            >events.codefest@iitbhu.ac.in</a>
             <br>
             <a href="https://facebook.com/codefest" :class="$style.facebook">facebook.com/codefest</a>
             <br>

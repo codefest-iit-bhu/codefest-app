@@ -52,7 +52,7 @@
         <img src="assets/cf19-white-logo.svg" @click="clickNotch">
       </router-link>
     </AppbarLayout>
-    <div :class="$style.sidebar" ref="sidebar">
+    <div :class="$style.sidebar" ref="sidebar" >
       <mq-layout mq="md+" v-show="isSideNavigationShown" :class="$style.sidebarBack">
         <ul @mouseover="isSideNavigationIdle = false" @mouseleave="isSideNavigationIdle = true">
           <template v-for="slot in Object.keys($slots)">

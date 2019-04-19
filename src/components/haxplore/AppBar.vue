@@ -29,16 +29,7 @@
       </router-link>
     </AppbarLayout>
     <div :class="$style.sidebar" ref="sidebar">
-      <mq-layout mq="md+" v-show="isSideNavigationShown">
-        <ul
-          v-scroll-spy-active="{class: $style.active}"
-          v-scroll-spy-link
-          @mouseover="isSideNavigationIdle = false"
-          @mouseleave="isSideNavigationIdle = true"
-        >
-          <slot></slot>
-        </ul>
-      </mq-layout>
+      <mq-layout mq="md+" v-show="isSideNavigationShown"></mq-layout>
 
       <mq-layout :mq="['xs', 'sm']">
         <Slide :isOpen="isSidebarOpen" @closeSideBar="onCloseSideBar" :width="sideBarWidth">
@@ -60,11 +51,13 @@
 import { isMinimal } from "@js/utils";
 
 import AppbarLayout from "@components/layouts/AppbarLayout";
+import SectionSidebar from "@components/SectionSidebar";
 import Slide from "@components/Menu/Slide";
 
 export default {
   components: {
     AppbarLayout,
+    SectionSidebar,
     Slide
   },
   props: {
@@ -158,7 +151,7 @@ export default {
     isSideNavigationIdle: function(to, from) {
       if (to === from) return;
       if (to && !this.shouldShowSideNavigation) return;
-      this.animateSideNav(to ? -100 : 0);
+      this.animateSideNav(to ? -120 : 0);
     }
   }
 };
@@ -247,23 +240,6 @@ export default {
       ul {
         padding-top: 10px;
       }
-    }
-
-    ~/.md ^[1..-1], ~/.lg ^[1..-1], ~/.xl ^[1..-1], ~/.xxl ^[1..-1] {
-      position: fixed;
-      right: -140px;
-      top: 0;
-      width: 150px;
-      padding: 15px;
-      display: flex;
-      flex-flow: column;
-      justify-content: space-around;
-      height: 100%;
-      z-index: 9;
-    }
-
-    ~/.md ^[1..-1], ~/.lg ^[1..-1] {
-      background: linear-gradient(to right, alpha($mine-shaft, 0.8), alpha($mine-shaft, 0.1));
     }
   }
 }
