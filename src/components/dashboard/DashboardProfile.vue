@@ -43,6 +43,12 @@
             </span>
             <span :class="$style.pvalue">{{ profile.phone}}</span>
           </div>
+          <div :class="$style.row">
+            <span :class="$style.pkey">
+              <span>Email</span>
+            </span>
+            <span :class="$style.pvalue">{{ profile.email }}</span>
+          </div>
           <div v-if="profile.institute_type == 1" :class="$style.row">
             <span :class="$style.pkey">
               <span>Institute Name</span>
