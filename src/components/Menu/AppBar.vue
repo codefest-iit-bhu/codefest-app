@@ -53,14 +53,11 @@
       </router-link>
     </AppbarLayout>
     <div :class="$style.sidebar" ref="sidebar">
-      <mq-layout mq="md+" v-show="isSideNavigationShown" :class="$style.sidebarBack">
-        <ul @mouseover="isSideNavigationIdle = false" @mouseleave="isSideNavigationIdle = true">
-          <template v-for="slot in Object.keys($slots)">
-            <slot :name="slot"></slot>
-          </template>
-        </ul>
-      </mq-layout>
-
+      <SectionSidebar v-bind="$attrs" v-if="['md', 'lg', 'xl', 'xxl'].includes($mq)">
+        <template v-for="slot in Object.keys($slots)">
+          <slot :name="slot"></slot>
+        </template>
+      </SectionSidebar>
       <mq-layout :mq="['xs', 'sm']">
         <Slide :isOpen="isSidebarOpen" @closeSideBar="onCloseSideBar" :width="sideBarWidth">
           <ul :class="$style.sidebarList">
@@ -101,27 +98,18 @@
 import { isMinimal } from "@js/utils";
 
 import AppbarLayout from "@components/layouts/AppbarLayout";
+import SectionSidebar from "@components/SectionSidebar";
 import Slide from "@components/Menu/Slide";
 
 export default {
   components: {
     AppbarLayout,
+    SectionSidebar,
     Slide
-  },
-  props: {
-    isSideNavigationShown: {
-      type: Boolean,
-      default: true,
-      required: false
-    }
   },
   data() {
     return {
-      isSidebarOpen: false,
-      sideNavigationIdleTimeout: 1000,
-      doHideOnIdle: true,
-      lastScrollEventTime: 0,
-      isSideNavigationIdle: false
+      isSidebarOpen: false
     };
   },
   computed: {
@@ -140,27 +128,8 @@ export default {
     onCloseSideBar() {
       this.isSidebarOpen = false;
     },
-    animateSideNav(val) {
-      const { sidebar } = this.$refs;
-
-      TweenLite.to(sidebar, 0.8, {
-        right: val
-      });
-    },
     clickNotch() {
       if (this.$route.name === "~") this.$emit("scrollTop");
-    },
-    handleScroll(event) {
-      const { sideNavigationIdleTimeout } = this.$data;
-      this.lastScrollEventTime = new Date().getTime();
-      this.isSideNavigationIdle = false;
-      setTimeout(() => {
-        if (this.isSideNavigationIdle) return;
-        const now = new Date().getTime();
-        if (now - this.lastScrollEventTime >= sideNavigationIdleTimeout) {
-          this.isSideNavigationIdle = true;
-        }
-      }, sideNavigationIdleTimeout);
     },
     authLogout() {
       this.$store.dispatch("logout");
@@ -172,12 +141,6 @@ export default {
     this.isSideNavigationIdle = false;
     if (doHideOnIdle) window.addEventListener("scroll", this.handleScroll);
     else window.removeEventListener("scroll", this.handleScroll);
-  },
-  watch: {
-    isSideNavigationIdle: function(to, from) {
-      if (to === from) return;
-      this.animateSideNav(to ? -130 : 0);
-    }
   }
 };
 </script>
@@ -276,7 +239,7 @@ export default {
         }
 
         a, .subList a {
-          font: 500 16px 'Roboto Slab';
+          font: 500 15px 'Roboto Slab';
           color: $white;
           text-decoration: none;
           cursor: pointer;
@@ -310,17 +273,6 @@ export default {
       }
     }
 
-    .sidebarBack {
-      li a {
-        padding: unset;
-        padding-left: 10px;
-
-        &:hover {
-          background: unset;
-        }
-      }
-    }
-
     .sidebarLogo {
       width: 250px;
       cursor: pointer;
@@ -331,31 +283,6 @@ export default {
       ul {
         padding-top: 10px;
       }
-    }
-
-    ~/.md ^[1..-1], ~/.lg ^[1..-1], ~/.xl ^[1..-1], ~/.xxl ^[1..-1] {
-      position: fixed;
-      right: -130px;
-      top: 0;
-      width: 150px;
-      padding: 15px;
-      display: flex;
-      flex-flow: column;
-      justify-content: space-around;
-      height: 100%;
-      z-index: 9;
-
-      li {
-        span {
-          position: absolute;
-          left: 0;
-          margin: 5px auto;
-        }
-      }
-    }
-
-    ~/.md ^[1..-1] .sidebarBack, ~/.lg ^[1..-1] .sidebarBack {
-      background: linear-gradient(to right, alpha($mine-shaft, 0.8), alpha($mine-shaft, 0.1));
     }
   }
 }

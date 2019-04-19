@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.root">
-    <AppBar @scrollTop="scrollToTop">
+    <AppBar @scrollTop="scrollToTop" :shouldShowSideNavigation="true">
       <li
         v-for="(event,i) in events"
         :key="i"

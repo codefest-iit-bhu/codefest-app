@@ -9,7 +9,8 @@ export default {
       icon: "/assets/events/ctf.png",
       description:
         "Capture The Flag (CTF) invites all hackers to show off their skills on a global platform. The problems have been designed taking into account recent technological advances in the field of cyber security and will capture the imagination of both beginners and expert hackers.This contest will let you learn and understand the importance of the security practises being followed across the globe and make you to come up with more exciting solutions to the existing security norms. So let’s get ready to explore the real world computer security arena",
-      coordinators: ["Shreyansh Singh - shreyansh.singh.cse16@itbhu.ac.in"],
+      coordinators: ["Shreyansh Singh - shreyansh.singh.cse16@itbhu.ac.in",
+      "Apurv Jain - apurv.jain.cse16@itbhu.ac.in"],
       faq: [
         {
           question: "Will the event be online?",
@@ -208,7 +209,7 @@ export default {
       description:
         "Perplexed is one of the most innovative events of Codefest, whose target is not only gauge a contestant's coding abilities, but also how one tackles different situations and constraints.The problemset will include all mind boggling coding problems, ranging from code obfuscation to stricter memory limits, character limits, time limits, etc.This contest will be an individual contest and the contest duration is 5 hours",
       coordinators: [
-        "Naveen Punjabi -naveen.punjabi.cse16@itbhu.ac.in",
+        "Naveen Punjabi - naveen.punjabi.cse16@itbhu.ac.in",
         "Deepak Gour - deepakk.gour.cse16@itbhu.ac.in"
       ],
       faq: [
