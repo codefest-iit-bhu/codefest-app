@@ -1,6 +1,6 @@
 <template>
-  <div :class="$style.lookback">
-    <GridLayout itemWidth="220px">
+  <div :class="[$style.lookback, $style[$mq]]">
+    <GridLayout :itemWidth="computedWidth">
       <div :class="$style.stat" v-for="(stat, i) in this.stats" :key="i" :slot="`item${i}`">
         <div :class="$style.clip">
           <img :src="stat.image" :class="$style.img">
@@ -17,6 +17,12 @@ import GridLayout from "./layouts/GridLayout";
 export default {
   components: {
     GridLayout
+  },
+  computed: {
+    computedWidth() {
+      if (this.$mq == "lg") return "160px";
+      return "220px";
+    }
   },
   data() {
     return {
