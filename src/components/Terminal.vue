@@ -21,7 +21,7 @@
         :isActive="true"
         @pwdChanged="initCommandsOnPageChange"
         @onSubmitInput="onSubmitInput"
-        @onBlurInput="collapseTerminal"
+        @onBlurInput="blurTerminalInput"
       />
     </div>
   </div>
@@ -98,6 +98,7 @@ export default {
     focusTerminalInput(event) {
       if (event.target.tagName !== "A") {
         this.$refs.cli.focusInput();
+        this.now = new Date();
         if (!this.isExpanded && !this.isHelpShown) {
           this.$refs.cli.submitInput("help");
           this.isHelpShown = true;
@@ -110,11 +111,9 @@ export default {
     },
     showTerminal() {
       if (this.shouldShow) this.isShown = true;
-      this.changeTerminalState(true);
     },
     hideTerminal() {
       this.isShown = false;
-      this.changeTerminalState(false);
     },
     collapseTerminal() {
       this.scrollToBottom();
@@ -136,10 +135,21 @@ export default {
       if (this.shouldShow) {
         TweenLite.to(this.$data, 0.35, { angle: 0 });
         this.showTerminal();
+        this.changeTerminalState(true);
+      } else if (!this.isShown) {
+        this.shouldShow = true;
+        this.showTerminal();
+        this.changeTerminalState(true);
       } else {
         TweenLite.to(this.$data, 0.35, { angle: 180 });
         this.hideTerminal();
+        this.changeTerminalState(false);
       }
+    },
+    blurTerminalInput(e) {
+      setTimeout(() => {
+        if (new Date() - this.now > 300) this.collapseTerminal();
+      }, 300);
     },
 
     submitResult(status, output) {

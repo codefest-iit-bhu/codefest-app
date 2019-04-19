@@ -89,8 +89,8 @@ export default {
     clearInput() {
       this.input = "";
     },
-    onUnfocusInput() {
-      this.$emit("onBlurInput");
+    onUnfocusInput(e) {
+      this.$emit("onBlurInput", e);
     }
   },
   watch: {

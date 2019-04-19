@@ -77,8 +77,9 @@ export const navigation = {
     return result;
   },
   getTargetPageUrl: function(pwd, targetDir) {
-    if (targetDir === "/" || targetDir === "~") return "/";
-    if (targetDir === ".") return this.getLinksFromPwd(pwd).splice(-1)[0];
+    if (["~", "/"].includes(targetDir)) return "/";
+    if ([".", "./"].includes(targetDir))
+      return this.getLinksFromPwd(pwd).splice(-1)[0];
     let backNav = targetDir.match(/^(\.\.)(\/\.\.)*/g);
     if (backNav) {
       pwd = pwd.slice(0, -backNav[0].split("/").length);
@@ -86,6 +87,7 @@ export const navigation = {
     }
 
     if (
+      targetDir &&
       targetDir[0] !== "/" &&
       !([".", "~"].includes(targetDir[0]) && targetDir[1] === "/")
     ) {

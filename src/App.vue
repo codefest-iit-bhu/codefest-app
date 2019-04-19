@@ -41,8 +41,6 @@ export default {
     showTerminal() {
       const { terminal } = this.$refs;
       if (!terminal) return;
-      console.log(document.body.clientHeight)
-      console.log(1.5 * window.innerHeight)
       if (document.body.clientHeight > 1.5 * window.innerHeight)
         terminal.animateScrollShow();
       else terminal.noAnimateScrollShow();
