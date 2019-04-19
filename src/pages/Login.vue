@@ -284,7 +284,7 @@ export default {
       .auth()
       .getRedirectResult()
       .then(result => {
-        if (!result.user) this.loading = false;
+        if (!result.user || !firebase.auth().currentUser) this.loading = false;
         else if (result.credential) this.successfulAuth(result, false);
       })
       .catch(err => {

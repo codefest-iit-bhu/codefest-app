@@ -63,14 +63,11 @@ export class Response extends Object {
     return new Response(null, STATUS.ERROR_UNKNOWN, err.message);
   }
 
-  static responseError(response) {
-    const message =
-      response.body.detail ||
-      response.body.non_field_errors[0] ||
-      response.err.message;
-    switch (response.status) {
+  static responseError({ status, body, err }) {
+    const message = body.detail || body[Object.keys(body)[0]][0] || err.message;
+    switch (status) {
       case 400:
-        return new Response(response.body, STATUS.ERROR_BAD_REQUEST, message);
+        return new Response(body, STATUS.ERROR_BAD_REQUEST, message);
       case 401:
         return new Response(null, STATUS.ERROR_UNAUTHENTICATED, message);
       case 403:
@@ -78,7 +75,7 @@ export class Response extends Object {
       case 404:
         return new Response(null, STATUS.ERROR_NOT_FOUND, message);
       default:
-        return new Response(response.body, STATUS.ERROR_UNKNOWN, message);
+        return new Response(body, STATUS.ERROR_UNKNOWN, message);
     }
   }
 

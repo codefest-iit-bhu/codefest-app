@@ -133,7 +133,7 @@ export default {
     },
     authLogout() {
       this.$store.dispatch("logout");
-      if (this.$route.meta.requiresAuth) this.$router.push({ name: "~/login" });
+      if (this.$route.meta.requiresAuth) this.$router.push({ name: "~" });
     }
   },
   mounted() {

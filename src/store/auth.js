@@ -63,11 +63,7 @@ export default {
       });
     },
     logout({ state, commit }) {
-      firebase
-        .auth()
-        .signOut()
-        .then(console.log)
-        .catch(console.log);
+      firebase.auth().signOut();
       commit("AUTH_LOGOUT");
     }
   }
