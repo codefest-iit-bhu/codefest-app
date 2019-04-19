@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Leaderboard></Leaderboard>
     <FloatingButton text="Coming soon" @click="runTest"/>
   </div>
 </template>
@@ -7,10 +8,11 @@
 <script>
 import FloatingButton from "@components/FloatingButton";
 import API from "@js/api";
-
+import Leaderboard from "@components/Leaderboard";
 export default {
   components: {
-    FloatingButton
+    FloatingButton,
+    Leaderboard
   },
   data() {
     return {
