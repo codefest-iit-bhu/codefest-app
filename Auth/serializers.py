@@ -59,7 +59,7 @@ class RegisterSerializer(serializers.Serializer):
     first_name = serializers.CharField(max_length=40, allow_blank=False)
     last_name = serializers.CharField(max_length=100, allow_blank=True, required=False)
     applied_referral_code = serializers.CharField(max_length=500,required=False, allow_blank=True)
-    g_recaptcha_response = serializers.CharField(max_length=500, required=True)
+    # g_recaptcha_response = serializers.CharField(max_length=500, required=True)
 
     def validate_id_token(self, access_token):
         return FirebaseAPI.verify_id_token(access_token)
@@ -80,16 +80,16 @@ class RegisterSerializer(serializers.Serializer):
             raise serializers.ValidationError("Invalid Referral Code")
         return referred_by
         
-    def validate_g_recaptcha_response(self, token):
-        data= {
-            'secret':settings.GOOGLE_RECAPTCHA_SECRET_KEY,
-            'response':token
-        }
-        response = requests.post(settings.GOOGLE_RECAPTCHA_URL, data = data)
-        response = response.json()
-        if response['success'] and response['score']>=0.5:
-            return
-        raise serializers.ValidationError("Captcha could not be verified. Please try again.")
+    # def validate_g_recaptcha_response(self, token):
+    #     data= {
+    #         'secret':settings.GOOGLE_RECAPTCHA_SECRET_KEY,
+    #         'response':token
+    #     }
+    #     response = requests.post(settings.GOOGLE_RECAPTCHA_URL, data = data)
+    #     response = response.json()
+    #     if response['success'] and response['score']>=0.5:
+    #         return
+    #     raise serializers.ValidationError("Captcha could not be verified. Please try again.")
 
     def get_user(self, data,uid):
         user = User()
