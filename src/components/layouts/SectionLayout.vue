@@ -46,7 +46,7 @@ div.sectionContainer {
     }
 
     &.xs {
-      font-size: 56px;
+      font-size: 52px;
     }
 
     ~/:nth-child(even) h1.sectionTitle {

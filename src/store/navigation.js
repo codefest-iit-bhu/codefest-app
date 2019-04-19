@@ -81,27 +81,10 @@ export const navigation = {
     if ([".", "./"].includes(targetDir))
       return this.getLinksFromPwd(pwd).splice(-1)[0];
     let backNav = targetDir.match(/^(\.\.)(\/\.\.)*/g);
-
-    console.log(backNav)
-    console.log(pwd)
     if (backNav) {
-      console.log(pwd)
       pwd = pwd.slice(0, -backNav[0].split("/").length);
-      console.log(pwd)
-      console.log(targetDir)
-      console.log(backNav[0].length)
-      console.log(targetDir.length)
-      if (targetDir.length == backNav[0].length || targetDir.length==backNav[0].length+1)
-      {
-        targetDir="/";
-      } 
-      else 
-      {
-          targetDir = targetDir.slice(backNav[0].length);
-      }
-      console.log(targetDir)
+      targetDir = targetDir.slice(backNav[0].length);
     }
-    console.log(targetDir)
 
     if (
       targetDir &&

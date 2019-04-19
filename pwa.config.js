@@ -7,3 +7,16 @@ exports.webpack = function(config, env) {
   config.resolve.alias["@store"] = join(src, "store");
   config.devServer.host = "0.0.0.0";
 };
+
+exports.brotli = {
+  cache: true,
+  threshold: 0,
+  minRatio: 0.8,
+  compressionOptions: {
+    quality: 11,
+    size_hint: 0,
+    lgblock: 0,
+    lgwin: 22,
+    mode: 0
+  }
+};

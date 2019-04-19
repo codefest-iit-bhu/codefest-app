@@ -185,7 +185,7 @@ export default {
       });
     },
     onSubmitInput(words) {
-      let cmd = words.splice(0, 1)[0];
+      let cmd = words.splice(0, 1)[0].trim();
       this.getCommandPromise(cmd, words)
         .then(result => {
           this.submitResult(0, result);

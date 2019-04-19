@@ -108,7 +108,7 @@ class ChangeDirCommand extends BaseCommand {
     if (this.args.length === 0) {
       url = "/";
     } else {
-      let targetDir = this.args[0];
+      let targetDir = this.args[0].trim();
       try {
         url = navigation.getTargetPageUrl(pwd, targetDir);
       } catch (error) {

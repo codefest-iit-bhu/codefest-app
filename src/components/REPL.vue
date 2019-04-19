@@ -65,7 +65,7 @@ export default {
   },
   methods: {
     evalInput(cmdLine) {
-      return cmdLine.split(/\s+/);
+      return cmdLine.trim().split(/\s+/);
     },
     submitInput(cmdLine) {
       this.input = this.input || cmdLine;
