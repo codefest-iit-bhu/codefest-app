@@ -3,6 +3,11 @@ from .models import *
 from django.core.validators import RegexValidator
 from drf_yasg.utils import swagger_serializer_method
 
+phone_regex = RegexValidator(
+    regex=r'^\+\d{9,15}$',
+    message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed."
+)
+
 
 class ProfileSerializer(serializers.ModelSerializer):
     name = serializers.CharField(max_length=128, read_only=True, required=False)
@@ -11,7 +16,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     degree=serializers.CharField(max_length=50,required=False, allow_blank=True, default="", allow_null=True)
     branch=serializers.CharField(max_length=100,required=False, allow_blank=True, default="", allow_null=True)
     country=serializers.CharField(max_length=100,required=True)
-    phone=serializers.CharField(max_length=15,required=True)
+    phone=serializers.CharField(max_length=15,required=True, validators=[phone_regex,])
     institute_type = serializers.ChoiceField(
         choices=Profile.INSTITUTE_TYPE_CHOICES,
         required=True
@@ -44,14 +49,11 @@ class ProfileSerializer(serializers.ModelSerializer):
     def get_is_profile_complete(self, obj):
         return obj.get_or_set_profile_status()
 
-    def validate_phone(self,number):
-        phone_regex = RegexValidator(
-            regex=r'^\+?1?\d{9,15}$',
-            message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed."
-        )
-        phone_regex(number)
-        return number
-
+    def validate_country(self, country):
+        if len(country)>4:
+            raise serializers.ValidationError("Country Code of upto 4 characters allowed.")
+        return country
+    
     def validate_study_year(self,year):
         if year<1:
             raise serializers.ValidationError("Incorrect Year Specified")
