@@ -22,15 +22,16 @@
         <img src="@assets/haxplore/logo-text.svg">
       </li>
       <router-link to="/" slot="notch" v-if="!isMinimal">
-        <img src="assets/cf19-white-logo.svg">
+        <img src="@assets/cf19-white-logo.svg">
       </router-link>
       <router-link to="/haxplore" slot="notch" v-else>
-        <img src="assets/haxplore/logo-text.svg" @click="$emit('scrollTop')">
+        <img src="@assets/haxplore/logo-text.svg" @click="$emit('scrollTop')">
       </router-link>
     </AppbarLayout>
     <div :class="$style.sidebar" ref="sidebar">
-      <mq-layout mq="md+" v-show="isSideNavigationShown"></mq-layout>
-
+      <SectionSidebar v-bind="$attrs" v-if="['md', 'lg', 'xl', 'xxl'].includes($mq)">
+        <slot></slot>
+      </SectionSidebar>
       <mq-layout :mq="['xs', 'sm']">
         <Slide :isOpen="isSidebarOpen" @closeSideBar="onCloseSideBar" :width="sideBarWidth">
           <img
@@ -61,11 +62,6 @@ export default {
     Slide
   },
   props: {
-    shouldShowSideNavigation: {
-      type: Boolean,
-      default: true,
-      required: false
-    },
     shouldShowHaxploreLogo: {
       type: Boolean,
       default: false,
@@ -74,12 +70,7 @@ export default {
   },
   data() {
     return {
-      isSidebarOpen: false,
-      isSideNavigationShown: true,
-      sideNavigationIdleTimeout: 1000,
-      doHideOnIdle: true,
-      lastScrollEventTime: 0,
-      isSideNavigationIdle: false
+      isSidebarOpen: false
     };
   },
   computed: {
@@ -103,55 +94,6 @@ export default {
     },
     onCloseSideBar() {
       this.isSidebarOpen = false;
-    },
-    animateSideNav(val) {
-      const { sidebar } = this.$refs;
-
-      TweenLite.to(sidebar, 0.8, {
-        right: val
-      });
-    },
-    handleScroll(event) {
-      const { sideNavigationIdleTimeout } = this.$data;
-      this.lastScrollEventTime = new Date().getTime();
-      this.isSideNavigationIdle = false;
-      setTimeout(() => {
-        if (this.isSideNavigationIdle) return;
-        const now = new Date().getTime();
-        if (now - this.lastScrollEventTime >= sideNavigationIdleTimeout) {
-          this.isSideNavigationIdle = true;
-        }
-      }, sideNavigationIdleTimeout);
-    }
-  },
-  mounted() {
-    const { doHideOnIdle, shouldShowSideNavigation } = this.$data;
-    this.isSideNavigationShown = shouldShowSideNavigation;
-    this.isSideNavigationIdle = false;
-    if (doHideOnIdle) window.addEventListener("scroll", this.handleScroll);
-    else window.removeEventListener("scroll", this.handleScroll);
-  },
-  watch: {
-    shouldShowSideNavigation: function(to, from) {
-      if (to === from) return;
-      const { sidebar } = this.$refs;
-      const finalRight = to ? 0 : -140;
-      const onStart = () => {
-        if (to) this.isSideNavigationShown = true;
-      };
-      const onComplete = () => {
-        if (!to) this.isSideNavigationShown = false;
-      };
-      TweenLite.to(sidebar, 0.8, {
-        right: finalRight,
-        onStart,
-        onComplete
-      });
-    },
-    isSideNavigationIdle: function(to, from) {
-      if (to === from) return;
-      if (to && !this.shouldShowSideNavigation) return;
-      this.animateSideNav(to ? -120 : 0);
     }
   }
 };
