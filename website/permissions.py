@@ -6,7 +6,7 @@ class AllowCompleteAndVerified(permissions.BasePermission):
     def has_permission(self,request,view):
         try:
             if request.user.profile.is_profile_complete:
-                if request.user.verified_account.is_verified:
+                if request.user.verified_account.get_verified_status():
                     return True
         except:
             return False

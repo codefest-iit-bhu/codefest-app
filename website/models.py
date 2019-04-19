@@ -93,16 +93,15 @@ class Profile(models.Model):
             self.is_profile_complete = True
             self.save()
         profile_status = self.is_profile_complete
+        if not profile_status:
+            return False
         email_status = False
         try:
             email_status = self.user.verified_account.get_verified_status()
         except Exception:
             pass
-        if not profile_status or not email_status:
-            return False
-        if self.referred_by !=None:
+        if self.referred_by is not None and profile_status and email_status:
             referral,_  = ValidReferral.objects.get_or_create(by=self.referred_by, to=self)
-            return True
         return True
     
 class ValidReferral(models.Model):
