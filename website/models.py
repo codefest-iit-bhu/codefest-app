@@ -79,15 +79,12 @@ class Profile(models.Model):
     gender=models.IntegerField(null=True,choices=GENDER_CHOICES)
     resume=models.FileField(upload_to='media/resumes',null=True)
     is_profile_complete=models.BooleanField(default=False)
+    referral_count = models.IntegerField(default =0)
 
     @cached_property
     def name(self):
         return f'{self.user.first_name} {self.user.last_name}'
     
-    @cached_property
-    def num_referrals(self) -> int:
-        return self.referred_people.count()
-
     def __str__(self):
         return f'{self.user.first_name}:{self.id} from {self.institute_name}'
 
@@ -184,3 +181,8 @@ class Handles(models.Model):
     class Meta:
         verbose_name_plural = "Handles"
 
+@receiver(post_save, sender=ValidReferral)
+def update_ref_count(sender, instance, **kwargs):
+    profile = instance.by
+    profile.referral_count+=1
+    profile.save()

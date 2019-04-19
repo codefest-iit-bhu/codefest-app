@@ -115,3 +115,9 @@ class HandlesView(generics.RetrieveUpdateAPIView):
         pass
     def get_object(self):
         return Handles.objects.get_or_create(profile=self.request.user.profile)[0]
+
+class LeaderBoardView(generics.ListAPIView):
+    permission_classes=[]
+    authentication_classes=[authentication.TokenAuthentication, authentication.SessionAuthentication]
+    queryset = Profile.objects.exclude(referral_count=0).order_by('-referral_count')[:10]
+    serializer_class = LeaderBoardSerializer

@@ -8,4 +8,5 @@ urlpatterns = [
     path('teams/<int:pk>/', TeamLeaveView.as_view()),
     path('teams/<int:pk>/remove/', RemoveFromTeamView.as_view()),
     path('profile/handles/', HandlesView.as_view()),
+    path('leaderboard/', LeaderBoardView.as_view()),
 ]
