@@ -14,7 +14,8 @@ const router = new Router({
       meta: {
         title: "CodeFest '19 | IIT (BHU) Varanasi",
         metaTags: [],
-        noTerminal: false
+        noTerminal: false,
+        animateTerminal: true
       }
     },
     {
@@ -24,7 +25,8 @@ const router = new Router({
       meta: {
         title: "CodeFest '19 | Events",
         metaTags: [],
-        noTerminal: false
+        noTerminal: false,
+        animateTerminal: true
       }
     },
     {
@@ -54,7 +56,7 @@ const router = new Router({
       meta: {
         title: "CodeFest '19 | Change Password",
         metaTags: [],
-        noTerminal: false,
+        noTerminal: true,
         requiresAuth: true
       }
     },
@@ -104,7 +106,8 @@ const router = new Router({
       meta: {
         title: "CodeFest '19 | HaXplore",
         metaTags: [],
-        noTerminal: true
+        noTerminal: true,
+        requiresAuth: false
       }
     },
     {
@@ -114,7 +117,8 @@ const router = new Router({
       meta: {
         title: "Forgot Password",
         metaTags: [],
-        noTerminal: true
+        noTerminal: true,
+        requiresAuth: false
       }
     },
     {
@@ -124,7 +128,8 @@ const router = new Router({
       meta: {
         title: "Referral Leaderboard",
         metaTags: [],
-        noTerminal: true
+        noTerminal: true,
+        requiresAuth: true
       }
     },
     {

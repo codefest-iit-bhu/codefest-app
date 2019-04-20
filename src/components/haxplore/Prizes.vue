@@ -73,7 +73,7 @@
 <script>
 const SectionLayout = () => import("@components/layouts/SectionLayout");
 const GridLayout = () => import("@components/layouts/GridLayout");
-const CardLayout = () => import("@components/layouts/CardLayout");
+import CardLayout from "@components/layouts/CardLayout";
 
 export default {
   components: {

@@ -12,7 +12,7 @@
 </template>
 
 <script>
-const Terminal = () => import("@components/Terminal");
+import Terminal from "@components/Terminal";
 
 export default {
   components: {
@@ -41,8 +41,7 @@ export default {
     showTerminal() {
       const { terminal } = this.$refs;
       if (!terminal) return;
-      if (document.body.clientHeight > 1.5 * window.innerHeight)
-        terminal.animateScrollShow();
+      if (this.$route.meta.animateTerminal) terminal.animateScrollShow();
       else terminal.noAnimateScrollShow();
     },
     terminalStateChanged(isShown) {
@@ -51,12 +50,14 @@ export default {
   },
   watch: {
     $route(to, from) {
+      if (to === from) return;
       this.current = to.path;
       this.$nextTick(() => {
         this.showTerminal();
       });
     },
     $mq(to, from) {
+      if (to === from) return;
       console.log(`$mq = ${to} <- ${from};`);
       this.$nextTick(() => {
         this.showTerminal();

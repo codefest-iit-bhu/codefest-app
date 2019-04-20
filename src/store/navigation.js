@@ -63,7 +63,7 @@ export const navigation = {
       if (current) current = current[dir];
       else current = this.hierarchy[dir];
     });
-    current[".."] = parent;
+    if (!!current) current[".."] = parent;
     return current;
   },
   listContents: function(pwd) {

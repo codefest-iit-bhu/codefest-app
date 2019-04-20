@@ -33,7 +33,7 @@ const Timeline = () => import("@components/haxplore/Timeline");
 const About = () => import("@components/haxplore/About");
 const FAQ = () => import("@components/haxplore/FAQ");
 const Landing = () => import("@components/haxplore/Landing");
-const Prizes = () => import("@components/haxplore/Prizes");
+import Prizes from "@components/haxplore/Prizes";
 const Sponsors = () => import("@components/Sponsors");
 const FooterN = () => import("@components/haxplore/FooterN");
 const SectionLayout = () => import("@components/layouts/SectionLayout");
