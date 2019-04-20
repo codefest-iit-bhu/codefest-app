@@ -1,21 +1,24 @@
 <template>
   <SectionLayout title="Leaderboard" id="container">
-    <div :class="[$style.leaderboard, $style[$mq]]" id="leaderboard">
-      <table>
+    <table :class="[$style.leaderboard, $style[$mq]]" id="leaderboard">
+      <thead>
         <tr :class="$style.tablerow">
-          <th :class="[$style.col1, $style.head]">Rank</th>
-          <th :class="[$style.col2, $style.head]">Name</th>
-          <th :class="[$style.col3, $style.head]">Referrals</th>
+          <th :class="$style.head">Rank</th>
+          <th :class="$style.head">Name</th>
+          <th :class="$style.head">Referrals</th>
         </tr>
+      </thead>
+      <tbody>
         <tr v-for="(person, i) in leaderboard" :key="i" :class="$style.tablerow">
-          <td :class="[$style.col1, ]">{{ i + 1 }}</td>
-          <td :class="[$style.col2, ]">{{ person.name }}</td>
-          <td :class="[$style.col3, ]">{{ person.referral_count }}</td>
+          <td>{{ i + 1 }}</td>
+          <td>{{ person.name }}</td>
+          <td>{{ person.referral_count }}</td>
         </tr>
-      </table>
-    </div>
+      </tbody>
+    </table>
   </SectionLayout>
 </template>
+
 <script>
 const SectionLayout = () => import("@components/layouts/SectionLayout");
 
@@ -38,30 +41,11 @@ export default {
 .leaderboard {
   text-align: center;
   margin: auto;
-  width: 600px;
+  width: 100%;
   border-radius: 15px;
   padding: 15px;
-  box-shadow: 0 0 20px $chartreuse inset;
-
-  .col1, .col3 {
-    width: 100px;
-
-    ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-      width: 50px;
-    }
-  }
-
-  .col2 {
-    width: 400px;
-
-    ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-      width: 200px;
-    }
-  }
-
-  ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-    width: 300px;
-  }
+  box-shadow: 0 0 12px $chartreuse inset;
+  table-layout: fixed;
 
   .head {
     font-family: 'Roboto Slab';
@@ -75,7 +59,7 @@ export default {
     td {
       font-family: 'Quicksand';
       font-size: 16px;
-      padding: 10px 0 0;
+      padding: 12px 0;
       font-weight: 600;
     }
   }

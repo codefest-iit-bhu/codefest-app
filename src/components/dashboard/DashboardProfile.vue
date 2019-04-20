@@ -28,10 +28,11 @@
           :class="$style.helptext"
           v-if="profile.is_verified"
         >Share the above referral link with your contacts to win exciting goodies!</p>
-        <p
-          :class="$style.disabledreferral"
-          v-else
-        >Referral link disabled. Please verify your account and let the magic begin</p>
+        <p :class="$style.disabledreferral" v-else>
+          Referral link disabled. Please verify your account first and refresh the page.
+          <br>
+          <a href="javascript:void(0)" @click="resendVerification">Click here</a> to resend verification email.
+        </p>
         <div :class="$style.profileinfo">
           <div :class="$style.row">
             <span :class="$style.pkey">
@@ -89,7 +90,7 @@
 <script>
 import { copyToClipboard } from "@js/utils";
 import { SITE_URL } from "@js/constants";
-import firebase from "firebase";
+import firebase, { firestore } from "firebase";
 
 const SectionLayout = () => import("@components/layouts/SectionLayout");
 const ResponsiveTwoColumnLayout = () =>
@@ -119,8 +120,8 @@ export default {
     },
 
     user_email() {
-      const { email } = firebase.auth().currentUser;
-      return email;
+      const { currentUser } = firebase.auth();
+      if (currentUser) return currentUser.email;
     },
 
     routerLocation() {
@@ -139,13 +140,28 @@ export default {
     }
   },
   methods: {
-    clickToCopy: function() {
+    clickToCopy() {
       const referral = this.profile.referral_code;
       const referralShareLink = this.$router.resolve(this.routerLocation).href;
       copyToClipboard(`${SITE_URL}${referralShareLink}`);
       this.$toasted.global.success({
         message: `Copied "${referralShareLink}"!`
       });
+    },
+    resendVerification() {
+      firebase
+        .auth()
+        .currentUser.sendEmailVerification()
+        .then(() => {
+          this.$toasted.global.success({
+            message: "Verification Link has been sent."
+          });
+        })
+        .catch(err => {
+          this.$toasted.global.error_post({
+            message: err.message
+          });
+        });
     }
   }
 };

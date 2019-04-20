@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.root">
-    <AppBar :isSideNavigationShown="false"/>
+    <AppBar/>
     <main :class="$style.wrapper">
       <div :class="$style.authContainer">
         <TabLayout :tabs="tabs">
@@ -174,10 +174,18 @@ export default {
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(result => {
           this.successfulAuth(result, true);
-          this.$toasted.global.success({
-            message: "Verification Link has been sent."
-          });
-          result.user.sendEmailVerification().then(() => {});
+          result.user
+            .sendEmailVerification()
+            .then(() =>
+              this.$toasted.global.success({
+                message: "Verification Link has been sent."
+              })
+            )
+            .catch(err => {
+              this.$toasted.global.error_post({
+                message: err.message
+              });
+            });
         })
         .catch(err => {
           this.loading = false;

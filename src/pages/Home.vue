@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.root">
-    <AppBar :doAnimate="true" :isSideNavigationShown="false" @scrollTop="scrollToTop"/>
+    <AppBar :doAnimate="true" @scrollTop="scrollToTop"/>
     <Hero/>
     <main :class="$style.wrapper">
       <!-- Introduction -->
@@ -23,7 +23,8 @@
 <script>
 const AppBar = () => import("@components/Menu/AppBar");
 const SectionLayout = () => import("@components/layouts/SectionLayout");
-const ResponsiveTwoColumnLayout = () => import("@components/layouts/ResponsiveTwoColumnLayout");
+const ResponsiveTwoColumnLayout = () =>
+  import("@components/layouts/ResponsiveTwoColumnLayout");
 const Hero = () => import("@components/Hero");
 const Intro = () => import("@components/Intro");
 const Footer = () => import("@components/Footer");
