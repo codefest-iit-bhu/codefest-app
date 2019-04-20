@@ -63,6 +63,10 @@ class Profile(models.Model):
         (1,'College'),
         (2,'Professional'),
     )
+
+    def get_file_path(self, filename):
+        return f'media/resumes/{self.user.verified_account.uid}/{filename}'
+
     user=models.OneToOneField(User,on_delete=models.CASCADE)
     referred_by=models.ForeignKey('Profile',null=True,related_name="referred",on_delete=models.SET_NULL)
     referral_code=models.CharField(max_length=50, unique=True, default=generate_referral_code)
@@ -77,7 +81,7 @@ class Profile(models.Model):
     country=models.CharField(max_length=4, default='IN')
     phone=models.CharField(max_length=15,blank=True, default="")
     gender=models.IntegerField(null=True,choices=GENDER_CHOICES)
-    resume=models.FileField(upload_to='media/resumes',null=True)
+    resume=models.FileField(upload_to=get_file_path,null=True)
     is_profile_complete=models.BooleanField(default=False)
     referral_count = models.IntegerField(default =0)
 

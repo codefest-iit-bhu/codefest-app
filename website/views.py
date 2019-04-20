@@ -121,3 +121,12 @@ class LeaderBoardView(generics.ListAPIView):
     authentication_classes=[authentication.TokenAuthentication, authentication.SessionAuthentication]
     queryset = Profile.objects.exclude(referral_count=0).order_by('-referral_count')[:10]
     serializer_class = LeaderBoardSerializer
+
+
+class ResumeView(generics.RetrieveUpdateAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    authentication_classes = [authentication.TokenAuthentication, authentication.SessionAuthentication]
+    serializer_class = ResumeSerializer
+    
+    def get_object(self):
+        return Profile.objects.get(user=self.request.user)

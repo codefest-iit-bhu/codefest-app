@@ -191,3 +191,9 @@ class LeaderBoardSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = ('name','institute_name','referral_count')
+
+class ResumeSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model=Profile
+        fields=('resume',)
