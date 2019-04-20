@@ -11,9 +11,12 @@
       <div :class="$style.about">
         <div :class="[$style.countdiv, is_verified]">
           <span :class="$style.reftext">Referral Count</span>
-          <span :class="$style.refcount">{{ profile.num_referrals }}</span>
+          <span :class="$style.refcount" v-if="profile.is_verified">{{ profile.referral_count }}</span>
+          <span :class="$style.refcount" v-else>
+            <i class="far fa-times-circle"></i>
+          </span>
         </div>
-        <div :class="$style.box">
+        <div :class="$style.box" v-if="profile.is_verified">
           <span :class="$style.key">Referral Link</span>
           <span :class="$style.value" v-if="['md', 'lg', 'xl'].includes(this.$mq)">
             <router-link :to="routerLocation">{{ profile.referral_code }}</router-link>
@@ -23,7 +26,12 @@
         </div>
         <p
           :class="$style.helptext"
+          v-if="profile.is_verified"
         >Share the above referral link with your contacts to win exciting goodies!</p>
+        <p
+          :class="$style.disabledreferral"
+          v-else
+        >Referral link disabled. Please verify your account and let the magic begin</p>
         <div :class="$style.profileinfo">
           <div :class="$style.row">
             <span :class="$style.pkey">
@@ -47,7 +55,7 @@
             <span :class="$style.pkey">
               <span>Email</span>
             </span>
-            <span :class="$style.pvalue">{{ profile.email }}</span>
+            <span :class="$style.pvalue">{{ user_email }}</span>
           </div>
           <div v-if="profile.institute_type == 1" :class="$style.row">
             <span :class="$style.pkey">
@@ -81,9 +89,11 @@
 <script>
 import { copyToClipboard } from "@js/utils";
 import { SITE_URL } from "@js/constants";
+import firebase from "firebase";
 
 const SectionLayout = () => import("@components/layouts/SectionLayout");
-const ResponsiveTwoColumnLayout = () => import("@components/layouts/ResponsiveTwoColumnLayout");
+const ResponsiveTwoColumnLayout = () =>
+  import("@components/layouts/ResponsiveTwoColumnLayout");
 
 export default {
   components: {
@@ -106,6 +116,11 @@ export default {
       } else {
         return this.$style.notverified;
       }
+    },
+
+    user_email() {
+      const { email } = firebase.auth().currentUser;
+      return email;
     },
 
     routerLocation() {
@@ -171,6 +186,8 @@ export default {
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
         width: 72px;
         height: 72px;
+        font-size: 48px;
+        padding: 12px;
       }
     }
 
@@ -202,6 +219,10 @@ export default {
     margin-bottom: 72px;
     margin-left: 30%;
     background-image: linear-gradient(to right, $black, $chartreuse);
+
+    ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+      margin-bottom: 16px;
+    }
   }
 
   .actionButtons {
@@ -328,6 +349,21 @@ export default {
 
     .helptext {
       font-size: 14px;
+      display: inline-block;
+      box-shadow: 0 0 20px $chartreuse inset;
+      border: 1px solid $chartreuse;
+      border-radius: 10px;
+      padding: 8px 16px;
+      margin-top: 24px;
+    }
+
+    .disabledreferral {
+      display: inline-block;
+      font-size: 14px;
+      box-shadow: 0 0 20px red inset;
+      border: 1px solid red;
+      border-radius: 10px;
+      padding: 8px 16px;
     }
 
     .countdiv {
@@ -360,13 +396,17 @@ export default {
     }
 
     .verified {
-      border: 3px solid $chartreuse;
+      border: 5px solid $chartreuse;
       animation: timeline-border-green 1s ease-in-out infinite alternate;
     }
 
     .notverified {
-      border: 3px solid red;
+      border: 5px solid red;
       animation: timeline-border-white 1s ease-in-out infinite alternate;
+
+      i {
+        color: red;
+      }
     }
 
     .profileinfo {
