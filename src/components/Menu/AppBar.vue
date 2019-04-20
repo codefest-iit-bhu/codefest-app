@@ -97,9 +97,9 @@
 <script>
 import { isMinimal } from "@js/utils";
 
-import AppbarLayout from "@components/layouts/AppbarLayout";
-import SectionSidebar from "@components/SectionSidebar";
-import Slide from "@components/Menu/Slide";
+const AppbarLayout = () => import("@components/layouts/AppbarLayout");
+const SectionSidebar = () => import("@components/SectionSidebar");
+const Slide = () => import("@components/Menu/Slide");
 
 export default {
   components: {

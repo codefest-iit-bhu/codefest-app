@@ -82,8 +82,8 @@
 import { copyToClipboard } from "@js/utils";
 import { SITE_URL } from "@js/constants";
 
-import SectionLayout from "@components/layouts/SectionLayout";
-import ResponsiveTwoColumnLayout from "@components/layouts/ResponsiveTwoColumnLayout";
+const SectionLayout = () => import("@components/layouts/SectionLayout");
+const ResponsiveTwoColumnLayout = () => import("@components/layouts/ResponsiveTwoColumnLayout");
 
 export default {
   components: {

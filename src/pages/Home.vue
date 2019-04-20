@@ -21,15 +21,15 @@
 </template>
 
 <script>
-import AppBar from "@components/Menu/AppBar";
-import SectionLayout from "@components/layouts/SectionLayout";
-import ResponsiveTwoColumnLayout from "@components/layouts/ResponsiveTwoColumnLayout";
-import Hero from "@components/Hero";
-import Intro from "@components/Intro";
-import Footer from "@components/Footer";
-import Lookback from "@components/Lookback";
-import Sponsors from "@components/Sponsors";
-import Testimonials from "@components/Testimonials";
+const AppBar = () => import("@components/Menu/AppBar");
+const SectionLayout = () => import("@components/layouts/SectionLayout");
+const ResponsiveTwoColumnLayout = () => import("@components/layouts/ResponsiveTwoColumnLayout");
+const Hero = () => import("@components/Hero");
+const Intro = () => import("@components/Intro");
+const Footer = () => import("@components/Footer");
+const Lookback = () => import("@components/Lookback");
+const Sponsors = () => import("@components/Sponsors");
+const Testimonials = () => import("@components/Testimonials");
 
 export default {
   components: {

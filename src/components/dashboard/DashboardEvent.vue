@@ -15,10 +15,10 @@ import eventsStore from "@store/events";
 import API from "@js/api";
 import { isMinimal } from "@js/utils";
 
-import AppBar from "@components/Menu/AppBar";
-import GridLayout from "@components/layouts/GridLayout";
-import EventTeam from "@components/dashboard/EventTeam";
-import Footer from "@components/Footer";
+const AppBar = () => import("@components/Menu/AppBar");
+const GridLayout = () => import("@components/layouts/GridLayout");
+const EventTeam = () => import("@components/dashboard/EventTeam");
+const Footer = () => import("@components/Footer");
 
 export default {
   components: {

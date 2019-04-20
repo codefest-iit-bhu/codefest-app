@@ -71,9 +71,9 @@
 </template>
 
 <script>
-import SectionLayout from "@components/layouts/SectionLayout";
-import GridLayout from "@components/layouts/GridLayout";
-import CardLayout from "@components/layouts/CardLayout";
+const SectionLayout = () => import("@components/layouts/SectionLayout");
+const GridLayout = () => import("@components/layouts/GridLayout");
+const CardLayout = () => import("@components/layouts/CardLayout");
 
 export default {
   components: {

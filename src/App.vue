@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Terminal from "@components/Terminal";
+const Terminal = () => import("@components/Terminal");
 
 export default {
   components: {

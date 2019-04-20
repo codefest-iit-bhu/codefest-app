@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import QuesAns from "@components/QuesAns";
+const QuesAns = () => import("@components/QuesAns");
 
 export default {
   components: {

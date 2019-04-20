@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import SectionLayout from "@components/layouts/SectionLayout";
+const SectionLayout = () => import("@components/layouts/SectionLayout");
 
 export default {
   components: {

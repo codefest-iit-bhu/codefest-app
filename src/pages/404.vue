@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import AppBar from "@components/Menu/AppBar";
-import Footer from "@components/Footer";
+const AppBar = () => import("@components/Menu/AppBar");
+const Footer = () => import("@components/Footer");
 
 export default {
   components: {

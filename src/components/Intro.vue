@@ -23,7 +23,7 @@
 
 
 <script>
-import ResponsiveTwoColumnLayout from "@components/layouts/ResponsiveTwoColumnLayout";
+const ResponsiveTwoColumnLayout = () => import("@components/layouts/ResponsiveTwoColumnLayout");
 export default {
   components: {
     ResponsiveTwoColumnLayout

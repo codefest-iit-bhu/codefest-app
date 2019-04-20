@@ -12,9 +12,9 @@
 </template>
 
 <script>
-import Timeline from "@components/Timeline";
-import SectionLayout from "@components/layouts/SectionLayout";
-import ResponsiveTwoColumnLayout from "@components/layouts/ResponsiveTwoColumnLayout";
+const Timeline = () => import("@components/Timeline");
+const SectionLayout = () => import("@components/layouts/SectionLayout");
+const ResponsiveTwoColumnLayout = () => import("@components/layouts/ResponsiveTwoColumnLayout");
 
 export default {
   components: {

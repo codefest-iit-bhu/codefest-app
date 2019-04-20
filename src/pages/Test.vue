@@ -6,9 +6,9 @@
 </template>
 
 <script>
-import FloatingButton from "@components/FloatingButton";
+const FloatingButton = () => import("@components/FloatingButton");
 import API from "@js/api";
-import Leaderboard from "@components/Leaderboard";
+const Leaderboard = () => import("@components/Leaderboard");
 export default {
   components: {
     FloatingButton,

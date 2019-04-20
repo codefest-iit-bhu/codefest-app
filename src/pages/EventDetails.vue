@@ -21,9 +21,9 @@
 </template>
 
 <script>
-import AppBar from "@components/Menu/AppBar";
-import StandardEventDetails from "@components/StandardEventDetails";
-import Footer from "@components/Footer";
+const AppBar = () => import("@components/Menu/AppBar");
+const StandardEventDetails = () => import("@components/StandardEventDetails");
+const Footer = () => import("@components/Footer");
 import events from "@store/events";
 export default {
   components: {

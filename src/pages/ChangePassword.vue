@@ -49,9 +49,9 @@
 import firebase from "firebase";
 import API from "@js/api";
 
-import AppBar from "@components/Menu/AppBar";
-import Footer from "@components/Footer";
-import TabLayout from "@components/layouts/TabLayout";
+const AppBar = () => import("@components/Menu/AppBar");
+const Footer = () => import("@components/Footer");
+const TabLayout = () => import("@components/layouts/TabLayout");
 
 export default {
   components: {

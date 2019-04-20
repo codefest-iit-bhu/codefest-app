@@ -121,9 +121,9 @@
 <script>
 import firebase from "firebase";
 
-import AppBar from "@components/Menu/AppBar";
-import Footer from "@components/Footer";
-import TabLayout from "@components/layouts/TabLayout";
+const AppBar = () => import("@components/Menu/AppBar");
+const Footer = () => import("@components/Footer");
+const TabLayout = () => import("@components/layouts/TabLayout");
 import { BarLoader } from "@saeris/vue-spinners";
 
 export default {

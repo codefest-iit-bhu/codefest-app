@@ -25,9 +25,9 @@
 </template>
 
 <script>
-import FAQ from "@components/FAQ";
-import SectionLayout from "@components/layouts/SectionLayout";
-import ResponsiveTwoColumnLayout from "@components/layouts/ResponsiveTwoColumnLayout";
+const FAQ = () => import("@components/FAQ");
+const SectionLayout = () => import("@components/layouts/SectionLayout");
+const ResponsiveTwoColumnLayout = () => import("@components/layouts/ResponsiveTwoColumnLayout");
 
 export default {
   components: {

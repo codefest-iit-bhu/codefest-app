@@ -10,9 +10,9 @@
 <script>
 import API from "@js/api";
 
-import Footer from "@components/Footer";
-import AppBar from "@components/Menu/AppBar";
-import Leaderboard from "@components/Leaderboard";
+const Footer = () => import("@components/Footer");
+const AppBar = () => import("@components/Menu/AppBar");
+const Leaderboard = () => import("@components/Leaderboard");
 export default {
   components: {
     AppBar,

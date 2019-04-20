@@ -49,9 +49,9 @@
 </template>
 
 <script>
-import TabLayout from "@components/layouts/TabLayout";
-import FAQ from "@components/FAQ";
-import FloatingButton from "@components/FloatingButton";
+const TabLayout = () => import("@components/layouts/TabLayout");
+const FAQ = () => import("@components/FAQ");
+const FloatingButton = () => import("@components/FloatingButton");
 
 export default {
   components: {

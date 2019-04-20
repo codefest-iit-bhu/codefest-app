@@ -26,8 +26,8 @@
 
 <script>
 import { TypingAnim } from "@js/utils";
-import Countdown from "@components/Countdown";
-import FloatingButton from "@components/FloatingButton";
+const Countdown = () => import("@components/Countdown");
+const FloatingButton = () => import("@components/FloatingButton");
 
 export default {
   components: {

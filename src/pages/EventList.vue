@@ -16,10 +16,10 @@
 </template>
 
 <script>
-import AppBar from "@components/Menu/AppBar";
-import SpecialEvent from "@components/SpecialEvent";
-import StandardEvent from "@components/StandardEvent";
-import Footer from "@components/Footer";
+const AppBar = () => import("@components/Menu/AppBar");
+const SpecialEvent = () => import("@components/SpecialEvent");
+const StandardEvent = () => import("@components/StandardEvent");
+const Footer = () => import("@components/Footer");
 import events from "@store/events";
 import { isMinimal } from "@js/utils";
 

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import TimelineCheckpoint from "@components/TimelineCheckpoint";
+const TimelineCheckpoint = () => import("@components/TimelineCheckpoint");
 
 export default {
   components: {

@@ -28,15 +28,15 @@
 </template>
 
 <script>
-import AppBar from "@components/haxplore/AppBar";
-import Timeline from "@components/haxplore/Timeline";
-import About from "@components/haxplore/About";
-import FAQ from "@components/haxplore/FAQ";
-import Landing from "@components/haxplore/Landing";
-import Prizes from "@components/haxplore/Prizes";
-import Sponsors from "@components/Sponsors";
-import FooterN from "@components/haxplore/FooterN";
-import SectionLayout from "@components/layouts/SectionLayout";
+const AppBar = () => import("@components/haxplore/AppBar");
+const Timeline = () => import("@components/haxplore/Timeline");
+const About = () => import("@components/haxplore/About");
+const FAQ = () => import("@components/haxplore/FAQ");
+const Landing = () => import("@components/haxplore/Landing");
+const Prizes = () => import("@components/haxplore/Prizes");
+const Sponsors = () => import("@components/Sponsors");
+const FooterN = () => import("@components/haxplore/FooterN");
+const SectionLayout = () => import("@components/layouts/SectionLayout");
 
 export default {
   components: {

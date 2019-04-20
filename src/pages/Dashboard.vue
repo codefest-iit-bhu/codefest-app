@@ -25,10 +25,10 @@
 <script>
 import API from "@js/api";
 
-import AppBar from "@components/Menu/AppBar";
-import DashboardEvent from "@components/dashboard/DashboardEvent";
-import DashboardProfile from "@components/dashboard/DashboardProfile";
-import Footer from "@components/Footer";
+const AppBar = () => import("@components/Menu/AppBar");
+const DashboardEvent = () => import("@components/dashboard/DashboardEvent");
+const DashboardProfile = () => import("@components/dashboard/DashboardProfile");
+const Footer = () => import("@components/Footer");
 
 export default {
   components: {
