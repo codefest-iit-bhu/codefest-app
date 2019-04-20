@@ -33,7 +33,7 @@
                   <label for="phone" :class="$style.label">phone</label>
                   <input
                     type="tel"
-                    pattern="[+0-9]{10,15}"
+                    pattern="\+[0-9]{9,15}"
                     placeholder="(e.g. +910000000000)"
                     id="phone"
                     :class="$style.field"
@@ -43,13 +43,9 @@
                 </div>
                 <div :class="$style.field">
                   <label for="country" :class="$style.label">country</label>
-                  <input
-                    type="country"
-                    id="country"
-                    :class="$style.field"
-                    v-model="profile.country"
-                    required
-                  >
+                  <select id="country" :class="$style.field" v-model="profile.country" required>
+                    <option selected disabled>Select your country</option>
+                  </select>
                 </div>
                 <div :class="$style.field">
                   <label for="institute_type" :class="$style.label">you are a</label>
@@ -116,36 +112,41 @@
               <div :class="$style.fieldsContainer">
                 <div :class="$style.field">
                   <label for="codeforces" :class="$style.label">codeforces</label>
-                  <input type="text" v-model="handles.codeforces">
+                  <input type="text" @keydown="checkHandlesChanged" v-model="handles.codeforces">
                 </div>
                 <div :class="$style.field">
                   <label for="codechef" :class="$style.label">codechef</label>
-                  <input type="text" v-model="handles.codechef">
+                  <input type="text" @keydown="checkHandlesChanged" v-model="handles.codechef">
                 </div>
                 <div :class="$style.field">
                   <label for="hackerrank" :class="$style.label">hackerrank</label>
-                  <input type="text" v-model="handles.hackerrank">
+                  <input type="text" @keydown="checkHandlesChanged" v-model="handles.hackerrank">
                 </div>
                 <div :class="$style.field">
                   <label for="hackerearth" :class="$style.label">hackerearth</label>
-                  <input type="text" v-model="handles.hackerearth">
+                  <input type="text" @keydown="checkHandlesChanged" v-model="handles.hackerearth">
                 </div>
                 <div :class="$style.field">
                   <label for="topcoder" :class="$style.label">topcoder</label>
-                  <input type="text" v-model="handles.topcoder">
+                  <input type="text" @keydown="checkHandlesChanged" v-model="handles.topcoder">
                 </div>
                 <div :class="$style.field">
                   <label for="analyticsVidya" :class="$style.label">analytics vidya</label>
-                  <input type="text" v-model="handles.analyticsVidya">
+                  <input
+                    type="text"
+                    @keydown="checkHandlesChanged"
+                    v-model="handles.analyticsVidya"
+                  >
                 </div>
                 <div :class="$style.field">
                   <label for="dev_folio" :class="$style.label">dev folio</label>
-                  <input type="text" v-model="handles.dev_folio">
+                  <input type="text" @keydown="checkHandlesChanged" v-model="handles.dev_folio">
                 </div>
               </div>
               <div :class="$style.btnStyle">
-                <button type="submit" name="submit" value=">" :class="$style.next">
-                  <i class="fas fa-save"></i>
+                <button type="submit" name="submit" :class="$style.submit">
+                  <span v-if="isHandlesFilled">Save</span>
+                  <span v-else>Skip</span>
                 </button>
               </div>
             </div>
@@ -205,10 +206,15 @@ export default {
         basic: false,
         academic: false,
         handles: false
-      }
+      },
+      isHandlesFilled: false
     };
   },
   methods: {
+    checkHandlesChanged(event) {
+      this.isHandlesFilled = false;
+      if (event.target.value.length > 0) this.isHandlesFilled = true;
+    },
     checkValidity(fields) {
       if (fields == null) return true;
       var valid = true;
@@ -227,7 +233,8 @@ export default {
         this.checkValidity(fields) ||
         (this.curId == null || this.navIds[id] <= this.navIds[this.curId])
       ) {
-        if (!this.isDisabled[id]) this.curId = id;
+        // if (!this.isDisabled[id])
+        this.curId = id;
       } else document.querySelectorAll("form button[type='submit']")[0].click();
     },
     fillDropdown(
@@ -274,15 +281,21 @@ export default {
         body: this.handles
       })
         .then(resp => {
-          if (!this.profile.is_profile_complete) {
-            API.put("profile/", {
-              body: this.profile
-            }).catch(console.log);
-          }
-
-          this.$router.push({ name: "~/dashboard" });
+          API.put("profile/", {
+            body: this.profile
+          })
+            .then(_ => {
+              const msg = "Your profile has been updated successfully!";
+              this.$toasted.global.success({ message: msg });
+              this.$router.push({ name: "~/dashboard" });
+            })
+            .catch(err => {
+              this.$toasted.global.error_post({ message: err.message });
+            });
         })
-        .catch(console.log);
+        .catch(err => {
+          this.$toasted.global.error_post({ message: err.message });
+        });
     }
   },
   created() {
@@ -310,14 +323,14 @@ export default {
       "instituteList",
       "institute_name"
     );
+    this.fillDropdown("assets/branches.json", "branchList", "branch");
     this.fillDropdown(
       "assets/countries.json",
-      "countryList",
+      "country",
       "country",
       "code",
       "name"
     );
-    this.fillDropdown("assets/branches.json", "branchList", "branch");
   }
 };
 </script>
@@ -486,6 +499,22 @@ export default {
         text-align: center;
 
         &:hover {
+          color: $chartreuse;
+        }
+      }
+
+      .submit {
+        border-radius: 4px;
+        width: 80px;
+        padding: 5px 10px;
+        font: 14pt Ubuntu;
+        background: transparent;
+        color: $white;
+        text-transform: uppercase;
+        border: 1px solid $white;
+
+        &:hover {
+          border: 1px solid $chartreuse;
           color: $chartreuse;
         }
       }
