@@ -112,35 +112,31 @@
               <div :class="$style.fieldsContainer">
                 <div :class="$style.field">
                   <label for="codeforces" :class="$style.label">codeforces</label>
-                  <input type="text" @keydown="checkHandlesChanged" v-model="handles.codeforces">
+                  <input type="text" @keyup="checkHandlesChanged" v-model="handles.codeforces">
                 </div>
                 <div :class="$style.field">
                   <label for="codechef" :class="$style.label">codechef</label>
-                  <input type="text" @keydown="checkHandlesChanged" v-model="handles.codechef">
+                  <input type="text" @keyup="checkHandlesChanged" v-model="handles.codechef">
                 </div>
                 <div :class="$style.field">
                   <label for="hackerrank" :class="$style.label">hackerrank</label>
-                  <input type="text" @keydown="checkHandlesChanged" v-model="handles.hackerrank">
+                  <input type="text" @keyup="checkHandlesChanged" v-model="handles.hackerrank">
                 </div>
                 <div :class="$style.field">
                   <label for="hackerearth" :class="$style.label">hackerearth</label>
-                  <input type="text" @keydown="checkHandlesChanged" v-model="handles.hackerearth">
+                  <input type="text" @keyup="checkHandlesChanged" v-model="handles.hackerearth">
                 </div>
                 <div :class="$style.field">
                   <label for="topcoder" :class="$style.label">topcoder</label>
-                  <input type="text" @keydown="checkHandlesChanged" v-model="handles.topcoder">
+                  <input type="text" @keyup="checkHandlesChanged" v-model="handles.topcoder">
                 </div>
                 <div :class="$style.field">
                   <label for="analyticsVidya" :class="$style.label">analytics vidya</label>
-                  <input
-                    type="text"
-                    @keydown="checkHandlesChanged"
-                    v-model="handles.analyticsVidya"
-                  >
+                  <input type="text" @keyup="checkHandlesChanged" v-model="handles.analyticsVidya">
                 </div>
                 <div :class="$style.field">
                   <label for="dev_folio" :class="$style.label">dev folio</label>
-                  <input type="text" @keydown="checkHandlesChanged" v-model="handles.dev_folio">
+                  <input type="text" @keyup="checkHandlesChanged" v-model="handles.dev_folio">
                 </div>
               </div>
               <div :class="$style.btnStyle">
@@ -212,7 +208,6 @@ export default {
   },
   methods: {
     checkHandlesChanged(event) {
-      this.isHandlesFilled = false;
       if (event.target.value.length > 0) this.isHandlesFilled = true;
     },
     checkValidity(fields) {
