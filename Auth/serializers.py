@@ -113,7 +113,7 @@ class RegisterSerializer(serializers.Serializer):
         try:
             user.validate_unique()
         except Exception as e:
-            raise serializers.ValidationError(detail=e.message_dict)
+            raise serializers.ValidationError(detail="User already exists")
         user.save()
         account, _ = VerifiedAccount.objects.get_or_create(
             uid=uid, user=user, provider=provider)
@@ -122,10 +122,8 @@ class RegisterSerializer(serializers.Serializer):
             account.is_verified=False
             account.save()
         
-        try:
-            referred_by = Profile.objects.get(referral_code = data.get('applied_referral_code'))
-        except:
-            referred_by = None
+        referred_by = data.get('applied_referral_code', None)
+
         profile,_ = Profile.objects.get_or_create(user=user,referred_by=referred_by)
         profile.save()
         return user

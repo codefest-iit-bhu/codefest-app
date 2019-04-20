@@ -167,3 +167,13 @@ GS_BUCKET_NAME = 'codefest19.appspot.com'
 GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
     os.path.join(BASE_DIR,'codefest19-firebase-adminsdk-yzr10-ed3ec09af8.json')
 )
+
+SWAGGER_SETTINGS = {
+   'SECURITY_DEFINITIONS': {
+      'Token': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+      }
+   }
+}
