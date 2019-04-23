@@ -75,18 +75,25 @@
                     <span v-if="profile.institute_type==2">last institute</span>
                     <span v-else>institute</span>
                   </label>
-                  <input type="text" id="institute_name" v-model="profile.institute_name" required>
+                  <input
+                    type="text"
+                    id="institute_name"
+                    placeholder="Hint: If you don't find your institute, type it out"
+                    v-model="profile.institute_name"
+                    required
+                  >
                 </div>
                 <div :class="$style.field">
                   <label for="study_year" :class="$style.label">
                     <span v-if="profile.institute_type==0">class</span>
-                    <span v-if="profile.institute_type==1">year</span>
+                    <span v-if="profile.institute_type==1">study year</span>
                     <span v-if="profile.institute_type==2">experience</span>
                   </label>
                   <input
                     type="number"
                     id="study_year"
                     name="study_year"
+                    placeholder="(e.g. 2)"
                     min="1"
                     v-model="profile.study_year"
                     required
@@ -94,7 +101,13 @@
                 </div>
                 <div :class="$style.field" v-show="profile.institute_type==1">
                   <label for="branch" :class="$style.label">branch</label>
-                  <input type="text" id="branch" name="branch" v-model="profile.branch">
+                  <input
+                    type="text"
+                    id="branch"
+                    name="branch"
+                    placeholder="Hint: If you don't find your branch, type it out"
+                    v-model="profile.branch"
+                  >
                 </div>
                 <div :class="$style.field" v-show="profile.institute_type!=0">
                   <label for="degree" :class="$style.label">degree</label>
@@ -258,15 +271,11 @@ export default {
               option.innerHTML = item[datafield];
               dataList.appendChild(option);
             });
-
-            input.placeholder = "";
           } else {
-            input.placeholder = "error";
+            console.log("error");
           }
         }
       };
-
-      input.placeholder = "";
 
       request.open("GET", url, true);
       request.send();
@@ -473,6 +482,7 @@ export default {
       .label {
         display: inline-block;
         text-align: left;
+        text-transform: capitalize;
         width: 100px;
         color: white;
         height: 30px;
