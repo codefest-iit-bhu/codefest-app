@@ -21,7 +21,7 @@ export default {
     return {
       testimonials: [
         {
-          name: "Gennnady Korotkevich (Tourist)",
+          name: "Gennady Korotkevich (Tourist)",
           comment:
             "Manthan had some good problems and it was prepared very well. \
                       I loved the idea of hosting Mathmania at Topcoder! The problems were interesting too. \
