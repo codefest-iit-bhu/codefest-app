@@ -78,7 +78,7 @@
                   <input
                     type="text"
                     id="institute_name"
-                    placeholder="Hint: If you don't find your institute, type it out"
+                    placeholder="Type out your institute"
                     v-model="profile.institute_name"
                     required
                   >
@@ -105,7 +105,7 @@
                     type="text"
                     id="branch"
                     name="branch"
-                    placeholder="Hint: If you don't find your branch, type it out"
+                    placeholder="Type out your branch"
                     v-model="profile.branch"
                   >
                 </div>
@@ -351,7 +351,7 @@ export default {
 }
 
 .wrapper {
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
   padding: 100px 0;
   position: relative;

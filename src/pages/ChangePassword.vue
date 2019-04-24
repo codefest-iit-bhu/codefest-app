@@ -117,7 +117,7 @@ export default {
 }
 
 .wrapper {
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
   padding: 100px 0;
   position: relative;
