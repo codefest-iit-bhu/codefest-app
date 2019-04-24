@@ -34,11 +34,9 @@
       </SectionSidebar>
       <mq-layout :mq="['xs', 'sm']">
         <Slide :isOpen="isSidebarOpen" @closeSideBar="onCloseSideBar" :width="sideBarWidth">
-          <img
-            src="@assets/haxplore/logo-text.svg"
-            :class="$style.sidebarLogo"
-            @click="$emit('scrollTop')"
-          >
+          <router-link to="/">
+            <img src="@assets/cf19-white-logo.svg" :class="$style.sidebarLogo">
+          </router-link>
           <ul v-scroll-spy-active="{class: $style.active}" v-scroll-spy-link>
             <slot></slot>
           </ul>
@@ -173,7 +171,7 @@ export default {
     }
 
     .sidebarLogo {
-      width: 250px;
+      width: 200px;
       cursor: pointer;
       margin: auto;
     }
