@@ -23,3 +23,7 @@ Hosts the code for the frontend of Codefest 2019 website. Uses Vue.Js framework 
 
 - Non-Vue-related JS files are in the src/js folder.
 - Desktop and Mobile pages are respectively in src/pages/desktop and src/pages/mobile.
+
+### Hall of Fame
+
+[![](https://sourcerer.io/fame/shivanshs9/shivanshs9/codefest19/images/0)](https://sourcerer.io/fame/shivanshs9/shivanshs9/codefest19/links/0)[![](https://sourcerer.io/fame/shivanshs9/shivanshs9/codefest19/images/1)](https://sourcerer.io/fame/shivanshs9/shivanshs9/codefest19/links/1)[![](https://sourcerer.io/fame/shivanshs9/shivanshs9/codefest19/images/2)](https://sourcerer.io/fame/shivanshs9/shivanshs9/codefest19/links/2)[![](https://sourcerer.io/fame/shivanshs9/shivanshs9/codefest19/images/3)](https://sourcerer.io/fame/shivanshs9/shivanshs9/codefest19/links/3)[![](https://sourcerer.io/fame/shivanshs9/shivanshs9/codefest19/images/4)](https://sourcerer.io/fame/shivanshs9/shivanshs9/codefest19/links/4)[![](https://sourcerer.io/fame/shivanshs9/shivanshs9/codefest19/images/5)](https://sourcerer.io/fame/shivanshs9/shivanshs9/codefest19/links/5)[![](https://sourcerer.io/fame/shivanshs9/shivanshs9/codefest19/images/6)](https://sourcerer.io/fame/shivanshs9/shivanshs9/codefest19/links/6)[![](https://sourcerer.io/fame/shivanshs9/shivanshs9/codefest19/images/7)](https://sourcerer.io/fame/shivanshs9/shivanshs9/codefest19/links/7)
