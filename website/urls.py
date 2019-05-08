@@ -10,4 +10,5 @@ urlpatterns = [
     path('profile/handles/', HandlesView.as_view()),
     path('leaderboard/', LeaderBoardView.as_view()),
     path('resume/',ResumeView.as_view()),
+    path('cas/', CALeaderBoardView.as_view()),
 ]

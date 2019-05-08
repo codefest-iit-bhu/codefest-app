@@ -197,3 +197,8 @@ class ResumeSerializer(serializers.ModelSerializer):
     class Meta:
         model=Profile
         fields=('resume',)
+
+class CALeaderboardSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=CA
+        exclude = ('id',)

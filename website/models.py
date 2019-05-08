@@ -185,6 +185,15 @@ class Handles(models.Model):
     class Meta:
         verbose_name_plural = "Handles"
 
+
+class CA(models.Model):
+    name = models.CharField(max_length=80)
+    institute_name = models.CharField(max_length=200)
+    points = models.IntegerField(default=0)
+
+    def __str__(self):
+        return f'{self.name} from {self.institute_name}'
+
 @receiver(post_save, sender=ValidReferral)
 def update_ref_count(sender, instance, **kwargs):
     profile = instance.by
