@@ -1,0 +1,162 @@
+<template>
+  <div :class="[$style.heroContainer, $style[$mq]]">
+    <ResponsiveTwoColumnLayout>
+      <div :class="$style.caHead" slot="left">
+        <img src="@assets/cf19-hero-logo.svg">
+        <span :class="$style.tagline" ref="tagline"></span>
+        <span :class="$style.venue">
+          <span :id="$style.loc">
+            <i class="fas fa-map-marked-alt"></i> IIT (BHU), Varanasi
+          </span>
+          <span :id="$style.sep">|</span>
+          <span :id="$style.date">
+            <i class="far fa-calendar-alt"></i> 23 - 25 August, 2019
+          </span>
+        </span>
+        <h1>
+          Want to be a part of the
+          <span>BIGGEST</span> coding festival of the country ?
+        </h1>
+        <h3>
+          Be part of
+          <span>CODEFEST'19</span> by becoming our CAMPUS AMBASSADOR.
+        </h3>
+        <div :class="$style.link">
+          <router-link to="/dashboard/events/" :class="$style.linkText">
+            <h4>Register</h4>
+          </router-link>
+        </div>
+      </div>
+      <div :class="$style.caImage" slot="right">
+        <img src="@assets/haxplore/faq.svg">
+      </div>
+    </ResponsiveTwoColumnLayout>
+  </div>
+</template>
+
+<script>
+import { TypingAnim } from "@js/utils";
+const ResponsiveTwoColumnLayout = () =>
+  import("@components/layouts/ResponsiveTwoColumnLayout");
+
+export default {
+  components: {
+    ResponsiveTwoColumnLayout
+  },
+  data() {
+    return {
+      isTyped: false
+    };
+  },
+  mounted() {
+    this.animTyping = new TypingAnim(
+      this.$refs.tagline,
+      "Imagine. Create. Iterate."
+    );
+
+    window.setInterval(() => {
+      this.isTyped ? this.animTyping.erase() : this.animTyping.type();
+      this.isTyped = !this.isTyped;
+    }, 2000);
+    this.animTyping.type();
+    this.isTyped = true;
+  }
+};
+</script>
+
+<style module lang="stylus">
+@require '~@styles/theme';
+@require '~@styles/mixins';
+
+.heroContainer {
+  width: 100%;
+
+  .caImage {
+    img {
+      width: 80%;
+      margin-left: 20%;
+      margin-bottom: 50px;
+    }
+  }
+
+  .caHead {
+    text-align: center;
+
+    img {
+      width: 400px;
+    }
+
+    h1, h3 {
+      text-align: left;
+      font-family: 'Roboto Slab';
+      font-weight: 600;
+      margin: 48px 0;
+
+      span {
+        color: $chartreuse;
+        margin: 0 2px;
+      }
+    }
+
+    h3 {
+      letter-spacing: 1.1px;
+      text-align: center;
+    }
+
+    .link {
+      margin: 0 auto 60px;
+      width: 290px;
+      height: auto;
+      padding: 25px;
+      border-radius: 50px;
+      box-shadow: inset 0px 0px 20px $chartreuse;
+      animation: neon-box 1.5s ease-in-out infinite alternate;
+      border: 2px solid $chartreuse;
+
+      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+        width: 220px;
+
+        .linkText {
+          text-align: center;
+
+          h4 {
+            margin: 0;
+            font-size: 21px;
+          }
+        }
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      .linkText {
+        text-align: center;
+        font-family: 'Aldo the Apache';
+        color: $chartreuse;
+        margin-top: 20px;
+        display: inline;
+
+        h4 {
+          margin: 0;
+          font-size: 30px;
+        }
+      }
+    }
+
+    .tagline, .venue {
+      height: 32px;
+      display: block;
+      text-align: center;
+      margin: 8px auto;
+      font-size: 16px;
+      font-weight: 600;
+      font-family: 'Quicksand';
+
+      #sep {
+        margin: 0 8px;
+      }
+    }
+  }
+}
+</style>
