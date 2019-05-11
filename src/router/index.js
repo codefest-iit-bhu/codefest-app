@@ -6,8 +6,7 @@ Vue.use(Router);
 
 const router = new Router({
   mode: "history",
-  routes: [
-    {
+  routes: [{
       name: "~",
       path: "/",
       component: () => import(`@pages/Home`),
@@ -37,6 +36,17 @@ const router = new Router({
         title: "CodeFest '19 | Event",
         metaTags: [],
         noTerminal: false
+      }
+    },
+    {
+      name: "~/team",
+      path: "/team",
+      component: () => import(`@pages/Team`),
+      meta: {
+        title: "CodeFest '19 | Team",
+        metaTags: [],
+        noTerminal: true,
+        animateTerminal: true
       }
     },
     {
@@ -208,7 +218,9 @@ router.beforeEach((to, from, next) => {
     .forEach(tag => document.head.appendChild(tag));
 
   // Handle secure routes
-  const { isLoggedIn } = store.getters;
+  const {
+    isLoggedIn
+  } = store.getters;
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (isLoggedIn) return next();
 
