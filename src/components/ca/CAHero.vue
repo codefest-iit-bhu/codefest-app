@@ -1,9 +1,9 @@
 <template>
   <div :class="[$style.heroContainer, $style[$mq]]">
-    <ResponsiveTwoColumnLayout>
+    <ResponsiveTwoColumnLayout :isRightAbove="true">
       <div :class="$style.caHead" slot="left">
         <img src="@assets/cf19-hero-logo.svg">
-        <span :class="$style.tagline" ref="tagline"></span>
+        <span :class="$style.tagline">Imagine. Create. Iterate.</span>
         <span :class="$style.venue">
           <span :id="$style.loc">
             <i class="fas fa-map-marked-alt"></i> IIT (BHU), Varanasi
@@ -28,38 +28,19 @@
         </div>
       </div>
       <div :class="$style.caImage" slot="right">
-        <img src="@assets/haxplore/faq.svg">
+        <img src="@assets/ca/hero.svg">
       </div>
     </ResponsiveTwoColumnLayout>
   </div>
 </template>
 
 <script>
-import { TypingAnim } from "@js/utils";
 const ResponsiveTwoColumnLayout = () =>
   import("@components/layouts/ResponsiveTwoColumnLayout");
 
 export default {
   components: {
     ResponsiveTwoColumnLayout
-  },
-  data() {
-    return {
-      isTyped: false
-    };
-  },
-  mounted() {
-    this.animTyping = new TypingAnim(
-      this.$refs.tagline,
-      "Imagine. Create. Iterate."
-    );
-
-    window.setInterval(() => {
-      this.isTyped ? this.animTyping.erase() : this.animTyping.type();
-      this.isTyped = !this.isTyped;
-    }, 2000);
-    this.animTyping.type();
-    this.isTyped = true;
   }
 };
 </script>
@@ -70,12 +51,22 @@ export default {
 
 .heroContainer {
   width: 100%;
+  text-align: center;
 
   .caImage {
     img {
-      width: 80%;
-      margin-left: 20%;
+      width: 440px;
+      margin: auto;
       margin-bottom: 50px;
+
+      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+        width: 160px;
+        margin-bottom: 0;
+      }
+
+      ~/.lg ^[1..-1], ~/.md ^[1..-1] {
+        width: 280px;
+      }
     }
   }
 
@@ -84,10 +75,14 @@ export default {
 
     img {
       width: 400px;
+
+      ~/.xs ^[1..-1], ~/.sm ^[1..-1], ~/.md ^[1..-1], ~/.lg ^[1..-1] {
+        display: none;
+      }
     }
 
     h1, h3 {
-      text-align: left;
+      text-align: center;
       font-family: 'Roboto Slab';
       font-weight: 600;
       margin: 48px 0;
@@ -96,11 +91,33 @@ export default {
         color: $chartreuse;
         margin: 0 2px;
       }
+
+      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+        font-size: 23px;
+        margin: 24px 0;
+      }
+
+      ~/.md ^[1..-1], ~/.lg ^[1..-1] {
+        margin-top: 0;
+      }
+
+      ~/.md ^[1..-1] {
+        font-size: 30px;
+      }
     }
 
     h3 {
       letter-spacing: 1.1px;
       text-align: center;
+
+      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+        font-size: 16px;
+        text-align: center;
+      }
+
+      ~/.md ^[1..-1] {
+        font-size: 18.72px;
+      }
     }
 
     .link {
@@ -113,7 +130,7 @@ export default {
       animation: neon-box 1.5s ease-in-out infinite alternate;
       border: 2px solid $chartreuse;
 
-      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+      ~/.xs ^[1..-1], ~/.sm ^[1..-1], ~/.md ^[1..-1] {
         width: 220px;
 
         .linkText {
@@ -155,6 +172,10 @@ export default {
 
       #sep {
         margin: 0 8px;
+      }
+
+      ~/.xs ^[1..-1], ~/.sm ^[1..-1], ~/.md ^[1..-1], ~/.lg ^[1..-1] {
+        display: none;
       }
     }
   }

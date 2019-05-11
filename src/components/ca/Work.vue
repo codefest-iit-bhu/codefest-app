@@ -2,7 +2,7 @@
   <div :class="[$style.workContainer, $style[$mq]]">
     <ResponsiveTwoColumnLayout>
       <div :class="$style.workImage" slot="left">
-        <img src="@assets/haxplore/faq.svg">
+        <img src="@assets/ca/work.svg">
       </div>
       <div :class="$style.workHead" slot="right">
         <div :class="$style.taskList">
@@ -16,11 +16,11 @@
             </li>
           </ul>
         </div>
-        <div
-          :class="$style.para"
-        >The number of participants from your college will determine the number of goodies you get as a Campus Ambassador of Codefest.</div>
       </div>
     </ResponsiveTwoColumnLayout>
+    <div
+      :class="$style.para"
+    >The number of participants from your college will determine the number of goodies you get as a Campus Ambassador of Codefest.</div>
   </div>
 </template>
 
@@ -65,10 +65,26 @@ export default {
   padding-top: 30px;
 
   .workImage {
+    text-align: center;
+
     img {
-      width: 80%;
-      margin-left: 0;
-      margin-bottom: 50px;
+      width: 400px;
+      margin: 40px 0;
+
+      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+        width: 200px;
+      }
+
+      ~/.md ^[1..-1] {
+        width: 260px;
+        margin-top: 100px;
+      }
+
+      ~/.lg ^[1..-1] {
+        width: 300px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+      }
     }
   }
 
@@ -79,7 +95,7 @@ export default {
       font-family: 'Quicksand';
       font-weight: 500;
       border-radius: 10px;
-      padding: 30px 10px;
+      padding: 20px 10px;
 
       .list {
         list-style: none;
@@ -99,12 +115,46 @@ export default {
           }
         }
       }
+
+      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+        padding: 0 10px;
+        width: auto;
+        font-size: 16px;
+      }
+
+      ~/.md ^[1..-1], ~/.lg ^[1..-1] {
+        padding: 0 10px;
+        font-size: 18px;
+      }
+
+      ~/.md ^[1..-1] {
+        width: 360px;
+      }
+
+      ~/.lg ^[1..-1] {
+        width: 440px;
+      }
+    }
+  }
+
+  .para {
+    box-shadow: inset 0 0 20px $chartreuse;
+    border-radius: 20px 0 20px 0;
+    padding: 30px;
+
+    ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+      padding: 20px;
+      border-radius: 15px 0 15px 0;
+      font-size: 16px;
+      width: auto;
+      text-align: center;
     }
 
-    .para {
-      box-shadow: inset 0 0 20px $chartreuse;
-      border-radius: 20px 0 20px 0;
-      padding: 30px;
+    ~/.md ^[1..-1], ~/.lg ^[1..-1] {
+      padding: 20px 20px;
+      width: 600px;
+      margin-top: 30px;
+      margin: auto;
     }
   }
 }

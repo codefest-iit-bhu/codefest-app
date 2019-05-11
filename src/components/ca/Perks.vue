@@ -1,8 +1,8 @@
 <template>
   <div :class="[$style.workContainer, $style[$mq]]">
-    <ResponsiveTwoColumnLayout>
+    <ResponsiveTwoColumnLayout :isRightAbove="true">
       <div :class="$style.workImage" slot="right">
-        <img src="@assets/haxplore/faq.svg">
+        <img src="@assets/ca/perks.svg">
       </div>
       <div :class="$style.workHead" slot="left">
         <div :class="$style.taskList">
@@ -66,10 +66,22 @@ export default {
   padding-top: 30px;
 
   .workImage {
+    text-align: center;
+
     img {
-      width: 80%;
-      margin-left: 20%;
-      margin-bottom: 50px;
+      width: 400px;
+      margin: auto;
+      margin-top: 80px;
+
+      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+        width: 200px;
+        margin-bottom: 0;
+      }
+
+      ~/.md ^[1..-1], ~/.lg ^[1..-1] {
+        width: 300px;
+        margin-top: 60px;
+      }
     }
   }
 
@@ -98,14 +110,24 @@ export default {
             letter-spacing: 1px;
             font-family: 'Roboto Slab';
           }
+
+          ~/.md ^[1..-1], ~/.lg ^[1..-1] {
+            padding: 0 0 30px 0;
+          }
         }
       }
-    }
 
-    .para {
-      box-shadow: inset 0 0 20px $chartreuse;
-      border-radius: 20px 0 20px 0;
-      padding: 30px;
+      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+        width: auto;
+        padding-top: 0;
+        font-size: 16px;
+      }
+
+      ~/.md ^[1..-1], ~/.lg ^[1..-1] {
+        width: auto;
+        padding-top: 0;
+        font-size: 18px;
+      }
     }
   }
 }

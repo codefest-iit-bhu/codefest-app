@@ -59,7 +59,7 @@ export default {
 
 .wrapper {
   width: 80%;
-  margin: 0 auto;
+  margin: auto;
   position: relative;
   z-index: 1;
   padding: 200px 20px 50px 20px;
@@ -70,9 +70,11 @@ export default {
   height: 100%;
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 996px) {
   .wrapper {
-    width: 90%;
+    width: 95%;
+    margin: 0 auto;
+    padding-top: 120px;
   }
 }
 </style>

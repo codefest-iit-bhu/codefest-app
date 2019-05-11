@@ -61,18 +61,6 @@ export default {
     border-radius: 60px 0;
     padding: 40px 0;
 
-    .name {
-      padding-bottom: 20px;
-      text-align: center;
-      color: $black;
-      line-height: 28px;
-      font-size: 28px;
-    }
-
-    .email {
-      padding-bottom: 16px;
-    }
-
     .name, .email, .phone {
       font-family: 'Roboto Slab';
       font-weight: 600;
@@ -81,6 +69,29 @@ export default {
       line-height: 28px;
       margin-left: auto;
       margin-right: auto;
+      padding-top: 15px;
+
+      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+        font-size: 15px;
+      }
+    }
+
+    .name {
+      background: $black;
+      text-align: center;
+      border-radius: 50px;
+      margin: 0 20px;
+      color: $chartreuse;
+      padding: 10px 0;
+      font-size: 28px;
+
+      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+        font-size: 20px;
+      }
+    }
+
+    ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+      width: 280px;
     }
   }
 }
