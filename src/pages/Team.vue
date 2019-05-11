@@ -2,34 +2,37 @@
   <div :class="[$style.root, $style[$mq]]">
     <AppBar/>
     <main :class="$style.wrapper">
-      <div v-scroll-spy="{data: 'section'}" ref="scroller">
-        <div></div>
-        <SectionLayout v-for="(team, i) in teams" :key="i" :title="team.title">
-          <carousel
-            :scrollPerPage="false"
-            paginationColor="#FFFFFF"
-            paginationActiveColor="#86FF00"
-            :perPageCustom="[[768, 3], [1400, 4]]"
-          >
-            <slide v-for="(person, j) in team.people" :key="j">
-              <div :class="$style.teamMember">
-                <img :src="`/assets/team/${team.title}/${person.name}.jpg`">
-                <br>
-                <div :class="$style.name">{{person.name}}</div>
-                <div :class="$style.position">{{person.position}}</div>
-                <div :class="$style.social">
-                  <a :href="`mailto:${person.email}`">
-                    <i class="fas fa-envelope"></i>
-                  </a>
-                  <a :href="`${person.fb}`" target="_blank">
-                    <i class="fab fa-facebook"></i>
-                  </a>
-                </div>
+      <h1 :class="$style.heading">Team codeFest</h1>
+      <SectionLayout v-for="(team, i) in teams" :key="i" :title="team.title">
+        <carousel
+          :scrollPerPage="false"
+          paginationColor="#FFFFFF"
+          paginationActiveColor="#86FF00"
+          :perPageCustom="[[768, 3], [1400, 4],[600,2],[300,1]]"
+          :autoplay="true"
+          :autoplayTimeout="5000"
+          :autoplayHoverPause="true"
+        >
+          <slide v-for="(person, j) in team.people" :key="j">
+            <div :class="$style.teamMember">
+              <object :data="`/assets/team/${team.title}/${person.name}.jpg`" type="image/jpg">
+                <img src="/assets/team/member.png">
+              </object>
+              <br>
+              <div :class="$style.name">{{person.name}}</div>
+              <div :class="$style.position">{{person.position}}</div>
+              <div :class="$style.social">
+                <a :href="person.email? `mailto:${person.email}` : null">
+                  <i class="fas fa-envelope"></i>
+                </a>
+                <a :href="person.fb ? `${person.fb}` : null" target="_blank">
+                  <i class="fab fa-facebook"></i>
+                </a>
               </div>
-            </slide>
-          </carousel>
-        </SectionLayout>
-      </div>
+            </div>
+          </slide>
+        </carousel>
+      </SectionLayout>
     </main>
     <Footer/>
   </div>
@@ -51,7 +54,6 @@ export default {
   },
   data() {
     return {
-      section: 0,
       teams: [
         {
           title: "core",
@@ -215,7 +217,7 @@ export default {
               fb: "https://www.facebook.com/rahulchaturvedi24"
             },
             {
-              name: "Pushpendra Vyas",
+              name: "Pushpendra Kumar",
               position: "Co - Head",
               email: "pushpendra.kvaishya.cse17@itbhu.ac.in",
               fb: "https://m.facebook.com/pushpendra.bais.75?ref=bookmarks"
@@ -330,13 +332,35 @@ export default {
   font-kerning: auto;
 }
 
+.heading {
+  text-align: center;
+  color: $chartreuse;
+  font-family: 'Aldo the Apache';
+  padding: 12px 0;
+  letter-spacing: 2px;
+  font-size: 64px;
+  margin-top: 144px;
+
+  &.lg, &.xl, &.xxl {
+    padding-top: 36px;
+  }
+
+  &.xs, &.sm, &.md {
+    margin-top: 72px;
+  }
+
+  &.xs {
+    font-size: 52px;
+  }
+}
+
 .teamMember {
   text-align: center;
 
-  img {
+  img, object {
     border-radius: 100%;
-    height: 200px;
     width: 200px;
+    height: 200px;
   }
 
   .position {
@@ -346,7 +370,7 @@ export default {
 
   .social i {
     margin: 8px;
-    font-size: 20pt;
+    font-size: 16pt;
 
     &:hover {
       color: $limeade;
