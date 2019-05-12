@@ -22,9 +22,9 @@
           <span>CODEFEST'19</span> by becoming our CAMPUS AMBASSADOR.
         </h3>
         <div :class="$style.link">
-          <router-link to="/dashboard/events/" :class="$style.linkText">
+          <a href="https://forms.gle/BDcmVFr4K7o2GjRn9" :class="$style.linkText">
             <h4>Register</h4>
-          </router-link>
+          </a>
         </div>
       </div>
       <div :class="$style.caImage" slot="right">

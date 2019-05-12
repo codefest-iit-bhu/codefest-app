@@ -40,8 +40,8 @@ const router = new Router({
       }
     },
     {
-      name: "~/campus_ambassador",
-      path: "/campus_ambassador",
+      name: "~/ca",
+      path: "/ca",
       component: () => import("@pages/CampusAmbassador"),
       meta: {
         title: "CodeFest '19 | Campus Ambassdor",

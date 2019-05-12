@@ -141,6 +141,7 @@ export default {
     box-shadow: inset 0 0 20px $chartreuse;
     border-radius: 20px 0 20px 0;
     padding: 30px;
+    text-align: center;
 
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
       padding: 20px;

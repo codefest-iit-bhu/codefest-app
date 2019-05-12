@@ -1,8 +1,11 @@
 <template>
-  <div :class="[$style.root, $style[$mq]]">
+  <div :class="$style.root">
     <AppBar/>
-    <main :class="$style.wrapper">
-      <h1 :class="$style.heading">Team codeFest</h1>
+    <div :class="[$style.wrapper, $style[$mq]]">
+      <!-- <h1 :class="$style.heading">Team codeFest</h1> -->
+      <div :class="$style.teamHero">
+        <img src="/assets/team.svg">
+      </div>
       <SectionLayout v-for="(team, i) in teams" :key="i" :title="team.title">
         <carousel
           :scrollPerPage="false"
@@ -33,7 +36,7 @@
           </slide>
         </carousel>
       </SectionLayout>
-    </main>
+    </div>
     <Footer/>
   </div>
 </template>
@@ -366,65 +369,113 @@ export default {
   position: relative;
   font: 500 18px 'Quicksand';
   font-kerning: auto;
-}
 
-.heading {
-  text-align: center;
-  color: $chartreuse;
-  font-family: 'Aldo the Apache';
-  padding: 12px 0;
-  letter-spacing: 2px;
-  font-size: 64px;
-  margin-top: 144px;
+  .heading {
+    text-align: center;
+    color: $chartreuse;
+    font-family: 'Aldo the Apache';
+    padding: 12px 0;
+    letter-spacing: 2px;
+    font-size: 64px;
+    margin-top: 144px;
 
-  &.lg, &.xl, &.xxl {
-    padding-top: 36px;
+    ~/.lg ^[1..-1], ~/.xl ^[1..-1], ~/.xxl ^[1..-1] {
+      padding-top: 36px;
+    }
+
+    ~/.xs ^[1..-1], ~/.sm ^[1..-1], ~/.md ^[1..-1] {
+      margin-top: 72px;
+    }
+
+    ~/.xs ^[1..-1] {
+      font-size: 52px;
+    }
   }
 
-  &.xs, &.sm, &.md {
-    margin-top: 72px;
+  .line {
+    height: 3px;
+    border: none;
+    background-image: linear-gradient(to right, $black, alpha($chartreuse, 0.7), $black);
   }
 
-  &.xs {
-    font-size: 52px;
-  }
-}
+  .teamHero {
+    text-align: center;
+    padding-top: 200px;
+    padding-bottom: 150px;
+    width: 800px;
+    margin: auto;
 
-.teamMember {
-  text-align: center;
-  padding: 40px 0;
-  width: 250px;
-  margin: 50px 0;
-  border-top: 4px solid $chartreuse;
-  border-bottom: 4px solid $chartreuse;
-  border-radius: 100px 0 100px 0;
+    ~/.xs ^[1..-1] {
+      width: 260px;
+      padding-top: 100px;
+      padding-bottom: 0;
+    }
 
-  img, object {
-    border-radius: 100%;
-    border: 2px solid $chartreuse;
-    animation: timeline-border-green 1.5s ease-in-out infinite alternate;
-    width: 200px;
-    height: 200px;
-    margin-bottom: 20px;
-  }
+    ~/.sm ^[1..-1] {
+      width: 400px;
+      padding-top: 100px;
+      padding-bottom: 0;      
+    }
 
-  .name {
-    font-family: 'Roboto Slab';
-    font-weight: 600;
-    letter-spacing: 1.05px;
-  }
+    ~/.md ^[1..-1] {
+      width: 500px;
+      padding-top: 100px;
+      padding-bottom: 50px;      
+    }
 
-  .position {
-    font-size: 14px;
-    margin: 10px auto;
+    ~/.md ^[1..-1] {
+      width: 650px;
+      padding-top: 150px;
+      padding-bottom: 50px;      
+    }
   }
 
-  .social i {
-    margin: 8px;
-    font-size: 16pt;
+  .teamMember {
+    text-align: center;
+    padding: 40px 0;
+    width: 250px;
+    margin: 50px auto 25px;
+    border-top: 4px solid $chartreuse;
+    border-bottom: 4px solid $chartreuse;
+    border-radius: 100px 0 100px 0;
 
-    &:hover {
-      color: $limeade;
+    img, object {
+      border-radius: 100%;
+      border: 2px solid $chartreuse;
+      animation: timeline-border-green 1.5s ease-in-out infinite alternate;
+      width: 200px;
+      height: 200px;
+      margin-bottom: 20px;
+    }
+
+    .name {
+      font-family: 'Roboto Slab';
+      font-weight: 600;
+      letter-spacing: 1.05px;
+    }
+
+    .position {
+      font-size: 14px;
+      margin: 10px auto;
+    }
+
+    .social i {
+      margin: 8px;
+      font-size: 16pt;
+
+      &:hover {
+        color: $limeade;
+      }
+    }
+
+    ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+      padding: 25px 0;
+      margin: 25px auto;
+    }
+
+    ~/.md ^[1..-1], ~/.lg ^[1..-1] {
+      padding: 30px 0;
+      margin: 25px auto 0;
     }
   }
 }

@@ -1,20 +1,50 @@
 <template>
   <div :class="[$style.contactList, $style[$mq]]">
-    <GridLayout :itemWidth="computedWidth">
-      <div :class="$style.card" v-for="(contact, i) in this.contacts" :key="i" :slot="`item${i}`">
-        <div :class="$style.name">{{ contact.name }}</div>
+    <GridLayout :itemWidth="computedWidth" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
+      <div
+        :class="$style.teamMember"
+        v-for="(contact, i) in this.contacts"
+        :key="i"
+        :slot="`items${i}`"
+      >
+        <img :src="contact.pic">
+        <br>
+        <div :class="$style.name">{{contact.name}}</div>
         <div :class="$style.email">{{ contact.email }}</div>
         <div :class="$style.phone">{{ contact.phone }}</div>
       </div>
     </GridLayout>
+    <carousel
+      :scrollPerPage="false"
+      paginationColor="#57A300"
+      paginationActiveColor="#86FF00"
+      :perPageCustom="[[768, 3], [1400, 4],[600,2],[300,1]]"
+      :autoplay="true"
+      :autoplayTimeout="5000"
+      :autoplayHoverPause="true"
+      v-else
+    >
+      <slide v-for="(contact, i) in this.contacts" :key="i">
+        <div :class="$style.teamMember">
+          <img :src="contact.pic">
+          <br>
+          <div :class="$style.name">{{contact.name}}</div>
+          <div :class="$style.email">{{ contact.email }}</div>
+          <div :class="$style.phone">{{ contact.phone }}</div>
+        </div>
+      </slide>
+    </carousel>
   </div>
 </template>
 <script>
 const GridLayout = () => import("@components/layouts/GridLayout");
+import { Carousel, Slide } from "vue-carousel";
 
 export default {
   components: {
-    GridLayout
+    GridLayout,
+    Carousel,
+    Slide
   },
   computed: {
     computedWidth() {
@@ -27,22 +57,26 @@ export default {
         {
           name: "Abhinav Raj",
           email: "abhinav.raj.cse16@itbhu.ac.in",
-          phone: "+91 1234567890"
+          phone: "+91 8890921899",
+          pic: "/assets/team/ca/Abhinav Raj.jpg"
         },
         {
           name: "Rahul Chaturvedi",
           email: "rahul.chaturvedi.cse17@itbhu.ac.in",
-          phone: "+91 1234567890"
+          phone: "+91 7023210104",
+          pic: "/assets/team/ca/Rahul Chaturvedi.jpg"
         },
         {
           name: "Rahul Pandey",
-          email: "rahul.deopandey.cse17@itbhu.ac.in",
-          phone: "+91 8299735398"
+          email: "rahul.dpandey.cse17@itbhu.ac.in",
+          phone: "+91 8299735398",
+          pic: "/assets/team/ca/Rahul Pandey.jpg"
         },
         {
           name: "Ashok Meena",
-          email: "ashok.meena.cse17@itbhu.ac.in",
-          phone: "+91 9205001742"
+          email: "ashok.krmeena.cse17@itbhu.ac.in",
+          phone: "+91 9205001742",
+          pic: "/assets/team/ca/Ashok Meena.jpg"
         }
       ]
     };
@@ -54,44 +88,45 @@ export default {
 @require '~@styles/theme';
 
 .contactList {
-  .card {
-    width: 320px;
-    height: 200px;
-    background: $chartreuse;
-    border-radius: 60px 0;
+  .teamMember {
+    text-align: center;
     padding: 40px 0;
+    width: 300px;
+    margin: 50px auto 25px;
+    border-top: 4px solid $chartreuse;
+    border-bottom: 4px solid $chartreuse;
+    border-radius: 100px 0 100px 0;
 
-    .name, .email, .phone {
-      font-family: 'Roboto Slab';
-      font-weight: 600;
-      text-align: center;
-      color: $black;
-      line-height: 28px;
-      margin-left: auto;
-      margin-right: auto;
-      padding-top: 15px;
-
-      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-        font-size: 15px;
-      }
+    img {
+      border-radius: 100%;
+      border: 2px solid $chartreuse;
+      animation: timeline-border-green 1.5s ease-in-out infinite alternate;
+      width: 200px;
+      height: 200px;
+      margin-bottom: 20px;
     }
 
     .name {
-      background: $black;
-      text-align: center;
-      border-radius: 50px;
-      margin: 0 20px;
-      color: $chartreuse;
-      padding: 10px 0;
-      font-size: 28px;
+      font-family: 'Roboto Slab';
+      font-weight: 600;
+      letter-spacing: 1.05px;
+    }
 
-      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-        font-size: 20px;
-      }
+    .email, .phone {
+      font-family: 'Quicksand';
+      font-size: 14px;
+      padding: 10px 0 0 0;
     }
 
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-      width: 280px;
+      width: 260px;
+      padding: 25px 0;
+      margin: 25px auto;
+    }
+
+    ~/.md ^[1..-1], ~/.lg ^[1..-1] {
+      padding: 30px 0;
+      margin: 25px auto 0;
     }
   }
 }
