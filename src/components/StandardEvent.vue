@@ -358,7 +358,7 @@ $cell-collapsed-size = 150px;
     }
 
     &.md .cell, &.lg .cell, &.xl .cell {
-      animation: timeline-border-white 1s ease-in-out infinite alternate;
+      animation: timeline-border-green 1s ease-in-out infinite alternate;
     }
   }
 }

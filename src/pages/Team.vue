@@ -6,7 +6,7 @@
       <SectionLayout v-for="(team, i) in teams" :key="i" :title="team.title">
         <carousel
           :scrollPerPage="false"
-          paginationColor="#FFFFFF"
+          paginationColor="#57A300"
           paginationActiveColor="#86FF00"
           :perPageCustom="[[768, 3], [1400, 4],[600,2],[300,1]]"
           :autoplay="true"
@@ -23,7 +23,7 @@
               <div :class="$style.position">{{person.position}}</div>
               <div :class="$style.social">
                 <a :href="person.email? `mailto:${person.email}` : null">
-                  <i class="fas fa-envelope"></i>
+                  <i class="far fa-envelope"></i>
                 </a>
                 <a :href="person.fb ? `${person.fb}` : null" target="_blank">
                   <i class="fab fa-facebook"></i>
@@ -66,39 +66,51 @@ export default {
             },
             {
               name: "Utkarsh Tripathi",
-              position: "Co - Convener",
-              email: "",
-              fb: ""
+              position: "Co-Convener",
+              email: "utkarsh.tripathi.cse16@itbhu.ac.in",
+              fb: "https://www.facebook.com/utkarsh.tripathi.315"
+            },
+            {
+              name: "Keshav Kumar",
+              position: "Co-Convener",
+              email: "keshav.kumar.cse16@itbhu.ac.in",
+              fb: "https://www.facebook.com/kk3799"
             },
             {
               name: "Govinda Totla",
-              position: "Co - Convener",
+              position: "Festival Manager",
               email: "govinda.totla.cse16@itbhu.ac.in",
               fb: "https://www.facebook.com/govinda.totla.1"
             },
             {
               name: "Khush Chopra",
               position: "PR Head",
-              email: "",
-              fb: ""
+              email: "khush.chopra.cse16@itbhu.ac.in",
+              fb: "https://www.facebook.com/KhushC"
             },
             {
               name: "Anay Agrawal",
-              position: "Marketing Head",
-              email: "",
-              fb: ""
+              position: "Marketing Head/Treasurer",
+              email: "anay.agrawal.cse16@itbhu.ac.in",
+              fb: "https://www.facebook.com/anay.agrawwal"
             },
             {
               name: "Deepak Kumar Gour",
               position: "Events Head - Algorithmic Divison",
-              email: "",
-              fb: ""
+              email: "deepak.gour.cse16@itbhu.ac.in",
+              fb: "https://www.facebook.com/deepak.gour.enigma27"
             },
             {
               name: "Suyash Shukla",
-              position: "Events Head - Artificial Intelligence Divison",
+              position: "Events Head - AI Divison",
               email: "suyash.shukla.cse16@itbhu.ac.in",
               fb: "https://www.facebook.com/suyash2510"
+            },
+            {
+              name: "Vaishnav Menon",
+              position: "Tech-Coordinator",
+              email: "vsreekanth.menon.cse16@iitbhu.ac.in",
+              fb: "https://m.facebook.com/vaishnavsm"
             }
           ]
         },
@@ -114,8 +126,8 @@ export default {
             {
               name: "Shivansh Saini",
               position: "Head",
-              email: "",
-              fb: ""
+              email: "shivansh.saini.cse17@iitbhu.ac.in",
+              fb: "https://www.facebook.com/thefaker99"
             },
             {
               name: "Piyush Maurya",
@@ -132,14 +144,20 @@ export default {
             {
               name: "Amritansh Singhal",
               position: "Back-end Developer",
-              email: "",
-              fb: ""
+              email: "amritansh.singhal.cse17@itbhu.ac.in",
+              fb: "https://www.facebook.com/amritansh.singhal.75"
+            },
+            {
+              name: "Pranav Dalal",
+              position: "Back-end Developer",
+              email: "pranavd.cd.cse17@itbhu.ac.in",
+              fb: "https://m.facebook.com/pranav.dalal.94"
             },
             {
               name: "Dipesh Kumar",
-              position: "Designer",
-              email: "",
-              fb: ""
+              position: "Front-end Developer & UI/UX Designer",
+              email: "dipesh.kumar.cse17@itbhu.ac.in",
+              fb: "https://www.facebook.com/dipesh.kumar.92"
             }
           ]
         },
@@ -172,20 +190,20 @@ export default {
             {
               name: "Dipesh Kumar",
               position: "Head",
-              email: "",
-              fb: ""
+              email: "dipesh.kumar.cse17@itbhu.ac.in",
+              fb: "https://www.facebook.com/dipesh.kumar.92"
             },
             {
-              name: "Amit ",
-              position: "Co - Head",
-              email: "",
-              fb: ""
+              name: "Amit",
+              position: "Co-Head",
+              email: "amit.student.cse17@itbhu.ac.in",
+              fb: "https://www.facebook.com/dastanamit"
             },
             {
               name: "Shivam Tomar",
-              position: "Co - Head",
-              email: "",
-              fb: ""
+              position: "Co-Head",
+              email: "shivam.tomar.cse17@itbhu.ac.in",
+              fb: "https://www.facebook.com/shivam.tomar.921"
             }
           ]
         },
@@ -243,13 +261,13 @@ export default {
               name: "Deepak Kumar Gour",
               position: "Manthan",
               email: "deepak.gour.cse16@itbhu.ac.in",
-              fb: ""
+              fb: "https://www.facebook.com/deepak.gour.enigma27"
             },
             {
-              name: "Bhavy Jain ",
+              name: "Bhavy Jain",
               position: "Mathmania",
-              email: "",
-              fb: ""
+              email: "bhavy.jain.cse16@itbhu.ac.in",
+              fb: "https://www.facebook.com/bhavy.jain.94"
             },
             {
               name: "Naveen Punjabi",
@@ -261,7 +279,7 @@ export default {
               name: "Dhruv Rastogi",
               position: "Perplexed",
               email: "dhruv.rastogi.cse16@iitbhu.ac.in",
-              fb: ""
+              fb: "https://www.facebook.com/dhruvrastogi21"
             },
             {
               name: "Abhinav Gupta",
@@ -297,7 +315,7 @@ export default {
               name: "Apurv Jain",
               position: "Capture the Flag",
               email: "apurv.jain.cse16@iitbhu.ac.in",
-              fb: ""
+              fb: "https://www.facebook.com/profile.php?id=100015115573049"
             }
           ]
         },
@@ -305,10 +323,28 @@ export default {
           title: "marketing",
           people: [
             {
+              name: "Anay Agrawal",
+              position: "Head",
+              email: "anay.agrawal.cse16@itbhu.ac.in",
+              fb: "https://www.facebook.com/anay.agrawwal"
+            },
+            {
               name: "Tushar Khustule",
               position: "Co-Head",
               email: "ktushar.sanjay.cse16@itbhu.ac.in",
               fb: "https://www.facebook.com/tushar.sk.17"
+            },
+            {
+              name: "Aditi Agarwal",
+              position: "Member",
+              email: "aditia.cd.cse17@itbhu.ac.in",
+              fb: "https://www.facebook.com/aditi.agarwal.311493"
+            },
+            {
+              name: "Hritwik Singhai",
+              position: "Member",
+              email: "hritwik.singhai.cse17@itbhu.ac.in",
+              fb: "https://www.facebook.com/hritwiks"
             }
           ]
         }
@@ -356,16 +392,31 @@ export default {
 
 .teamMember {
   text-align: center;
+  padding: 40px 0;
+  width: 250px;
+  margin: 50px 0;
+  border-top: 4px solid $chartreuse;
+  border-bottom: 4px solid $chartreuse;
+  border-radius: 100px 0 100px 0;
 
   img, object {
     border-radius: 100%;
+    border: 2px solid $chartreuse;
+    animation: timeline-border-green 1.5s ease-in-out infinite alternate;
     width: 200px;
     height: 200px;
+    margin-bottom: 20px;
+  }
+
+  .name {
+    font-family: 'Roboto Slab';
+    font-weight: 600;
+    letter-spacing: 1.05px;
   }
 
   .position {
     font-size: 14px;
-    margin: 5px auto;
+    margin: 10px auto;
   }
 
   .social i {

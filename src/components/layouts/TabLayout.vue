@@ -99,7 +99,7 @@ $tab-height = 30px;
         cursor: pointer;
         background: $limeade;
         font: 12pt 'Roboto Slab';
-        font-weight: 500;
+        font-weight: 600;
         clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
         height: $tab-height;
         line-height: 30px;
