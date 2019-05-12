@@ -50,6 +50,17 @@ const router = new Router({
       }
     },
     {
+      name: "~/team",
+      path: "/team",
+      component: () => import(`@pages/Team`),
+      meta: {
+        title: "CodeFest '19 | Team",
+        metaTags: [],
+        noTerminal: true,
+        animateTerminal: true
+      }
+    },
+    {
       name: "~/login",
       path: "/login",
       component: () => import(`@pages/Login`),

@@ -8,10 +8,10 @@
             <BarLoader :loading="loading" color="#86FF00" :height="10" :class="$style.loader"/>
             <form :class="$style.form" @submit.prevent="emailLogin">
               <div :class="$style.fieldContainer">
-                <label for="email" :class="$style.label">email</label>
+                <label for="email" :class="$style.label">E-mail</label>
                 <input type="email" :class="$style.field" v-model="email" required>
                 <br>
-                <label for="password" :class="$style.label">password</label>
+                <label for="password" :class="$style.label">Password</label>
                 <span :class="$style.fieldWrapper">
                   <input
                     type="password"
@@ -55,7 +55,7 @@
             <BarLoader :loading="loading" color="#86FF00" :height="10" :class="$style.loader"/>
             <form :class="$style.form" @submit.prevent="emailRegister">
               <div :class="$style.fieldContainer">
-                <label for="name" :class="$style.label">name</label>
+                <label for="name" :class="$style.label">Name</label>
                 <input
                   type="text"
                   id="name"
@@ -65,7 +65,7 @@
                   required
                 >
                 <br>
-                <label for="email" :class="$style.label">email</label>
+                <label for="email" :class="$style.label">E-mail</label>
                 <input
                   type="email"
                   id="email"
@@ -75,7 +75,7 @@
                   required
                 >
                 <br>
-                <label for="password" :class="$style.label">password</label>
+                <label for="password" :class="$style.label">Password</label>
                 <span :class="$style.fieldWrapper">
                   <input
                     type="password"
@@ -368,6 +368,8 @@ export default {
   float: left;
   color: white;
   text-align: right;
+  font-family: 'Quicksand';
+  font-weight: 600;
   height: 30px;
 }
 
@@ -390,6 +392,8 @@ export default {
 
   a {
     color: $chartreuse;
+    font-family: 'Roboto Slab';
+    font-weight: 600;
   }
 }
 
