@@ -61,6 +61,12 @@ export default {
           pic: "/assets/team/ca/Abhinav Raj.jpg"
         },
         {
+          name: "Keshav Kumar",
+          email: "keshav.kumar.cse16@itbhu.ac.in",
+          phone: "+91 8004236173",
+          pic: "/assets/team/ca/Keshav Kumar.jpg"
+        },
+        {
           name: "Rahul Chaturvedi",
           email: "rahul.chaturvedi.cse17@itbhu.ac.in",
           phone: "+91 7023210104",
@@ -71,12 +77,6 @@ export default {
           email: "rahul.dpandey.cse17@itbhu.ac.in",
           phone: "+91 8299735398",
           pic: "/assets/team/ca/Rahul Pandey.jpg"
-        },
-        {
-          name: "Ashok Meena",
-          email: "ashok.krmeena.cse17@itbhu.ac.in",
-          phone: "+91 9205001742",
-          pic: "/assets/team/ca/Ashok Meena.jpg"
         }
       ]
     };
