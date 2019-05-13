@@ -118,7 +118,7 @@ class HandlesView(generics.RetrieveUpdateAPIView):
 
 class LeaderBoardView(generics.ListAPIView):
     permission_classes=[]
-    authentication_classes=[authentication.TokenAuthentication, authentication.SessionAuthentication]
+    authentication_classes=[]
     queryset = Profile.objects.exclude(referral_count=0).order_by('-referral_count')[:10]
     serializer_class = LeaderBoardSerializer
 
