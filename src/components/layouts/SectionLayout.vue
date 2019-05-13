@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.sectionContainer">
-    <h1 :class="[$style.sectionTitle, $style[$mq]]">{{ title }}</h1>
+    <h1 :class="[$style.sectionTitle, $style[$mq], tooLong]">{{ title }}</h1>
     <hr :class="$style.sectionLine">
     <div :style="contentStyle">
       <slot></slot>
@@ -18,6 +18,14 @@ export default {
     contentStyle: {
       required: false,
       type: Object
+    }
+  },
+  computed: {
+    tooLong() {
+      const title = this.$props.title;
+      if (title.length > 10) {
+        return this.$style.tooLong;
+      }
     }
   }
 };
@@ -55,6 +63,12 @@ div.sectionContainer {
 
     ~/:nth-child(odd) h1.sectionTitle {
       text-align: end;
+    }
+  }
+
+  h1.tooLong {
+    &.xs {
+      font-size: 36px;
     }
   }
 

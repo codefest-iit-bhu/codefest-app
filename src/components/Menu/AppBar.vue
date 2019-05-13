@@ -2,15 +2,33 @@
   <div :class="[$style.wrapper, $style[$mq]]">
     <AppbarLayout v-bind="this.$attrs">
       <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
-        <router-link to="/events">
-          Events
-          <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
+        <router-link to="/haxplore">
+          HaXplore
+          <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
         </router-link>
       </li>
       <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
-        <router-link to="/haxplore">
-          HaXplore
-          <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
+        <router-link to="/events">
+          Events
+          <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
+        </router-link>
+      </li>
+      <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
+        <router-link to="/ca">
+          CA
+          <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
+        </router-link>
+      </li>
+      <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
+        <router-link to="/team">
+          Team
+          <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
+        </router-link>
+      </li>
+      <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
+        <router-link to="/referral">
+          <!-- <span class="fa fa-circle fa-xs" aria-hidden="true"></span> -->
+          Referrals
         </router-link>
       </li>
       <li
@@ -20,7 +38,8 @@
         v-show="showDashboardActions"
       >
         <router-link to="/dashboard">
-          <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>Dashboard
+          <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
+          Dashboard
         </router-link>
       </li>
       <li
@@ -30,7 +49,8 @@
         v-show="showDashboardActions"
       >
         <a @click="authLogout">
-          <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>Logout
+          <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
+          Logout
         </a>
       </li>
       <li
@@ -40,7 +60,8 @@
         v-show="!showDashboardActions"
       >
         <router-link to="/login">
-          <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>Login
+          <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
+          Login
         </router-link>
       </li>
       <li :id="$style.toggleSidebar" slot="left" v-if="['xs', 'sm'].includes(this.$mq)">
@@ -72,6 +93,15 @@
                 HaXplore
                 <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
               </router-link>
+            </li>
+            <li :class="$style.link">
+              <router-link to="/ca">CA</router-link>
+            </li>
+            <li :class="$style.link">
+              <router-link to="/team">Team</router-link>
+            </li>
+            <li :class="$style.link">
+              <router-link to="/referral">Referrals</router-link>
             </li>
             <li :class="$style.link" v-show="showDashboardActions">
               <router-link to="/dashboard">
@@ -156,7 +186,8 @@ export default {
   }
 
   .link {
-    height: 100%;
+    height: 20px;
+    margin-top: 10px;
 
     .awesome {
       border-radius: 10px;
@@ -166,7 +197,10 @@ export default {
       cursor: pointer;
       height: inherit;
       color: $white;
-      padding: 0 5px;
+      font-weight: 600;
+      font-size: 20px;
+      letter-spacing: 0.8px;
+      padding: 0 10px;
       text-decoration: none;
       transition: 0.5s;
       vertical-align: middle;
@@ -180,7 +214,7 @@ export default {
     }
 
     ~/.xs ^[1..-1] a, ~/.sm ^[1..-1] a, ~/.md ^[1..-1] a {
-      font-size: 20px;
+      font-size: 16px;
     }
 
     a:hover {

@@ -40,6 +40,27 @@ const router = new Router({
       }
     },
     {
+      name: "~/ca",
+      path: "/ca",
+      component: () => import("@pages/CampusAmbassador"),
+      meta: {
+        title: "CodeFest '19 | Campus Ambassdor",
+        metaTags: [],
+        noTerminal: true
+      }
+    },
+    {
+      name: "~/team",
+      path: "/team",
+      component: () => import(`@pages/Team`),
+      meta: {
+        title: "CodeFest '19 | Team",
+        metaTags: [],
+        noTerminal: true,
+        animateTerminal: true
+      }
+    },
+    {
       name: "~/login",
       path: "/login",
       component: () => import(`@pages/Login`),
