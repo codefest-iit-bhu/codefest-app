@@ -207,6 +207,18 @@ export default {
               position: "Co-Head",
               email: "shivam.tomar.cse17@itbhu.ac.in",
               fb: "https://www.facebook.com/shivam.tomar.921"
+            },
+            {
+              name: "P. Radha Krishna",
+              position: "Designer",
+              email: "pradha.krishna.cse17@itbhu.ac.in",
+              fb: "https://www.facebook.com/Radha.Krishna.2308"
+            },
+            {
+              name: "Naman Talaycha",
+              position: "Designer",
+              email: "naman.talaycha.cse17@itbhu.ac.in",
+              fb: "https://www.facebook.com/Namatalaycha10"
             }
           ]
         },
@@ -414,19 +426,19 @@ export default {
     ~/.sm ^[1..-1] {
       width: 400px;
       padding-top: 100px;
-      padding-bottom: 0;      
+      padding-bottom: 0;
     }
 
     ~/.md ^[1..-1] {
       width: 500px;
       padding-top: 100px;
-      padding-bottom: 50px;      
+      padding-bottom: 50px;
     }
 
     ~/.md ^[1..-1] {
       width: 650px;
       padding-top: 150px;
-      padding-bottom: 50px;      
+      padding-bottom: 50px;
     }
   }
 
