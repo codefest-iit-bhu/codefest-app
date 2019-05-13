@@ -145,15 +145,12 @@ const router = new Router({
     {
       name: "~/referral",
       path: "/referral",
-      component: () => import(`@pages/Dashboard`),
-      props: {
-        isLeaderboardView: true
-      },
+      component: () => import(`@pages/Referral`),
       meta: {
         title: "Referral Leaderboard",
         metaTags: [],
         noTerminal: true,
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {

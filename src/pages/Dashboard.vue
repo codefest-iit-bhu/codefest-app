@@ -19,12 +19,6 @@
           My Teams
         </router-link>
       </li>
-      <li :class="{[$style.active]: isEventsView}" slot="dashboard">
-        <router-link to="/referral">
-          <span class="fa fa-circle fa-xs" aria-hidden="true"></span>
-          Referrals
-        </router-link>
-      </li>
     </AppBar>
     <main :class="$style.wrapper">
       <DashboardEvent v-if="isEventsView"/>
@@ -41,7 +35,6 @@ import API from "@js/api";
 const AppBar = () => import("@components/Menu/AppBar");
 const DashboardEvent = () => import("@components/dashboard/DashboardEvent");
 const DashboardProfile = () => import("@components/dashboard/DashboardProfile");
-const Referral = () => import("@components/dashboard/Referral");
 const Footer = () => import("@components/Footer");
 
 export default {
@@ -49,7 +42,6 @@ export default {
     AppBar,
     DashboardEvent,
     DashboardProfile,
-    Referral,
     Footer
   },
   data() {

@@ -330,6 +330,7 @@ $btn-width = 240px;
     position: relative;
     text-align: center;
     width: var(--event-team-button-width);
+    margin: 0 auto;
   }
 
   .btn {
@@ -337,7 +338,7 @@ $btn-width = 240px;
     z-index: 5;
     width: 100%;
     top: 0;
-    left: calc(((var(--event-team-box-width) - var(--event-team-button-width)) / 2));
+    left: 0;
     background-color: black;
     border: 1px solid $chartreuse;
     color: $chartreuse;
@@ -400,7 +401,7 @@ $btn-width = 240px;
     position: absolute;
     width: 100%;
     top: 0;
-    left: calc(((var(--event-team-box-width) - var(--event-team-button-width)) / 2));
+    left: 0
     z-index: 4;
   }
 

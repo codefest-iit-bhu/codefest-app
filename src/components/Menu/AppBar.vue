@@ -38,8 +38,8 @@
         v-show="showDashboardActions"
       >
         <router-link to="/dashboard">
+          <i class="fas fa-id-badge" title="Dashboard"></i>
           <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
-          Dashboard
         </router-link>
       </li>
       <li
@@ -49,8 +49,8 @@
         v-show="showDashboardActions"
       >
         <a @click="authLogout">
+          <i class="fas fa-power-off" title="Logout"></i>
           <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
-          Logout
         </a>
       </li>
       <li
@@ -186,7 +186,6 @@ export default {
   }
 
   .link {
-    height: 20px;
     margin-top: 10px;
 
     .awesome {

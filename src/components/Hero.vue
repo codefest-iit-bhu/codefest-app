@@ -9,7 +9,7 @@
         </h1>-->
         <div :class="$style.cftitle">
           <span>
-            <img src="/assets/cf19-hero-logo.svg">
+            <img src="@assets/cf19-hero-logo.svg">
           </span>
           <span :class="$style.tagline" ref="tagline"></span>
           <span :class="$style.venue">
@@ -27,7 +27,6 @@
     <mq-layout :mq="['sm', 'xs', 'md']">
       <div class="absolute-center" :class="[$style.smallhero, $style[$mq]]">
         <div :class="$style.cflogo">
-          <!-- <img src="/assets/cf-chartreuse-logo.svg"> -->
           <svg viewBox="0 0 335.71 293.38">
             <path
               class="cls-1"

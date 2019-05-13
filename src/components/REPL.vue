@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.repl">
+  <div :class="[$style.repl, $style[$mq]]">
     <div :class="$style.cli">
       <div :class="$style.breadcrumbs">
         <router-link
@@ -116,112 +116,116 @@ $output-link = $dodger-blue;
 
 .repl {
   margin-top: 5px;
-}
 
-.breadcrumbs {
-  text-align: center;
-  display: inline-block;
-  overflow: hidden;
-  margin-right: 10px;
+  ~/.xs, ~/.sm, ~/.md {
+    font-size: 16px;
+  }
 
-  a&__step, a&__step:visited {
-    text-decoration: none;
-    outline: none;
-    display: block;
-    float: left;
-    font-size: 18px;
-    line-height: 30px;
-    padding: 0 10px 0 40px;
-    position: relative;
-    background: $breadcrumb-unselected;
-    color: $breadcrumb-text;
-    transition: background 0.5s;
+  .breadcrumbs {
+    text-align: center;
+    display: inline-block;
+    overflow: hidden;
+    margin-right: 10px;
 
-    &:first-child {
-      padding-left: 25px;
-
-      &::before {
-        left: 14px;
-      }
-    }
-
-    &:last-child {
-      border-radius: 0 5px 5px 0;
-      padding-right: 20px;
-
-      &::after {
-        content: none;
-      }
-    }
-
-    // arrow
-    &::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: -18px;
-      width: 30px;
-      height: 30px;
-      transform: scale(0.707) rotate(45deg);
-      z-index: 1;
-      border-radius: 0 5px 0 50px;
+    a^[1..-1]__step, a^[1..-1]__step:visited {
+      text-decoration: none;
+      outline: none;
+      display: block;
+      float: left;
+      font-size: 18px;
+      line-height: 30px;
+      padding: 0 10px 0 40px;
+      position: relative;
       background: $breadcrumb-unselected;
-      transition: background 0.5s;
-      box-shadow: 2px -2px 0 2px $breadcrumb-arrow;
-    }
-
-    &:hover {
       color: $breadcrumb-text;
-      background: $breadcrumb-hovered;
-      cursor: pointer;
+      transition: background 0.5s;
 
+      &:first-child {
+        padding-left: 25px;
+
+        &::before {
+          left: 14px;
+        }
+      }
+
+      &:last-child {
+        border-radius: 0 5px 5px 0;
+        padding-right: 20px;
+
+        &::after {
+          content: none;
+        }
+      }
+
+      // arrow
       &::after {
-        color: $breadcrumb-arrow;
+        content: '';
+        position: absolute;
+        top: 0;
+        right: -18px;
+        width: 30px;
+        height: 30px;
+        transform: scale(0.707) rotate(45deg);
+        z-index: 1;
+        border-radius: 0 5px 0 50px;
+        background: $breadcrumb-unselected;
+        transition: background 0.5s;
+        box-shadow: 2px -2px 0 2px $breadcrumb-arrow;
+      }
+
+      &:hover {
+        color: $breadcrumb-text;
         background: $breadcrumb-hovered;
+        cursor: pointer;
+
+        &::after {
+          color: $breadcrumb-arrow;
+          background: $breadcrumb-hovered;
+        }
       }
     }
   }
-}
 
-.output {
-  margin-top: 5px;
+  .output {
+    margin-top: 5px;
 
-  .column {
-    display: grid;
-    grid-template-columns: repeat(5, 150px);
-    grid-row-gap: 10px;
-    column-gap: 20px;
+    .column {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(150px, 1fr));
+      grid-row-gap: 10px;
+      grid-column-gap: 20px;
 
-    ../ {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      ../ {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    a, a:visited {
+      color: $output-link;
     }
   }
 
-  a, a:visited {
-    color: $output-link;
-  }
-}
+  .cli {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
 
-.cli {
-  width: 100%;
-  height: 30px;
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
+    div {
+      height: 100%;
+    }
 
-  div {
-    height: 100%;
-  }
-
-  #input {
-    background: $transparent;
-    border: none;
-    outline: none;
-    color: unset;
-    font: unset;
-    flex-grow: 1;
+    #input {
+      background: $transparent;
+      border: none;
+      outline: none;
+      color: unset;
+      font: unset;
+      flex-grow: 1;
+    }
   }
 }
 </style>

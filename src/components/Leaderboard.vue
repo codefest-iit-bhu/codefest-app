@@ -50,8 +50,8 @@ export default {
   .head {
     font-family: 'Roboto Slab';
     color: $chartreuse;
-    padding: 15px 0;
-    font-size: 20px;
+    padding: 12px 0;
+    font-size: 16px;
     border-bottom: 1px solid $chartreuse;
   }
 
