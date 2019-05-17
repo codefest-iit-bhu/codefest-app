@@ -39,7 +39,7 @@ export const navigation = {
         ".": "/ca"
       },
       referrals: {
-        ".": "/referrals"
+        ".": "/referral"
       }
     },
     "404": {
