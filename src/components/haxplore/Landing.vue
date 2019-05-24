@@ -17,22 +17,22 @@
           <i class="far fa-calendar-alt"></i> 23 - 25 August, 2019
         </span>
       </span>
-      <span :class="$style.register">Registrations will be open soon.</span>
+      <DevfolioButton/>
+      <!-- <span :class="$style.register">Registrations will be open soon.</span> -->
       <!-- <Countdown :until="hackathonStart" :class="$style.landing__countdown"/> -->
     </div>
-    <!-- <FloatingButton text="Register"/> -->
   </div>
 </template>
 
 <script>
 import { TypingAnim } from "@js/utils";
 const Countdown = () => import("@components/Countdown");
-const FloatingButton = () => import("@components/FloatingButton");
+const DevfolioButton = () => import("@components/haxplore/DevfolioButton");
 
 export default {
   components: {
     Countdown,
-    FloatingButton
+    DevfolioButton
   },
   data() {
     return {
@@ -162,13 +162,12 @@ export default {
       }
 
       ~/.md ^[1..-1] {
-        width: 500x;
-        height: 312.5px;
+        width: 480px;
+        height: 300px;
         margin: 30px auto 0;
 
         #base {
           top: -60px;
-          width: 600px;
         }
       }
 

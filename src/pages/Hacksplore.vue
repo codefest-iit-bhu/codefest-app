@@ -11,8 +11,14 @@
           {{ title }}
         </a>
       </li>
+      <li>
+        <a :href="devfolioRegisterLink">
+          <span class="fas fa-user-plus fa-xs" aria-hidden="true"></span>
+          Apply for Devfolio
+        </a>
+      </li>
     </AppBar>
-    <Landing/>
+    <Landing :devfolioKey="devfolioKey" @mounted="landingMounted"/>
     <main :class="$style.wrapper">
       <div v-scroll-spy="{data: 'section'}" ref="scroller">
         <div></div>
@@ -53,19 +59,36 @@ export default {
   data() {
     return {
       section: 0,
-      titles: [null, "About", "FAQ", "Timeline", "Prizes", "Sponsors"]
+      titles: [null, "About", "FAQ", "Timeline", "Prizes", "Sponsors"],
+      devfolioKey: "haxplore"
     };
   },
   computed: {
     isPastLanding() {
       return this.section > 0;
+    },
+    devfolioRegisterLink() {
+      return `https://devfolio.co/external-apply/${this.devfolioKey}`;
     }
   },
   methods: {
     scrollToTop() {
       TweenLite.to(window, 1, { scrollTo: 0, ease: Power4.easeInOut });
+    },
+    landingMounted() {
+      let devfolioOptions = {
+        buttonSelector: `#devfolio-apply-now`,
+        key: this.devfolioKey
+      };
+      let script = document.createElement("script");
+      script.src = "https://apply.devfolio.co";
+      document.body.append(script);
+      script.onload = function() {
+        new Devfolio(devfolioOptions);
+      };
     }
-  }
+  },
+  mounted() {}
 };
 </script>
 
