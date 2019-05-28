@@ -11,7 +11,17 @@
           <p :class="$style.txt">Title Sponsor</p>
         </div>
       </div>
-      <!-- <div :class="$style.container">
+      <div :class="$style.associateContainer">
+        <div :class="$style.cell">
+          <div :class="$style.clip">
+            <img :src="associate.image" :class="$style.img">
+          </div>
+        </div>
+        <div :class="$style.type">
+          <p :class="$style.txt">Associate Sponsor</p>
+        </div>
+      </div>
+      <div :class="$style.container">
         <GridLayout
           :columns="$mq | mq({xs: 1, sm: 2, md: 3, lg: 4, xl: 5})"
           itemWidth="200px"
@@ -27,7 +37,7 @@
             </center>
           </div>
         </GridLayout>
-      </div>-->
+      </div>
       <div :class="$style.txt"></div>
       <div :class="$style.link">
         <a href="https://goo.gl/forms/RyjmY7i002oUHivu2" :class="$style.linkText" target="_blank">
@@ -39,7 +49,7 @@
 </template>
 
 <script>
-import GridLayout from "./layouts/GridLayout";
+import GridLayout from "../layouts/GridLayout";
 const SectionLayout = () => import("@components/layouts/SectionLayout");
 
 export default {
@@ -49,32 +59,7 @@ export default {
   },
   data() {
     return {
-      stats: [
-        {
-          image: "assets/Sponsors/aws.png",
-          text: "Assoicate Sponsor"
-        },
-        {
-          image: "assets/Sponsors/eligible.png",
-          text: "ABC Sponsor"
-        },
-        {
-          image: "assets/Sponsors/uber.png",
-          text: "XYZ Sponsor"
-        },
-        {
-          image: "assets/Sponsors/top-coder.png",
-          text: "Platform Sponsor"
-        },
-        {
-          image: "assets/Sponsors/uber.png",
-          text: "AB Sponsor"
-        },
-        {
-          image: "assets/Sponsors/uber.png",
-          text: "AB Sponsor"
-        }
-      ],
+      stats: [],
       title: {
         image: "assets/Sponsors/aws.png"
       },
@@ -224,8 +209,8 @@ $box-width = 300px;
         border-left: 1px solid white;
         border-right: 1px solid white;
         border-radius: 70px 0;
-        padding: 20px 0;
         animation: timeline-border-white 1.5s ease-in-out infinite alternate;
+        padding: 20px 0;
         height: 100px;
       }
 

@@ -26,7 +26,7 @@
         <FAQ/>
         <Timeline/>
         <Prizes/>
-        <Sponsors/>
+        <HaxploreSponsors/>
       </div>
     </main>
     <FooterN/>
@@ -40,7 +40,7 @@ const About = () => import("@components/haxplore/About");
 const FAQ = () => import("@components/haxplore/FAQ");
 const Landing = () => import("@components/haxplore/Landing");
 import Prizes from "@components/haxplore/Prizes";
-const Sponsors = () => import("@components/Sponsors");
+const HaxploreSponsors = () => import("@components/haxplore/HaxploreSponsors");
 const FooterN = () => import("@components/haxplore/FooterN");
 const SectionLayout = () => import("@components/layouts/SectionLayout");
 
@@ -53,7 +53,7 @@ export default {
     Prizes,
     SectionLayout,
     Landing,
-    Sponsors,
+    HaxploreSponsors,
     FooterN
   },
   data() {
