@@ -26,6 +26,12 @@
     </mq-layout>
     <mq-layout :mq="['sm', 'xs', 'md']">
       <div class="absolute-center" :class="[$style.smallhero, $style[$mq]]">
+        <div :class="$style.aws">
+          <img src="@assets/Sponsors/aws.png">
+        </div>
+        <div :class="$style.presents">
+          <span>presents</span>
+        </div>
         <div :class="$style.cflogo">
           <svg viewBox="0 0 335.71 293.38">
             <path
@@ -156,7 +162,8 @@ export default {
       display: block;
       margin: 10px auto;
       height: 32px;
-      font: 26px 'Ubuntu';
+      font: 30px 'Ubuntu';
+      font-weight: 600;
       text-align: center;
     }
 
@@ -190,6 +197,27 @@ export default {
 }
 
 .smallhero {
+  .aws {
+    margin: auto;
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    padding: 10px;
+    background: $white;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .presents {
+    margin: 15px auto;
+    font-family: 'Ubuntu';
+    font-weight: 600;
+    color: $white;
+    text-align: center;
+  }
+
   .cflogo {
     width: 100%;
     margin: auto;
