@@ -148,6 +148,11 @@ $appbar-glow-color = $chartreuse;
     img {
       width: 80%;
       margin-left: 10%;
+      margin-top: -2%;
+
+      ~/.xs ^[1..-1] {
+        margin-top: 5%;
+      }
     }
   }
 }
