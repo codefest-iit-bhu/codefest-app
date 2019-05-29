@@ -35,9 +35,10 @@ export default {
   },
   methods: {
     registerDefault() {
-      window.location.href = `https://devfolio.co/external-apply/${
-        this.devfolioKey
-      }`;
+      window.open(
+        `https://devfolio.co/external-apply/${this.devfolioKey}`,
+        "_blank"
+      );
     }
   },
   mounted() {

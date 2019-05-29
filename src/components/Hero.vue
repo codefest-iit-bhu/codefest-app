@@ -27,7 +27,7 @@
     <mq-layout :mq="['sm', 'xs', 'md']">
       <div class="absolute-center" :class="[$style.smallhero, $style[$mq]]">
         <div :class="$style.aws">
-          <img src="@assets/Sponsors/aws.png">
+          <img src="assets/Sponsors/aws.png">
         </div>
         <div :class="$style.presents">
           <span>presents</span>
