@@ -103,7 +103,7 @@ class Profile(models.Model):
         try:
             email_status = self.user.verified_account.get_verified_status()
         except Exception:
-            pass
+            return False
         if self.referred_by is not None and profile_status and email_status:
             referral,_  = ValidReferral.objects.get_or_create(by=self.referred_by, to=self)
         return True
@@ -190,7 +190,7 @@ class CA(models.Model):
     name = models.CharField(max_length=80)
     institute_name = models.CharField(max_length=200)
     points = models.IntegerField(default=0)
-
+    comment = models.TextField(null=True)
     def __str__(self):
         return f'{self.name} from {self.institute_name}'
 
