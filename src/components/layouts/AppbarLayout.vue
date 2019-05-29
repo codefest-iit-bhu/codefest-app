@@ -151,7 +151,7 @@ $appbar-glow-color = $chartreuse;
       margin-top: -2%;
 
       ~/.xs ^[1..-1] {
-        margin-top: 5%;
+        margin-top: 1%;
       }
     }
   }

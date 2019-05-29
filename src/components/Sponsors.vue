@@ -51,10 +51,6 @@ export default {
     return {
       stats: [
         {
-          image: "assets/Sponsors/aws.png",
-          text: "Assoicate Sponsor"
-        },
-        {
           image: "assets/Sponsors/eligible.png",
           text: "ABC Sponsor"
         },

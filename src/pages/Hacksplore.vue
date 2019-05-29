@@ -12,7 +12,7 @@
         </a>
       </li>
       <li>
-        <a :href="devfolioRegisterLink">
+        <a :href="devfolioRegisterLink" target="_blank">
           <span class="fas fa-user-plus fa-xs" aria-hidden="true"></span>
           Apply for Devfolio
         </a>
