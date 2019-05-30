@@ -104,9 +104,11 @@ class Profile(models.Model):
             email_status = self.user.verified_account.get_verified_status()
         except Exception:
             return False
-        if self.referred_by is not None and profile_status and email_status:
-            referral,_  = ValidReferral.objects.get_or_create(by=self.referred_by, to=self)
-        return True
+        if ( profile_status and email_status):
+            if (self.referred_by is not None) :
+                referral,_  = ValidReferral.objects.get_or_create(by=self.referred_by, to=self)
+            return True
+        return False
     
 class ValidReferral(models.Model):
     by=models.ForeignKey(Profile,on_delete=models.CASCADE,related_name="referred_people")
