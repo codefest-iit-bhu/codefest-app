@@ -1,7 +1,6 @@
 from django.contrib import admin
 from .models import *
 
-admin.site.register(Profile)
 admin.site.register(EventDetail)
 admin.site.register(ValidReferral)
 admin.site.register(Membership)
@@ -29,3 +28,9 @@ class TeamAdmin(admin.ModelAdmin):
 class CAAdmin(admin.ModelAdmin):
     list_display=('name', 'institute_name', 'points')
     ordering = ('-points',)
+
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    list_display=('__str__','is_profile_complete',)
+    search_fields=('user__first_name','user__username')
+    list_filter=('is_profile_complete','institute_type','country')
