@@ -21,11 +21,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '=t9h+9&(5&($pquh4xmt)a6#we71njnzn$biobz!m-(ydf2iuj'
-
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG',True)
+DEBUG = int(os.environ.get('DEBUG','1'))
+
+# SECURITY WARNING: keep the secret key used in production secret!
+if(DEBUG):
+    SECRET_KEY="2xnn%tj(@mc(n^io&c^j0*=bq$7kwe&)o$+mk8d=!jujiueb(s"
+else:
+    SECRET_KEY = config('SECRET_KEY')
+
 ALLOWED_HOSTS = ['codefest-api.herokuapp.com', '127.0.0.1']
 
 
@@ -48,6 +52,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -140,6 +145,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles/')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 import firebase_admin
 from firebase_admin import credentials
