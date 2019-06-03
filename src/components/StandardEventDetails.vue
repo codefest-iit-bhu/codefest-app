@@ -38,26 +38,22 @@
       </TabLayout>
     </div>
 
-      <div :class="$style.link">
-        <router-link to="/dashboard/events/" :class="$style.linkText">
-          <h4>Register</h4>
-        </router-link>
-      </div>
-
-    <!-- <FloatingButton :link="'~/dashboard/events'" text="Register"/> -->
+    <div :class="$style.link">
+      <router-link to="/dashboard/events/" :class="$style.linkText">
+        <h4>Register</h4>
+      </router-link>
+    </div>
   </div>
 </template>
 
 <script>
 const TabLayout = () => import("@components/layouts/TabLayout");
 const FAQ = () => import("@components/FAQ");
-const FloatingButton = () => import("@components/FloatingButton");
 
 export default {
   components: {
     TabLayout,
-    FAQ,
-    FloatingButton
+    FAQ
   },
   props: {
     event: {
@@ -90,31 +86,33 @@ export default {
 @require '~@styles/anims';
 @require '~@styles/mixins';
 
-  .link {
-    margin: auto;
-    width: 290px;
-    height: auto;
-    padding: 24px;
-    border-radius: 50px;
-    border: 2px solid $chartreuse;
-    text-align: center;
-    cursor: pointer;
+.link {
+  margin: auto;
+  width: 290px;
+  height: auto;
+  padding: 24px;
+  border-radius: 50px;
+  border: 2px solid $chartreuse;
+  text-align: center;
+  cursor: pointer;
 
-    .linkText {
-      color: $chartreuse;
-      display: inline;
-      text-decoration: none;
+  .linkText {
+    color: $chartreuse;
+    display: inline;
+    text-decoration: none;
 
-      h4 {
-        font-family: 'Aldo the Apache';
-        font-size: 30px;
-        margin: 0;
-      }
-    }
-      &:hover {
-      box-shadow: inset 0px 0px 10px $chartreuse;
+    h4 {
+      font-family: 'Aldo the Apache';
+      font-size: 30px;
+      margin: 0;
     }
   }
+
+  &:hover {
+    box-shadow: inset 0px 0px 10px $chartreuse;
+  }
+}
+
 .event {
   padding-top: 16px;
 
@@ -183,6 +181,7 @@ export default {
 
   .eventDesc {
     margin-bottom: 100px;
+
     .tabContainer {
       padding: 36px;
 

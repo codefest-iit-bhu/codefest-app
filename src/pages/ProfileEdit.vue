@@ -235,7 +235,9 @@ export default {
     },
     nav(id) {
       if (this.curId != null)
-        var fields = document.querySelectorAll("#" + this.curId + " input");
+        var fields = document.querySelectorAll(
+          `#${this.curId} input, #${this.curId} select`
+        );
       else var fields = null;
       if (
         this.checkValidity(fields) ||

@@ -11,8 +11,14 @@
           {{ title }}
         </a>
       </li>
+      <li>
+        <a :href="devfolioRegisterLink" target="_blank">
+          <span class="fas fa-user-plus fa-xs" aria-hidden="true"></span>
+          Apply for Devfolio
+        </a>
+      </li>
     </AppBar>
-    <Landing/>
+    <Landing :devfolioKey="devfolioKey" @mounted="landingMounted"/>
     <main :class="$style.wrapper">
       <div v-scroll-spy="{data: 'section'}" ref="scroller">
         <div></div>
@@ -20,7 +26,7 @@
         <FAQ/>
         <Timeline/>
         <Prizes/>
-        <Sponsors/>
+        <HaxploreSponsors/>
       </div>
     </main>
     <FooterN/>
@@ -34,7 +40,7 @@ const About = () => import("@components/haxplore/About");
 const FAQ = () => import("@components/haxplore/FAQ");
 const Landing = () => import("@components/haxplore/Landing");
 import Prizes from "@components/haxplore/Prizes";
-const Sponsors = () => import("@components/Sponsors");
+const HaxploreSponsors = () => import("@components/haxplore/HaxploreSponsors");
 const FooterN = () => import("@components/haxplore/FooterN");
 const SectionLayout = () => import("@components/layouts/SectionLayout");
 
@@ -47,25 +53,42 @@ export default {
     Prizes,
     SectionLayout,
     Landing,
-    Sponsors,
+    HaxploreSponsors,
     FooterN
   },
   data() {
     return {
       section: 0,
-      titles: [null, "About", "FAQ", "Timeline", "Prizes", "Sponsors"]
+      titles: [null, "About", "FAQ", "Timeline", "Prizes", "Sponsors"],
+      devfolioKey: "haxplore"
     };
   },
   computed: {
     isPastLanding() {
       return this.section > 0;
+    },
+    devfolioRegisterLink() {
+      return `https://devfolio.co/external-apply/${this.devfolioKey}`;
     }
   },
   methods: {
     scrollToTop() {
       TweenLite.to(window, 1, { scrollTo: 0, ease: Power4.easeInOut });
+    },
+    landingMounted() {
+      let devfolioOptions = {
+        buttonSelector: `#devfolio-apply-now`,
+        key: this.devfolioKey
+      };
+      let script = document.createElement("script");
+      script.src = "https://apply.devfolio.co";
+      document.body.append(script);
+      script.onload = function() {
+        new Devfolio(devfolioOptions);
+      };
     }
-  }
+  },
+  mounted() {}
 };
 </script>
 
