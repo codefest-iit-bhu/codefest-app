@@ -37,8 +37,45 @@
           <router-link to="/">
             <img src="@assets/cf19-white-logo.svg" :class="$style.sidebarLogo">
           </router-link>
-          <ul v-scroll-spy-active="{class: $style.active}" v-scroll-spy-link>
+          <!-- <ul v-scroll-spy-active="{class: $style.active}" v-scroll-spy-link>
             <slot></slot>
+          </ul>-->
+          <ul :class="$style.sidebarList">
+            <li :class="$style.link">
+              <router-link to="/events">Events</router-link>
+              <div :class="$style.subList">
+                <slot name="events"></slot>
+              </div>
+            </li>
+            <li :class="$style.link">
+              <router-link to="/haxplore">
+                HaXplore
+                <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
+              </router-link>
+            </li>
+            <li :class="$style.link">
+              <router-link to="/ca">CA</router-link>
+            </li>
+            <li :class="$style.link">
+              <router-link to="/team">Team</router-link>
+            </li>
+            <li :class="$style.link">
+              <router-link to="/referral">Referrals</router-link>
+            </li>
+            <li :class="$style.link" v-show="showDashboardActions">
+              <router-link to="/dashboard">
+                Dashboard
+                <div :class="$style.subList">
+                  <slot name="dashboard"></slot>
+                </div>
+              </router-link>
+            </li>
+            <li :class="$style.link" v-show="!showDashboardActions">
+              <router-link to="/login">Login / Register</router-link>
+            </li>
+            <li :class="$style.link" v-show="showDashboardActions">
+              <a @click="authLogout">Logout</a>
+            </li>
           </ul>
         </Slide>
       </mq-layout>
@@ -84,6 +121,9 @@ export default {
     },
     shouldShowEventLogo() {
       return !this.isMinimal && this.shouldShowHaxploreLogo;
+    },
+    showDashboardActions() {
+      return this.$store.getters.isLoggedIn;
     }
   },
   methods: {
@@ -92,6 +132,10 @@ export default {
     },
     onCloseSideBar() {
       this.isSidebarOpen = false;
+    },
+    authLogout() {
+      this.$store.dispatch("logout");
+      if (this.$route.meta.requiresAuth) this.$router.push({ name: "~" });
     }
   }
 };

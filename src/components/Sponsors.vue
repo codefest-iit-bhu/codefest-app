@@ -4,7 +4,9 @@
       <div :class="$style.titleContainer">
         <div :class="$style.cell">
           <div :class="$style.clip">
-            <img :src="title.image" :class="$style.img">
+            <a :href="title.link" target="_blank">
+              <img :src="title.image" :class="$style.img">
+            </a>
           </div>
         </div>
         <div :class="$style.type">
@@ -20,7 +22,9 @@
           <div :class="$style.cell" v-for="(stat, i) in stats" :key="i" :slot="`item${i}`">
             <center>
               <div :class="$style.clip">
+                <a href = "stat.link" target = "_blank">
                 <img :src="stat.image" :class="$style.img">
+                </a>
               </div>
               <br>
               <span :class="$style.txt">{{ stat.text }}</span>
@@ -52,27 +56,18 @@ export default {
       stats: [
         {
           image: "assets/Sponsors/eligible.png",
+          link: "https://ww.google.co.in",
           text: "ABC Sponsor"
         },
         {
           image: "assets/Sponsors/uber.png",
-          text: "XYZ Sponsor"
-        },
-        {
-          image: "assets/Sponsors/top-coder.png",
-          text: "Platform Sponsor"
-        },
-        {
-          image: "assets/Sponsors/uber.png",
-          text: "AB Sponsor"
-        },
-        {
-          image: "assets/Sponsors/uber.png",
+          link: "https://ww.google.co.in",
           text: "AB Sponsor"
         }
       ],
       title: {
-        image: "assets/Sponsors/aws.png"
+        image: "assets/Sponsors/aws.png",
+        link: "https://aws.amazon.com/"
       },
       associate: {
         image: "assets/Sponsors/devfolio_logo.svg"

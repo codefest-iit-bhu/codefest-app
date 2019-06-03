@@ -18,6 +18,9 @@
         </p>
       </div>
     </div>
+    <div
+      :class="$style.note"
+    >Note: People not registered on CodeFest are not eligible to recieve any prizes.</div>
   </div>
 </template>
 
@@ -102,5 +105,12 @@ export default {
       font-size: 14px;
     }
   }
+}
+
+.note {
+  font-family: 'Quicksand';
+  font-weight: 500;
+  text-align: center;
+  padding-bottom: 10px;
 }
 </style>

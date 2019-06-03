@@ -112,7 +112,7 @@
               </router-link>
             </li>
             <li :class="$style.link" v-show="!showDashboardActions">
-              <router-link to="/login">Login</router-link>
+              <router-link to="/login">Login / Register</router-link>
             </li>
             <li :class="$style.link" v-show="showDashboardActions">
               <a @click="authLogout">Logout</a>

@@ -37,6 +37,9 @@
         </div>
       </TabLayout>
     </div>
+    <div
+      :class="$style.note"
+    >Note: People not registered for this event on CodeFest are not eligible to recieve any prizes.</div>
 
     <div :class="$style.link">
       <router-link to="/dashboard/events/" :class="$style.linkText">
@@ -266,5 +269,12 @@ export default {
       justify-content: space-evenly;
     }
   }
+}
+
+.note {
+  font-family: 'Quicksand';
+  font-weight: 500;
+  text-align: center;
+  padding-bottom: 20px;
 }
 </style>
