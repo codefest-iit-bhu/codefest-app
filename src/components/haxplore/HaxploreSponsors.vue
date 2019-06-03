@@ -4,7 +4,9 @@
       <div :class="$style.titleContainer">
         <div :class="$style.cell">
           <div :class="$style.clip">
-            <img :src="title.image" :class="$style.img">
+            <a :href="title.link" target="_blank">
+              <img :src="title.image" :class="$style.img">
+            </a>
           </div>
         </div>
         <div :class="$style.type">
@@ -14,7 +16,9 @@
       <div :class="$style.associateContainer">
         <div :class="$style.cell">
           <div :class="$style.clip">
-            <img :src="associate.image" :class="$style.img">
+            <a :href="associate.link" target="_blank">
+              <img :src="associate.image" :class="$style.img">
+            </a>
           </div>
         </div>
         <div :class="$style.type">
@@ -61,10 +65,12 @@ export default {
     return {
       stats: [],
       title: {
-        image: "assets/Sponsors/aws.png"
+        image: "assets/Sponsors/aws.png",
+        link: "https://aws.amazon.com/"
       },
       associate: {
-        image: "assets/Sponsors/devfolio_logo.svg"
+        image: "assets/Sponsors/devfolio_logo.svg",
+        link: "https://devfolio.co/"
       }
     };
   }

@@ -49,6 +49,11 @@
             <i class="far fa-calendar-alt"></i> 23 - 25 August, 2019
           </p>
         </div>
+        <div :class="$style.registerbtn">
+          <router-link to="/login">
+            <span :class="$style.register">Register</span>
+          </router-link>
+        </div>
       </div>
     </mq-layout>
   </header>
@@ -284,6 +289,27 @@ export default {
 
   ./md ^[1..-1] {
     padding-top: 150px;
+  }
+}
+
+.registerbtn {
+  text-align: center;
+  padding-top: 20px;
+
+  .register {
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: auto;
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 2px solid $chartreuse;
+    text-align: center;
+    cursor: pointer;
+    color: $chartreuse;
+    font-family: 'Roboto Slab';
+    font-weight: 600;
+    box-shadow: inset 0px 0px 10px $chartreuse;
   }
 }
 </style>
