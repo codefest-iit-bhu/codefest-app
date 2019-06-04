@@ -51,7 +51,7 @@ export default {
 @require '~@styles/theme';
 @require '~@styles/mixins';
 
-$btn-height = 50px;
+$btn-height = 65px;
 $btn-width = 250px;
 
 .floatBtn {
