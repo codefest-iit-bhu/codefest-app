@@ -201,4 +201,4 @@ class ResumeSerializer(serializers.ModelSerializer):
 class CALeaderboardSerializer(serializers.ModelSerializer):
     class Meta:
         model=CA
-        fields = '__all__'
+        exclude=('comment',)

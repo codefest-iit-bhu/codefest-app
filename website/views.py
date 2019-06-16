@@ -136,4 +136,4 @@ class CALeaderBoardView(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
     authentication_classes = [authentication.TokenAuthentication, authentication.SessionAuthentication]
     serializer_class = CALeaderboardSerializer
-    queryset=CA.objects.order_by('-points')
+    queryset=CA.objects.order_by('-points')[:15]

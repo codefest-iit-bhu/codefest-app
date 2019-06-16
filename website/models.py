@@ -193,7 +193,7 @@ class CA(models.Model):
     name = models.CharField(max_length=80)
     institute_name = models.CharField(max_length=200)
     points = models.IntegerField(default=0)
-    comment = models.TextField(null=True)
+    comment = models.TextField(null=True,blank=True)
     def __str__(self):
         return f'{self.name} from {self.institute_name}'
 
