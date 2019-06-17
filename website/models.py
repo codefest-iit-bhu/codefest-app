@@ -190,6 +190,7 @@ class Handles(models.Model):
 
 
 class CA(models.Model):
+    caid=models.PositiveIntegerField(unique=True,null=True,blank=True)
     name = models.CharField(max_length=80)
     institute_name = models.CharField(max_length=200)
     points = models.IntegerField(default=0)

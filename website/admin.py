@@ -26,10 +26,9 @@ class TeamAdmin(admin.ModelAdmin):
 
 @admin.register(CA)
 class CAAdmin(admin.ModelAdmin):
-    readonly_fields=('id',)
-    fields=('id','name','institute_name','points','comment')
-    list_display=('id','name', 'institute_name', 'points')
-    search_fields=('id','name','institute_name')
+    fields=('caid','name','institute_name','points','comment')
+    list_display=('caid','name', 'institute_name', 'points')
+    search_fields=('caid','name','institute_name')
     ordering = ('-points',)
 
 @admin.register(Profile)
