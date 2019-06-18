@@ -62,6 +62,7 @@ $btn-width = 250px;
   background: $black;
   margin: 10px auto;
   border: 2px solid $chartreuse;
+  padding-top: 8px;
   text-align: center;
   color: $chartreuse;
   font-family: 'Roboto Slab';

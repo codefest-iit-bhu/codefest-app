@@ -25,6 +25,18 @@
           <p :class="$style.txt">Associate Sponsor</p>
         </div>
       </div>
+      <div :class="$style.associate2Container">
+        <div :class="$style.cell">
+          <div :class="$style.clip">
+            <a :href="associate2.link" target="_blank">
+              <img :src="associate2.image" :class="$style.img">
+            </a>
+          </div>
+        </div>
+        <div :class="$style.type">
+          <p :class="$style.txt">Associate Sponsor</p>
+        </div>
+      </div>
       <div :class="$style.container">
         <GridLayout
           :columns="$mq | mq({xs: 1, sm: 2, md: 3, lg: 4, xl: 5})"
@@ -71,6 +83,10 @@ export default {
       associate: {
         image: "assets/Sponsors/devfolio_logo.svg",
         link: "https://devfolio.co/"
+      },
+      associate2: {
+        image: "assets/Sponsors/github.png",
+        link: "https://github.com/"
       }
     };
   }
@@ -147,7 +163,7 @@ $box-width = 300px;
   .container {
   }
 
-  .titleContainer, .associateContainer {
+  .titleContainer, .associateContainer, .associate2Container {
     width: 80%;
     margin: 80px auto 25px;
     height: $box-height;
@@ -241,7 +257,7 @@ $box-width = 300px;
     }
   }
 
-  .associateContainer {
+  .associateContainer, .associate2Container {
     .cell {
       order: 2;
     }
