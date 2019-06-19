@@ -3,6 +3,7 @@
       <thead>
         <tr :class="$style.tablerow">
           <th :class="$style.head">Rank</th>
+          <th :class="$style.head">ID</th>
           <th :class="$style.head">Name</th>
           <th :class="$style.head">Points</th>
         </tr>
@@ -10,6 +11,7 @@
       <tbody>
         <tr v-for="(person, i) in cas" :key="i" :class="$style.tablerow">
           <td>{{ i + 1 }}</td>
+          <td>{{ person.caid }}</td>
           <td>{{ person.name }}</td>
           <td>{{ person.points }}</td>
         </tr>
