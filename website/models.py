@@ -68,6 +68,7 @@ class Profile(models.Model):
         return f'media/resumes/{self.user.verified_account.uid}/{filename}'
 
     user=models.OneToOneField(User,on_delete=models.CASCADE)
+    name=models.CharField(max_length=128,null=True,blank=True)
     referred_by=models.ForeignKey('Profile',null=True,related_name="referred",on_delete=models.SET_NULL)
     referral_code=models.CharField(max_length=50, unique=True, default=generate_referral_code)
     institute_type = models.IntegerField(null=True, choices=INSTITUTE_TYPE_CHOICES)
@@ -84,13 +85,13 @@ class Profile(models.Model):
     resume=models.FileField(upload_to=get_file_path,null=True)
     is_profile_complete=models.BooleanField(default=False)
     referral_count = models.IntegerField(default =0)
-
-    @cached_property
-    def name(self):
-        return f'{self.user.first_name} {self.user.last_name}'
+    
+    # @cached_property
+    # def name(self):
+    #     return f'{self.user.first_name} {self.user.last_name}'
     
     def __str__(self):
-        return f'{self.user.first_name}:{self.id} from {self.institute_name}'
+        return f'{self.name}:{self.id} from {self.institute_name}'
 
     def get_or_set_profile_status(self, toSet=False):
         if toSet:
