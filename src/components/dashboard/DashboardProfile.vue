@@ -106,7 +106,7 @@ export default {
       const { name } = this.profile;
       if (!name) return;
       const newName = name.split(/\s+/);
-      if (typeof newName[1][0] !== "undefined")
+      if (newName.length > 1)
         return newName[0][0] + newName[1][0];
       return newName[0][0];
     },
