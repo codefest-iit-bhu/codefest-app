@@ -157,6 +157,7 @@ CORS_ORIGIN_WHITELIST = (
     'codefest.tech',
     '127.0.0.1:8080',
     'localhost:8000',
+    '0.0.0.0:8080',
 )
 CSRF_TRUSTED_ORIGINS = (
     'codefest.tech',
