@@ -202,6 +202,12 @@ class ResumeSerializer(serializers.ModelSerializer):
         fields=('resume',)
 
 class CALeaderboardSerializer(serializers.ModelSerializer):
+    last_updated = serializers.SerializerMethodField()
+
+    @swagger_serializer_method(serializer_or_field=serializers.CharField)
+    def get_last_updated(self, obj):
+        return obj.last_updated.strftime("%-d %b, %Y")
+    
     class Meta:
         model=CA
         exclude=('comment','id')

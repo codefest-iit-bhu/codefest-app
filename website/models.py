@@ -11,6 +11,8 @@ from Auth.utils import FirebaseAPI
 from django.utils.functional import cached_property
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+from django.utils.timezone import now
+
 # Create your models here.
 
 def generate_referral_code():
@@ -196,6 +198,8 @@ class CA(models.Model):
     institute_name = models.CharField(max_length=200)
     points = models.IntegerField(default=0)
     comment = models.TextField(null=True,blank=True)
+    last_updated = models.DateField(default=now)
+    
     def __str__(self):
         return f'{self.name} from {self.institute_name}'
 

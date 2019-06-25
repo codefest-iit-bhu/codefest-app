@@ -26,7 +26,7 @@ class TeamAdmin(admin.ModelAdmin):
 
 @admin.register(CA)
 class CAAdmin(admin.ModelAdmin):
-    fields=('caid','name','institute_name','points','comment')
+    fields=('caid','name','institute_name','points','comment','last_updated')
     list_display=('caid','name', 'institute_name', 'points')
     search_fields=('caid','name','institute_name')
     ordering = ('-points',)
