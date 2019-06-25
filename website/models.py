@@ -76,9 +76,9 @@ class Profile(models.Model):
     # year , if school, implies class, undergrad&masters == yearofpassing, professional==experience
     study_year=models.PositiveIntegerField(null=True)
     # degree to be null for school
-    degree=models.CharField(max_length=30,blank=True,default="")
+    degree=models.CharField(max_length=50,blank=True,default="")
     # to be used only by undergrad and postgrad students
-    branch=models.CharField(max_length=30,blank=True,default="")
+    branch=models.CharField(max_length=100,blank=True,default="")
     country=models.CharField(max_length=4, default='IN')
     phone=models.CharField(max_length=15,blank=True, default="")
     gender=models.IntegerField(null=True,choices=GENDER_CHOICES)
