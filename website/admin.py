@@ -35,4 +35,4 @@ class CAAdmin(admin.ModelAdmin):
 class ProfileAdmin(admin.ModelAdmin):
     list_display=('__str__','is_profile_complete',)
     search_fields=('user__first_name','user__username')
-    list_filter=('is_profile_complete','institute_type','country')
+    list_filter=('is_profile_complete','institute_type','country','user__account__is_verified')
