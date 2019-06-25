@@ -208,7 +208,8 @@ export default {
       this.loading = true;
       firebase
         .auth()
-        .signInWithRedirect(provider)
+        .signInWithPopup(provider)
+        .then(result => this.successfulAuth(result, false))
         .catch(err => {
           this.loading = false;
           this.$toasted.global.error_post({ message: err.message });
@@ -216,21 +217,15 @@ export default {
     },
     successfulAuth(result, byEmail) {
       this.loading = true;
-      const { isNewUser } = result.additionalUserInfo;
+      // const { isNewUser } = result.additionalUserInfo;
 
       result.user
         .getIdToken(true)
         .then(idToken => {
-          if (isNewUser)
-            this.$recaptcha("login").then(token => {
-              this._register(
-                idToken,
-                byEmail ? this.name : result.user.displayName,
-                this.referral,
-                token
-              );
-            });
-          else this._login(idToken);
+          this.tryLoginAndRegister(
+            idToken,
+            byEmail ? this.name : result.user.displayName
+          );
         })
         .catch(err => {
           this.loading = false;
@@ -238,34 +233,38 @@ export default {
           result.user.delete();
         });
     },
-    _login(idToken) {
-      this.$store
-        .dispatch("login", { idToken })
+    tryLoginAndRegister(idToken, name) {
+      this._login(idToken)
         .then(_ => {
           this.loading = false;
           this.onRedirectAuth(false);
         })
-        .catch(err => {
-          this.loading = false;
-          this.$toasted.global.error_post({ message: err.message });
+        .catch(_ => {
+          console.log(_);
+          this.$recaptcha("login")
+            .then(recaptchaToken =>
+              this._register(idToken, name, this.referral, recaptchaToken)
+            )
+            .then(_ => {
+              this.loading = false;
+              this.onRedirectAuth(true);
+            })
+            .catch(err => {
+              this.loading = false;
+              this.$toasted.global.error_post({ message: err.message });
+            });
         });
     },
+    _login(idToken) {
+      return this.$store.dispatch("login", { idToken });
+    },
     _register(idToken, name, referralCode, recaptchaToken) {
-      this.$store
-        .dispatch("register", {
-          idToken,
-          name,
-          referralCode,
-          recaptchaToken
-        })
-        .then(_ => {
-          this.loading = false;
-          this.onRedirectAuth(true);
-        })
-        .catch(err => {
-          this.loading = false;
-          this.$toasted.global.error_post({ message: err.message });
-        });
+      return this.$store.dispatch("register", {
+        idToken,
+        name,
+        referralCode,
+        recaptchaToken
+      });
     },
     onRedirectAuth(isRegistered) {
       const path =
@@ -287,23 +286,10 @@ export default {
         if (inputElem) return inputElem.type !== "password";
       };
     }
-  },
-  created() {
-    this.loading = true;
-    firebase
-      .auth()
-      .getRedirectResult()
-      .then(result => {
-        if (!result.user || !firebase.auth().currentUser) this.loading = false;
-        else if (result.credential) this.successfulAuth(result, false);
-      })
-      .catch(err => {
-        this.loading = false;
-        this.$toasted.global.error_post({ message: err.message });
-      });
   }
 };
 </script>
+
 <style module lang="stylus">
 @require '~@styles/theme';
 @require '~@styles/anims';
