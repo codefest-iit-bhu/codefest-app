@@ -2,11 +2,13 @@ from rest_framework import serializers
 from .models import *
 from django.core.validators import RegexValidator
 from drf_yasg.utils import swagger_serializer_method
-
+import logging
 phone_regex = RegexValidator(
     regex=r'^\+\d{9,15}$',
     message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed."
 )
+
+logger=logging.getLogger('django')
 
 
 class ProfileSerializer(serializers.ModelSerializer):
@@ -60,6 +62,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         return year
 
     def update(self, instance, data):
+        logger.info("[PUT Response]  ("+str(instance)+") :"+str(data))
         instance.get_or_set_profile_status(toSet=True)
         return super().update(instance, data)
 

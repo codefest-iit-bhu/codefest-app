@@ -23,6 +23,8 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
 
+admin.site.site_header='Codefest Backend Administration'
+
 schema_view = get_schema_view(
    openapi.Info(
       title="Codefest API",

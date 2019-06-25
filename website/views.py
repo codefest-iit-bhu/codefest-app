@@ -8,6 +8,8 @@ from .serializers import *
 from website.permissions import AllowCompleteAndVerified
 from .models import *
 import json
+import logging
+logger=logging.getLogger('django')
 
 class EventListView(generics.ListAPIView):
     permission_classes=[permissions.IsAuthenticated]
@@ -20,8 +22,15 @@ class ProfileView(generics.RetrieveUpdateAPIView):
     authentication_classes= [authentication.TokenAuthentication, authentication.SessionAuthentication]
     serializer_class=ProfileSerializer
 
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance)
+        logger.info("[GET Response] : "+str(serializer.data))
+        return Response(serializer.data)
+
     def get_object(self):
         return self.request.user.profile
+
 
 
 class TeamCreationView(generics.GenericAPIView):
