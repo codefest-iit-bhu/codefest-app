@@ -101,11 +101,14 @@ class TeamJoinSerializer(serializers.Serializer):
     def validate(self, data):
         access_code=data['access_code']
         user =  self.context['request'].user
-        if Team.objects.filter(access_code=access_code).count()==0:
+        team = Team.objects.filter(access_code=access_code) 
+        if team.count()==0:
             raise serializers.ValidationError("Invalid Access Code")
-
-        team = Team.objects.get(access_code=access_code)
+        team=team[0]
         event =team.event
+        if team.total_members() >= event.max_members:
+            raise serializers.ValidationError("Maximum Size of Team Reached")
+            
         if Membership.objects.filter(team__event=event, profile=user.profile).count()!=0:
             raise serializers.ValidationError("You cannot be part of more than one team for the same event")
 
