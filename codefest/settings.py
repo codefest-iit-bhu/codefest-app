@@ -14,6 +14,10 @@ import os
 import dj_database_url
 from decouple import config
 from google.oauth2 import service_account
+import pyAesCrypt
+import firebase_admin
+from firebase_admin import credentials
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -147,10 +151,19 @@ STATIC_URL = '/static/'
 STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles/')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-import firebase_admin
-from firebase_admin import credentials
+if not DEBUG:
+    with open("service_account.json.aes", "rb") as encrypted_file:
+        with open("service_account.json", "wb") as decrypted_file:
+            # decrypt file stream
+            pyAesCrypt.decryptStream(
+                encrypted_file, 
+                decrypted_file, 
+                config('SERVICE_ACCOUNT_DECRYPT_KEY'), 
+                64*1024, 
+                int(config('SERVICE_ACCOUNT_ENC_SIZE'))
+            )
 
-cred = credentials.Certificate(os.path.join(BASE_DIR,'codefest19-firebase-adminsdk-yzr10-ed3ec09af8.json'))
+cred = credentials.Certificate(os.path.join(BASE_DIR,'service_account.json'))
 default_app = firebase_admin.initialize_app(cred)
 
 CORS_ORIGIN_WHITELIST = (
@@ -172,7 +185,7 @@ SENDGRID_API_KEY = config('SENDGRID_API_KEY')
 DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
 GS_BUCKET_NAME = 'codefest19.appspot.com'
 GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
-    os.path.join(BASE_DIR,'codefest19-firebase-adminsdk-yzr10-ed3ec09af8.json')
+    os.path.join(BASE_DIR,'service_account.json')
 )
 
 SWAGGER_SETTINGS = {

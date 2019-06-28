@@ -345,3 +345,5 @@ $RECYCLE.BIN/
 
 # End of https://www.gitignore.io/api/vue,node,vuejs,linux,macos,python,django,windows
 script.py
+crypt.py
+service_account.json

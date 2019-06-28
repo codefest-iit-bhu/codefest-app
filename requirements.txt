@@ -1,10 +1,13 @@
+asn1crypto==0.24.0
 astroid==2.2.5
 CacheControl==0.12.5
 cachetools==3.1.0
 certifi==2018.11.29
+cffi==1.12.3
 chardet==3.0.4
 coreapi==2.3.3
 coreschema==0.0.4
+cryptography==2.7
 dj-database-url==0.5.0
 Django==2.1.5
 django-cors-headers==2.5.2
@@ -34,8 +37,10 @@ mccabe==0.6.1
 msgpack==0.6.1
 protobuf==3.6.1
 psycopg2-binary==2.8
+pyAesCrypt==0.4.3
 pyasn1==0.4.5
 pyasn1-modules==0.2.4
+pycparser==2.19
 pylint==2.3.1
 python-decouple==3.1
 pytz==2018.9
