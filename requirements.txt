@@ -19,6 +19,7 @@ django-storages==1.7.1
 djangorestframework==3.9.0
 drf-yasg==1.12.1
 firebase-admin==2.16.0
+gevent==1.4.0
 google-api-core==1.8.0
 google-auth==1.6.3
 google-cloud-core==0.29.1
@@ -26,6 +27,7 @@ google-cloud-firestore==0.31.0
 google-cloud-storage==1.14.0
 google-resumable-media==0.3.2
 googleapis-common-protos==1.5.8
+greenlet==0.4.15
 grpcio==1.18.0
 gunicorn==19.9.0
 hashids==1.2.0
