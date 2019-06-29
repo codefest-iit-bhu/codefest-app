@@ -213,3 +213,7 @@ LOGGING = {
         },
     },
 }
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_BROKER_URL = 'amqp://localhost'
+if not DEBUG:
+    CELERY_BROKER_URL=config('CLOUDAMQP_URL')
