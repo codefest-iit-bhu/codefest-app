@@ -125,7 +125,7 @@ class RegisterSerializer(serializers.Serializer):
         referred_by = data.get('applied_referral_code', None)
 
         profile,_ = Profile.objects.get_or_create(user=user,referred_by=referred_by)
-        profile.name=user.first_name + user.last_name
+        profile.name=user.first_name + " "+user.last_name
         profile.save()
         return user
 
