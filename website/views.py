@@ -70,7 +70,7 @@ class TeamJoinView(generics.GenericAPIView):
 class TeamLeaveView(generics.DestroyAPIView):
     permission_classes = [permissions.IsAuthenticated, AllowCompleteAndVerified]
     authentication_classes = [authentication.TokenAuthentication, authentication.SessionAuthentication]
-    lookup_url_kwarg = 'pk'
+    lookup_field = 'pk'
     queryset = Team.objects.all()
     
     def perform_destroy(self, instance):
@@ -90,10 +90,16 @@ class TeamLeaveView(generics.DestroyAPIView):
 class RemoveFromTeamView(generics.GenericAPIView):
     permission_classes = [permissions.IsAuthenticated, AllowCompleteAndVerified]
     authentication_classes = [authentication.TokenAuthentication, authentication.SessionAuthentication]
-    lookup_url_kwarg = 'pk'
+    lookup_field = 'pk'
     queryset = Team.objects.all()
     serializer_class = RemoveFromTeamSerializer
     
+
+    def get_object(self):
+        if getattr(self, 'swagger_fake_view', False):
+            return None
+        return super().get_object()
+
     def get_serializer_context(self):
         """
         Extra context provided to the serializer class.
