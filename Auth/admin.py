@@ -8,3 +8,4 @@ class VerifiedAccountAdmin(admin.ModelAdmin):
     list_display=('__str__','provider','is_verified')
     search_fields=('uid',)
     list_filter=('provider','is_verified')
+    raw_id_fields=('user',)

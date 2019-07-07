@@ -34,5 +34,20 @@ class CAAdmin(admin.ModelAdmin):
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     list_display=('__str__','is_profile_complete',)
-    search_fields=('user__first_name','user__username')
-    list_filter=('is_profile_complete','institute_type','country','user__account__is_verified')
+    search_fields=('name','user__username')
+    list_filter=('is_profile_complete','institute_type','user__account__is_verified')
+    readonly_fields=('user','referred_by')
+    radio_fields={'gender':admin.HORIZONTAL}
+    fieldsets=(
+        (None,{
+            'fields':('name','user','referral_code','referred_by','is_profile_complete')
+        }),
+        ('Personal Details',{
+            # 'classes':('wide',),
+            'fields':('phone','country','gender')
+        }),
+        ('Academic Details',{
+            'classes':('collapse',),
+            'fields':('institute_type','institute_name','study_year','branch','degree','resume')
+        }),   
+    )
