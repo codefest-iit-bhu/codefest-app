@@ -114,7 +114,7 @@ export default {
 
       a {
         padding: unset;
-        font: 400 16px 'Roboto Slab';
+        font: 600 16px 'Roboto Slab';
         color: $white;
         text-decoration: none;
         cursor: pointer;
