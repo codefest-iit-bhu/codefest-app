@@ -1,4 +1,5 @@
 <template>
+  <div :class="$style.container">
     <table :class="[$style.points, $style[$mq]]" id="points">
       <thead>
         <tr :class="$style.tablerow">
@@ -17,6 +18,9 @@
         </tr>
       </tbody>
     </table>
+    <br>
+    <span :class="$style.lastUpdated"> Last Updated : {{ last_updated }}</span>
+  </div>
 </template>
 
 <script>
@@ -25,13 +29,16 @@ import API from "@js/api";
 export default {
   data() {
     return {
-      cas: []
+      cas: [],
+      last_updated : ""
     };
   },
   created() {
     API.fetch("cas/")
       .then(({ data }) => {
         this.cas = data;
+        this.last_updated = this.cas[0].last_updated;
+        console.log(this.last_updated);
       })
       .catch(err => {
         this.$toasted.global.error_post({
@@ -72,4 +79,21 @@ export default {
     }
   }
 }
+
+.container{
+  text-align: center;
+
+  .lastUpdated {
+    display: inline-block;
+    box-shadow: 0 0 12px $chartreuse inset;
+    padding: 15px 25px;
+    font-weight: 600;
+    border-radius: 10px;
+    margin: auto;
+    font-family: 'QuickSand';
+    color: white;
+  }
+}
+
+
 </style>

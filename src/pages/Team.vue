@@ -2,11 +2,10 @@
   <div :class="$style.root">
     <AppBar/>
     <div :class="[$style.wrapper, $style[$mq]]">
-      <!-- <h1 :class="$style.heading">Team codeFest</h1> -->
       <div :class="$style.teamHero">
         <img src="/assets/team.svg">
       </div>
-      <SectionLayout v-for="(team, i) in teams" :key="i" :title="team.title">
+      <SectionLayout v-for="(team, i) in teams" :key="i" :title="team.title | capitalize">
         <carousel
           :scrollPerPage="false"
           paginationColor="#57A300"
@@ -54,6 +53,13 @@ export default {
     Footer,
     Carousel,
     Slide
+  },
+  filters: {
+    capitalize: function (value) {
+      if (!value) return ''
+      value = value.toString()
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    }
   },
   data() {
     return {

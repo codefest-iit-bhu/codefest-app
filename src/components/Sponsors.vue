@@ -1,37 +1,35 @@
 <template>
   <SectionLayout title="Sponsors" id="sponsors">
-    <div :class="[$style.sponsors, 'sectionContainer', $style[$mq]]">
-      <div :class="$style.titleContainer">
-        <div :class="$style.cell">
-          <div :class="$style.clip">
-            <a :href="title.link" target="_blank">
-              <img :src="title.image" :class="$style.img">
-            </a>
+    <div :class="[$style.sponsors, $style[$mq]]">
+      <ResponsiveTwoColumnLayout>
+        <div :class="$style.title" slot="left">
+          <div :class="$style.cell">
+            <div :class="$style.clip">
+              <a :href="title.link" target="_blank">
+                <img :src="title.image" :class="$style.img">
+              </a>
+            </div>
           </div>
         </div>
-        <div :class="$style.type">
-          <p :class="$style.txt">Title Sponsor</p>
+        <div :class="$style.titleText" slot="right">
+            <div :class="$style.txt">Title Sponsor</div>
         </div>
-      </div>
-      <!-- <div :class="$style.container">
+      </ResponsiveTwoColumnLayout>
+      <div :class="$style.container">
         <GridLayout
-          :columns="$mq | mq({xs: 1, sm: 2, md: 3, lg: 4, xl: 5})"
-          itemWidth="200px"
-          itemHeight="200px"
+          :columns="$mq | mq({xs: 1, sm: 1, md: 2, lg: 2, xl: 2})"
+          itemWidth="260px"
+          itemHeight="260px"
         >
           <div :class="$style.cell" v-for="(stat, i) in stats" :key="i" :slot="`item${i}`">
-            <center>
               <div :class="$style.clip">
-                <a href = "stat.link" target = "_blank">
                 <img :src="stat.image" :class="$style.img">
-                </a>
               </div>
               <br>
               <span :class="$style.txt">{{ stat.text }}</span>
-            </center>
           </div>
         </GridLayout>
-      </div>-->
+      </div>
       <div :class="$style.txt"></div>
       <div :class="$style.link">
         <a href="https://goo.gl/forms/RyjmY7i002oUHivu2" :class="$style.linkText" target="_blank">
@@ -45,32 +43,31 @@
 <script>
 import GridLayout from "./layouts/GridLayout";
 const SectionLayout = () => import("@components/layouts/SectionLayout");
+const ResponsiveTwoColumnLayout = () => import("@components/layouts/ResponsiveTwoColumnLayout");
 
 export default {
   components: {
     SectionLayout,
-    GridLayout
+    GridLayout,
+    ResponsiveTwoColumnLayout
   },
   data() {
     return {
       stats: [
         {
-          image: "assets/Sponsors/eligible.png",
-          link: "https://ww.google.co.in",
-          text: "ABC Sponsor"
-        },
+          image: "assets/Sponsors/devfolio_logo.svg",
+          text: "Associate Sponsor",
+          link: "https://devfolio.co/"
+        },        
         {
-          image: "assets/Sponsors/uber.png",
-          link: "https://ww.google.co.in",
-          text: "AB Sponsor"
+          image: "assets/Sponsors/mozilla1.png",
+          text: "Diversity Partner",
+          link: "https://ww.google.co.in"
         }
       ],
       title: {
         image: "assets/Sponsors/aws.png",
         link: "https://aws.amazon.com/"
-      },
-      associate: {
-        image: "assets/Sponsors/devfolio_logo.svg"
       }
     };
   }
@@ -82,11 +79,19 @@ export default {
 @require '~@styles/mixins';
 @require '~@styles/anims';
 
-$cell-size = 200px;
-$box-height = 200px;
+$cell-size = 250px;
+$box-height = 320px;
 $box-width = 300px;
 
 .sponsors {
+
+  .offset {
+    ~/.xl ^[1..-1], ~/.xxl ^[1..-1] {
+      width: 80%;
+      margin: auto;
+    }
+  }
+
   .link {
     margin: auto;
     width: 290px;
@@ -103,7 +108,7 @@ $box-width = 300px;
       text-decoration: none;
 
       h4 {
-        font-family: 'Aldo the Apache';
+        font-family: 'Viga';
         font-size: 30px;
         margin: 0;
       }
@@ -124,41 +129,13 @@ $box-width = 300px;
     }
   }
 
-  .cell {
-    width: $cell-size;
-    height: $cell-size;
-
-    .clip {
-      background-color: white;
-      transform: rotate(45deg);
-      width: 70%;
-      height: 70%;
-      border-radius: 25px;
-    }
-
-    .img {
-      width: 100%;
-      height: 100%;
-      margin: auto;
-      transform: rotate(-45deg);
-    }
-  }
-
   .container {
-  }
-
-  .titleContainer, .associateContainer {
-    width: 80%;
-    margin: 80px auto 25px;
-    height: $box-height;
-    display: flex;
-    justify-content: space-around;
+    padding-top: 50px;
 
     .cell {
-      order: 1;
-      width: 250px;
-      height: 250px;
-      margin: 0 0 0 20px;
+      width: $cell-size;
+      height: $cell-size;
+      margin-bottom: 40px;
 
       .clip {
         background-color: white;
@@ -166,6 +143,56 @@ $box-width = 300px;
         width: 70%;
         height: 70%;
         border-radius: 25px;
+        margin-bottom: 20px;
+      }
+
+      .img {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        transform: rotate(-45deg);
+      }
+
+      .txt {
+        font-size: 20px;
+        font-family: 'Roboto Slab';
+        font-weight: 600;
+      }
+
+      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+        text-align: center;
+        width: 200px;
+        height: 200px;
+
+        .clip {
+          margin-top: 20px;
+          margin-left: 30px;
+        }
+      }
+    }
+
+    ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+      margin: 0 auto 75px;
+    }
+  }
+
+  .title {
+    width: 80%;
+    margin: 80px auto;
+    height: $box-height;
+
+    .cell {
+      width: 360px;
+      height: 360px;
+      margin: auto;
+
+      .clip {
+        background-color: white;
+        transform: rotate(45deg);
+        width: 70%;
+        height: 70%;
+        border-radius: 25px;
+        margin: 30px 15%;
       }
 
       .img {
@@ -176,14 +203,14 @@ $box-width = 300px;
       }
 
       ~/.md ^[1..-1] {
-        width: 200px;
-        height: 200px;
+        width: 360px;
+        height: 360px;
       }
 
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-        width: 200px;
-        height: 200px;
-        margin: auto;
+        width: 240px;
+        height: 240px;
+        margin: 20px auto 0;
       }
     }
 
@@ -195,64 +222,30 @@ $box-width = 300px;
       flex-flow: column;
       height: auto;
       text-align: center;
+      margin: auto;
 
       .clip {
         margin-top: 20px;
         margin-left: 30px;
       }
     }
+  }
 
-    .type {
-      order: 2;
-      width: 400px;
-
+  .titleText {
       .txt {
+        margin: 150px auto;
+        font-size: 60px;
         font-family: 'Roboto Slab';
-        font-weight: 600;
-        font-size: 40px;
-        border-top: 3px solid white;
-        border-bottom: 3px solid white;
-        border-left: 1px solid white;
-        border-right: 1px solid white;
-        border-radius: 70px 0;
-        padding: 20px 0;
-        animation: timeline-border-white 1.5s ease-in-out infinite alternate;
-        height: 100px;
-      }
-
-      ~/.md ^[1..-1] {
-        width: 300px;
-
-        .txt {
-          height: auto;
-          font-size: 25px;
-        }
+        font-weight: 600;        
       }
 
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-        width: 250px;
-        margin: auto;
-
-        .txt {
-          font-size: 20px;
-          height: auto;
+        .txt{
+          margin: 0 auto 50px;
+          padding-top: 0;
+          font-size: 30px;
         }
       }
-    }
-  }
-
-  .associateContainer {
-    .cell {
-      order: 2;
-    }
-
-    .type {
-      order: 3;
-
-      .txt {
-        font-size: 35px;
-      }
-    }
   }
 }
 </style>
