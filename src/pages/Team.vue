@@ -141,7 +141,7 @@ export default {
             {
               name: "Piyush Maurya",
               position: "Front-end Developer",
-              email: "piyushkr.maurya.cse17@irbhu.ac.in",
+              email: "piyushkr.maurya.cse17@iitbhu.ac.in",
               fb: "http://www.facebook.com/piyushkrmaurya"
             },
             {
