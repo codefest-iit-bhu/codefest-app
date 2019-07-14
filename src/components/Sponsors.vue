@@ -6,13 +6,13 @@
           <div :class="$style.cell">
             <div :class="$style.clip">
               <a :href="title.link" target="_blank">
-                <img :src="title.image" :class="$style.img">
+                <img :src="title.image" :class="$style.img" />
               </a>
             </div>
           </div>
         </div>
         <div :class="$style.titleText" slot="right">
-            <div :class="$style.txt">Title Sponsor</div>
+          <div :class="$style.txt">Title Sponsor</div>
         </div>
       </ResponsiveTwoColumnLayout>
       <div :class="$style.container">
@@ -22,11 +22,11 @@
           itemHeight="260px"
         >
           <div :class="$style.cell" v-for="(stat, i) in stats" :key="i" :slot="`item${i}`">
-              <div :class="$style.clip">
-                <img :src="stat.image" :class="$style.img">
-              </div>
-              <br>
-              <span :class="$style.txt">{{ stat.text }}</span>
+            <div :class="$style.clip">
+              <img :src="stat.image" :class="$style.img" />
+            </div>
+            <br />
+            <span :class="$style.txt">{{ stat.text }}</span>
           </div>
         </GridLayout>
       </div>
@@ -43,7 +43,8 @@
 <script>
 import GridLayout from "./layouts/GridLayout";
 const SectionLayout = () => import("@components/layouts/SectionLayout");
-const ResponsiveTwoColumnLayout = () => import("@components/layouts/ResponsiveTwoColumnLayout");
+const ResponsiveTwoColumnLayout = () =>
+  import("@components/layouts/ResponsiveTwoColumnLayout");
 
 export default {
   components: {
@@ -54,11 +55,11 @@ export default {
   data() {
     return {
       stats: [
-        {
-          image: "assets/Sponsors/devfolio_logo.svg",
-          text: "Associate Sponsor",
-          link: "https://devfolio.co/"
-        },        
+        // {
+        //   image: "assets/Sponsors/devfolio_logo.svg",
+        //   text: "Associate Sponsor",
+        //   link: "https://devfolio.co/"
+        // },
         {
           image: "assets/Sponsors/mozilla1.png",
           text: "Diversity Partner",
@@ -84,7 +85,6 @@ $box-height = 320px;
 $box-width = 300px;
 
 .sponsors {
-
   .offset {
     ~/.xl ^[1..-1], ~/.xxl ^[1..-1] {
       width: 80%;
@@ -232,20 +232,20 @@ $box-width = 300px;
   }
 
   .titleText {
-      .txt {
-        margin: 150px auto;
-        font-size: 60px;
-        font-family: 'Roboto Slab';
-        font-weight: 600;        
-      }
+    .txt {
+      margin: 150px auto;
+      font-size: 60px;
+      font-family: 'Roboto Slab';
+      font-weight: 600;
+    }
 
-      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-        .txt{
-          margin: 0 auto 50px;
-          padding-top: 0;
-          font-size: 30px;
-        }
+    ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+      .txt {
+        margin: 0 auto 50px;
+        padding-top: 0;
+        font-size: 30px;
       }
+    }
   }
 }
 </style>
