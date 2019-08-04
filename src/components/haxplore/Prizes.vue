@@ -5,21 +5,21 @@
         <CardLayout :class="$style.prize__first" :extraCardClass="$style.whiteCard">
           <img src="@assets/haxplore/prize-first.svg" slot="header">
           <span :class="$style.txt" slot="content">
-            <h2>Rs 50, 000</h2>
+            <h2>Rs 35, 000</h2>
             <h4>First Prize</h4>
           </span>
         </CardLayout>
         <CardLayout :class="$style.prize__second" :extraCardClass="$style.whiteCard">
           <img src="@assets/haxplore/prize-second.svg" slot="header">
           <span :class="$style.txt" slot="content">
-            <h2>Rs 30, 000</h2>
+            <h2>Rs 20, 000</h2>
             <h4>Second Prize</h4>
           </span>
         </CardLayout>
         <CardLayout :class="$style.prize__third" :extraCardClass="$style.whiteCard">
           <img src="@assets/haxplore/prize-third.svg" slot="header">
           <span :class="$style.txt" slot="content">
-            <h2>Rs 20, 000</h2>
+            <h2>Rs 10, 000</h2>
             <h4>Third Prize</h4>
           </span>
         </CardLayout>
