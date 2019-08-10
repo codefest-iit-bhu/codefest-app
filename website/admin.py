@@ -40,7 +40,7 @@ class ProfileAdmin(admin.ModelAdmin):
     radio_fields={'gender':admin.HORIZONTAL}
     fieldsets=(
         (None,{
-            'fields':('name','user','referral_code','referred_by','is_profile_complete')
+            'fields':('name','user','referral_code','referred_by','is_profile_complete','referral_count')
         }),
         ('Personal Details',{
             # 'classes':('wide',),
@@ -48,6 +48,6 @@ class ProfileAdmin(admin.ModelAdmin):
         }),
         ('Academic Details',{
             'classes':('collapse',),
-            'fields':('institute_type','institute_name','study_year','branch','degree','resume')
+            'fields':('institute_type','institute_name','study_year','branch','degree')
         }),   
     )
