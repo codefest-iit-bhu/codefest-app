@@ -48,6 +48,6 @@ class ProfileAdmin(admin.ModelAdmin):
         }),
         ('Academic Details',{
             'classes':('collapse',),
-            'fields':('institute_type','institute_name','study_year','branch','degree','resume')
+            'fields':('institute_type','institute_name','study_year','branch','degree')
         }),   
     )
