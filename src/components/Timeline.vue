@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.timeline">
-    <TimelineCheckpoint v-for="(checkpoint, i) in timeline" :key="i" :data="checkpoint"/>
+    <TimelineCheckpoint v-for="(checkpoint, i) in timeline" :key="i" :data="checkpoint" />
   </div>
 </template>
 
@@ -24,7 +24,7 @@ export default {
 .timeline {
   position: relative;
   height: 100%;
-  width: 40%;
+  width: 100%;
   padding: 0 5%;
   margin-bottom: 50px;
   margin-left: 10%;

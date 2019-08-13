@@ -55,15 +55,15 @@ export default {
   data() {
     return {
       stats: [
-        // {
-        //   image: "assets/Sponsors/devfolio_logo.svg",
-        //   text: "Associate Sponsor",
-        //   link: "https://devfolio.co/"
-        // },
+        {
+          image: "assets/Sponsors/cisco.png",
+          text: "Associate Sponsor",
+          link: "https://www.cisco.com/"
+        },
         {
           image: "assets/Sponsors/mozilla1.png",
           text: "Diversity Partner",
-          link: "https://ww.google.co.in"
+          link: "https://www.mozilla.org/"
         }
       ],
       title: {
