@@ -2,23 +2,23 @@
   <div :class="[$style.event, $style[$mq]]">
     <div :class="$style.whiteHead">
       <div :class="$style.eventLogo">
-        <img :src="event.icon">
+        <img :src="event.icon" />
       </div>
       <span :class="$style.eventTitle">{{event.title}}</span>
     </div>
-    <hr :class="$style.rightHr">
+    <hr :class="$style.rightHr" />
 
     <div :class="$style.eventDesc">
       <TabLayout :tabs="tabs">
         <div :class="$style.tabContainer" slot="description">
           <h4 :class="$style.tabTitle">Description</h4>
-          <hr :class="$style.leftHr">
+          <hr :class="$style.leftHr" />
           <p :class="$style.text">{{ event.description }}</p>
         </div>
 
         <div :class="$style.tabContainer" slot="contact">
           <h4 :class="$style.tabTitle">Co-ordinators</h4>
-          <hr :class="$style.leftHr">
+          <hr :class="$style.leftHr" />
           <ul>
             <li
               :class="$style.ruleText"
@@ -31,9 +31,9 @@
 
         <div :class="$style.tabContainer" slot="faq">
           <h4 :class="$style.tabTitle">FAQ</h4>
-          <hr :class="$style.leftHr">
+          <hr :class="$style.leftHr" />
           <!-- <p :class="$style.text" :inner-html.prop="event.faqIntro | anchor">}</p> -->
-          <FAQ :faqItems="event.faq"/>
+          <FAQ :faqItems="event.faq" />
         </div>
       </TabLayout>
     </div>
@@ -42,9 +42,14 @@
     >Note: People not registered for this event on CodeFest are not eligible to recieve any prizes.</div>
 
     <div :class="$style.link">
-      <router-link to="/dashboard/events/" :class="$style.linkText">
+      <router-link to="/dashboard/events/" v-if="!event.url" :class="$style.linkText">
         <h4>Register</h4>
       </router-link>
+      <div v-else :class="$style.linkText">
+        <h4>
+          <a href="https://hackerrank.com/codefest-ideathon">Problem Statement</a>
+        </h4>
+      </div>
     </div>
   </div>
 </template>
