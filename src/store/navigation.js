@@ -24,7 +24,10 @@ export const navigation = {
         },
         ctf: {
           ".": "/events/ctf"
-        }
+        },
+	ideathon: {
+	  ".": "/events/ideathon"
+	}
       },
       haxplore: {
         ".": "/haxplore"

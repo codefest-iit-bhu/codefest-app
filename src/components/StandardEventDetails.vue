@@ -39,17 +39,16 @@
     </div>
     <div
       :class="$style.note"
+      v-if="!event.url"
     >Note: People not registered for this event on CodeFest are not eligible to recieve any prizes.</div>
 
     <div :class="$style.link">
       <router-link to="/dashboard/events/" v-if="!event.url" :class="$style.linkText">
         <h4>Register</h4>
       </router-link>
-      <div v-else :class="$style.linkText">
-        <h4>
-          <a href="https://hackerrank.com/codefest-ideathon">Problem Statement</a>
-        </h4>
-      </div>
+      <a href="https://hackerrank.com/codefest-ideathon" v-else :class="$style.linkText">
+        <h4>Problem Statement</h4>
+      </a>
     </div>
   </div>
 </template>
