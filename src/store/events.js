@@ -9,8 +9,10 @@ export default {
       icon: "/assets/events/ctf.png",
       description:
         "Capture The Flag (CTF) invites all hackers to show off their skills on a global platform. The problems have been designed taking into account recent technological advances in the field of cyber security and will capture the imagination of both beginners and expert hackers.This contest will let you learn and understand the importance of the security practises being followed across the globe and make you to come up with more exciting solutions to the existing security norms. So let’s get ready to explore the real world computer security arena",
-      coordinators: ["Shreyansh Singh - shreyansh.singh.cse16@itbhu.ac.in",
-      "Apurv Jain - apurv.jain.cse16@itbhu.ac.in"],
+      coordinators: [
+        "Shreyansh Singh - shreyansh.singh.cse16@itbhu.ac.in",
+        "Apurv Jain - apurv.jain.cse16@itbhu.ac.in"
+      ],
       faq: [
         {
           question: "Will the event be online?",
@@ -273,6 +275,43 @@ export default {
           question: "What is the team size?",
           answer:
             "Maximum of 2 members can participate in this event. To add the second member create team and share your team unique number with your friend."
+        }
+      ]
+    },
+    {
+      name: "ideathon",
+      title: "Ideathon",
+      summary: "Where Idea makes Excellence.",
+      link: "/events/ideathon",
+      icon: "/assets/events/ideathon.png",
+      description:
+        "Ideathon, Codefest'19 invites all the Tech Geeks to show off their skills on a global platform. For the first time in History, Codefest provides students with an opportunity to tackle an Industry-Based Engineering Problem in a totally real world scenario that comes from the well known firm, Cisco. Renowned across the world as a leader in IT and networking industries, they assist companies and provide their expertise to transform how people connect, communicate and collaborate. The problem aims to engage engineers, hackers, beginners and experienced alike in creative exploration of a real world problem faced by experts of Cisco.This contest will let you learn and understand the importance of various roles and ramifications in the field of Data Analysis.Looking forward to your participation in this Grand Event of Codefest'19 exclusively brought to you by Cisco!",
+      coordinators: [
+        "Avi Chawla - avi.chawla.cse16@itbhu.ac.in",
+        "Utkarsh Tripathi - utkarsh.tripathi.cse16@itbhu.ac.in"
+      ],
+      faq: [
+        {
+          question: "Will the event be online?",
+          answer: "Yes, the event will be completely online on HackerRank."
+        },
+        {
+          question: "Where can I get past problems of the event?",
+          answer: "Ideathon : https://hackerrank.com/codefest-ideathon"
+        },
+        {
+          question: "Will we get a participation certificate?",
+          answer: "Yes, everyone will get a participation certificate."
+        },
+        {
+          question: "How to register for the event?",
+          answer:
+            "You can register by clicking on the register button or going to the events section and click on the Create Team button."
+        },
+        {
+          question: "What is the team size?",
+          answer:
+            "Maximum of 4 members can participate in this event. To add the other members create team and share your team unique number with your friends."
         }
       ]
     }
