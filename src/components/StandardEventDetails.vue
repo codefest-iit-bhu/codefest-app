@@ -39,7 +39,6 @@
     </div>
     <div
       :class="$style.note"
-      v-if="!event.url"
     >Note: People not registered for this event on CodeFest are not eligible to recieve any prizes.</div>
 
     <div :class="$style.link">
