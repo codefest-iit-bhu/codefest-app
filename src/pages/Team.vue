@@ -27,7 +27,10 @@
                 <a :href="person.email? `mailto:${person.email}` : null">
                   <i class="far fa-envelope"></i>
                 </a>
-                <a :href="person.fb ? `${person.fb}` : null" target="_blank">
+                <a v-if="person.website" :href="person.website" target="_blank">
+                  <i class="fas fa-globe"></i>
+                </a>
+                <a v-if="person.fb" :href="person.fb" target="_blank">
                   <i class="fab fa-facebook"></i>
                 </a>
               </div>
@@ -127,15 +130,10 @@ export default {
           title: "tech",
           people: [
             {
-              name: "Vaishnav Menon",
-              position: "Co-ordinator",
-              email: "vsreekanth.menon.cse16@iitbhu.ac.in",
-              fb: "https://m.facebook.com/vaishnavsm"
-            },
-            {
               name: "Shivansh Saini",
-              position: "Head",
+              position: "Tech Head",
               email: "shivansh.saini.cse17@iitbhu.ac.in",
+              website: "https://shivanshs9.me/?utm_source=cf19",
               fb: "https://www.facebook.com/thefaker99"
             },
             {
