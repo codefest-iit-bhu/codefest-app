@@ -1,5 +1,7 @@
 import Frisbee from "frisbee";
-import { MakeQuerablePromise } from "@js/utils";
+import {
+  MakeQuerablePromise
+} from "@js/utils";
 import store from "@store";
 
 const api = new Frisbee({
@@ -10,19 +12,19 @@ const api = new Frisbee({
   }
 });
 
-const getApiOptions = function({ body }) {
-  const options = {};
+const getApiOptions = function (options) {
   const token = store.getters.authToken;
   if (token) {
     options["headers"] = {
+      ...options["headers"],
       Authorization: `Token ${token}`
     };
   }
-  if (body) options["body"] = body;
+  // if (body) options["body"] = body;
   return options;
 };
 
-const apiWrapper = function(promise) {
+const apiWrapper = function (promise) {
   return MakeQuerablePromise(
     new Promise((resolve, reject) => {
       promise
@@ -63,7 +65,11 @@ export class Response extends Object {
     return new Response(null, STATUS.ERROR_UNKNOWN, err.message);
   }
 
-  static responseError({ status, body, err }) {
+  static responseError({
+    status,
+    body,
+    err
+  }) {
     const message = body.detail || body[Object.keys(body)[0]][0] || err.message;
     switch (status) {
       case 400:
@@ -86,13 +92,13 @@ export class Response extends Object {
 }
 
 api.interceptor.register({
-  requestError: function(err) {
+  requestError: function (err) {
     return Response.clientError(err);
   },
-  response: function(response) {
+  response: function (response) {
     return Response.handleResponse(response);
   },
-  responseError: function(err) {
+  responseError: function (err) {
     return Response.clientError(err);
   }
 });

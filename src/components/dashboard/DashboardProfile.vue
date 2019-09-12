@@ -6,7 +6,7 @@
       </div>
       <span :class="$style.username">{{profile.name}}</span>
     </div>
-    <hr :class="$style.rightHr">
+    <hr :class="$style.rightHr" />
     <div :class="$style.profile">
       <div :class="$style.about">
         <div :class="[$style.countdiv, is_verified]">
@@ -30,7 +30,7 @@
         >Share the above referral link with your contacts to win exciting goodies!</p>
         <p :class="$style.disabledreferral" v-else>
           Referral link disabled. Please verify your account first and refresh the page.
-          <br>
+          <br />
           <a href="javascript:void(0)" @click="resendVerification">Click here</a> to resend verification email.
         </p>
         <div :class="$style.profileinfo">
@@ -83,6 +83,11 @@
           <h4>Change Password</h4>
         </span>
       </div>
+      <div :class="$style.link" @click="downloadCertificate">
+        <span :class="$style.linkText">
+          <h4>Get Certificate</h4>
+        </span>
+      </div>
     </div>
   </div>
 </template>
@@ -90,6 +95,7 @@
 <script>
 import { copyToClipboard } from "@js/utils";
 import { SITE_URL } from "@js/constants";
+import API from "@js/api";
 import firebase, { firestore } from "firebase";
 
 const SectionLayout = () => import("@components/layouts/SectionLayout");
@@ -106,8 +112,7 @@ export default {
       const { name } = this.profile;
       if (!name) return;
       const newName = name.split(/\s+/);
-      if (newName.length > 1)
-        return newName[0][0] + newName[1][0];
+      if (newName.length > 1) return newName[0][0] + newName[1][0];
       return newName[0][0];
     },
 
@@ -162,6 +167,16 @@ export default {
             message: err.message
           });
         });
+    },
+    downloadCertificate() {
+      const headers = {};
+      API.fetch("certificate/", { headers }).then(({ data }) => {
+        const blob = new Blob([data], { type: "application/pdf" });
+        let link = document.createElement("a");
+        link.href = window.URL.createObjectURL(blob);
+        link.download = "CodeFest_Certificate.pdf";
+        link.click().catch(error => console.error(error));
+      });
     }
   }
 };
