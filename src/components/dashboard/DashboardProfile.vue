@@ -83,11 +83,13 @@
           <h4>Change Password</h4>
         </span>
       </div>
-      <div :class="$style.link" @click="downloadCertificate">
-        <span :class="$style.linkText">
-          <h4>Get Certificate</h4>
-        </span>
-      </div>
+      <a v-if="!!certificate" :href="certificate" target="_blank">
+        <div :class="$style.link">
+          <span :class="$style.linkText">
+            <h4>Get Certificate</h4>
+          </span>
+        </div>
+      </a>
     </div>
   </div>
 </template>
@@ -106,6 +108,11 @@ export default {
   components: {
     SectionLayout,
     ResponsiveTwoColumnLayout
+  },
+  data() {
+    return {
+      certificate: null
+    };
   },
   computed: {
     retrieveInitials() {
@@ -144,6 +151,15 @@ export default {
       type: Object
     }
   },
+  created() {
+    API.fetch("certificate/")
+      .then(({ data }) => {
+        this.$data.certificate = data.url;
+      })
+      .catch(e => {
+        this.$data.certificate = null;
+      });
+  },
   methods: {
     clickToCopy() {
       const referral = this.profile.referral_code;
@@ -167,16 +183,6 @@ export default {
             message: err.message
           });
         });
-    },
-    downloadCertificate() {
-      const headers = {};
-      API.fetch("certificate/", { headers }).then(({ data }) => {
-        const blob = new Blob([data], { type: "application/pdf" });
-        let link = document.createElement("a");
-        link.href = window.URL.createObjectURL(blob);
-        link.download = "CodeFest_Certificate.pdf";
-        link.click().catch(error => console.error(error));
-      });
     }
   }
 };
