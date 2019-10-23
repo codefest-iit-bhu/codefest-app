@@ -6,7 +6,7 @@
 
 Hosts the code for the frontend of Codefest 2019 website. Uses Vue.Js framework to develop a PWA to be consumed by mobile and desktop alike with rich user-experience.
 
-#### Technical Stack
+### Technical Stack
 
 - Node 11.6.0
 - NPM 6.5.0
