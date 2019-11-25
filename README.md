@@ -1,4 +1,4 @@
-## CodeFest 2019 [![Netlify Status](https://api.netlify.com/api/v1/badges/f2526137-ea4e-4860-bdb7-957d7a76c0cc/deploy-status)](https://app.netlify.com/sites/codefest19/deploys)
+## CodeFest 2019 [![Netlify Status](https://api.netlify.com/api/v1/badges/f2526137-ea4e-4860-bdb7-957d7a76c0cc/deploy-status)](https://app.netlify.com/sites/codefest19/deploys) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1d35eebacf0d4bb7b99f03629a07a375)](https://www.codacy.com/gh/codefest-iit-bhu/codefest19?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=codefest-iit-bhu/codefest19&amp;utm_campaign=Badge_Grade)
 
 ### FRONTEND
 
