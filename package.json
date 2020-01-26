@@ -8,7 +8,7 @@
   "dependencies": {
     "@saeris/vue-spinners": "^1.0.8",
     "anchorme": "^1.1.2",
-    "firebase": "^5.9.3",
+    "firebase": "^7.7.0",
     "frisbee": "^2.0.8",
     "ganalytics": "^3.1.1",
     "sirv-cli": "^0.2.0",
