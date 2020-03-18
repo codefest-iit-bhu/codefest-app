@@ -163,7 +163,7 @@ export default {
     scrollToBottom() {
       const { history } = this.$refs;
       this.$nextTick(() => {
-        if (!!history) history.scrollTop = history.scrollHeight;
+        history.scrollTop = history.scrollHeight;
       });
     },
     getCommandPromise(cmd, args) {
