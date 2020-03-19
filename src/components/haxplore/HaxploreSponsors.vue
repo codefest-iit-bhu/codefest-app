@@ -54,31 +54,9 @@ export default {
   data() {
     return {
       stats: [
-        {
-          image: "assets/Sponsors/devfolio_logo.svg",
-          text: "Associate Sponsor",
-          link: "https://devfolio.co/"
-        },
-        {
-          image: "assets/Sponsors/github.png",
-          text: "Associate Sponsor",
-          link: "https://github.com/"
-        },
-        {
-          image: "assets/Sponsors/matic-gr1.png",
-          text: "Co-Powering Sponsor",
-          link: ""
-        },
-        {
-          image: "assets/Sponsors/mozilla1.png",
-          text: "Patron",
-          link: ""
-        }
+       
       ],
-      title: {
-        image: "assets/Sponsors/aws.png",
-        link: "https://aws.amazon.com/"
-      }
+     
     };
   }
 };
