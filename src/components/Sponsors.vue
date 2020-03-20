@@ -54,22 +54,7 @@ export default {
   },
   data() {
     return {
-      stats: [
-        {
-          image: "assets/Sponsors/cisco.png",
-          text: "Associate Sponsor",
-          link: "https://www.cisco.com/"
-        },
-        {
-          image: "assets/Sponsors/mozilla1.png",
-          text: "Diversity Partner",
-          link: "https://www.mozilla.org/"
-        }
-      ],
-      title: {
-        image: "assets/Sponsors/aws.png",
-        link: "https://aws.amazon.com/"
-      }
+      
     };
   }
 };
