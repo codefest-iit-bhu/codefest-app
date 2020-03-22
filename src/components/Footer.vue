@@ -46,7 +46,7 @@ export default {};
   text-transform: uppercase;
   font-family: 'Quicksand';
   border-top: 2px solid rgba(34, 40, 49, 0.3);
-  color: rgba($white, 0.65);
+  color: rgba($black, 0.65);
   justify-content: center;
   align-items: center;
   display: flex;
@@ -70,7 +70,7 @@ export default {};
 
     p {
       text-align: center;
-      color: $white;
+      color: $black;
     }
   }
 

@@ -229,7 +229,7 @@ $collapsed-height = 90px;
 }
 
 .terminal {
-  background: $black;
+  background: $white;
   width: 100%;
   z-index: 25;
   box-shadow: $chartreuse 0 -1px 10px 3px;

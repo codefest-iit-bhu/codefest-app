@@ -152,7 +152,7 @@ export default {
 
     a {
       text-decoration: none;
-      color: $white;
+      color: $black;
       transition: 0.5s;
     }
   }
@@ -185,12 +185,12 @@ export default {
 
         a {
           font: 500 20px 'Roboto Slab';
-          color: $white;
+          color: $black;
           text-decoration: none;
           cursor: pointer;
 
           span {
-            color: $white;
+            color: $black;
             font-size: 14px;
             margin-right: 5px;
           }
@@ -206,7 +206,7 @@ export default {
             font-weight: bold;
 
             span {
-              color: $white;
+              color: $black;
               animation: neon-text 1s ease-in-out infinite alternate;
             }
           }

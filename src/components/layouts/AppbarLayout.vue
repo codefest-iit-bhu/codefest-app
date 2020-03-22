@@ -71,9 +71,9 @@ export default {
 $appbar-height = 50px;
 $notch-height = 100px;
 $notch-width = 320px;
-$appbar-color = $black;
+$appbar-color = $mystic;
 $notch-color = $mine-shaft;
-$appbar-glow-color = $chartreuse;
+$appbar-glow-color = $botticelli;
 
 .appbar {
   height: $notch-height;
@@ -89,7 +89,7 @@ $appbar-glow-color = $chartreuse;
   .nav {
     height: $appbar-height;
     background: $appbar-color;
-    box-shadow: $appbar-glow-color 0 1px 10px 3px;
+    box-shadow: $appbar-glow-color 0 12px 20px 3px;
     font-family: 'Roboto Slab';
     font-size: 25px;
 
@@ -117,20 +117,24 @@ $appbar-glow-color = $chartreuse;
   .notch {
     position: relative;
     top: -($appbar-height);
-    clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+    // clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+    border-radius: 0 0 20px 20px;
     margin: 0 auto;
     width: $notch-width;
     height: 100%;
     z-index: 11;
     background: $appbar-glow-color;
+    box-shadow: 0 5px 20px $waterloo;
+
 
     .logo {
       position: absolute;
       bottom: 1px;
       left: 2px;
       padding: 20px 20px 0 25px;
-      clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+      // clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
       background: $notch-color;
+      border-radius: 0 0 20px 20px;
       height: 100%;
       width: $notch-width - 2 * @left;
     }

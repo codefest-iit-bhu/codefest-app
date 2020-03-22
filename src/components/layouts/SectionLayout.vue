@@ -82,12 +82,12 @@ div.sectionContainer {
 
     ~/:nth-child(even) hr.sectionLine {
       margin-right: 30%;
-      background-image: linear-gradient(to left, $black, $chartreuse);
+      background-image: linear-gradient(to left, $white, $chartreuse);
     }
 
     ~/:nth-child(odd) hr.sectionLine {
       margin-left: 30%;
-      background-image: linear-gradient(to right, $black, $chartreuse);
+      background-image: linear-gradient(to right, $white, $chartreuse);
     }
   }
 }

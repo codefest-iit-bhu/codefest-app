@@ -411,7 +411,7 @@ export default {
   .line {
     height: 3px;
     border: none;
-    background-image: linear-gradient(to right, $black, alpha($chartreuse, 0.7), $black);
+    background-image: linear-gradient(to right, $white, alpha($chartreuse, 0.7), $white);
   }
 
   .teamHero {

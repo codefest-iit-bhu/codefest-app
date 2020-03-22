@@ -71,7 +71,7 @@ export default {
 @require '~@styles/theme';
 
 body {
-  background: $black;
+  background: $mystic;
 }
 
 .app {

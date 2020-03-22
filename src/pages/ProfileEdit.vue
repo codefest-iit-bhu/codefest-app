@@ -409,7 +409,7 @@ export default {
       position: absolute;
       top: calc(50% - 60px);
       left: calc(50% - 30px);
-      border: 5px solid $white;
+      border: 5px solid $black;
       border-radius: 50%;
       border-top: 5px solid $chartreuse;
       width: 60px;
@@ -497,7 +497,7 @@ export default {
       .next {
         border: 0;
         background: transparent;
-        color: $white;
+        color: $black;
         border-radius: 100%;
         font-size: 30px;
         height: 30px;
@@ -516,9 +516,9 @@ export default {
         padding: 5px 10px;
         font: 14pt Ubuntu;
         background: transparent;
-        color: $white;
+        color: $black;
         text-transform: uppercase;
-        border: 1px solid $white;
+        border: 1px solid $black;
 
         &:hover {
           border: 1px solid $chartreuse;

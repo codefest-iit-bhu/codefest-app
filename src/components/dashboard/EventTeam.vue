@@ -384,7 +384,7 @@ $btn-width = 240px;
   .submit {
     border: 0;
     background: transparent;
-    color: $white;
+    color: $black;
     border-radius: 100%;
     font-size: 22px;
     height: 40px;
@@ -460,7 +460,7 @@ $btn-width = 240px;
       display: block;
       background: red;
       margin: 0 auto 5px;
-      color: $white;
+      color: $black;
       padding: 5px 15px;
       border: none;
       border-radius: 10px;

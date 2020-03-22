@@ -127,7 +127,7 @@ export default {
 
 .hero {
   position: relative;
-  background-color: $black;
+  background-color: $white;
   min-height: 300px;
   height: 100vh;
   max-width: 100%;
@@ -153,7 +153,7 @@ export default {
   text-align: center;
 
   .cftitle {
-    background: rgba($black, 0.7);
+    background: rgba($white, 0.7);
     width: 60%;
     margin-left: 20%;
     padding-right: 5%;
@@ -161,7 +161,7 @@ export default {
     padding-top: 50px;
     padding-bottom: 50px;
     border-radius: 300px;
-    box-shadow: 0 0 200px 100px rgba($black, 0.6);
+    box-shadow: 0 0 200px 100px rgba($white, 0.6);
 
     .tagline {
       display: block;
@@ -208,7 +208,7 @@ export default {
     width: 100px;
     border-radius: 50px;
     padding: 10px;
-    background: $white;
+    background: $black;
 
     img {
       width: 100%;
@@ -219,7 +219,7 @@ export default {
     margin: 15px auto;
     font-family: 'Ubuntu';
     font-weight: 600;
-    color: $white;
+    color: $black;
     text-align: center;
   }
 

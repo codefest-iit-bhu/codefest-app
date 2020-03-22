@@ -115,12 +115,12 @@ export default {
       a {
         padding: unset;
         font: 600 16px 'Roboto Slab';
-        color: $white;
+        color: $black;
         text-decoration: none;
         cursor: pointer;
 
         span {
-          color: $white;
+          color: $black;
           font-size: 14px;
           margin-right: 5px;
         }
@@ -137,7 +137,7 @@ export default {
           font-weight: bold;
 
           span {
-            color: $white;
+            color: $black;
             animation: neon-text 1s ease-in-out infinite alternate;
           }
         }

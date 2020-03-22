@@ -90,10 +90,15 @@ export default {
   width: 100%;
   text-align: left;
   clear: both;
-  border-bottom: 2px solid $chartreuse;
+  border-bottom: 2px solid $waterloo;
 
   a {
-    color: $chartreuse;
+    color: $waterloo;
+    font-weight: 600;
+
+    &:hover {
+      color: $black;
+    }
   }
 
   .question {

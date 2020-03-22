@@ -57,7 +57,7 @@ export default {};
   text-transform: uppercase;
   font-family: var(--font-header);
   border-top: 2px solid rgba(34, 40, 49, 0.3);
-  color: rgba($white, 0.65);
+  color: rgba($black, 0.65);
   margin-top: 20px;
   height: 160px;
   width: 100%;
@@ -110,7 +110,7 @@ export default {};
 
         span {
           font-family: 'Quicksand';
-          color: rgba($white, 0.65);
+          color: rgba($black, 0.65);
 
           i {
             color: inherit;
@@ -122,7 +122,7 @@ export default {};
       a:hover {
         span {
           i {
-            color: $white;
+            color: $black;
           }
         }
       }

@@ -216,7 +216,7 @@ $cell-collapsed-size = 150px;
 }
 
 .whiteTitle {
-  color: $white;
+  color: $black;
   font-family: 'Aldo the Apache';
 
   h3 {
@@ -283,7 +283,7 @@ $cell-collapsed-size = 150px;
 }
 
 .txt {
-  color: $black;
+  color: $white;
   font-size: 16px;
   pointer-events: none;
   align-items: center;

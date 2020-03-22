@@ -466,7 +466,7 @@ export default {
     bottom: 0;
     right: 0;
     will-change: opacity;
-    background: $black;
+    background: $white;
     z-index: 900;
     touch-action: none;
   }

@@ -109,8 +109,8 @@ export default {
 
 $breadcrumb-hovered = $deep-fir;
 $breadcrumb-unselected = $limeade;
-$breadcrumb-arrow = $white;
-$breadcrumb-text = $white;
+$breadcrumb-arrow = $black;
+$breadcrumb-text = $black;
 $cli-text = $chartreuse;
 $output-link = $dodger-blue;
 

@@ -97,13 +97,14 @@ export default {
   width: 290px;
   height: auto;
   padding: 24px;
-  border-radius: 50px;
-  border: 2px solid $chartreuse;
+  border-radius: 20px 2px;
+  box-shadow: 8px 8px 20px $botticelli, -12px -12px 20px $white;
   text-align: center;
   cursor: pointer;
+  transition: all 2s ease;
 
   .linkText {
-    color: $chartreuse;
+    color: $waterloo;
     display: inline;
     text-decoration: none;
 
@@ -115,7 +116,11 @@ export default {
   }
 
   &:hover {
-    box-shadow: inset 0px 0px 10px $chartreuse;
+    box-shadow: inset 8px 8px 20px $botticelli, inset -12px -12px 20px $white;
+
+    .linkText{
+      color: $mine-shaft;
+    }
   }
 }
 
@@ -132,11 +137,12 @@ export default {
 
     .eventLogo {
       order: -2;
-      background: $chartreuse;
+      background: $mystic;
+      box-shadow: 8px 8px 20px $botticelli, -12px -12px 20px $white;
       border-radius: 50%;
       width: 108px;
       height: 108px;
-      padding: 18px;
+      padding: 24px;
 
       img {
         height: 100%;
@@ -147,11 +153,15 @@ export default {
         width: 72px;
         height: 72px;
       }
+
+      &:hover {
+        background: $lonestar;
+      }
     }
 
     .eventTitle {
       order: -1;
-      color: $white;
+      color: $cod-gray;
       font-family: 'Aldo the Apache';
       text-align: right;
       font-size: 50px;
@@ -166,7 +176,7 @@ export default {
 
   hr {
     height: 4px;
-    background-color: $chartreuse;
+    background-color: $waterloo;
     display: block;
     width: 70%;
     border: none;
@@ -176,13 +186,13 @@ export default {
     margin-top: 5px;
     margin-bottom: 72px;
     margin-left: 30%;
-    background-image: linear-gradient(to right, $black, $chartreuse);
+    background-image: linear-gradient(to right, $mystic, $waterloo);
   }
 
   .leftHr {
     margin-top: 0;
     margin-right: 30%;
-    background-image: linear-gradient(to left, $black, $chartreuse);
+    background-image: linear-gradient(to left, $mystic, $waterloo);
   }
 
   .eventDesc {
@@ -218,11 +228,17 @@ export default {
       .text, .ruleText {
         a {
           word-break: break-all;
+          color: $waterloo;
           font-size: 14px;
+          font-weight: 600;
 
           &:before {
             content: ' ';
           }
+        }
+
+        a:hover{
+          color: $black;
         }
       }
     }
@@ -234,8 +250,8 @@ export default {
       width: 290px;
       height: auto;
       padding: 24px;
-      border-radius: 50px;
-      box-shadow: inset 0px 0px 20px $chartreuse;
+      border-radius: 20px 2px 20px 2px;
+      box-shadow: inset 0px 0px 20px $tulip-tree;
       animation: neon-box 1.5s ease-in-out infinite alternate;
       border: 2px solid $chartreuse;
 
@@ -276,7 +292,7 @@ export default {
 
 .note {
   font-family: 'Quicksand';
-  font-weight: 500;
+  font-weight: 600;
   text-align: center;
   padding-bottom: 20px;
 }

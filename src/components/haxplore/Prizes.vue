@@ -203,7 +203,7 @@ export default {
     p {
       padding: 0 20px;
       background: transparent;
-      color: $white;
+      color: $black;
     }
   }
 

@@ -212,7 +212,7 @@ export default {
       height: 108px;
       padding: 18px;
       font: 72px 'Aldo the Apache';
-      color: $black;
+      color: $white;
 
       p {
         text-align: center;
@@ -230,7 +230,7 @@ export default {
 
     .username {
       order: -1;
-      color: $white;
+      color: $black;
       font-family: 'Aldo the Apache';
       text-align: right;
       font-size: 50px;
@@ -255,7 +255,7 @@ export default {
     margin-top: 5px;
     margin-bottom: 72px;
     margin-left: 30%;
-    background-image: linear-gradient(to right, $black, $chartreuse);
+    background-image: linear-gradient(to right, $white, $chartreuse);
 
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
       margin-bottom: 16px;
@@ -332,7 +332,7 @@ export default {
             font-size: 24px;
             padding: 8px 15px;
             height: 100%;
-            color: $black;
+            color: $white;
             border-radius: inherit;
             border-bottom-right-radius: 0;
             border-top-right-radius: 0;
@@ -371,7 +371,7 @@ export default {
             font-family: 'Roboto Slab';
             font-size: 24px;
             padding: 8px 15px;
-            color: $white;
+            color: $black;
           }
 
           .copyIcon {
@@ -418,7 +418,7 @@ export default {
       .reftext {
         order: 0;
         height: 50px;
-        color: $white;
+        color: $black;
         padding: 15px 0;
         font: 600 20px 'Roboto Slab';
       }
@@ -468,7 +468,7 @@ export default {
           font-family: 'Roboto Slab';
           padding: 6px 15px;
           height: 100%;
-          color: $black;
+          color: $white;
           background: alpha($chartreuse, 0.7);
 
           span {

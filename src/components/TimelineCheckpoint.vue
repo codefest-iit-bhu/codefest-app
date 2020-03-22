@@ -67,10 +67,10 @@ export default {
 
 $circle-small-size = 15px;
 $circle-large-size = 20px;
-$line-empty-background = $white;
+$line-empty-background = $black;
 $line-filled-background = $chartreuse;
 $circle-border-color = $chartreuse;
-$circle-empty-background = $white;
+$circle-empty-background = $black;
 $circle-filled-background = $chartreuse;
 $circle-transparent-background = transparent;
 

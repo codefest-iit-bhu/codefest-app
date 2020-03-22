@@ -195,7 +195,7 @@ export default {
     a {
       cursor: pointer;
       height: inherit;
-      color: $white;
+      color: $waterloo;
       font-weight: 600;
       font-size: 20px;
       letter-spacing: 0.8px;
@@ -207,7 +207,7 @@ export default {
 
     a span {
       margin-right: 15px;
-      color: $white;
+      color: $black;
       opacity: 0;
       font-size: 16px;
     }
@@ -217,7 +217,7 @@ export default {
     }
 
     a:hover {
-      color: $chartreuse;
+      color: $black;
     }
 
     a:hover span {
@@ -232,7 +232,7 @@ export default {
 
     a {
       text-decoration: none;
-      color: $white;
+      color: $black;
       transition: 0.5s;
     }
   }
@@ -273,7 +273,7 @@ export default {
 
         a, .subList a {
           font: 500 15px 'Roboto Slab';
-          color: $white;
+          color: $black;
           text-decoration: none;
           cursor: pointer;
           padding: 10px;
@@ -281,7 +281,7 @@ export default {
           width: 100%;
 
           span {
-            color: $white;
+            color: $black;
             font-size: 14px;
             border-radius: 100%;
           }
@@ -298,7 +298,7 @@ export default {
             font-weight: bold;
 
             span {
-              color: $white;
+              color: $black;
               animation: neon-text 1s ease-in-out infinite alternate;
             }
           }

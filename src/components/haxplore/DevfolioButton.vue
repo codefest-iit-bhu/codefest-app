@@ -53,7 +53,7 @@ $btn-width = 250px;
   cursor: pointer;
 
   .linkText {
-    color: $white;
+    color: $black;
     display: inline;
     text-decoration: none;
 
@@ -74,7 +74,7 @@ $btn-width = 250px;
   width: $btn-width;
   height: $btn-height;
   border-radius: 50px;
-  background: $black;
+  background: $white;
   margin: 10px auto;
   border: 2px solid $chartreuse;
   padding-top: 8px;
@@ -96,7 +96,7 @@ $btn-width = 250px;
       /* align-items: center; */
       background: none;
       /* cursor: pointer; */
-      color: $white;
+      color: $black;
       border: none;
       display: -ms-flexbox;
       display: -webkit-box;
@@ -111,7 +111,7 @@ $btn-width = 250px;
       }
 
       .logo {
-        fill: $white;
+        fill: $black;
       }
     }
   }

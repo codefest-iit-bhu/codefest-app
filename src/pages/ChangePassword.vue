@@ -226,7 +226,7 @@ export default {
       .next {
         border: 0;
         background: transparent;
-        color: $white;
+        color: $black;
         border-radius: 100%;
         font-size: 30px;
         height: 30px;

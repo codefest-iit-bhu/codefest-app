@@ -94,7 +94,7 @@ export default {
       font-weight: bold;
 
       span {
-        color: $white;
+        color: $black;
         animation: neon-text 1s ease-in-out infinite alternate;
       }
     }

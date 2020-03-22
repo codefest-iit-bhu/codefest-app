@@ -90,7 +90,7 @@ $rd = 60px;
       border-radius: var(--item-round);
       height: calc(var(--item-round) * 2);
       width: calc(var(--item-round) * 2);
-      background: $white;
+      background: $black;
       padding: calc((var(--item-round) / 5));
 
       img {
@@ -119,7 +119,7 @@ $rd = 60px;
         padding: 15px calc(var(--item-round) * 0.68);
 
         h3 {
-          color: $black;
+          color: $white;
           margin: 0;
           font-family: 'Roboto Slab';
 
@@ -129,7 +129,7 @@ $rd = 60px;
         }
 
         p {
-          color: $black;
+          color: $white;
           font-size: 14px;
 
           ~/.xs ^[1..-1], ~/.sm ^[1..-1], ~/.md ^[1..-1] {

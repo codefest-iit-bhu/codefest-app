@@ -139,7 +139,7 @@ export default {
 .submit {
   border: 0;
   background: transparent;
-  color: $white;
+  color: $black;
   border-radius: 100%;
   font-size: 40px;
   height: 40px;
