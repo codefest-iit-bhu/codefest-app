@@ -9,7 +9,7 @@
         </h1>-->
         <div :class="$style.cftitle">
           <span>
-            <img src="@assets/cf19-hero-logo.svg">
+            <img src="@assets/hero-cf20-logo.svg">
           </span>
           <span :class="$style.tagline" ref="tagline"></span>
           <span :class="$style.venue">
