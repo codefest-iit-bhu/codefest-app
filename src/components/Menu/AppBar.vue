@@ -70,7 +70,7 @@
         </a>
       </li>
       <router-link to="/" slot="notch">
-        <img src="@assets/cf19-white-logo.svg" @click="clickNotch">
+        <img src="@assets/white-cf20-logo.svg" @click="clickNotch">
       </router-link>
     </AppbarLayout>
     <div :class="$style.sidebar" ref="sidebar">
