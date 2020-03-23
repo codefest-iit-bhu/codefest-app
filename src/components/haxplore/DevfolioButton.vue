@@ -48,7 +48,7 @@ $btn-width = 250px;
   height: auto;
   padding: 24px;
   border-radius: 50px;
-  border: 2px solid $chartreuse;
+  border: 2px solid $waterloo;
   text-align: center;
   cursor: pointer;
 
@@ -65,7 +65,7 @@ $btn-width = 250px;
   }
 
   &:hover {
-    box-shadow: inset 0px 0px 10px $chartreuse;
+    box-shadow: inset 0px 0px 10px $waterloo;
   }
 }
 
@@ -76,16 +76,16 @@ $btn-width = 250px;
   border-radius: 50px;
   background: $white;
   margin: 10px auto;
-  border: 2px solid $chartreuse;
+  border: 2px solid $waterloo;
   padding-top: 8px;
   text-align: center;
-  color: $chartreuse;
+  color: $waterloo;
   font-family: 'Roboto Slab';
-  box-shadow: inset 0px 0px 5px $chartreuse;
+  box-shadow: inset 0px 0px 5px $waterloo;
   overflow: hidden;
 
   &:hover {
-    box-shadow: inset 0px 0px 10px $chartreuse;
+    box-shadow: inset 0px 0px 10px $waterloo;
   }
 
   :global {

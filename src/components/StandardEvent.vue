@@ -216,8 +216,8 @@ $cell-collapsed-size = 150px;
 }
 
 .whiteTitle {
-  color: $black;
-  font-family: 'Aldo the Apache';
+  color: $mine-shaft;
+  font-family: 'Baloo Bhaina 2';
 
   h3 {
     font-size: 32px;
@@ -225,10 +225,10 @@ $cell-collapsed-size = 150px;
 }
 
 .cell {
-  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 8px 8px 20px $crown-of-thorns, 18px 18px 20px $botticelli, -15px -15px 20px $white;
   width: var(--event-size);
   height: 100%;
-  background: $chartreuse;
+  background: $shiraz;
   border-radius: calc((var(--event-size) / 2));
 }
 

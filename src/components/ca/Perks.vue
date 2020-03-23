@@ -101,11 +101,11 @@ export default {
           padding: 20px 0;
 
           span {
-            color: $chartreuse;
+            color: $waterloo;
           }
 
           .textStart {
-            color: $chartreuse;
+            color: $waterloo;
             font-weight: 600;
             letter-spacing: 1px;
             font-family: 'Roboto Slab';

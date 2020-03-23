@@ -127,13 +127,13 @@ export default {
 
         &:hover {
           background: unset;
-          color: $chartreuse;
+          color: $waterloo;
         }
       }
 
       &.active {
         a {
-          color: $chartreuse;
+          color: $waterloo;
           font-weight: bold;
 
           span {

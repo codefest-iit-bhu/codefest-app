@@ -110,13 +110,13 @@ export default {
       height: auto;
       padding: 10px 20px;
       border-radius: 50px;
-      border: 2px solid $chartreuse;
+      border: 2px solid $waterloo;
       text-align: center;
       cursor: pointer;
-      color: $chartreuse;
+      color: $waterloo;
       font-family: 'Roboto Slab';
       font-weight: 600;
-      box-shadow: inset 0px 0px 10px $chartreuse;
+      box-shadow: inset 0px 0px 10px $waterloo;
     }
 
     .venue {

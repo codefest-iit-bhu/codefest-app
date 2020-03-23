@@ -301,7 +301,7 @@ $btn-width = 240px;
   --event-team-button-width: $btn-width;
   width: var(--event-team-box-width);
   padding: 10px 10px 20px;
-  border: 1px solid $chartreuse;
+  border: 1px solid $waterloo;
 
   &.xs, &.sm {
     --event-team-box-width: $box-small-width;
@@ -317,7 +317,7 @@ $btn-width = 240px;
 
     .txt {
       font-size: 23px;
-      font-family: 'Aldo the Apache';
+      font-family: 'Teko';
     }
 
     .txt2 {
@@ -340,9 +340,9 @@ $btn-width = 240px;
     top: 0;
     left: 0;
     background-color: black;
-    border: 1px solid $chartreuse;
-    color: $chartreuse;
-    font-family: 'Aldo the Apache';
+    border: 1px solid $waterloo;
+    color: $waterloo;
+    font-family: 'Teko';
     padding: 15px;
     font-size: 20px;
     border-radius: 5px;
@@ -393,7 +393,7 @@ $btn-width = 240px;
     text-align: center;
 
     &:hover {
-      color: $chartreuse;
+      color: $waterloo;
     }
   }
 
@@ -421,7 +421,7 @@ $btn-width = 240px;
       text-align: center;
 
       .validTeam {
-        color: $chartreuse;
+        color: $waterloo;
       }
 
       .invalidTeam {
@@ -468,7 +468,7 @@ $btn-width = 240px;
   }
 
   .infoBox {
-    border: 2px solid $chartreuse;
+    border: 2px solid $waterloo;
     border-radius: 10px;
     height: 40px;
     text-align: center;
@@ -485,8 +485,8 @@ $btn-width = 240px;
       border-radius: inherit;
       border-bottom-right-radius: 0;
       border-top-right-radius: 0;
-      border-right: 1px solid $chartreuse;
-      background: alpha($chartreuse, 0.7);
+      border-right: 1px solid $waterloo;
+      background: alpha($waterloo, 0.7);
       height: 100%;
       padding: 5px;
     }

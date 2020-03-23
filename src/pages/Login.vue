@@ -377,7 +377,7 @@ export default {
   margin-bottom: 20px;
 
   a {
-    color: $chartreuse;
+    color: $waterloo;
     font-family: 'Roboto Slab';
     font-weight: 600;
   }
@@ -399,7 +399,7 @@ export default {
   text-align: center;
 
   &:hover {
-    color: $chartreuse;
+    color: $waterloo;
   }
 }
 
@@ -411,7 +411,7 @@ export default {
   padding: 5px;
   margin-top: 20px;
   border: 0;
-  border-top: 1px solid $chartreuse;
+  border-top: 1px solid $waterloo;
 
   .socialButton {
     background-color: Transparent;

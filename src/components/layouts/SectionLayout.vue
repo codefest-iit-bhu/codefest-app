@@ -39,11 +39,14 @@ div.sectionContainer {
   margin: 36px 0;
 
   h1.sectionTitle {
-    font-family: 'Aldo the Apache';
-    padding: 12px 0;
-    letter-spacing: 2px;
+    font-family: 'Baloo Bhaina 2', cursive;
+    padding: 12px 0 0;
+    // letter-spacing: 3px;
     font-size: 64px;
     margin-top: 144px;
+    margin-bottom: 0;
+    font-weight: 600;
+    color: $mine-shaft;
 
     &.lg, &.xl, &.xxl {
       padding-top: 36px;
@@ -73,21 +76,21 @@ div.sectionContainer {
   }
 
   hr.sectionLine {
-    height: 4px;
-    background-color: $chartreuse;
+    height: 5px;
+    background-color: $waterloo;
     display: block;
     width: 70%;
     border: none;
-    margin: 12px 0 36px;
+    margin: 0 0 48px;
 
     ~/:nth-child(even) hr.sectionLine {
       margin-right: 30%;
-      background-image: linear-gradient(to left, $white, $chartreuse);
+      background-image: linear-gradient(to left, $mystic, $mine-shaft);
     }
 
     ~/:nth-child(odd) hr.sectionLine {
       margin-left: 30%;
-      background-image: linear-gradient(to right, $white, $chartreuse);
+      background-image: linear-gradient(to right, $mystic, $mine-shaft);
     }
   }
 }

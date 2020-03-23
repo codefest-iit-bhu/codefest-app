@@ -74,14 +74,17 @@ export default {
     }
 
     .clip {
-      clip-path: polygon(25% 0%, 75% 0%, 100% 43.3%, 75% 86.6%, 25% 86.6%, 0% 43.3%);
+      //  clip-path: polygon(25% 0%, 75% 0%, 100% 43.3%, 75% 86.6%, 25% 86.6%, 0% 43.3%);
       background: white;
       width: 160px;
       height: 160px;
       margin-left: auto;
       margin-right: auto;
+      margin-bottom: 20px;
       padding: 10px;
-      background-color: $chartreuse;
+      background-color: $shiraz;
+      border-radius: 40px;
+      box-shadow: inset 8px 8px 20px $crown-of-thorns, 18px 18px 20px $botticelli, -15px -15px 20px $white;
     }
 
     .img {
@@ -94,11 +97,11 @@ export default {
 
     .name, .value {
       font-family: 'Quicksand';
-      font-weight: 500;
+      font-weight: 600;
       margin-left: auto;
       margin-right: auto;
       text-align: center;
-      color: $chartreuse;
+      color: $mine-shaft;
       line-height: 28px;
       font-size: 25px;
     }

@@ -109,9 +109,10 @@ export default {
     text-decoration: none;
 
     h4 {
-      font-family: 'Aldo the Apache';
+      font-family: 'Teko';
       font-size: 30px;
       margin: 0;
+      font-weight: 500;
     }
   }
 
@@ -155,15 +156,18 @@ export default {
       }
 
       &:hover {
-        background: $lonestar;
+        background: $shiraz;
+        // box-shadow: 8px 8px 20px $rajah, -12px -12px 20px $white;
+        // animation: border-rajah 1s ease-in-out infinite alternate;
       }
     }
 
     .eventTitle {
       order: -1;
       color: $cod-gray;
-      font-family: 'Aldo the Apache';
+      font-family: 'Teko';
       text-align: right;
+      font-weight:500;
       font-size: 50px;
       margin: 0;
       float: right;
@@ -203,7 +207,8 @@ export default {
 
       .tabTitle {
         font-size: 36px;
-        font-family: 'Aldo the Apache';
+        font-family: 'Teko';
+        font-weight: 400;
         margin-top: 12px;
         margin-bottom: 18px;
       }
@@ -253,7 +258,7 @@ export default {
       border-radius: 20px 2px 20px 2px;
       box-shadow: inset 0px 0px 20px $tulip-tree;
       animation: neon-box 1.5s ease-in-out infinite alternate;
-      border: 2px solid $chartreuse;
+      border: 2px solid $waterloo;
 
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
         width: 220px;
@@ -268,9 +273,9 @@ export default {
       }
 
       .linkText {
-        font-family: 'Aldo the Apache';
+        font-family: 'Teko';
         font-size: 30px;
-        color: $chartreuse;
+        color: $waterloo;
         margin-top: 20px;
         text-align: center;
         display: inline;

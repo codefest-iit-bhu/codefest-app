@@ -108,10 +108,10 @@ export default {
 @require '~@styles/anims';
 
 $breadcrumb-hovered = $deep-fir;
-$breadcrumb-unselected = $limeade;
+$breadcrumb-unselected = $mine-shaft;
 $breadcrumb-arrow = $black;
 $breadcrumb-text = $black;
-$cli-text = $chartreuse;
+$cli-text = $waterloo;
 $output-link = $dodger-blue;
 
 .repl {

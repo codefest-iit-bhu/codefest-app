@@ -90,7 +90,7 @@ export default {
 
   .active {
     a {
-      color: $chartreuse;
+      color: $waterloo;
       font-weight: bold;
 
       span {

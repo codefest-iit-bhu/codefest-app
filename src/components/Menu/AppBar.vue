@@ -287,14 +287,14 @@ export default {
           }
 
           &:hover {
-            color: $chartreuse;
+            color: $waterloo;
             background: rgba(63, 63, 65, 0.7);
           }
         }
 
         &.active, .subList li.active {
           a {
-            color: $chartreuse;
+            color: $waterloo;
             font-weight: bold;
 
             span {

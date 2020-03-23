@@ -59,11 +59,14 @@ export default {
 }
 
 .video {
-  box-shadow: 0 0 10px $chartreuse;
+  box-shadow: 18px 18px 20px $botticelli, -12px -12px 20px $white;
+  border-radius: 10px;
+  padding: 10px;
   width: 100%;
 
   & > iframe {
     width: 100%;
+    border-radius: 10px;
   }
 }
 </style>

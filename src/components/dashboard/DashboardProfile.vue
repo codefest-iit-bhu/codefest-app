@@ -206,12 +206,12 @@ export default {
 
     .userinit {
       order: -2;
-      background: $chartreuse;
+      background: $waterloo;
       border-radius: 50%;
       width: 108px;
       height: 108px;
       padding: 18px;
-      font: 72px 'Aldo the Apache';
+      font: 72px 'Teko';
       color: $white;
 
       p {
@@ -231,7 +231,7 @@ export default {
     .username {
       order: -1;
       color: $black;
-      font-family: 'Aldo the Apache';
+      font-family: 'Teko';
       text-align: right;
       font-size: 50px;
       margin: 0;
@@ -245,7 +245,7 @@ export default {
 
   hr {
     height: 4px;
-    background-color: $chartreuse;
+    background-color: $waterloo;
     display: block;
     width: 70%;
     border: none;
@@ -255,7 +255,7 @@ export default {
     margin-top: 5px;
     margin-bottom: 72px;
     margin-left: 30%;
-    background-image: linear-gradient(to right, $white, $chartreuse);
+    background-image: linear-gradient(to right, $white, $waterloo);
 
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
       margin-bottom: 16px;
@@ -272,25 +272,25 @@ export default {
     width: 220px;
     padding: 18px;
     border-radius: 50px;
-    border: 2px solid $chartreuse;
+    border: 2px solid $waterloo;
     text-align: center;
     cursor: pointer;
     display: inline-block;
 
     .linkText {
-      color: $chartreuse;
+      color: $waterloo;
       display: inline;
       text-decoration: none;
 
       h4 {
-        font-family: 'Aldo the Apache';
+        font-family: 'Teko';
         font-size: 22px;
         margin: 0;
       }
     }
 
     &:hover {
-      box-shadow: inset 0px 0px 10px $chartreuse;
+      box-shadow: inset 0px 0px 10px $waterloo;
     }
 
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
@@ -309,7 +309,7 @@ export default {
       width: 100%;
 
       .box {
-        border: 2px solid $limeade;
+        border: 2px solid $mine-shaft;
         border-radius: 100px;
         text-align: center;
         height: 50px;
@@ -336,8 +336,8 @@ export default {
             border-radius: inherit;
             border-bottom-right-radius: 0;
             border-top-right-radius: 0;
-            border-right: 1px solid $chartreuse;
-            background: alpha($chartreuse, 0.7);
+            border-right: 1px solid $waterloo;
+            background: alpha($waterloo, 0.7);
           }
 
           .value {
@@ -360,7 +360,7 @@ export default {
           width: 200px;
           height: 200px;
           border-radius: 30px;
-          border: 3px solid $chartreuse;
+          border: 3px solid $waterloo;
           animation: timeline-border-green 1s ease-in-out infinite alternate;
           margin: auto;
 
@@ -378,7 +378,7 @@ export default {
             width: 100%;
             font-size: 60px;
             padding: 24px 0;
-            color: $chartreuse;
+            color: $waterloo;
           }
         }
       }
@@ -387,8 +387,8 @@ export default {
     .helptext {
       font-size: 14px;
       display: inline-block;
-      box-shadow: 0 0 20px $chartreuse inset;
-      border: 1px solid $chartreuse;
+      box-shadow: 0 0 20px $waterloo inset;
+      border: 1px solid $waterloo;
       border-radius: 10px;
       padding: 8px 16px;
       margin-top: 24px;
@@ -428,12 +428,12 @@ export default {
         order: 1;
         padding: 30px 0;
         font: 600 60px 'Roboto Slab';
-        color: $chartreuse;
+        color: $waterloo;
       }
     }
 
     .verified {
-      border: 5px solid $chartreuse;
+      border: 5px solid $waterloo;
       animation: timeline-border-green 1s ease-in-out infinite alternate;
     }
 
@@ -452,7 +452,7 @@ export default {
 
       .row {
         transform: skew(30deg);
-        border: solid 2px $limeade;
+        border: solid 2px $mine-shaft;
         margin-top: 20px;
         margin-bottom: 20px;
         font-size: 16px;
@@ -461,7 +461,7 @@ export default {
 
         .pkey {
           width: 30%;
-          background: $limeade;
+          background: $mine-shaft;
           display: inline-block;
           order: 1;
           font-weight: bold;
@@ -469,7 +469,7 @@ export default {
           padding: 6px 15px;
           height: 100%;
           color: $white;
-          background: alpha($chartreuse, 0.7);
+          background: alpha($waterloo, 0.7);
 
           span {
             display: inline-block;

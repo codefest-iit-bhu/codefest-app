@@ -38,7 +38,7 @@ export default {
 
 .hero {
   position: relative;
-  background-color: $white;
+  background-color: $botticelli;
   min-height: 300px;
   height: 100vh;
   width: 100%;
@@ -48,11 +48,13 @@ export default {
 
   .logoContainer {
     width: 20%;
-    border: 2px solid $chartreuse;
+    // border: 2px solid $waterloo;
+    background: $shiraz;
+    box-shadow: inset 8px 8px 20px $crown-of-thorns, 8px 8px 20px $waterloo, -15px -15px 20px $white;
     min-width: 100px;
     border-radius: 100%;
     margin: 20px auto 40px;
-    animation: neon-box 1.5s ease-in-out infinite alternate;
+    // animation: neon-box 1.5s ease-in-out infinite alternate;
 
     .logo {
       width: 90%;
@@ -90,7 +92,7 @@ export default {
     }
 
     h1 {
-      font-family: 'Aldo the Apache';
+      font-family: 'Teko';
       letter-spacing: 3px;
       font-size: 54px;
       padding-top: 16px;

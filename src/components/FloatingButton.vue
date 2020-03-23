@@ -47,8 +47,8 @@ $image-expand-width = 18px;
   stickWithSpace(bottom: 40px, right: 40px);
   width: $btn-width;
   height: $btn-height;
-  background-color: $chartreuse;
-  color: $chartreuse;
+  background-color: $waterloo;
+  color: $waterloo;
   border-radius: $btn-radius;
   text-align: center;
   z-index: 999;
@@ -64,7 +64,7 @@ $image-expand-width = 18px;
 
   .txt {
     color: black;
-    font-family: 'Aldo the Apache';
+    font-family: 'Teko';
     font-size: 18px;
     margin-left: 5px;
   }

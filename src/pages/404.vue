@@ -46,8 +46,8 @@ export default {
   border-radius: 200px;
   margin: auto;
   animation: timeline-border-full 1.5s ease-in-out infinite alternate;
-  color: $chartreuse;
-  font-family: 'Aldo the Apache';
+  color: $waterloo;
+  font-family: 'Teko';
   font-size: 160px;
   font-weight: 600;
   padding: 100px 0;

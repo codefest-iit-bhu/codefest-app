@@ -388,8 +388,8 @@ export default {
 
   .heading {
     text-align: center;
-    color: $chartreuse;
-    font-family: 'Aldo the Apache';
+    color: $waterloo;
+    font-family: 'Teko';
     padding: 12px 0;
     letter-spacing: 2px;
     font-size: 64px;
@@ -411,7 +411,7 @@ export default {
   .line {
     height: 3px;
     border: none;
-    background-image: linear-gradient(to right, $white, alpha($chartreuse, 0.7), $white);
+    background-image: linear-gradient(to right, $white, alpha($waterloo, 0.7), $white);
   }
 
   .teamHero {
@@ -451,13 +451,13 @@ export default {
     padding: 40px 0;
     width: 250px;
     margin: 50px auto 25px;
-    border-top: 4px solid $chartreuse;
-    border-bottom: 4px solid $chartreuse;
+    border-top: 4px solid $waterloo;
+    border-bottom: 4px solid $waterloo;
     border-radius: 100px 0 100px 0;
 
     img, object {
       border-radius: 100%;
-      border: 2px solid $chartreuse;
+      border: 2px solid $waterloo;
       animation: timeline-border-green 1.5s ease-in-out infinite alternate;
       width: 200px;
       height: 200px;
@@ -480,7 +480,7 @@ export default {
       font-size: 16pt;
 
       &:hover {
-        color: $limeade;
+        color: $mine-shaft;
       }
     }
 

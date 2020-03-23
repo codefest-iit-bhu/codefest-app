@@ -19,31 +19,31 @@
 
 @keyframes neon-text {
   from {
-    text-shadow: 0 0 2.5px $black, 0 0 5px $black, 0 0 7.5px $black, 0 0 10px $chartreuse, 0 0 12.5px $chartreuse, 0 0 15px $chartreuse, 0 0 25px $chartreuse;
+    text-shadow: 0 0 2.5px $black, 0 0 5px $black, 0 0 7.5px $black, 0 0 10px $waterloo, 0 0 12.5px $waterloo, 0 0 15px $waterloo, 0 0 25px $waterloo;
   }
 
   to {
-    text-shadow: 0 0 1px $black, 0 0 2px $black, 0 0 3px $black, 0 0 4px $chartreuse, 0 0 5px $chartreuse, 0 0 6px $chartreuse, 0 0 10px $chartreuse;
+    text-shadow: 0 0 1px $black, 0 0 2px $black, 0 0 3px $black, 0 0 4px $waterloo, 0 0 5px $waterloo, 0 0 6px $waterloo, 0 0 10px $waterloo;
   }
 }
 
 @keyframes neon-box {
   from {
-    box-shadow: 0 0 15px $black, 0 0 17.5px $black, 0 0 10px $chartreuse, 0 0 52.5px $chartreuse, 0 0 55px $limeade, 0 0 70px $limeade, 0 0 90px $limeade;
+    box-shadow: 0 0 15px $black, 0 0 17.5px $black, 0 0 10px $waterloo, 0 0 52.5px $waterloo, 0 0 55px $limeade, 0 0 70px $limeade, 0 0 90px $limeade;
   }
 
   to {
-    box-shadow: 0 0 1px $black, 0 0 2px $black, 0 0 3px $black, 0 0 6px $black, 0 0 8px $chartreuse, 0 0 12px $chartreuse, 0 0 20px $limeade, 0 0 30px $limeade, 0 0 55px $limeade, 0 0 70px $limeade;
+    box-shadow: 0 0 1px $black, 0 0 2px $black, 0 0 3px $black, 0 0 6px $black, 0 0 8px $waterloo, 0 0 12px $waterloo, 0 0 20px $limeade, 0 0 30px $limeade, 0 0 55px $limeade, 0 0 70px $limeade;
   }
 }
 
 @keyframes timeline-border-green {
   from {
-    box-shadow: 0 0 0 2px alpha($chartreuse, 0.5)
+    box-shadow: 0 0 0 2px alpha($waterloo, 0.5)
   }
 
   to {
-    box-shadow: 0 0 0 5px alpha($chartreuse, 0.5)
+    box-shadow: 0 0 0 5px alpha($waterloo, 0.5)
   }
 }
 
@@ -57,26 +57,36 @@
   }
 }
 
-@keyframes timeline-border-full {
+@keyframes border-rajah {
   from {
-    box-shadow: 0 0 0 10px alpha($chartreuse, 0.7)
+    box-shadow: 8px 8px 20px $botticelli, -12px -12px 20px $white;
   }
 
   to {
-    box-shadow: 0 0 0 20px alpha($chartreuse, 0.7)
+    box-shadow: 8px 8px 20px $rajah, -12px -12px 20px $white;
+  }
+}
+
+@keyframes timeline-border-full {
+  from {
+    box-shadow: 0 0 0 10px alpha($waterloo, 0.7)
+  }
+
+  to {
+    box-shadow: 0 0 0 20px alpha($waterloo, 0.7)
   }
 }
 
 @keyframes svg-transform {
   from,{
-    fill: $chartreuse;
+    fill: $waterloo;
     stroke-width: 1px;
-    stroke: $chartreuse;
+    stroke: $waterloo;
   }
 
   to{
     fill: transparent;
-    stroke: $chartreuse;
+    stroke: $waterloo;
     stroke-width: 5px;
   }
 }
