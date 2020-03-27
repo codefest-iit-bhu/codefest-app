@@ -105,6 +105,7 @@ class RegisterSerializer(serializers.Serializer):
         jwt = data.get('id_token')
         # print(jwt)
         uid = jwt['uid']
+        email = jwt.get('email', '')
         provider = FirebaseAPI.get_provider(jwt)
         # provider_uid = None
         # if provider !=VerifiedAccount.AUTH_EMAIL_PROVIDER:
@@ -124,8 +125,8 @@ class RegisterSerializer(serializers.Serializer):
         
         referred_by = data.get('applied_referral_code', None)
 
-        profile,_ = Profile.objects.get_or_create(user=user,referred_by=referred_by)
-        profile.name=user.first_name + " "+user.last_name
+        profile, _ = Profile.objects.get_or_create(user=user, referred_by=referred_by, email=email)
+        profile.name = user.first_name + " " + user.last_name
         profile.save()
         return user
 

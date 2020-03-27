@@ -214,3 +214,13 @@ class CALeaderboardSerializer(serializers.ModelSerializer):
     class Meta:
         model=CA
         exclude=('comment','id')
+
+
+class FCMTokenSerializer(serializers.Serializer):
+    fcm_token = serializers.CharField(max_length=255)
+
+    def save(self):
+        user = self.context['request'].user
+        data = self.validated_data
+        fcm_token = data['fcm_token']
+        Profile.objects.filter(user=user).update(fcm_token=fcm_token)
