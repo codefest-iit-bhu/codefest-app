@@ -120,17 +120,17 @@ const router = new Router({
         requiresAuth: true
       }
     },
-    {
-      name: "~/haxplore",
-      path: "/haxplore",
-      component: () => import(`@pages/Hacksplore`),
-      meta: {
-        title: "CodeFest '19 | HaXplore",
-        metaTags: [],
-        noTerminal: true,
-        requiresAuth: false
-      }
-    },
+    // {
+    //   name: "~/haxplore",
+    //   path: "/haxplore",
+    //   component: () => import(`@pages/Hacksplore`),
+    //   meta: {
+    //     title: "CodeFest '19 | HaXplore",
+    //     metaTags: [],
+    //     noTerminal: true,
+    //     requiresAuth: false
+    //   }
+    // },
     {
       name: "~/password/reset",
       path: "/password/reset",
