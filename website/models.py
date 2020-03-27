@@ -71,7 +71,6 @@ class Profile(models.Model):
 
     user=models.OneToOneField(User,on_delete=models.CASCADE)
     name=models.CharField(max_length=128,null=True,blank=True)
-    email = models.CharField(max_length=255, null=True, blank=True)
     referred_by=models.ForeignKey('Profile',null=True,related_name="referred",on_delete=models.SET_NULL)
     referral_code=models.CharField(max_length=50, unique=True, default=generate_referral_code)
     institute_type = models.IntegerField(null=True, choices=INSTITUTE_TYPE_CHOICES)
