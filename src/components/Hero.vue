@@ -16,9 +16,6 @@
             <span :id="$style.loc">
               <i class="fas fa-map-marked-alt"></i> IIT (BHU), Varanasi
             </span>
-            <span :id="$style.date">
-              <i class="far fa-calendar-alt"></i> 23 - 25 August, 2019
-            </span>
           </span>
         </div>
       </div>
@@ -26,12 +23,6 @@
     </mq-layout>
     <mq-layout :mq="['sm', 'xs', 'md']">
       <div class="absolute-center" :class="[$style.smallhero, $style[$mq]]">
-        <div :class="$style.aws">
-          <img src="assets/Sponsors/aws.png">
-        </div>
-        <div :class="$style.presents">
-          <span>presents</span>
-        </div>
         <div :class="$style.cflogo">
           <svg viewBox="0 0 335.71 293.38">
             <path
@@ -44,9 +35,6 @@
           <span :class="$style.tagline" ref="tagline"></span>
           <p :class="$style.loc">
             <i class="fas fa-map-marked-alt"></i> IIT (BHU), Varanasi
-          </p>
-          <p :class="$style.date">
-            <i class="far fa-calendar-alt"></i> 23 - 25 August, 2019
           </p>
         </div>
         <div :class="$style.registerbtn">
@@ -185,8 +173,8 @@ export default {
       }
 
       #loc::after {
-        content: '|';
-        margin-left: 2px;
+        // content: '|';
+        // margin-left: 2px;
 
         ~/.xs ^[1..-1] {
           content: '';

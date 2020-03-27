@@ -12,7 +12,7 @@ const router = new Router({
       path: "/",
       component: () => import(`@pages/Home`),
       meta: {
-        title: "CodeFest '19 | IIT (BHU) Varanasi",
+        title: "CodeFest '20 | IIT (BHU) Varanasi",
         metaTags: [],
         noTerminal: false,
         animateTerminal: true
@@ -23,7 +23,7 @@ const router = new Router({
       path: "/events",
       component: () => import(`@pages/EventList`),
       meta: {
-        title: "CodeFest '19 | Events",
+        title: "CodeFest '20 | Events",
         metaTags: [],
         noTerminal: false,
         animateTerminal: true
@@ -34,7 +34,7 @@ const router = new Router({
       path: "/events/:name",
       component: () => import("@pages/EventDetails"),
       meta: {
-        title: "CodeFest '19 | Event",
+        title: "CodeFest '20 | Event",
         metaTags: [],
         noTerminal: false
       }
@@ -44,7 +44,7 @@ const router = new Router({
       path: "/ca",
       component: () => import("@pages/CampusAmbassador"),
       meta: {
-        title: "CodeFest '19 | Campus Ambassdor",
+        title: "CodeFest '20 | Campus Ambassdor",
         metaTags: [],
         noTerminal: true
       }
@@ -54,7 +54,7 @@ const router = new Router({
       path: "/team",
       component: () => import(`@pages/Team`),
       meta: {
-        title: "CodeFest '19 | Team",
+        title: "CodeFest '20 | Team",
         metaTags: [],
         noTerminal: true,
         animateTerminal: true
@@ -65,7 +65,7 @@ const router = new Router({
       path: "/login",
       component: () => import(`@pages/Login`),
       meta: {
-        title: "CodeFest '19 | Login",
+        title: "CodeFest '20 | Login",
         metaTags: [],
         noTerminal: true
       }
@@ -75,7 +75,7 @@ const router = new Router({
       path: "/password/change",
       component: () => import(`@pages/ChangePassword`),
       meta: {
-        title: "CodeFest '19 | Change Password",
+        title: "CodeFest '20 | Change Password",
         metaTags: [],
         noTerminal: true,
         requiresAuth: true
@@ -89,7 +89,7 @@ const router = new Router({
         isHomeView: true
       },
       meta: {
-        title: "CodeFest '19 | Dashboard",
+        title: "CodeFest '20 | Dashboard",
         metaTags: [],
         noTerminal: true,
         requiresAuth: true
@@ -103,7 +103,7 @@ const router = new Router({
         isEventsView: true
       },
       meta: {
-        title: "CodeFest '19 | Event Registration",
+        title: "CodeFest '20 | Event Registration",
         metaTags: [],
         noTerminal: true,
         requiresAuth: true
@@ -114,23 +114,23 @@ const router = new Router({
       path: "/profile/edit",
       component: () => import(`@pages/ProfileEdit`),
       meta: {
-        title: "CodeFest '19 | Profile Edit",
+        title: "CodeFest '20 | Profile Edit",
         metaTags: [],
         noTerminal: true,
         requiresAuth: true
       }
     },
-    // {
-    //   name: "~/haxplore",
-    //   path: "/haxplore",
-    //   component: () => import(`@pages/Hacksplore`),
-    //   meta: {
-    //     title: "CodeFest '19 | HaXplore",
-    //     metaTags: [],
-    //     noTerminal: true,
-    //     requiresAuth: false
-    //   }
-    // },
+    {
+      name: "~/haxplore",
+      path: "/haxplore",
+      component: () => import(`@pages/Hacksplore`),
+      meta: {
+        title: "CodeFest '20 | HaXplore",
+        metaTags: [],
+        noTerminal: true,
+        requiresAuth: false
+      }
+    },
     {
       name: "~/password/reset",
       path: "/password/reset",
@@ -163,7 +163,7 @@ const router = new Router({
       path: "/*",
       component: () => import(`@pages/404`),
       meta: {
-        title: "CodeFest '19 | 404",
+        title: "CodeFest '20 | 404",
         noTerminal: true
       }
     }

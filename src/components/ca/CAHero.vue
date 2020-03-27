@@ -19,7 +19,7 @@
         </h1>
         <h3>
           Be part of
-          <span>CODEFEST'19</span> by becoming our CAMPUS AMBASSADOR.
+          <span>CODEFEST'20</span> by becoming our CAMPUS AMBASSADOR.
         </h3>
         <div :class="$style.link">
           <a href="https://forms.gle/BDcmVFr4K7o2GjRn9" :class="$style.linkText">

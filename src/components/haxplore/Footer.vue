@@ -7,7 +7,7 @@
 
       <div :class="$style.content">
         <span>
-          Copyright 2019 Haxplore | Codefest' 19
+          Copyright 2020 Haxplore | Codefest' 20
           <i :class="$style.heart"></i>
         </span>
       </div>
