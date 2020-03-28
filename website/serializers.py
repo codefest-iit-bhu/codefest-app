@@ -12,7 +12,7 @@ logger=logging.getLogger('django')
 
 
 class ProfileSerializer(serializers.ModelSerializer):
-    name = serializers.CharField(max_length=128,read_only=True)
+    name = serializers.CharField(max_length=128)
     institute_name=serializers.CharField(max_length=128, required=True, allow_blank=False, allow_null=False)
     study_year=serializers.IntegerField(required=True, allow_null=False)
     degree=serializers.CharField(max_length=50,required=False, allow_blank=True, default="", allow_null=True)
@@ -62,6 +62,10 @@ class ProfileSerializer(serializers.ModelSerializer):
         return year
 
     def update(self, instance, data):
+        names = data['name'].split(" ", 1)
+        instance.user.first_name = names[0]
+        instance.user.last_name = names[1] if len(names) > 1 else ""
+        instance.user.save()
         logger.info("[PUT Response]  ("+str(instance)+") :"+str(data))
         instance.get_or_set_profile_status(toSet=True)
         return super().update(instance, data)
