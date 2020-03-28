@@ -18,9 +18,22 @@
         <div></div>
         <About/>
         <FAQ/>
-        <Timeline/>
+        <SectionLayout title="Lookback">
+          <Lookback :stats="lookbackStats" />
+        </SectionLayout>
+        <SectionLayout title="Testimonials">
+          <Testimonials :testimonials="testimonials" />
+        </SectionLayout>
+        <!-- <Timeline/> -->
         <Prizes/>
-        <HaxploreSponsors/>
+        <!-- <HaxploreSponsors/> -->
+        <SectionLayout title="Sponsor Us">
+          <div :class="$style.link">
+            <a href="https://drive.google.com/open?id=1ABFiTwX8Eb7w--0DOqpzJOPqjiE-WQ9D" :class="$style.linkText" target="_blank">
+              <h4> Sponsor Brochure </h4>
+            </a>
+          </div>
+        </SectionLayout>
       </div>
     </main>
     <FooterN/>
@@ -33,10 +46,12 @@ const Timeline = () => import("@components/haxplore/Timeline");
 const About = () => import("@components/haxplore/About");
 const FAQ = () => import("@components/haxplore/FAQ");
 const Landing = () => import("@components/haxplore/Landing");
+const Lookback = () => import("@components/Lookback");
 import Prizes from "@components/haxplore/Prizes";
 const HaxploreSponsors = () => import("@components/haxplore/HaxploreSponsors");
 const FooterN = () => import("@components/haxplore/FooterN");
 const SectionLayout = () => import("@components/layouts/SectionLayout");
+const Testimonials = () => import("@components/Testimonials");
 
 export default {
   components: {
@@ -47,14 +62,69 @@ export default {
     Prizes,
     SectionLayout,
     Landing,
+    Lookback,
     HaxploreSponsors,
-    FooterN
+    FooterN,
+    Testimonials
   },
   data() {
     return {
       section: 0,
-      titles: [null, "About", "FAQ", "Timeline", "Prizes", "Sponsors"],
-      devfolioKey: "haxplore"
+      // titles: [null, "About", "FAQ", "Lookback", "Testimonials", "Prizes"],
+      devfolioKey: "haxplore",
+      lookbackStats: [
+        {
+          name: "Prizes worth",
+          value: "200,000",
+          image: "assets/Lookback/lb_prize.svg"
+        },
+        {
+          name: "Time",
+          value: "24 Hours",
+          image: "assets/Lookback/time.svg"
+        },
+        {
+          name: "Participants",
+          value: "100+",
+          image: "assets/Lookback/lb_participant.svg"
+        },
+        {
+          name: "Github repos",
+          value: "30+",
+          image: "assets/Lookback/github-repos.svg"
+        },
+        {
+          name: "Lines of code",
+          value: "100,000+",
+          image: "assets/Lookback/lines-of-code.svg"
+        }
+      ],
+      testimonials: [
+        {
+          name: "Shravan",
+          comment:
+            "Haxplore was a highly challenging and refreshing experience. \
+            There was so much energy and enthusiasm in the competition, it was inspiring to discover \
+            the different teams, approaches and experiments towards building solutions to a variety of \
+            problems within 24hrs. It was perhaps the best hackathon I have participated till date. I would like \
+            to express my gratitude to the organizers for wonderfully organizing the event.",
+          image: "assets/Testimonial/shravan.jpeg"
+        },
+        {
+          name: "Daksh Miglani",
+          comment:
+            "HaXplore at IIT BHU is one of the finest hackathons our country has to offer. \
+            I had a great time there, the wifi was fast as well, and the mentors were really helpful. \
+            All in all a great place to hack.",
+          image: "assets/Testimonial/daksh.jpeg"
+        },
+        {
+          name: "Akshay",
+          comment:
+            "Great team, great jury members. Waiting for Haxplore 2.0",
+          image: "assets/Testimonial/akshay.jpeg"
+        }
+      ]
     };
   },
   computed: {
@@ -140,6 +210,33 @@ export default {
     .faqList {
       margin: 20px 0;
     }
+  }
+}
+
+.link {
+  margin: auto;
+  width: 290px;
+  height: auto;
+  padding: 24px;
+  border-radius: 50px;
+  border: 2px solid $chartreuse;
+  text-align: center;
+  cursor: pointer;
+
+  .linkText {
+    color: $chartreuse;
+    display: inline;
+    text-decoration: none;
+
+    h4 {
+      font-family: 'Viga';
+      font-size: 30px;
+      margin: 0;
+    }
+  }
+
+  &:hover {
+    box-shadow: inset 0px 0px 10px $chartreuse;
   }
 }
 

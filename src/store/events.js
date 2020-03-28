@@ -40,7 +40,7 @@ export default {
       link: "/events/enigma",
       url: "https://www.hackerearth.com/enigma-codefest19",
       icon: "/assets/events/enigma.png",
-      description: 'Listening to the data is important, but so is experience and intuition. After all, what is intuition at its best but large amounts of data of all kinds filtered through a human brain rather than a math model? Thus, Codefest in association with Eligible presents you to its Machine Learning Event "Enigma". As Big Data is the hottest trend in the tech industry at the moment, machine learning is incredibly powerful to make predictions or calculate suggestions based on large amounts of data. It has its place everywhere now, be it driverless cars, biometric systems, recommendation systems and countless other fields.In the event, the data analysts need to design a model which learns by itself and provide efficient solutions to real life problems.',
+      description: 'Listening to the data is important, but so is experience and intuition. After all, what is intuition at its best but large amounts of data of all kinds filtered through a human brain rather than a math model? As Big Data is the hottest trend in the tech industry at the moment, machine learning is incredibly powerful to make predictions or calculate suggestions based on large amounts of data. It has its place everywhere now, be it driverless cars, biometric systems, recommendation systems and countless other fields.In the event, the data analysts need to design a model which learns by itself and provide efficient solutions to real life problems.',
       coordinators: [
         "Samyak",
         "Prateek"
@@ -74,7 +74,7 @@ export default {
       link: "/events/linguipedia",
       url: "https://www.hackerearth.com/linguipedia-codefest19/",
       icon: "/assets/events/linguipedia.png",
-      description: "In the modern age of information when the internet is cornucopia of conversation among humans and accumulated data from these communications is voluminous, understanding the nature of language has been of such paramount importance. Join the Codefest'19 Team in untangling the mystery of human expression by becoming a part of Linguipedia. Solve challenging problems in the field of natural language processing and text analytics, machine translations. sentiment analysis and many more.",
+      description: "In the modern age of information when the internet is cornucopia of conversation among humans and accumulated data from these communications is voluminous, understanding the nature of language has been of such paramount importance. Join the Codefest'20 Team in untangling the mystery of human expression by becoming a part of Linguipedia. Solve challenging problems in the field of natural language processing and text analytics, machine translations. sentiment analysis and many more.",
       coordinators: [
         "Abhinav Gupta - abhinav.gupta.cse16@itbhu.ac.in",
         "Avi Chawla - avi.chawla.cse16@itbhu.ac.in"
@@ -157,7 +157,7 @@ export default {
         },
         {
           question: "Where can I get past problems of the event?",
-          answer: "Manthan'19: https://codeforces.com/contest/1208/<br/> Manthan'18: https://codeforces.com/contest/1037/<br/> Manthan'17: https://codeforces.com/contest/855"
+          answer: "Manthan'20: https://codeforces.com/contest/1208/<br/> Manthan'18: https://codeforces.com/contest/1037/<br/> Manthan'17: https://codeforces.com/contest/855"
         },
         {
           question: "Will we get a participation certificate?",
@@ -214,7 +214,7 @@ export default {
       link: "/events/vista",
       url: "https://www.hackerearth.com/vista-codefest19",
       icon: "/assets/events/vista.png",
-      description: "The soaring vision perception over the years with the accelerating computation ability has made it possible to fabricate challenges tasks like autonomous vehicles. With limitless data to learn from and various applications to apply to, the need to make machines understand and react similar to how we perceive has become predominant in reaching complete Artificial Intelligence with this. With this aim in sight, and to give you a glimpse of the mesmerizing world of Computer Vision, Codefest'19 brings to you Vista. Join us and try your hands on challenging problems involving object detection, image segmentation, object classification, motion tracking and many more.",
+      description: "The soaring vision perception over the years with the accelerating computation ability has made it possible to fabricate challenges tasks like autonomous vehicles. With limitless data to learn from and various applications to apply to, the need to make machines understand and react similar to how we perceive has become predominant in reaching complete Artificial Intelligence with this. With this aim in sight, and to give you a glimpse of the mesmerizing world of Computer Vision, Codefest'20 brings to you Vista. Join us and try your hands on challenging problems involving object detection, image segmentation, object classification, motion tracking and many more.",
       coordinators: [
         "Keshav Kumar - keshav.kumar.cse16@itbhu.ac.in",
         "Suyash Shukla - suyash.shukla.cse16@itbhu.ac.in"

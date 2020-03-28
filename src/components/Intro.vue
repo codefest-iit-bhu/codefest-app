@@ -7,7 +7,7 @@
         brings to you yet another edition of its annual coding extravaganza, Codefest!
         <br>
         <br>Being more diverse than ever,
-        <span>Codefest '19</span> boasts of a plethora of events,
+        <span>Codefest '20</span> boasts of a plethora of events,
         ranging from competitive programming, algorithms and application development
         to upcoming trends like cryptography, machine learning, computer vision and cyber security.
         <br>
@@ -30,7 +30,7 @@ export default {
   },
   data: () => {
     return {
-      videoId: "4I0AUhHTR-g"
+      videoId: "QOkjxSVr5Wc"
     };
   },
   methods: {

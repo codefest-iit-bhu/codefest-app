@@ -17,37 +17,8 @@
 
 <script>
 export default {
-  data() {
-    return {
-      testimonials: [
-        {
-          name: "Gennady Korotkevich (Tourist)",
-          comment:
-            "Manthan had some good problems and it was prepared very well. \
-                      I loved the idea of hosting Mathmania at Topcoder! The problems were interesting too. \
-                      Perplexed had some nice problems as well. Overall I enjoyed all three events -- thanks a lot! ",
-          image: "assets/Testimonial/tourist.jpeg"
-        },
-        {
-          name: "Raj Shukla",
-          comment:
-            "Thanks, thanks for organizing such amazing competitions.\
-                    I really enjoy spending time on Codefest hackathons.\
-                    This will help in my career growth as well.\
-                    I am extremely happy to get rank 1 on enigma, I never thought of this can happen.",
-          image: "assets/Testimonial/raj-shukla.jpeg"
-        },
-        {
-          name: "Infosec IIT R",
-          comment:
-            "I feel that the competition was challenging. \
-              Some of the challenges were a bit tough others were easy. \
-              I will definitely recommend others to take part in this CTF \
-              and also encourage organizers to conduct such events more often.",
-          image: "assets/Testimonial/infosec.jpeg"
-        }
-      ]
-    };
+  props: {
+    testimonials: Object
   }
 };
 </script>

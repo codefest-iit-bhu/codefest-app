@@ -2,9 +2,9 @@
   <footer :class="$style.footer">
     <div :class="$style.logo">
       <div :class="$style.image">
-        <img src="@assets/logo.png">
+        <img src="@assets/white-cf20-logo.svg">
       </div>
-      <p>Copyright © CodeFest'19</p>
+      <p>Copyright © CodeFest'20</p>
     </div>
     <i :class="$style.heart"/>
     <span :class="$style.socialIcons">
