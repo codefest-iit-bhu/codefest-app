@@ -91,9 +91,12 @@ class RegisterSerializer(serializers.Serializer):
     #         return
     #     raise serializers.ValidationError("Captcha could not be verified. Please try again.")
 
-    def get_user(self, data,uid):
+    def get_user(self, data,jwt):
         user = User()
+        uid = jwt['uid']
+        email = jwt.get('email', '')
         user.username = uid
+        user.email = email
         user.first_name = data.get('first_name')
         user.last_name = data.get('last_name',"")
         user.gender = data.get('gender')
@@ -109,7 +112,7 @@ class RegisterSerializer(serializers.Serializer):
         # provider_uid = None
         # if provider !=VerifiedAccount.AUTH_EMAIL_PROVIDER:
         #     provider_uid = FirebaseAPI.get_provider_uid(jwt, provider)
-        user = self.get_user(data,uid)
+        user = self.get_user(data,jwt)
         try:
             user.validate_unique()
         except Exception as e:
@@ -125,7 +128,7 @@ class RegisterSerializer(serializers.Serializer):
         referred_by = data.get('applied_referral_code', None)
 
         profile,_ = Profile.objects.get_or_create(user=user,referred_by=referred_by)
-        profile.name=user.first_name + " "+user.last_name
+        profile.name = user.first_name + " " + user.last_name
         profile.save()
         return user
 

@@ -152,3 +152,22 @@ class CALeaderBoardView(generics.ListAPIView):
     authentication_classes = []
     serializer_class = CALeaderboardSerializer
     queryset=CA.objects.order_by('-points')[:15]
+
+
+class FCMTokenView(generics.GenericAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    authentication_classes = [authentication.TokenAuthentication, authentication.SessionAuthentication]
+    serializer_class = FCMTokenSerializer
+
+    def get_serializer_context(self):
+        return {
+            'request': self.request,
+            'format': self.format_kwarg,
+            'view': self
+        }
+
+    def post(self, request):
+        self.serializer = self.get_serializer(data=request.data)
+        self.serializer.is_valid(raise_exception=True)
+        self.serializer.save()
+        return Response(status.HTTP_200_OK)
