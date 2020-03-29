@@ -57,6 +57,9 @@ export default {
       src: '~/plugins/vue-youtube'
     },
     {
+      src: '~/plugins/vue-spinners'
+    },
+    {
       src: '~/plugins/filters'
     }
   ],
@@ -90,7 +93,59 @@ export default {
         defaultBreakpoint: 'lg'
       }
     ],
-    ['@nuxtjs/device']
+    ['@nuxtjs/device'],
+    [
+      '@nuxtjs/firebase',
+      {
+        config: {
+          apiKey: 'AIzaSyDgx3hMDrBTQ6ci9hKg0MMmbR36rBaH6Bo',
+          authDomain: 'codefest19.firebaseapp.com',
+          databaseURL: 'https://codefest19.firebaseio.com',
+          projectId: 'codefest19',
+          storageBucket: 'codefest19.appspot.com',
+          messagingSenderId: '800543243585'
+        },
+        services: {
+          auth: true
+        }
+      }
+    ],
+    [
+      '@nuxtjs/toast',
+      {
+        position: 'bottom-center',
+        duration: 3000,
+        iconPack: 'fontawesome',
+        action: {
+          icon: 'times',
+          onClick: (_, toastObject) => toastObject.goAway(0)
+        },
+        fitToScreen: true,
+        singleton: true,
+        register: [
+          {
+            name: 'error_post',
+            message: (payload) => {
+              const msg = payload.message || 'Something went wrong!'
+              return `Oops... ${msg}`
+            },
+            options: {
+              icon: 'exclamation-circle',
+              type: 'error',
+              duration: 5000
+            }
+          },
+          {
+            name: 'success',
+            message: (payload) => {
+              const msg = payload.message || 'Success!'
+              return `Yay! ${msg}`
+            },
+            options: { icon: 'check', type: 'success' }
+          }
+        ]
+      }
+    ]
   ],
   /*
    ** Build configuration
@@ -99,7 +154,7 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, _ctx) {
+    extend(config, { isServer }) {
       const srcDir = join(__dirname, 'src')
       const assetDir = join(srcDir, 'assets')
       // config.resolve.alias = {
@@ -113,6 +168,14 @@ export default {
       config.resolve.alias['@styles'] = join(assetDir, 'styles')
       config.resolve.alias['@js'] = join(assetDir, 'js')
       config.resolve.alias['@components'] = join(srcDir, 'components')
+
+      if (isServer) {
+        config.externals = {
+          '@firebase/app': 'commonjs @firebase/app',
+          '@firebase/auth': 'commonjs @firebase/auth',
+          '@firebase/firestore': 'commonjs @firebase/firestore'
+        }
+      }
     },
     loaders: {
       stylus: {
