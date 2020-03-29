@@ -4,11 +4,11 @@
       <div :class="$style.image">
         <img src="@assets/haxplore/logo-text.svg">
       </div>
-      <p>Copyright © 2019 Haxplore</p>
+      <p>Copyright © 2020 Haxplore</p>
     </div>
     <i :class="$style.heart"/>
     <span :class="$style.socialIcons">
-      Codefest' 19
+      Codefest' 20
       <a href="https://www.facebook.com/codefest/">
         <span class="fa-stack fa-lg">
           <!-- <i class="fa fa-circle-notch fa-stack-2x"></i> -->

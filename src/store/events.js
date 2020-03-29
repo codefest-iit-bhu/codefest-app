@@ -17,7 +17,7 @@ export default {
         },
         {
           question: "Where can I get past problems of the event?",
-          answer: "CTF'18: https://www.hackerrank.com/codefest-ctf-18/"
+          answer: "CTF’19: https://www.hackerrank.com/codefest19-ctf/<br/> CTF'18: https://www.hackerrank.com/codefest-ctf-18/"
         },
         {
           question: "Will we get a participation certificate?",
@@ -40,10 +40,10 @@ export default {
       link: "/events/enigma",
       url: "https://www.hackerearth.com/enigma-codefest19",
       icon: "/assets/events/enigma.png",
-      description: 'Listening to the data is important, but so is experience and intuition. After all, what is intuition at its best but large amounts of data of all kinds filtered through a human brain rather than a math model? Thus, Codefest in association with Eligible presents you to its Machine Learning Event "Enigma". As Big Data is the hottest trend in the tech industry at the moment, machine learning is incredibly powerful to make predictions or calculate suggestions based on large amounts of data. It has its place everywhere now, be it driverless cars, biometric systems, recommendation systems and countless other fields.In the event, the data analysts need to design a model which learns by itself and provide efficient solutions to real life problems.',
+      description: 'Listening to the data is important, but so is experience and intuition. After all, what is intuition at its best but large amounts of data of all kinds filtered through a human brain rather than a math model? As Big Data is the hottest trend in the tech industry at the moment, machine learning is incredibly powerful to make predictions or calculate suggestions based on large amounts of data. It has its place everywhere now, be it driverless cars, biometric systems, recommendation systems and countless other fields.In the event, the data analysts need to design a model which learns by itself and provide efficient solutions to real life problems.',
       coordinators: [
-        "Anurag Tyagi - anurag.tyagi.cse16@itbhu.ac.in",
-        "Suyash Shukla - suyash.shukla.cse16@itbhu.ac.in"
+        "Samyak -  samtak.jain.cse17@itbhu.ac.in",
+        "Prateek - prateek.saini.cse17@itbhu.ac.in"
       ],
       faq: [{
           question: "Will the event be online?",
@@ -51,7 +51,7 @@ export default {
         },
         {
           question: "Where can I get past problems of the event?",
-          answer: "Enigma'18: https://datahack.analyticsvidhya.com/contest/enigma-codefest-machine-learning/<br/> Enigma'17: https://datahack.analyticsvidhya.com/contest/codefest-enigma/"
+          answer: "Enigma’19:https://www.hackerearth.com/enigma-codefest19/<br/> Enigma'18: https://datahack.analyticsvidhya.com/contest/enigma-codefest-machine-learning/<br/> Enigma'17: https://datahack.analyticsvidhya.com/contest/codefest-enigma/"
         },
         {
           question: "Will we get a participation certificate?",
@@ -74,7 +74,7 @@ export default {
       link: "/events/linguipedia",
       url: "https://www.hackerearth.com/linguipedia-codefest19/",
       icon: "/assets/events/linguipedia.png",
-      description: "In the modern age of information when the internet is cornucopia of conversation among humans and accumulated data from these communications is voluminous, understanding the nature of language has been of such paramount importance. Join the Codefest'19 Team in untangling the mystery of human expression by becoming a part of Linguipedia. Solve challenging problems in the field of natural language processing and text analytics, machine translations. sentiment analysis and many more.",
+      description: "In the modern age of information when the internet is cornucopia of conversation among humans and accumulated data from these communications is voluminous, understanding the nature of language has been of such paramount importance. Join the Codefest'20 Team in untangling the mystery of human expression by becoming a part of Linguipedia. Solve challenging problems in the field of natural language processing and text analytics, machine translations. sentiment analysis and many more.",
       coordinators: [
         "Abhinav Gupta - abhinav.gupta.cse16@itbhu.ac.in",
         "Avi Chawla - avi.chawla.cse16@itbhu.ac.in"
@@ -85,7 +85,7 @@ export default {
         },
         {
           question: "Where can I get past problems of the event?",
-          answer: "Linguipedia'18: https://datahack.analyticsvidhya.com/contest/linguipedia-codefest-natural-language-processing/<br/> Linguipedia'17: https://datahack.analyticsvidhya.com/contest/linguipedia-codefest-natural-language-processing/"
+          answer: "Linguipedia’19: https://www.hackerearth.com/linguipedia-codefest19/<br/> Linguipedia'18: https://datahack.analyticsvidhya.com/contest/linguipedia-codefest-natural-language-processing/<br/> Linguipedia'17: https://datahack.analyticsvidhya.com/contest/linguipedia-codefest-natural-language-processing/"
         },
         {
           question: "Will we get a participation certificate?",
@@ -119,7 +119,7 @@ export default {
         },
         {
           question: "Where can I get past problems of the event?",
-          answer: "Mathmania'18: https://www.topcoder.com/blog/topcoder-and-codefest-iit-bhu-are-happy-to-announce-mathmania/<br/> Mathmania'17: https://www.hackerrank.com/contests/mathmania-codefest17/challenges"
+          answer: "Mathmania’19: https://www.hackerrank.com/mathmania-codefest19/<br/> Mathmania'18: https://www.topcoder.com/blog/topcoder-and-codefest-iit-bhu-are-happy-to-announce-mathmania/<br/> Mathmania'17: https://www.hackerrank.com/contests/mathmania-codefest17/challenges"
         },
         {
           question: "Will we get a participation certificate?",
@@ -157,7 +157,7 @@ export default {
         },
         {
           question: "Where can I get past problems of the event?",
-          answer: "Manthan'18: https://codeforces.com/contest/1037/<br/> Manthan'17: https://codeforces.com/contest/855"
+          answer: "Manthan'20: https://codeforces.com/contest/1208/<br/> Manthan'18: https://codeforces.com/contest/1037/<br/> Manthan'17: https://codeforces.com/contest/855"
         },
         {
           question: "Will we get a participation certificate?",
@@ -191,7 +191,7 @@ export default {
         },
         {
           question: "Where can I get past problems of the event?",
-          answer: "Perplexed'18: https://www.hackerrank.com/perplexed-codefest18-1/<br/> Perplexed'17: https://www.hackerrank.com/perplexed-codefest17/"
+          answer: "Perplexed’19: https://www.hackerrank.com/perplexed-codefest19/<br/> Perplexed'18: https://www.hackerrank.com/perplexed-codefest18-1/<br/> Perplexed'17: https://www.hackerrank.com/perplexed-codefest17/"
         },
         {
           question: "Will we get a participation certificate?",
@@ -214,7 +214,7 @@ export default {
       link: "/events/vista",
       url: "https://www.hackerearth.com/vista-codefest19",
       icon: "/assets/events/vista.png",
-      description: "The soaring vision perception over the years with the accelerating computation ability has made it possible to fabricate challenges tasks like autonomous vehicles. With limitless data to learn from and various applications to apply to, the need to make machines understand and react similar to how we perceive has become predominant in reaching complete Artificial Intelligence with this. With this aim in sight, and to give you a glimpse of the mesmerizing world of Computer Vision, Codefest'19 brings to you Vista. Join us and try your hands on challenging problems involving object detection, image segmentation, object classification, motion tracking and many more.",
+      description: "The soaring vision perception over the years with the accelerating computation ability has made it possible to fabricate challenges tasks like autonomous vehicles. With limitless data to learn from and various applications to apply to, the need to make machines understand and react similar to how we perceive has become predominant in reaching complete Artificial Intelligence with this. With this aim in sight, and to give you a glimpse of the mesmerizing world of Computer Vision, Codefest'20 brings to you Vista. Join us and try your hands on challenging problems involving object detection, image segmentation, object classification, motion tracking and many more.",
       coordinators: [
         "Keshav Kumar - keshav.kumar.cse16@itbhu.ac.in",
         "Suyash Shukla - suyash.shukla.cse16@itbhu.ac.in"
@@ -225,7 +225,7 @@ export default {
         },
         {
           question: "Where can I get past problems of the event?",
-          answer: "Vista'18: https://datahack.analyticsvidhya.com/contest/vista-codefest-computer-vision/"
+          answer: "Vista’19: https://www.hackerearth.com/vista-codefest19/<br/> Vista'18: https://datahack.analyticsvidhya.com/contest/vista-codefest-computer-vision/"
         },
         {
           question: "Will we get a participation certificate?",
@@ -241,39 +241,5 @@ export default {
         }
       ]
     },
-    {
-      name: "ideathon",
-      title: "Ideathon",
-      summary: "Where Idea makes Excellence.",
-      link: "/events/ideathon",
-      url: "https://www.hackerrank.com/codefest-ideathon",
-      icon: "/assets/events/ideathon.png",
-      description: "Ideathon, Codefest'19 invites all the Tech Geeks to show off their skills on a global platform. For the first time in History, Codefest provides students with an opportunity to tackle an Industry-Based Engineering Problem in a totally real world scenario that comes from the well known firm, Cisco. Renowned across the world as a leader in IT and networking industries, they assist companies and provide their expertise to transform how people connect, communicate and collaborate. The problem aims to engage engineers, hackers, beginners and experienced alike in creative exploration of a real world problem faced by experts of Cisco.This contest will let you learn and understand the importance of various roles and ramifications in the field of Data Analysis.Looking forward to your participation in this Grand Event of Codefest'19 exclusively brought to you by Cisco!",
-      coordinators: [
-        "Avi Chawla - avi.chawla.cse16@itbhu.ac.in",
-        "Utkarsh Tripathi - utkarsh.tripathi.cse16@itbhu.ac.in"
-      ],
-      faq: [{
-          question: "Will the event be online?",
-          answer: "Yes, the event will be completely online on HackerRank."
-        },
-        {
-          question: "Where can I get past problems of the event?",
-          answer: "Ideathon : https://hackerrank.com/codefest-ideathon"
-        },
-        {
-          question: "Will we get a participation certificate?",
-          answer: "Yes, everyone will get a participation certificate."
-        },
-        {
-          question: "How to register for the event?",
-          answer: "You can register by clicking on the register button or going to the events section and click on the Create Team button."
-        },
-        {
-          question: "What is the team size?",
-          answer: "Maximum of 4 members can participate in this event. To add the other members create team and share your team unique number with your friends."
-        }
-      ]
-    }
   ]
 };

@@ -39,16 +39,19 @@
     </div>
     <div
       :class="$style.note"
-    >Note: People not registered for this event on CodeFest are not eligible to recieve any prizes.</div>
+    >Note: People not registered for this event on CodeFest are not eligible to recieve any prizes.
+    <h2>Registrations will be live soon.</h2>
+    </div>
 
-    <div :class="$style.link">
+
+    <!-- <div :class="$style.link">
       <router-link to="/dashboard/events/" v-if="!event.url" :class="$style.linkText">
         <h4>Register</h4>
       </router-link>
       <a v-else :href="event.url" target="_blank"  :class="$style.linkText">
         <h4>Problem Statement</h4>
       </a>
-    </div>
+    </div> -->
   </div>
 </template>
 

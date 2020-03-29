@@ -13,9 +13,6 @@
         <span :id="$style.loc">
           <i class="fas fa-map-marked-alt"></i> IIT (BHU), Varanasi
         </span>
-        <span :id="$style.date">
-          <i class="far fa-calendar-alt"></i> 23 - 25 August, 2019
-        </span>
       </span>
       <DevfolioButton/>
       <!-- <span :class="$style.register">Registrations will be open soon.</span> -->
@@ -43,7 +40,7 @@ export default {
   mounted() {
     this.animTyping = new TypingAnim(
       this.$refs.tagline,
-      "Imagine. Create. Iterate."
+      "Init. Develop. Deploy."
     );
 
     window.setInterval(() => {
@@ -128,8 +125,8 @@ export default {
       }
 
       #loc::after {
-        content: '|';
-        margin-left: 2px;
+        // content: '|';
+        // margin-left: 2px;
 
         ~/.xs ^[1..-1] {
           content: '';

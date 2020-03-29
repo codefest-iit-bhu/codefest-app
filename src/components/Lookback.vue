@@ -15,6 +15,11 @@
 import GridLayout from "./layouts/GridLayout";
 
 export default {
+  props: {
+    stats: {
+      type: Object
+    }
+  },
   components: {
     GridLayout
   },
@@ -29,27 +34,27 @@ export default {
       stats: [
         {
           name: "Prize Money",
-          value: "500,000",
+          value: "650,000",
           image: "assets/Lookback/lb_prize.svg"
         },
         {
           name: "Countries",
-          value: "98",
+          value: "104",
           image: "assets/Lookback/lb_countries.svg"
         },
         {
           name: "Participants",
-          value: "24,654",
+          value: "29,800",
           image: "assets/Lookback/lb_participant.svg"
         },
         {
           name: "Unique Visitors",
-          value: "328,902",
+          value: "664,300",
           image: "assets/Lookback/lb_visitor.svg"
         },
         {
           name: "Registrations",
-          value: "16,302",
+          value: "23,000",
           image: "assets/Lookback/lb_registration.svg"
         }
       ]

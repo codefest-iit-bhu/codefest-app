@@ -22,7 +22,7 @@
         <img src="@assets/haxplore/logo-text.svg">
       </li>
       <router-link to="/" slot="notch" v-if="!isMinimal">
-        <img src="@assets/cf19-white-logo.svg">
+        <img src="@assets/white-cf20-logo.svg">
       </router-link>
       <router-link to="/haxplore" slot="notch" v-else>
         <img src="@assets/haxplore/logo-text.svg" @click="$emit('scrollTop')">
@@ -35,7 +35,7 @@
       <mq-layout :mq="['xs', 'sm']">
         <Slide :isOpen="isSidebarOpen" @closeSideBar="onCloseSideBar" :width="sideBarWidth">
           <router-link to="/">
-            <img src="@assets/cf19-white-logo.svg" :class="$style.sidebarLogo">
+            <img src="@assets/white-cf20-logo.svg" :class="$style.sidebarLogo">
           </router-link>
           <!-- <ul v-scroll-spy-active="{class: $style.active}" v-scroll-spy-link>
             <slot></slot>
@@ -53,15 +53,15 @@
                 <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
               </router-link>
             </li>
-            <li :class="$style.link">
+            <!-- <li :class="$style.link">
               <router-link to="/ca">CA</router-link>
-            </li>
-            <li :class="$style.link">
+            </li> -->
+            <!-- <li :class="$style.link">
               <router-link to="/team">Team</router-link>
-            </li>
-            <li :class="$style.link">
+            </li> -->
+            <!-- <li :class="$style.link">
               <router-link to="/referral">Referrals</router-link>
-            </li>
+            </li> -->
             <li :class="$style.link" v-show="showDashboardActions">
               <router-link to="/dashboard">
                 Dashboard
