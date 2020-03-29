@@ -59,10 +59,10 @@
         v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
         v-show="!showDashboardActions"
       >
-        <router-link to="/login">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScinI5YpU61F8Re4wFooBgH18Q8iE1_Du-nW1IIExruqLwRpw/viewform?usp=sf_link">
           <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
-          Login
-        </router-link>
+          Sponsor Us
+        </a>
       </li>
       <li :id="$style.toggleSidebar" slot="left" v-if="['xs', 'sm'].includes(this.$mq)">
         <a class="bm-toggle" @click="openSidebar">

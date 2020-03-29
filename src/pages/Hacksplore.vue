@@ -25,7 +25,7 @@
           <Testimonials :testimonials="testimonials" />
         </SectionLayout>
         <!-- <Timeline/> -->
-        <Prizes/>
+        <!-- <Prizes/> -->
         <!-- <HaxploreSponsors/> -->
         <SectionLayout title="Sponsor Us">
           <div :class="$style.link">

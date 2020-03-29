@@ -42,8 +42,8 @@ export default {
       icon: "/assets/events/enigma.png",
       description: 'Listening to the data is important, but so is experience and intuition. After all, what is intuition at its best but large amounts of data of all kinds filtered through a human brain rather than a math model? As Big Data is the hottest trend in the tech industry at the moment, machine learning is incredibly powerful to make predictions or calculate suggestions based on large amounts of data. It has its place everywhere now, be it driverless cars, biometric systems, recommendation systems and countless other fields.In the event, the data analysts need to design a model which learns by itself and provide efficient solutions to real life problems.',
       coordinators: [
-        "Samyak",
-        "Prateek"
+        "Samyak -  samtak.jain.cse17@itbhu.ac.in",
+        "Prateek - prateek.saini.cse17@itbhu.ac.in"
       ],
       faq: [{
           question: "Will the event be online?",
