@@ -12,7 +12,15 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
   },
   "dependencies": {
-    "nuxt": "^2.0.0"
+    "@nuxtjs/device": "^1.2.7",
+    "anchorme": "^1.1.2",
+    "firebase": "^7.13.1",
+    "frisbee": "^3.1.2",
+    "nuxt": "^2.0.0",
+    "nuxt-mq": "^2.0.1",
+    "v-runtime-template": "^1.10.0",
+    "vue-youtube": "^1.4.0",
+    "vue2-scrollspy": "^2.3.1"
   },
   "devDependencies": {
     "@nuxt/typescript-build": "^0.6.0",
@@ -20,9 +28,11 @@
     "@nuxtjs/eslint-module": "^1.0.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^6.1.0",
-    "eslint-plugin-nuxt": ">=0.4.2",
     "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-nuxt": ">=0.4.2",
     "eslint-plugin-prettier": "^3.1.2",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "stylus": "^0.54.7",
+    "stylus-loader": "^3.0.2"
   }
 }

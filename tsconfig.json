@@ -17,10 +17,19 @@
     "baseUrl": ".",
     "paths": {
       "~/*": [
-        "./*"
+        "./src/*"
       ],
       "@/*": [
-        "./*"
+        "./src/*"
+      ],
+      "@styles/*": [
+        "./src/assets/styles/*"
+      ],
+      "@js/*": [
+        "./src/assets/js/*"
+      ],
+      "@components/*": [
+        "./src/components/*"
       ]
     },
     "types": [

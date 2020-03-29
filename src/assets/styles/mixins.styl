@@ -1,0 +1,33 @@
+stick(position = 'top') {
+  position: fixed;
+  {position}: 0;
+}
+
+stickWithSpace(top = false , right = false, bottom = false, left = false) {
+  position fixed
+  if top {
+    top: top
+  }
+  if right {
+    right: right
+  }
+  if bottom {
+    bottom: bottom
+  }
+  if left {
+    left: left
+  }
+}
+
+moveAnimation(side = 'bottom', startDistance = 0, targetDistance = 0) {
+  {side}: startDistance
+  transition: all 350ms;
+
+  &.shown {
+    {side}: targetDistance
+  }
+}
+
+$font-size(value) {
+  font-size: unit((value / $base-font), 'rem')
+}
