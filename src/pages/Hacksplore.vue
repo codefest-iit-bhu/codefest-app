@@ -25,11 +25,11 @@
           <Testimonials :testimonials="testimonials" />
         </SectionLayout>
         <!-- <Timeline/> -->
-        <Prizes/>
+        <!-- <Prizes/> -->
         <!-- <HaxploreSponsors/> -->
         <SectionLayout title="Sponsor Us">
           <div :class="$style.link">
-            <a href="https://drive.google.com/open?id=1ABFiTwX8Eb7w--0DOqpzJOPqjiE-WQ9D" :class="$style.linkText" target="_blank">
+            <a href="https://drive.google.com/file/d/15BYqDZwShgFFqkgBPKqr0j-AcFF-_Umm" :class="$style.linkText" target="_blank">
               <h4> Sponsor Brochure </h4>
             </a>
           </div>

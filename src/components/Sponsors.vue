@@ -32,8 +32,8 @@
       </div>
       <div :class="$style.txt"></div>
       <div :class="$style.link">
-        <a href="https://goo.gl/forms/RyjmY7i002oUHivu2" :class="$style.linkText" target="_blank">
-          <h4>Sponsor Us</h4>
+        <a href="https://drive.google.com/open?id=15BYqDZwShgFFqkgBPKqr0j-AcFF-_Umm" :class="$style.linkText" target="_blank">
+          <h4>Sponsor Brochure</h4>
         </a>
       </div>
     </div>
@@ -55,7 +55,7 @@ export default {
   data() {
     return {
       stats: [
-        {
+         {
           image: "assets/Sponsors/cisco.png",
           text: "Associate Sponsor",
           link: "https://www.cisco.com/"
