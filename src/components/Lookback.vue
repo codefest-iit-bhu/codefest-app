@@ -105,7 +105,7 @@ export default {
       margin-left: auto;
       margin-right: auto;
       text-align: center;
-      color: $vermilion;
+      color: var(--text-color);
       line-height: 28px;
       font-size: 25px;
     }
