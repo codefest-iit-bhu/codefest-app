@@ -72,7 +72,7 @@ $appbar-height = 50px;
 $notch-height = 100px;
 $notch-width = 320px;
 $notch-color = $mine-shaft;
-$appbar-glow-color = $vermilion;
+$appbar-glow-color = $waterloo;
 
 .appbar {
   height: $notch-height;
@@ -116,7 +116,8 @@ $appbar-glow-color = $vermilion;
   .notch {
     position: relative;
     top: -($appbar-height);
-    clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+    // clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+    border-radius: 0 0 20px 20px;
     margin: 0 auto;
     width: $notch-width;
     height: 100%;
@@ -128,7 +129,8 @@ $appbar-glow-color = $vermilion;
       bottom: 1px;
       left: 2px;
       padding: 20px 20px 0 25px;
-      clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+      // clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+      border-radius: 0 0 20px 20px;
       background: $notch-color;
       height: 100%;
       width: $notch-width - 2 * @left;

@@ -192,14 +192,6 @@ export default {
       border-radius: 10px;
     }
 
-    .darkTxt {
-      color: $white;
-    }
-
-    .lightTxt {
-      color: $black;
-    }
-
     a {
       color: var(--text-color);
       cursor: pointer;

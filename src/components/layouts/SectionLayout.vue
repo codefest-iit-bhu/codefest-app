@@ -39,12 +39,12 @@ div.sectionContainer {
   margin: 36px 0;
 
   h1.sectionTitle {
-    font-family: 'Aldo the Apache';
-    padding: 12px 0;
+    font-family: 'Baloo Bhaina 2';
     color: var(--heading-color);
     letter-spacing: 2px;
     font-size: 64px;
     margin-top: 144px;
+    margin-bottom: 0px;
 
     &.lg, &.xl, &.xxl {
       padding-top: 36px;
@@ -83,12 +83,14 @@ div.sectionContainer {
 
     ~/:nth-child(even) hr.sectionLine {
       margin-right: 30%;
-      background-image: linear-gradient(to left, $black, $vermilion);
+      border-radius: 10px;
+      background-image: linear-gradient(to left, var(--background-color), $vermilion);
     }
 
     ~/:nth-child(odd) hr.sectionLine {
       margin-left: 30%;
-      background-image: linear-gradient(to right, $black, $vermilion);
+      border-radius: 10px;
+      background-image: linear-gradient(to right, var(--background-color), $vermilion);
     }
   }
 }

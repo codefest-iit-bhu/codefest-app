@@ -79,13 +79,14 @@ export default {
     }
 
     .clip {
-      border-radius: 10px;
+      border-radius: 30px;
       box-shadow: var(--box-shadow);
       background: white;
       width: 160px;
       height: 160px;
       margin-left: auto;
       margin-right: auto;
+      margin-bottom: 5px;
       padding: 10px;
       background-color: $vermilion;
     }
