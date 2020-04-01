@@ -2,7 +2,7 @@
   <div :class="[$style.workContainer, $style[$mq]]">
     <ResponsiveTwoColumnLayout :isRightAbove="true">
       <div :class="$style.workImage" slot="right">
-        <img src="@assets/ca/perks.svg">
+        <img src="#">
       </div>
       <div :class="$style.workHead" slot="left">
         <div :class="$style.taskList">

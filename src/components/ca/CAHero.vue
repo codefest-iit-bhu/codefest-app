@@ -2,7 +2,7 @@
   <div :class="[$style.heroContainer, $style[$mq]]">
     <ResponsiveTwoColumnLayout :isRightAbove="true">
       <div :class="$style.caHead" slot="left">
-        <img src="@assets/hero-cf20-logo.svg">
+        <img src="#">
         <span :class="$style.tagline">Imagine. Create. Iterate.</span>
         <span :class="$style.venue">
           <span :id="$style.loc">
@@ -28,7 +28,7 @@
         </div>
       </div>
       <div :class="$style.caImage" slot="right">
-        <img src="@assets/ca/hero.svg">
+        <img src="#">
       </div>
     </ResponsiveTwoColumnLayout>
   </div>

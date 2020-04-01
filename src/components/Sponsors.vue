@@ -97,8 +97,9 @@ $box-width = 300px;
     width: 290px;
     height: auto;
     padding: 24px;
-    border-radius: 50px;
-    border: 2px solid $vermilion;
+    box-shadow: var(--box-shadow);
+    border-radius: 50px 0px 50px 0px;
+    border: 5px solid $vermilion;
     text-align: center;
     cursor: pointer;
 
@@ -108,7 +109,7 @@ $box-width = 300px;
       text-decoration: none;
 
       h4 {
-        font-family: 'Viga';
+        font-family: 'Roboto Slab';
         font-size: 30px;
         margin: 0;
       }

@@ -232,7 +232,7 @@ export default {
 
     a {
       text-decoration: none;
-      color: $white;
+      color: $waterloo;
       transition: 0.5s;
     }
   }

@@ -2,7 +2,7 @@
   <div :class="[$style.aboutContainer, $style[$mq]]">
     <ResponsiveTwoColumnLayout :isRightAbove="true">
       <div :class="$style.aboutImage" slot="right">
-        <img src="@assets/ca/about.svg">
+        <img src="#">
       </div>
       <div :class="$style.aboutHead" slot="left">
         <p>
