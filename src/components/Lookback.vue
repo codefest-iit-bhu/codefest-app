@@ -2,7 +2,7 @@
   <div :class="[$style.lookback, $style[$mq]]">
     <GridLayout :itemWidth="computedWidth">
       <div :class="$style.stat" v-for="(stat, i) in this.stats" :key="i" :slot="`item${i}`">
-        <div :class="[$style.clip, clipBoxShadowStyle]">
+        <div :class="$style.clip">
           <img :src="stat.image" :class="$style.img">
         </div>
         <div :class="$style.name">{{ stat.name }}</div>
@@ -27,12 +27,6 @@ export default {
     computedWidth() {
       if (this.$mq == "lg") return "160px";
       return "220px";
-    },
-    clipBoxShadowStyle: function() {
-      if (this.$store.getters.currentTheme === "dark")
-        return this.$style.darkBoxShadow;
-      else
-        return this.$style.lightBoxShadow;
     }
   },
   data() {
@@ -84,16 +78,9 @@ export default {
       }
     }
 
-    .darkBoxShadow {
-      box-shadow: 18px 18px 20px $black, -12px -12px 20px $abbey;
-    }
-
-    .lightBoxShadow {
-      box-shadow: 18px 18px 20px $botticelli, -12px -12px 20px $white;
-    }
-
     .clip {
       border-radius: 10px;
+      box-shadow: var(--box-shadow);
       background: white;
       width: 160px;
       height: 160px;

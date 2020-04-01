@@ -1,6 +1,6 @@
 <template>
   <div :class="[$style.appbar, $style[$mq], {[$style.animate]: doAnimate}]" ref="appbar">
-    <div :class="[$style.nav, backgroundStyle]">
+    <div :class="$style.nav">
       <ul :class="$style.lNav">
         <slot name="left"></slot>
       </ul>
@@ -22,14 +22,6 @@ export default {
     doAnimate: {
       type: Boolean,
       default: false
-    }
-  },
-  computed: {
-    backgroundStyle() {
-      if (this.$store.getters.currentTheme === 'dark')
-        return this.$style.darkBg;
-      else
-        return this.$style.lightBg;
     }
   },
   methods: {
@@ -93,15 +85,8 @@ $appbar-glow-color = $vermilion;
     moveAnimation(side: 'top', startDistance: (-($notch-height)), targetDistance: 0px);
   }
 
-  .darkBg {
-    background: $mine-shaft;
-  }
-
-  .lightBg {
-    background: $mystic;
-  }
-
   .nav {
+    background: var(--background-color);
     height: $appbar-height;
     box-shadow: $appbar-glow-color 0 1px 10px 3px;
     font-family: 'Roboto Slab';

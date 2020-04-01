@@ -1,2 +1,16 @@
 @require './colors';
 @require './theme';
+
+body {
+  --background-color: $mystic;
+  --text-color: $black;
+  --box-shadow: 18px 18px 20px $botticelli, -12px -12px 20px $white;
+  --heading-color: $mine-shaft;
+}
+
+[data-theme="dark"] {
+  --background-color: $mine-shaft;
+  --text-color: $white;
+  --box-shadow: 18px 18px 20px $black, -12px -12px 20px $abbey;
+  --heading-color: $mystic;
+}

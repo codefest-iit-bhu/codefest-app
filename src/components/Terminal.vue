@@ -1,5 +1,5 @@
 <template>
-  <div :class="[$style.terminal, terminalStateStyle, terminalShownStyle, backgroundStyle]" ref="terminal">
+  <div :class="[$style.terminal, terminalStateStyle, terminalShownStyle]" ref="terminal">
     <button :class="$style.togglebtn" @click="toggleShowTerminal">
       <div>
         <span class="absolute-center">
@@ -79,12 +79,6 @@ export default {
     },
     chevronRotateStyle() {
       return { transform: `rotate(${this.angle}deg)` };
-    },
-    backgroundStyle() {
-      if (this.$store.getters.currentTheme === 'dark')
-        return this.$style.darkBg;
-      else
-        return this.$style.lightBg;
     }
   },
   mounted() {
@@ -234,15 +228,8 @@ $collapsed-height = 90px;
   }
 }
 
-.darkBg {
-  background: $mine-shaft;
-}
-
-.lightBg {
-  background: $mystic;
-}
-
 .terminal {
+  background: $mine-shaft;
   width: 100%;
   z-index: 25;
   box-shadow: $vermilion 0 -1px 10px 3px;
