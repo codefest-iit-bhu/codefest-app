@@ -2,13 +2,13 @@
   <div :class="[$style.wrapper, $style[$mq]]">
     <AppbarLayout v-bind="this.$attrs">
       <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
-        <router-link to="/haxplore">
+        <router-link :class="textColorStyle" to="/haxplore">
           HaXplore
           <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
         </router-link>
       </li>
       <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
-        <router-link to="/events">
+        <router-link :class="textColorStyle" to="/events">
           Events
           <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
         </router-link>
@@ -37,7 +37,7 @@
         v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
         v-show="showDashboardActions"
       >
-        <router-link to="/dashboard">
+        <router-link :class="textColorStyle" to="/dashboard">
           <i class="fas fa-id-badge" title="Dashboard"></i>
           <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
         </router-link>
@@ -48,7 +48,7 @@
         v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
         v-show="showDashboardActions"
       >
-        <a @click="authLogout">
+        <a @click="authLogout" :class="textColorStyle">
           <i class="fas fa-power-off" title="Logout"></i>
           <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
         </a>
@@ -59,7 +59,7 @@
         v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
         v-show="!showDashboardActions"
       >
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScinI5YpU61F8Re4wFooBgH18Q8iE1_Du-nW1IIExruqLwRpw/viewform?usp=sf_link">
+        <a :class="textColorStyle" href="https://docs.google.com/forms/d/e/1FAIpQLScinI5YpU61F8Re4wFooBgH18Q8iE1_Du-nW1IIExruqLwRpw/viewform?usp=sf_link">
           <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
           Sponsor Us
         </a>
@@ -149,6 +149,12 @@ export default {
     },
     showDashboardActions() {
       return this.$store.getters.isLoggedIn;
+    },
+    textColorStyle() {
+      if (this.$store.getters.currentTheme === 'dark')
+        return this.$style.darkTxt;
+      else
+        return this.$style.lightTxt;
     }
   },
   methods: {
@@ -192,10 +198,17 @@ export default {
       border-radius: 10px;
     }
 
+    .darkTxt {
+      color: $white;
+    }
+
+    .lightTxt {
+      color: $black;
+    }
+
     a {
       cursor: pointer;
       height: inherit;
-      color: $white;
       font-weight: 600;
       font-size: 20px;
       letter-spacing: 0.8px;
@@ -217,7 +230,7 @@ export default {
     }
 
     a:hover {
-      color: $vermilion;
+      color: $waterloo;
     }
 
     a:hover span {

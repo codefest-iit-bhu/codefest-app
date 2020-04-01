@@ -15,7 +15,7 @@
         for fresh enthusiasts, as well as the experienced ones, to code together and compete for ultimate glory.
       </p>
     </div>
-    <div :class="$style.video" slot="right">
+    <div :class="[$style.video, videoBoxShadowStyle]" slot="right">
       <youtube :video-id="videoId" ref="youtube" @playing="playing"></youtube>
     </div>
   </ResponsiveTwoColumnLayout>
@@ -41,6 +41,12 @@ export default {
   computed: {
     player() {
       return this.$refs.youtube.player;
+    },
+    videoBoxShadowStyle: function() {
+      if (this.$store.getters.currentTheme === "dark")
+        return this.$style.darkBoxShadow;
+      else
+        return this.$style.lightBoxShadow;
     }
   }
 };
@@ -58,11 +64,21 @@ export default {
   }
 }
 
+.darkBoxShadow {
+  box-shadow: 18px 18px 20px $black, -12px -12px 20px $abbey;
+}
+
+.lightBoxShadow {
+  box-shadow: 18px 18px 20px $botticelli, -12px -12px 20px $white;
+}
+
 .video {
-  box-shadow: 0 0 10px $vermilion;
+  border-radius: 10px;
+  padding: 10px;
   width: 100%;
 
   & > iframe {
+    border-radius: 10px;
     width: 100%;
   }
 }

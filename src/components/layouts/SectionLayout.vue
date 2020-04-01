@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.sectionContainer">
-    <h1 :class="[$style.sectionTitle, $style[$mq], tooLong]">{{ title }}</h1>
+    <h1 :class="[$style.sectionTitle, $style[$mq], tooLong, textColorStyle]">{{ title }}</h1>
     <hr :class="$style.sectionLine">
     <div :style="contentStyle">
       <slot></slot>
@@ -26,6 +26,12 @@ export default {
       if (title.length > 10) {
         return this.$style.tooLong;
       }
+    },
+    textColorStyle() {
+      if (this.$store.getters.currentTheme === 'dark')
+        return this.$style.darkTxt;
+      else
+        return this.$style.lightTxt;
     }
   }
 };
@@ -37,6 +43,14 @@ export default {
 
 div.sectionContainer {
   margin: 36px 0;
+
+  .darkTxt {
+    color: $mystic;
+  }
+
+  .lightTxt {
+    color: $mine-shaft;
+  }
 
   h1.sectionTitle {
     font-family: 'Aldo the Apache';
