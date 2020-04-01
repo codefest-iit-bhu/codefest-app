@@ -203,7 +203,7 @@ export default {
 @require '~@styles/mixins';
 @require '~@styles/anims';
 
-$cli-text = $chartreuse;
+$cli-text = $vermilion;
 $expanded-height = 200px;
 $collapsed-height = 90px;
 
@@ -212,8 +212,8 @@ $collapsed-height = 90px;
   height: 30px;
   width: 30px;
   clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%);
-  background: $chartreuse;
-  color: $chartreuse;
+  background: $vermilion;
+  color: $vermilion;
   right: 5px;
   top: -30px;
   z-index: 26;
@@ -232,7 +232,7 @@ $collapsed-height = 90px;
   background: $black;
   width: 100%;
   z-index: 25;
-  box-shadow: $chartreuse 0 -1px 10px 3px;
+  box-shadow: $vermilion 0 -1px 10px 3px;
   stick('bottom');
   font: 400 18px 'Roboto Slab';
   color: $cli-text;

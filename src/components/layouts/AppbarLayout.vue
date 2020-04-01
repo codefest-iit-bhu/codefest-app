@@ -73,7 +73,7 @@ $notch-height = 100px;
 $notch-width = 320px;
 $appbar-color = $black;
 $notch-color = $mine-shaft;
-$appbar-glow-color = $chartreuse;
+$appbar-glow-color = $vermilion;
 
 .appbar {
   height: $notch-height;

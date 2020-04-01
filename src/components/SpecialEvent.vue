@@ -48,7 +48,7 @@ export default {
 
   .logoContainer {
     width: 20%;
-    border: 2px solid $chartreuse;
+    border: 2px solid $vermilion;
     min-width: 100px;
     border-radius: 100%;
     margin: 20px auto 40px;

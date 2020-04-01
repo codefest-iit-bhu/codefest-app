@@ -228,7 +228,7 @@ $cell-collapsed-size = 150px;
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
   width: var(--event-size);
   height: 100%;
-  background: $chartreuse;
+  background: $vermilion;
   border-radius: calc((var(--event-size) / 2));
 }
 

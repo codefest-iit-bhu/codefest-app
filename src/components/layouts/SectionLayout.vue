@@ -74,7 +74,7 @@ div.sectionContainer {
 
   hr.sectionLine {
     height: 4px;
-    background-color: $chartreuse;
+    background-color: $vermilion;
     display: block;
     width: 70%;
     border: none;
@@ -82,12 +82,12 @@ div.sectionContainer {
 
     ~/:nth-child(even) hr.sectionLine {
       margin-right: 30%;
-      background-image: linear-gradient(to left, $black, $chartreuse);
+      background-image: linear-gradient(to left, $black, $vermilion);
     }
 
     ~/:nth-child(odd) hr.sectionLine {
       margin-left: 30%;
-      background-image: linear-gradient(to right, $black, $chartreuse);
+      background-image: linear-gradient(to right, $black, $vermilion);
     }
   }
 }

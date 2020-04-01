@@ -111,7 +111,7 @@ $breadcrumb-hovered = $deep-fir;
 $breadcrumb-unselected = $limeade;
 $breadcrumb-arrow = $white;
 $breadcrumb-text = $white;
-$cli-text = $chartreuse;
+$cli-text = $vermilion;
 $output-link = $dodger-blue;
 
 .repl {

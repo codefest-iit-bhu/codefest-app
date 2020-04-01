@@ -217,7 +217,7 @@ export default {
     }
 
     a:hover {
-      color: $chartreuse;
+      color: $vermilion;
     }
 
     a:hover span {
@@ -287,14 +287,14 @@ export default {
           }
 
           &:hover {
-            color: $chartreuse;
+            color: $vermilion;
             background: rgba(63, 63, 65, 0.7);
           }
         }
 
         &.active, .subList li.active {
           a {
-            color: $chartreuse;
+            color: $vermilion;
             font-weight: bold;
 
             span {

@@ -86,7 +86,7 @@ export default {
       margin-left: auto;
       margin-right: auto;
       padding: 10px;
-      background-color: $chartreuse;
+      background-color: $vermilion;
     }
 
     .img {
@@ -103,7 +103,7 @@ export default {
       margin-left: auto;
       margin-right: auto;
       text-align: center;
-      color: $chartreuse;
+      color: $vermilion;
       line-height: 28px;
       font-size: 25px;
     }

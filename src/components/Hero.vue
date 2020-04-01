@@ -221,7 +221,7 @@ export default {
       display: inline-block;
 
       path {
-        fill: $chartreuse;
+        fill: $vermilion;
         animation: svg-transform 2.5s ease-in-out infinite alternate;
       }
 
@@ -291,13 +291,13 @@ export default {
     height: auto;
     padding: 10px 20px;
     border-radius: 50px;
-    border: 2px solid $chartreuse;
+    border: 2px solid $vermilion;
     text-align: center;
     cursor: pointer;
-    color: $chartreuse;
+    color: $vermilion;
     font-family: 'Roboto Slab';
     font-weight: 600;
-    box-shadow: inset 0px 0px 10px $chartreuse;
+    box-shadow: inset 0px 0px 10px $vermilion;
   }
 }
 </style>

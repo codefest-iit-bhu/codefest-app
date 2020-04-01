@@ -111,7 +111,7 @@ $tab-height = 30px;
 
     .active {
       .tabTitle {
-        background: $chartreuse;
+        background: $vermilion;
         color: $black;
         z-index: 25;
       }
@@ -128,7 +128,7 @@ $tab-height = 30px;
       top: $tab-height;
       border: 1px solid $limeade;
       border-radius: 0 0 10px 10px;
-      box-shadow: inset 0px -2px 15px $chartreuse;
+      box-shadow: inset 0px -2px 15px $vermilion;
       background: $cod-gray;
     }
 

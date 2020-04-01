@@ -98,12 +98,12 @@ $box-width = 300px;
     height: auto;
     padding: 24px;
     border-radius: 50px;
-    border: 2px solid $chartreuse;
+    border: 2px solid $vermilion;
     text-align: center;
     cursor: pointer;
 
     .linkText {
-      color: $chartreuse;
+      color: $vermilion;
       display: inline;
       text-decoration: none;
 
@@ -115,7 +115,7 @@ $box-width = 300px;
     }
 
     &:hover {
-      box-shadow: inset 0px 0px 10px $chartreuse;
+      box-shadow: inset 0px 0px 10px $vermilion;
     }
   }
 

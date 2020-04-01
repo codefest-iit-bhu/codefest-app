@@ -196,13 +196,13 @@ export default {
           }
 
           &:hover {
-            color: $chartreuse;
+            color: $vermilion;
           }
         }
 
         &.active {
           a {
-            color: $chartreuse;
+            color: $vermilion;
             font-weight: bold;
 
             span {
