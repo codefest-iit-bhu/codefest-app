@@ -72,7 +72,6 @@ $appbar-height = 50px;
 $notch-height = 100px;
 $notch-width = 320px;
 $notch-color = $mine-shaft;
-$appbar-glow-color = $waterloo;
 
 .appbar {
   height: $notch-height;
@@ -88,7 +87,7 @@ $appbar-glow-color = $waterloo;
   .nav {
     background: var(--background-color);
     height: $appbar-height;
-    box-shadow: $appbar-glow-color 0 1px 10px 3px;
+    box-shadow: var(--appbar-shadow-color) 0 1px 10px 3px;
     font-family: 'Roboto Slab';
     font-size: 25px;
 
@@ -122,7 +121,7 @@ $appbar-glow-color = $waterloo;
     width: $notch-width;
     height: 100%;
     z-index: 11;
-    background: $appbar-glow-color;
+    background: var(--appbar-shadow-color);
 
     .logo {
       position: absolute;

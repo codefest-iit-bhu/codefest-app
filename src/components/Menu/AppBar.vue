@@ -193,7 +193,7 @@ export default {
     }
 
     a {
-      color: var(--text-color);
+      color: $waterloo;
       cursor: pointer;
       height: inherit;
       font-weight: 600;
@@ -217,7 +217,7 @@ export default {
     }
 
     a:hover {
-      color: $waterloo;
+      color: var(--text-color);
     }
 
     a:hover span {
