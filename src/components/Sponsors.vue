@@ -31,8 +31,8 @@
         </GridLayout>
       </div>
       <div :class="$style.txt"></div>
-      <div :class="$style.link">
-        <a href="https://drive.google.com/open?id=15BYqDZwShgFFqkgBPKqr0j-AcFF-_Umm" :class="$style.linkText" target="_blank">
+      <div :class="$style.link" @mouseover="buttonHovered = true" @mouseleave="buttonHovered = false">
+        <a href="https://drive.google.com/open?id=15BYqDZwShgFFqkgBPKqr0j-AcFF-_Umm" :class="[$style.linkText, linkColorStyle]" target="_blank">
           <h4>Sponsor Brochure</h4>
         </a>
       </div>
@@ -69,8 +69,15 @@ export default {
       title: {
         image: "assets/Sponsors/aws.png",
         link: "https://aws.amazon.com/"
-      }
+      },
+      buttonHovered: false
     };
+  },
+  computed: {
+    linkColorStyle() {
+      if (this.buttonHovered)
+        return this.$style.hoverColor;
+    }
   }
 };
 </script>
@@ -99,12 +106,15 @@ $box-width = 300px;
     padding: 24px;
     box-shadow: var(--box-shadow);
     border-radius: 50px 0px 50px 0px;
-    border: 5px solid $vermilion;
     text-align: center;
     cursor: pointer;
 
+    .hoverColor {
+      color: var(--text-color) !important;
+    }
+
     .linkText {
-      color: $vermilion;
+      color: $waterloo;
       display: inline;
       text-decoration: none;
 
