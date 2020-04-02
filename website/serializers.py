@@ -88,7 +88,7 @@ class TeamCreationSerializer(serializers.Serializer):
         return_dict['user'] = user
         return return_dict
 
-    def  save(self):
+    def save(self):
         data = self.validated_data
         team_name=data['team_name']
         event = data['event']
@@ -199,6 +199,13 @@ class LeaderBoardSerializer(serializers.ModelSerializer):
         fields = ('name','institute_name','referral_count')
 
 class ResumeSerializer(serializers.ModelSerializer):
+
+    def validate_resume(self, resume):
+        if not resume.content_type == "application/pdf":
+            raise serializers.ValidationError("Resume must be uploaded in pdf format only")
+        if resume.size > 5000000:
+            raise serializers.ValidationError("The size of uploaded resume must be less than 5 MB")
+        return resume
 
     class Meta:
         model=Profile

@@ -84,7 +84,7 @@ class Profile(models.Model):
     country=models.CharField(max_length=4, default='IN')
     phone=models.CharField(max_length=15,blank=True, default="")
     gender=models.IntegerField(null=True,choices=GENDER_CHOICES)
-    resume=models.FileField(upload_to=get_file_path,null=True)
+    resume=models.FileField(upload_to=get_file_path,null=True,blank=True)
     is_profile_complete=models.BooleanField(default=False)
     referral_count = models.IntegerField(default =0)
     fcm_token = models.CharField(max_length=255, null=True, blank=True)

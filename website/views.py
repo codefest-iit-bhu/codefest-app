@@ -4,6 +4,8 @@ from rest_framework.response import Response
 from rest_framework import authentication,permissions,generics,mixins,status
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
+from rest_framework.decorators import parser_classes
+from rest_framework.parsers import MultiPartParser
 from .serializers import *
 from website.permissions import AllowCompleteAndVerified
 from .models import *
@@ -138,6 +140,7 @@ class LeaderBoardView(generics.ListAPIView):
     serializer_class = LeaderBoardSerializer
 
 
+@parser_classes([MultiPartParser])
 class ResumeView(generics.RetrieveUpdateAPIView):
     permission_classes = [permissions.IsAuthenticated]
     authentication_classes = [authentication.TokenAuthentication, authentication.SessionAuthentication]
