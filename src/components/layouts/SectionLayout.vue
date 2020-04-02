@@ -74,7 +74,7 @@ div.sectionContainer {
   }
 
   hr.sectionLine {
-    height: 4px;
+    height: 8px;
     background-color: $vermilion;
     display: block;
     width: 70%;

@@ -133,6 +133,7 @@ $notch-color = $mine-shaft;
       background: $notch-color;
       height: 100%;
       width: $notch-width - 2 * @left;
+      box-shadow: 0 4px 30px var(--appbar-shadow-color);
     }
 
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
