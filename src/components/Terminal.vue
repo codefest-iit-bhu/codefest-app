@@ -203,7 +203,7 @@ export default {
 @require '~@styles/mixins';
 @require '~@styles/anims';
 
-$cli-text = $vermilion;
+$cli-text = $white;
 $expanded-height = 200px;
 $collapsed-height = 90px;
 
@@ -232,7 +232,7 @@ $collapsed-height = 90px;
   background: $mine-shaft;
   width: 100%;
   z-index: 25;
-  box-shadow: $vermilion 0 -1px 10px 3px;
+  box-shadow: var(--appbar-shadow-color) 0 -1px 10px 3px;
   stick('bottom');
   font: 400 18px 'Roboto Slab';
   color: $cli-text;
