@@ -116,7 +116,7 @@ $box-width = 300px;
     }
 
     &:hover {
-      box-shadow: inset 0px 0px 10px $vermilion;
+      box-shadow: inset 8px 8px 20px $crown-of-thorns, var(--box-shadow);
     }
   }
 
