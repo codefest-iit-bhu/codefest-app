@@ -136,6 +136,7 @@ export default {
     .eventLogo {
       order: -2;
       background: $vermilion;
+      box-shadow: var(--box-shadow);
       border-radius: 50%;
       width: 108px;
       height: 108px;
@@ -154,7 +155,7 @@ export default {
 
     .eventTitle {
       order: -1;
-      color: $white;
+      color: var(--heading-color);
       font-family: 'Aldo the Apache';
       text-align: right;
       font-size: 50px;
@@ -168,8 +169,9 @@ export default {
   }
 
   hr {
-    height: 4px;
+    height: 8px;
     background-color: $vermilion;
+    border-radius: 10px;
     display: block;
     width: 70%;
     border: none;
@@ -179,13 +181,13 @@ export default {
     margin-top: 5px;
     margin-bottom: 72px;
     margin-left: 30%;
-    background-image: linear-gradient(to right, $black, $vermilion);
+    background-image: linear-gradient(to right, var(--background-color), $vermilion);
   }
 
   .leftHr {
     margin-top: 0;
     margin-right: 30%;
-    background-image: linear-gradient(to left, $black, $vermilion);
+    background-image: linear-gradient(to left, var(--text-color-inverted), $vermilion);
   }
 
   .eventDesc {

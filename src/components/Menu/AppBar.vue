@@ -273,7 +273,7 @@ export default {
 
         a, .subList a {
           font: 500 15px 'Roboto Slab';
-          color: $white;
+          color: var(--text-color);
           text-decoration: none;
           cursor: pointer;
           padding: 10px;
@@ -288,7 +288,6 @@ export default {
 
           &:hover {
             color: $vermilion;
-            background: rgba(63, 63, 65, 0.7);
           }
         }
 

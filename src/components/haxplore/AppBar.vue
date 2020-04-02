@@ -152,7 +152,7 @@ export default {
 
     a {
       text-decoration: none;
-      color: $white;
+      color: $waterloo;
       transition: 0.5s;
     }
   }
@@ -190,7 +190,7 @@ export default {
           cursor: pointer;
 
           span {
-            color: $white;
+            color: $waterloo;
             font-size: 14px;
             margin-right: 5px;
           }
@@ -206,7 +206,7 @@ export default {
             font-weight: bold;
 
             span {
-              color: $white;
+              color: $waterloo;
               animation: neon-text 1s ease-in-out infinite alternate;
             }
           }

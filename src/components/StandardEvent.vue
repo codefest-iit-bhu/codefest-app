@@ -216,7 +216,7 @@ $cell-collapsed-size = 150px;
 }
 
 .whiteTitle {
-  color: $white;
+  color: var(--text-color);
   font-family: 'Aldo the Apache';
 
   h3 {
@@ -225,7 +225,7 @@ $cell-collapsed-size = 150px;
 }
 
 .cell {
-  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--box-shadow);
   width: var(--event-size);
   height: 100%;
   background: $vermilion;

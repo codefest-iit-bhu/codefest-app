@@ -53,7 +53,7 @@ $btn-width = 250px;
   cursor: pointer;
 
   .linkText {
-    color: $white;
+    color: var(--text-color);
     display: inline;
     text-decoration: none;
 
