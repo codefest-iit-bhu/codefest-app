@@ -145,9 +145,20 @@ class HelpCommand extends BaseCommand {
   }
 }
 
+class ToggleThemeCommand extends BaseCommand {
+  static getCommandName(){
+    return "toggle";
+  }
+
+  run() {
+    this.envs.vue.$store.dispatch("toggle_theme");
+  }
+}
+
 export const CommandList = [
   ListDirCommand,
   ChangeDirCommand,
   ClearCommand,
-  HelpCommand
+  HelpCommand,
+  ToggleThemeCommand
 ];

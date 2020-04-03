@@ -97,7 +97,7 @@ $tab-height = 30px;
       .tabTitle {
         z-index: 20;
         cursor: pointer;
-        background: $limeade;
+        background: $crown-of-thorns;
         font: 12pt 'Roboto Slab';
         font-weight: 600;
         clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
@@ -111,7 +111,7 @@ $tab-height = 30px;
 
     .active {
       .tabTitle {
-        background: $chartreuse;
+        background: $vermilion;
         color: $black;
         z-index: 25;
       }
@@ -126,10 +126,10 @@ $tab-height = 30px;
       display: none;
       position: relative;
       top: $tab-height;
-      border: 1px solid $limeade;
+      border: 1px solid $vermilion;
       border-radius: 0 0 10px 10px;
-      box-shadow: inset 0px -2px 15px $chartreuse;
-      background: $cod-gray;
+      box-shadow: inset 0px -2px 15px $vermilion;
+      background: var(--text-color-inverted);
     }
 
     .active .tabContent {

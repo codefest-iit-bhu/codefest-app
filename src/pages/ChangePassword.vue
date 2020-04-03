@@ -134,15 +134,15 @@ export default {
 .form {
   margin: 20px;
   position: relative;
-  border: 1px solid $chartreuse;
+  border: 1px solid $vermilion;
   border-radius: 5px;
-  box-shadow: inset 0px 0px 15px $chartreuse;
+  box-shadow: inset 0px 0px 15px $vermilion;
   background: #111;
 
   .formNav {
     width: 100%;
     text-align: center;
-    border-top: 1px solid $chartreuse;
+    border-top: 1px solid $vermilion;
     padding: 20px;
     margin: 0;
 
@@ -150,7 +150,7 @@ export default {
       cursor: pointer;
 
       &.active {
-        color: $chartreuse;
+        color: $vermilion;
       }
     }
   }
@@ -163,7 +163,7 @@ export default {
     position: relative;
 
     h3 {
-      color: $chartreuse;
+      color: $vermilion;
       text-align: center;
       text-transform: uppercase;
     }
@@ -235,7 +235,7 @@ export default {
         text-align: center;
 
         &:hover {
-          color: $chartreuse;
+          color: $vermilion;
         }
       }
     }
@@ -248,7 +248,7 @@ export default {
       padding: 5px;
       margin-top: 20px;
       border: 0;
-      border-top: 1px solid $chartreuse;
+      border-top: 1px solid $vermilion;
 
       .socialButton {
         background-color: Transparent;

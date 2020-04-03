@@ -2,7 +2,7 @@
   <div :class="[$style.workContainer, $style[$mq]]">
     <ResponsiveTwoColumnLayout :isRightAbove="true">
       <div :class="$style.workImage" slot="right">
-        <img src="@assets/ca/perks.svg">
+        <img src="#">
       </div>
       <div :class="$style.workHead" slot="left">
         <div :class="$style.taskList">
@@ -101,11 +101,11 @@ export default {
           padding: 20px 0;
 
           span {
-            color: $chartreuse;
+            color: $vermilion;
           }
 
           .textStart {
-            color: $chartreuse;
+            color: $vermilion;
             font-weight: 600;
             letter-spacing: 1px;
             font-family: 'Roboto Slab';

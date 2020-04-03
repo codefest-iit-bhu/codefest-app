@@ -301,7 +301,7 @@ $btn-width = 240px;
   --event-team-button-width: $btn-width;
   width: var(--event-team-box-width);
   padding: 10px 10px 20px;
-  border: 1px solid $chartreuse;
+  border: 1px solid $vermilion;
 
   &.xs, &.sm {
     --event-team-box-width: $box-small-width;
@@ -340,8 +340,8 @@ $btn-width = 240px;
     top: 0;
     left: 0;
     background-color: black;
-    border: 1px solid $chartreuse;
-    color: $chartreuse;
+    border: 1px solid $vermilion;
+    color: $vermilion;
     font-family: 'Aldo the Apache';
     padding: 15px;
     font-size: 20px;
@@ -393,7 +393,7 @@ $btn-width = 240px;
     text-align: center;
 
     &:hover {
-      color: $chartreuse;
+      color: $vermilion;
     }
   }
 
@@ -421,7 +421,7 @@ $btn-width = 240px;
       text-align: center;
 
       .validTeam {
-        color: $chartreuse;
+        color: $vermilion;
       }
 
       .invalidTeam {
@@ -468,7 +468,7 @@ $btn-width = 240px;
   }
 
   .infoBox {
-    border: 2px solid $chartreuse;
+    border: 2px solid $vermilion;
     border-radius: 10px;
     height: 40px;
     text-align: center;
@@ -485,8 +485,8 @@ $btn-width = 240px;
       border-radius: inherit;
       border-bottom-right-radius: 0;
       border-top-right-radius: 0;
-      border-right: 1px solid $chartreuse;
-      background: alpha($chartreuse, 0.7);
+      border-right: 1px solid $vermilion;
+      background: alpha($vermilion, 0.7);
       height: 100%;
       padding: 5px;
     }

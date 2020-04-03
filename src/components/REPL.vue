@@ -107,11 +107,11 @@ export default {
 @require '~@styles/mixins';
 @require '~@styles/anims';
 
-$breadcrumb-hovered = $deep-fir;
-$breadcrumb-unselected = $limeade;
+$breadcrumb-hovered = $crown-of-thorns;
+$breadcrumb-unselected = $vermilion;
 $breadcrumb-arrow = $white;
 $breadcrumb-text = $white;
-$cli-text = $chartreuse;
+$cli-text = $white;
 $output-link = $dodger-blue;
 
 .repl {

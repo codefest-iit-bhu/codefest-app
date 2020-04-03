@@ -90,10 +90,10 @@ export default {
   width: 100%;
   text-align: left;
   clear: both;
-  border-bottom: 2px solid $chartreuse;
+  border-bottom: 2px solid $vermilion;
 
   a {
-    color: $chartreuse;
+    color: $vermilion;
   }
 
   .question {

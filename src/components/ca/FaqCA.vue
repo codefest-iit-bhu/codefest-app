@@ -2,7 +2,7 @@
   <div :class="[$style.faqContainer, $style[$mq]]">
     <ResponsiveTwoColumnLayout>
       <div :class="$style.faqHeader" slot="left">
-        <img src="@assets/ca/faq.svg">
+        <img src="#">
       </div>
       <FAQ :faqItems="faq" slot="right"/>
     </ResponsiveTwoColumnLayout>

@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.app" :style="`padding-bottom: ${this.appBottomPadding}`">
+  <div :class="$style.app" :data-theme="currentTheme" :style="`padding-bottom: ${this.appBottomPadding}`">
     <router-view/>
     <Terminal
       :propCurrent="current"
@@ -35,6 +35,9 @@ export default {
       if (this.shouldShowTerminal && this.isTerminalShown)
         return this.terminalExpanded ? "200px" : "90px";
       else return "0px";
+    },
+    currentTheme: function() {
+      return this.$store.getters.currentTheme;
     }
   },
   methods: {
@@ -70,11 +73,9 @@ export default {
 <style module lang="stylus">
 @require '~@styles/theme';
 
-body {
-  background: $black;
-}
-
 .app {
+  color: var(--text-color);
+  background: var(--background-color);
   height: 100%;
   width: 100%;
 }
