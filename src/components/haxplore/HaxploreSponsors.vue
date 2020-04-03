@@ -53,7 +53,7 @@ export default {
   },
   data() {
     return {
-     
+
     };
   }
 };
@@ -83,12 +83,12 @@ $box-width = 300px;
     height: auto;
     padding: 24px;
     border-radius: 50px;
-    border: 2px solid $chartreuse;
+    border: 2px solid $vermilion;
     text-align: center;
     cursor: pointer;
 
     .linkText {
-      color: $chartreuse;
+      color: $vermilion;
       display: inline;
       text-decoration: none;
 
@@ -100,7 +100,7 @@ $box-width = 300px;
     }
 
     &:hover {
-      box-shadow: inset 0px 0px 10px $chartreuse;
+      box-shadow: inset 0px 0px 10px $vermilion;
     }
   }
 
@@ -221,7 +221,7 @@ $box-width = 300px;
         margin: 150px auto;
         font-size: 60px;
         font-family: 'Roboto Slab';
-        font-weight: 600;        
+        font-weight: 600;
       }
 
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {

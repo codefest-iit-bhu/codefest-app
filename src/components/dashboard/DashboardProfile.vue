@@ -206,7 +206,7 @@ export default {
 
     .userinit {
       order: -2;
-      background: $chartreuse;
+      background: $vermilion;
       border-radius: 50%;
       width: 108px;
       height: 108px;
@@ -245,7 +245,7 @@ export default {
 
   hr {
     height: 4px;
-    background-color: $chartreuse;
+    background-color: $vermilion;
     display: block;
     width: 70%;
     border: none;
@@ -255,7 +255,7 @@ export default {
     margin-top: 5px;
     margin-bottom: 72px;
     margin-left: 30%;
-    background-image: linear-gradient(to right, $black, $chartreuse);
+    background-image: linear-gradient(to right, $black, $vermilion);
 
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
       margin-bottom: 16px;
@@ -272,13 +272,13 @@ export default {
     width: 220px;
     padding: 18px;
     border-radius: 50px;
-    border: 2px solid $chartreuse;
+    border: 2px solid $vermilion;
     text-align: center;
     cursor: pointer;
     display: inline-block;
 
     .linkText {
-      color: $chartreuse;
+      color: $vermilion;
       display: inline;
       text-decoration: none;
 
@@ -290,7 +290,7 @@ export default {
     }
 
     &:hover {
-      box-shadow: inset 0px 0px 10px $chartreuse;
+      box-shadow: inset 0px 0px 10px $vermilion;
     }
 
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
@@ -336,8 +336,8 @@ export default {
             border-radius: inherit;
             border-bottom-right-radius: 0;
             border-top-right-radius: 0;
-            border-right: 1px solid $chartreuse;
-            background: alpha($chartreuse, 0.7);
+            border-right: 1px solid $vermilion;
+            background: alpha($vermilion, 0.7);
           }
 
           .value {
@@ -360,7 +360,7 @@ export default {
           width: 200px;
           height: 200px;
           border-radius: 30px;
-          border: 3px solid $chartreuse;
+          border: 3px solid $vermilion;
           animation: timeline-border-green 1s ease-in-out infinite alternate;
           margin: auto;
 
@@ -378,7 +378,7 @@ export default {
             width: 100%;
             font-size: 60px;
             padding: 24px 0;
-            color: $chartreuse;
+            color: $vermilion;
           }
         }
       }
@@ -387,8 +387,8 @@ export default {
     .helptext {
       font-size: 14px;
       display: inline-block;
-      box-shadow: 0 0 20px $chartreuse inset;
-      border: 1px solid $chartreuse;
+      box-shadow: 0 0 20px $vermilion inset;
+      border: 1px solid $vermilion;
       border-radius: 10px;
       padding: 8px 16px;
       margin-top: 24px;
@@ -428,12 +428,12 @@ export default {
         order: 1;
         padding: 30px 0;
         font: 600 60px 'Roboto Slab';
-        color: $chartreuse;
+        color: $vermilion;
       }
     }
 
     .verified {
-      border: 5px solid $chartreuse;
+      border: 5px solid $vermilion;
       animation: timeline-border-green 1s ease-in-out infinite alternate;
     }
 
@@ -469,7 +469,7 @@ export default {
           padding: 6px 15px;
           height: 100%;
           color: $black;
-          background: alpha($chartreuse, 0.7);
+          background: alpha($vermilion, 0.7);
 
           span {
             display: inline-block;

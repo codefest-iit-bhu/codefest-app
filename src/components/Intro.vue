@@ -59,10 +59,13 @@ export default {
 }
 
 .video {
-  box-shadow: 0 0 10px $chartreuse;
+  border-radius: 10px;
+  padding: 10px;
   width: 100%;
+  box-shadow: var(--box-shadow);
 
   & > iframe {
+    border-radius: 10px;
     width: 100%;
   }
 }

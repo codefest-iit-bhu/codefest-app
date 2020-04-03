@@ -79,14 +79,16 @@ export default {
     }
 
     .clip {
-      clip-path: polygon(25% 0%, 75% 0%, 100% 43.3%, 75% 86.6%, 25% 86.6%, 0% 43.3%);
+      border-radius: 30px;
+      box-shadow: var(--box-shadow);
       background: white;
       width: 160px;
       height: 160px;
       margin-left: auto;
       margin-right: auto;
+      margin-bottom: 5px;
       padding: 10px;
-      background-color: $chartreuse;
+      background-color: $vermilion;
     }
 
     .img {
@@ -103,7 +105,7 @@ export default {
       margin-left: auto;
       margin-right: auto;
       text-align: center;
-      color: $chartreuse;
+      color: var(--text-color);
       line-height: 28px;
       font-size: 25px;
     }

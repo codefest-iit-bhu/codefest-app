@@ -66,13 +66,13 @@ export default {
   max-width: 800px;
   margin: auto;
   width: 100%;
-  border: 2px solid $chartreuse;
+  border: 2px solid $vermilion;
   border-radius: 10px;
-  box-shadow: inset 0px 0px 10px $chartreuse;
+  box-shadow: inset 0px 0px 10px $vermilion;
 
   h3 {
     text-align: center;
-    color: $chartreuse;
+    color: $vermilion;
   }
 }
 
@@ -128,7 +128,7 @@ export default {
   text-align: right;
 
   a {
-    color: $chartreuse;
+    color: $vermilion;
   }
 }
 
@@ -149,7 +149,7 @@ export default {
   text-align: right;
 
   &:hover {
-    color: $chartreuse;
+    color: $vermilion;
   }
 }
 

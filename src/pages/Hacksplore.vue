@@ -28,8 +28,8 @@
         <!-- <Prizes/> -->
         <!-- <HaxploreSponsors/> -->
         <SectionLayout title="Sponsor Us">
-          <div :class="$style.link">
-            <a href="https://drive.google.com/file/d/15BYqDZwShgFFqkgBPKqr0j-AcFF-_Umm" :class="$style.linkText" target="_blank">
+          <div :class="$style.link" @mouseover="buttonHovered = true" @mouseleave="buttonHovered = false">
+            <a href="https://drive.google.com/file/d/15BYqDZwShgFFqkgBPKqr0j-AcFF-_Umm" :class="[$style.linkText, linkColorStyle]" target="_blank">
               <h4> Sponsor Brochure </h4>
             </a>
           </div>
@@ -124,7 +124,8 @@ export default {
             "Great team, great jury members. Waiting for Haxplore 2.0",
           image: "assets/Testimonial/akshay.jpeg"
         }
-      ]
+      ],
+      buttonHovered: false
     };
   },
   computed: {
@@ -133,6 +134,10 @@ export default {
     },
     devfolioRegisterLink() {
       return `https://devfolio.co/external-apply/${this.devfolioKey}`;
+    },
+    linkColorStyle() {
+      if (this.buttonHovered)
+        return this.$style.hoverColor;
     }
   },
   methods: {
@@ -219,24 +224,29 @@ export default {
   height: auto;
   padding: 24px;
   border-radius: 50px;
-  border: 2px solid $chartreuse;
+  box-shadow: var(--box-shadow);
+  border-radius: 50px 0px 50px 0px;
   text-align: center;
   cursor: pointer;
 
+  .hoverColor {
+    color: var(--text-color) !important;
+  }
+
   .linkText {
-    color: $chartreuse;
+    color: $waterloo;
     display: inline;
     text-decoration: none;
 
     h4 {
-      font-family: 'Viga';
+      font-family: 'Roboto Slab';
       font-size: 30px;
       margin: 0;
     }
   }
 
   &:hover {
-    box-shadow: inset 0px 0px 10px $chartreuse;
+    box-shadow: var(--inset-box-shadow);
   }
 }
 

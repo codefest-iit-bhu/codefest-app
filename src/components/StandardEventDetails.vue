@@ -101,12 +101,12 @@ export default {
   height: auto;
   padding: 24px;
   border-radius: 50px;
-  border: 2px solid $chartreuse;
+  border: 2px solid $vermilion;
   text-align: center;
   cursor: pointer;
 
   .linkText {
-    color: $chartreuse;
+    color: $vermilion;
     display: inline;
     text-decoration: none;
 
@@ -118,7 +118,7 @@ export default {
   }
 
   &:hover {
-    box-shadow: inset 0px 0px 10px $chartreuse;
+    box-shadow: inset 0px 0px 10px $vermilion;
   }
 }
 
@@ -135,7 +135,8 @@ export default {
 
     .eventLogo {
       order: -2;
-      background: $chartreuse;
+      background: $vermilion;
+      box-shadow: var(--box-shadow);
       border-radius: 50%;
       width: 108px;
       height: 108px;
@@ -154,7 +155,7 @@ export default {
 
     .eventTitle {
       order: -1;
-      color: $white;
+      color: var(--heading-color);
       font-family: 'Aldo the Apache';
       text-align: right;
       font-size: 50px;
@@ -168,8 +169,9 @@ export default {
   }
 
   hr {
-    height: 4px;
-    background-color: $chartreuse;
+    height: 8px;
+    background-color: $vermilion;
+    border-radius: 10px;
     display: block;
     width: 70%;
     border: none;
@@ -179,13 +181,13 @@ export default {
     margin-top: 5px;
     margin-bottom: 72px;
     margin-left: 30%;
-    background-image: linear-gradient(to right, $black, $chartreuse);
+    background-image: linear-gradient(to right, var(--background-color), $vermilion);
   }
 
   .leftHr {
     margin-top: 0;
     margin-right: 30%;
-    background-image: linear-gradient(to left, $black, $chartreuse);
+    background-image: linear-gradient(to left, var(--text-color-inverted), $vermilion);
   }
 
   .eventDesc {
@@ -238,9 +240,9 @@ export default {
       height: auto;
       padding: 24px;
       border-radius: 50px;
-      box-shadow: inset 0px 0px 20px $chartreuse;
+      box-shadow: inset 0px 0px 20px $vermilion;
       animation: neon-box 1.5s ease-in-out infinite alternate;
-      border: 2px solid $chartreuse;
+      border: 2px solid $vermilion;
 
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
         width: 220px;
@@ -257,7 +259,7 @@ export default {
       .linkText {
         font-family: 'Aldo the Apache';
         font-size: 30px;
-        color: $chartreuse;
+        color: $vermilion;
         margin-top: 20px;
         text-align: center;
         display: inline;
