@@ -1,17 +1,28 @@
 <template>
   <div :class="$style.root">
-    <AppBar/>
+    <AppBar />
     <main :class="$style.wrapper">
-      <SpecialEvent/>
-      <StandardEvent
-        v-for="(event, i) in events"
-        :key="i"
-        :event="event"
-        :id="i"
-        :keepOpen="isMinimal"
-      />
+      <SpecialEvent />
+
+      <mq-layout :mq="['md', 'lg', 'xl', 'xxl']">
+        <StandardEvent
+          v-for="(event, i) in events"
+          :key="i"
+          :event="event"
+          :id="i"
+          :keepOpen="isMinimal"
+        />
+      </mq-layout>
+      <mq-layout :mq="['sm', 'xs']">
+        <StandardEventMobile
+          v-for="(event, i) in events"
+          :key="i"
+          :event="event"
+          :id="i"
+        />
+      </mq-layout>
     </main>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
@@ -19,6 +30,7 @@
 const AppBar = () => import("@components/Menu/AppBar");
 const SpecialEvent = () => import("@components/SpecialEvent");
 const StandardEvent = () => import("@components/StandardEvent");
+const StandardEventMobile = () => import("@components/StandardEventMobile");
 const Footer = () => import("@components/Footer");
 import events from "@store/events";
 import { isMinimal } from "@js/utils";
@@ -27,6 +39,7 @@ export default {
   components: {
     AppBar,
     SpecialEvent,
+    StandardEventMobile,
     StandardEvent,
     Footer
   },
@@ -60,7 +73,7 @@ export default {
 
 @media screen and (max-width: 769px) {
   .wrapper {
-    width: 90%;
+    width: 50%;
   }
 }
 </style>
