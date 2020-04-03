@@ -40,7 +40,7 @@ class ProfileAdmin(admin.ModelAdmin):
     radio_fields={'gender':admin.HORIZONTAL}
     fieldsets=(
         (None,{
-            'fields':('name','user','fcm_token','referral_code','referred_by','is_profile_complete','referral_count')
+            'fields':('name','user','resume','fcm_token','referral_code','referred_by','is_profile_complete','referral_count')
         }),
         ('Personal Details',{
             # 'classes':('wide',),
