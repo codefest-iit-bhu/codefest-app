@@ -13,8 +13,8 @@
         
         <defs>
           <linearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" style="stop-color:#080717;stop-opacity:1" />
-            <stop offset="100%" style="stop-color:#316048;stop-opacity:0.001" />
+            <stop offset="0%" :class="$style.grad_start"/>
+            <stop offset="100%" :class="$style.grad_end" />
           </linearGradient>
         </defs>
         
@@ -35,7 +35,7 @@
 
       <div :class="$style.card__content">
         <h1 :class="$style.card__title">{{event.title}}</h1>
-        <p>{{event.description}}</p>
+        <p>{{event.summary}}</p>
       </div>
     </div>
   </div>
@@ -64,7 +64,47 @@ export default {
 <style lang="stylus" module>
 @require '~@styles/theme';
 @require '~@styles/anims';
-  
+
+
+/* light color scheme */
+$backgroungColorLight = $mystic;
+
+$gradStartLight = #ffedba;
+$gradEndLight = #eb8c06;
+
+$svgGradStartLight = #000;
+$svgGradEndLight = #eb8c06;
+
+$textColorLight = black;
+$titleColorLight = black;
+
+$lineFadeOneLight = #ff0000;
+$lineFadeTwoLight = #ff6200;
+$lineFadeThreeLight = $mystic;
+
+$boxshadowLight = 0 0.50rem 0.50rem rgba(0, 0, 0, 0.2), 0 0 1rem rgba(0, 0, 0, 0.2);
+
+
+/*dark color scheme */
+$backgroundColorDark = $mine-shaft;
+
+$gradStartDark = #ffedba;
+$gradEndDark = #eb8c06;
+
+$svgGradStartDark = #000;
+$svgGradEndDark = #eb8c06;
+
+$textColorDark = black;
+$titleColorDark = white;
+
+$lineFadeOneDark = #ff6200;
+$lineFadeTwoDark = #ff6200;
+$lineFadeThreeDark = #955a03;
+
+$boxshadowDark = 18px 18px 20px $black, -12px -12px 20px $abbey;
+
+
+
 
 * {
   box-sizing: border-box;
@@ -80,28 +120,37 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 70vh;
-  background: black;
-  margin-left: -25%;
-  margin-right: -25%;
+  height: 65vh;
+  background: $backgroundColorLight;
+  margin-left: -22%;
+  margin-right: -22%;
+}
+
+.grad_start{
+  stop-color: $svgGradStartLight;
+  stop-opacity:1;
+}
+
+.grad_end {
+  stop-color:$svgGradEndLight;
+  stop-opacity:0.001;
 }
 
 .card {
   position: relative;
-  background: #316048;
-  background: -webkit-linear-gradient(#316048, #0f0e2b);
-  background:    -moz-linear-gradient(#316048, #0f0e2b);
-  background:         linear-gradient(#316048, #0f0e2b);
+  background: $gradStartLight;
+  background: -webkit-linear-gradient($gradStartLight, $gradEndLight);
+  background:    -moz-linear-gradient($gradStartLight, $gradEndLight);
+  background:         linear-gradient($gradStartLight, $gradEndLight);
   width: 500px;
-  height: 65vh;
+  height: 60vh;
   border-radius: 10px;
   padding: 2rem;
-  color: #aaa;
-  box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.2), 0 0 1rem rgba(0, 0, 0, 0.2);
+  color: $textColorLight;
+  box-shadow: $boxshadowLight;
   overflow: auto;
 
   &__image-container {
-    background-color: white;
     margin: -2rem -2rem 1rem -2rem;
   }
 
@@ -121,7 +170,7 @@ img {
   }
 
   &__title {
-    color: white;
+    color: $titleColorLight;
     margin-top: 0;
     font-weight: 800;
     letter-spacing: 0.01em;

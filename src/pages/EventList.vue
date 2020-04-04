@@ -14,14 +14,12 @@
         />
       </mq-layout>
       <mq-layout :mq="['sm', 'xs']">
-        <div :class="$style.wrapperMobile">
           <StandardEventMobile 
             v-for="(event, i) in events" 
             :key="i" 
             :event="event" 
             :id="i" 
           />
-        </div>
       </mq-layout>
     </main>
     <Footer />
@@ -78,8 +76,6 @@ export default {
     width: 50%;
   }
 
-  .wrapperMobile {
-    margin-top: -10%;
-  }
+
 }
 </style>
