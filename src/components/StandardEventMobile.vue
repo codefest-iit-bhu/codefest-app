@@ -66,14 +66,14 @@ export default {
 @require '~@styles/anims';
 
 
-/* light color scheme */
+/* color scheme */
 $backgroungColorLight = $mystic;
 
 $gradStartLight = #ffedba;
 $gradEndLight = #eb8c06;
 
-$svgGradStartLight = #000;
-$svgGradEndLight = #eb8c06;
+$svgGradStartLight = #945803;
+$svgGradEndLight = #ed9f30;
 
 $textColorLight = black;
 $titleColorLight = black;
@@ -83,25 +83,6 @@ $lineFadeTwoLight = #ff6200;
 $lineFadeThreeLight = $mystic;
 
 $boxshadowLight = 0 0.50rem 0.50rem rgba(0, 0, 0, 0.2), 0 0 1rem rgba(0, 0, 0, 0.2);
-
-
-/*dark color scheme */
-$backgroundColorDark = $mine-shaft;
-
-$gradStartDark = #ffedba;
-$gradEndDark = #eb8c06;
-
-$svgGradStartDark = #000;
-$svgGradEndDark = #eb8c06;
-
-$textColorDark = black;
-$titleColorDark = white;
-
-$lineFadeOneDark = #ff6200;
-$lineFadeTwoDark = #ff6200;
-$lineFadeThreeDark = #955a03;
-
-$boxshadowDark = 18px 18px 20px $black, -12px -12px 20px $abbey;
 
 
 
@@ -114,6 +95,7 @@ $boxshadowDark = 18px 18px 20px $black, -12px -12px 20px $abbey;
 
 img {
   max-width: 100%;
+  max-height: 100%;
 }
 
 .container {
@@ -137,6 +119,9 @@ img {
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   position: relative;
   background: $gradStartLight;
   background: -webkit-linear-gradient($gradStartLight, $gradEndLight);
@@ -151,35 +136,35 @@ img {
   overflow: auto;
 
   &__image-container {
-    margin: -2rem -2rem 1rem -2rem;
+    margin: 0 auto;
   }
 
   &__line {
     opacity: 0;
-    animation: LineFadeIn 0.8s 1s forwards ease-in;
+    animation: LineFadeIn 0.8s 0.8s forwards ease-in;
   }
 
   &__image {
     opacity: 0;
-    animation: ImageFadeIn 0.8s 1.6s forwards;
+    animation: ImageFadeIn 0.7s 1.4s forwards;
   }
 
   &__grad {
     opacity: 0;
-    animation: ImageFadeIn 0.8s 1.6s forwards;
+    animation: ImageFadeIn 0.7s 1.4s forwards;
   }
 
   &__title {
     color: $titleColorLight;
-    margin-top: 0;
+    margin-top: 1;
     font-weight: 800;
     letter-spacing: 0.01em;
   }
 
   &__content {
-    margin-top: -1rem;
+    margin-top: 1rem;
     opacity: 0;
-    animation: ContentFadeIn 0.8s 1.8s forwards;
+    animation: ContentFadeIn 0.8s 1.5s forwards;
   }
 
   &__svg {
