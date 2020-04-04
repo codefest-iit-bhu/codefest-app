@@ -122,8 +122,8 @@ img {
   justify-content: center;
   height: 65vh;
   background: $backgroundColorLight;
-  margin-left: -22%;
-  margin-right: -22%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 .grad_start{

@@ -13,14 +13,17 @@
           :keepOpen="isMinimal"
         />
       </mq-layout>
-      <mq-layout :mq="['sm', 'xs']">
-          <StandardEventMobile 
-            v-for="(event, i) in events" 
-            :key="i" 
-            :event="event" 
-            :id="i" 
-          />
-      </mq-layout>
+      <div :class="$style.wrapperMobile">
+        <mq-layout :mq="['sm', 'xs']">
+            <StandardEventMobile 
+              v-for="(event, i) in events" 
+              :key="i" 
+              :event="event" 
+              :id="i" 
+            />
+        </mq-layout>
+
+      </div>
     </main>
     <Footer />
   </div>
@@ -73,7 +76,10 @@ export default {
 
 @media screen and (max-width: 769px) {
   .wrapper {
-    width: 50%;
+    width: 90%;
+  }
+  .wrapperMobile{
+    margin-top: -15%;
   }
 
 
