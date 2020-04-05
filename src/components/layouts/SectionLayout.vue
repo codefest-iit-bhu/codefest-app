@@ -79,7 +79,7 @@ div.sectionContainer {
     display: block;
     width: 70%;
     border: none;
-    margin: 12px 0 36px;
+    margin: 0px 0 48px;
 
     ~/:nth-child(even) hr.sectionLine {
       margin-right: 30%;

@@ -61,9 +61,9 @@ $rd = 60px;
       border-radius: var(--item-round);
       height: calc(var(--item-round) * 2);
       width: calc(var(--item-round) * 2);
-      background: $white;
+      background: $mystic;
       padding: calc((var(--item-round) / 5));
-      box-shadow: var(--box-shadow);
+      box-shadow: var(--icon-shadow);
 
       img {
         height: calc(var(--item-round) * 1.6);
@@ -103,6 +103,7 @@ $rd = 60px;
         p {
           color: var(--background-color);
           font-size: 14px;
+          font-weight: 700;
 
           ~/.xs ^[1..-1], ~/.sm ^[1..-1], ~/.md ^[1..-1] {
             font-size: 12px;

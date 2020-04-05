@@ -40,10 +40,10 @@
     <div
       :class="$style.note"
     >Note: People not registered for this event on CodeFest are not eligible to recieve any prizes.
-    <h2>Registrations will be live soon.</h2>
     </div>
 
-
+    <div :class="$style.register"><h2>Registrations will be live soon.</h2></div>
+    
     <!-- <div :class="$style.link">
       <router-link to="/dashboard/events/" v-if="!event.url" :class="$style.linkText">
         <h4>Register</h4>
@@ -101,7 +101,6 @@ export default {
   height: auto;
   padding: 24px;
   border-radius: 50px;
-  border: 2px solid $vermilion;
   text-align: center;
   cursor: pointer;
 
@@ -111,7 +110,7 @@ export default {
     text-decoration: none;
 
     h4 {
-      font-family: 'Aldo the Apache';
+      font-family: 'Baloo Bhaina 2';
       font-size: 30px;
       margin: 0;
     }
@@ -156,7 +155,8 @@ export default {
     .eventTitle {
       order: -1;
       color: var(--heading-color);
-      font-family: 'Aldo the Apache';
+      font-family: 'Baloo Bhaina 2';
+      font-weight: 700;
       text-align: right;
       font-size: 50px;
       margin: 0;
@@ -187,7 +187,7 @@ export default {
   .leftHr {
     margin-top: 0;
     margin-right: 30%;
-    background-image: linear-gradient(to left, var(--text-color-inverted), $vermilion);
+    background-image: linear-gradient(to left, var(--background-color), $vermilion);
   }
 
   .eventDesc {
@@ -195,12 +195,15 @@ export default {
 
     .tabContainer {
       padding: 36px;
+      background-color: var(--background-color);
+      box-shadow: var(--inset-box-shadow);
 
       .tabTitle {
         font-size: 36px;
-        font-family: 'Aldo the Apache';
+        font-family: 'Baloo Bhaina 2';
+        font-wright: 600;
         margin-top: 12px;
-        margin-bottom: 18px;
+        margin-bottom: 4px;
       }
 
       .text {
@@ -233,40 +236,6 @@ export default {
     }
   }
 
-  .ps {
-    .link {
-      margin: 0 auto 60px;
-      width: 290px;
-      height: auto;
-      padding: 24px;
-      border-radius: 50px;
-      box-shadow: inset 0px 0px 20px $vermilion;
-      animation: neon-box 1.5s ease-in-out infinite alternate;
-      border: 2px solid $vermilion;
-
-      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-        width: 220px;
-
-        .linkText {
-          font-size: 21px;
-        }
-      }
-
-      a {
-        text-decoration: none;
-      }
-
-      .linkText {
-        font-family: 'Aldo the Apache';
-        font-size: 30px;
-        color: $vermilion;
-        margin-top: 20px;
-        text-align: center;
-        display: inline;
-      }
-    }
-  }
-
   .contacts {
     .container {
       display: grid;
@@ -279,10 +248,20 @@ export default {
   }
 }
 
+.register {
+  text-align: center;
+  font-family: 'Roboto Slab';
+  font-weight: 700;  
+}
+
 .note {
   font-family: 'Quicksand';
-  font-weight: 500;
+  font-weight: 700;
+  box-shadow: var(--box-shadow);
+  padding: 20px;
   text-align: center;
-  padding-bottom: 20px;
+  width: 70%
+  margin: 0 auto;
+  border-radius: 25px 0;
 }
 </style>

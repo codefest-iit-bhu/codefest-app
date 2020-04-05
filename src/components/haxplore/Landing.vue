@@ -1,54 +1,100 @@
 <template>
   <div :class="[$style.landing, $style[$mq]]" id="landing">
-    <div :class="$style.hero">
-      <div :class="$style.logo">
-        <img :id="$style.top" src="@assets/haxplore/logo-landing.svg">
-        <img :id="$style.base" src="@assets/haxplore/phone-perspective.svg">
+    <!-- <div :class="$style.hero">
+      <span :class="$style.register">Registrations will be open soon.</span>
+      <Countdown :until="hackathonStart" :class="$style.landing__countdown"/>
+    </div> -->
+    <!-- <ResponsiveTwoColumnLayout>
+      <div :class="$style.heroImage" slot="left">
+        <div :class="$style.preloader">
+            <div :class="$style.circle1" ref="circle1" v-on:click="animatePreloader()"></div>
+            <div :class="$style.circle2" ref="circle2"></div>
+            <div :class="$style.circle3" ref="circle3"></div>
+        </div>
       </div>
-      <span :class="$style.haxplore">
-        <img src="@assets/haxplore/logo-text.svg">
-      </span>
-      <span :class="$style.tagline" ref="tagline"></span>
-      <span :class="$style.venue">
-        <span :id="$style.loc">
-          <i class="fas fa-map-marked-alt"></i> IIT (BHU), Varanasi
+      <div :class="$style.heroText" slot="right">
+        <span :class="$style.haxplore">
+          <img src="@assets/haxplore/logo-text.svg">
         </span>
-      </span>
-      <DevfolioButton/>
-      <!-- <span :class="$style.register">Registrations will be open soon.</span> -->
-      <!-- <Countdown :until="hackathonStart" :class="$style.landing__countdown"/> -->
-    </div>
+        <span :class="$style.tagline" ref="tagline"></span>
+        <span :class="$style.venue">
+          <span :id="$style.loc">
+            <i class="fas fa-map-marked-alt"></i> IIT (BHU), Varanasi
+          </span>
+        </span>
+      </div>
+    </ResponsiveTwoColumnLayout> -->
   </div>
 </template>
 
 <script>
 import { TypingAnim } from "@js/utils";
 const Countdown = () => import("@components/Countdown");
-const DevfolioButton = () => import("@components/haxplore/DevfolioButton");
+const ResponsiveTwoColumnLayout = () => import("@components/layouts/ResponsiveTwoColumnLayout");
 
 export default {
   components: {
     Countdown,
-    DevfolioButton
+    ResponsiveTwoColumnLayout,
   },
+  // props: {
+  //   animateIcon: {
+  //     type: Boolean,
+  //     default: true,
+  //     required: false    }
+  // },
   data() {
     return {
       hackathonStart: new Date(2019, 8, 23),
-      isTyped: false
+      isTyped: false,
+      animateIcon: true,
     };
   },
   mounted() {
-    this.animTyping = new TypingAnim(
-      this.$refs.tagline,
-      "Init. Develop. Deploy."
-    );
+    // this.animTyping = new TypingAnim(
+    //   this.$refs.tagline,
+    //   "Init. Develop. Deploy."
+    // );
 
-    window.setInterval(() => {
-      this.isTyped ? this.animTyping.erase() : this.animTyping.type();
-      this.isTyped = !this.isTyped;
-    }, 2000);
-    this.animTyping.type();
-    this.isTyped = true;
+    // window.setInterval(() => {
+    //   this.isTyped ? this.animTyping.erase() : this.animTyping.type();
+    //   this.isTyped = !this.isTyped;
+    // }, 2000);
+    // this.animTyping.type();
+    // this.isTyped = true;
+  },
+  methods: {
+    animatePreloader() {
+      console.log("Yep!");
+      const { circle } = this.$refs["circle"];
+      console.log(circle);
+      var tl = new TimelineMax();
+      var random1 = Math.floor(Math.random() * 10000);
+
+      TweenMax.set(circle, {scale: 0});
+
+      tl.insert(
+        TweenMax.staggerTo(circle.toArray(), 1, {
+          opacity: 1,
+          scale: 1,
+          ease: Power1.easeIn
+        }, 0.2)
+      );
+
+      tl.insert(
+        TweenMax.staggerTo(circle.toArray(), 0.5, {
+          scale: 1.2,
+          boxShadow: '0 25px 25px rgba(0, 0, 0, 0.4)',
+          repeat: -1,
+          yoyo: true,
+          ease: Power1.easeOut
+        }, 0.2), '-=0.4'
+      );
+    },
+    animate(){
+      const { circle1 } = this.$refs.circle1;
+      console.log("OK!");
+    }
   }
 };
 </script>
@@ -59,18 +105,46 @@ export default {
 
 .landing {
   position: relative;
-  margin-top: 80px;
 
-  .hero {
-    display: flex;
-    flex-flow: column;
-    text-align: center;
+  .heroImage {
+    width: 100%;
+    height: 100%;
 
-    ~/__countdown {
-      margin: 30px auto;
+    .preloader {
+      width: 100%;
+      height: 100%;
+      padding: 300px 250px;
+    
+      .circle1, .circle2, .circle3 {
+        border-radius: 500px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        margin: 0 auto;
+      }
+
+      .circle1 {
+        background-color: #7752d5;
+        width:500px;
+        height: 500px;
+        padding: 40px;
+      }
+
+      .circle2 {
+        background-color: #8362d9;
+        width: 420px;
+        height: 420px;
+        padding: 20px;
+      }
+
+      .circle3 {
+        background-color: #9f88d6;
+        width: 380px;
+        height: 380px;
+      }
     }
+  }
 
-    .haxplore {
+  .heroText {
+        .haxplore {
       margin: 10px auto 20px;
 
       img {
@@ -98,106 +172,6 @@ export default {
 
     ~/.xs .tagline, ~/.sm .tagline {
       font-size: 14px;
-    }
-
-    .register {
-      margin: auto;
-      margin-top: 10px;
-      margin-bottom: 10px;
-      height: auto;
-      padding: 10px 20px;
-      border-radius: 50px;
-      border: 2px solid $vermilion;
-      text-align: center;
-      cursor: pointer;
-      color: $vermilion;
-      font-family: 'Roboto Slab';
-      font-weight: 600;
-      box-shadow: inset 0px 0px 10px $vermilion;
-    }
-
-    .venue {
-      font-size: 22px;
-
-      #loc, #date {
-        display: inline-block;
-        padding: 4px;
-      }
-
-      #loc::after {
-        // content: '|';
-        // margin-left: 2px;
-
-        ~/.xs ^[1..-1] {
-          content: '';
-          margin: unset;
-        }
-      }
-
-      ~/.md ^[1..-1], ~/.lg ^[1..-1] {
-        font-size: 16px;
-      }
-
-      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-        font-size: 14px;
-      }
-    }
-
-    .logo {
-      width: 800px;
-      height: 500px;
-      margin: 60px auto 0;
-
-      ~/.lg ^[1..-1] {
-        width: 500px;
-        height: 312.5px;
-        margin: 30px auto 0;
-
-        #base {
-          top: -60px;
-        }
-      }
-
-      ~/.md ^[1..-1] {
-        width: 480px;
-        height: 300px;
-        margin: 30px auto 0;
-
-        #base {
-          top: -60px;
-        }
-      }
-
-      ~/.sm ^[1..-1] {
-        width: 500px;
-        height: 330px;
-
-        #base {
-          top: -50px;
-        }
-      }
-
-      ~/.xs ^[1..-1] {
-        width: 320px;
-        height: 212px;
-
-        #base {
-          top: -20px;
-        }
-      }
-
-      #top {
-        width: 60%;
-        height: 60%;
-        z-index: 3;
-      }
-
-      #base {
-        width: 100%;
-        position: relative;
-        z-index: 1;
-        top: -100px;
-      }
     }
   }
 }

@@ -6,10 +6,10 @@
         <div :class="$style.formContainer" slot="basic">
           <form :class="$style.form" @submit.prevent="submitForm">
             <div :class="$style.card">
-              <h3>Change Password</h3>
+              <h2>Change Password</h2>
               <div :class="$style.fieldsContainer">
                 <div :class="$style.field">
-                  <label for="old__password" :class="$style.label">current password</label>
+                  <label for="old__password" :class="$style.label">Current Password</label>
                   <span :class="$style.fieldWrapper">
                     <input type="password" id="old__password" v-model="currentPasswd" required>
                     <i
@@ -20,7 +20,7 @@
                   </span>
                 </div>
                 <div :class="$style.field">
-                  <label for="new__password" :class="$style.label">new password</label>
+                  <label for="new__password" :class="$style.label">New Password</label>
                   <span :class="$style.fieldWrapper">
                     <input type="password" id="new__password" v-model="newPasswd" required>
                     <i
@@ -110,7 +110,6 @@ export default {
 
 .authContainer {
   font-size: 16px;
-  font-family: courier, monospace;
   max-width: 700px;
   margin: 50px auto;
   width: 100%;
@@ -134,15 +133,13 @@ export default {
 .form {
   margin: 20px;
   position: relative;
-  border: 1px solid $vermilion;
-  border-radius: 5px;
-  box-shadow: inset 0px 0px 15px $vermilion;
-  background: #111;
+  border-radius: 0 40px;
+  background-color: var(--background-color);
+  box-shadow: var(--inset-box-shadow);
 
   .formNav {
     width: 100%;
     text-align: center;
-    border-top: 1px solid $vermilion;
     padding: 20px;
     margin: 0;
 
@@ -162,10 +159,10 @@ export default {
     width: 100%;
     position: relative;
 
-    h3 {
-      color: $vermilion;
+    h2 {
+      color: var(--text-color);
       text-align: center;
-      text-transform: uppercase;
+      font-family: 'Roboto Slab';
     }
 
     .fieldsContainer {
@@ -184,15 +181,16 @@ export default {
         text-align: left;
         display: inline-block;
         height: 30px;
+        color: var(--text-color);
+        box-shadow: var(--inset-box-shadow);
+        background-color: var(--background-color);
         width: calc(100% - 120px);
-        color: white;
         border: 0;
         outline: 0;
         margin: auto;
         font-size: 16px;
         border-radius: 5px;
         padding-left: 5px;
-        background: #fff2;
       }
 
       .fieldWrapper {
@@ -215,7 +213,9 @@ export default {
         display: inline-block;
         text-align: left;
         width: 100px;
-        color: white;
+        color: var(--text-color);
+        font-family: 'Quicksand';
+        font-weight: 600;
         height: 30px;
       }
     }
@@ -226,7 +226,8 @@ export default {
       .next {
         border: 0;
         background: transparent;
-        color: $white;
+        color: var(--background-color-invert);
+        box-shadow: var(--small-icon-shadow);
         border-radius: 100%;
         font-size: 30px;
         height: 30px;
@@ -248,7 +249,6 @@ export default {
       padding: 5px;
       margin-top: 20px;
       border: 0;
-      border-top: 1px solid $vermilion;
 
       .socialButton {
         background-color: Transparent;

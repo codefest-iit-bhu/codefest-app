@@ -9,10 +9,10 @@
               <div :class="$style.loader"></div>
             </div>
             <div :class="$style.card" id="basic" v-show="curId=='basic'">
-              <h3>basic</h3>
+              <h2>Basic</h2>
               <div :class="$style.fieldsContainer">
                 <div :class="$style.field">
-                  <label for="name" :class="$style.label">name</label>
+                  <label for="name" :class="$style.label">Name</label>
                   <input
                     type="text"
                     id="name"
@@ -22,7 +22,7 @@
                   >
                 </div>
                 <div :class="$style.field">
-                  <label for="gender" :class="$style.label">gender</label>
+                  <label for="gender" :class="$style.label">Gender</label>
                   <select :class="$style.field" v-model="profile.gender" id="gender" required>
                     <option value="0">Male</option>
                     <option value="1">Female</option>
@@ -30,7 +30,7 @@
                   </select>
                 </div>
                 <div :class="$style.field">
-                  <label for="phone" :class="$style.label">phone</label>
+                  <label for="phone" :class="$style.label">Phone</label>
                   <input
                     type="tel"
                     pattern="\+[0-9]{9,15}"
@@ -42,13 +42,13 @@
                   >
                 </div>
                 <div :class="$style.field">
-                  <label for="country" :class="$style.label">country</label>
+                  <label for="country" :class="$style.label">Country</label>
                   <select id="country" :class="$style.field" v-model="profile.country" required>
                     <option selected disabled>Select your country</option>
                   </select>
                 </div>
                 <div :class="$style.field">
-                  <label for="institute_type" :class="$style.label">you are a</label>
+                  <label for="institute_type" :class="$style.label">You are a</label>
                   <select
                     :class="$style.field"
                     id="institute_type"
@@ -68,12 +68,12 @@
               </div>
             </div>
             <div :class="$style.card" id="academic" v-show="curId=='academic'">
-              <h3>academic</h3>
+              <h2>Academic</h2>
               <div :class="$style.fieldsContainer">
                 <div :class="$style.field">
                   <label for="institute_name" :class="$style.label">
-                    <span v-if="profile.institute_type==2">last institute</span>
-                    <span v-else>institute</span>
+                    <span v-if="profile.institute_type==2">Last Institute</span>
+                    <span v-else>Institute</span>
                   </label>
                   <input
                     type="text"
@@ -86,7 +86,7 @@
                 <div :class="$style.field">
                   <label for="study_year" :class="$style.label">
                     <span v-if="profile.institute_type==0">class</span>
-                    <span v-if="profile.institute_type==1">study year</span>
+                    <span v-if="profile.institute_type==1">Study Year</span>
                     <span v-if="profile.institute_type==2">experience</span>
                   </label>
                   <input
@@ -100,7 +100,7 @@
                   >
                 </div>
                 <div :class="$style.field" v-show="profile.institute_type==1">
-                  <label for="branch" :class="$style.label">branch</label>
+                  <label for="branch" :class="$style.label">Branch</label>
                   <input
                     type="text"
                     id="branch"
@@ -110,7 +110,7 @@
                   >
                 </div>
                 <div :class="$style.field" v-show="profile.institute_type!=0">
-                  <label for="degree" :class="$style.label">degree</label>
+                  <label for="degree" :class="$style.label">Degree</label>
                   <input type="degree" id="degree" v-model="profile.degree">
                 </div>
               </div>
@@ -121,34 +121,34 @@
               </div>
             </div>
             <div :class="$style.card" id="handles" v-show="curId=='handles'">
-              <h3>handles</h3>
+              <h2>Handles</h2>
               <div :class="$style.fieldsContainer">
                 <div :class="$style.field">
-                  <label for="codeforces" :class="$style.label">codeforces</label>
+                  <label for="codeforces" :class="$style.label">Codeforces</label>
                   <input type="text" @keyup="checkHandlesChanged" v-model="handles.codeforces">
                 </div>
                 <div :class="$style.field">
-                  <label for="codechef" :class="$style.label">codechef</label>
+                  <label for="codechef" :class="$style.label">Codechef</label>
                   <input type="text" @keyup="checkHandlesChanged" v-model="handles.codechef">
                 </div>
                 <div :class="$style.field">
-                  <label for="hackerrank" :class="$style.label">hackerrank</label>
+                  <label for="hackerrank" :class="$style.label">Hackerrank</label>
                   <input type="text" @keyup="checkHandlesChanged" v-model="handles.hackerrank">
                 </div>
                 <div :class="$style.field">
-                  <label for="hackerearth" :class="$style.label">hackerearth</label>
+                  <label for="hackerearth" :class="$style.label">Hackerearth</label>
                   <input type="text" @keyup="checkHandlesChanged" v-model="handles.hackerearth">
                 </div>
                 <div :class="$style.field">
-                  <label for="topcoder" :class="$style.label">topcoder</label>
+                  <label for="topcoder" :class="$style.label">Topcoder</label>
                   <input type="text" @keyup="checkHandlesChanged" v-model="handles.topcoder">
                 </div>
                 <div :class="$style.field">
-                  <label for="analyticsVidya" :class="$style.label">analytics vidya</label>
+                  <label for="analyticsVidya" :class="$style.label">Analytics Vidya</label>
                   <input type="text" @keyup="checkHandlesChanged" v-model="handles.analyticsVidya">
                 </div>
                 <div :class="$style.field">
-                  <label for="dev_folio" :class="$style.label">dev folio</label>
+                  <label for="dev_folio" :class="$style.label">Dev Folio</label>
                   <input type="text" @keyup="checkHandlesChanged" v-model="handles.dev_folio">
                 </div>
               </div>
@@ -346,7 +346,6 @@ export default {
 
 .authContainer {
   font-size: 16px;
-  font-family: courier, monospace;
   max-width: 700px;
   margin: 50px auto;
   width: 100%;
@@ -370,15 +369,13 @@ export default {
 .form {
   margin: 20px;
   position: relative;
-  border: 1px solid $vermilion;
-  border-radius: 5px;
-  box-shadow: inset 0px 0px 15px $vermilion;
-  background: #111;
+  border-radius: 0 40px;
+  background-color: var(--background-color);
+  box-shadow: var(--inset-box-shadow);
 
   .formNav {
     width: 100%;
     text-align: center;
-    border-top: 1px solid $vermilion;
     padding: 20px;
     margin: 0;
 
@@ -398,10 +395,10 @@ export default {
     width: 100%;
     position: relative;
 
-    h3 {
-      color: $vermilion;
+    h2 {
+      color: var(--text-color);
       text-align: center;
-      text-transform: uppercase;
+      font-family: 'Roboto Slab';
     }
 
     .loader {
@@ -450,19 +447,21 @@ export default {
       margin-top: 20px;
       text-align: center;
 
+
       input, select {
         text-align: left;
         display: inline-block;
         height: 30px;
+        color: var(--text-color);
+        box-shadow: var(--inset-box-shadow);
+        background-color: var(--background-color);
         width: calc(100% - 120px);
-        color: white;
         border: 0;
         outline: 0;
         margin: auto;
         font-size: 16px;
         border-radius: 5px;
         padding-left: 5px;
-        background: #fff2;
       }
 
       .fieldWrapper {
@@ -484,9 +483,10 @@ export default {
       .label {
         display: inline-block;
         text-align: left;
-        text-transform: capitalize;
         width: 100px;
-        color: white;
+        color: var(--text-color);
+        font-family: 'Quicksand';
+        font-weight: 600;
         height: 30px;
       }
     }
@@ -497,7 +497,8 @@ export default {
       .next {
         border: 0;
         background: transparent;
-        color: $white;
+        color: var(--background-color-invert);
+        box-shadow: var(--small-icon-shadow);
         border-radius: 100%;
         font-size: 30px;
         height: 30px;
@@ -511,18 +512,19 @@ export default {
       }
 
       .submit {
-        border-radius: 4px;
-        width: 80px;
-        padding: 5px 10px;
-        font: 14pt Ubuntu;
-        background: transparent;
-        color: $white;
-        text-transform: uppercase;
-        border: 1px solid $white;
+        border-radius: 10px 0;
+        border: none;
+        width: 100px;
+        padding: 10px 20px;
+        font: 14pt Roboto Slab;
+        font-weight: 600;
+        background: var(--background-color);
+        color: $waterloo;
+        box-shadow: var(--small-icon-shadow);
 
         &:hover {
-          border: 1px solid $vermilion;
-          color: $vermilion;
+          color: var(--text-color);
+          box-shadow: var(--inset-box-shadow);
         }
       }
     }
@@ -535,7 +537,6 @@ export default {
       padding: 5px;
       margin-top: 20px;
       border: 0;
-      border-top: 1px solid $vermilion;
 
       .socialButton {
         background-color: Transparent;
