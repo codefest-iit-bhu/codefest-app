@@ -6,6 +6,8 @@
     "watch": "pwa watch"
   },
   "dependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
     "@saeris/vue-spinners": "^1.0.8",
     "anchorme": "^1.1.2",
     "firebase": "^7.7.0",
