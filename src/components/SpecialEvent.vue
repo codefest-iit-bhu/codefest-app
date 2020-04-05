@@ -39,7 +39,7 @@ export default {
 .hero {
   position: relative;
   background-color: var(--background-color);
-  min-height: 300px;
+  min-height: 500px;
   height: 100vh;
   width: 100%;
   overflow: hidden;
