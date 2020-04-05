@@ -3,7 +3,11 @@
     <div :class="[$style.faqContainer, $style[$mq]]">
       <ResponsiveTwoColumnLayout>
         <div :class="$style.faqHeader" slot="left">
-          <img src="@assets/haxplore/faq.svg">
+          <div :class="$style.faqImage">
+            <div :class="$style.faqImageInner">
+              <div :class="$style.faqImageText">?</div>
+            </div>
+          </div>
           <div :class="$style.faqMessage">
             Have any more Questions?
             <br>Reach out to us at any time.
@@ -112,28 +116,57 @@ export default {
       margin-bottom: 16px;
     }
 
-    img {
-      width: 300px;
-      height: 300px;
+    .faqImage {
+      width: 350px;
+      height: 350px;
+      margin: 0 auto;
+      padding: 25px;
+      border-radius: 50%;
+      box-shadow: var(--box-shadow);
+      background: $vermilion;
+      padding-top: 150px;
 
-      ~/.xs ^[1..-1] {
-        width: 70%;
-        margin: 0 auto;
+      .faqImageText {
+        font-size: 280px;
+        font-weight: 700;        
+        color: $white;
+        text-shadow: var(--inset-box-shadow);
       }
 
-      ~/.sm ^[1..-1] {
-        width: 50%;
-        margin: 0 auto;
-        margin-bottom: 16px;
+      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+        width: 250px;
+        height: 250px;
+        padding-top: 110px;
+
+        .faqImageText {
+          font-size: 200px;
+        }
       }
     }
   }
 
   .faqMessage {
+    box-shadow: var(--box-shadow);
+    background: var(--background-color);
+    width: 370px;
+    margin: 30px auto 0;
+    padding: 20px 10px;
+    border-radius: 45px 0;
+
+    .facebook, .email {
+      color: $waterloo;
+
+      &:hover {
+        color: var(--text-color);
+      }
+    }
+
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
       font-size: 13px;
       line-height: 20px;
       margin-left: 20px;
+      width: 280px;
+      margin: 30px auto;
     }
   }
 

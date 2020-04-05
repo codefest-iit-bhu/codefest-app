@@ -208,10 +208,12 @@ export default {
       order: -2;
       background: $vermilion;
       border-radius: 50%;
+      box-shadow: var(--icon-shadow);
       width: 108px;
       height: 108px;
       padding: 18px;
-      font: 72px 'Aldo the Apache';
+      font: 48px 'Roboto Slab';
+      font-weight: 700;
       color: $black;
 
       p {
@@ -223,7 +225,7 @@ export default {
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
         width: 72px;
         height: 72px;
-        font-size: 48px;
+        font-size: 30px;
         padding: 12px;
       }
     }
@@ -231,7 +233,9 @@ export default {
     .username {
       order: -1;
       color: $white;
-      font-family: 'Aldo the Apache';
+      font-family: 'Baloo Bhaina 2';
+      font-weight: 700;
+      color: var(--text-color);
       text-align: right;
       font-size: 50px;
       margin: 0;
@@ -244,7 +248,7 @@ export default {
   }
 
   hr {
-    height: 4px;
+    height: 8px;
     background-color: $vermilion;
     display: block;
     width: 70%;
@@ -255,7 +259,8 @@ export default {
     margin-top: 5px;
     margin-bottom: 72px;
     margin-left: 30%;
-    background-image: linear-gradient(to right, $black, $vermilion);
+    background-image: linear-gradient(to right, var(--background-color), $vermilion);
+    border-radius: 10px;
 
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
       margin-bottom: 16px;
@@ -269,28 +274,34 @@ export default {
 
   .link {
     margin: 0 10px;
-    width: 220px;
+    width: 260px;
     padding: 18px;
     border-radius: 50px;
-    border: 2px solid $vermilion;
+    background-color: var(--background-color);
+    box-shadow: var(--small-icon-shadow);
     text-align: center;
     cursor: pointer;
     display: inline-block;
 
     .linkText {
-      color: $vermilion;
+      color: $waterloo;
       display: inline;
       text-decoration: none;
 
       h4 {
-        font-family: 'Aldo the Apache';
+        font-family: 'Roboto Slab';
         font-size: 22px;
         margin: 0;
       }
     }
 
     &:hover {
-      box-shadow: inset 0px 0px 10px $vermilion;
+      box-shadow: var(--inset-small-icon-shadow);
+
+      .linkText{
+        color: var(--text-color);
+      }
+
     }
 
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
@@ -309,17 +320,19 @@ export default {
       width: 100%;
 
       .box {
-        border: 2px solid $limeade;
         border-radius: 100px;
+        box-shadow: var(--small-icon-shadow);
+        color: var(--text-color);
+        background-color: var(--background-color);
         text-align: center;
         height: 50px;
         width: 60%;
         margin-left: 20%;
+        padding-top: 15px;
 
         .copyIcon {
           cursor: pointer;
-          margin-right: 20px;
-          margin-top: 10px;
+          margin-right: 30px;
           float: right;
         }
 
@@ -330,9 +343,9 @@ export default {
             font-weight: bold;
             font-family: 'Roboto Slab';
             font-size: 24px;
-            padding: 8px 15px;
+            padding: 20px 15px;
             height: 100%;
-            color: $black;
+            color: $white;
             border-radius: inherit;
             border-bottom-right-radius: 0;
             border-top-right-radius: 0;
@@ -344,6 +357,7 @@ export default {
             display: inline-block;
             font-size: 18px;
             font-family: 'Quicksand';
+            font-weight: 700;
             padding: 12px;
             height: 100%;
           }
@@ -387,11 +401,11 @@ export default {
     .helptext {
       font-size: 14px;
       display: inline-block;
-      box-shadow: 0 0 20px $vermilion inset;
-      border: 1px solid $vermilion;
+      border: 3px solid $vermilion;
       border-radius: 10px;
       padding: 8px 16px;
-      margin-top: 24px;
+      margin-top: 40px;
+      box-shadow: var(--small-icon-shadow);
     }
 
     .disabledreferral {
@@ -418,7 +432,7 @@ export default {
       .reftext {
         order: 0;
         height: 50px;
-        color: $white;
+        color: var(--text-color);
         padding: 15px 0;
         font: 600 20px 'Roboto Slab';
       }
@@ -452,9 +466,10 @@ export default {
 
       .row {
         transform: skew(30deg);
-        border: solid 2px $limeade;
+        border-radius: 0 15px;
         margin-top: 20px;
         margin-bottom: 20px;
+        box-shadow: var(--small-icon-shadow);
         font-size: 16px;
         display: flex;
         flex-flow: row;
@@ -463,13 +478,14 @@ export default {
           width: 30%;
           background: $limeade;
           display: inline-block;
+          border-radius: 0 15px;
           order: 1;
           font-weight: bold;
           font-family: 'Roboto Slab';
           padding: 6px 15px;
           height: 100%;
-          color: $black;
-          background: alpha($vermilion, 0.7);
+          color: $white;
+          background: alpha($vermilion, 0.8);
 
           span {
             display: inline-block;
@@ -483,6 +499,7 @@ export default {
           transform: skew(-30deg);
           display: inline-block;
           font-family: 'Quicksand';
+          font-weight: 700;
           padding: 6px;
           height: 100%;
         }

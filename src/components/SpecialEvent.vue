@@ -9,7 +9,7 @@
       <div :class="$style.title">
         <a>
           <router-link to="haxplore">
-            <h1>HAXPLORE</h1>
+            <h1>HaXplore</h1>
           </router-link>
         </a>
         <p>
@@ -39,8 +39,8 @@ export default {
 .hero {
   position: relative;
   background-color: var(--background-color);
-  min-height: 500px;
-  height: 100vh;
+  min-height: 300px;
+  height: 100%;
   width: 100%;
   overflow: hidden;
   padding: 10vh 16px;
@@ -48,11 +48,11 @@ export default {
 
   .logoContainer {
     width: 20%;
-    border: 2px solid $vermilion;
     min-width: 100px;
     border-radius: 100%;
     margin: 20px auto 40px;
-    animation: neon-box 1.5s ease-in-out infinite alternate;
+    box-shadow: var(--box-shadow), inset 8px 8px 20px $crown-of-thorns;
+    background-color: $vermilion;
 
     .logo {
       width: 90%;
@@ -75,8 +75,13 @@ export default {
       }
 
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-        padding: 15px;
+        padding: 45px;
       }
+    }
+
+    ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+      width:80%;
+      margin: 20px auto;
     }
   }
 
@@ -90,27 +95,40 @@ export default {
     }
 
     h1 {
-      font-family: 'Aldo the Apache';
+      font-family: 'Ubuntu';
       letter-spacing: 3px;
-      font-size: 54px;
+      font-size: 48px;
       padding-top: 16px;
+      padding: 20px;
+      color: var(--text-color);
+      box-shadow: var(--box-shadow);
+      width: 360px;
+      border-radius: 30px 0;
+      margin: 0 auto;
     }
 
     p {
+      margin-top: 72px;
       font-family: 'Quicksand';
       font-weight: 500;
+      font-size: 32px;
     }
 
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
       font-size: 14px;
+
+      p {
+        font-size: 20px;
+      }
     }
   }
 }
 
 .note {
-  font-family: 'Quicksand';
-  font-weight: 500;
+  font-family: 'Roboto Slab';
+  font-weight: 700;
   text-align: center;
-  padding-bottom: 10px;
+  font-size: 24px;
+
 }
 </style>
