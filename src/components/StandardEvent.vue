@@ -217,7 +217,7 @@ $cell-collapsed-size = 150px;
 
 .whiteTitle {
   color: var(--text-color);
-  font-family: 'Aldo the Apache';
+  font-family: 'Baloo Bhaina 2';
 
   h3 {
     font-size: 32px;
@@ -225,7 +225,7 @@ $cell-collapsed-size = 150px;
 }
 
 .cell {
-  box-shadow: var(--box-shadow);
+  box-shadow: var(--icon-shadow);
   width: var(--event-size);
   height: 100%;
   background: $vermilion;
@@ -298,8 +298,10 @@ $cell-collapsed-size = 150px;
     font-family: 'Quicksand';
     padding: 2px 10px;
     text-align: justify;
+    font-size: 24px;
     font-weight: 600;
     vertical-align: middle;
+    color: $mystic;
   }
 }
 

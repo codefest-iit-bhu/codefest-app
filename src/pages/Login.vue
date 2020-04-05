@@ -5,7 +5,7 @@
       <div :class="$style.authContainer">
         <TabLayout :tabs="tabs">
           <div :class="$style.formContainer" slot="login">
-            <BarLoader :loading="loading" color="#86FF00" :height="10" :class="$style.loader"/>
+            <BarLoader :loading="loading" color="$vermilion" :height="10" :class="$style.loader"/>
             <form :class="$style.form" @submit.prevent="emailLogin">
               <div :class="$style.fieldContainer">
                 <label for="email" :class="$style.label">E-mail</label>
@@ -318,11 +318,16 @@ export default {
 }
 
 .formContainer {
+
+  background-color: var(--background-color);
+  box-shadow: var(--inset-box-shadow);
   .loader {
     width: 100%;
     position: absolute;
     top: 0;
   }
+
+  padding-bottom: 25px;
 }
 
 .form {
@@ -338,13 +343,14 @@ export default {
 .field {
   clear: both;
   height: 30px;
-  color: white;
+  color: var(--text-color);
+  box-shadow: var(--inset-box-shadow);
   border: 0;
   outline: 0;
   max-width: 400px;
   width: 100%;
   font-size: 16px;
-  background-color: #fff2;
+  background-color: var(--background-color);
   border-radius: 5px;
   padding-left: 5px;
   margin-bottom: 20px;
@@ -352,11 +358,12 @@ export default {
 
 .label {
   float: left;
-  color: white;
-  text-align: right;
+  color: var(--text-color);
+  text-align: left;
   font-family: 'Quicksand';
   font-weight: 600;
   height: 30px;
+  width: 100px;
 }
 
 .fieldWrapper {
@@ -377,9 +384,13 @@ export default {
   margin-bottom: 20px;
 
   a {
-    color: $vermilion;
+    color: $waterloo;
     font-family: 'Roboto Slab';
     font-weight: 600;
+
+    &:hover {
+      color: var(--text-color);
+    }
   }
 }
 
@@ -390,7 +401,8 @@ export default {
 .submit {
   border: 0;
   background: transparent;
-  color: $white;
+  color: var(--background-color-invert);
+  box-shadow: var(--box-shadow);
   border-radius: 100%;
   font-size: 40px;
   height: 40px;
@@ -411,7 +423,10 @@ export default {
   padding: 5px;
   margin-top: 20px;
   border: 0;
-  border-top: 1px solid $vermilion;
+  background-color: var(--background-color);
+  box-shadow: var(--icon-shadow);
+  width: 60%;
+  border-radius: 30px 0;
 
   .socialButton {
     background-color: Transparent;

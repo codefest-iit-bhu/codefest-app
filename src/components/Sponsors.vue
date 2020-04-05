@@ -1,7 +1,7 @@
 <template>
   <SectionLayout title="Previous Sponsors" id="sponsors">
     <div :class="[$style.sponsors, $style[$mq]]">
-      <ResponsiveTwoColumnLayout>
+      <!-- <ResponsiveTwoColumnLayout>
         <div :class="$style.title" slot="left">
           <div :class="$style.cell">
             <div :class="$style.clip">
@@ -14,7 +14,7 @@
         <div :class="$style.titleText" slot="right">
           <div :class="$style.txt">Title Sponsor</div>
         </div>
-      </ResponsiveTwoColumnLayout>
+      </ResponsiveTwoColumnLayout> -->
       <div :class="$style.container">
         <GridLayout
           :columns="$mq | mq({xs: 1, sm: 1, md: 2, lg: 2, xl: 2})"
@@ -25,8 +25,6 @@
             <div :class="$style.clip">
               <img :src="stat.image" :class="$style.img" />
             </div>
-            <br />
-            <span :class="$style.txt">{{ stat.text }}</span>
           </div>
         </GridLayout>
       </div>
@@ -55,21 +53,47 @@ export default {
   data() {
     return {
       stats: [
-         {
+        {
+          image: "assets/Sponsors/aws.png",
+          link: "#"
+        },
+        {
           image: "assets/Sponsors/cisco.png",
-          text: "Associate Sponsor",
-          link: "https://www.cisco.com/"
+          link: "#"
         },
         {
           image: "assets/Sponsors/mozilla1.png",
-          text: "Diversity Partner",
-          link: "https://www.mozilla.org/"
+          link: "#"
+        },
+        {
+          image: "assets/Sponsors/top-coder.png",
+          link: "#"
+        },
+        {
+          image: "assets/Sponsors/eligible.png",
+          link: "#"        
+          },
+        {
+          image: "assets/Sponsors/uber.png",
+          link: "#"        
+        },
+        {
+          image: "assets/Sponsors/zebronics.png",
+          link: "#"        
+        },
+        {
+          image: "assets/Sponsors/grab-on.png",
+          link: "#"        
+        },
+        {
+          image: "assets/Sponsors/hackerearth.png",
+          link: "#"        
+        },
+        {
+          image: "assets/Sponsors/hackerrank.png",
+          link: "#"        
         }
       ],
-      title: {
-        image: "assets/Sponsors/aws.png",
-        link: "https://aws.amazon.com/"
-      },
       buttonHovered: false
     };
   },
@@ -87,9 +111,9 @@ export default {
 @require '~@styles/mixins';
 @require '~@styles/anims';
 
-$cell-size = 250px;
-$box-height = 320px;
-$box-width = 300px;
+$cell-size = 200px;
+$box-height = 250px;
+$box-width = 250px;
 
 .sponsors {
   .offset {
@@ -101,7 +125,7 @@ $box-width = 300px;
 
   .link {
     margin: auto;
-    width: 290px;
+    width: 250px;
     height: auto;
     padding: 24px;
     box-shadow: var(--box-shadow);
@@ -141,27 +165,23 @@ $box-width = 300px;
   }
 
   .container {
-    padding-top: 50px;
-
     .cell {
       width: $cell-size;
       height: $cell-size;
-      margin-bottom: 40px;
 
       .clip {
         background-color: white;
-        transform: rotate(45deg);
-        width: 70%;
-        height: 70%;
+        width: 85%;
+        height: 85%;
+        padding: 10px;
         border-radius: 25px;
-        margin-bottom: 20px;
+        box-shadow: var(--box-shadow);
       }
 
       .img {
         width: 100%;
         height: 100%;
         margin: auto;
-        transform: rotate(-45deg);
       }
 
       .txt {
@@ -172,18 +192,18 @@ $box-width = 300px;
 
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
         text-align: center;
-        width: 200px;
-        height: 200px;
+        width: 150px;
+        height: 150px;
 
         .clip {
           margin-top: 20px;
-          margin-left: 30px;
+          margin-left: 7px;
         }
       }
     }
 
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-      margin: 0 auto 75px;
+      margin: 0 auto 25px;
     }
   }
 
@@ -193,8 +213,8 @@ $box-width = 300px;
     height: $box-height;
 
     .cell {
-      width: 360px;
-      height: 360px;
+      width: 300px;
+      height: 300px;
       margin: auto;
 
       .clip {

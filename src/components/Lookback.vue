@@ -67,6 +67,7 @@ export default {
 @require '~@styles/theme';
 
 .lookback {
+
   .stat {
     width: 200px;
     height: 200px;
@@ -80,13 +81,13 @@ export default {
 
     .clip {
       border-radius: 30px;
-      box-shadow: var(--box-shadow);
+      box-shadow: var(--icon-shadow);
       background: white;
       width: 160px;
       height: 160px;
       margin-left: auto;
       margin-right: auto;
-      margin-bottom: 5px;
+      margin-bottom: 25px;
       padding: 10px;
       background-color: $vermilion;
     }
@@ -101,7 +102,7 @@ export default {
 
     .name, .value {
       font-family: 'Quicksand';
-      font-weight: 500;
+      font-weight: 700;
       margin-left: auto;
       margin-right: auto;
       text-align: center;

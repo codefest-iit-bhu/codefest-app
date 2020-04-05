@@ -1,20 +1,6 @@
 <template>
-  <SectionLayout title="Sponsors" id="sponsors">
+  <SectionLayout title="Previous Sponsors" id="sponsors">
     <div :class="[$style.sponsors, $style[$mq]]">
-      <ResponsiveTwoColumnLayout :class="$style.offset">
-        <div :class="$style.title" slot="left">
-          <div :class="$style.cell">
-            <div :class="$style.clip">
-              <a :href="title.link" target="_blank">
-                <img :src="title.image" :class="$style.img">
-              </a>
-            </div>
-          </div>
-        </div>
-        <div :class="$style.titleText" slot="right">
-            <div :class="$style.txt">Title Sponsor</div>
-        </div>
-      </ResponsiveTwoColumnLayout>
       <div :class="$style.container">
         <GridLayout
           :columns="$mq | mq({xs: 1, sm: 1, md: 2, lg: 2, xl: 2})"
@@ -25,17 +11,15 @@
               <div :class="$style.clip">
                 <img :src="stat.image" :class="$style.img">
               </div>
-              <br>
-              <span :class="$style.txt">{{ stat.text }}</span>
           </div>
         </GridLayout>
       </div>
       <div :class="$style.txt"></div>
-      <div :class="$style.link">
-        <a href="https://goo.gl/forms/RyjmY7i002oUHivu2" :class="$style.linkText" target="_blank">
-          <h4>Sponsor Us</h4>
-        </a>
-      </div>
+        <div :class="$style.link" @mouseover="buttonHovered = true" @mouseleave="buttonHovered = false">
+          <a href="https://drive.google.com/file/d/15BYqDZwShgFFqkgBPKqr0j-AcFF-_Umm" :class="[$style.linkText, linkColorStyle]" target="_blank">
+            <h4> Sponsor Brochure </h4>
+          </a>
+        </div>
     </div>
   </SectionLayout>
 </template>
@@ -53,7 +37,24 @@ export default {
   },
   data() {
     return {
-
+      stats: [
+        {
+          image: "assets/Sponsors/aws.png",
+          link: "#"        
+        },
+        {
+          image: "assets/Sponsors/github.png",
+          link: "#"        
+        },
+        {
+          image: "assets/Sponsors/devfolio_logo.svg",
+          link: "#"        
+        },
+        {
+          image: "assets/Sponsors/matic-gr1.png",
+          link: "#"        
+        }
+      ],
     };
   }
 };
@@ -64,12 +65,11 @@ export default {
 @require '~@styles/mixins';
 @require '~@styles/anims';
 
-$cell-size = 250px;
-$box-height = 320px;
-$box-width = 300px;
+$cell-size = 200px;
+$box-height = 250px;
+$box-width = 250px;
 
 .sponsors {
-
   .offset {
     ~/.xl ^[1..-1], ~/.xxl ^[1..-1] {
       width: 80%;
@@ -79,28 +79,32 @@ $box-width = 300px;
 
   .link {
     margin: auto;
-    width: 290px;
+    width: 250px;
     height: auto;
     padding: 24px;
-    border-radius: 50px;
-    border: 2px solid $vermilion;
+    box-shadow: var(--box-shadow);
+    border-radius: 50px 0px 50px 0px;
     text-align: center;
     cursor: pointer;
 
+    .hoverColor {
+      color: var(--text-color) !important;
+    }
+
     .linkText {
-      color: $vermilion;
+      color: $waterloo;
       display: inline;
       text-decoration: none;
 
       h4 {
-        font-family: 'Viga';
+        font-family: 'Roboto Slab';
         font-size: 30px;
         margin: 0;
       }
     }
 
     &:hover {
-      box-shadow: inset 0px 0px 10px $vermilion;
+      box-shadow: var(--inset-box-shadow);
     }
   }
 
@@ -115,27 +119,23 @@ $box-width = 300px;
   }
 
   .container {
-    padding-top: 50px;
-
     .cell {
       width: $cell-size;
       height: $cell-size;
-      margin-bottom: 40px;
 
       .clip {
         background-color: white;
-        transform: rotate(45deg);
         width: 70%;
         height: 70%;
+        padding: 10px;
         border-radius: 25px;
-        margin-bottom: 20px;
+        box-shadow: var(--box-shadow);
       }
 
       .img {
         width: 100%;
         height: 100%;
         margin: auto;
-        transform: rotate(-45deg);
       }
 
       .txt {
@@ -157,7 +157,7 @@ $box-width = 300px;
     }
 
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-      margin: 0 auto 75px;
+      margin: 0 auto 25px;
     }
   }
 
@@ -167,8 +167,8 @@ $box-width = 300px;
     height: $box-height;
 
     .cell {
-      width: 360px;
-      height: 360px;
+      width: 300px;
+      height: 300px;
       margin: auto;
 
       .clip {
@@ -217,20 +217,20 @@ $box-width = 300px;
   }
 
   .titleText {
-      .txt {
-        margin: 150px auto;
-        font-size: 60px;
-        font-family: 'Roboto Slab';
-        font-weight: 600;
-      }
+    .txt {
+      margin: 150px auto;
+      font-size: 60px;
+      font-family: 'Roboto Slab';
+      font-weight: 600;
+    }
 
-      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-        .txt{
-          margin: 0 auto 50px;
-          padding-top: 0;
-          font-size: 30px;
-        }
+    ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+      .txt {
+        margin: 0 auto 50px;
+        padding-top: 0;
+        font-size: 30px;
       }
+    }
   }
 }
 </style>

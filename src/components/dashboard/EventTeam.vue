@@ -301,7 +301,9 @@ $btn-width = 240px;
   --event-team-button-width: $btn-width;
   width: var(--event-team-box-width);
   padding: 10px 10px 20px;
-  border: 1px solid $vermilion;
+  box-shadow: var(--box-shadow);
+  background-color: var(--background-color);
+  border-radius: 0 30px;
 
   &.xs, &.sm {
     --event-team-box-width: $box-small-width;
@@ -316,12 +318,13 @@ $btn-width = 240px;
     height: 50px;
 
     .txt {
-      font-size: 23px;
-      font-family: 'Aldo the Apache';
+      font-size: 16px;
+      font-family: 'Baloo Bhaina 2';
     }
 
     .txt2 {
       float: right;
+      font-weight: 700;
     }
   }
 
@@ -339,18 +342,19 @@ $btn-width = 240px;
     width: 100%;
     top: 0;
     left: 0;
-    background-color: black;
-    border: 1px solid $vermilion;
-    color: $vermilion;
-    font-family: 'Aldo the Apache';
-    padding: 15px;
+    background-color: var(--background-color);
+    box-shadow: var(--small-icon-shadow);
+    color: $waterloo;
+    font-family: 'Roboto Slab';
+    padding: 10px;
     font-size: 20px;
+    border: none;
     border-radius: 5px;
     width: inherit;
-    animation: animate 0.5s reverse;
 
     &:hover {
-      box-shadow: inset 0px 0px 7px #86ff00;
+      box-shadow: var(--inset-small-icon-shadow);
+      color: var(--text-color);
     }
   }
 

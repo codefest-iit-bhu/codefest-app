@@ -26,14 +26,14 @@
         </SectionLayout>
         <!-- <Timeline/> -->
         <!-- <Prizes/> -->
-        <!-- <HaxploreSponsors/> -->
-        <SectionLayout title="Sponsor Us">
+        <HaxploreSponsors/>
+        <!-- <SectionLayout title="Sponsor Us">
           <div :class="$style.link" @mouseover="buttonHovered = true" @mouseleave="buttonHovered = false">
             <a href="https://drive.google.com/file/d/15BYqDZwShgFFqkgBPKqr0j-AcFF-_Umm" :class="[$style.linkText, linkColorStyle]" target="_blank">
               <h4> Sponsor Brochure </h4>
             </a>
           </div>
-        </SectionLayout>
+        </SectionLayout> -->
       </div>
     </main>
     <FooterN/>
@@ -47,7 +47,6 @@ const About = () => import("@components/haxplore/About");
 const FAQ = () => import("@components/haxplore/FAQ");
 const Landing = () => import("@components/haxplore/Landing");
 const Lookback = () => import("@components/Lookback");
-import Prizes from "@components/haxplore/Prizes";
 const HaxploreSponsors = () => import("@components/haxplore/HaxploreSponsors");
 const FooterN = () => import("@components/haxplore/FooterN");
 const SectionLayout = () => import("@components/layouts/SectionLayout");
@@ -59,7 +58,6 @@ export default {
     About,
     FAQ,
     Timeline,
-    Prizes,
     SectionLayout,
     Landing,
     Lookback,
