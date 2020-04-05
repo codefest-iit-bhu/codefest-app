@@ -181,7 +181,13 @@ export default {
             .execute()
             .then(resolve)
             .catch(reject);
-        else reject(new CommandNotFoundError());
+        else{
+          const targetUrl = navigation.getPwdFromCurrent(envs.pws, cmd);
+          if(!!target){
+            router.push(targetUrl);
+          }
+          else reject(new CommandNotFoundError());
+        }
       });
     },
     onSubmitInput(words) {
