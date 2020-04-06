@@ -6,6 +6,12 @@
           <i class="fa fa-bars"></i>
         </a>
       </li>
+      <li :id="$style.toggleTheme" slot="right" v-if="['xs', 'sm'].includes(this.$mq)">
+        <a  @click="toggleTheme">
+          <i v-if="isThemeLight" class="fa fa-sun"></i>
+          <i v-else class="fa fa-moon fa-xs"></i>
+        </a>
+      </li>
       <li :class="$style.appbarLogo" slot="left" v-if="shouldShowCollegeLogo">
         <img src="@assets/logo-dcse.png">
       </li>
@@ -124,7 +130,10 @@ export default {
     },
     showDashboardActions() {
       return this.$store.getters.isLoggedIn;
-    }
+    },
+    isThemeLight() {
+      return this.$store.getters.currentTheme === "light";
+    },
   },
   methods: {
     openSidebar() {
@@ -136,6 +145,9 @@ export default {
     authLogout() {
       this.$store.dispatch("logout");
       if (this.$route.meta.requiresAuth) this.$router.push({ name: "~" });
+    },
+    toggleTheme(){
+      this.$store.dispatch("toggle_theme");
     }
   }
 };
@@ -156,6 +168,17 @@ export default {
       transition: 0.5s;
     }
   }
+
+  #toggleTheme{
+    margin: 5px 10px;
+
+    a {
+      color: $waterloo;
+    }
+
+  }
+
+
 
   .appbarLogo {
     display: inline-block;
