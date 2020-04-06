@@ -97,7 +97,7 @@ export default {
     h1 {
       font-family: 'Ubuntu';
       letter-spacing: 3px;
-      font-size: 36px;
+      font-size: 48px;
       padding-top: 16px;
       padding: 20px;
       color: var(--text-color);
@@ -105,6 +105,13 @@ export default {
       width: 360px;
       border-radius: 30px 0;
       margin: 0 auto;
+
+      ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+        font-size: 24px;
+        padding-top: 12px;
+        padding: 10px;
+        width: 250px;
+      }
     }
 
     p {
