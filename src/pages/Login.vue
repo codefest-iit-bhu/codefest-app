@@ -46,7 +46,7 @@
                 <img src="@assets/social/facebook.png">
               </button>
               <button @click="gitHubLogin" :class="$style.socialButton">
-                <img src="@assets/social/github.png">
+                <img :src="githubImageUrl">
               </button>
             </div>
           </div>
@@ -107,7 +107,7 @@
                 <img src="@assets/social/facebook.png">
               </button>
               <button @click="gitHubLogin" :class="$style.socialButton">
-                <img src="@assets/social/github.png">
+                <img :src="githubImageUrl">
               </button>
             </div>
           </div>
@@ -285,6 +285,12 @@ export default {
         const inputElem = document.getElementById(inputId);
         if (inputElem) return inputElem.type !== "password";
       };
+    },
+    githubImageUrl() {
+      if (this.$store.getters.currentTheme === 'dark')
+        return "assets/social/github-dark.png";
+      else
+        return "assets/social/github-light.png";
     }
   }
 };

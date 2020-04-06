@@ -8,8 +8,8 @@
       <SectionLayout v-for="(team, i) in teams" :key="i" :title="team.title | capitalize">
         <carousel
           :scrollPerPage="false"
-          paginationColor="#57A300"
-          paginationActiveColor="#86FF00"
+          paginationColor="#6F2232"
+          paginationActiveColor="#E47718"
           :perPageCustom="[[768, 3], [1400, 4],[600,2],[300,1]]"
           :autoplay="true"
           :autoplayTimeout="5000"

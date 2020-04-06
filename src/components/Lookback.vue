@@ -17,7 +17,7 @@ import GridLayout from "./layouts/GridLayout";
 export default {
   props: {
     stats: {
-      type: Object
+      type: Array
     }
   },
   components: {

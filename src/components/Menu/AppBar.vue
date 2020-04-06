@@ -273,7 +273,7 @@ export default {
 
         a, .subList a {
           font: 500 15px 'Roboto Slab';
-          color: var(--text-color);
+          color: $white;
           text-decoration: none;
           cursor: pointer;
           padding: 10px;
