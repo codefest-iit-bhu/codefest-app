@@ -2,7 +2,7 @@
   <div :class="[$style.testimonials, $style[$mq]]">
     <div :class="$style.testimonial" v-for="(item, i) in testimonials" :key="i">
       <div :class="$style.avatar">
-        <img :src="item.image">
+        <img :src="item.image" />
       </div>
       <div :class="$style.textbox">
         <div :class="$style.corner"></div>
@@ -125,7 +125,7 @@ $rd = 60px;
       flex-flow: row;
 
       .corner {
-        background-image: url('@assets/Testimonial/corner-odd.svg');
+        background-image: url('~@assets/Testimonial/corner-odd.svg');
       }
 
       .text {
@@ -148,7 +148,7 @@ $rd = 60px;
       text-align: right;
 
       .corner {
-        background-image: url('@assets/Testimonial/corner-even.svg');
+        background-image: url('~@assets/Testimonial/corner-even.svg');
       }
 
       .text {

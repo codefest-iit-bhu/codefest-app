@@ -2,11 +2,11 @@
   <footer :class="$style.footer">
     <div :class="$style.logo">
       <div :class="$style.image">
-        <img src="@assets/white-cf20-logo.svg">
+        <img src="@assets/white-cf20-logo.svg" />
       </div>
       <p>Copyright © CodeFest'20</p>
     </div>
-    <i :class="$style.heart"/>
+    <i :class="$style.heart" />
     <span :class="$style.socialIcons">
       <a href="https://www.facebook.com/codefest/">
         <span class="fa-stack fa-lg">
@@ -105,7 +105,7 @@ export default {};
   width: 60px;
   height: 60px;
   display: inline;
-  background: transparent url('@assets/twitter_heart.png') no-repeat;
+  background: transparent url('~@assets/twitter_heart.png') no-repeat;
   background-size: 2900%;
   margin: 0 0;
 

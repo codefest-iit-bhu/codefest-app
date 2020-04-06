@@ -2,11 +2,11 @@
   <footer :class="$style.footer">
     <div :class="$style.logo">
       <div :class="$style.image">
-        <img src="@assets/haxplore/logo-text.svg">
+        <img src="@assets/haxplore/logo-text.svg" />
       </div>
       <p>Copyright © 2020 Haxplore</p>
     </div>
-    <i :class="$style.heart"/>
+    <i :class="$style.heart" />
     <span :class="$style.socialIcons">
       Codefest' 20
       <a href="https://www.facebook.com/codefest/">
@@ -103,7 +103,7 @@ export default {};
   width: 60px;
   height: 60px;
   display: inline;
-  background: transparent url('@assets/twitter_heart.png') no-repeat;
+  background: transparent url('~@assets/twitter_heart.png') no-repeat;
   background-size: 2900%;
   margin: 0 0;
 
