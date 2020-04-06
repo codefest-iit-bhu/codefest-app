@@ -21,6 +21,7 @@
       		<img v-if="themeisdark" :class="$style.wrapimg" src="@assets/hero/hero-wrap-dark.svg">
       		<img v-else :class="$style.wrapimg" src="@assets/hero/hero-wrap.svg">
       	</div>
+      	<span ref="tagline" style="display: none;"></span>
 		<canvas v-if="themeisdark" ref="rains" :class="$style.anim" :style="{ backgroundImage: 'url(' + require('@/assets/hero/background-dark.jpg') + ')' }"></canvas>
 		<canvas v-else ref="rains" :class="$style.anim" :style="{ backgroundImage: 'url(' + require('@/assets/hero/background.jpg') + ')' }"></canvas>
 		</mq-layout>
@@ -94,6 +95,7 @@ export default {
 		var path2 = [1622,94,1498,88,1512,50,1616,52,1614,180,1768,184];
 		var path3 = [1720,974,1400,676,1144,562,1140,409,1820,404];
 
+		var wscale = wid/1920;
 
 
 		var pLen = path.length;														// scale the path as per window co-ordinates
@@ -102,29 +104,10 @@ export default {
 		var pLen3 = path3.length;
 		var i;
 
-		for(i=0;i < pLen; i+=2){
-
-			path[i] = (path[i]/1900)*wid;
-			path[i+1] = (path[i+1]/1000)*heig;
-		}
-
-		for(i=0;i < pLen1; i+=2){
-
-			path1[i] = (path1[i]/1900)*wid;
-			path1[i+1] = (path1[i+1]/1000)*heig;
-		}
-
-		for(i=0;i < pLen2; i+=2){
-
-			path2[i] = (path2[i]/1900)*wid;
-			path2[i+1] = (path2[i+1]/1000)*heig;
-		}
-
-		for(i=0;i < pLen3; i+=2){
-
-			path3[i] = (path3[i]/1900)*wid;
-			path3[i+1] = (path3[i+1]/1000)*heig;
-		}
+		for(i=0;i < pLen; i++)	path[i] = (path[i]*wscale);
+		for(i=0;i < pLen1; i++)	path1[i] = (path1[i]*wscale);
+		for(i=0;i < pLen2; i++)	path2[i] = (path2[i]*wscale);
+		for(i=0;i < pLen3; i++)	path3[i] = (path3[i]*wscale);
 
 		for(i=pLen-2; i > -1 ;i-=2){
 
