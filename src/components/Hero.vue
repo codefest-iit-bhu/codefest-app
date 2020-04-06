@@ -5,7 +5,8 @@
 		<div class="absolute-center1" :class="$style.title">
 	        <div :class="$style.cftitle">
 	          <span>
-	            <img :class="$style.mainlogo" src="@assets/hero/logo.png">
+	            <img v-if="themeisdark" :class="$style.mainlogo" src="@assets/hero/logo-dark.png">
+	            <img v-else :class="$style.mainlogo" src="@assets/hero/logo.png">
 	          </span>
 	          <!--<h1 :class="$style.heroTitle">
 		        code
@@ -79,9 +80,9 @@ export default {
 		    [241,6,227,-27,193,-54,166,-71,126,-81,93,-87,60,-88,22,-86,-14,-79,-37,-69,-49,-53,-53,-21,-60,23,-64,65,-45,88,-15,95,16,97,70,100,114,97,150,90,189,72,223,44],
 		    [-123,6,-117,-30,-114,-62,-140,-70,-168,-74,-201,-76,-230,-60,-251,-27,-253,12,-244,41,-217,57,-176,62,-135,64,-129,42]
 		]																			// shape of left footstep
-		const footScale = 0.04; 													// size of footstep
-		const fadeRate = 0.7;														// change rate of fading of footsteps
-		const stepLen = 35; 														// change length of step taken by single foot
+		const footScale = 0.03; 													// size of footstep
+		const fadeRate = 0.65;														// change rate of fading of footsteps
+		const stepLen = 24; 														// change length of step taken by single foot
 		var stepCount = 0; 
 		var stepCount1 = 0;
 		var stepCount2 = 0;
@@ -429,23 +430,23 @@ export default {
   text-align: center;
 
   .cftitle {
-    width: 70%;
-    margin-left: 15%;
+    width: 60%;
+    margin-left: 20%;
     padding-right: 5%;
     padding-left: 5%;
     padding-top: 50px;
     padding-bottom: 50px;
     border-radius: 300px;
-    backdrop-filter: blur(0.07em);
+    backdrop-filter: blur(0.01em);
 
     .mainlogo{
 
-    	width: 50vw;
+    	width: 40vw;
     }
 
     .heroTitle{
 
-      font: 120px 'Harry';
+      font: 100px 'Harry';
       font-weight: 600;
       text-align: center;
       color: var(--hero-text-color);
@@ -455,9 +456,10 @@ export default {
       display: block;
       margin: 10px auto;
       height: 32px;
-      font: 30px 'Harry';
+      font: 26px 'Harry';
       font-weight: 600;
       text-align: center;
+      text-shadow: 1px 1px #000;
       color: var(--hero-text-color);
       letter-spacing: 3px;
       animation: var(--hero-text-animation);
@@ -497,7 +499,7 @@ export default {
 	position: absolute;
 	border-radius: 25px;
 	padding: 20px; 
-	width: 60%;
+	width: 50%;
 	max-width: 60%;
 	min-height: 250px;
 	max-height: 300px;
