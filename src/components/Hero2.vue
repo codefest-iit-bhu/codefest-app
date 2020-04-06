@@ -1,6 +1,6 @@
 <template>
 
-	<div :class="$style.hero">
+	<div :class="$style.hero" id="hero">
 		<mq-layout mq="lg+">
 		<div class="absolute-center1" :class="$style.title">
 	        <div :class="$style.cftitle">
@@ -34,7 +34,7 @@
 	          </svg>
 	        </div>
 	        <div :class="$style.cftext">
-	          <span :class="$style.smalltagline" ref="tagline"></span>
+	          <span :class="$style.smalltagline">"Imagine. Create. Iterate."</span>
 	          <!--<p :class="$style.loc">
 	            <i class="fas fa-map-marked-alt"></i> IIT (BHU), Varanasi
 	          </p>-->
@@ -45,6 +45,10 @@
 	          </router-link>
 	        </div>
 	      </div>
+	      <div :class="$style.wrapmob">
+      		<img v-if="themeisdark" :class="$style.wrapimg" src="@assets/hero/hero-wrap-dark.svg">
+      		<img v-else :class="$style.wrapimg" src="@assets/hero/hero-wrap.svg">
+      	</div>
 	    </mq-layout>
 	</div>
 </template>
@@ -79,7 +83,7 @@ export default {
 		    [241,6,227,-27,193,-54,166,-71,126,-81,93,-87,60,-88,22,-86,-14,-79,-37,-69,-49,-53,-53,-21,-60,23,-64,65,-45,88,-15,95,16,97,70,100,114,97,150,90,189,72,223,44],
 		    [-123,6,-117,-30,-114,-62,-140,-70,-168,-74,-201,-76,-230,-60,-251,-27,-253,12,-244,41,-217,57,-176,62,-135,64,-129,42]
 		]																			// shape of left footstep
-		const footScale = 0.04; 													// size of footstep
+		const footScale = 0.040; 													// size of footstep
 		const fadeRate = 0.7;														// change rate of fading of footsteps
 		const stepLen = 35; 														// change length of step taken by single foot
 		var stepCount = 0; 
@@ -352,15 +356,23 @@ export default {
 		}
     	draw();
     },
+    initback(){
+
+    	document.getElementById("hero").style.backgroundImage = 'url(' + require('@/assets/hero/background-dark.jpg') + ')';
+    },
     tryMatrixRain() {
       if (["lg", "xl", "xxl"].includes(this.$mq)) {
         this.initMatrixRain();
+      }
+      else{
+
+      	this.initback();
       }
     }
   },
   mounted() {
     this.tryMatrixRain();
-    this.animTyping = new TypingAnim(
+    /*this.animTyping = new TypingAnim(
       this.$refs.tagline,
       "Imagine. Create. Iterate."
     );
@@ -370,7 +382,7 @@ export default {
       this.isTyped = !this.isTyped;
     }, 2000);
     this.animTyping.type();
-    this.isTyped = true;
+    this.isTyped = true;*/
 
   },
   watch: {
@@ -404,6 +416,39 @@ export default {
 	overflow: hidden;
 	color: #f1f1f1;
 
+}
+
+.topbar{
+	
+	position: absolute;
+    top: 3%;
+	min-height: 10vh;
+	width: 100vw;
+	z-index: 2;
+
+	.leftimg{
+
+		padding-top: 3vh;
+		float:left;
+		padding-left: 8vh;
+	}
+
+	.rightimg{
+
+		float:right;
+		padding-right: 8vh;
+	}
+
+	.pic{
+
+		height: 20vh;
+	}
+
+	.pic2{
+
+		height: 30vh;
+	}
+	
 }
 
 .wrap{
@@ -508,7 +553,7 @@ export default {
 
 .smallhero {
 
-  color: $orange;
+  color: var(--hero-text-color);
 
   .aws {
     margin: auto;
@@ -536,13 +581,13 @@ export default {
     margin: auto;
 
     svg {
-      width: 350px;
-      height: 300px;
+      width: 450px;
+      height: 390px;
       display: inline-block;
 
       path {
-        fill: $chartreuse;
-        animation: svg-transform 2.5s ease-in-out infinite alternate;
+        fill: var(--hero-text-color);
+        animation: svg-transform-hero 2.5s ease-in-out infinite alternate;
       }
 
       ~/.sm ^[1..-1] {
@@ -565,17 +610,18 @@ export default {
     .smalltagline {
       display: block;
       margin: 10px auto;
-      height: 32px;
-      font: 26px 'Ubuntu';
+      height: 18px;
+      font: 36px 'Harry';
       text-align: center;
+      animation: var(--hero-text-animation);
 
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-        font-size: 16px;
+        font-size: 18px;
       }
     }
 
     ~/.sm ^[1..-1] {
-      font-size: 16px;
+      font-size: 20px;
     }
 
     ~/.xs ^[1..-1] {
@@ -600,9 +646,24 @@ export default {
   }
 }
 
+.wrapmob{
+	
+	position: absolute;
+	width: 100vw;
+	z-index: 2;
+	min-height: 1px;
+	bottom: -0.5vh;
+
+	.wrapimg{
+
+		bottom: 0vh;
+		width: 100vw;
+	}
+}
+
 .registerbtn {
   text-align: center;
-  padding-top: 20px;
+  padding-top: 50px;
 
   .register {
     margin: auto;
@@ -611,13 +672,13 @@ export default {
     height: auto;
     padding: 10px 20px;
     border-radius: 50px;
-    border: 2px solid $darkorange;
+    border: 2px solid var(--hero-text-color);
     text-align: center;
     cursor: pointer;
-    color: $orange;
+    color: var(--hero-text-color);
     font-family: 'Roboto Slab';
     font-weight: 600;
-    box-shadow: inset 0px 0px 10px $orange;
+    box-shadow: inset 0px 0px 10px var(--hero-text-color);
   }
 }
 
