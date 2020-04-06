@@ -97,7 +97,7 @@ export default {
     h1 {
       font-family: 'Ubuntu';
       letter-spacing: 3px;
-      font-size: 48px;
+      font-size: 36px;
       padding-top: 16px;
       padding: 20px;
       color: var(--text-color);

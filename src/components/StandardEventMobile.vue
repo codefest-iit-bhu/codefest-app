@@ -77,7 +77,7 @@ export default {
   border-radius: 15px 15px 0px 0px;
   padding: 0.25rem 1.5rem 1rem 2rem;
   box-shadow:  0 0 2rem rgba(0,0,0,0.5);
-  
+
 }
 
 .card {
@@ -105,12 +105,14 @@ export default {
     font-family: 'roboto slab';
     font-weight: 700;
     text-align: center;
+    font-size: 16px;
     letter-spacing: 0.05em;
   }
 
   &__content {
     font-family: 'Quicksand';
     font-weight: 500;
+    font-size: 13px;
     opacity: 0;
     animation: ContentFadeIn 0.8s 0.3s forwards;
   }
