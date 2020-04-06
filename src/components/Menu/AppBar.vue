@@ -2,7 +2,11 @@
   <div :class="[$style.wrapper, $style[$mq]]">
     <AppbarLayout v-bind="this.$attrs">
       <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
-        <router-link to="/haxplore">
+        <router-link to="/" v-if="haxplorePage">
+          Home
+          <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
+        </router-link>
+        <router-link to="/haxplore" v-else>
           HaXplore
           <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
         </router-link>
@@ -69,8 +73,11 @@
           <i class="fa fa-bars"></i>
         </a>
       </li>
-      <router-link to="/" slot="notch">
+      <router-link to="/" slot="notch" v-if="!haxplorePage">
         <img src="@assets/white-cf20-logo.svg" @click="clickNotch">
+      </router-link>
+      <router-link to="/haxplore" slot="notch" v-else>
+        <img src="@assets/haxplore/logo-text.svg" @click="clickNotch">
       </router-link>
     </AppbarLayout>
     <div :class="$style.sidebar" ref="sidebar">
@@ -89,9 +96,12 @@
               </div>
             </li>
             <li :class="$style.link">
-              <router-link to="/haxplore">
-                HaXplore
+              <router-link to="/" v-if="haxplorePage">
+                Home
                 <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
+              </router-link>
+              <router-link to="/haxplore" v-else>
+                HaXplore
               </router-link>
             </li>
             <!-- <li :class="$style.link">
@@ -137,6 +147,12 @@ export default {
     SectionSidebar,
     Slide
   },
+  props: {
+    haxplorePage: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
       isSidebarOpen: false
@@ -159,7 +175,11 @@ export default {
       this.isSidebarOpen = false;
     },
     clickNotch() {
-      if (this.$route.name === "~") this.$emit("scrollTop");
+      if (this.haxplorePage) {
+        this.$emit("scrollTop");
+      } else {
+        if (this.$route.name === "~") this.$emit("scrollTop");
+      }
     },
     authLogout() {
       this.$store.dispatch("logout");
