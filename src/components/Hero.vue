@@ -361,9 +361,12 @@ export default {
 		      setpage();
 		      draw();
 		      }
+		    else{
+
+		    	BackgroundLoader();
+		    }
 
 		  }, 1000);
-		  BackgroundLoader();
 
 		}
 		BackgroundLoader();
