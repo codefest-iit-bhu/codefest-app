@@ -2,7 +2,7 @@
   <div :class="[$style.landing, $style[$mq]]" id="landing">
     <div :class="$style.hero">
       <div :class="$style.logo">
-        <div :class="$style.preloader">
+        <div class = "absolute-center" :class="$style.preloader">
           <div :class="[$style.circle, $style.circle1]"></div>
           <div :class="[$style.circle, $style.circle2]"></div>
           <div :class="[$style.circle, $style.circle3]"></div>
@@ -179,12 +179,13 @@ export default {
     .logo {
       width: 800px;
       height: 500px;
-      margin: 60px auto 0;
+      margin: 150px auto 0;
+      position: relative;
 
       ~/.lg ^[1..-1] {
         width: 500px;
-        height: 312.5px;
-        margin: 30px auto 0;
+        height: 400px;
+        margin: 100px auto 0;
 
         #base {
           top: -60px;
@@ -193,8 +194,8 @@ export default {
 
       ~/.md ^[1..-1] {
         width: 480px;
-        height: 300px;
-        margin: 30px auto 0;
+        height: 350px;
+        margin: 100px auto 0;
 
         #base {
           top: -60px;
@@ -203,7 +204,7 @@ export default {
 
       ~/.sm ^[1..-1] {
         width: 500px;
-        height: 330px;
+        height: 350px;
 
         #base {
           top: -50px;
@@ -212,7 +213,7 @@ export default {
 
       ~/.xs ^[1..-1] {
         width: 320px;
-        height: 212px;
+        height: 350px;
 
         #base {
           top: -20px;
