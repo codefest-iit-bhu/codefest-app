@@ -16,13 +16,6 @@
         <!-- <Timeline/> -->
         <!-- <Prizes/> -->
         <HaxploreSponsors/>
-        <!-- <SectionLayout title="Sponsor Us">
-          <div :class="$style.link" @mouseover="buttonHovered = true" @mouseleave="buttonHovered = false">
-            <a href="https://drive.google.com/file/d/15BYqDZwShgFFqkgBPKqr0j-AcFF-_Umm" :class="[$style.linkText, linkColorStyle]" target="_blank">
-              <h4> Sponsor Brochure </h4>
-            </a>
-          </div>
-        </SectionLayout> -->
       </div>
     </main>
     <FooterN/>
