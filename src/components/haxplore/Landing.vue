@@ -2,8 +2,6 @@
   <div :class="[$style.landing, $style[$mq]]" id="landing">
     <div :class="$style.hero">
       <div :class="$style.logo">
-        <!-- <img :id="$style.top" src="@assets/haxplore/logo-landing.svg">
-        <img :id="$style.base" src="@assets/haxplore/phone-perspective.svg"> -->
         <div :class="$style.preloader">
           <div :class="[$style.circle, $style.circle1]"></div>
           <div :class="[$style.circle, $style.circle2]"></div>
@@ -11,7 +9,8 @@
         </div>
       </div>
       <span :class="$style.haxplore">
-        <img src="@assets/haxplore/logo-text.svg">
+        <img src="@assets/haxplore/logo-text.svg" v-if="$store.getters.currentTheme === 'dark'" />
+        <img src="@assets/haxplore/logo-text-black.svg" v-else />
       </span>
       <span :class="$style.tagline" ref="tagline"></span>
       <span :class="$style.venue">
@@ -19,9 +18,7 @@
           <i class="fas fa-map-marked-alt"></i> IIT (BHU), Varanasi
         </span>
       </span>
-      <DevfolioButton/>
-      <!-- <span :class="$style.register">Registrations will be open soon.</span> -->
-      <!-- <Countdown :until="hackathonStart" :class="$style.landing__countdown"/> -->
+      <DevfolioButton />
     </div>
   </div>
 </template>
@@ -164,7 +161,6 @@ export default {
       #loc::after {
         // content: '|';
         // margin-left: 2px;
-
         ~/.xs ^[1..-1] {
           content: '';
           margin: unset;
