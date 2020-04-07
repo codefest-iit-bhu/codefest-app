@@ -1,8 +1,10 @@
 <template>
 
-	<div :class="$style.hero">
+	<div id="hero" class="preload" :class="$style.hero">
 		<mq-layout mq="lg+">
-		<div class="absolute-center1" :class="$style.title">
+		<canvas id="canvas" v-if="themeisdark" ref="rains" :class="$style.anim" :style="{ backgroundImage: 'url(' + require('@/assets/hero/background-dark.jpg') + ')' }"></canvas>
+		<canvas id="canvas" v-else ref="rains" :class="$style.anim" :style="{ backgroundImage: 'url(' + require('@/assets/hero/background.jpg') + ')' }"></canvas>
+		<div id="title" class="absolute-center1" :class="$style.title">
 	        <div :class="$style.cftitle">
 	          <span>
 	            <img v-if="themeisdark" :class="$style.mainlogo" src="@assets/hero/logo-dark.png">
@@ -13,7 +15,7 @@
 		        <span>Fest</span>
 		        <sup>20</sup>
 		        </h1>-->
-	          <span :class="$style.tagline">Imagine. Create. Iterate.</span>
+	          <span id="tagline" :class="$style.tagline">Imagine. Create. Iterate.</span>
 	          
 	        </div>
       	</div>
@@ -21,9 +23,6 @@
       		<img v-if="themeisdark" :class="$style.wrapimg" src="@assets/hero/hero-wrap-dark.svg">
       		<img v-else :class="$style.wrapimg" src="@assets/hero/hero-wrap.svg">
       	</div>
-      	<span ref="tagline" style="display: none;"></span>
-		<canvas v-if="themeisdark" ref="rains" :class="$style.anim" :style="{ backgroundImage: 'url(' + require('@/assets/hero/background-dark.jpg') + ')' }"></canvas>
-		<canvas v-else ref="rains" :class="$style.anim" :style="{ backgroundImage: 'url(' + require('@/assets/hero/background.jpg') + ')' }"></canvas>
 		</mq-layout>
 		<mq-layout :mq="['sm', 'xs', 'md']">
 	      <div class="absolute-center" :class="[$style.smallhero, $style[$mq]]">
@@ -66,6 +65,7 @@ export default {
   },
   methods: {
     initMatrixRain() {
+
 		const canvas = this.$refs.rains;
 
 		var ctx = canvas.getContext("2d");
@@ -313,6 +313,13 @@ export default {
 		    ctx.putImageData(imageData,0,0);
 		}
 
+		function setpage(){
+
+			document.getElementById("title").style.display = "block";
+			document.getElementById("tagline").style.animation = "var(--hero-text-animation)";
+
+		}
+
 		function draw(){																	// main
 
 		    pos = getnextStep(stepLen,pos);
@@ -334,27 +341,60 @@ export default {
 		    Fade();
 		    setTimeout(draw,stepTime);
 		}
-    	draw();
+
+		function BackgroundLoader() {
+
+		  var url;
+		  var dark = globalthis.themeisdark ;
+		  if(dark)	url = require('@/assets/hero/background-dark.jpg');
+		  else url = require('@/assets/hero/background.jpg');
+		  var loaded = false;
+		  var image = new Image();
+
+		  image.onload = function () {
+		    loaded = true;
+		    var div = document.getElementById("canvas");
+		    div.style.backgroundImage = "url('" + url + "')";
+		  }
+		  image.src = url;      
+
+		  setTimeout(function() {
+		    if (loaded){
+		      setpage();
+		      draw();
+		      }
+
+		  }, 1000);
+
+		}
+		BackgroundLoader();
+		
+    	
     },
     tryMatrixRain() {
       if (["lg", "xl", "xxl"].includes(this.$mq)) {
-        this.initMatrixRain();
+
+      	this.initMatrixRain();
+        
       }
     }
   },
   mounted() {
     this.tryMatrixRain();
-    this.animTyping = new TypingAnim(
-      this.$refs.tagline,
-      "Imagine. Create. Iterate."
-    );
+    if (!["lg", "xl", "xxl"].includes(this.$mq)){
 
-    window.setInterval(() => {
-      this.isTyped ? this.animTyping.erase() : this.animTyping.type();
-      this.isTyped = !this.isTyped;
-    }, 2000);
-    this.animTyping.type();
-    this.isTyped = true;
+	    this.animTyping = new TypingAnim(
+	      this.$refs.tagline,
+	      "Imagine. Create. Iterate."
+	    );
+
+	    window.setInterval(() => {
+	      this.isTyped ? this.animTyping.erase() : this.animTyping.type();
+	      this.isTyped = !this.isTyped;
+	    }, 2000);
+	    this.animTyping.type();
+	    this.isTyped = true;
+	}
 
   },
   watch: {
@@ -368,6 +408,15 @@ export default {
 <style module lang="stylus">
 @require '~@styles/theme';
 @require '~@styles/anims';
+
+.preload * {
+
+  -webkit-transition: none !important;
+  -webkit-animation: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+}
 
 .anim {
   height: 100%;
@@ -406,6 +455,8 @@ export default {
 }
 
 .title {
+
+  display: none;
   height: 30%;
   width: 100%;
   z-index: 2;
@@ -445,7 +496,6 @@ export default {
       text-shadow: 1px 1px #000;
       color: var(--hero-text-color);
       letter-spacing: 3px;
-      animation: var(--hero-text-animation);
     }
 
     ~/.xs .tagline, ~/.sm .tagline {
