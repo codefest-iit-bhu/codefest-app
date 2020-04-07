@@ -59,28 +59,37 @@
         v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
         v-show="!showDashboardActions"
       >
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScinI5YpU61F8Re4wFooBgH18Q8iE1_Du-nW1IIExruqLwRpw/viewform?usp=sf_link">
-          <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
-          Sponsor Us
+          <router-link to="/login">Login / Register</router-link>
+      </li>
+
+      <li 
+        :class="$style.link"
+        slot="right"
+        v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
+      >
+        <a  @click="toggleTheme">
+          <i v-if="isThemeLight" class="fa fa-sun"></i>
+        <i v-else class="fa fa-moon fa-xs"></i>
+        </a>
+
+      </li>
+
+      <li v-else :id="$style.toggleTheme" slot="right">
+        <a  @click="toggleTheme">
+          <i v-if="isThemeLight" class="fa fa-sun"></i>
+        <i v-else class="fa fa-moon fa-xs"></i>
         </a>
       </li>
+
+
       <li :id="$style.toggleSidebar" slot="left" v-if="['xs', 'sm'].includes(this.$mq)">
         <a class="bm-toggle" @click="openSidebar">
           <i class="fa fa-bars"></i>
         </a>
       </li>
-      <li :id="$style.toggleTheme" slot="right" v-if="['xs', 'sm'].includes(this.$mq)">
-        <a  @click="toggleTheme">
-          <i v-if="isThemeLight" class="fa fa-sun"></i>
-          <i v-else class="fa fa-moon fa-xs"></i>
-        </a>
-      </li>
-      <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
-        <a  @click="toggleTheme">
-          <i v-if="isThemeLight" class="fa fa-sun"></i>
-          <i v-else class="fa fa-moon fa-xs"></i>
-        </a>
-      </li>
+
+
+
       <router-link to="/" slot="notch">
         <img src="@assets/white-cf20-logo.svg" @click="clickNotch">
       </router-link>
@@ -256,11 +265,14 @@ export default {
   }
 
   #toggleTheme {
-    margin: 10px 10px;
+    margin: 5px 10px;
 
     a {
       color: $waterloo;
       font-size: 25px;
+    }
+    a:hover {
+      color: var(--text-color);
     }
   }
 

@@ -6,17 +6,29 @@
           <i class="fa fa-bars"></i>
         </a>
       </li>
-      <li :id="$style.toggleTheme" slot="right" v-if="['xs', 'sm'].includes(this.$mq)">
+
+      <li 
+        :class="$style.link"
+        slot="right"
+        v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
+      >
         <a  @click="toggleTheme">
           <i v-if="isThemeLight" class="fa fa-sun"></i>
-          <i v-else class="fa fa-moon fa-xs"></i>
+        <i v-else class="fa fa-moon fa-xs"></i>
+        </a>
+
+      </li>
+
+      <li v-else :id="$style.toggleTheme" slot="right">
+        <a  @click="toggleTheme">
+          <i v-if="isThemeLight" class="fa fa-sun"></i>
+        <i v-else class="fa fa-moon fa-xs"></i>
         </a>
       </li>
+
+
       <li :class="$style.appbarLogo" slot="left" v-if="shouldShowCollegeLogo">
         <img src="@assets/logo-dcse.png">
-      </li>
-      <li :class="$style.appbarLogo" slot="right" v-if="shouldShowCollegeLogo">
-        <img src="@assets/logo-iitbhu.png">
       </li>
       <li
         :class="$style.appbarLogo"
@@ -159,6 +171,24 @@ export default {
 @require '~@styles/anims';
 
 .wrapper {
+
+ .link {
+    margin-top: 10px;
+
+    a {
+      color: $waterloo;
+      font-weight: 600;
+      font-size: 20px;
+      padding: 0 10px;
+      transition: 0.5s;
+      vertical-align: middle;
+    }
+
+    a:hover {
+      color: var(--text-color);
+    }
+  }
+
   #toggleSidebar {
     margin: 5px 10px;
 
@@ -173,7 +203,11 @@ export default {
     margin: 5px 10px;
 
     a {
+      transition: 0.5s;
       color: $waterloo;
+    }
+    a:hover {
+      color: var(--text-color);
     }
 
   }
