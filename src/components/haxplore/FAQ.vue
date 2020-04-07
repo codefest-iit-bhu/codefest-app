@@ -4,7 +4,7 @@
       <ResponsiveTwoColumnLayout>
         <div :class="$style.faqHeader" slot="left">
           <div :class="$style.faqImage">
-            <div :class="$style.faqImageInner">
+            <div class="absolute-center" :class="$style.faqImageInner">
               <div :class="$style.faqImageText">?</div>
             </div>
           </div>
@@ -124,7 +124,7 @@ export default {
       border-radius: 50%;
       box-shadow: var(--box-shadow);
       background: $vermilion;
-      padding-top: 150px;
+      position: relative;
 
       .faqImageText {
         font-size: 280px;
@@ -136,7 +136,6 @@ export default {
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
         width: 250px;
         height: 250px;
-        padding-top: 110px;
 
         .faqImageText {
           font-size: 200px;
