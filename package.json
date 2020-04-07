@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@pwa/cli": "latest",
-    "@pwa/plugin-brotli": "^0.4.1",
+    "@pwa/plugin-brotli": "latest",
     "@pwa/plugin-gzip": "latest",
     "@pwa/plugin-sw-precache": "latest",
     "@pwa/preset-vue": "latest",

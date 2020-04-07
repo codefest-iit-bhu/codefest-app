@@ -2,7 +2,7 @@
   <footer :class="$style.footer">
     <div :class="$style.container">
       <div :class="$style.logo">
-        <img src="@assets/haxplore/logo-text.svg">
+        <img src="@assets/haxplore/logo-text.svg" />
       </div>
 
       <div :class="$style.content">
@@ -89,7 +89,7 @@ export default {};
       .heart {
         width: 40px;
         height: 40px;
-        background: transparent url('@assets/twitter_heart.png') no-repeat;
+        background: transparent url('~@assets/twitter_heart.png') no-repeat;
         background-size: 2900%;
         margin: 0 -8px;
 

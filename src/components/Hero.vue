@@ -1,5 +1,4 @@
 <template>
-
 	<div id="hero" class="preload" :class="$style.hero">
 		<mq-layout mq="lg+">
 		<canvas id="canvas" v-if="themeisdark" ref="rains" :class="$style.anim" :style="{ backgroundImage: 'url(' + require('@/assets/hero/background-dark.jpg') + ')' }"></canvas>
@@ -512,7 +511,6 @@ export default {
       #loc::after {
         // content: '|';
         // margin-left: 2px;
-
         ~/.xs ^[1..-1] {
           content: '';
           margin: unset;
