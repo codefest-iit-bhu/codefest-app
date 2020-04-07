@@ -1,7 +1,7 @@
 <template>
-  <div :class="$style.link">
+  <div :class="$style.link" @mouseover="buttonHovered = true" @mouseleave="buttonHovered = false">
     <div :class="$style.linkText">
-      <h4>Applications Closed</h4>
+      <h4>Registrations will be live soon</h4>
     </div>
   </div>
 </template>
@@ -44,11 +44,12 @@ $btn-width = 250px;
 
 .link {
   margin: auto;
-  width: 290px;
+  margin-top: 10px;
+  max-width: 350px;
   height: auto;
   padding: 24px;
-  border-radius: 50px;
-  border: 2px solid $vermilion;
+  border-radius: 50px 0px 50px 0px;
+  box-shadow: var(--box-shadow);
   text-align: center;
   cursor: pointer;
 
@@ -58,14 +59,10 @@ $btn-width = 250px;
     text-decoration: none;
 
     h4 {
-      font-family: 'Viga';
+      font-family: 'Roboto Slab';
       font-size: 20px;
       margin: 0;
     }
-  }
-
-  &:hover {
-    box-shadow: inset 0px 0px 10px $vermilion;
   }
 }
 

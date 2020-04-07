@@ -43,7 +43,7 @@
     </div>
 
     <div :class="$style.register"><h2>Registrations will be live soon.</h2></div>
-    
+
     <!-- <div :class="$style.link">
       <router-link to="/dashboard/events/" v-if="!event.url" :class="$style.linkText">
         <h4>Register</h4>
@@ -211,6 +211,10 @@ export default {
         margin-bottom: 20px;
         font-family: 'Quicksand';
         font-weight: 500;
+
+        ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+          font-size: 15px;
+        }
       }
 
       ul {
@@ -251,7 +255,7 @@ export default {
 .register {
   text-align: center;
   font-family: 'Roboto Slab';
-  font-weight: 700;  
+  font-weight: 700;
 }
 
 .note {

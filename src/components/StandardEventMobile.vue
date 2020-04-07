@@ -77,7 +77,7 @@ export default {
   border-radius: 15px 15px 0px 0px;
   padding: 0.25rem 1.5rem 1rem 2rem;
   box-shadow:  0 0 2rem rgba(0,0,0,0.5);
-  
+
 }
 
 .card {

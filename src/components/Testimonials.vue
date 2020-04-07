@@ -18,7 +18,7 @@
 <script>
 export default {
   props: {
-    testimonials: Object
+    testimonials: Array
   }
 };
 </script>

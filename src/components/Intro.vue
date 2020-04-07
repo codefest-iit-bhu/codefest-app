@@ -52,6 +52,7 @@ export default {
 .description {
   text-align: left;
   margin: 30px 30px 0 0;
+  font-size: 18px;
 
   span {
     font-weight: bold;

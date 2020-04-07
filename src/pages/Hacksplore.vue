@@ -1,17 +1,6 @@
 <template>
   <div :class="[$style.root, $style[$mq]]">
-    <AppBar
-      :shouldShowSideNavigation="isPastLanding"
-      :shouldShowHaxploreLogo="isPastLanding"
-      @scrollTop="scrollToTop"
-    >
-      <li :key="i" v-for="(title, i) in titles" v-show="!!title">
-        <a>
-          <span class="fa fa-circle fa-xs" aria-hidden="true"></span>
-          {{ title }}
-        </a>
-      </li>
-    </AppBar>
+    <AppBar :haxplorePage="true" @scrollTop="scrollToTop" />
     <Landing :devfolioKey="devfolioKey" @mounted="landingMounted"/>
     <main :class="$style.wrapper">
       <div v-scroll-spy="{data: 'section'}" ref="scroller">
@@ -27,13 +16,6 @@
         <!-- <Timeline/> -->
         <!-- <Prizes/> -->
         <HaxploreSponsors/>
-        <!-- <SectionLayout title="Sponsor Us">
-          <div :class="$style.link" @mouseover="buttonHovered = true" @mouseleave="buttonHovered = false">
-            <a href="https://drive.google.com/file/d/15BYqDZwShgFFqkgBPKqr0j-AcFF-_Umm" :class="[$style.linkText, linkColorStyle]" target="_blank">
-              <h4> Sponsor Brochure </h4>
-            </a>
-          </div>
-        </SectionLayout> -->
       </div>
     </main>
     <FooterN/>
@@ -41,7 +23,7 @@
 </template>
 
 <script>
-const AppBar = () => import("@components/haxplore/AppBar");
+const AppBar = () => import("@components/Menu/AppBar");
 const Timeline = () => import("@components/haxplore/Timeline");
 const About = () => import("@components/haxplore/About");
 const FAQ = () => import("@components/haxplore/FAQ");
