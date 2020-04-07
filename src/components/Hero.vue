@@ -363,6 +363,7 @@ export default {
 		      }
 
 		  }, 1000);
+		  BackgroundLoader();
 
 		}
 		BackgroundLoader();
