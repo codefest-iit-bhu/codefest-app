@@ -19,21 +19,31 @@
 
 @keyframes neon-text {
   from {
-    text-shadow: 0 0 2.5px $white, 0 0 5px $white, 0 0 7.5px $white, 0 0 10px $vermilion, 0 0 12.5px $vermilion, 0 0 15px $vermilion, 0 0 25px $vermilion;
+    text-shadow: 0 0 2.5px $white, 0 0 5px $white, 0 0 7.5px $white, 0 0 10px $white, 0 0 12.5px $white, 0 0 15px $marauder-brown, 0 0 25px $marauder-brown;
   }
 
   to {
-    text-shadow: 0 0 1px $white, 0 0 2px $white, 0 0 3px $white, 0 0 4px $vermilion, 0 0 5px $vermilion, 0 0 6px $vermilion, 0 0 10px $vermilion;
+    text-shadow: 0 0 1px $white, 0 0 2px $white, 0 0 3px $white, 0 0 4px $white, 0 0 5px $white, 0 0 6px $marauder-brown, 0 0 10px $marauder-brown;
+  }
+}
+
+@keyframes neon-text-white {
+  from {
+    text-shadow: 0 0 2.5px $midnight-green, 0 0 5px $midnight-green, 0 0 7.5px $white, 0 0 10px $white, 0 0 12.5px $white, 0 0 15px $white, 0 0 25px $white;
+  }
+
+  to {
+    text-shadow: 0 0 1px $midnight-green, 0 0 2px $midnight-green, 0 0 3px $white, 0 0 4px $white, 0 0 5px $white, 0 0 6px $white, 0 0 10px $white;
   }
 }
 
 @keyframes neon-box {
   from {
-    box-shadow: 0 0 15px $white, 0 0 17.5px $white, 0 0 10px $vermilion, 0 0 52.5px $vermilion, 0 0 55px $limeade, 0 0 70px $limeade, 0 0 90px $limeade;
+    box-shadow: 0 0 15px $white, 0 0 17.5px $white, 0 0 10px $orange, 0 0 52.5px $orange, 0 0 55px $darkorange, 0 0 70px $darkorange, 0 0 90px $darkorange;
   }
 
   to {
-    box-shadow: 0 0 1px $white, 0 0 2px $white, 0 0 3px $white, 0 0 6px $white, 0 0 8px $vermilion, 0 0 12px $vermilion, 0 0 20px $limeade, 0 0 30px $limeade, 0 0 55px $limeade, 0 0 70px $limeade;
+    box-shadow: 0 0 1px $white, 0 0 2px $white, 0 0 3px $white, 0 0 6px $white, 0 0 8px $orange, 0 0 12px $orange, 0 0 20px $darkorange, 0 0 30px $darkorange, 0 0 55px $darkorange, 0 0 70px $darkorange;
   }
 }
 
@@ -77,6 +87,20 @@
   to{
     fill: transparent;
     stroke: $vermilion;
+    stroke-width: 5px;
+  }
+}
+
+@keyframes svg-transform-hero {
+  from,{
+    fill: var(--hero-text-color);
+    stroke-width: 1px;
+    stroke: var(--hero-text-color);
+  }
+
+  to{
+    fill: transparent;
+    stroke: var(--hero-text-color);
     stroke-width: 5px;
   }
 }
