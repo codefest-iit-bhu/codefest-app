@@ -88,15 +88,14 @@ export default {
 		var stepCount1 = 0;
 		var stepCount2 = 0;
 		var stepCount3 = 0;
-		var stepTime = Math.random()*(300) + 400;							// time taken(in ms) to move 1 step, random value between [300,600]
+		var stepTime = Math.random()*(300) + 400;							// time taken(in ms) to move 1 step, random value between [300,700]
 
-		var path = [250,946,172,592,186,270,90,206,170,38];										// set of len/2 vertices with tell the path followed by footsteps
+		var path = [250,946,172,592,186,270,90,206,170,38];										// set of len/2 vertices which tell the path followed by footsteps
 		var path1 = [522,670,970,520,904,192,398,192,284,192,374,219];
 		var path2 = [1622,94,1498,88,1512,50,1616,52,1614,180,1768,184];
 		var path3 = [1720,974,1400,676,1144,562,1140,409,1820,404];
 
 		var wscale = wid/1920;
-
 
 		var pLen = path.length;														// scale the path as per window co-ordinates
 		var pLen1 = path1.length;
@@ -109,7 +108,7 @@ export default {
 		for(i=0;i < pLen2; i++)	path2[i] = (path2[i]*wscale);
 		for(i=0;i < pLen3; i++)	path3[i] = (path3[i]*wscale);
 
-		for(i=pLen-2; i > -1 ;i-=2){
+		for(i=pLen-2; i > -1 ;i-=2){										// backtrack same path
 
 		    path.push(path[i]);
 		    path.push(path[i+1]);
