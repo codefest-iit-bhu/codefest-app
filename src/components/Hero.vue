@@ -340,37 +340,33 @@ export default {
 		    setTimeout(draw,stepTime);
 		}
 
-		function BackgroundLoader() {
+		var url;
+		var dark = globalthis.themeisdark ;
+		if(dark)	url = require('@/assets/hero/background-dark.jpg');
+		else url = require('@/assets/hero/background.jpg');
+		var loaded = false;
+		var image = new Image();
 
-		  var url;
-		  var dark = globalthis.themeisdark ;
-		  if(dark)	url = require('@/assets/hero/background-dark.jpg');
-		  else url = require('@/assets/hero/background.jpg');
-		  var loaded = false;
-		  var image = new Image();
-
-		  image.onload = function () {
-		    loaded = true;
-		    var div = document.getElementById("canvas");
-		    div.style.backgroundImage = "url('" + url + "')";
-		  }
-		  image.src = url;      
-
-		  setTimeout(function() {
-		    if (loaded){
-		      setpage();
-		      draw();
-		      }
-		    else{
-
-		    	setpage();
-		    	draw();
-		    }
-
-		  }, 2000);
-
+		image.onload = function () {
+		loaded = true;
+		var div = document.getElementById("canvas");
+		div.style.backgroundImage = "url('" + url + "')";
 		}
-		BackgroundLoader();
+		image.src = url;      
+
+		function BackRetry() {
+		  
+			if(!loaded){
+
+				setTimeout(BackRetry, 1000);
+        		return;
+			}
+
+	    	setpage();
+	    	draw();
+		}
+
+		BackRetry();
 		
     	
     },
