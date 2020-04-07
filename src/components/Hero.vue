@@ -363,10 +363,11 @@ export default {
 		      }
 		    else{
 
-		    	BackgroundLoader();
+		    	setpage();
+		    	draw();
 		    }
 
-		  }, 1000);
+		  }, 2000);
 
 		}
 		BackgroundLoader();
