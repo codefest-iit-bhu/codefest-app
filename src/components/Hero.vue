@@ -269,11 +269,11 @@ export default {
 		    
 		    if(left){
 
-		        ctx.setTransform(xdx, xdy, -xdy, xdx, x + xdy * 50, y - xdx * 50);
+		        ctx.setTransform(xdx, xdy, -xdy, xdx, x - xdy * 100, y + xdx * 100);
 		        ctx.rotate(-0.1);
 		    }
 		    else{
-		        ctx.setTransform(xdx, xdy, -xdy, xdx, x - xdy * 50, y + xdx * 50);
+		        ctx.setTransform(xdx, xdy, -xdy, xdx, x + xdy * 100, y - xdx * 100);
 		        ctx.rotate(-0.1);
 		        ctx.scale(1,-1);
 		    }
