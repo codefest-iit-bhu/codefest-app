@@ -17,7 +17,7 @@
           </span>
         </div>
         <div :class="$style.box" v-if="profile.is_verified">
-          <span :class="$style.key">Referral Link</span>
+          <span :class="$style.keyRef">Referral Link</span>
           <span :class="$style.value" v-if="['md', 'lg', 'xl'].includes(this.$mq)">
             <router-link :to="routerLocation">{{ profile.referral_code }}</router-link>
           </span>
@@ -389,7 +389,7 @@ export default {
           .key {
             display: inline-block;
             float: left;
-            font-weight: bold;
+            font-weight: 700;
             font-family: 'Roboto Slab';
             font-size: 24px;
             padding: 20px 15px;
@@ -406,7 +406,7 @@ export default {
             display: inline-block;
             font-size: 18px;
             font-family: 'Quicksand';
-            font-weight: 700;
+            font-weight: 600;
             padding: 12px;
             height: 100%;
           }

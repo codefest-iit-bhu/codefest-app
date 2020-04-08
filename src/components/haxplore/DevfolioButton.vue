@@ -44,7 +44,7 @@ $btn-width = 250px;
 
 .link {
   margin: auto;
-  margin-top: 10px;
+  margin-top: 30px;
   max-width: 350px;
   height: auto;
   padding: 24px;
