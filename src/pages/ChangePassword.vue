@@ -78,15 +78,17 @@ export default {
   methods: {
     submitForm() {
       var user = firebase.auth().currentUser;
+      const credential = firebase.auth.EmailAuthProvider.credential(user.email, this.currentPasswd);
       user
-        .reauthenticateAndRetrieveDataWithCredential(this.currentPasswd)
+        .reauthenticateAndRetrieveDataWithCredential(credential)
         .then(_ => {
           user
-            .updatePassword(this.newPassword)
+            .updatePassword(this.newPasswd)
             .then(_ => {
               this.$toasted.global.success({
                 message: `Successfully updated password!`
               });
+              this.$router.push({ name: "~/dashboard" });
             })
             .catch(err => {
               this.$toasted.global.error_post({ message: err.message });
