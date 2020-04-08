@@ -1,24 +1,18 @@
 <template>
   <div :class="$style.container">
     <div :class="$style.card" @click="navigateToDetails">
-
       <div :class="$style.card_top">
-
-        <div :class="$style.card__image-container">
+        <div :class="$style.card__image - container">
           <img :class="$style.card__image" :src="event.icon" />
         </div>
-
       </div>
 
       <div :class="$style.card_bottom">
-
         <div :class="$style.card__content">
-          <h1 :class="$style.card__title">{{event.title}}</h1>
-          <p>{{event.summary}}</p>
+          <h1 :class="$style.card__title">{{ event.title }}</h1>
+          <p>{{ event.summary }}</p>
         </div>
-
       </div>
-
     </div>
   </div>
 </template>
@@ -28,25 +22,23 @@ export default {
   props: {
     event: {
       require: true,
-      type: Object
+      type: Object,
     },
     id: {
       require: true,
-      type: Number
-    }
+      type: Number,
+    },
   },
   methods: {
     navigateToDetails() {
       this.$router.push(`/events/${this.event.name}`);
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="stylus" module>
-@require '~@styles/theme';
 @require '~@styles/anims';
-
 
 * {
   box-sizing: border-box;

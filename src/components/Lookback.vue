@@ -17,7 +17,7 @@
   </div>
 </template>
 <script>
-import GridLayout from "./layouts/GridLayout";
+const GridLayout = () => import("./layouts/GridLayout");
 
 export default {
   props: {
@@ -38,8 +38,6 @@ export default {
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
-
 .lookback {
 
   .stat {
@@ -82,7 +80,7 @@ export default {
       text-align: center;
       color: var(--text-color);
       line-height: 28px;
-      font-size: 25px;
+      $font-size: 25px;
     }
   }
 }

@@ -18,15 +18,12 @@
 <script>
 export default {
   props: {
-    testimonials: Array
-  }
+    testimonials: Array,
+  },
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
-@require '~@styles/mixins';
-
 $ht = 120px;
 $rd = 60px;
 
@@ -96,17 +93,17 @@ $rd = 60px;
           font-family: 'Roboto Slab';
 
           ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-            font-size: 14px;
+            $font-size: 14px;
           }
         }
 
         p {
           color: var(--background-color);
-          font-size: 14px;
+          $font-size: 14px;
           font-weight: 700;
 
           ~/.xs ^[1..-1], ~/.sm ^[1..-1], ~/.md ^[1..-1] {
-            font-size: 12px;
+            $font-size: 12px;
           }
         }
       }

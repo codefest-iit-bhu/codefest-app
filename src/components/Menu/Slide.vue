@@ -1,17 +1,22 @@
 <template>
   <div>
-    <SideBar v-bind="this.$attrs" @openSideBar="openSideBar" @closeSideBar="closeSideBar">
+    <SideBar
+      v-bind="this.$attrs"
+      @openSideBar="openSideBar"
+      @closeSideBar="closeSideBar"
+    >
       <slot></slot>
     </SideBar>
   </div>
 </template>
 
 <script>
-import SideBar from "../SideBar";
+const SideBar = () => import("../SideBar");
+
 export default {
   name: "slide",
   components: {
-    SideBar: SideBar
+    SideBar: SideBar,
   },
   methods: {
     openSideBar() {
@@ -19,7 +24,7 @@ export default {
     },
     closeSideBar() {
       this.$emit("closeSideBar");
-    }
-  }
+    },
+  },
 };
 </script>

@@ -6,15 +6,21 @@
         <router-link :to="event.link">View Details</router-link>
       </span>
     </div>
-    <BounceLoader :loading="loading" color="#86FF00" :class="$style.loader"/>
-    <div :class="$style.registerWrapper" v-if="showRegistration" v-show="!loading">
+    <BounceLoader :loading="loading" color="#86FF00" :class="$style.loader" />
+    <div
+      :class="$style.registerWrapper"
+      v-if="showRegistration"
+      v-show="!loading"
+    >
       <div :class="$style.btnBox">
         <button
           :class="$style.btn"
           @click="displayBtnClick"
           :data-input-target="`${event.name}__teamName`"
           :id="`${event.name}__createTeam`"
-        >Create Team</button>
+        >
+          Create Team
+        </button>
         <div :class="$style.behindBtn">
           <input
             type="text"
@@ -25,7 +31,7 @@
             :data-button-target="`${event.name}__createTeam`"
             v-model="teamName"
             :id="`${event.name}__teamName`"
-          >
+          />
           <button
             value=">"
             :class="$style.submit"
@@ -45,7 +51,9 @@
           @click="displayBtnClick"
           :data-input-target="`${event.name}__accessCode`"
           :id="`${event.name}__joinTeam`"
-        >Join Team</button>
+        >
+          Join Team
+        </button>
         <div :class="$style.behindBtn">
           <input
             type="text"
@@ -56,7 +64,7 @@
             @blur="inputBtnBlur"
             @keydown="collectInput"
             :id="`${event.name}__accessCode`"
-          >
+          />
           <button
             value=">"
             :class="$style.submit"
@@ -81,12 +89,20 @@
         <div :class="$style.infoBox" v-show="!isTeamFull">
           <span :class="$style.key">Access Code:</span>
           <span :class="$style.value">{{ team.access_code }}</span>
-          <i class="fas fa-clipboard" :class="$style.copyIcon" @click="clickToCopy"></i>
+          <i
+            class="fas fa-clipboard"
+            :class="$style.copyIcon"
+            @click="clickToCopy"
+          ></i>
         </div>
       </div>
       <div :class="$style.memberList">
         <ul>
-          <li :class="$style.teamMember" v-for="(member, i) in teamMembers" :key="i">
+          <li
+            :class="$style.teamMember"
+            v-for="(member, i) in teamMembers"
+            :key="i"
+          >
             {{ member.name }}
             <i
               class="fas fa-times"
@@ -99,10 +115,9 @@
           </li>
         </ul>
       </div>
-      <button
-        :class="$style.teamLeave"
-        @click="leaveTeam"
-      >{{ isTeamLeader ? "Delete Team" : "Leave Team" }}</button>
+      <button :class="$style.teamLeave" @click="leaveTeam">
+        {{ isTeamLeader ? "Delete Team" : "Leave Team" }}
+      </button>
       <div :class="$style.teamInfo" v-if="!isTeamValid">* {{ teamInfo }}</div>
     </div>
   </div>
@@ -115,20 +130,20 @@ import { BounceLoader } from "@saeris/vue-spinners";
 
 export default {
   components: {
-    BounceLoader
+    BounceLoader,
   },
   data() {
     return {
       teamName: "",
       accessCode: "",
-      loading: false
+      loading: false,
     };
   },
   props: {
     event: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
     showRegistration() {
@@ -156,7 +171,7 @@ export default {
       if (this.isTeamMissingMembers)
         return `Missing ${this.event.min_members -
           this.teamMembers.length} members.`;
-    }
+    },
   },
   methods: {
     displayBtnClick(e) {
@@ -193,13 +208,13 @@ export default {
       this.$store
         .dispatch("createEventTeam", {
           eventId: this.event.id,
-          teamName: this.teamName
+          teamName: this.teamName,
         })
         .then(({ data }) => {
           this.stopLoading();
           this.event.team = data;
         })
-        .catch(err => {
+        .catch((err) => {
           this.stopLoading();
           this.$toasted.global.error_post({ message: err.message });
         });
@@ -212,7 +227,7 @@ export default {
           this.stopLoading();
           this.event.team = data;
         })
-        .catch(err => {
+        .catch((err) => {
           this.stopLoading();
           this.$toasted.global.error_post({ message: err.message });
         });
@@ -224,13 +239,13 @@ export default {
       this.$store
         .dispatch("removeMemberFromTeam", {
           teamId: this.team.id,
-          memberId
+          memberId,
         })
-        .then(_ => {
+        .then((_) => {
           this.stopLoading();
-          this.teamMembers.splice(memberIndex, 1)
+          this.teamMembers.splice(memberIndex, 1);
         })
-        .catch(err => {
+        .catch((err) => {
           this.stopLoading();
           this.$toasted.global.error_post({ message: err.message });
         });
@@ -244,11 +259,11 @@ export default {
       this.startLoading();
       this.$store
         .dispatch("leaveTeam", { teamId: this.team.id })
-        .then(_ => {
+        .then((_) => {
           this.stopLoading();
           this.event.team = null;
         })
-        .catch(err => {
+        .catch((err) => {
           this.stopLoading();
           this.$toasted.global.error_post({ message: err.message });
         });
@@ -268,18 +283,16 @@ export default {
     },
     _stopLoading() {
       this.loading = false;
-    }
+    },
   },
   mounted() {
     document
       .querySelectorAll(`.${this.$style.btn}`)
-      .forEach(elem => (elem.style.animation = "none"));
-  }
+      .forEach((elem) => (elem.style.animation = "none"));
+  },
 };
 </script>
-<style module lang = "stylus" >
-@require '~@styles/theme';
-
+<style module lang="stylus">
 $box-large-width = 350px;
 $box-small-width = 280px;
 $btn-width = 240px;
@@ -318,14 +331,14 @@ $btn-width = 240px;
     height: 50px;
 
     .txt {
-      font-size: 20px;
+      $font-size: 20px;
       font-family: 'Baloo Bhaina 2';
     }
 
     .txt2 {
       float: right;
       font-weight: 700;
-      font-size: 14px;
+      $font-size: 14px;
     }
   }
 
@@ -348,7 +361,7 @@ $btn-width = 240px;
     color: $waterloo;
     font-family: 'Roboto Slab';
     padding: 10px;
-    font-size: 20px;
+    $font-size: 20px;
     border: none;
     border-radius: 5px;
     width: inherit;
@@ -383,7 +396,7 @@ $btn-width = 240px;
     color: var(--text-color);
     box-shadow: var(--inset-box-shadow);
     background-color: var(--background-color);
-    font-size: 16px;
+    $font-size: 16px;
     background: #fff2;
     border-radius: 5px;
   }
@@ -393,7 +406,7 @@ $btn-width = 240px;
     background: transparent;
     color: var(--text-color);
     border-radius: 100%;
-    font-size: 22px;
+    $font-size: 22px;
     height: 40px;
     width: 40px;
     cursor: pointer;
@@ -459,7 +472,7 @@ $btn-width = 240px;
     }
 
     .teamInfo {
-      font-size: 18px;
+      $font-size: 18px;
       text-align: center;
     }
 
@@ -482,7 +495,7 @@ $btn-width = 240px;
     vertical-align: middle;
 
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-      font-size: 16px;
+      $font-size: 16px;
     }
 
     .key {

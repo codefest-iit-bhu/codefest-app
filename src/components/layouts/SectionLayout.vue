@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.sectionContainer">
     <h1 :class="[$style.sectionTitle, $style[$mq], tooLong]">{{ title }}</h1>
-    <hr :class="$style.sectionLine">
+    <hr :class="$style.sectionLine" />
     <div :style="contentStyle">
       <slot></slot>
     </div>
@@ -13,12 +13,12 @@ export default {
   props: {
     title: {
       required: true,
-      type: String
+      type: String,
     },
     contentStyle: {
       required: false,
-      type: Object
-    }
+      type: Object,
+    },
   },
   computed: {
     tooLong() {
@@ -26,15 +26,12 @@ export default {
       if (title.length > 10) {
         return this.$style.tooLong;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
-@require '~@styles/mixins';
-
 div.sectionContainer {
   margin: 36px 0;
 
@@ -42,7 +39,7 @@ div.sectionContainer {
     font-family: 'Baloo Bhaina 2';
     color: var(--heading-color);
     letter-spacing: 2px;
-    font-size: 64px;
+    $font-size: 64px;
     margin-top: 144px;
     margin-bottom: 0px;
 
@@ -55,7 +52,7 @@ div.sectionContainer {
     }
 
     &.xs {
-      font-size: 52px;
+      $font-size: 52px;
     }
 
     ~/:nth-child(even) h1.sectionTitle {
@@ -69,7 +66,7 @@ div.sectionContainer {
 
   h1.tooLong {
     &.xs {
-      font-size: 36px;
+      $font-size: 36px;
     }
   }
 

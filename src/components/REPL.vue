@@ -7,7 +7,8 @@
           :class="$style.breadcrumbs__step"
           v-for="(dir, i) in pwd"
           :key="i"
-        >{{ dir }}</router-link>
+          >{{ dir }}</router-link
+        >
       </div>
       <span v-if="!isActive">{{ input }}</span>
       <input
@@ -18,7 +19,7 @@
         @blur="onUnfocusInput"
         v-if="isActive"
         v-model="input"
-      >
+      />
     </div>
     <div v-if="!!output" :class="$style.output">
       <component :is="outputHtml"></component>
@@ -34,25 +35,25 @@ import { CommandNotFoundError, CommandInvalidInput } from "@js/exceptions";
 export default {
   props: {
     pwd: {
-      type: Array
+      type: Array,
     },
     propInput: {
       type: String,
-      default: ""
+      default: "",
     },
     propOutput: {
       type: String,
-      default: ""
+      default: "",
     },
     isActive: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
       output: this.propOutput,
-      input: this.propInput
+      input: this.propInput,
     };
   },
   computed: {
@@ -61,7 +62,7 @@ export default {
     },
     breadcrumbLinks() {
       return navigation.getLinksFromPwd(this.pwd);
-    }
+    },
   },
   methods: {
     evalInput(cmdLine) {
@@ -91,20 +92,18 @@ export default {
     },
     onUnfocusInput(e) {
       this.$emit("onBlurInput", e);
-    }
+    },
   },
   watch: {
     pwd: function(newPwd, oldPwd) {
       this.$emit("pwdChanged");
-    }
+    },
   },
-  mounted() {}
+  mounted() {},
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
-@require '~@styles/mixins';
 @require '~@styles/anims';
 
 $breadcrumb-hovered = $crown-of-thorns;
@@ -118,7 +117,7 @@ $output-link = $dodger-blue;
   margin-top: 5px;
 
   ~/.xs, ~/.sm, ~/.md {
-    font-size: 16px;
+    $font-size: 16px;
   }
 
   .breadcrumbs {
@@ -132,7 +131,7 @@ $output-link = $dodger-blue;
       outline: none;
       display: block;
       float: left;
-      font-size: 18px;
+      $font-size: 18px;
       line-height: 30px;
       padding: 0 10px 0 40px;
       position: relative;

@@ -2,7 +2,7 @@
   <div :class="[$style.workContainer, $style[$mq]]">
     <ResponsiveTwoColumnLayout :isRightAbove="true">
       <div :class="$style.workImage" slot="right">
-        <img src="#">
+        <img src="#" />
       </div>
       <div :class="$style.workHead" slot="left">
         <div :class="$style.taskList">
@@ -27,7 +27,7 @@ const ResponsiveTwoColumnLayout = () =>
 
 export default {
   components: {
-    ResponsiveTwoColumnLayout
+    ResponsiveTwoColumnLayout,
   },
   data() {
     return {
@@ -35,32 +35,30 @@ export default {
         {
           start: "Connect : ",
           rest:
-            "Grow a strong network with peers inside your college as well as the Codefest team."
+            "Grow a strong network with peers inside your college as well as the Codefest team.",
         },
         {
           start: "Communication : ",
-          rest: "Develop communication skills and get an edge over competition."
+          rest:
+            "Develop communication skills and get an edge over competition.",
         },
         {
           start: "Certificate : ",
           rest:
-            "Get Work Experience certificate as a Codefest Campus Ambassador."
+            "Get Work Experience certificate as a Codefest Campus Ambassador.",
         },
         {
           start: "Goodies : ",
           rest:
-            "Official Codefest goodies and/or tees depending upon the number of participants in Codefest from your college."
-        }
-      ]
+            "Official Codefest goodies and/or tees depending upon the number of participants in Codefest from your college.",
+        },
+      ],
     };
-  }
+  },
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
-@require '~@styles/mixins';
-
 .workContainer {
   width: 100%;
   padding-top: 30px;
@@ -120,13 +118,13 @@ export default {
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
         width: auto;
         padding-top: 0;
-        font-size: 16px;
+        $font-size: 16px;
       }
 
       ~/.md ^[1..-1], ~/.lg ^[1..-1] {
         width: auto;
         padding-top: 0;
-        font-size: 18px;
+        $font-size: 18px;
       }
     }
   }

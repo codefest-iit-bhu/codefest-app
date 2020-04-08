@@ -3,7 +3,7 @@
     <div>
       <router-link to="haxplore">
         <div :class="$style.logoContainer">
-          <img :class="$style.logo" src="@assets/haxplore/logo-landing.svg">
+          <img :class="$style.logo" src="@assets/haxplore/logo-landing.svg" />
         </div>
       </router-link>
       <div :class="$style.title">
@@ -13,28 +13,28 @@
           </router-link>
         </a>
         <p>
-          Join the Codefest '20 team to bring out the absolute best ideas and implementations from some of the best developers in the country,
-          while they join us for a 24 hours long hackathon under a single roof.
+          Join the Codefest '20 team to bring out the absolute best ideas and
+          implementations from some of the best developers in the country, while
+          they join us for a 24 hours long hackathon under a single roof.
         </p>
       </div>
     </div>
-    <div
-      :class="$style.note"
-    >Note: People not registered on CodeFest are not eligible to recieve any prizes.</div>
+    <div :class="$style.note">
+      Note: People not registered on CodeFest are not eligible to recieve any
+      prizes.
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   components: {},
-  mounted() {}
+  mounted() {},
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
 @require '~@styles/anims';
-@require '~@styles/mixins';
 
 .hero {
   position: relative;
@@ -97,7 +97,7 @@ export default {
     h1 {
       font-family: 'Ubuntu';
       letter-spacing: 3px;
-      font-size: 48px;
+      $font-size: 48px;
       padding-top: 16px;
       padding: 20px;
       color: var(--text-color);
@@ -107,7 +107,7 @@ export default {
       margin: 0 auto;
 
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-        font-size: 24px;
+        $font-size: 24px;
         padding-top: 12px;
         padding: 10px;
         width: 250px;
@@ -118,14 +118,14 @@ export default {
       margin-top: 72px;
       font-family: 'Quicksand';
       font-weight: 500;
-      font-size: 32px;
+      $font-size: 32px;
     }
 
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-      font-size: 14px;
+      $font-size: 14px;
 
       p {
-        font-size: 20px;
+        $font-size: 20px;
       }
     }
   }
@@ -135,7 +135,7 @@ export default {
   font-family: 'Roboto Slab';
   font-weight: 700;
   text-align: center;
-  font-size: 24px;
+  $font-size: 24px;
 
 }
 </style>

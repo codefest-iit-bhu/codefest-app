@@ -1,6 +1,10 @@
 <template>
-  <div :class="$style.app" :data-theme="currentTheme" :style="`padding-bottom: ${this.appBottomPadding}`">
-    <router-view/>
+  <div
+    :class="$style.app"
+    :data-theme="currentTheme"
+    :style="`padding-bottom: ${this.appBottomPadding}`"
+  >
+    <router-view />
     <Terminal
       :propCurrent="current"
       v-model="terminalExpanded"
@@ -12,17 +16,17 @@
 </template>
 
 <script>
-import Terminal from "@components/Terminal";
+const Terminal = () => import("@components/Terminal");
 
 export default {
   components: {
-    Terminal
+    Terminal,
   },
   data() {
     return {
       current: null,
       terminalExpanded: false,
-      isTerminalShown: true
+      isTerminalShown: true,
     };
   },
   computed: {
@@ -38,7 +42,7 @@ export default {
     },
     currentTheme: function() {
       return this.$store.getters.currentTheme;
-    }
+    },
   },
   methods: {
     showTerminal() {
@@ -49,7 +53,7 @@ export default {
     },
     terminalStateChanged(isShown) {
       this.isTerminalShown = isShown;
-    }
+    },
   },
   watch: {
     $route(to, from) {
@@ -65,14 +69,20 @@ export default {
       this.$nextTick(() => {
         this.showTerminal();
       });
+    },
+  },
+  created() {
+    if (this.$workbox) {
+      this.$workbox.addEventListener("waiting", () => {
+        console.log("WORKBOX ---- Waiting to update UI!");
+        this.$workbox.messageSW({ type: "SKIP_WAITING" });
+      });
     }
-  }
+  },
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
-
 .app {
   color: var(--text-color);
   background: var(--background-color);

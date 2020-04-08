@@ -2,7 +2,7 @@
   <div :class="[$style.heroContainer, $style[$mq]]">
     <ResponsiveTwoColumnLayout :isRightAbove="true">
       <div :class="$style.caHead" slot="left">
-        <img src="#">
+        <img src="#" />
         <span :class="$style.tagline">Imagine. Create. Iterate.</span>
         <span :class="$style.venue">
           <span :id="$style.loc">
@@ -22,13 +22,16 @@
           <span>CODEFEST'20</span> by becoming our CAMPUS AMBASSADOR.
         </h3>
         <div :class="$style.link">
-          <a href="https://forms.gle/BDcmVFr4K7o2GjRn9" :class="$style.linkText">
+          <a
+            href="https://forms.gle/BDcmVFr4K7o2GjRn9"
+            :class="$style.linkText"
+          >
             <h4>Register</h4>
           </a>
         </div>
       </div>
       <div :class="$style.caImage" slot="right">
-        <img src="#">
+        <img src="#" />
       </div>
     </ResponsiveTwoColumnLayout>
   </div>
@@ -40,15 +43,12 @@ const ResponsiveTwoColumnLayout = () =>
 
 export default {
   components: {
-    ResponsiveTwoColumnLayout
-  }
+    ResponsiveTwoColumnLayout,
+  },
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
-@require '~@styles/mixins';
-
 .heroContainer {
   width: 100%;
   text-align: center;
@@ -93,7 +93,7 @@ export default {
       }
 
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-        font-size: 23px;
+        $font-size: 23px;
         margin: 24px 0;
       }
 
@@ -102,7 +102,7 @@ export default {
       }
 
       ~/.md ^[1..-1] {
-        font-size: 30px;
+        $font-size: 30px;
       }
     }
 
@@ -111,12 +111,12 @@ export default {
       text-align: center;
 
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-        font-size: 16px;
+        $font-size: 16px;
         text-align: center;
       }
 
       ~/.md ^[1..-1] {
-        font-size: 18.72px;
+        $font-size: 18.72px;
       }
     }
 
@@ -138,7 +138,7 @@ export default {
 
           h4 {
             margin: 0;
-            font-size: 21px;
+            $font-size: 21px;
           }
         }
       }
@@ -156,7 +156,7 @@ export default {
 
         h4 {
           margin: 0;
-          font-size: 30px;
+          $font-size: 30px;
         }
       }
     }
@@ -166,7 +166,7 @@ export default {
       display: block;
       text-align: center;
       margin: 8px auto;
-      font-size: 16px;
+      $font-size: 16px;
       font-weight: 600;
       font-family: 'Quicksand';
 

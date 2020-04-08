@@ -15,8 +15,8 @@ export default {
     isRightAbove: {
       required: false,
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   computed: {
     isMinimal() {
@@ -27,19 +27,16 @@ export default {
     },
     rightClass() {
       return this.isMinimal && this.isRightAbove ? this.$style.upper : "";
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
-@require '~@styles/mixins';
-
 .wrapper {
   width: 100%;
   font-family: 'ubuntu';
-  font-size: 20px;
+  $font-size: 20px;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;

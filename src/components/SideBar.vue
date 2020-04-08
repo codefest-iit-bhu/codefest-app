@@ -1,16 +1,29 @@
 <template>
   <!-- Credits to: https://github.com/mbj36/vue-burger-menu -->
   <div>
-    <div ref="sideNav" class="bm-menu" :style="getTransformXStyle(state.transform)">
+    <div
+      ref="sideNav"
+      class="bm-menu"
+      :style="getTransformXStyle(state.transform)"
+    >
       <nav class="bm-item-list">
         <slot></slot>
       </nav>
-      <span class="bm-cross-button cross-style" @click="closeMenu" :class="{ hidden: !crossIcon }">
+      <span
+        class="bm-cross-button cross-style"
+        @click="closeMenu"
+        :class="{ hidden: !crossIcon }"
+      >
         <span
           v-for="(x, index) in 2"
           :key="x"
           class="bm-cross"
-          :style="{ position: 'absolute', width: '3px', height: '24px',transform: index === 1 ? 'rotate(45deg)' : 'rotate(-45deg)'}"
+          :style="{
+            position: 'absolute',
+            width: '3px',
+            height: '24px',
+            transform: index === 1 ? 'rotate(45deg)' : 'rotate(-45deg)',
+          }"
         ></span>
       </span>
     </div>
@@ -30,7 +43,7 @@ export default {
       isSideBarOpen: false,
       backdropOpacity: 0,
       transform: 0,
-      showBackdrop: false
+      showBackdrop: false,
     };
   },
   computed: {
@@ -38,7 +51,7 @@ export default {
       return {
         transform: this.transform,
         backdropOpacity: this.backdropOpacity,
-        isTouched: false
+        isTouched: false,
       };
     },
     animation() {
@@ -51,62 +64,62 @@ export default {
         previousY: null,
         wasInSidenavOnce: false,
         lastAnimationId: 0,
-        lastSpeed: 0
+        lastSpeed: 0,
       };
-    }
+    },
   },
   props: {
     isOpen: {
       type: Boolean,
-      required: false
+      required: false,
     },
     right: {
       type: Boolean,
-      required: false
+      required: false,
     },
     width: {
       type: Number,
       required: false,
-      default: 300
+      default: 300,
     },
     disableEsc: {
       type: Boolean,
-      required: false
+      required: false,
     },
     crossIcon: {
       type: Boolean,
       required: false,
-      default: true
+      default: true,
     },
     disableOutsideClick: {
       type: Boolean,
       required: false,
-      default: false
+      default: false,
     },
     extraClosePixels: {
       type: Number,
-      default: 30
+      default: 30,
     },
     propBackdropOpacity: {
       type: Number,
-      default: 0.5
+      default: 0.5,
     },
     animationDuration: {
       type: Number,
-      default: 0.3
+      default: 0.3,
     },
     dragStartSensitivity: {
       type: Number,
-      default: 40
+      default: 40,
     },
     swipeSensitivity: {
       type: Number,
-      default: 10
+      default: 10,
     },
     defaultAnimationSensitivity: {
       type: Number,
-      default: 40
-    }
+      default: 40,
+    },
   },
   methods: {
     openMenu() {
@@ -116,7 +129,7 @@ export default {
         animationDuration: fullAnimationDuration,
         width,
         propBackdropOpacity: backdropOpacity,
-        extraClosePixels
+        extraClosePixels,
       } = this.$props;
 
       let animationDuration =
@@ -131,11 +144,11 @@ export default {
       }
 
       const transformAnim = {
-        transform: width
+        transform: width,
       };
 
       const opacityAnim = {
-        backdropOpacity
+        backdropOpacity,
       };
 
       const animHandlers = {
@@ -143,7 +156,7 @@ export default {
           this.isSideBarOpen = true;
           this.$emit("openSideBar");
         },
-        onStart: () => (this.showBackdrop = true)
+        onStart: () => (this.showBackdrop = true),
       };
 
       this.animateSidebar(
@@ -159,7 +172,7 @@ export default {
       const {
         animationDuration: fullAnimationDuration,
         extraClosePixels,
-        width
+        width,
       } = this.$props;
 
       let animationDuration =
@@ -174,11 +187,11 @@ export default {
       }
 
       const transformAnim = {
-        transform: -1 * extraClosePixels
+        transform: -1 * extraClosePixels,
       };
 
       const opacityAnim = {
-        backdropOpacity: 0
+        backdropOpacity: 0,
       };
 
       const animHandlers = {
@@ -186,7 +199,7 @@ export default {
           this.isSideBarOpen = false;
           this.showBackdrop = false;
           this.$emit("closeSideBar");
-        }
+        },
       };
 
       this.animateSidebar(
@@ -232,17 +245,17 @@ export default {
       // bind touchmove and end cancel events
       document.addEventListener("touchmove", this.touchmove, { passive: true });
       document.addEventListener("touchcancel", this.touchfinish, {
-        passive: true
+        passive: true,
       });
       document.addEventListener("touchend", this.touchfinish, {
-        passive: true
+        passive: true,
       });
 
       this.setTouchState(true);
     },
     touchmove(e) {
       const pivotTouch = [...e.changedTouches].find(
-        t => this.animation.fingerId === t.identifier
+        (t) => this.animation.fingerId === t.identifier
       );
       // our finger that starting dragging on screen is not on the screen anymore
       if (!pivotTouch) {
@@ -282,7 +295,7 @@ export default {
     },
     touchfinish(e) {
       const pivotTouch = [...e.changedTouches].find(
-        t => this.animation.fingerId === t.identifier
+        (t) => this.animation.fingerId === t.identifier
       );
       // our finger that starting dragging on screen is not on the screen anymore
       if (!pivotTouch) {
@@ -335,7 +348,7 @@ export default {
         ...transformAnimationData,
         ...opacityAnimationData,
         ...animationHandlers,
-        ease: Power4.easeOut
+        ease: Power4.easeOut,
       });
     },
     getOpacityStyle(opacity) {
@@ -345,9 +358,9 @@ export default {
       const { width } = this.$props;
       return {
         width: `${width}px`,
-        transform: `translate3d(${px - width}px, 0, 0)`
+        transform: `translate3d(${px - width}px, 0, 0)`,
       };
-    }
+    },
   },
   mounted() {
     if (!this.disableEsc) {
@@ -379,7 +392,7 @@ export default {
             else this.closeMenu();
           }
         });
-      }
+      },
     },
     right: {
       deep: true,
@@ -392,15 +405,13 @@ export default {
             document.querySelector(".cross-style").style.right = "250px";
           });
         }
-      }
-    }
-  }
+      },
+    },
+  },
 };
 </script>
 
 <style lang="stylus">
-@require '~@styles/theme';
-
 :global {
   .cross-style {
     position: absolute;
@@ -444,7 +455,7 @@ export default {
 
   .bm-item-list {
     color: #b8b7ad;
-    font-size: 20px;
+    $font-size: 20px;
   }
 
   .bm-item-list > * {

@@ -36,11 +36,8 @@ export default {};
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
-@require '~@styles/mixins';
-
 .footer {
-  font-size: 10px;
+  $font-size: 10px;
   font-weight: 800;
   background: $mine-shaft;
   letter-spacing: 0.5px;

@@ -9,7 +9,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(person, i) in leaderboard" :key="i" :class="$style.tablerow">
+        <tr
+          v-for="(person, i) in leaderboard"
+          :key="i"
+          :class="$style.tablerow"
+        >
           <td>{{ i + 1 }}</td>
           <td>{{ person.name }}</td>
           <td>{{ person.referral_count }}</td>
@@ -24,19 +28,17 @@ const SectionLayout = () => import("@components/layouts/SectionLayout");
 
 export default {
   components: {
-    SectionLayout
+    SectionLayout,
   },
   props: {
     leaderboard: {
       required: true,
-      type: Array
-    }
-  }
+      type: Array,
+    },
+  },
 };
 </script>
 <style module lang="stylus">
-@require '~@styles/theme';
-@require '~@styles/mixins';
 
 .leaderboard {
   text-align: center;
@@ -51,14 +53,14 @@ export default {
     font-family: 'Roboto Slab';
     color: $vermilion;
     padding: 12px 0;
-    font-size: 16px;
+    $font-size: 16px;
     border-bottom: 1px solid $vermilion;
   }
 
   .tablerow {
     td {
       font-family: 'Quicksand';
-      font-size: 16px;
+      $font-size: 16px;
       padding: 12px 0;
       font-weight: 600;
     }

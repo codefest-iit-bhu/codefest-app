@@ -2,36 +2,51 @@
   <div :class="[$style.container, $style[$mq]]">
     <div :class="$style.profilehead">
       <div :class="$style.userinit">
-        <p>{{retrieveInitials}}</p>
+        <p>{{ retrieveInitials }}</p>
       </div>
-      <span :class="$style.username">{{profile.name}}</span>
+      <span :class="$style.username">{{ profile.name }}</span>
     </div>
     <hr :class="$style.rightHr" />
     <div :class="$style.profile">
       <div :class="$style.about">
         <div :class="[$style.countdiv, is_verified]">
           <span :class="$style.reftext">Referral Count</span>
-          <span :class="$style.refcount" v-if="profile.is_verified">{{ profile.referral_count }}</span>
+          <span :class="$style.refcount" v-if="profile.is_verified">{{
+            profile.referral_count
+          }}</span>
           <span :class="$style.refcount" v-else>
             <i class="far fa-times-circle"></i>
           </span>
         </div>
         <div :class="$style.box" v-if="profile.is_verified">
           <span :class="$style.keyRef">Referral Link</span>
-          <span :class="$style.value" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
-            <router-link :to="routerLocation">{{ profile.referral_code }}</router-link>
+          <span
+            :class="$style.value"
+            v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
+          >
+            <router-link :to="routerLocation">{{
+              profile.referral_code
+            }}</router-link>
           </span>
           <span v-else></span>
-          <i class="fas fa-clipboard" :class="$style.copyIcon" @click="clickToCopy"></i>
+          <i
+            class="fas fa-clipboard"
+            :class="$style.copyIcon"
+            @click="clickToCopy"
+          ></i>
         </div>
-        <p
-          :class="$style.helptext"
-          v-if="profile.is_verified"
-        >Share the above referral link with your contacts to win exciting goodies!</p>
+        <p :class="$style.helptext" v-if="profile.is_verified">
+          Share the above referral link with your contacts to win exciting
+          goodies!
+        </p>
         <p :class="$style.disabledreferral" v-else>
-          Referral link disabled. Please verify your account first and refresh the page.
+          Referral link disabled. Please verify your account first and refresh
+          the page.
           <br />
-          <a href="javascript:void(0)" @click="resendVerification">Click here</a> to resend verification email.
+          <a href="javascript:void(0)" @click="resendVerification"
+            >Click here</a
+          >
+          to resend verification email.
         </p>
         <div :class="$style.profileinfo">
           <div :class="$style.row">
@@ -50,7 +65,7 @@
             <span :class="$style.pkey">
               <span>Phone</span>
             </span>
-            <span :class="$style.pvalue">{{ profile.phone}}</span>
+            <span :class="$style.pvalue">{{ profile.phone }}</span>
           </div>
           <div :class="$style.row">
             <span :class="$style.pkey">
@@ -73,12 +88,17 @@
                 <input
                   type="file"
                   name="resume"
-                  @change="uploadResume($event.target.name, $event.target.files)"
-                >
+                  @change="
+                    uploadResume($event.target.name, $event.target.files)
+                  "
+                />
               </form>
             </span>
           </div>
-          <p :class="$style.helptext">Resume upload is recommended to be considered for hiring opportunities!</p>
+          <p :class="$style.helptext">
+            Resume upload is recommended to be considered for hiring
+            opportunities!
+          </p>
         </div>
       </div>
     </div>
@@ -120,7 +140,7 @@
 import { copyToClipboard } from "@js/utils";
 import { SITE_URL } from "@js/constants";
 import API from "@js/api";
-import firebase, { firestore } from "firebase";
+import { auth } from "firebase/app";
 
 const SectionLayout = () => import("@components/layouts/SectionLayout");
 const ResponsiveTwoColumnLayout = () =>
@@ -129,7 +149,7 @@ const ResponsiveTwoColumnLayout = () =>
 export default {
   components: {
     SectionLayout,
-    ResponsiveTwoColumnLayout
+    ResponsiveTwoColumnLayout,
   },
   data() {
     return {
@@ -155,42 +175,41 @@ export default {
       }
     },
 
-
     routerLocation() {
       return {
         name: "~/login",
         query: {
-          referral: this.profile.referral_code
-        }
+          referral: this.profile.referral_code,
+        },
       };
-    }
+    },
   },
   props: {
     profile: {
       required: true,
-      type: Object
-    }
+      type: Object,
+    },
   },
   created() {
     API.fetch("certificate/")
       .then(({ data }) => {
         this.$data.certificate = data.url;
       })
-      .catch(e => {
+      .catch((e) => {
         this.$data.certificate = null;
       });
     API.fetch("resume/")
       .then(({ data }) => {
         this.resume = data.resume;
       })
-      .catch(e => {
+      .catch((e) => {
         this.resume = null;
       });
-    firebase.auth().onAuthStateChanged((user) => {
+    auth().onAuthStateChanged((user) => {
       if (user) {
         this.user_email = user.email;
       }
-    })
+    });
   },
   methods: {
     clickToCopy() {
@@ -198,21 +217,20 @@ export default {
       const referralShareLink = this.$router.resolve(this.routerLocation).href;
       copyToClipboard(`${SITE_URL}${referralShareLink}`);
       this.$toasted.global.success({
-        message: `Copied "${referralShareLink}"!`
+        message: `Copied "${referralShareLink}"!`,
       });
     },
     resendVerification() {
-      firebase
-        .auth()
+      auth()
         .currentUser.sendEmailVerification()
         .then(() => {
           this.$toasted.global.success({
-            message: "Verification Link has been sent."
+            message: "Verification Link has been sent.",
           });
         })
-        .catch(err => {
+        .catch((err) => {
           this.$toasted.global.error_post({
-            message: err.message
+            message: err.message,
           });
         });
     },
@@ -223,24 +241,23 @@ export default {
       API.put("resume/", {
         body: resumeFile,
         headers: {
-          "Content-Type": undefined
-        }
+          "Content-Type": undefined,
+        },
       })
-      .then(({ data }) => {
-        const msg = "Your resume has been uploaded successfully!";
-        this.$toasted.global.success({ message: msg });
-        this.resume = data.resume;
-      })
-      .catch(err => {
-        this.$toasted.global.error_post({ message: err.message });
-      });
-    }
-  }
+        .then(({ data }) => {
+          const msg = "Your resume has been uploaded successfully!";
+          this.$toasted.global.success({ message: msg });
+          this.resume = data.resume;
+        })
+        .catch((err) => {
+          this.$toasted.global.error_post({ message: err.message });
+        });
+    },
+  },
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
 @require '~@styles/anims';
 
 .container {
@@ -276,7 +293,7 @@ export default {
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
         width: 72px;
         height: 72px;
-        font-size: 30px;
+        $font-size: 30px;
         padding: 12px;
       }
     }
@@ -288,12 +305,12 @@ export default {
       font-weight: 700;
       color: var(--text-color);
       text-align: right;
-      font-size: 50px;
+      $font-size: 50px;
       margin: 0;
       float: right;
 
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-        font-size: 36px;
+        $font-size: 36px;
       }
     }
   }
@@ -341,7 +358,7 @@ export default {
 
       h4 {
         font-family: 'Roboto Slab';
-        font-size: 22px;
+        $font-size: 22px;
         margin: 0;
       }
     }
@@ -393,7 +410,7 @@ export default {
             float: left;
             font-weight: 700;
             font-family: 'Roboto Slab';
-            font-size: 24px;
+            $font-size: 24px;
             padding: 20px 15px;
             height: 100%;
             color: $white;
@@ -406,7 +423,7 @@ export default {
 
           .value {
             display: inline-block;
-            font-size: 18px;
+            $font-size: 18px;
             font-family: 'Quicksand';
             font-weight: 600;
             padding: 12px;
@@ -434,14 +451,14 @@ export default {
             width: 100%;
             font-weight: bold;
             font-family: 'Roboto Slab';
-            font-size: 24px;
+            $font-size: 24px;
             padding: 8px 15px;
             color: var(--text-color);
           }
 
           .copyIcon {
             width: 100%;
-            font-size: 60px;
+            $font-size: 60px;
             padding: 24px 0;
             color: $vermilion;
           }
@@ -450,7 +467,7 @@ export default {
     }
 
     .helptext {
-      font-size: 14px;
+      $font-size: 14px;
       display: inline-block;
       border: 3px solid $vermilion;
       border-radius: 10px;
@@ -461,7 +478,7 @@ export default {
 
     .disabledreferral {
       display: inline-block;
-      font-size: 14px;
+      $font-size: 14px;
       box-shadow: 0 0 20px red inset;
       border: 1px solid red;
       border-radius: 10px;
@@ -521,7 +538,7 @@ export default {
         margin-top: 20px;
         margin-bottom: 20px;
         box-shadow: var(--small-icon-shadow);
-        font-size: 16px;
+        $font-size: 16px;
         display: flex;
         flex-flow: row;
 
@@ -560,7 +577,7 @@ export default {
         .row {
           width: 100%;
           flex-flow: column;
-          font-size: 12px;
+          $font-size: 12px;
 
           .pkey {
             order: 1;

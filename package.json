@@ -29,7 +29,6 @@
     "@pwa/cli": "latest",
     "@pwa/plugin-brotli": "latest",
     "@pwa/plugin-gzip": "latest",
-    "@pwa/plugin-sw-precache": "latest",
     "@pwa/preset-vue": "latest",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
@@ -39,7 +38,8 @@
     "stylus": "^0.54.0",
     "stylus-loader": "^3.0.0",
     "ts-loader": "^5.3.3",
-    "typescript": "^3.3.1"
+    "typescript": "^3.3.1",
+    "workbox-webpack-plugin": "^5.1.2"
   },
   "browserslist": [
     ">0.25%",

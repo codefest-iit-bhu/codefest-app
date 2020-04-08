@@ -15,8 +15,8 @@ const router = new Router({
         title: "CodeFest '20 | IIT (BHU) Varanasi",
         metaTags: [],
         noTerminal: false,
-        animateTerminal: true
-      }
+        animateTerminal: true,
+      },
     },
     {
       name: "~/events",
@@ -26,8 +26,8 @@ const router = new Router({
         title: "CodeFest '20 | Events",
         metaTags: [],
         noTerminal: false,
-        animateTerminal: true
-      }
+        animateTerminal: true,
+      },
     },
     {
       name: "~/events/name",
@@ -36,8 +36,8 @@ const router = new Router({
       meta: {
         title: "CodeFest '20 | Event",
         metaTags: [],
-        noTerminal: false
-      }
+        noTerminal: false,
+      },
     },
     {
       name: "~/ca",
@@ -46,8 +46,8 @@ const router = new Router({
       meta: {
         title: "CodeFest '20 | Campus Ambassdor",
         metaTags: [],
-        noTerminal: true
-      }
+        noTerminal: true,
+      },
     },
     {
       name: "~/team",
@@ -57,8 +57,8 @@ const router = new Router({
         title: "CodeFest '20 | Team",
         metaTags: [],
         noTerminal: true,
-        animateTerminal: true
-      }
+        animateTerminal: true,
+      },
     },
     {
       name: "~/login",
@@ -67,8 +67,8 @@ const router = new Router({
       meta: {
         title: "CodeFest '20 | Login",
         metaTags: [],
-        noTerminal: true
-      }
+        noTerminal: true,
+      },
     },
     {
       name: "~/password/change",
@@ -78,36 +78,36 @@ const router = new Router({
         title: "CodeFest '20 | Change Password",
         metaTags: [],
         noTerminal: true,
-        requiresAuth: true
-      }
+        requiresAuth: true,
+      },
     },
     {
       name: "~/dashboard",
       path: "/dashboard",
       component: () => import(`@pages/Dashboard`),
       props: {
-        isHomeView: true
+        isHomeView: true,
       },
       meta: {
         title: "CodeFest '20 | Dashboard",
         metaTags: [],
         noTerminal: true,
-        requiresAuth: true
-      }
+        requiresAuth: true,
+      },
     },
     {
       name: "~/dashboard/events",
       path: "/dashboard/events",
       component: () => import(`@pages/Dashboard`),
       props: {
-        isEventsView: true
+        isEventsView: true,
       },
       meta: {
         title: "CodeFest '20 | Event Registration",
         metaTags: [],
         noTerminal: true,
-        requiresAuth: true
-      }
+        requiresAuth: true,
+      },
     },
     {
       name: "~/profile/edit",
@@ -117,8 +117,8 @@ const router = new Router({
         title: "CodeFest '20 | Profile Edit",
         metaTags: [],
         noTerminal: true,
-        requiresAuth: true
-      }
+        requiresAuth: true,
+      },
     },
     {
       name: "~/haxplore",
@@ -128,8 +128,8 @@ const router = new Router({
         title: "CodeFest '20 | HaXplore",
         metaTags: [],
         noTerminal: true,
-        requiresAuth: false
-      }
+        requiresAuth: false,
+      },
     },
     {
       name: "~/password/reset",
@@ -139,8 +139,8 @@ const router = new Router({
         title: "Forgot Password",
         metaTags: [],
         noTerminal: true,
-        requiresAuth: false
-      }
+        requiresAuth: false,
+      },
     },
     {
       name: "~/referral",
@@ -150,13 +150,8 @@ const router = new Router({
         title: "Referral Leaderboard",
         metaTags: [],
         noTerminal: true,
-        requiresAuth: false
-      }
-    },
-    {
-      name: "~/test",
-      path: "/dummy",
-      component: () => import("@pages/Test")
+        requiresAuth: false,
+      },
     },
     {
       name: "404",
@@ -164,18 +159,18 @@ const router = new Router({
       component: () => import(`@pages/404`),
       meta: {
         title: "CodeFest '20 | 404",
-        noTerminal: true
-      }
-    }
+        noTerminal: true,
+      },
+    },
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) return savedPosition;
     else
       return {
         x: 0,
-        y: 0
+        y: 0,
       };
-  }
+  },
 });
 
 // Credits to: https://alligator.io/vuejs/vue-router-modify-head
@@ -185,35 +180,35 @@ router.beforeEach((to, from, next) => {
   const nearestWithTitle = to.matched
     .slice()
     .reverse()
-    .find(r => r.meta && r.meta.title);
+    .find((r) => r.meta && r.meta.title);
 
   // Find the nearest route element with meta tags.
   const nearestWithMeta = to.matched
     .slice()
     .reverse()
-    .find(r => r.meta && r.meta.metaTags);
+    .find((r) => r.meta && r.meta.metaTags);
   const previousNearestWithMeta = from.matched
     .slice()
     .reverse()
-    .find(r => r.meta && r.meta.metaTags);
+    .find((r) => r.meta && r.meta.metaTags);
 
   // If a route with a title was found, set the document (page) title to that value.
   if (nearestWithTitle) document.title = nearestWithTitle.meta.title;
 
   // Remove any stale meta tags from the document using the key attribute we set below.
-  Array.from(document.querySelectorAll("[data-vue-router-controlled]")).map(
-    el => el.parentNode.removeChild(el)
-  );
+  Array.from(
+    document.querySelectorAll("[data-vue-router-controlled]")
+  ).map((el) => el.parentNode.removeChild(el));
 
   // Skip rendering meta tags if there are none.
   if (!nearestWithMeta) return next();
 
   // Turn the meta tag definitions into actual elements in the head.
   nearestWithMeta.meta.metaTags
-    .map(tagDef => {
+    .map((tagDef) => {
       const tag = document.createElement("meta");
 
-      Object.keys(tagDef).forEach(key => {
+      Object.keys(tagDef).forEach((key) => {
         tag.setAttribute(key, tagDef[key]);
       });
 
@@ -223,23 +218,23 @@ router.beforeEach((to, from, next) => {
       return tag;
     })
     // Add the meta tags to the document head.
-    .forEach(tag => document.head.appendChild(tag));
+    .forEach((tag) => document.head.appendChild(tag));
 
   // Handle secure routes
   const { isLoggedIn } = store.getters;
-  if (to.matched.some(record => record.meta.requiresAuth)) {
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (isLoggedIn) return next();
 
     return next({
       name: "~/login",
       query: {
-        redirect: to.fullPath
-      }
+        redirect: to.fullPath,
+      },
     });
   }
   if (isLoggedIn && to.name === "~/login")
     return next({
-      name: "~/dashboard"
+      name: "~/dashboard",
     });
 
   next();

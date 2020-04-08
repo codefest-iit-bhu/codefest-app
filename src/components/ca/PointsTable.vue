@@ -18,7 +18,7 @@
         </tr>
       </tbody>
     </table>
-    <br>
+    <br />
     <span :class="$style.lastUpdated"> Last Updated : {{ last_updated }}</span>
   </div>
 </template>
@@ -30,7 +30,7 @@ export default {
   data() {
     return {
       cas: [],
-      last_updated : ""
+      last_updated: "",
     };
   },
   created() {
@@ -40,19 +40,16 @@ export default {
         this.last_updated = this.cas[0].last_updated;
         console.log(this.last_updated);
       })
-      .catch(err => {
+      .catch((err) => {
         this.$toasted.global.error_post({
-          message: err.message
+          message: err.message,
         });
       });
-  }
+  },
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
-@require '~@styles/mixins';
-
 .points{
   text-align: center;
   margin: auto;
@@ -66,14 +63,14 @@ export default {
     font-family: 'Roboto Slab';
     color: $vermilion;
     padding: 12px 0;
-    font-size: 16px;
+    $font-size: 16px;
     border-bottom: 1px solid $vermilion;
   }
 
   .tablerow {
     td {
       font-family: 'Quicksand';
-      font-size: 16px;
+      $font-size: 16px;
       padding: 12px 0;
       font-weight: 600;
     }
@@ -94,6 +91,4 @@ export default {
     color: white;
   }
 }
-
-
 </style>

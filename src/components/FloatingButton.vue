@@ -12,31 +12,28 @@ export default {
   props: {
     text: {
       required: true,
-      type: String
+      type: String,
     },
     link: {
       required: false,
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
   computed: {
     animateClass() {
       return isMinimal(this.$mq) ? "" : this.$style.animate;
-    }
+    },
   },
   methods: {
     openLink() {
       if (this.link != null) this.$router.push({ name: this.link });
-    }
-  }
+    },
+  },
 };
 </script>
 
-<style module lang = "stylus">
-@require '~@styles/theme';
-@require '~@styles/mixins';
-
+<style module lang="stylus">
 $btn-height = 60px;
 $btn-width = 60px;
 $btn-radius = 30px;
@@ -65,7 +62,7 @@ $image-expand-width = 18px;
   .txt {
     color: black;
     font-family: 'Aldo the Apache';
-    font-size: 18px;
+    $font-size: 18px;
     margin-left: 5px;
   }
 

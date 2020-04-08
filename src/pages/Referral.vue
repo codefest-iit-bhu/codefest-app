@@ -1,10 +1,10 @@
 <template>
   <div :class="[$style.root, $style[$mq]]">
-    <AppBar :shouldShowSideNavigation="true"/>
+    <AppBar :shouldShowSideNavigation="true" />
     <main :class="$style.wrapper">
-      <Leaderboard :leaderboard="leaderboard"/>
+      <Leaderboard :leaderboard="leaderboard" />
     </main>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
@@ -19,11 +19,11 @@ export default {
   components: {
     AppBar,
     Leaderboard,
-    Footer
+    Footer,
   },
   data() {
     return {
-      leaderboard: []
+      leaderboard: [],
     };
   },
   created() {
@@ -31,19 +31,18 @@ export default {
       .then(({ data }) => {
         this.leaderboard = data;
       })
-      .catch(err => {
+      .catch((err) => {
         this.$toasted.global.error_post({
-          message: err.message
+          message: err.message,
         });
       });
-  }
+  },
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
+
 @require '~@styles/anims';
-@require '~@styles/mixins';
 
 .root {
   height: 100%;
