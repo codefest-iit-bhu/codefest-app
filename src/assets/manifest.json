@@ -1,12 +1,12 @@
 {
   "manifest_version": 1,
   "version": "0.0.1",
-  "name": "CodeFest 2019",
+  "name": "CodeFest 2020",
   "short_name": "CF",
-  "description": "Computer Science department fest organised at IIT(BHU), India.",
+  "description": "Computer Science department fest organised at IIT (BHU), India.",
   "background_color": "#222222",
   "orientation": "portrait",
-  "theme_color": "#86FF00",
+  "theme_color": "#E47718",
   "display": "standalone",
   "start_url": "/",
   "icons": [
@@ -44,7 +44,8 @@
       "src": "/assets/favicons/favicon167.png",
       "type": "image/png",
       "sizes": "167x167"
-    },{
+    },
+    {
       "src": "/assets/favicons/favicon192.png",
       "type": "image/png",
       "sizes": "192x192"
