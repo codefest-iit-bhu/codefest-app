@@ -1,6 +1,6 @@
 <template>
   <div :class="[$style.root, $style[$mq]]">
-    <AppBar/>
+    <AppBar />
     <main :class="$style.wrapper">
       <div :class="$style.authContainer">
         <div :class="$style.formContainer" slot="basic">
@@ -9,23 +9,45 @@
               <h2>Change Password</h2>
               <div :class="$style.fieldsContainer">
                 <div :class="$style.field">
-                  <label for="old__password" :class="$style.label">Current Password</label>
+                  <label for="old__password" :class="$style.label"
+                    >Current Password</label
+                  >
                   <span :class="$style.fieldWrapper">
-                    <input type="password" id="old__password" v-model="currentPasswd" required>
+                    <input
+                      type="password"
+                      id="old__password"
+                      v-model="currentPasswd"
+                      required
+                    />
                     <i
                       class="fas"
-                      :class="isPasswordVisible('old__password') ? 'fa-eye' : 'fa-eye-slash'"
+                      :class="
+                        isPasswordVisible('old__password')
+                          ? 'fa-eye'
+                          : 'fa-eye-slash'
+                      "
                       @click="togglePasswordVisibility('old__password')"
                     ></i>
                   </span>
                 </div>
                 <div :class="$style.field">
-                  <label for="new__password" :class="$style.label">New Password</label>
+                  <label for="new__password" :class="$style.label"
+                    >New Password</label
+                  >
                   <span :class="$style.fieldWrapper">
-                    <input type="password" id="new__password" v-model="newPasswd" required>
+                    <input
+                      type="password"
+                      id="new__password"
+                      v-model="newPasswd"
+                      required
+                    />
                     <i
                       class="fas"
-                      :class="isPasswordVisible('new__password') ? 'fa-eye' : 'fa-eye-slash'"
+                      :class="
+                        isPasswordVisible('new__password')
+                          ? 'fa-eye'
+                          : 'fa-eye-slash'
+                      "
                       @click="togglePasswordVisibility('new__password')"
                     ></i>
                   </span>
@@ -41,12 +63,12 @@
         </div>
       </div>
     </main>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
 <script>
-import firebase from "firebase";
+import { auth } from "firebase/app";
 import API from "@js/api";
 
 const AppBar = () => import("@components/Menu/AppBar");
@@ -57,44 +79,47 @@ export default {
   components: {
     AppBar,
     Footer,
-    TabLayout
+    TabLayout,
   },
   data() {
     return {
       currentPasswd: "",
       newPasswd: "",
-      __stubbed: 0
+      __stubbed: 0,
     };
   },
   computed: {
     isPasswordVisible() {
       this.$data.__stubbed; // To make this computed data reactive.
-      return inputId => {
+      return (inputId) => {
         const inputElem = document.getElementById(inputId);
         if (inputElem) return inputElem.type !== "password";
       };
-    }
+    },
   },
   methods: {
     submitForm() {
-      var user = firebase.auth().currentUser;
-      const credential = firebase.auth.EmailAuthProvider.credential(user.email, this.currentPasswd);
+      const { currentUser: user } = auth;
+      const credential = auth.EmailAuthProvider.credential(
+        user.email,
+        this.currentPasswd
+      );
       user
         .reauthenticateAndRetrieveDataWithCredential(credential)
-        .then(_ => {
+        .then((_) => {
           user
             .updatePassword(this.newPasswd)
-            .then(_ => {
+            .then((_) => {
               this.$toasted.global.success({
-                message: `Successfully updated password!`
+                message: `Successfully updated password!`,
               });
               this.$router.push({ name: "~/dashboard" });
             })
-            .catch(err => {
+            .catch((err) => {
               this.$toasted.global.error_post({ message: err.message });
             });
         })
-        .catch(err => {
+        .catch((err) => {
           this.$toasted.global.error_post({ message: err.message });
         });
     },
@@ -102,8 +127,8 @@ export default {
       const inputElem = document.getElementById(inputId);
       inputElem.type = inputElem.type === "password" ? "text" : "password";
       this.$data.__stubbed++;
-    }
-  }
+    },
+  },
 };
 </script>
 <style module lang="stylus">

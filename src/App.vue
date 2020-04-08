@@ -75,6 +75,7 @@ export default {
     if (this.$workbox) {
       this.$workbox.addEventListener("waiting", () => {
         console.log("WORKBOX ---- Waiting to update UI!");
+        this.$workbox.messageSW({ type: "SKIP_WAITING" });
       });
     }
   },

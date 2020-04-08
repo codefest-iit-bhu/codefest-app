@@ -1,13 +1,18 @@
 <template>
   <div :class="$style.root">
-    <AppBar/>
+    <AppBar />
     <main :class="$style.wrapper">
       <div :class="$style.authContainer">
         <form :class="$style.form" @submit.prevent="forgot_password">
           <h3>RESET PASSWORD</h3>
           <div :class="$style.fieldContainer">
             <label for="email" :class="$style.label">email</label>
-            <input type="email" :class="$style.field" v-model="email" required>
+            <input
+              type="email"
+              :class="$style.field"
+              v-model="email"
+              required
+            />
           </div>
           <div :class="$style.btnStyle">
             <button value=">" :class="$style.submit">
@@ -17,7 +22,7 @@
         </form>
       </div>
     </main>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
@@ -25,35 +30,35 @@
 const AppBar = () => import("@components/Menu/AppBar");
 const Footer = () => import("@components/Footer");
 const TabLayout = () => import("@components/layouts/TabLayout");
-import firebase from "firebase";
+
+import { auth } from "firebase/app";
 
 export default {
   components: {
     AppBar,
     Footer,
-    TabLayout
+    TabLayout,
   },
   data() {
     return {
       email: "",
-      password: ""
+      password: "",
     };
   },
   methods: {
     forgot_password() {
-      firebase
-        .auth()
+      auth()
         .sendPasswordResetEmail(this.email)
-        .then(user => {
+        .then((user) => {
           const msg =
             "The reset password link has been sent to your email. Please check the inbox!!.";
           this.$toasted.global.success({ message: msg });
         })
-        .catch(err => {
+        .catch((err) => {
           this.$toasted.global.error_post({ message: err.message });
         });
-    }
-  }
+    },
+  },
 };
 </script>
 <style module lang="stylus">

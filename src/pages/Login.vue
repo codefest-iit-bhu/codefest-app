@@ -1,16 +1,26 @@
 <template>
   <div :class="$style.root">
-    <AppBar/>
+    <AppBar />
     <main :class="$style.wrapper">
       <div :class="$style.authContainer">
         <TabLayout :tabs="tabs">
           <div :class="$style.formContainer" slot="login">
-            <BarLoader :loading="loading" color="$vermilion" :height="10" :class="$style.loader"/>
+            <BarLoader
+              :loading="loading"
+              color="#E47718"
+              :height="10"
+              :class="$style.loader"
+            />
             <form :class="$style.form" @submit.prevent="emailLogin">
               <div :class="$style.fieldContainer">
                 <label for="email" :class="$style.label">E-mail</label>
-                <input type="email" :class="$style.field" v-model="email" required>
-                <br>
+                <input
+                  type="email"
+                  :class="$style.field"
+                  v-model="email"
+                  required
+                />
+                <br />
                 <label for="password" :class="$style.label">Password</label>
                 <span :class="$style.fieldWrapper">
                   <input
@@ -21,10 +31,14 @@
                     pattern=".{6,}"
                     title="Must be greater than 6 letters."
                     required
-                  >
+                  />
                   <i
                     class="fas"
-                    :class="isPasswordVisible('login__password') ? 'fa-eye' : 'fa-eye-slash'"
+                    :class="
+                      isPasswordVisible('login__password')
+                        ? 'fa-eye'
+                        : 'fa-eye-slash'
+                    "
                     @click="togglePasswordVisibility('login__password')"
                   ></i>
                 </span>
@@ -40,19 +54,24 @@
             </form>
             <div :class="$style.social">
               <button @click="googleLogin" :class="$style.socialButton">
-                <img src="@assets/social/google.png">
+                <img src="@assets/social/google.png" />
               </button>
               <button @click="fbLogin" :class="$style.socialButton">
-                <img src="@assets/social/facebook.png">
+                <img src="@assets/social/facebook.png" />
               </button>
               <button @click="gitHubLogin" :class="$style.socialButton">
-                <img :src="githubImageUrl">
+                <img :src="githubImageUrl" />
               </button>
             </div>
           </div>
 
           <div :class="$style.formContainer" slot="register">
-            <BarLoader :loading="loading" color="#86FF00" :height="10" :class="$style.loader"/>
+            <BarLoader
+              :loading="loading"
+              color="#E47718"
+              :height="10"
+              :class="$style.loader"
+            />
             <form :class="$style.form" @submit.prevent="emailRegister">
               <div :class="$style.fieldContainer">
                 <label for="name" :class="$style.label">Name</label>
@@ -63,8 +82,8 @@
                   :class="$style.field"
                   v-model="name"
                   required
-                >
-                <br>
+                />
+                <br />
                 <label for="email" :class="$style.label">E-mail</label>
                 <input
                   type="email"
@@ -73,8 +92,8 @@
                   :class="$style.field"
                   v-model="email"
                   required
-                >
-                <br>
+                />
+                <br />
                 <label for="password" :class="$style.label">Password</label>
                 <span :class="$style.fieldWrapper">
                   <input
@@ -85,10 +104,14 @@
                     pattern=".{6,}"
                     title="Must be greater than 6 letters."
                     required
-                  >
+                  />
                   <i
                     class="fas"
-                    :class="isPasswordVisible('register__password') ? 'fa-eye' : 'fa-eye-slash'"
+                    :class="
+                      isPasswordVisible('register__password')
+                        ? 'fa-eye'
+                        : 'fa-eye-slash'
+                    "
                     @click="togglePasswordVisibility('register__password')"
                   ></i>
                 </span>
@@ -101,25 +124,25 @@
             </form>
             <div :class="$style.social">
               <button @click="googleLogin" :class="$style.socialButton">
-                <img src="@assets/social/google.png">
+                <img src="@assets/social/google.png" />
               </button>
               <button @click="fbLogin" :class="$style.socialButton">
-                <img src="@assets/social/facebook.png">
+                <img src="@assets/social/facebook.png" />
               </button>
               <button @click="gitHubLogin" :class="$style.socialButton">
-                <img :src="githubImageUrl">
+                <img :src="githubImageUrl" />
               </button>
             </div>
           </div>
         </TabLayout>
       </div>
     </main>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
 <script>
-import firebase from "firebase";
+import { auth } from "firebase/app";
 
 const AppBar = () => import("@components/Menu/AppBar");
 const Footer = () => import("@components/Footer");
@@ -131,7 +154,7 @@ export default {
     AppBar,
     Footer,
     TabLayout,
-    BarLoader
+    BarLoader,
   },
   data() {
     return {
@@ -142,75 +165,72 @@ export default {
       tabs: [
         {
           name: "login",
-          title: "Login"
+          title: "Login",
         },
         {
           name: "register",
-          title: "Register"
-        }
+          title: "Register",
+        },
       ],
       loading: false,
-      __stubbed: 0
+      __stubbed: 0,
     };
   },
   methods: {
     emailLogin() {
       this.loading = true;
-      firebase
-        .auth()
+      auth()
         .signInWithEmailAndPassword(this.email, this.password)
-        .then(result => {
+        .then((result) => {
           this.successfulAuth(result, true);
         })
-        .catch(err => {
+        .catch((err) => {
           this.loading = false;
           this.$toasted.global.error_post({ message: err.message });
         });
     },
     emailRegister() {
       this.loading = true;
-      firebase
-        .auth()
+      auth()
         .createUserWithEmailAndPassword(this.email, this.password)
-        .then(result => {
+        .then((result) => {
           this.successfulAuth(result, true);
           result.user
             .sendEmailVerification()
             .then(() =>
               this.$toasted.global.success({
-                message: "Verification Link has been sent."
+                message: "Verification Link has been sent.",
               })
             )
-            .catch(err => {
+            .catch((err) => {
               this.$toasted.global.error_post({
-                message: err.message
+                message: err.message,
               });
             });
         })
-        .catch(err => {
+        .catch((err) => {
           this.loading = false;
           this.$toasted.global.error_post({ message: err.message });
         });
     },
     googleLogin() {
-      const provider = new firebase.auth.GoogleAuthProvider();
+      const provider = new auth.GoogleAuthProvider();
       this.socialLogin(provider);
     },
     fbLogin() {
-      const provider = new firebase.auth.FacebookAuthProvider();
+      const provider = new auth.FacebookAuthProvider();
       this.socialLogin(provider);
     },
     gitHubLogin() {
-      const provider = new firebase.auth.GithubAuthProvider();
+      const provider = new auth.GithubAuthProvider();
       this.socialLogin(provider);
     },
     socialLogin(provider) {
       this.loading = true;
-      firebase
-        .auth()
+      auth()
         .signInWithPopup(provider)
-        .then(result => this.successfulAuth(result, false))
-        .catch(err => {
+        .then((result) => this.successfulAuth(result, false))
+        .catch((err) => {
           this.loading = false;
           this.$toasted.global.error_post({ message: err.message });
         });
@@ -221,13 +241,13 @@ export default {
 
       result.user
         .getIdToken(true)
-        .then(idToken => {
+        .then((idToken) => {
           this.tryLoginAndRegister(
             idToken,
             byEmail ? this.name : result.user.displayName
           );
         })
-        .catch(err => {
+        .catch((err) => {
           this.loading = false;
           this.$toasted.global.error_post({ message: err.message });
           result.user.delete();
@@ -235,21 +255,21 @@ export default {
     },
     tryLoginAndRegister(idToken, name) {
       this._login(idToken)
-        .then(_ => {
+        .then((_) => {
           this.loading = false;
           this.onRedirectAuth(false);
         })
-        .catch(_ => {
+        .catch((_) => {
           console.log(_);
           this.$recaptcha("login")
-            .then(recaptchaToken =>
+            .then((recaptchaToken) =>
               this._register(idToken, name, this.referral, recaptchaToken)
             )
-            .then(_ => {
+            .then((_) => {
               this.loading = false;
               this.onRedirectAuth(true);
             })
-            .catch(err => {
+            .catch((err) => {
               this.loading = false;
               this.$toasted.global.error_post({ message: err.message });
             });
@@ -263,7 +283,7 @@ export default {
         idToken,
         name,
         referralCode,
-        recaptchaToken
+        recaptchaToken,
       });
     },
     onRedirectAuth(isRegistered) {
@@ -276,23 +296,22 @@ export default {
       const inputElem = document.getElementById(inputId);
       inputElem.type = inputElem.type === "password" ? "text" : "password";
       this.$data.__stubbed++;
-    }
+    },
   },
   computed: {
     isPasswordVisible() {
       this.$data.__stubbed; // To make this computed data reactive.
-      return inputId => {
+      return (inputId) => {
         const inputElem = document.getElementById(inputId);
         if (inputElem) return inputElem.type !== "password";
       };
     },
     githubImageUrl() {
-      if (this.$store.getters.currentTheme === 'dark')
+      if (this.$store.getters.currentTheme === "dark")
         return "assets/social/github-dark.png";
-      else
-        return "assets/social/github-light.png";
-    }
-  }
+      else return "assets/social/github-light.png";
+    },
+  },
 };
 </script>
 

@@ -1,14 +1,14 @@
 <template>
   <div :class="[$style.root, $style[$mq]]">
-    <AppBar/>
+    <AppBar />
     <main :class="$style.wrapper">
       <div :class="$style.authContainer">
         <div :class="$style.formContainer" slot="basic">
           <form :class="$style.form" @submit.prevent="submitForm">
-            <div :class="$style.card" v-show="curId==null">
+            <div :class="$style.card" v-show="curId == null">
               <div :class="$style.loader"></div>
             </div>
-            <div :class="$style.card" id="basic" v-show="curId=='basic'">
+            <div :class="$style.card" id="basic" v-show="curId == 'basic'">
               <h2>Basic</h2>
               <div :class="$style.fieldsContainer">
                 <div :class="$style.field">
@@ -19,11 +19,16 @@
                     v-model="profile.name"
                     :class="$style.field"
                     required
-                  >
+                  />
                 </div>
                 <div :class="$style.field">
                   <label for="gender" :class="$style.label">Gender</label>
-                  <select :class="$style.field" v-model="profile.gender" id="gender" required>
+                  <select
+                    :class="$style.field"
+                    v-model="profile.gender"
+                    id="gender"
+                    required
+                  >
                     <option value="0">Male</option>
                     <option value="1">Female</option>
                     <option value="2">Others</option>
@@ -39,16 +44,23 @@
                     :class="$style.field"
                     v-model="profile.phone"
                     required
-                  >
+                  />
                 </div>
                 <div :class="$style.field">
                   <label for="country" :class="$style.label">Country</label>
-                  <select id="country" :class="$style.field" v-model="profile.country" required>
+                  <select
+                    id="country"
+                    :class="$style.field"
+                    v-model="profile.country"
+                    required
+                  >
                     <option selected disabled>Select your country</option>
                   </select>
                 </div>
                 <div :class="$style.field">
-                  <label for="institute_type" :class="$style.label">You are a</label>
+                  <label for="institute_type" :class="$style.label"
+                    >You are a</label
+                  >
                   <select
                     :class="$style.field"
                     id="institute_type"
@@ -61,18 +73,28 @@
                   </select>
                 </div>
                 <div :class="$style.btnStyle">
-                  <button type="button" @click="nav('academic')" :class="$style.next">
+                  <button
+                    type="button"
+                    @click="nav('academic')"
+                    :class="$style.next"
+                  >
                     <i class="fas fa-arrow-circle-right"></i>
                   </button>
                 </div>
               </div>
             </div>
-            <div :class="$style.card" id="academic" v-show="curId=='academic'">
+            <div
+              :class="$style.card"
+              id="academic"
+              v-show="curId == 'academic'"
+            >
               <h2>Academic</h2>
               <div :class="$style.fieldsContainer">
                 <div :class="$style.field">
                   <label for="institute_name" :class="$style.label">
-                    <span v-if="profile.institute_type==2">Last Institute</span>
+                    <span v-if="profile.institute_type == 2"
+                      >Last Institute</span
+                    >
                     <span v-else>Institute</span>
                   </label>
                   <input
@@ -81,13 +103,13 @@
                     placeholder="Type out your institute"
                     v-model="profile.institute_name"
                     required
-                  >
+                  />
                 </div>
                 <div :class="$style.field">
                   <label for="study_year" :class="$style.label">
-                    <span v-if="profile.institute_type==0">class</span>
-                    <span v-if="profile.institute_type==1">Study Year</span>
-                    <span v-if="profile.institute_type==2">experience</span>
+                    <span v-if="profile.institute_type == 0">class</span>
+                    <span v-if="profile.institute_type == 1">Study Year</span>
+                    <span v-if="profile.institute_type == 2">experience</span>
                   </label>
                   <input
                     type="number"
@@ -97,9 +119,9 @@
                     min="1"
                     v-model="profile.study_year"
                     required
-                  >
+                  />
                 </div>
-                <div :class="$style.field" v-show="profile.institute_type==1">
+                <div :class="$style.field" v-show="profile.institute_type == 1">
                   <label for="branch" :class="$style.label">Branch</label>
                   <input
                     type="text"
@@ -107,49 +129,89 @@
                     name="branch"
                     placeholder="Type out your branch"
                     v-model="profile.branch"
-                  >
+                  />
                 </div>
-                <div :class="$style.field" v-show="profile.institute_type!=0">
+                <div :class="$style.field" v-show="profile.institute_type != 0">
                   <label for="degree" :class="$style.label">Degree</label>
-                  <input type="degree" id="degree" v-model="profile.degree">
+                  <input type="degree" id="degree" v-model="profile.degree" />
                 </div>
               </div>
               <div :class="$style.btnStyle">
-                <button type="button" @click="nav('handles')" :class="$style.next">
+                <button
+                  type="button"
+                  @click="nav('handles')"
+                  :class="$style.next"
+                >
                   <i class="fas fa-arrow-circle-right"></i>
                 </button>
               </div>
             </div>
-            <div :class="$style.card" id="handles" v-show="curId=='handles'">
+            <div :class="$style.card" id="handles" v-show="curId == 'handles'">
               <h2>Handles</h2>
               <div :class="$style.fieldsContainer">
                 <div :class="$style.field">
-                  <label for="codeforces" :class="$style.label">Codeforces</label>
-                  <input type="text" @keyup="checkHandlesChanged" v-model="handles.codeforces">
+                  <label for="codeforces" :class="$style.label"
+                    >Codeforces</label
+                  >
+                  <input
+                    type="text"
+                    @keyup="checkHandlesChanged"
+                    v-model="handles.codeforces"
+                  />
                 </div>
                 <div :class="$style.field">
                   <label for="codechef" :class="$style.label">Codechef</label>
-                  <input type="text" @keyup="checkHandlesChanged" v-model="handles.codechef">
+                  <input
+                    type="text"
+                    @keyup="checkHandlesChanged"
+                    v-model="handles.codechef"
+                  />
                 </div>
                 <div :class="$style.field">
-                  <label for="hackerrank" :class="$style.label">Hackerrank</label>
-                  <input type="text" @keyup="checkHandlesChanged" v-model="handles.hackerrank">
+                  <label for="hackerrank" :class="$style.label"
+                    >Hackerrank</label
+                  >
+                  <input
+                    type="text"
+                    @keyup="checkHandlesChanged"
+                    v-model="handles.hackerrank"
+                  />
                 </div>
                 <div :class="$style.field">
-                  <label for="hackerearth" :class="$style.label">Hackerearth</label>
-                  <input type="text" @keyup="checkHandlesChanged" v-model="handles.hackerearth">
+                  <label for="hackerearth" :class="$style.label"
+                    >Hackerearth</label
+                  >
+                  <input
+                    type="text"
+                    @keyup="checkHandlesChanged"
+                    v-model="handles.hackerearth"
+                  />
                 </div>
                 <div :class="$style.field">
                   <label for="topcoder" :class="$style.label">Topcoder</label>
-                  <input type="text" @keyup="checkHandlesChanged" v-model="handles.topcoder">
+                  <input
+                    type="text"
+                    @keyup="checkHandlesChanged"
+                    v-model="handles.topcoder"
+                  />
                 </div>
                 <div :class="$style.field">
-                  <label for="analyticsVidya" :class="$style.label">Analytics Vidya</label>
-                  <input type="text" @keyup="checkHandlesChanged" v-model="handles.analyticsVidya">
+                  <label for="analyticsVidya" :class="$style.label"
+                    >Analytics Vidya</label
+                  >
+                  <input
+                    type="text"
+                    @keyup="checkHandlesChanged"
+                    v-model="handles.analyticsVidya"
+                  />
                 </div>
                 <div :class="$style.field">
                   <label for="dev_folio" :class="$style.label">Dev Folio</label>
-                  <input type="text" @keyup="checkHandlesChanged" v-model="handles.dev_folio">
+                  <input
+                    type="text"
+                    @keyup="checkHandlesChanged"
+                    v-model="handles.dev_folio"
+                  />
                 </div>
               </div>
               <div :class="$style.btnStyle">
@@ -164,17 +226,17 @@
               <i
                 class="fas fa-circle"
                 @click="nav('basic')"
-                :class="curId=='basic'?$style.active:''"
+                :class="curId == 'basic' ? $style.active : ''"
               ></i>
               <i
                 class="fas fa-circle"
                 @click="nav('academic')"
-                :class="curId=='academic'?$style.active:''"
+                :class="curId == 'academic' ? $style.active : ''"
               ></i>
               <i
                 class="fas fa-circle"
                 @click="nav('handles')"
-                :class="curId=='handles'?$style.active:''"
+                :class="curId == 'handles' ? $style.active : ''"
               ></i>
             </div>
           </form>
@@ -184,22 +246,22 @@
         </div>
       </div>
     </main>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
-    <script>
+<script>
+import API from "@js/api";
+
 const AppBar = () => import("@components/Menu/AppBar");
 const Footer = () => import("@components/Footer");
 const TabLayout = () => import("@components/layouts/TabLayout");
-import firebase from "firebase";
-import API from "@js/api";
 
 export default {
   components: {
     AppBar,
     Footer,
-    TabLayout
+    TabLayout,
   },
   data() {
     return {
@@ -209,14 +271,14 @@ export default {
       navIds: {
         basic: 0,
         academic: 1,
-        handles: 2
+        handles: 2,
       },
       isDisabled: {
         basic: false,
         academic: false,
-        handles: false
+        handles: false,
       },
-      isHandlesFilled: false
+      isHandlesFilled: false,
     };
   },
   methods: {
@@ -241,7 +303,7 @@ export default {
       else var fields = null;
       if (
         this.checkValidity(fields) ||
-        (this.curId == null || this.navIds[id] <= this.navIds[this.curId])
+        this.curId == null || this.navIds[id] <= this.navIds[this.curId]
       ) {
         // if (!this.isDisabled[id])
         this.curId = id;
@@ -284,25 +346,25 @@ export default {
     },
     submitForm() {
       API.put("profile/handles/", {
-        body: this.handles
+        body: this.handles,
       })
-        .then(resp => {
+        .then((resp) => {
           API.put("profile/", {
-            body: this.profile
+            body: this.profile,
           })
-            .then(_ => {
+            .then((_) => {
               const msg = "Your profile has been updated successfully!";
               this.$toasted.global.success({ message: msg });
               this.$router.push({ name: "~/dashboard" });
             })
-            .catch(err => {
+            .catch((err) => {
               this.$toasted.global.error_post({ message: err.message });
             });
         })
-        .catch(err => {
+        .catch((err) => {
           this.$toasted.global.error_post({ message: err.message });
         });
-    }
+    },
   },
   created() {
     API.fetch("profile/")
@@ -337,7 +399,7 @@ export default {
       "code",
       "name"
     );
-  }
+  },
 };
 </script>
 <style module lang="stylus">

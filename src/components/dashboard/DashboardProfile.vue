@@ -2,36 +2,51 @@
   <div :class="[$style.container, $style[$mq]]">
     <div :class="$style.profilehead">
       <div :class="$style.userinit">
-        <p>{{retrieveInitials}}</p>
+        <p>{{ retrieveInitials }}</p>
       </div>
-      <span :class="$style.username">{{profile.name}}</span>
+      <span :class="$style.username">{{ profile.name }}</span>
     </div>
     <hr :class="$style.rightHr" />
     <div :class="$style.profile">
       <div :class="$style.about">
         <div :class="[$style.countdiv, is_verified]">
           <span :class="$style.reftext">Referral Count</span>
-          <span :class="$style.refcount" v-if="profile.is_verified">{{ profile.referral_count }}</span>
+          <span :class="$style.refcount" v-if="profile.is_verified">{{
+            profile.referral_count
+          }}</span>
           <span :class="$style.refcount" v-else>
             <i class="far fa-times-circle"></i>
           </span>
         </div>
         <div :class="$style.box" v-if="profile.is_verified">
           <span :class="$style.keyRef">Referral Link</span>
-          <span :class="$style.value" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
-            <router-link :to="routerLocation">{{ profile.referral_code }}</router-link>
+          <span
+            :class="$style.value"
+            v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
+          >
+            <router-link :to="routerLocation">{{
+              profile.referral_code
+            }}</router-link>
           </span>
           <span v-else></span>
-          <i class="fas fa-clipboard" :class="$style.copyIcon" @click="clickToCopy"></i>
+          <i
+            class="fas fa-clipboard"
+            :class="$style.copyIcon"
+            @click="clickToCopy"
+          ></i>
         </div>
-        <p
-          :class="$style.helptext"
-          v-if="profile.is_verified"
-        >Share the above referral link with your contacts to win exciting goodies!</p>
+        <p :class="$style.helptext" v-if="profile.is_verified">
+          Share the above referral link with your contacts to win exciting
+          goodies!
+        </p>
         <p :class="$style.disabledreferral" v-else>
-          Referral link disabled. Please verify your account first and refresh the page.
+          Referral link disabled. Please verify your account first and refresh
+          the page.
           <br />
-          <a href="javascript:void(0)" @click="resendVerification">Click here</a> to resend verification email.
+          <a href="javascript:void(0)" @click="resendVerification"
+            >Click here</a
+          >
+          to resend verification email.
         </p>
         <div :class="$style.profileinfo">
           <div :class="$style.row">
@@ -50,7 +65,7 @@
             <span :class="$style.pkey">
               <span>Phone</span>
             </span>
-            <span :class="$style.pvalue">{{ profile.phone}}</span>
+            <span :class="$style.pvalue">{{ profile.phone }}</span>
           </div>
           <div :class="$style.row">
             <span :class="$style.pkey">
@@ -73,12 +88,17 @@
                 <input
                   type="file"
                   name="resume"
-                  @change="uploadResume($event.target.name, $event.target.files)"
-                >
+                  @change="
+                    uploadResume($event.target.name, $event.target.files)
+                  "
+                />
               </form>
             </span>
           </div>
-          <p :class="$style.helptext">Resume upload is recommended to be considered for hiring opportunities!</p>
+          <p :class="$style.helptext">
+            Resume upload is recommended to be considered for hiring
+            opportunities!
+          </p>
         </div>
       </div>
     </div>
@@ -120,7 +140,7 @@
 import { copyToClipboard } from "@js/utils";
 import { SITE_URL } from "@js/constants";
 import API from "@js/api";
-import firebase, { firestore } from "firebase";
+import { auth } from "firebase/app";
 
 const SectionLayout = () => import("@components/layouts/SectionLayout");
 const ResponsiveTwoColumnLayout = () =>
@@ -129,7 +149,7 @@ const ResponsiveTwoColumnLayout = () =>
 export default {
   components: {
     SectionLayout,
-    ResponsiveTwoColumnLayout
+    ResponsiveTwoColumnLayout,
   },
   data() {
     return {
@@ -155,42 +175,41 @@ export default {
       }
     },
 
-
     routerLocation() {
       return {
         name: "~/login",
         query: {
-          referral: this.profile.referral_code
-        }
+          referral: this.profile.referral_code,
+        },
       };
-    }
+    },
   },
   props: {
     profile: {
       required: true,
-      type: Object
-    }
+      type: Object,
+    },
   },
   created() {
     API.fetch("certificate/")
       .then(({ data }) => {
         this.$data.certificate = data.url;
       })
-      .catch(e => {
+      .catch((e) => {
         this.$data.certificate = null;
       });
     API.fetch("resume/")
       .then(({ data }) => {
         this.resume = data.resume;
       })
-      .catch(e => {
+      .catch((e) => {
         this.resume = null;
       });
-    firebase.auth().onAuthStateChanged((user) => {
+    auth().onAuthStateChanged((user) => {
       if (user) {
         this.user_email = user.email;
       }
-    })
+    });
   },
   methods: {
     clickToCopy() {
@@ -198,21 +217,20 @@ export default {
       const referralShareLink = this.$router.resolve(this.routerLocation).href;
       copyToClipboard(`${SITE_URL}${referralShareLink}`);
       this.$toasted.global.success({
-        message: `Copied "${referralShareLink}"!`
+        message: `Copied "${referralShareLink}"!`,
       });
     },
     resendVerification() {
-      firebase
-        .auth()
+      auth()
         .currentUser.sendEmailVerification()
         .then(() => {
           this.$toasted.global.success({
-            message: "Verification Link has been sent."
+            message: "Verification Link has been sent.",
           });
         })
-        .catch(err => {
+        .catch((err) => {
           this.$toasted.global.error_post({
-            message: err.message
+            message: err.message,
           });
         });
     },
@@ -223,19 +241,19 @@ export default {
       API.put("resume/", {
         body: resumeFile,
         headers: {
-          "Content-Type": undefined
-        }
+          "Content-Type": undefined,
+        },
       })
-      .then(({ data }) => {
-        const msg = "Your resume has been uploaded successfully!";
-        this.$toasted.global.success({ message: msg });
-        this.resume = data.resume;
-      })
-      .catch(err => {
-        this.$toasted.global.error_post({ message: err.message });
-      });
-    }
-  }
+        .then(({ data }) => {
+          const msg = "Your resume has been uploaded successfully!";
+          this.$toasted.global.success({ message: msg });
+          this.resume = data.resume;
+        })
+        .catch((err) => {
+          this.$toasted.global.error_post({ message: err.message });
+        });
+    },
+  },
 };
 </script>
 
