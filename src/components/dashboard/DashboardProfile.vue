@@ -224,10 +224,10 @@ export default {
           "Content-Type": undefined
         }
       })
-      .then(_ => {
+      .then(({ data }) => {
         const msg = "Your resume has been uploaded successfully!";
         this.$toasted.global.success({ message: msg });
-        this.$router.go();
+        this.resume = data.resume;
       })
       .catch(err => {
         this.$toasted.global.error_post({ message: err.message });
