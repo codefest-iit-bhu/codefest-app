@@ -62,12 +62,12 @@ $rd = 60px;
       height: calc(var(--item-round) * 2);
       width: calc(var(--item-round) * 2);
       background: $mystic;
-      padding: calc((var(--item-round) / 5));
+      padding: calc((var(--item-round) / 6));
       box-shadow: var(--icon-shadow);
 
       img {
-        height: calc(var(--item-round) * 1.6);
-        width: calc(var(--item-round) * 1.6);
+        height: calc(var(--item-round) * (5/3));
+        width: calc(var(--item-round) * (5/3));
         border-radius: 60px;
         object-fit: cover;
       }
