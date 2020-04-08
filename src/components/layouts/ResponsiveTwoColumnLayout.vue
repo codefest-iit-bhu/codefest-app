@@ -15,8 +15,8 @@ export default {
     isRightAbove: {
       required: false,
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   computed: {
     isMinimal() {
@@ -27,8 +27,11 @@ export default {
     },
     rightClass() {
       return this.isMinimal && this.isRightAbove ? this.$style.upper : "";
-    },
+    }
   },
+  mounted() {
+    this.$nextTick(() => this.$emit("init"));
+  }
 };
 </script>
 

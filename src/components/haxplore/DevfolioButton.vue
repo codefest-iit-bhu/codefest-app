@@ -1,9 +1,5 @@
 <template>
-  <div
-    :class="$style.link"
-    @mouseover="buttonHovered = true"
-    @mouseleave="buttonHovered = false"
-  >
+  <div :class="$style.link">
     <div :class="$style.linkText">
       <h4>Registrations will be live soon</h4>
     </div>
@@ -17,13 +13,13 @@ export default {
   props: {
     devfolioKey: {
       type: String,
-      default: "haxplore",
-    },
+      default: "haxplore"
+    }
   },
   computed: {
     animateClass() {
       return isMinimal(this.$mq) ? "" : this.$style.animate;
-    },
+    }
   },
   methods: {
     registerDefault() {
@@ -31,11 +27,11 @@ export default {
         `https://devfolio.co/external-apply/${this.devfolioKey}`,
         "_blank"
       );
-    },
+    }
   },
   mounted() {
     this.$emit("mounted");
-  },
+  }
 };
 </script>
 

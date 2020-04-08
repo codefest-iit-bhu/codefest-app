@@ -1,5 +1,7 @@
+@require('./anims.styl')
+
 :root
-  --base-font 16px
+  --base-font $base-font
   --transition-duration 300ms
   --font-header 'Roboto Mono'
   --font-list -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif
@@ -86,14 +88,6 @@
         left: 50%
         transform: translate(-50%, -50%)
     }
-
-    .absolute-center1 {
-        position absolute
-        top: 42%
-        left: 50%
-        transform: translate(-50%, -50%)
-    }
-
 
   /* =============================================================================
     HTML5 display definitions

@@ -1,53 +1,23 @@
 <template>
   <div id="hero" class="preload" :class="$style.hero">
     <mq-layout mq="lg+">
-      <canvas
-        id="canvas"
-        v-if="themeisdark"
-        ref="rains"
-        :class="$style.anim"
-        :style="{
-          backgroundImage:
-            'url(' + require('@/assets/hero/background-dark.jpg') + ')',
-        }"
-      ></canvas>
-      <canvas
-        id="canvas"
-        v-else
-        ref="rains"
-        :class="$style.anim"
-        :style="{
-          backgroundImage:
-            'url(' + require('@/assets/hero/background.jpg') + ')',
-        }"
-      ></canvas>
-      <div id="title" class="absolute-center1" :class="$style.title">
+      <canvas ref="canvas" :class="$style.anim" />
+      <div ref="title" class="absolute-center" :class="$style.title">
         <div :class="$style.cftitle">
           <span>
             <img
-              v-if="themeisdark"
               :class="$style.mainlogo"
-              src="@assets/hero/logo-dark.png"
+              :src="require(themeisdark ? '@assets/hero/logo-dark.png' : '@assets/hero/logo.png')"
             />
-            <img v-else :class="$style.mainlogo" src="@assets/hero/logo.png" />
           </span>
-          <!--<h1 :class="$style.heroTitle">
-		        code
-		        <span>Fest</span>
-		        <sup>20</sup>
-		        </h1>-->
-          <span id="tagline" :class="$style.tagline"
-            >Imagine. Create. Iterate.</span
-          >
+          <span ref="tagline" :class="$style.tagline">Imagine. Create. Iterate.</span>
         </div>
       </div>
       <div :class="$style.wrap">
         <img
-          v-if="themeisdark"
           :class="$style.wrapimg"
-          src="@assets/hero/hero-wrap-dark.svg"
+          :src="require(themeisdark ? '@assets/hero/hero-wrap-dark.svg' : '@assets/hero/hero-wrap.svg')"
         />
-        <img v-else :class="$style.wrapimg" src="@assets/hero/hero-wrap.svg" />
       </div>
     </mq-layout>
     <mq-layout :mq="['sm', 'xs', 'md']">
@@ -57,14 +27,14 @@
             <path
               class="cls-1"
               d="M170.18,293.38V49.4c-1.81-.58-119.63-.82-124.31-.3-.51,1.78-.76,142.54-.23,148.75,5.27.28,10.59.09,15.9.12s10.72,0,16.08,0h65c-7.7,16.54-15.36,32.66-22.92,48.77H0V.44C.08.36.13.3.19.25S.31.12.38.11A6,6,0,0,1,1.32,0Q168.24,0,335.15,0c.13,0,.26.13.56.3a12.17,12.17,0,0,1-1,1.23Q311.86,24.64,289,47.75a4.24,4.24,0,0,1-3.44,1.19H215.78c-.52,1.91-.7,45.89-.23,50.23,2.79.27,5.64.09,8.48.12s5.92,0,8.88,0h52.44c-.8.91-1.23,1.45-1.71,1.94q-21.66,21.94-43.3,43.92a5,5,0,0,1-4,1.62c-6-.09-12,0-18,0h-2.94c0,1.15,0,2.15,0,3.16q0,46.56,0,93.11a15.68,15.68,0,0,0,0,1.68,4.34,4.34,0,0,1-1.49,3.8Q194.9,268,176,287.64C174.23,289.47,172.38,291.21,170.18,293.38Z"
-            ></path>
+            />
           </svg>
         </div>
         <div :class="$style.cftext">
           <span :class="$style.smalltagline" ref="tagline"></span>
           <!--<p :class="$style.loc">
 	            <i class="fas fa-map-marked-alt"></i> IIT (BHU), Varanasi
-	          </p>-->
+          </p>-->
         </div>
         <div :class="$style.registerbtn">
           <router-link to="/login">
@@ -84,11 +54,11 @@ export default {
     themeisdark: function() {
       if (this.$store.getters.currentTheme == "dark") return true;
       return false;
-    },
+    }
   },
   methods: {
     initMatrixRain() {
-      const canvas = this.$refs.rains;
+      const canvas = this.$refs.canvas;
 
       var ctx = canvas.getContext("2d");
 
@@ -143,7 +113,7 @@ export default {
           189,
           72,
           223,
-          44,
+          44
         ],
         [
           -123,
@@ -173,8 +143,8 @@ export default {
           -135,
           64,
           -129,
-          42,
-        ],
+          42
+        ]
       ]; // shape of left footstep
       const footScale = 0.03; // size of footstep
       const fadeRate = 0.65; // change rate of fading of footsteps
@@ -199,7 +169,7 @@ export default {
         1614,
         180,
         1768,
-        184,
+        184
       ];
       var path3 = [1720, 974, 1400, 676, 1144, 562, 1140, 409, 1820, 404];
 
@@ -246,49 +216,49 @@ export default {
       var pos = {
         x: path[0],
         y: path[1],
-        index: 0,
+        index: 0
       };
 
       var pos1 = {
         x: path[0],
         y: path[1],
-        index: 0,
+        index: 0
       };
 
       var pos2 = {
         x: path1[0],
         y: path1[1],
-        index: 0,
+        index: 0
       };
 
       var pos3 = {
         x: path1[0],
         y: path1[1],
-        index: 0,
+        index: 0
       };
 
       var pos4 = {
         x: path2[0],
         y: path2[1],
-        index: 0,
+        index: 0
       };
 
       var pos5 = {
         x: path2[0],
         y: path2[1],
-        index: 0,
+        index: 0
       };
 
       var pos6 = {
         x: path3[0],
         y: path3[1],
-        index: 0,
+        index: 0
       };
 
       var pos7 = {
         x: path3[0],
         y: path3[1],
-        index: 0,
+        index: 0
       };
 
       function getnextStep(dist, pos) {
@@ -415,12 +385,6 @@ export default {
         ctx.putImageData(imageData, 0, 0);
       }
 
-      function setpage() {
-        document.getElementById("title").style.display = "block";
-        document.getElementById("tagline").style.animation =
-          "var(--hero-text-animation)";
-      }
-
       function draw() {
         // main
 
@@ -466,59 +430,61 @@ export default {
         setTimeout(draw, stepTime);
       }
 
-      var url;
-      var dark = globalthis.themeisdark;
-      if (dark) url = require("@/assets/hero/background-dark.jpg");
-      else url = require("@/assets/hero/background.jpg");
-      var loaded = false;
-      var image = new Image();
-
-      image.onload = function() {
-        loaded = true;
-        var div = document.getElementById("canvas");
-        div.style.backgroundImage = "url('" + url + "')";
-      };
-      image.src = url;
-
-      function BackRetry() {
-        if (!loaded) {
-          setTimeout(BackRetry, 1000);
-          return;
-        }
-
-        setpage();
-        draw();
-      }
-
-      BackRetry();
+      draw();
     },
     tryMatrixRain() {
-      if (["lg", "xl", "xxl"].includes(this.$mq)) {
+      const startStuff = () => {
+        this.$refs.title.style.display = "block";
+        this.$refs.tagline.style.animation = "var(--hero-text-animation)";
         this.initMatrixRain();
+      };
+      if (["lg", "xl", "xxl"].includes(this.$mq)) {
+        var loaded = false;
+        const canvas = this.$refs.canvas;
+        const url = canvas.style.backgroundImage;
+        const image = new Image();
+        canvas.style.backgroundImage = null;
+        image.onload = function() {
+          loaded = true;
+          canvas.style.backgroundImage = `url('${url}')`;
+
+          startStuff();
+        };
+        image.src = url;
+
+        setTimeout(() => {
+          if (!loaded) startStuff();
+        }, 2000);
       }
     },
+    tryTypingAnim() {
+      if (!["lg", "xl", "xxl"].includes(this.$mq)) {
+        this.animTyping = new TypingAnim(
+          this.$refs.tagline,
+          "Imagine. Create. Iterate."
+        );
+
+        window.setInterval(() => {
+          this.isTyped ? this.animTyping.erase() : this.animTyping.type();
+          this.isTyped = !this.isTyped;
+        }, 2000);
+        this.animTyping.type();
+        this.isTyped = true;
+      }
+    }
   },
   mounted() {
-    this.tryMatrixRain();
-    if (!["lg", "xl", "xxl"].includes(this.$mq)) {
-      this.animTyping = new TypingAnim(
-        this.$refs.tagline,
-        "Imagine. Create. Iterate."
-      );
-
-      window.setInterval(() => {
-        this.isTyped ? this.animTyping.erase() : this.animTyping.type();
-        this.isTyped = !this.isTyped;
-      }, 2000);
-      this.animTyping.type();
-      this.isTyped = true;
-    }
+    setTimeout(() => {
+      this.tryMatrixRain();
+      this.tryTypingAnim();
+    }, 1000);
   },
   watch: {
     $mq: function() {
       setTimeout(this.tryMatrixRain.bind(this), 500);
-    },
-  },
+      setTimeout(this.tryTypingAnim.bind(this), 500);
+    }
+  }
 };
 </script>
 
@@ -526,12 +492,7 @@ export default {
 @require '~@styles/anims';
 
 .preload * {
-
-  -webkit-transition: none !important;
-  -webkit-animation: none !important;
-  -moz-transition: none !important;
-  -ms-transition: none !important;
-  -o-transition: none !important;
+  transition: none !important;
 }
 
 .anim {
@@ -542,42 +503,43 @@ export default {
   bottom: 0;
   top: 0;
   background-size: 100%;
+  background-image: url('~@assets/hero/background.jpg');
+
+  div[data-theme='dark'] & {
+    background-image: url('~@assets/hero/background-dark.jpg');
+  }
 }
 
-.hero{
-
-	position: relative;
-	min-height: 300px;
-	height: 100vh;
-	max-width: 100%;
-	overflow: hidden;
-	color: #f1f1f1;
-
+.hero {
+  position: relative;
+  min-height: 300px;
+  height: 100vh;
+  max-width: 100%;
+  overflow: hidden;
+  color: #f1f1f1;
 }
 
-.wrap{
+.wrap {
+  position: absolute;
+  width: 100vw;
+  z-index: 2;
+  min-height: 1px;
+  bottom: -2vh;
 
-	position: absolute;
-	width: 100vw;
-	z-index: 2;
-	min-height: 1px;
-	bottom: -2vh;
-
-	.wrapimg{
-
-		bottom: 0vh;
-		width: 100vw;
-	}
+  .wrapimg {
+    bottom: 0vh;
+    width: 100vw;
+  }
 }
 
 .title {
-
   display: none;
   height: 30%;
   width: 100%;
   z-index: 2;
   margin: auto;
   text-align: center;
+  top: 42%;
 
   .cftitle {
     width: 60%;
@@ -589,13 +551,11 @@ export default {
     border-radius: 300px;
     backdrop-filter: blur(0.01em);
 
-    .mainlogo{
-
-    	width: 40vw;
+    .mainlogo {
+      width: 40vw;
     }
 
-    .heroTitle{
-
+    .heroTitle {
       font: 100px 'Harry';
       font-weight: 600;
       text-align: center;
@@ -642,22 +602,20 @@ export default {
   }
 }
 
-.roundbox{
-
-	position: absolute;
-	border-radius: 25px;
-	padding: 20px;
-	width: 50%;
-	max-width: 60%;
-	min-height: 250px;
-	max-height: 300px;
-	border-width: 2px;
-	margin-left:20%;
-	margin-top: 15%;
+.roundbox {
+  position: absolute;
+  border-radius: 25px;
+  padding: 20px;
+  width: 50%;
+  max-width: 60%;
+  min-height: 250px;
+  max-height: 300px;
+  border-width: 2px;
+  margin-left: 20%;
+  margin-top: 15%;
 }
 
 .smallhero {
-
   color: $orange;
 
   .aws {

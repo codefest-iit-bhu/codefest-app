@@ -29,7 +29,7 @@
 <script>
 export default {
   components: {},
-  mounted() {},
+  mounted() {}
 };
 </script>
 
@@ -80,7 +80,7 @@ export default {
     }
 
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-      width:80%;
+      width: 80%;
       margin: 20px auto;
     }
   }
@@ -118,7 +118,7 @@ export default {
       margin-top: 72px;
       font-family: 'Quicksand';
       font-weight: 500;
-      $font-size: 32px;
+      $font-size: 26px;
     }
 
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
@@ -136,6 +136,5 @@ export default {
   font-weight: 700;
   text-align: center;
   $font-size: 24px;
-
 }
 </style>

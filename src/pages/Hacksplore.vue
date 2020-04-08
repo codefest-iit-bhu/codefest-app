@@ -1,7 +1,7 @@
 <template>
   <div :class="[$style.root, $style[$mq]]">
     <AppBar :haxplorePage="true" @scrollTop="scrollToTop" />
-    <Landing :devfolioKey="devfolioKey" @mounted="landingMounted" />
+    <Landing />
     <main :class="$style.wrapper">
       <div v-scroll-spy="{ data: 'section' }" ref="scroller">
         <div></div>
@@ -45,7 +45,7 @@ export default {
     Lookback,
     HaxploreSponsors,
     FooterN,
-    Testimonials,
+    Testimonials
   },
   data() {
     return {
@@ -56,28 +56,28 @@ export default {
         {
           name: "Prizes worth",
           value: "200,000",
-          image: "assets/Lookback/lb_prize.svg",
+          image: "assets/Lookback/lb_prize.svg"
         },
         {
           name: "Time",
           value: "24 Hours",
-          image: "assets/Lookback/time.svg",
+          image: "assets/Lookback/time.svg"
         },
         {
           name: "Participants",
           value: "100+",
-          image: "assets/Lookback/lb_participant.svg",
+          image: "assets/Lookback/lb_participant.svg"
         },
         {
           name: "Github repos",
           value: "30+",
-          image: "assets/Lookback/github-repos.svg",
+          image: "assets/Lookback/github-repos.svg"
         },
         {
           name: "Lines of code",
           value: "100,000+",
-          image: "assets/Lookback/lines-of-code.svg",
-        },
+          image: "assets/Lookback/lines-of-code.svg"
+        }
       ],
       testimonials: [
         {
@@ -88,7 +88,7 @@ export default {
             the different teams, approaches and experiments towards building solutions to a variety of \
             problems within 24hrs. It was perhaps the best hackathon I have participated till date. I would like \
             to express my gratitude to the organizers for wonderfully organizing the event.",
-          image: "assets/Testimonial/shravan.jpeg",
+          image: "assets/Testimonial/shravan.jpeg"
         },
         {
           name: "Daksh Miglani",
@@ -96,15 +96,15 @@ export default {
             "HaXplore at IIT BHU is one of the finest hackathons our country has to offer. \
             I had a great time there, the wifi was fast as well, and the mentors were really helpful. \
             All in all a great place to hack.",
-          image: "assets/Testimonial/daksh.jpeg",
+          image: "assets/Testimonial/daksh.jpeg"
         },
         {
           name: "Akshay",
           comment: "Great team, great jury members. Waiting for Haxplore 2.0",
-          image: "assets/Testimonial/akshay.jpeg",
-        },
+          image: "assets/Testimonial/akshay.jpeg"
+        }
       ],
-      buttonHovered: false,
+      buttonHovered: false
     };
   },
   computed: {
@@ -116,31 +116,30 @@ export default {
     },
     linkColorStyle() {
       if (this.buttonHovered) return this.$style.hoverColor;
-    },
+    }
   },
   methods: {
     scrollToTop() {
       TweenLite.to(window, 1, { scrollTo: 0, ease: Power4.easeInOut });
-    },
-    landingMounted() {
-      let devfolioOptions = {
-        buttonSelector: `#devfolio-apply-now`,
-        key: this.devfolioKey,
-      };
-      let script = document.createElement("script");
-      script.src = "https://apply.devfolio.co";
-      document.body.append(script);
-      script.onload = function() {
-        new Devfolio(devfolioOptions);
-      };
-    },
+    }
+    // landingMounted() {
+    //   let devfolioOptions = {
+    //     buttonSelector: `#devfolio-apply-now`,
+    //     key: this.devfolioKey,
+    //   };
+    //   let script = document.createElement("script");
+    //   script.src = "https://apply.devfolio.co";
+    //   document.body.append(script);
+    //   script.onload = function() {
+    //     new Devfolio(devfolioOptions);
+    //   };
+    // },
   },
-  mounted() {},
+  mounted() {}
 };
 </script>
 
 <style module lang="stylus">
-
 @require '~@styles/anims';
 
 .wrapper {
