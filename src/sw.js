@@ -1,4 +1,4 @@
-importScripts("./workbox-v4.3.1.js");
+importScripts("/assets/workbox-v4.3.1.js");
 
 if (workbox) {
   workbox.precaching.precacheAndRoute(self.__WB_MANIFEST);
