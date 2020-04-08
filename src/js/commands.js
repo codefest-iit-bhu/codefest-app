@@ -55,7 +55,7 @@ class ColumnOutput extends BaseOutput {
   processData(envs) {
     let vue = envs.vue;
     let result = "";
-    this.data.forEach(elem => (result += `${elem} `));
+    this.data.forEach((elem) => (result += `${elem} `));
     this._html = `<div class="${vue.$style.column}">${result}</div>`;
   }
 }
@@ -139,14 +139,14 @@ class HelpCommand extends BaseCommand {
   run() {
     return new BaseOutput(
       `Glad that you are one of the geeky nerds to visit this site and use this terminal!
-    It is just a pretty basic shell and has only 4 simple commands - ls, cd, clear and help (the one with this output).`,
+    It is just a pretty basic shell and has only 5 simple commands - ls, cd, toggle, clear and help (the one with this output).`,
       this.envs
     );
   }
 }
 
 class ToggleThemeCommand extends BaseCommand {
-  static getCommandName(){
+  static getCommandName() {
     return "toggle";
   }
 
@@ -160,5 +160,5 @@ export const CommandList = [
   ChangeDirCommand,
   ClearCommand,
   HelpCommand,
-  ToggleThemeCommand
+  ToggleThemeCommand,
 ];
