@@ -1,15 +1,17 @@
-import { Workbox } from "workbox-window";
-
 let wb;
 
 if ("serviceWorker" in navigator) {
-  wb = new Workbox(`/sw.js`);
+  const initWorkbox = async () => {
+    const { Workbox } = await import("workbox-window");
+    wb = new Workbox(`/sw.js`);
 
-  wb.addEventListener("controlling", () => {
-    window.location.reload();
-  });
+    wb.addEventListener("controlling", () => {
+      window.location.reload();
+    });
 
-  wb.register();
+    wb.register();
+  };
+  initWorkbox();
 } else {
   wb = null;
 }
