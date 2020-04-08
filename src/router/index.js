@@ -78,7 +78,7 @@ const router = new Router({
         title: "CodeFest '20 | Change Password",
         metaTags: [],
         noTerminal: true,
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -92,7 +92,7 @@ const router = new Router({
         title: "CodeFest '20 | Dashboard",
         metaTags: [],
         noTerminal: true,
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -106,7 +106,7 @@ const router = new Router({
         title: "CodeFest '20 | Event Registration",
         metaTags: [],
         noTerminal: true,
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -117,7 +117,7 @@ const router = new Router({
         title: "CodeFest '20 | Profile Edit",
         metaTags: [],
         noTerminal: true,
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
