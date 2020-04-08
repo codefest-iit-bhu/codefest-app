@@ -25,15 +25,15 @@ export default {
   props: {
     data: {
       required: true,
-      type: Object
-    }
+      type: Object,
+    },
   },
   computed: {
     checkpointClass() {
       return {
         [this.$style.checkpointWrapper]: true,
         [this.$style.done]: this.isDone,
-        [this.$style.major]: this.data.isMajor
+        [this.$style.major]: this.data.isMajor,
       };
     },
     isDone() {
@@ -55,14 +55,12 @@ export default {
           end
         )}`;
       } else return formatDateTo12HoursTime(start);
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
-@require '~@styles/mixins';
 @require '~@styles/anims';
 
 $circle-small-size = 15px;
@@ -155,7 +153,7 @@ $circle-transparent-background = transparent;
     width: 200px;
     height: 36px;
     padding: 2px 5px;
-    font-size: 14px;
+    $font-size: 14px;
     line-height: 30px;
     text-align: center;
     border: 2px solid $vermilion;
@@ -179,7 +177,7 @@ $circle-transparent-background = transparent;
     span h4 {
       margin: 0;
       font-family: 'Roboto Slab';
-      font-size: 18px;
+      $font-size: 18px;
     }
   }
 }

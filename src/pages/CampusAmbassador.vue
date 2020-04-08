@@ -1,28 +1,28 @@
 <template>
   <div :class="$style.root">
-    <AppBar/>
+    <AppBar />
     <main :class="$style.wrapper">
-      <CAHero/>
+      <CAHero />
       <SectionLayout title="About">
-        <AboutCA/>
+        <AboutCA />
       </SectionLayout>
       <SectionLayout title="What you need to do">
-        <Work/>
+        <Work />
       </SectionLayout>
       <SectionLayout title="Perks and Benefits">
-        <Perks/>
+        <Perks />
       </SectionLayout>
       <SectionLayout title="FAQ">
-        <FaqCA/>
+        <FaqCA />
       </SectionLayout>
       <SectionLayout title="Contact Us">
-        <ContactCA/>
+        <ContactCA />
       </SectionLayout>
       <SectionLayout title="Points Table">
-        <PointsTable/>
+        <PointsTable />
       </SectionLayout>
     </main>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
@@ -48,13 +48,13 @@ export default {
     ContactCA,
     FaqCA,
     PointsTable,
-    SectionLayout
-  }
+    SectionLayout,
+  },
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
+
 @require '~@styles/anims';
 
 .wrapper {
@@ -63,7 +63,7 @@ export default {
   position: relative;
   z-index: 1;
   padding: 200px 20px 50px 20px;
-  font-size: 18px;
+  $font-size: 18px;
 }
 
 .root {

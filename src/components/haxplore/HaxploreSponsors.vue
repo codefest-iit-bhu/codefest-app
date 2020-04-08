@@ -3,66 +3,79 @@
     <div :class="[$style.sponsors, $style[$mq]]">
       <div :class="$style.container">
         <GridLayout
-          :columns="$mq | mq({xs: 1, sm: 1, md: 2, lg: 2, xl: 2})"
+          :columns="$mq | mq({ xs: 1, sm: 1, md: 2, lg: 2, xl: 2 })"
           itemWidth="260px"
           itemHeight="260px"
         >
-          <div :class="$style.cell" v-for="(stat, i) in stats" :key="i" :slot="`item${i}`">
-              <div :class="$style.clip">
-                <img :src="stat.image" :class="$style.img">
-              </div>
+          <div
+            :class="$style.cell"
+            v-for="(stat, i) in stats"
+            :key="i"
+            :slot="`item${i}`"
+          >
+            <div :class="$style.clip">
+              <img :src="stat.image" :class="$style.img" />
+            </div>
           </div>
         </GridLayout>
       </div>
       <div :class="$style.txt"></div>
-        <div :class="$style.link" @mouseover="buttonHovered = true" @mouseleave="buttonHovered = false">
-          <a href="https://drive.google.com/file/d/15BYqDZwShgFFqkgBPKqr0j-AcFF-_Umm" :class="[$style.linkText, linkColorStyle]" target="_blank">
-            <h4> Sponsor Brochure </h4>
-          </a>
-        </div>
+      <div
+        :class="$style.link"
+        @mouseover="buttonHovered = true"
+        @mouseleave="buttonHovered = false"
+      >
+        <a
+          href="https://drive.google.com/file/d/15BYqDZwShgFFqkgBPKqr0j-AcFF-_Umm"
+          :class="[$style.linkText]"
+          target="_blank"
+        >
+          <h4>Sponsor Brochure</h4>
+        </a>
+      </div>
     </div>
   </SectionLayout>
 </template>
 
 <script>
-import GridLayout from "../layouts/GridLayout";
+const GridLayout = () => import("../layouts/GridLayout");
 const SectionLayout = () => import("@components/layouts/SectionLayout");
-const ResponsiveTwoColumnLayout = () => import("@components/layouts/ResponsiveTwoColumnLayout");
+const ResponsiveTwoColumnLayout = () =>
+  import("@components/layouts/ResponsiveTwoColumnLayout");
 
 export default {
   components: {
     SectionLayout,
     GridLayout,
-    ResponsiveTwoColumnLayout
+    ResponsiveTwoColumnLayout,
   },
   data() {
     return {
       stats: [
         {
           image: "assets/Sponsors/aws.png",
-          link: "#"        
+          link: "#",
         },
         {
           image: "assets/Sponsors/github.png",
-          link: "#"        
+          link: "#",
         },
         {
           image: "assets/Sponsors/devfolio_logo.svg",
-          link: "#"        
+          link: "#",
         },
         {
           image: "assets/Sponsors/matic-gr1.png",
-          link: "#"        
-        }
+          link: "#",
+        },
       ],
     };
-  }
+  },
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
-@require '~@styles/mixins';
+
 @require '~@styles/anims';
 
 $cell-size = 200px;
@@ -87,24 +100,23 @@ $box-width = 250px;
     text-align: center;
     cursor: pointer;
 
-    .hoverColor {
-      color: var(--text-color) !important;
-    }
-
     .linkText {
-      color: $waterloo;
       display: inline;
       text-decoration: none;
+      color: $waterloo;
 
       h4 {
         font-family: 'Roboto Slab';
-        font-size: 30px;
+        $font-size: 30px;
         margin: 0;
       }
     }
 
     &:hover {
       box-shadow: var(--inset-box-shadow);
+      .linkText {
+        color: var(--text-color);
+      }
     }
   }
 
@@ -114,7 +126,7 @@ $box-width = 250px;
     h4 {
       font-family: 'Quicksand';
       font-weight: bold;
-      font-size: 30px;
+      $font-size: 30px;
     }
   }
 
@@ -139,7 +151,7 @@ $box-width = 250px;
       }
 
       .txt {
-        font-size: 20px;
+        $font-size: 20px;
         font-family: 'Roboto Slab';
         font-weight: 600;
       }
@@ -219,7 +231,7 @@ $box-width = 250px;
   .titleText {
     .txt {
       margin: 150px auto;
-      font-size: 60px;
+      $font-size: 60px;
       font-family: 'Roboto Slab';
       font-weight: 600;
     }
@@ -228,7 +240,7 @@ $box-width = 250px;
       .txt {
         margin: 0 auto 50px;
         padding-top: 0;
-        font-size: 30px;
+        $font-size: 30px;
       }
     }
   }

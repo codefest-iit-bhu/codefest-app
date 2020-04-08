@@ -41,23 +41,23 @@ export default {
       shouldOpen: false,
       openProgress: 0,
       maxWidth: 0,
-      minSize: 0
+      minSize: 0,
     };
   },
   props: {
     event: {
       required: true,
-      type: Object
+      type: Object,
     },
     id: {
       required: true,
-      type: Number
+      type: Number,
     },
     keepOpen: {
       required: false,
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   methods: {
     animateGlitchOpacity(canvas, duration, isAppearIn) {
@@ -113,7 +113,7 @@ export default {
     },
     canvasOpacityStyle(isNormalCanvas) {
       return {
-        opacity: isNormalCanvas ? 1 - this.openProgress : this.openProgress
+        opacity: isNormalCanvas ? 1 - this.openProgress : this.openProgress,
       };
     },
     toggleEvent(shouldOpen) {
@@ -132,7 +132,7 @@ export default {
     },
     navigateToDetails() {
       this.$router.push(`/events/${this.event.name}`);
-    }
+    },
   },
   mounted() {
     function drawInCanvas(canvas, image) {
@@ -173,7 +173,7 @@ export default {
     eventWidthStyle() {
       const width = Math.max(this.minSize, this.openProgress * this.maxWidth);
       return {
-        width: `${width}px`
+        width: `${width}px`,
       };
     },
     eventTitleStyle() {
@@ -186,7 +186,7 @@ export default {
     },
     isMinimal() {
       return isMinimal(this.$mq);
-    }
+    },
   },
   watch: {
     shouldOpen: function(shouldOpen, oldVal) {
@@ -195,15 +195,13 @@ export default {
     },
     $mq: function() {
       this.resetState();
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="stylus" module>
-@require '~@styles/theme';
 @require '~@styles/anims';
-@require '~@styles/mixins';
 
 $cell-collapsed-size = 150px;
 
@@ -220,7 +218,7 @@ $cell-collapsed-size = 150px;
   font-family: 'Baloo Bhaina 2';
 
   h3 {
-    font-size: 32px;
+    $font-size: 32px;
   }
 }
 
@@ -284,7 +282,7 @@ $cell-collapsed-size = 150px;
 
 .txt {
   color: $black;
-  font-size: 16px;
+  $font-size: 16px;
   pointer-events: none;
   align-items: center;
   height: 100%;
@@ -298,7 +296,7 @@ $cell-collapsed-size = 150px;
     font-family: 'Quicksand';
     padding: 2px 10px;
     text-align: justify;
-    font-size: 24px;
+    $font-size: 24px;
     font-weight: 600;
     vertical-align: middle;
     color: $mystic;
@@ -329,12 +327,12 @@ $cell-collapsed-size = 150px;
       margin: 15px 0 0 0;
 
       h3 {
-        font-size: 24px;
+        $font-size: 24px;
       }
     }
 
     .txt {
-      font-size: 12px;
+      $font-size: 12px;
     }
 
     .odd {

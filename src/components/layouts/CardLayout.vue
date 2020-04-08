@@ -17,24 +17,21 @@ export default {
     extraCardClass: {
       type: String,
       default: null,
-      required: false
-    }
+      required: false,
+    },
   },
   computed: {
     cardClass() {
       return {
         [this.$style.card]: true,
-        [this.extraCardClass]: !!this.extraCardClass
+        [this.extraCardClass]: !!this.extraCardClass,
       };
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
-@require '~@styles/mixins';
-
 $card-large-size = 200px;
 $card-small-size = 150px;
 

@@ -1,5 +1,8 @@
 <template>
-  <div :class="[$style.terminal, terminalStateStyle, terminalShownStyle]" ref="terminal">
+  <div
+    :class="[$style.terminal, terminalStateStyle, terminalShownStyle]"
+    ref="terminal"
+  >
     <button :class="$style.togglebtn" @click="toggleShowTerminal">
       <div>
         <span class="absolute-center">
@@ -32,24 +35,24 @@ import { navigation, terminal } from "@store/navigation";
 import { CommandList } from "@js/commands";
 import { CommandNotFoundError } from "@js/exceptions";
 
-import REPL from "./REPL";
+const REPL = () => import("./REPL");
 
 export default {
   props: {
     propCurrent: {
-      type: String
+      type: String,
     },
     isExpanded: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   components: {
-    REPL
+    REPL,
   },
   model: {
     prop: "isExpanded",
-    event: "onTerminalExpand"
+    event: "onTerminalExpand",
   },
   data() {
     return {
@@ -58,7 +61,7 @@ export default {
       isHelpShown: false,
       angle: 0,
       historyItems: terminal.getHistory(),
-      pwd: []
+      pwd: [],
     };
   },
   computed: {
@@ -68,7 +71,7 @@ export default {
     environmentVars() {
       return {
         pwd: this.pwd,
-        vue: this.$refs.cli
+        vue: this.$refs.cli,
       };
     },
     terminalStateStyle() {
@@ -79,7 +82,7 @@ export default {
     },
     chevronRotateStyle() {
       return { transform: `rotate(${this.angle}deg)` };
-    }
+    },
   },
   mounted() {
     this.pwd = navigation.getPwdFromCurrent(this.current);
@@ -88,7 +91,7 @@ export default {
     current: function(newValue, oldValue) {
       if (!newValue) return;
       this.pwd = navigation.getPwdFromCurrent(newValue);
-    }
+    },
   },
   methods: {
     handleScroll(event) {
@@ -187,20 +190,18 @@ export default {
     onSubmitInput(words) {
       let cmd = words.splice(0, 1)[0].trim();
       this.getCommandPromise(cmd, words)
-        .then(result => {
+        .then((result) => {
           this.submitResult(0, result);
         })
-        .catch(error => {
+        .catch((error) => {
           console.error(error);
           this.submitResult(error.code, error.message);
         });
-    }
-  }
+    },
+  },
 };
 </script>
 <style module lang="stylus">
-@require '~@styles/theme';
-@require '~@styles/mixins';
 @require '~@styles/anims';
 
 $cli-text = $white;

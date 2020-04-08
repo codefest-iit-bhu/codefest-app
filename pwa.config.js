@@ -1,4 +1,5 @@
 const { InjectManifest } = require("workbox-webpack-plugin");
+const stylusLoader = require("stylus-loader");
 const { join } = require("path");
 
 exports.webpack = function(config, env) {
@@ -15,6 +16,18 @@ exports.webpack = function(config, env) {
       swSrc: join(src, "sw.js"),
     })
   );
+  config.module.rules.forEach(({ test, use }) => {
+    if ((test.test(".styl") || test.test(".stylus")) && Array.isArray(use)) {
+      use.forEach((loader) => {
+        if (loader.loader === "stylus-loader") {
+          loader.options.import = [
+            join(src, "styles/theme/index.styl"),
+            join(src, "styles/mixins.styl"),
+          ];
+        } else loader;
+      });
+    }
+  });
 };
 
 exports.brotli = {

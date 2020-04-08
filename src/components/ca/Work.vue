@@ -2,7 +2,7 @@
   <div :class="[$style.workContainer, $style[$mq]]">
     <ResponsiveTwoColumnLayout>
       <div :class="$style.workImage" slot="left">
-        <img src="#">
+        <img src="#" />
       </div>
       <div :class="$style.workHead" slot="right">
         <div :class="$style.taskList">
@@ -18,9 +18,10 @@
         </div>
       </div>
     </ResponsiveTwoColumnLayout>
-    <div
-      :class="$style.para"
-    >The number of participants from your college will determine the number of goodies you get as a Campus Ambassador of Codefest.</div>
+    <div :class="$style.para">
+      The number of participants from your college will determine the number of
+      goodies you get as a Campus Ambassador of Codefest.
+    </div>
   </div>
 </template>
 
@@ -30,7 +31,7 @@ const ResponsiveTwoColumnLayout = () =>
 
 export default {
   components: {
-    ResponsiveTwoColumnLayout
+    ResponsiveTwoColumnLayout,
   },
   data() {
     return {
@@ -38,28 +39,25 @@ export default {
         {
           start: "Connect ",
           rest:
-            "Codefest with the student community inside your campus and circle."
+            "Codefest with the student community inside your campus and circle.",
         },
         {
           start: "Publicize",
           rest:
-            "Codefest by sharing the posts and updates on social media, through word-of-mouth, posters and e-mails."
+            "Codefest by sharing the posts and updates on social media, through word-of-mouth, posters and e-mails.",
         },
         {
           start: "Encourage",
           rest:
-            "the students of your campus for active participation in Codefest."
-        }
-      ]
+            "the students of your campus for active participation in Codefest.",
+        },
+      ],
     };
-  }
+  },
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
-@require '~@styles/mixins';
-
 .workContainer {
   width: 100%;
   padding-top: 30px;
@@ -119,12 +117,12 @@ export default {
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
         padding: 0 10px;
         width: auto;
-        font-size: 16px;
+        $font-size: 16px;
       }
 
       ~/.md ^[1..-1], ~/.lg ^[1..-1] {
         padding: 0 10px;
-        font-size: 18px;
+        $font-size: 18px;
       }
 
       ~/.md ^[1..-1] {
@@ -146,7 +144,7 @@ export default {
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
       padding: 20px;
       border-radius: 15px 0 15px 0;
-      font-size: 16px;
+      $font-size: 16px;
       width: auto;
       text-align: center;
     }

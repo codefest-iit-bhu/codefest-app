@@ -1,4 +1,4 @@
-@require "~@styles/theme";
+@require "~@styles/theme/theme.styl";
 
 stick(position = 'top') {
   position: fixed;
@@ -30,6 +30,6 @@ moveAnimation(side = 'bottom', startDistance = 0, targetDistance = 0) {
   }
 }
 
-font-size(value) {
+$font-size(value) {
   font-size: unit((value / $base-font), 'rem')
 }

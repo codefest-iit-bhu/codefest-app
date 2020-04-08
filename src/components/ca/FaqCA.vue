@@ -2,9 +2,9 @@
   <div :class="[$style.faqContainer, $style[$mq]]">
     <ResponsiveTwoColumnLayout>
       <div :class="$style.faqHeader" slot="left">
-        <img src="#">
+        <img src="#" />
       </div>
-      <FAQ :faqItems="faq" slot="right"/>
+      <FAQ :faqItems="faq" slot="right" />
     </ResponsiveTwoColumnLayout>
   </div>
 </template>
@@ -17,7 +17,7 @@ const ResponsiveTwoColumnLayout = () =>
 export default {
   components: {
     FAQ,
-    ResponsiveTwoColumnLayout
+    ResponsiveTwoColumnLayout,
   },
   data() {
     return {
@@ -26,37 +26,34 @@ export default {
           question: "Who is eligible for being a campus ambassador?",
           answer:
             "Anyone currently enrolled in any technical institute, who is \
-            connected to people who might be interested in coding competitions and hackathons can be a Campus ambassador."
+            connected to people who might be interested in coding competitions and hackathons can be a Campus ambassador.",
         },
         {
           question: "What is the responsibility of a CA",
           answer:
             "A CA's responsibility is to publicize Codefest among the students of\
-             their college and act as a representative of the fest in their college."
+             their college and act as a representative of the fest in their college.",
         },
         {
           question: "How to apply for the CA programme?",
           answer:
-            "Visit our facebook page/website and register as a CA by filling up the Google form available."
+            "Visit our facebook page/website and register as a CA by filling up the Google form available.",
         },
         {
           question: "Can a CA register as a participant too?",
           answer:
-            "Ofcourse! Any CA can participate in whatever event he/she wishes to, there is no such restriction."
-        }
-      ]
+            "Ofcourse! Any CA can participate in whatever event he/she wishes to, there is no such restriction.",
+        },
+      ],
     };
-  }
+  },
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
-@require '~@styles/mixins';
-
 .faqContainer {
   width: 100%;
-  font-size: 20px;
+  $font-size: 20px;
   padding-top: 30px;
 
   .faqHeader {
@@ -101,7 +98,7 @@ export default {
 
   .faqMessage {
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-      font-size: 13px;
+      $font-size: 13px;
       line-height: 20px;
       margin-left: 20px;
     }
@@ -112,4 +109,3 @@ export default {
   }
 }
 </style>
-

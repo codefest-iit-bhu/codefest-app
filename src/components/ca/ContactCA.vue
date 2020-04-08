@@ -1,15 +1,18 @@
 <template>
   <div :class="[$style.contactList, $style[$mq]]">
-    <GridLayout :itemWidth="computedWidth" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
+    <GridLayout
+      :itemWidth="computedWidth"
+      v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
+    >
       <div
         :class="$style.teamMember"
         v-for="(contact, i) in this.contacts"
         :key="i"
         :slot="`items${i}`"
       >
-        <img :src="contact.pic">
-        <br>
-        <div :class="$style.name">{{contact.name}}</div>
+        <img :src="contact.pic" />
+        <br />
+        <div :class="$style.name">{{ contact.name }}</div>
         <div :class="$style.email">{{ contact.email }}</div>
         <div :class="$style.phone">{{ contact.phone }}</div>
       </div>
@@ -18,7 +21,12 @@
       :scrollPerPage="false"
       paginationColor="#57A300"
       paginationActiveColor="#86FF00"
-      :perPageCustom="[[768, 3], [1400, 4],[600,2],[300,1]]"
+      :perPageCustom="[
+        [768, 3],
+        [1400, 4],
+        [600, 2],
+        [300, 1],
+      ]"
       :autoplay="true"
       :autoplayTimeout="5000"
       :autoplayHoverPause="true"
@@ -26,9 +34,9 @@
     >
       <slide v-for="(contact, i) in this.contacts" :key="i">
         <div :class="$style.teamMember">
-          <img :src="contact.pic">
-          <br>
-          <div :class="$style.name">{{contact.name}}</div>
+          <img :src="contact.pic" />
+          <br />
+          <div :class="$style.name">{{ contact.name }}</div>
           <div :class="$style.email">{{ contact.email }}</div>
           <div :class="$style.phone">{{ contact.phone }}</div>
         </div>
@@ -44,12 +52,12 @@ export default {
   components: {
     GridLayout,
     Carousel,
-    Slide
+    Slide,
   },
   computed: {
     computedWidth() {
       return "300px";
-    }
+    },
   },
   data() {
     return {
@@ -58,35 +66,33 @@ export default {
           name: "Abhinav Raj",
           email: "abhinav.raj.cse16@itbhu.ac.in",
           phone: "+91 8890921899",
-          pic: "/assets/team/ca/Abhinav Raj.jpg"
+          pic: "/assets/team/ca/Abhinav Raj.jpg",
         },
         {
           name: "Keshav Kumar",
           email: "keshav.kumar.cse16@itbhu.ac.in",
           phone: "+91 8004236173",
-          pic: "/assets/team/ca/Keshav Kumar.jpg"
+          pic: "/assets/team/ca/Keshav Kumar.jpg",
         },
         {
           name: "Rahul Chaturvedi",
           email: "rahul.chaturvedi.cse17@itbhu.ac.in",
           phone: "+91 7023210104",
-          pic: "/assets/team/ca/Rahul Chaturvedi.jpg"
+          pic: "/assets/team/ca/Rahul Chaturvedi.jpg",
         },
         {
           name: "Rahul Pandey",
           email: "rahul.dpandey.cse17@itbhu.ac.in",
           phone: "+91 8299735398",
-          pic: "/assets/team/ca/Rahul Pandey.jpg"
-        }
-      ]
+          pic: "/assets/team/ca/Rahul Pandey.jpg",
+        },
+      ],
     };
-  }
+  },
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
-
 .contactList {
   .teamMember {
     text-align: center;
@@ -114,7 +120,7 @@ export default {
 
     .email, .phone {
       font-family: 'Quicksand';
-      font-size: 14px;
+      $font-size: 14px;
       padding: 10px 0 0 0;
     }
 

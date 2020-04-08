@@ -7,13 +7,13 @@
           Home
         </router-link>
       </li>
-      <li :class="{[$style.active]: isHomeView}" slot="dashboard">
+      <li :class="{ [$style.active]: isHomeView }" slot="dashboard">
         <router-link to="/dashboard">
           <span class="fa fa-circle fa-xs" aria-hidden="true"></span>
           Profile
         </router-link>
       </li>
-      <li :class="{[$style.active]: isEventsView}" slot="dashboard">
+      <li :class="{ [$style.active]: isEventsView }" slot="dashboard">
         <router-link to="/dashboard/events">
           <span class="fa fa-circle fa-xs" aria-hidden="true"></span>
           My Teams
@@ -21,11 +21,11 @@
       </li>
     </AppBar>
     <main :class="$style.wrapper">
-      <DashboardEvent v-if="isEventsView"/>
-      <DashboardProfile :profile="profile" v-if="isHomeView"/>
-      <Referral v-if="isLeaderboardView"/>
+      <DashboardEvent v-if="isEventsView" />
+      <DashboardProfile :profile="profile" v-if="isHomeView" />
+      <Referral v-if="isLeaderboardView" />
     </main>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
@@ -42,17 +42,17 @@ export default {
     AppBar,
     DashboardEvent,
     DashboardProfile,
-    Footer
+    Footer,
   },
   data() {
     return {
-      profile: {}
+      profile: {},
     };
   },
   props: {
     isHomeView: false,
     isEventsView: false,
-    isLeaderboardView: false
+    isLeaderboardView: false,
   },
   created() {
     API.fetch("profile/")
@@ -62,19 +62,18 @@ export default {
         }
         this.profile = data;
       })
-      .catch(err => {
+      .catch((err) => {
         this.$toasted.global.error_post({
-          message: err.message
+          message: err.message,
         });
       });
-  }
+  },
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
+
 @require '~@styles/anims';
-@require '~@styles/mixins';
 
 .root {
   height: 100%;

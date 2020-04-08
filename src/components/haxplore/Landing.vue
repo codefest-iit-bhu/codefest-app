@@ -1,10 +1,9 @@
 <template>
-  
-    <div :class="[$style.landing, $style[$mq]]" id="landing" >
-      <ResponsiveTwoColumnLayout :isRightAbove="false">
+  <div :class="[$style.landing, $style[$mq]]" id="landing">
+    <ResponsiveTwoColumnLayout :isRightAbove="false">
       <div :class="$style.heroImage" slot="left">
         <div :class="$style.logo">
-          <div class = "absolute-center" :class="$style.preloader">
+          <div class="absolute-center" :class="$style.preloader">
             <div :class="[$style.circle, $style.circle1]"></div>
             <div :class="[$style.circle, $style.circle2]"></div>
             <div :class="[$style.circle, $style.circle3]"></div>
@@ -13,12 +12,15 @@
       </div>
       <div :class="$style.heroText" class="absolute-center" slot="right">
         <span :class="$style.haxplore">
-          <img src="@assets/haxplore/logo-text.svg" v-if="$store.getters.currentTheme === 'dark'" />
+          <img
+            src="@assets/haxplore/logo-text.svg"
+            v-if="$store.getters.currentTheme === 'dark'"
+          />
           <img src="@assets/haxplore/logo-text-black.svg" v-else />
         </span>
-        <br><br><br>
+        <br /><br /><br />
         <span :class="$style.tagline" ref="tagline"></span>
-        <br><br>
+        <br /><br />
         <span :class="$style.venue">
           <span :id="$style.loc">
             <i class="fas fa-map-marked-alt"></i> IIT (BHU), Varanasi
@@ -26,9 +28,8 @@
         </span>
         <DevfolioButton />
       </div>
-      </ResponsiveTwoColumnLayout>
-    </div>
-  
+    </ResponsiveTwoColumnLayout>
+  </div>
 </template>
 
 <script>
@@ -41,12 +42,13 @@ const ResponsiveTwoColumnLayout = () =>
 export default {
   components: {
     Countdown,
-    DevfolioButton
+    DevfolioButton,
+    ResponsiveTwoColumnLayout,
   },
   data() {
     return {
       hackathonStart: new Date(2019, 8, 23),
-      isTyped: false
+      isTyped: false,
     };
   },
   mounted() {
@@ -74,7 +76,7 @@ export default {
         {
           opacity: 1,
           scale: 1,
-          ease: Power1.easeIn
+          ease: Power1.easeIn,
         },
         0.2
       )
@@ -88,20 +90,17 @@ export default {
           boxShadow: "0 25px 25px rgba(0, 0, 0, 0.4)",
           repeat: -1,
           yoyo: true,
-          ease: Power1.easeOut
+          ease: Power1.easeOut,
         },
         0.2
       ),
       "-=0.4"
     );
-  }
+  },
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
-@require '~@styles/mixins';
-
 $ht = 100vh;
 $wd = 100vw;
 
@@ -143,7 +142,7 @@ $wd = 100vw;
 
         ~/.md ^[1..-1] {
           left: 0;
-          top: calc(var(--hero-wd)*(-0.20));          
+          top: calc(var(--hero-wd)*(-0.20));
         }
       }
 
@@ -206,9 +205,9 @@ $wd = 100vw;
 
     ~/.md ^[1..-1] {
       left: calc(var(--hero-wd)*(0.5));
-      top: calc(var(--hero-ht)*(0.75));          
+      top: calc(var(--hero-ht)*(0.75));
     }
-  }   
+  }
 
   .heroText  {
     .haxplore {
@@ -236,21 +235,21 @@ $wd = 100vw;
       width:  calc(var(--hero-wd) * 0.3)
       margin: 0 auto;
       height: 32px;
-      font: 32px 'Quicksand' 
+      font: 32px 'Quicksand'
       font-weight: 700;
       text-align: center;
     }
 
     ~/.lg .tagline {
-      font-size: 18px;
+      $font-size: 18px;
       margin-bottom: 0;
       margin-top: 6px;
       margin: auto;
-      width:  calc(var(--hero-wd) * 0.3);      
+      width:  calc(var(--hero-wd) * 0.3);
     }
 
     ~/.md .tagline {
-      font-size: 18px;
+      $font-size: 18px;
       margin-bottom: 0;
       margin-top: 6px;
       margin: auto;
@@ -258,7 +257,7 @@ $wd = 100vw;
     }
 
     ~/.xs .tagline, ~/.sm .tagline {
-      font-size: 14px;
+      $font-size: 14px;
       width:  calc(var(--hero-wd) * 0.7);
     }
 
@@ -279,7 +278,7 @@ $wd = 100vw;
     }
 
     .venue {
-      font-size: 22px;
+      $font-size: 22px;
 
       #loc, #date {
         display: inline-block;
@@ -296,12 +295,12 @@ $wd = 100vw;
       }
 
       ~/.md ^[1..-1] {
-        font-size: 16px;
+        $font-size: 16px;
         width:  calc(var(--hero-wd) * 0.5);
       }
 
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-        font-size: 14px;
+        $font-size: 14px;
         width:  calc(var(--hero-wd) * 0.7);
       }
     }

@@ -21,7 +21,7 @@ export default {
   components: {
     Timeline,
     SectionLayout,
-    ResponsiveTwoColumnLayout
+    ResponsiveTwoColumnLayout,
   },
   data() {
     return {
@@ -31,21 +31,21 @@ export default {
           start: new Date(2019, 7, 23, 12, 0),
           end: null,
           title: "",
-          summary: ""
+          summary: "",
         },
         {
           isMajor: false,
           start: new Date(2019, 7, 23, 20, 0),
           end: null,
           title: "Reporting @ Visvesvaraya Hostel",
-          summary: ""
+          summary: "",
         },
         {
           isMajor: true,
           start: new Date(2019, 7, 24, 12, 0),
           end: null,
           title: "",
-          summary: ""
+          summary: "",
         },
 
         {
@@ -53,7 +53,7 @@ export default {
           start: new Date(2019, 7, 24, 9, 0),
           end: null,
           title: "Breakfast @ CSE Department",
-          summary: ""
+          summary: "",
         },
 
         {
@@ -61,7 +61,7 @@ export default {
           start: new Date(2019, 7, 24, 10, 0),
           end: null,
           title: "Theme Announcement & Opening Ceremony @ LT 21",
-          summary: ""
+          summary: "",
         },
 
         {
@@ -69,7 +69,7 @@ export default {
           start: new Date(2019, 7, 24, 12, 0),
           end: null,
           title: "Lunch @ CSE Department",
-          summary: ""
+          summary: "",
         },
 
         {
@@ -77,7 +77,7 @@ export default {
           start: new Date(2019, 7, 24, 12, 45),
           end: null,
           title: "Venue Reporting @ UG Lab-I, CSE Department",
-          summary: ""
+          summary: "",
         },
 
         {
@@ -85,7 +85,7 @@ export default {
           start: new Date(2019, 7, 24, 13, 0),
           end: null,
           title: "EVENT START",
-          summary: ""
+          summary: "",
         },
 
         {
@@ -93,7 +93,7 @@ export default {
           start: new Date(2019, 7, 24, 17, 30),
           end: null,
           title: "Snacks/Supper",
-          summary: ""
+          summary: "",
         },
 
         {
@@ -101,70 +101,69 @@ export default {
           start: new Date(2019, 7, 24, 21, 0),
           end: null,
           title: "Dinner",
-          summary: ""
+          summary: "",
         },
         {
           isMajor: false,
           start: new Date(2019, 7, 24, 22, 0),
           end: null,
           title: "Mid-Review",
-          summary: ""
+          summary: "",
         },
         {
           isMajor: true,
           start: new Date(2019, 7, 25, 12, 0),
           title: "",
-          summary: ""
+          summary: "",
         },
         {
           isMajor: false,
           start: new Date(2019, 7, 25, 2, 0),
           title: "Snacks",
-          summary: ""
+          summary: "",
         },
         {
           isMajor: false,
           start: new Date(2019, 7, 25, 9, 0),
           title: "Breakfast",
-          summary: ""
+          summary: "",
         },
         {
           isMajor: false,
           start: new Date(2019, 7, 25, 12, 0),
           title: "Submission Deadline",
-          summary: ""
+          summary: "",
         },
         {
           isMajor: false,
           start: new Date(2019, 7, 25, 12, 0),
           title: "Lunch",
-          summary: ""
+          summary: "",
         },
         {
           isMajor: false,
           start: new Date(2019, 7, 25, 17, 0),
           title: "Presentation",
-          summary: ""
+          summary: "",
         },
         {
           isMajor: false,
           start: new Date(2019, 7, 25, 19, 30),
           title: "Closing Ceremony",
-          summary: ""
-        }
-      ]
+          summary: "",
+        },
+      ],
     };
-  }
+  },
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/mixins';
 
 .timelineContainer {
   width: 100%;
   font-family: 'Roboto Slab';
-  font-size: 20px;
+  $font-size: 20px;
 
   .timelineHeader {
     margin-top: 78px;

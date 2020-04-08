@@ -6,7 +6,7 @@
     @mouseleave="isSideNavigationIdle = true"
     ref="sidebar"
   >
-    <ul v-scroll-spy-active="{class: $style.active}" v-scroll-spy-link>
+    <ul v-scroll-spy-active="{ class: $style.active }" v-scroll-spy-link>
       <slot></slot>
     </ul>
   </div>
@@ -18,20 +18,20 @@ export default {
     shouldShowSideNavigation: {
       type: Boolean,
       default: false,
-      required: false
+      required: false,
     },
     doHideOnIdle: {
       type: Boolean,
       default: true,
-      required: false
-    }
+      required: false,
+    },
   },
   data() {
     return {
       isSideNavigationShown: true,
       sideNavigationIdleTimeout: 1000,
       lastScrollEventTime: 0,
-      isSideNavigationIdle: false
+      isSideNavigationIdle: false,
     };
   },
   watch: {
@@ -48,21 +48,21 @@ export default {
       TweenLite.to(sidebar, 0.8, {
         right: finalRight,
         onStart,
-        onComplete
+        onComplete,
       });
     },
     isSideNavigationIdle: function(to, from) {
       if (to === from) return;
       if (to && !this.shouldShowSideNavigation) return;
       this.animateSideNav(to ? -120 : 0);
-    }
+    },
   },
   methods: {
     animateSideNav(val) {
       const { sidebar } = this.$refs;
 
       TweenLite.to(sidebar, 0.8, {
-        right: val
+        right: val,
       });
     },
     handleScroll(event) {
@@ -76,7 +76,7 @@ export default {
           this.isSideNavigationIdle = true;
         }
       }, sideNavigationIdleTimeout);
-    }
+    },
   },
   mounted() {
     const { doHideOnIdle, shouldShowSideNavigation } = this.$props;
@@ -84,13 +84,11 @@ export default {
     this.isSideNavigationIdle = false;
     if (doHideOnIdle) window.addEventListener("scroll", this.handleScroll);
     else window.removeEventListener("scroll", this.handleScroll);
-  }
+  },
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/mixins';
-@require '~@styles/theme';
 @require '~@styles/anims';
 
 .wrapper {
@@ -121,7 +119,7 @@ export default {
 
         span {
           color: $white;
-          font-size: 14px;
+          $font-size: 14px;
           margin-right: 5px;
         }
 

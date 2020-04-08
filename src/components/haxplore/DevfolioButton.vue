@@ -1,5 +1,9 @@
 <template>
-  <div :class="$style.link" @mouseover="buttonHovered = true" @mouseleave="buttonHovered = false">
+  <div
+    :class="$style.link"
+    @mouseover="buttonHovered = true"
+    @mouseleave="buttonHovered = false"
+  >
     <div :class="$style.linkText">
       <h4>Registrations will be live soon</h4>
     </div>
@@ -13,13 +17,13 @@ export default {
   props: {
     devfolioKey: {
       type: String,
-      default: "haxplore"
-    }
+      default: "haxplore",
+    },
   },
   computed: {
     animateClass() {
       return isMinimal(this.$mq) ? "" : this.$style.animate;
-    }
+    },
   },
   methods: {
     registerDefault() {
@@ -27,18 +31,15 @@ export default {
         `https://devfolio.co/external-apply/${this.devfolioKey}`,
         "_blank"
       );
-    }
+    },
   },
   mounted() {
     this.$emit("mounted");
-  }
+  },
 };
 </script>
 
-<style module lang = "stylus">
-@require '~@styles/theme';
-@require '~@styles/mixins';
-
+<style module lang="stylus">
 $btn-height = 65px;
 $btn-width = 250px;
 
@@ -60,7 +61,7 @@ $btn-width = 250px;
 
     h4 {
       font-family: 'Roboto Slab';
-      font-size: 20px;
+      $font-size: 20px;
       margin: 0;
     }
   }
@@ -98,7 +99,7 @@ $btn-width = 250px;
       display: -ms-flexbox;
       display: -webkit-box;
       /* display: flex; */
-      font-size: 18px;
+      $font-size: 18px;
       font-weight: 600;
       text-align: center;
       text-transform: none;

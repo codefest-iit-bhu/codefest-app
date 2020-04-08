@@ -9,7 +9,7 @@
         </h1>-->
         <div :class="$style.cftitle">
           <span>
-            <img src="@assets/hero-cf20-logo.svg">
+            <img src="@assets/hero-cf20-logo.svg" />
           </span>
           <span :class="$style.tagline" ref="tagline"></span>
           <span :class="$style.venue">
@@ -84,7 +84,7 @@ export default {
       if (["lg", "xl", "xxl"].includes(this.$mq)) {
         this.initMatrixRain();
       }
-    }
+    },
   },
   mounted() {
     this.tryMatrixRain();
@@ -104,13 +104,12 @@ export default {
   watch: {
     $mq: function() {
       setTimeout(this.tryMatrixRain.bind(this), 500);
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
 @require '~@styles/anims';
 
 .hero {
@@ -161,11 +160,11 @@ export default {
     }
 
     ~/.xs .tagline, ~/.sm .tagline {
-      font-size: 20px;
+      $font-size: 20px;
     }
 
     .venue {
-      font-size: 22px;
+      $font-size: 22px;
 
       #loc, #date {
         display: inline-block;
@@ -183,7 +182,7 @@ export default {
       }
 
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-        font-size: 16px;
+        $font-size: 16px;
       }
     }
   }
@@ -250,16 +249,16 @@ export default {
       text-align: center;
 
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-        font-size: 16px;
+        $font-size: 16px;
       }
     }
 
     ~/.sm ^[1..-1] {
-      font-size: 16px;
+      $font-size: 16px;
     }
 
     ~/.xs ^[1..-1] {
-      font-size: 16px;
+      $font-size: 16px;
     }
 
     p {

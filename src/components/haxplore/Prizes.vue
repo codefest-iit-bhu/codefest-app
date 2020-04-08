@@ -2,58 +2,82 @@
   <SectionLayout title="Prizes" id="prizes">
     <div :class="[$style.wrapper, $style[$mq]]">
       <div :class="$style.prizesContainer">
-        <CardLayout :class="$style.prize__first" :extraCardClass="$style.whiteCard">
-          <img src="@assets/haxplore/prize-first.svg" slot="header">
+        <CardLayout
+          :class="$style.prize__first"
+          :extraCardClass="$style.whiteCard"
+        >
+          <img src="@assets/haxplore/prize-first.svg" slot="header" />
           <span :class="$style.txt" slot="content">
             <h2>Rs 35, 000</h2>
             <h4>First Prize</h4>
           </span>
         </CardLayout>
-        <CardLayout :class="$style.prize__second" :extraCardClass="$style.whiteCard">
-          <img src="@assets/haxplore/prize-second.svg" slot="header">
+        <CardLayout
+          :class="$style.prize__second"
+          :extraCardClass="$style.whiteCard"
+        >
+          <img src="@assets/haxplore/prize-second.svg" slot="header" />
           <span :class="$style.txt" slot="content">
             <h2>Rs 20, 000</h2>
             <h4>Second Prize</h4>
           </span>
         </CardLayout>
-        <CardLayout :class="$style.prize__third" :extraCardClass="$style.whiteCard">
-          <img src="@assets/haxplore/prize-third.svg" slot="header">
+        <CardLayout
+          :class="$style.prize__third"
+          :extraCardClass="$style.whiteCard"
+        >
+          <img src="@assets/haxplore/prize-third.svg" slot="header" />
           <span :class="$style.txt" slot="content">
             <h2>Rs 10, 000</h2>
             <h4>Third Prize</h4>
           </span>
         </CardLayout>
-        <CardLayout :class="$style.prize__fourth" :extraCardClass="$style.whiteCard">
-          <img src="@assets/haxplore/prize-fourth.png" slot="header">
+        <CardLayout
+          :class="$style.prize__fourth"
+          :extraCardClass="$style.whiteCard"
+        >
+          <img src="@assets/haxplore/prize-fourth.png" slot="header" />
           <span :class="$style.txt" slot="content">
             <h2>Kindle</h2>
             <h4>Fourth Prize</h4>
           </span>
         </CardLayout>
-        <CardLayout :class="$style.prize__fifth" :extraCardClass="$style.whiteCard">
-          <img src="@assets/haxplore/prize-fifth.jpg" slot="header">
+        <CardLayout
+          :class="$style.prize__fifth"
+          :extraCardClass="$style.whiteCard"
+        >
+          <img src="@assets/haxplore/prize-fifth.jpg" slot="header" />
           <span :class="$style.txt" slot="content">
             <h2>Echo Dot</h2>
             <h4>Fifth Prize</h4>
           </span>
         </CardLayout>
-        <CardLayout :class="$style.prize__consolation" :extraCardClass="$style.whiteCard">
-          <img src="@assets/haxplore/prize-consolation.png" slot="header">
+        <CardLayout
+          :class="$style.prize__consolation"
+          :extraCardClass="$style.whiteCard"
+        >
+          <img src="@assets/haxplore/prize-consolation.png" slot="header" />
           <span :class="$style.txt" slot="content">
             <h2>Gadgets</h2>
             <h4>6th, 7th & 8th Prize</h4>
           </span>
         </CardLayout>
 
-        <CardLayout :class="$style.prize__girls" :extraCardClass="$style.whiteCard">
-          <img src="@assets/haxplore/prize-girls.svg" slot="header">
+        <CardLayout
+          :class="$style.prize__girls"
+          :extraCardClass="$style.whiteCard"
+        >
+          <img src="@assets/haxplore/prize-girls.svg" slot="header" />
           <span :class="$style.txt" slot="content">
             <h2>Rs 5, 000</h2>
             <h4>Best All girls</h4>
           </span>
         </CardLayout>
-        <CardLayout :class="$style.prize__bhu" :extraCardClass="$style.whiteCard">
-          <img src="@assets/haxplore/prize-iitbhu.svg" slot="header">
+        <CardLayout
+          :class="$style.prize__bhu"
+          :extraCardClass="$style.whiteCard"
+        >
+          <img src="@assets/haxplore/prize-iitbhu.svg" slot="header" />
           <span :class="$style.txt" slot="content">
             <h2>Rs 5, 000</h2>
             <h4>Best IIT (BHU)</h4>
@@ -62,8 +86,13 @@
       </div>
       <CardLayout :class="$style.benefits" :extraCardClass="$style.assured">
         <p slot="header">
-          HaXplore is going to be the ultimate pit-stop for developers. From taking care of your accomodation to providing you with savoury treats; food facilities and refreshments throughout the competition. Don't worry about your travel costs as well, we'll have them covered for you!
-          And even if you don't win anything, fret not my friend! You'll go home with loads of goodies, a lot of experience and memories for a lifetime.
+          HaXplore is going to be the ultimate pit-stop for developers. From
+          taking care of your accomodation to providing you with savoury treats;
+          food facilities and refreshments throughout the competition. Don't
+          worry about your travel costs as well, we'll have them covered for
+          you! And even if you don't win anything, fret not my friend! You'll go
+          home with loads of goodies, a lot of experience and memories for a
+          lifetime.
         </p>
       </CardLayout>
     </div>
@@ -73,24 +102,21 @@
 <script>
 const SectionLayout = () => import("@components/layouts/SectionLayout");
 const GridLayout = () => import("@components/layouts/GridLayout");
-import CardLayout from "@components/layouts/CardLayout";
+const CardLayout = () => import("@components/layouts/CardLayout");
 
 export default {
   components: {
     SectionLayout,
     GridLayout,
-    CardLayout
+    CardLayout,
   },
   data() {
     return {};
-  }
+  },
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
-@require '~@styles/mixins';
-
 .wrapper {
   .prizesContainer {
     display: flex;
@@ -117,7 +143,7 @@ export default {
 
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
         h2 {
-          font-size: 21px;
+          $font-size: 21px;
         }
       }
     }

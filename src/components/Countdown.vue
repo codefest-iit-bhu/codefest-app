@@ -27,12 +27,12 @@ export default {
   props: {
     until: {
       type: Date,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
-      now: Math.trunc(new Date().getTime() / 1000)
+      now: Math.trunc(new Date().getTime() / 1000),
     };
   },
   computed: {
@@ -53,7 +53,7 @@ export default {
     },
     seconds() {
       return this.timeDiff % 60;
-    }
+    },
   },
   mounted() {
     window.setInterval(() => {
@@ -69,15 +69,12 @@ export default {
         return `0${value}`;
       }
       return value;
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
-@require '~@styles/mixins';
-
 .countdown {
   font-family: 'Roboto Slab';
   display: flex;
@@ -91,19 +88,18 @@ export default {
 
     .txt {
       text-align: center;
-      font-size: 21px;
+      $font-size: 21px;
     }
 
     .value {
       text-align: center;
-      font-size: 50px;
+      $font-size: 50px;
       font-weight: 600;
 
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-        font-size: 24px;
+        $font-size: 24px;
       }
     }
   }
 }
 </style>
-

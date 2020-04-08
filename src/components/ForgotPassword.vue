@@ -62,11 +62,10 @@ export default {
 };
 </script>
 <style module lang="stylus">
-@require '~@styles/theme';
 @require '~@styles/anims';
 
 .authContainer {
-  font-size: 16px;
+  $font-size: 16px;
   font-family: courier, monospace;
   max-width: 800px;
   margin: auto;
@@ -89,7 +88,7 @@ export default {
   top: 0;
   z-index: 1;
   font-family: 'Roboto Mono';
-  font-size: 18px;
+  $font-size: 18px;
 }
 
 .root {
@@ -114,7 +113,7 @@ export default {
   outline: 0;
   max-width: 600px;
   width: 100%;
-  font-size: 16px;
+  $font-size: 16px;
   background: #fff2;
   border-radius: 5px;
   padding-left: 5px;
@@ -146,7 +145,7 @@ export default {
   background: transparent;
   color: $white;
   border-radius: 100%;
-  font-size: 40px;
+  $font-size: 40px;
   height: 40px;
   width: 40px;
   justify-content: space-between;

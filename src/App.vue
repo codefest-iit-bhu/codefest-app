@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import Terminal from "@components/Terminal";
+const Terminal = () => import("@components/Terminal");
 
 export default {
   components: {
@@ -83,8 +83,6 @@ export default {
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
-
 .app {
   color: var(--text-color);
   background: var(--background-color);

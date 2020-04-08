@@ -258,7 +258,6 @@ export default {
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
 @require '~@styles/anims';
 
 .container {
@@ -294,7 +293,7 @@ export default {
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
         width: 72px;
         height: 72px;
-        font-size: 30px;
+        $font-size: 30px;
         padding: 12px;
       }
     }
@@ -306,12 +305,12 @@ export default {
       font-weight: 700;
       color: var(--text-color);
       text-align: right;
-      font-size: 50px;
+      $font-size: 50px;
       margin: 0;
       float: right;
 
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-        font-size: 36px;
+        $font-size: 36px;
       }
     }
   }
@@ -359,7 +358,7 @@ export default {
 
       h4 {
         font-family: 'Roboto Slab';
-        font-size: 22px;
+        $font-size: 22px;
         margin: 0;
       }
     }
@@ -411,7 +410,7 @@ export default {
             float: left;
             font-weight: 700;
             font-family: 'Roboto Slab';
-            font-size: 24px;
+            $font-size: 24px;
             padding: 20px 15px;
             height: 100%;
             color: $white;
@@ -424,7 +423,7 @@ export default {
 
           .value {
             display: inline-block;
-            font-size: 18px;
+            $font-size: 18px;
             font-family: 'Quicksand';
             font-weight: 600;
             padding: 12px;
@@ -452,14 +451,14 @@ export default {
             width: 100%;
             font-weight: bold;
             font-family: 'Roboto Slab';
-            font-size: 24px;
+            $font-size: 24px;
             padding: 8px 15px;
             color: var(--text-color);
           }
 
           .copyIcon {
             width: 100%;
-            font-size: 60px;
+            $font-size: 60px;
             padding: 24px 0;
             color: $vermilion;
           }
@@ -468,7 +467,7 @@ export default {
     }
 
     .helptext {
-      font-size: 14px;
+      $font-size: 14px;
       display: inline-block;
       border: 3px solid $vermilion;
       border-radius: 10px;
@@ -479,7 +478,7 @@ export default {
 
     .disabledreferral {
       display: inline-block;
-      font-size: 14px;
+      $font-size: 14px;
       box-shadow: 0 0 20px red inset;
       border: 1px solid red;
       border-radius: 10px;
@@ -539,7 +538,7 @@ export default {
         margin-top: 20px;
         margin-bottom: 20px;
         box-shadow: var(--small-icon-shadow);
-        font-size: 16px;
+        $font-size: 16px;
         display: flex;
         flex-flow: row;
 
@@ -578,7 +577,7 @@ export default {
         .row {
           width: 100%;
           flex-flow: column;
-          font-size: 12px;
+          $font-size: 12px;
 
           .pkey {
             order: 1;

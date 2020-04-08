@@ -1,12 +1,12 @@
 <template>
   <div :class="$style.root">
-    <AppBar/>
+    <AppBar />
     <main :class="$style.wrapper">
-      <div :class="$style.back-circle">
+      <div :class="$style.back - circle">
         <div :class="$style.circle">404</div>
       </div>
     </main>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
@@ -17,13 +17,13 @@ const Footer = () => import("@components/Footer");
 export default {
   components: {
     AppBar,
-    Footer
-  }
+    Footer,
+  },
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
+
 @require '~@styles/anims';
 
 .wrapper {
@@ -32,7 +32,7 @@ export default {
   position: relative;
   z-index: 1;
   padding: 200px 20px 50px 20px;
-  font-size: 18px;
+  $font-size: 18px;
 }
 
 .root {
@@ -48,7 +48,7 @@ export default {
   animation: timeline-border-full 1.5s ease-in-out infinite alternate;
   color: $vermilion;
   font-family: 'Aldo the Apache';
-  font-size: 160px;
+  $font-size: 160px;
   font-weight: 600;
   padding: 100px 0;
 }

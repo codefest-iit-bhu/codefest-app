@@ -4,7 +4,7 @@
       <div :class="$style.eventLogo">
         <img :src="event.icon" />
       </div>
-      <span :class="$style.eventTitle">{{event.title}}</span>
+      <span :class="$style.eventTitle">{{ event.title }}</span>
     </div>
     <hr :class="$style.rightHr" />
 
@@ -37,12 +37,14 @@
         </div>
       </TabLayout>
     </div>
-    <div
-      :class="$style.note"
-    >Note: People not registered for this event on CodeFest are not eligible to recieve any prizes.
+    <div :class="$style.note">
+      Note: People not registered for this event on CodeFest are not eligible to
+      recieve any prizes.
     </div>
 
-    <div :class="$style.register"><h2>Registrations will be live soon.</h2></div>
+    <div :class="$style.register">
+      <h2>Registrations will be live soon.</h2>
+    </div>
 
     <!-- <div :class="$style.link">
       <router-link to="/dashboard/events/" v-if="!event.url" :class="$style.linkText">
@@ -62,38 +64,36 @@ const FAQ = () => import("@components/FAQ");
 export default {
   components: {
     TabLayout,
-    FAQ
+    FAQ,
   },
   props: {
     event: {
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
       tabs: [
         {
           name: "description",
-          title: "Summary"
+          title: "Summary",
         },
         {
           name: "contact",
-          title: "Contact"
+          title: "Contact",
         },
         {
           name: "faq",
-          title: "FAQ"
-        }
-      ]
+          title: "FAQ",
+        },
+      ],
     };
-  }
+  },
 };
 </script>
 
 <style lang="stylus" module>
-@require '~@styles/theme';
 @require '~@styles/anims';
-@require '~@styles/mixins';
 
 .link {
   margin: auto;
@@ -111,7 +111,7 @@ export default {
 
     h4 {
       font-family: 'Baloo Bhaina 2';
-      font-size: 30px;
+      $font-size: 30px;
       margin: 0;
     }
   }
@@ -158,12 +158,12 @@ export default {
       font-family: 'Baloo Bhaina 2';
       font-weight: 700;
       text-align: right;
-      font-size: 50px;
+      $font-size: 50px;
       margin: 0;
       float: right;
 
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-        font-size: 36px;
+        $font-size: 36px;
       }
     }
   }
@@ -199,7 +199,7 @@ export default {
       box-shadow: var(--inset-box-shadow);
 
       .tabTitle {
-        font-size: 36px;
+        $font-size: 36px;
         font-family: 'Baloo Bhaina 2';
         font-wright: 600;
         margin-top: 12px;
@@ -213,7 +213,7 @@ export default {
         font-weight: 500;
 
         ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-          font-size: 15px;
+          $font-size: 15px;
         }
       }
 
@@ -230,7 +230,7 @@ export default {
       .text, .ruleText {
         a {
           word-break: break-all;
-          font-size: 14px;
+          $font-size: 14px;
 
           &:before {
             content: ' ';

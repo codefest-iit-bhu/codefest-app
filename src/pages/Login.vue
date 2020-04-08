@@ -316,11 +316,11 @@ export default {
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
+
 @require '~@styles/anims';
 
 .authContainer {
-  font-size: 16px;
+  $font-size: 16px;
   font-family: courier, monospace;
   max-width: 600px;
   margin: auto;
@@ -335,7 +335,7 @@ export default {
   top: 0;
   z-index: 1;
   font-family: 'Roboto Slab';
-  font-size: 18px;
+  $font-size: 18px;
 }
 
 .root {
@@ -374,7 +374,7 @@ export default {
   outline: 0;
   max-width: 400px;
   width: 100%;
-  font-size: 16px;
+  $font-size: 16px;
   background-color: var(--background-color);
   border-radius: 5px;
   padding-left: 5px;
@@ -429,7 +429,7 @@ export default {
   color: var(--background-color-invert);
   box-shadow: var(--box-shadow);
   border-radius: 100%;
-  font-size: 40px;
+  $font-size: 40px;
   height: 40px;
   width: 40px;
   cursor: pointer;

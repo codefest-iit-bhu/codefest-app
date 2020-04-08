@@ -3,19 +3,25 @@
     <div :class="$style.tabsContainer">
       <div ref="tabWrapper">
         <div
-          :class="  [$style.tabWrapper, isActiveTab(i)]"
+          :class="[$style.tabWrapper, isActiveTab(i)]"
           :id="`${idPrefix}_${i}`"
           v-for="(tab, i) in tabs"
           :key="i"
           :style="tabStyle(i)"
         >
-          <div :class="$style.tabTitle" @click="toggleTab(i);" :id="tab.title">{{ tab.title }}</div>
+          <div :class="$style.tabTitle" @click="toggleTab(i)" :id="tab.title">
+            {{ tab.title }}
+          </div>
         </div>
       </div>
     </div>
 
     <div :class="$style.panelsContainer">
-      <div :class="[$style.panelWrapper, isActiveTab(i)]" v-for="(tab, i) in tabs" :key="i">
+      <div
+        :class="[$style.panelWrapper, isActiveTab(i)]"
+        v-for="(tab, i) in tabs"
+        :key="i"
+      >
         <div :class="$style.tabContent">
           <slot :name="tab.name"></slot>
         </div>
@@ -29,23 +35,23 @@ export default {
   props: {
     tabs: {
       required: true,
-      type: Array
+      type: Array,
     },
     idPrefix: {
       required: false,
       type: String,
-      default: "tab"
-    }
+      default: "tab",
+    },
   },
   data() {
     return {
-      currentTab: 0
+      currentTab: 0,
     };
   },
   computed: {
     isActiveTab() {
-      return index => (index === this.currentTab ? this.$style.active : "");
-    }
+      return (index) => (index === this.currentTab ? this.$style.active : "");
+    },
   },
   methods: {
     toggleTab: function(index) {
@@ -54,7 +60,7 @@ export default {
     },
     tabStyle: function(index) {
       return {
-        left: `${index * 100}px`
+        left: `${index * 100}px`,
       };
     },
     alignTab: function(index) {
@@ -63,13 +69,13 @@ export default {
       let xDiff = (index - this.currentTab) * (window.innerWidth * 0.2);
       if (xDiff < 0) xDiff = 0;
       this.$refs.tabWrapper.style.transform = `translateX(${-xDiff}px)`;
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
+
 @require '~@styles/anims';
 
 $tab-width = 130px;

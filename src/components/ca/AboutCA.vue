@@ -2,14 +2,15 @@
   <div :class="[$style.aboutContainer, $style[$mq]]">
     <ResponsiveTwoColumnLayout :isRightAbove="true">
       <div :class="$style.aboutImage" slot="right">
-        <img src="#">
+        <img src="#" />
       </div>
       <div :class="$style.aboutHead" slot="left">
         <p>
-          A good leader is one who knows the way, goes the way and shows the way.
-          With this in mind, Codefest invites you to lead your college in the sixth
-          edition of the coding extravaganza by becoming a part of our team as a Campus Ambassador.
-          Apply now to grab the opportunity of becoming the face of Codefest in your college!
+          A good leader is one who knows the way, goes the way and shows the
+          way. With this in mind, Codefest invites you to lead your college in
+          the sixth edition of the coding extravaganza by becoming a part of our
+          team as a Campus Ambassador. Apply now to grab the opportunity of
+          becoming the face of Codefest in your college!
         </p>
       </div>
     </ResponsiveTwoColumnLayout>
@@ -22,18 +23,15 @@ const ResponsiveTwoColumnLayout = () =>
 
 export default {
   components: {
-    ResponsiveTwoColumnLayout
-  }
+    ResponsiveTwoColumnLayout,
+  },
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
-@require '~@styles/mixins';
-
 .aboutContainer {
   width: 100%;
-  font-size: 20px;
+  $font-size: 20px;
   padding-top: 30px;
 
   .aboutImage {
@@ -63,7 +61,7 @@ export default {
         text-align: left;
         line-height: auto;
         padding: 15px 0;
-        font-size: 18px;
+        $font-size: 18px;
       }
 
       ~/.md ^[1..-1], ~/.lg ^[1..-1] {

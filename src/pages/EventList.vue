@@ -13,14 +13,14 @@
           :keepOpen="isMinimal"
         />
       </mq-layout>
-        <mq-layout :mq="['sm', 'xs']">
-            <StandardEventMobile 
-              v-for="(event, i) in events" 
-              :key="i" 
-              :event="event" 
-              :id="i" 
-            />
-        </mq-layout>
+      <mq-layout :mq="['sm', 'xs']">
+        <StandardEventMobile
+          v-for="(event, i) in events"
+          :key="i"
+          :event="event"
+          :id="i"
+        />
+      </mq-layout>
     </main>
     <Footer />
   </div>
@@ -41,7 +41,7 @@ export default {
     SpecialEvent,
     StandardEventMobile,
     StandardEvent,
-    Footer
+    Footer,
   },
   data() {
     return events;
@@ -49,13 +49,12 @@ export default {
   computed: {
     isMinimal() {
       return isMinimal(this.$mq);
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/mixins';
 
 .wrapper {
   width: 80%;
@@ -64,7 +63,7 @@ export default {
   position: relative;
   z-index: 1;
   font-family: 'Roboto Mono';
-  font-size: 18px;
+  $font-size: 18px;
 }
 
 .root {

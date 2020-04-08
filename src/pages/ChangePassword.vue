@@ -132,11 +132,11 @@ export default {
 };
 </script>
 <style module lang="stylus">
-@require '~@styles/theme';
+
 @require '~@styles/anims';
 
 .authContainer {
-  font-size: 16px;
+  $font-size: 16px;
   max-width: 700px;
   margin: 50px auto;
   width: 100%;
@@ -150,7 +150,7 @@ export default {
   top: 0;
   z-index: 1;
   font-family: 'Roboto Mono';
-  font-size: 18px;
+  $font-size: 18px;
 }
 
 .root {
@@ -215,7 +215,7 @@ export default {
         border: 0;
         outline: 0;
         margin: auto;
-        font-size: 16px;
+        $font-size: 16px;
         border-radius: 5px;
         padding-left: 5px;
       }
@@ -256,7 +256,7 @@ export default {
         color: var(--background-color-invert);
         box-shadow: var(--small-icon-shadow);
         border-radius: 100%;
-        font-size: 30px;
+        $font-size: 30px;
         height: 30px;
         width: 30px;
         cursor: pointer;
@@ -299,7 +299,7 @@ export default {
   .form {
     .field {
       input, select, .label {
-        font-size: 16px;
+        $font-size: 16px;
         width: 100%;
       }
     }

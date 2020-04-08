@@ -2,21 +2,21 @@
   <div :class="$style.root">
     <AppBar @scrollTop="scrollToTop" :shouldShowSideNavigation="true">
       <li
-        v-for="(event,i) in events"
+        v-for="(event, i) in events"
         :key="i"
-        :class="{[$style.active]: i === currentEventIndex}"
+        :class="{ [$style.active]: i === currentEventIndex }"
         slot="events"
       >
-        <router-link :to="'/events/'+event.name">
+        <router-link :to="'/events/' + event.name">
           <span class="fa fa-circle fa-xs" aria-hidden="true"></span>
-          {{event.title}}
+          {{ event.title }}
         </router-link>
       </li>
     </AppBar>
     <main :class="$style.wrapper">
-      <StandardEventDetails :event="events[currentEventIndex]"/>
+      <StandardEventDetails :event="events[currentEventIndex]" />
     </main>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
@@ -29,7 +29,7 @@ export default {
   components: {
     AppBar,
     StandardEventDetails,
-    Footer
+    Footer,
   },
   data() {
     return events;
@@ -37,25 +37,24 @@ export default {
   computed: {
     currentEventIndex() {
       const urlName = this.$route.params.name;
-      let i = this.events.findIndex(event => event.name === urlName);
+      let i = this.events.findIndex((event) => event.name === urlName);
       if (i === -1) {
         this.$router.replace("/404");
         return;
       }
       return i;
-    }
+    },
   },
   methods: {
     scrollToTop() {
       TweenLite.to(window, 1, { scrollTo: 0, ease: Power4.easeInOut });
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/mixins';
-@require '~@styles/theme';
+
 @require '~@styles/anims';
 
 .wrapper {
@@ -65,7 +64,7 @@ export default {
   position: relative;
   z-index: 1;
   font-family: 'Roboto Mono';
-  font-size: 18px;
+  $font-size: 18px;
 }
 
 .root {

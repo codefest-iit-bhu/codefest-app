@@ -2,7 +2,7 @@
   <div :class="[$style.faqItem, $style[$mq]]">
     <div :class="$style.question" @click="toggleQues">
       <p>
-        {{item.question}}
+        {{ item.question }}
         <i
           class="fa fa-chevron-down"
           :style="chevronRotateStyle"
@@ -22,19 +22,19 @@ export default {
     return {
       open: false,
       openProgress: 0,
-      maxHeight: -1
+      maxHeight: -1,
     };
   },
 
   props: {
     item: {
       required: true,
-      type: Object
+      type: Object,
     },
     index: {
       required: true,
-      type: Number
-    }
+      type: Number,
+    },
   },
 
   methods: {
@@ -48,7 +48,7 @@ export default {
         this.maxHeight = answer.offsetHeight + 10;
         clearInterval(this.heightInterval);
       }
-    }
+    },
   },
 
   computed: {
@@ -63,27 +63,25 @@ export default {
     },
     chevronRotateStyle() {
       return { transform: `rotate(${this.angle}deg)` };
-    }
+    },
   },
 
   watch: {
     open: function(val) {
       TweenLite.to(this.$data, 0.4, { openProgress: val ? 1 : 0 });
-    }
+    },
   },
   mounted() {
     this.heightInterval = setInterval(this.initHeight.bind(this), 200);
   },
   destroyed() {
     clearInterval(this.heightInterval);
-  }
+  },
 };
 </script>
 
 <style lang="stylus" module>
-@require '~@styles/theme';
 @require '~@styles/anims';
-@require '~@styles/mixins';
 
 .faqItem {
   position: relative;
@@ -109,20 +107,20 @@ export default {
 
     ^[0].xs, ^[0].sm {
       p {
-        font-size: 14px;
+        $font-size: 14px;
       }
     }
   }
 
   .answer {
-    font-size: 18px;
+    $font-size: 18px;
     overflow: hidden;
     width: 100%;
     clear: both;
     font-family: 'Quicksand';
 
     ^[0].xs, ^[0].sm {
-      font-size: 13px;
+      $font-size: 13px;
     }
   }
 }

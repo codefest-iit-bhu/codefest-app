@@ -1,34 +1,36 @@
 <template>
   <div :class="[$style.wrapper, $style[$mq]]">
     <AppbarLayout v-bind="this.$attrs">
-      <li :id="$style.toggleSidebar" slot="left" v-if="['xs', 'sm'].includes(this.$mq)">
+      <li
+        :id="$style.toggleSidebar"
+        slot="left"
+        v-if="['xs', 'sm'].includes(this.$mq)"
+      >
         <a class="bm-toggle" @click="openSidebar">
           <i class="fa fa-bars"></i>
         </a>
       </li>
 
-      <li 
+      <li
         :class="$style.link"
         slot="right"
         v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
       >
-        <a  @click="toggleTheme">
+        <a @click="toggleTheme">
           <i v-if="isThemeLight" class="fa fa-sun"></i>
-        <i v-else class="fa fa-moon fa-xs"></i>
+          <i v-else class="fa fa-moon fa-xs"></i>
         </a>
-
       </li>
 
       <li v-else :id="$style.toggleTheme" slot="right">
-        <a  @click="toggleTheme">
+        <a @click="toggleTheme">
           <i v-if="isThemeLight" class="fa fa-sun"></i>
-        <i v-else class="fa fa-moon fa-xs"></i>
+          <i v-else class="fa fa-moon fa-xs"></i>
         </a>
       </li>
 
-
       <li :class="$style.appbarLogo" slot="left" v-if="shouldShowCollegeLogo">
-        <img src="@assets/logo-dcse.png">
+        <img src="@assets/logo-dcse.png" />
       </li>
       <li
         :class="$style.appbarLogo"
@@ -37,23 +39,33 @@
         v-if="shouldShowEventLogo"
         @click="$emit('scrollTop')"
       >
-        <img src="@assets/haxplore/logo-text.svg">
+        <img src="@assets/haxplore/logo-text.svg" />
       </li>
       <router-link to="/" slot="notch" v-if="!isMinimal">
-        <img src="@assets/white-cf20-logo.svg">
+        <img src="@assets/white-cf20-logo.svg" />
       </router-link>
       <router-link to="/haxplore" slot="notch" v-else>
-        <img src="@assets/haxplore/logo-text.svg" @click="$emit('scrollTop')">
+        <img src="@assets/haxplore/logo-text.svg" @click="$emit('scrollTop')" />
       </router-link>
     </AppbarLayout>
     <div :class="$style.sidebar" ref="sidebar">
-      <SectionSidebar v-bind="$attrs" v-if="['md', 'lg', 'xl', 'xxl'].includes($mq)">
+      <SectionSidebar
+        v-bind="$attrs"
+        v-if="['md', 'lg', 'xl', 'xxl'].includes($mq)"
+      >
         <slot></slot>
       </SectionSidebar>
       <mq-layout :mq="['xs', 'sm']">
-        <Slide :isOpen="isSidebarOpen" @closeSideBar="onCloseSideBar" :width="sideBarWidth">
+        <Slide
+          :isOpen="isSidebarOpen"
+          @closeSideBar="onCloseSideBar"
+          :width="sideBarWidth"
+        >
           <router-link to="/">
-            <img src="@assets/white-cf20-logo.svg" :class="$style.sidebarLogo">
+            <img
+              src="@assets/white-cf20-logo.svg"
+              :class="$style.sidebarLogo"
+            />
           </router-link>
           <!-- <ul v-scroll-spy-active="{class: $style.active}" v-scroll-spy-link>
             <slot></slot>
@@ -68,7 +80,11 @@
             <li :class="$style.link">
               <router-link to="/haxplore">
                 HaXplore
-                <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
+                <span
+                  class="fa fa-circle fa-xs"
+                  :class="$style.awesome"
+                  aria-hidden="true"
+                ></span>
               </router-link>
             </li>
             <!-- <li :class="$style.link">
@@ -112,18 +128,18 @@ export default {
   components: {
     AppbarLayout,
     SectionSidebar,
-    Slide
+    Slide,
   },
   props: {
     shouldShowHaxploreLogo: {
       type: Boolean,
       default: false,
-      required: false
-    }
+      required: false,
+    },
   },
   data() {
     return {
-      isSidebarOpen: false
+      isSidebarOpen: false,
     };
   },
   computed: {
@@ -158,27 +174,24 @@ export default {
       this.$store.dispatch("logout");
       if (this.$route.meta.requiresAuth) this.$router.push({ name: "~" });
     },
-    toggleTheme(){
+    toggleTheme() {
       this.$store.dispatch("toggle_theme");
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/mixins';
-@require '~@styles/theme';
 @require '~@styles/anims';
 
 .wrapper {
-
  .link {
     margin-top: 10px;
 
     a {
       color: $waterloo;
       font-weight: 600;
-      font-size: 20px;
+      $font-size: 20px;
       padding: 0 10px;
       transition: 0.5s;
       vertical-align: middle;
@@ -248,7 +261,7 @@ export default {
 
           span {
             color: $waterloo;
-            font-size: 14px;
+            $font-size: 14px;
             margin-right: 5px;
           }
 

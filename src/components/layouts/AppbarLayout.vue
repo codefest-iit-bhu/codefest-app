@@ -1,5 +1,8 @@
 <template>
-  <div :class="[$style.appbar, $style[$mq], {[$style.animate]: doAnimate}]" ref="appbar">
+  <div
+    :class="[$style.appbar, $style[$mq], { [$style.animate]: doAnimate }]"
+    ref="appbar"
+  >
     <div :class="$style.nav">
       <ul :class="$style.lNav">
         <slot name="left"></slot>
@@ -10,7 +13,7 @@
     </div>
     <div :class="$style.notch">
       <div :class="$style.logo">
-        <slot name="notch"/>
+        <slot name="notch" />
       </div>
     </div>
   </div>
@@ -21,8 +24,8 @@ export default {
   props: {
     doAnimate: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   methods: {
     handleScroll(event) {
@@ -50,22 +53,21 @@ export default {
         this.noAnimateScrollShow();
         this.showAppbar();
       }
-    }
+    },
   },
   watch: {
     $mq(to, from) {
       this.handleAnimation(to);
-    }
+    },
   },
   mounted() {
     this.handleAnimation(this.$mq);
-  }
+  },
 };
 </script>
 
 <style module lang="stylus">
-@require '~@styles/mixins';
-@require '~@styles/theme';
+
 @require '~@styles/anims';
 
 $appbar-height = 50px;
@@ -89,7 +91,7 @@ $notch-color = $mine-shaft;
     height: $appbar-height;
     box-shadow: var(--appbar-shadow-color) 0 1px 10px 3px;
     font-family: 'Roboto Slab';
-    font-size: 25px;
+    $font-size: 25px;
 
     .rNav {
       float: right;

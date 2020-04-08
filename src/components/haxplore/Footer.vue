@@ -46,11 +46,8 @@ export default {};
 </script>
 
 <style module lang="stylus">
-@require '~@styles/theme';
-@require '~@styles/mixins';
-
 .footer {
-  font-size: 16px;
+  $font-size: 16px;
   font-weight: 800;
   background: rgba($mine-shaft, 0.8);
   letter-spacing: 0.5px;
@@ -81,7 +78,7 @@ export default {};
     .content {
       order: 1;
       width: 400px;
-      font-size: 16px;
+      $font-size: 16px;
       padding-top: 22px;
       font-family: 'Quicksand';
       text-align: center;
