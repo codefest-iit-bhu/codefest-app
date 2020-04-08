@@ -64,6 +64,21 @@
             </span>
             <span :class="$style.pvalue">{{ profile.institute_name }}</span>
           </div>
+          <div :class="$style.row">
+            <span :class="$style.pkey">
+              <span>Resume (*.pdf)</span>
+            </span>
+            <span :class="$style.pvalue">
+              <form enctype="multipart/form-data">
+                <input
+                  type="file"
+                  name="resume"
+                  @change="uploadResume($event.target.name, $event.target.files)"
+                >
+              </form>
+            </span>
+          </div>
+          <p :class="$style.helptext">Resume upload is recommended to be considered for hiring opportunities!</p>
         </div>
       </div>
     </div>
@@ -90,6 +105,13 @@
           </span>
         </div>
       </a>
+      <a v-if="!!resume" :href="resume" target="_blank">
+        <div :class="$style.link">
+          <span :class="$style.linkText">
+            <h4>View Resume</h4>
+          </span>
+        </div>
+      </a>
     </div>
   </div>
 </template>
@@ -111,7 +133,8 @@ export default {
   },
   data() {
     return {
-      certificate: null
+      certificate: null,
+      resume: null,
     };
   },
   computed: {
@@ -159,6 +182,13 @@ export default {
       .catch(e => {
         this.$data.certificate = null;
       });
+    API.fetch("resume/")
+      .then(({ data }) => {
+        this.resume = data.resume;
+      })
+      .catch(e => {
+        this.resume = null;
+      });
   },
   methods: {
     clickToCopy() {
@@ -183,6 +213,25 @@ export default {
             message: err.message
           });
         });
+    },
+    uploadResume(fieldName, fileList) {
+      var resumeFile = new FormData();
+      if (!fileList.length) return;
+      resumeFile.append(fieldName, fileList[0], fileList[0].name);
+      API.put("resume/", {
+        body: resumeFile,
+        headers: {
+          "Content-Type": undefined
+        }
+      })
+      .then(({ data }) => {
+        const msg = "Your resume has been uploaded successfully!";
+        this.$toasted.global.success({ message: msg });
+        this.resume = data.resume;
+      })
+      .catch(err => {
+        this.$toasted.global.error_post({ message: err.message });
+      });
     }
   }
 };
