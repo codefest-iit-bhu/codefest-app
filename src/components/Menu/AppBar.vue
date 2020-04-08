@@ -22,19 +22,19 @@
           CA
           <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
         </router-link>
-      </li> -->
+      </li>-->
       <!-- <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
         <router-link to="/team">
           Team
           <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
         </router-link>
-      </li> -->
+      </li>-->
       <!-- <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
         <router-link to="/referral">
           <span class="fa fa-circle fa-xs" aria-hidden="true"></span>
           Referrals
         </router-link>
-      </li> -->
+      </li>-->
       <li
         :class="$style.link"
         slot="right"
@@ -44,6 +44,16 @@
         <router-link to="/dashboard">
           <i class="fas fa-id-badge" title="Dashboard"></i>
           <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
+        </router-link>
+      </li>
+      <li
+        :class="$style.link"
+        slot="right"
+        v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
+        v-show="showDashboardActions"
+      >
+        <router-link to="/dashboard/events">
+          <i class="fas fa-user-plus" title="My Teams"></i>
         </router-link>
       </li>
       <li
@@ -63,28 +73,22 @@
         v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
         v-show="!showDashboardActions"
       >
-          <router-link to="/login">Login / Register</router-link>
+        <router-link to="/login">Login / Register</router-link>
       </li>
 
-      <li
-        :class="$style.link"
-        slot="right"
-        v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
-      >
-        <a  @click="toggleTheme">
+      <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
+        <a @click="toggleTheme">
           <i v-if="isThemeLight" class="fa fa-sun"></i>
-        <i v-else class="fa fa-moon fa-xs"></i>
+          <i v-else class="fa fa-moon fa-xs"></i>
         </a>
-
       </li>
 
       <li v-else :id="$style.toggleTheme" slot="right">
-        <a  @click="toggleTheme">
+        <a @click="toggleTheme">
           <i v-if="isThemeLight" class="fa fa-sun"></i>
-        <i v-else class="fa fa-moon fa-xs"></i>
+          <i v-else class="fa fa-moon fa-xs"></i>
         </a>
       </li>
-
 
       <li :id="$style.toggleSidebar" slot="left" v-if="['xs', 'sm'].includes(this.$mq)">
         <a class="bm-toggle" @click="openSidebar">
@@ -92,10 +96,10 @@
         </a>
       </li>
       <router-link to="/" slot="notch" v-if="!haxplorePage">
-        <img src="@assets/white-cf20-logo.svg" @click="clickNotch">
+        <img src="@assets/white-cf20-logo.svg" @click="clickNotch" />
       </router-link>
       <router-link to="/haxplore" slot="notch" v-else>
-        <img src="@assets/haxplore/logo-text.svg" @click="clickNotch">
+        <img src="@assets/haxplore/logo-text.svg" @click="clickNotch" />
       </router-link>
     </AppbarLayout>
     <div :class="$style.sidebar" ref="sidebar">
@@ -118,19 +122,17 @@
                 Home
                 <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
               </router-link>
-              <router-link to="/haxplore" v-else>
-                HaXplore
-              </router-link>
+              <router-link to="/haxplore" v-else>HaXplore</router-link>
             </li>
             <!-- <li :class="$style.link">
               <router-link to="/ca">CA</router-link>
-            </li> -->
+            </li>-->
             <!-- <li :class="$style.link">
               <router-link to="/team">Team</router-link>
-            </li> -->
+            </li>-->
             <!-- <li :class="$style.link">
               <router-link to="/referral">Referrals</router-link>
-            </li> -->
+            </li>-->
             <li :class="$style.link" v-show="showDashboardActions">
               <router-link to="/dashboard">
                 Dashboard
@@ -206,7 +208,7 @@ export default {
       this.$store.dispatch("logout");
       if (this.$route.meta.requiresAuth) this.$router.push({ name: "~" });
     },
-    toggleTheme(){
+    toggleTheme() {
       this.$store.dispatch("toggle_theme");
     }
   },
@@ -288,6 +290,7 @@ export default {
       color: $waterloo;
       font-size: 25px;
     }
+
     a:hover {
       color: var(--text-color);
     }
@@ -337,7 +340,7 @@ export default {
           width: 100%;
 
           span {
-            color: $white;
+            color: $waterloo;
             font-size: 14px;
             border-radius: 100%;
           }
