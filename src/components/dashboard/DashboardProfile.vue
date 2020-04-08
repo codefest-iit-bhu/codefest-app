@@ -18,7 +18,7 @@
         </div>
         <div :class="$style.box" v-if="profile.is_verified">
           <span :class="$style.keyRef">Referral Link</span>
-          <span :class="$style.value" v-if="['md', 'lg', 'xl'].includes(this.$mq)">
+          <span :class="$style.value" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
             <router-link :to="routerLocation">{{ profile.referral_code }}</router-link>
           </span>
           <span v-else></span>
@@ -434,7 +434,7 @@ export default {
             font-family: 'Roboto Slab';
             font-size: 24px;
             padding: 8px 15px;
-            color: $white;
+            color: var(--text-color);
           }
 
           .copyIcon {

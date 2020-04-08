@@ -39,7 +39,7 @@ export default {
   },
   created() {
     this.$store.dispatch("getProfileEvents").then(data => {
-      // this.events = data;
+      this.events = data;
     });
   }
 };

@@ -318,13 +318,14 @@ $btn-width = 240px;
     height: 50px;
 
     .txt {
-      font-size: 16px;
+      font-size: 20px;
       font-family: 'Baloo Bhaina 2';
     }
 
     .txt2 {
       float: right;
       font-weight: 700;
+      font-size: 14px;
     }
   }
 
