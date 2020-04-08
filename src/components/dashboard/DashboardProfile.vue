@@ -135,6 +135,7 @@ export default {
     return {
       certificate: null,
       resume: null,
+      user_email: null,
     };
   },
   computed: {
@@ -154,10 +155,6 @@ export default {
       }
     },
 
-    user_email() {
-      const { currentUser } = firebase.auth();
-      if (currentUser) return currentUser.email;
-    },
 
     routerLocation() {
       return {
@@ -189,6 +186,11 @@ export default {
       .catch(e => {
         this.resume = null;
       });
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.user_email = user.email;
+      }
+    })
   },
   methods: {
     clickToCopy() {
