@@ -167,15 +167,16 @@ cred = credentials.Certificate(os.path.join(BASE_DIR,'service_account.json'))
 default_app = firebase_admin.initialize_app(cred)
 
 CORS_ORIGIN_WHITELIST = (
-    'codefest.tech',
+    '*.codefest.tech',
     '127.0.0.1:8080',
     'localhost:8000',
     '0.0.0.0:8080',
 )
 CSRF_TRUSTED_ORIGINS = (
-    'codefest.tech',
+    '*.codefest.tech',
     '127.0.0.1:8080',
     'localhost:8000',
+    '0.0.0.0:8080'
 )
 GOOGLE_RECAPTCHA_SECRET_KEY = config('GOOGLE_RECAPTCHA_SECRET_KEY')
 GOOGLE_RECAPTCHA_URL = 'https://www.google.com/recaptcha/api/siteverify'
