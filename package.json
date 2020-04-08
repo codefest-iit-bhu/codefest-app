@@ -49,7 +49,7 @@
     "not dead"
   ],
   "name": "codefest",
-  "version": "2020.0",
+  "version": "2020.0.0",
   "main": "index.js",
   "author": "",
   "license": "ISC",
