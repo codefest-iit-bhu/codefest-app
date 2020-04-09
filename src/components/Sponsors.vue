@@ -147,6 +147,7 @@ $box-width = 250px;
     cursor: pointer;
 
     .linkText {
+      display: inline-block;
       text-decoration: none;
       color: $waterloo;
 
