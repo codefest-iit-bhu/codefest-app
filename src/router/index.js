@@ -134,7 +134,7 @@ const router = new Router({
     {
       name: "~/password/reset",
       path: "/password/reset",
-      component: () => import(`@components/ForgotPassword`),
+      component: () => import(`@pages/ForgotPassword`),
       meta: {
         title: "Forgot Password",
         metaTags: [],
