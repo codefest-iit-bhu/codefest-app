@@ -32,12 +32,7 @@ export const navigation = {
       dashboard: {
         ".": "/dashboard"
       },
-      team: {
-        ".": "/team"
-      },
-      ca: {
-        ".": "/ca"
-      },
+  
       referrals: {
         ".": "/referral"
       }
