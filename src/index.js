@@ -95,7 +95,7 @@ Vue.prototype.$workbox = wb;
 
 const config = {
   apiKey: "AIzaSyDgx3hMDrBTQ6ci9hKg0MMmbR36rBaH6Bo",
-  authDomain: "codefest19.firebaseapp.com",
+  authDomain: "auth.codefest.tech",
   databaseURL: "https://codefest19.firebaseio.com",
   projectId: "codefest19",
   storageBucket: "codefest19.appspot.com",

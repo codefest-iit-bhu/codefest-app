@@ -7,31 +7,33 @@
           itemWidth="260px"
           itemHeight="260px"
         >
-          <div
-            :class="$style.cell"
-            v-for="(stat, i) in stats"
-            :key="i"
-            :slot="`item${i}`"
-          >
+          <div :class="$style.cell" v-for="(stat, i) in stats" :key="i" :slot="`item${i}`">
             <div :class="$style.clip">
               <img :src="stat.image" :class="$style.img" />
             </div>
           </div>
         </GridLayout>
       </div>
-      <div :class="$style.txt"></div>
-      <div
-        :class="$style.link"
-        @mouseover="buttonHovered = true"
-        @mouseleave="buttonHovered = false"
-      >
-        <a
-          href="https://drive.google.com/file/d/15BYqDZwShgFFqkgBPKqr0j-AcFF-_Umm"
-          :class="[$style.linkText]"
-          target="_blank"
-        >
-          <h4>Sponsor Brochure</h4>
-        </a>
+
+      <div :class="$style.buttonContainer">
+        <div :class="$style.link">
+          <a
+            href="https://drive.google.com/file/d/15BYqDZwShgFFqkgBPKqr0j-AcFF-_Umm"
+            :class="[$style.linkText]"
+            target="_blank"
+          >
+            <h4>Sponsor Brochure</h4>
+          </a>
+        </div>
+        <div :class="$style.link">
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLScinI5YpU61F8Re4wFooBgH18Q8iE1_Du-nW1IIExruqLwRpw/viewform"
+            :class="[$style.linkText]"
+            target="_blank"
+          >
+            <h4>Sponsor Us</h4>
+          </a>
+        </div>
       </div>
     </div>
   </SectionLayout>
@@ -75,7 +77,6 @@ export default {
 </script>
 
 <style module lang="stylus">
-
 @require '~@styles/anims';
 
 $cell-size = 200px;
@@ -90,30 +91,41 @@ $box-width = 250px;
     }
   }
 
+  .buttonContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+
   .link {
-    margin: auto;
+    margin: 20px 20px 20px 20px;
     width: 250px;
-    height: auto;
-    padding: 24px;
+    height: 120px;
+    padding: 20px;
     box-shadow: var(--box-shadow);
     border-radius: 50px 0px 50px 0px;
     text-align: center;
     cursor: pointer;
 
     .linkText {
-      display: inline;
       text-decoration: none;
       color: $waterloo;
 
       h4 {
+        text-align: center;
+        position: relative;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
         font-family: 'Roboto Slab';
         $font-size: 30px;
-        margin: 0;
       }
     }
 
     &:hover {
       box-shadow: var(--inset-box-shadow);
+
       .linkText {
         color: var(--text-color);
       }
