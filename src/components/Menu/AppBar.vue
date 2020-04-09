@@ -258,7 +258,7 @@ export default {
   }
 
   .link {
-    margin-top: 10px;
+    margin-top: 5px;
 
     .awesome {
       border-radius: 10px;
