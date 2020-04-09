@@ -36,9 +36,14 @@
 	            <i class="fas fa-map-marked-alt"></i> IIT (BHU), Varanasi
           </p>-->
         </div>
-        <div :class="$style.registerbtn">
+        <div :class="$style.linkbtn" v-if="!$store.getters.isLoggedIn">
           <router-link to="/login">
-            <span :class="$style.register">Register</span>
+            <span :class="$style.link">Register</span>
+          </router-link>
+        </div>
+        <div :class="$style.linkbtn" v-else>
+          <router-link to="/dashboard">
+            <span :class="$style.link">Dashboard</span>
           </router-link>
         </div>
       </div>
@@ -708,11 +713,11 @@ export default {
   }
 }
 
-.registerbtn {
+.linkbtn {
   text-align: center;
   padding-top: 20px;
 
-  .register {
+  .link {
     margin: auto;
     margin-top: 10px;
     margin-bottom: 10px;

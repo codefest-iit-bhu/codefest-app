@@ -6,7 +6,7 @@
         <form :class="$style.form" @submit.prevent="forgot_password">
           <h3>RESET PASSWORD</h3>
           <div :class="$style.fieldContainer">
-            <label for="email" :class="$style.label">email</label>
+            <label for="email" :class="$style.label">Email</label>
             <input
               type="email"
               :class="$style.field"
@@ -70,13 +70,13 @@ export default {
   max-width: 800px;
   margin: auto;
   width: 100%;
-  border: 2px solid $vermilion;
+  border: 2px solid var(--background-color);
   border-radius: 10px;
-  box-shadow: inset 0px 0px 10px $vermilion;
+  box-shadow: var(--inset-box-shadow);
 
   h3 {
     text-align: center;
-    color: $vermilion;
+    color: $waterloo;
   }
 }
 
@@ -108,13 +108,14 @@ export default {
 .field {
   clear: both;
   height: 30px;
-  color: white;
+  color: var(--text-color);
+  box-shadow: var(--inset-box-shadow);
   border: 0;
   outline: 0;
   max-width: 600px;
   width: 100%;
   $font-size: 16px;
-  background: #fff2;
+  background: var(--background-color);
   border-radius: 5px;
   padding-left: 5px;
   margin-bottom: 20px;
@@ -122,9 +123,11 @@ export default {
 
 .label {
   float: left;
-  color: white;
+  color: var(--text-color);
   text-align: right;
   height: 30px;
+  font-weight: 600;
+  font-family: 'Quicksand';
 }
 
 .forgotPasswd {
@@ -143,7 +146,8 @@ export default {
 .submit {
   border: 0;
   background: transparent;
-  color: $white;
+  color: var(--text-color);
+  box-shadow: var(--box-shadow);
   border-radius: 100%;
   $font-size: 40px;
   height: 40px;
