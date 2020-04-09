@@ -31,8 +31,7 @@ export const navigation = {
       },
       dashboard: {
         ".": "/dashboard"
-      },
-  
+      },  
       referrals: {
         ".": "/referral"
       }
