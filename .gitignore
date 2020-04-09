@@ -344,3 +344,4 @@ $RECYCLE.BIN/
 .vscode/*
 
 # End of https://www.gitignore.io/api/vue,node,vuejs,linux,macos,python,django,windows
+.now
