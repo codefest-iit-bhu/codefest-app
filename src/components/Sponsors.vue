@@ -14,19 +14,14 @@
         <div :class="$style.titleText" slot="right">
           <div :class="$style.txt">Title Sponsor</div>
         </div>
-      </ResponsiveTwoColumnLayout> -->
+      </ResponsiveTwoColumnLayout>-->
       <div :class="$style.container">
         <GridLayout
           :columns="$mq | mq({ xs: 1, sm: 1, md: 2, lg: 2, xl: 2 })"
           itemWidth="260px"
           itemHeight="260px"
         >
-          <div
-            :class="$style.cell"
-            v-for="(stat, i) in stats"
-            :key="i"
-            :slot="`item${i}`"
-          >
+          <div :class="$style.cell" v-for="(stat, i) in stats" :key="i" :slot="`item${i}`">
             <div :class="$style.clip">
               <img :src="stat.image" :class="$style.img" />
             </div>
@@ -34,41 +29,26 @@
         </GridLayout>
       </div>
 
-
-<div :class="$style.buttonContainer">
-
-
-
-      <div
-        :class="$style.link"
-        @mouseover="buttonHovered = true"
-        @mouseleave="buttonHovered = false"
-      >
-        <a
-          href="https://drive.google.com/file/d/15BYqDZwShgFFqkgBPKqr0j-AcFF-_Umm"
-          :class="[$style.linkText]"
-          target="_blank"
-        >
-          <h4>Sponsor Brochure</h4>
-        </a>
+      <div :class="$style.buttonContainer">
+        <div :class="$style.link">
+          <a
+            href="https://drive.google.com/file/d/15BYqDZwShgFFqkgBPKqr0j-AcFF-_Umm"
+            :class="[$style.linkText]"
+            target="_blank"
+          >
+            <h4>Sponsor Brochure</h4>
+          </a>
+        </div>
+        <div :class="$style.link">
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLScinI5YpU61F8Re4wFooBgH18Q8iE1_Du-nW1IIExruqLwRpw/viewform"
+            :class="[$style.linkText]"
+            target="_blank"
+          >
+            <h4>Sponsor Us</h4>
+          </a>
+        </div>
       </div>
-      <div
-        :class="$style.link"
-        @mouseover="buttonHovered = true"
-        @mouseleave="buttonHovered = false"
-      >
-        <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLScinI5YpU61F8Re4wFooBgH18Q8iE1_Du-nW1IIExruqLwRpw/viewform"
-          :class="[$style.linkText]"
-          target="_blank"
-        >
-          <h4>Sponsor Us</h4>
-        </a>
-      </div>
-
-</div>
-
-
     </div>
   </SectionLayout>
 </template>
@@ -150,12 +130,11 @@ $box-width = 250px;
     }
   }
 
-  .buttonContainer{
+  .buttonContainer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
   }
-
 
   .link {
     margin: 20px 20px 20px 20px;
@@ -185,6 +164,7 @@ $box-width = 250px;
 
     &:hover {
       box-shadow: var(--inset-box-shadow);
+
       .linkText {
         color: var(--text-color);
       }
