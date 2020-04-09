@@ -83,7 +83,7 @@ $notch-color = $mine-shaft;
   user-select: none;
 
   &.animate {
-    moveAnimation(side: 'top', startDistance: (-($notch-height)), targetDistance: 0px);
+    moveAnimation(side: 'top', startDistance: ((-($notch-height + 20))), targetDistance: 0px);
   }
 
   .nav {
