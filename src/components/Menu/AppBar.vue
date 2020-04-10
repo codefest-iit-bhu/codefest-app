@@ -29,12 +29,11 @@
           <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
         </router-link>
       </li>-->
-      <!-- <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
+      <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
         <router-link to="/referral">
-          <span class="fa fa-circle fa-xs" aria-hidden="true"></span>
           Referrals
         </router-link>
-      </li>-->
+      </li>
       <li
         :class="$style.link"
         slot="right"
@@ -130,9 +129,9 @@
             <!-- <li :class="$style.link">
               <router-link to="/team">Team</router-link>
             </li>-->
-            <!-- <li :class="$style.link">
+            <li :class="$style.link">
               <router-link to="/referral">Referrals</router-link>
-            </li>-->
+            </li>
             <li :class="$style.link" v-show="showDashboardActions">
               <router-link to="/dashboard">
                 Dashboard
