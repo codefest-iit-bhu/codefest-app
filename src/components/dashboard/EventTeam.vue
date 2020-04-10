@@ -27,7 +27,7 @@
             :class="[$style.field]"
             placeholder="Team Name"
             @blur="inputBtnBlur"
-            @keydown="collectInput"
+            @keyup="collectInput"
             :data-button-target="`${event.name}__createTeam`"
             v-model="teamName"
             :id="`${event.name}__teamName`"
@@ -62,7 +62,7 @@
             placeholder="Access Code"
             v-model="accessCode"
             @blur="inputBtnBlur"
-            @keydown="collectInput"
+            @keyup="collectInput"
             :id="`${event.name}__accessCode`"
           />
           <button
@@ -196,7 +196,7 @@ export default {
     },
     collectInput(e) {
       if (e.keyCode == 13) {
-        // Enter is presed.
+        // Enter is pressed.
         const { id } = e.target;
         if (id === `${this.event.name}__teamName`)
           return this.submitCreateTeam();

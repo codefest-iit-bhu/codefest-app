@@ -99,7 +99,7 @@ export default {
   },
   methods: {
     submitForm() {
-      const { currentUser: user } = auth;
+      const { currentUser: user } = auth();
       const credential = auth.EmailAuthProvider.credential(
         user.email,
         this.currentPasswd
