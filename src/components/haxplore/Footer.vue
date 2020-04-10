@@ -29,7 +29,7 @@
             </a>
           </li>
           <li>
-            <a href="https://www.instagram.com/c0defest/?hl=en">
+            <a href="https://www.instagram.com/codefest.iitbhu">
               <span class="fa-stack fa-lg">
                 <i class="fab fa-instagram fa-stack-1x"></i>
               </span>
