@@ -399,7 +399,7 @@ export default {
           float: right;
         }
 
-        ~/.lg ^[1..-1], ~/.xl ^[1..-1], ~/.md ^[1..-1] {
+        ~/.lg ^[1..-1], ~/.xxl ^[1..-1], ~/.xl ^[1..-1], ~/.md ^[1..-1] {
           .key {
             display: inline-block;
             float: left;
