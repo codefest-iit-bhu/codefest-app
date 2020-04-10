@@ -128,6 +128,10 @@ class ClearCommand extends BaseCommand {
 
   run() {
     terminal.clearHistory();
+    return new BaseOutput(
+      `clear`,
+      this.envs
+    );
   }
 }
 
