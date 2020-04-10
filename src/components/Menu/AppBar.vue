@@ -1,11 +1,7 @@
 <template>
   <div :class="[$style.wrapper, $style[$mq]]">
     <AppbarLayout v-bind="this.$attrs">
-      <li
-        :class="$style.link"
-        slot="left"
-        v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
-      >
+      <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
         <router-link to="/" v-if="haxplorePage">
           Home
           <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
@@ -15,11 +11,7 @@
           <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
         </router-link>
       </li>
-      <li
-        :class="$style.link"
-        slot="left"
-        v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
-      >
+      <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
         <router-link to="/events">
           Events
           <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
@@ -84,11 +76,7 @@
         <router-link to="/login">Login / Register</router-link>
       </li>
 
-      <li
-        :class="$style.link"
-        slot="right"
-        v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
-      >
+      <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
         <a @click="toggleTheme">
           <i v-if="isThemeLight" class="fa fa-sun"></i>
           <i v-else class="fa fa-moon fa-xs"></i>
@@ -102,11 +90,7 @@
         </a>
       </li>
 
-      <li
-        :id="$style.toggleSidebar"
-        slot="left"
-        v-if="['xs', 'sm'].includes(this.$mq)"
-      >
+      <li :id="$style.toggleSidebar" slot="left" v-if="['xs', 'sm'].includes(this.$mq)">
         <a class="bm-toggle" @click="openSidebar">
           <i class="fa fa-bars"></i>
         </a>
@@ -115,28 +99,17 @@
         <img src="@assets/white-cf20-logo.svg" @click="clickNotch" />
       </router-link>
       <router-link to="/haxplore" slot="notch" v-else>
-        <img
-          src="@assets/haxplore/logo-text.svg"
-          :class="$style.haxploreNotch"
-          @click="clickNotch"
-        />
+        <img src="@assets/haxplore/logo-text.svg" :class="$style.haxploreNotch" @click="clickNotch" />
       </router-link>
     </AppbarLayout>
     <div :class="$style.sidebar" ref="sidebar">
-      <SectionSidebar
-        v-bind="$attrs"
-        v-if="['md', 'lg', 'xl', 'xxl'].includes($mq)"
-      >
+      <SectionSidebar v-bind="$attrs" v-if="['md', 'lg', 'xl', 'xxl'].includes($mq)">
         <template v-for="slot in Object.keys($slots)">
           <slot :name="slot"></slot>
         </template>
       </SectionSidebar>
       <mq-layout :mq="['xs', 'sm']">
-        <Slide
-          :isOpen="isSidebarOpen"
-          @closeSideBar="onCloseSideBar"
-          :width="sideBarWidth"
-        >
+        <Slide :isOpen="isSidebarOpen" @closeSideBar="onCloseSideBar" :width="sideBarWidth">
           <ul :class="$style.sidebarList">
             <li :class="$style.link">
               <router-link to="/events">Events</router-link>
@@ -192,17 +165,17 @@ export default {
   components: {
     AppbarLayout,
     SectionSidebar,
-    Slide,
+    Slide
   },
   props: {
     haxplorePage: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   data() {
     return {
-      isSidebarOpen: false,
+      isSidebarOpen: false
     };
   },
   computed: {
@@ -215,7 +188,7 @@ export default {
     },
     isThemeLight() {
       return this.$store.getters.currentTheme === "light";
-    },
+    }
   },
   methods: {
     openSidebar() {
@@ -237,19 +210,18 @@ export default {
     },
     toggleTheme() {
       this.$store.dispatch("toggle_theme");
-    },
+    }
   },
   mounted() {
     const { doHideOnIdle } = this.$data;
     this.isSideNavigationIdle = false;
     if (doHideOnIdle) window.addEventListener("scroll", this.handleScroll);
     else window.removeEventListener("scroll", this.handleScroll);
-  },
+  }
 };
 </script>
 
 <style module lang="stylus">
-
 @require '~@styles/anims';
 
 .wrapper {

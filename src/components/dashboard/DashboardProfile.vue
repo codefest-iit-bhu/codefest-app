@@ -11,29 +11,26 @@
       <div :class="$style.about">
         <div :class="[$style.countdiv, is_verified]">
           <span :class="$style.reftext">Referral Count</span>
-          <span :class="$style.refcount" v-if="profile.is_verified">{{
+          <span :class="$style.refcount" v-if="profile.is_verified">
+            {{
             profile.referral_count
-          }}</span>
+            }}
+          </span>
           <span :class="$style.refcount" v-else>
             <i class="far fa-times-circle"></i>
           </span>
         </div>
         <div :class="$style.box" v-if="profile.is_verified">
-          <span :class="$style.keyRef">Referral Link</span>
-          <span
-            :class="$style.value"
-            v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
-          >
-            <router-link :to="routerLocation">{{
+          <span :class="$style.key">Referral Link</span>
+          <span :class="$style.value" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
+            <router-link :to="routerLocation">
+              {{
               profile.referral_code
-            }}</router-link>
+              }}
+            </router-link>
           </span>
           <span v-else></span>
-          <i
-            class="fas fa-clipboard"
-            :class="$style.copyIcon"
-            @click="clickToCopy"
-          ></i>
+          <i class="fas fa-clipboard" :class="$style.copyIcon" @click="clickToCopy"></i>
         </div>
         <p :class="$style.helptext" v-if="profile.is_verified">
           Share the above referral link with your contacts to win exciting
@@ -43,9 +40,7 @@
           Referral link disabled. Please verify your account first and refresh
           the page.
           <br />
-          <a href="javascript:void(0)" @click="resendVerification"
-            >Click here</a
-          >
+          <a href="javascript:void(0)" @click="resendVerification">Click here</a>
           to resend verification email.
         </p>
         <div :class="$style.profileinfo">
@@ -149,13 +144,13 @@ const ResponsiveTwoColumnLayout = () =>
 export default {
   components: {
     SectionLayout,
-    ResponsiveTwoColumnLayout,
+    ResponsiveTwoColumnLayout
   },
   data() {
     return {
       certificate: null,
       resume: null,
-      user_email: null,
+      user_email: null
     };
   },
   computed: {
@@ -179,33 +174,33 @@ export default {
       return {
         name: "~/login",
         query: {
-          referral: this.profile.referral_code,
-        },
+          referral: this.profile.referral_code
+        }
       };
-    },
+    }
   },
   props: {
     profile: {
       required: true,
-      type: Object,
-    },
+      type: Object
+    }
   },
   created() {
     API.fetch("certificate/")
       .then(({ data }) => {
         this.$data.certificate = data.url;
       })
-      .catch((e) => {
+      .catch(e => {
         this.$data.certificate = null;
       });
     API.fetch("resume/")
       .then(({ data }) => {
         this.resume = data.resume;
       })
-      .catch((e) => {
+      .catch(e => {
         this.resume = null;
       });
-    auth().onAuthStateChanged((user) => {
+    auth().onAuthStateChanged(user => {
       if (user) {
         this.user_email = user.email;
       }
@@ -217,7 +212,7 @@ export default {
       const referralShareLink = this.$router.resolve(this.routerLocation).href;
       copyToClipboard(`${SITE_URL}${referralShareLink}`);
       this.$toasted.global.success({
-        message: `Copied "${referralShareLink}"!`,
+        message: `Copied "${referralShareLink}"!`
       });
     },
     resendVerification() {
@@ -225,12 +220,12 @@ export default {
         .currentUser.sendEmailVerification()
         .then(() => {
           this.$toasted.global.success({
-            message: "Verification Link has been sent.",
+            message: "Verification Link has been sent."
           });
         })
-        .catch((err) => {
+        .catch(err => {
           this.$toasted.global.error_post({
-            message: err.message,
+            message: err.message
           });
         });
     },
@@ -241,19 +236,19 @@ export default {
       API.put("resume/", {
         body: resumeFile,
         headers: {
-          "Content-Type": undefined,
-        },
+          "Content-Type": undefined
+        }
       })
         .then(({ data }) => {
           const msg = "Your resume has been uploaded successfully!";
           this.$toasted.global.success({ message: msg });
           this.resume = data.resume;
         })
-        .catch((err) => {
+        .catch(err => {
           this.$toasted.global.error_post({ message: err.message });
         });
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -366,10 +361,9 @@ export default {
     &:hover {
       box-shadow: var(--inset-small-icon-shadow);
 
-      .linkText{
+      .linkText {
         color: var(--text-color);
       }
-
     }
 
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
@@ -396,11 +390,12 @@ export default {
         height: 50px;
         width: 60%;
         margin-left: 20%;
-        padding-top: 15px;
+        position: relative;
 
         .copyIcon {
+          padding: 12px;
           cursor: pointer;
-          margin-right: 30px;
+          margin-right: 15px;
           float: right;
         }
 
@@ -411,7 +406,7 @@ export default {
             font-weight: 700;
             font-family: 'Roboto Slab';
             $font-size: 24px;
-            padding: 20px 15px;
+            padding: 10px 15px 10px;
             height: 100%;
             color: $white;
             border-radius: inherit;
