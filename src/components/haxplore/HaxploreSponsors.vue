@@ -18,7 +18,7 @@
       <div :class="$style.buttonContainer">
         <div :class="$style.link">
           <a
-            href="https://drive.google.com/file/d/15BYqDZwShgFFqkgBPKqr0j-AcFF-_Umm"
+            href="https://drive.google.com/file/d/1ABFiTwX8Eb7w--0DOqpzJOPqjiE-WQ9D/view?usp=sharing"
             :class="[$style.linkText]"
             target="_blank"
           >
