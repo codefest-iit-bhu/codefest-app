@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "scope": "codefest-app",
+  "redirects": [
+    {
+      "source": "/robots.txt",
+      "destination": "/assets/robots.txt"
+    }
+  ]
+}
