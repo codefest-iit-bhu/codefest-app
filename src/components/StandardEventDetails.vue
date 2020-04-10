@@ -42,18 +42,18 @@
       recieve any prizes.
     </div>
 
-    <div :class="$style.register">
+    <!-- <div :class="$style.register">
       <h2>Registrations will be live soon.</h2>
-    </div>
+    </div> -->
 
-    <!-- <div :class="$style.link">
-      <router-link to="/dashboard/events/" v-if="!event.url" :class="$style.linkText">
+    <div :class="$style.link">
+      <router-link to="/dashboard/events/" :class="$style.linkText">
         <h4>Register</h4>
       </router-link>
-      <a v-else :href="event.url" target="_blank"  :class="$style.linkText">
+      <!-- <a v-else :href="event.url" target="_blank"  :class="$style.linkText">
         <h4>Problem Statement</h4>
-      </a>
-    </div> -->
+      </a> -->
+    </div>
   </div>
 </template>
 
@@ -89,6 +89,9 @@ export default {
       ],
     };
   },
+  mounted() {
+    console.log(this.event);
+  }
 };
 </script>
 
@@ -97,15 +100,17 @@ export default {
 
 .link {
   margin: auto;
+  margin-top: 30px;
   width: 290px;
   height: auto;
-  padding: 24px;
-  border-radius: 50px;
+  box-shadow: var(--box-shadow);
+  padding: 15px;
+  border-radius: 0px 30px 0px 30px;
   text-align: center;
   cursor: pointer;
 
   .linkText {
-    color: $vermilion;
+    color: $waterloo;
     display: inline;
     text-decoration: none;
 
@@ -117,7 +122,11 @@ export default {
   }
 
   &:hover {
-    box-shadow: inset 0px 0px 10px $vermilion;
+    box-shadow: var(--inset-box-shadow);
+
+    .linkText {
+      color: var(--text-color);
+    }
   }
 }
 
