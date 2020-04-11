@@ -180,7 +180,6 @@ export default {
   methods: {
     emailLogin() {
       this.loading = true;
-      this.isLogin = true;
       auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then((result) => {
@@ -206,14 +205,18 @@ export default {
               })
             )
             .catch((err) => {
-              this.$toasted.global.error_post({
-                message: err.message,
-              });
+                this.$toasted.global.error_post({
+                  message: err.message,
+                });
             });
         })
         .catch((err) => {
           this.loading = false;
-          this.$toasted.global.error_post({ message: err.message });
+          if (err.message == "The email address is already in use by another account.") {
+            this.emailLogin();
+          } else {
+            this.$toasted.global.error_post({ message: err.message });
+          }
         });
     },
     googleLogin() {
@@ -264,11 +267,11 @@ export default {
           this.onRedirectAuth(false);
         })
         .catch((_) => {
+          console.log(_);
           if (byEmail && this.isLogin) {
             this.loading = false;
             this.$toasted.global.error_post({ message: 'No such account exists, register first.' });
-          }
-          else {
+          } else {
             this.$recaptcha("login")
               .then((recaptchaToken) => {
                 this._register(idToken, name, this.referral, recaptchaToken)
