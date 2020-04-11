@@ -19,16 +19,30 @@
         provides the perfect platform for fresh enthusiasts, as well as the
         experienced ones, to code together and compete for ultimate glory.
       </p>
+      <div v-if="!isMinimal" :class="$style.buttonContainer">
+        <div :class="$style.link">
+          <router-link to="/login"
+            :class="[$style.linkText]"
+          >
+            <h4 v-if="!isLoggedIn">Register / Login</h4>
+            <h4 v-if="isLoggedIn">Dashboard</h4>
+          </router-link>
+        </div>
+      </div>
     </div>
+    
     <div :class="$style.video" slot="right">
       <youtube :video-id="videoId" ref="youtube" @playing="playing"></youtube>
     </div>
+
   </ResponsiveTwoColumnLayout>
 </template>
 
 <script>
 const ResponsiveTwoColumnLayout = () =>
   import("@components/layouts/ResponsiveTwoColumnLayout");
+  import { isMinimal } from "@js/utils";
+
 export default {
   components: {
     ResponsiveTwoColumnLayout,
@@ -47,6 +61,12 @@ export default {
     player() {
       return this.$refs.youtube.player;
     },
+    isMinimal() {
+      return isMinimal(this.$mq);
+    },
+    isLoggedIn(){
+      return this.$store.getters.isLoggedIn;
+    }
   },
 };
 </script>
@@ -72,5 +92,37 @@ export default {
     border-radius: 10px;
     width: 100%;
   }
+}
+.buttonContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+.link {
+    margin: 20px 20px 20px 20px;
+    width: 340px;
+    height: 120px;
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+    border-radius: 50px 0px 50px 0px;
+    text-align: center;
+    cursor: pointer;
+
+    .linkText {
+      display: inline-block;
+      text-decoration: none;
+      color: $waterloo;
+
+      h4 {
+        text-align: center;
+        position: relative;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        font-family: 'Roboto Slab';
+        $font-size: 30px;
+      }
+    }
 }
 </style>
