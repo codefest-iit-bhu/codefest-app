@@ -3,7 +3,7 @@
     <AppBar />
     <main :class="$style.wrapper">
       <div :class="$style.authContainer">
-        <TabLayout :tabs="tabs">
+        <TabLayout :tabs="tabs" @onToggleTab="onToggleTab">
           <div :class="$style.formContainer" slot="login">
             <BarLoader
               :loading="loading"
@@ -178,6 +178,13 @@ export default {
     };
   },
   methods: {
+    onToggleTab(tabIndex) {
+      if (tabIndex === 0) {
+        this.isLogin = true;
+      } else {
+        this.isLogin = false;
+      }
+    },
     emailLogin() {
       this.loading = true;
       auth()
@@ -192,7 +199,6 @@ export default {
     },
     emailRegister() {
       this.loading = true;
-      this.isLogin = false;
       auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then((result) => {

@@ -57,6 +57,7 @@ export default {
     toggleTab: function(index) {
       if (this.tabs.length * 130 > window.innerWidth) this.alignTab(index);
       this.currentTab = index;
+      this.$emit('onToggleTab', this.currentTab); 
     },
     tabStyle: function(index) {
       return {
