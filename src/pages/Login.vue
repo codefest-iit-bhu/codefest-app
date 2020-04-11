@@ -174,11 +174,13 @@ export default {
       ],
       loading: false,
       __stubbed: 0,
+      is_login: true,
     };
   },
   methods: {
     emailLogin() {
       this.loading = true;
+      this.is_login = true;
       auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then((result) => {
@@ -191,6 +193,7 @@ export default {
     },
     emailRegister() {
       this.loading = true;
+      this.is_login = false;
       auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then((result) => {
@@ -271,7 +274,10 @@ export default {
             })
             .catch((err) => {
               this.loading = false;
-              this.$toasted.global.error_post({ message: err.message });
+              if (this.is_login)
+                this.$toasted.global.error_post({ message: 'Please register first' });
+              else
+                this.$toasted.global.error_post({ message: err.message });
             });
         });
     },
