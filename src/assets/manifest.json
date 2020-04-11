@@ -1,6 +1,6 @@
 {
   "manifest_version": 1,
-  "version": "2020.1.0",
+  "version": "2020.2.0",
   "name": "CodeFest 2020",
   "short_name": "CF",
   "description": "Computer Science department fest organised at IIT (BHU), India.",
