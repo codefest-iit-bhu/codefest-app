@@ -6,7 +6,7 @@ export default {
       link: "/events/ctf",
       url: "https://www.hackerrank.com/codefest19-ctf",
       icon: "/assets/events/ctf.png",
-      description: "Capture The Flag (CTF) invites all hackers to show off their skills on a global platform. The problems have been designed taking into account recent technological advances in the field of cyber security and will capture the imagination of both beginners and expert hackers.This contest will let you learn and understand the importance of the security practises being followed across the globe and make you to come up with more exciting solutions to the existing security norms. So let’s get ready to explore the real world computer security arena",
+      description: "Capture The Flag (CTF) invites all hackers to show off their skills on a global platform. The problems have been designed taking into account recent technological advances in the field of cyber security and will capture the imagination of both beginners and expert hackers.This contest will let you learn and understand the importance of the security practises being followed across the globe and make you to come up with more exciting alleviations to the existing vulnerabilities in security norms. So let’s get ready to explore the real world computer security arena.",
       coordinators: [
         "Shivansh Saini - shivansh.saini.cse17@iitbhu.ac.in",
       ],
@@ -179,7 +179,7 @@ export default {
       link: "/events/perplexed",
       url: "https://www.hackerrank.com/perplexed-codefest19",
       icon: "/assets/events/perplexed.png",
-      description: "Perplexed is one of the most innovative events of Codefest, whose target is not only gauge a contestant's coding abilities, but also how one tackles different situations and constraints.The problemset will include all mind boggling coding problems, ranging from code obfuscation to stricter memory limits, character limits, time limits, etc.This contest will be an individual contest and the contest duration is 5 hours",
+      description: "Perplexed is one of the most innovative events of Codefest, whose target is not only to gauge a contestant's coding abilities, but to also test how one tackles different situations and constraints.The problemset will include all mind boggling coding problems, ranging from code obfuscation to stricter memory limits, character limits, time limits, etc.This contest will be an individual contest and the contest duration is 5 hours",
       coordinators: [
         "Pranav Dalal - pranavd.cd.cse17@iitbhu.ac.in",
         "Hritwik Singhai - hritwik.singhai.cse17@iitbhu.ac.in"
