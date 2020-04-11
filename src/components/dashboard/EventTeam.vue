@@ -36,7 +36,7 @@
             value=">"
             :class="$style.submit"
             :data-event-id="event.id"
-            @click="submitCreateTeam"
+            @mousedown="submitCreateTeam"
           >
             <i class="fas fa-arrow-circle-right"></i>
           </button>
@@ -69,7 +69,7 @@
             value=">"
             :class="$style.submit"
             :data-event-id="event.id"
-            @click="submitJoinTeam"
+            @mousedown="submitJoinTeam"
           >
             <i class="fas fa-arrow-circle-right"></i>
           </button>
