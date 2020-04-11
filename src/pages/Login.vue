@@ -205,14 +205,14 @@ export default {
               })
             )
             .catch((err) => {
-                this.$toasted.global.error_post({
-                  message: err.message,
-                });
+              this.$toasted.global.error_post({
+                message: err.message,
+              });
             });
         })
         .catch((err) => {
           this.loading = false;
-          if (err.message == "The email address is already in use by another account.") {
+          if (err.code === "auth/email-already-in-use") {
             this.emailLogin();
           } else {
             this.$toasted.global.error_post({ message: err.message });
