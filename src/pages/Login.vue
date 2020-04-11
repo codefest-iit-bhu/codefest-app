@@ -174,13 +174,13 @@ export default {
       ],
       loading: false,
       __stubbed: 0,
-      is_login: true,
+      isLogin: true,
     };
   },
   methods: {
     emailLogin() {
       this.loading = true;
-      this.is_login = true;
+      this.isLogin = true;
       auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then((result) => {
@@ -193,7 +193,7 @@ export default {
     },
     emailRegister() {
       this.loading = true;
-      this.is_login = false;
+      this.isLogin = false;
       auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then((result) => {
@@ -247,7 +247,8 @@ export default {
         .then((idToken) => {
           this.tryLoginAndRegister(
             idToken,
-            byEmail ? this.name : result.user.displayName
+            byEmail ? this.name : result.user.displayName,
+            byEmail
           );
         })
         .catch((err) => {
@@ -256,29 +257,31 @@ export default {
           result.user.delete();
         });
     },
-    tryLoginAndRegister(idToken, name) {
+    tryLoginAndRegister(idToken, name, byEmail) {
       this._login(idToken)
         .then((_) => {
           this.loading = false;
           this.onRedirectAuth(false);
         })
         .catch((_) => {
-          console.log(_);
-          this.$recaptcha("login")
-            .then((recaptchaToken) =>
-              this._register(idToken, name, this.referral, recaptchaToken)
-            )
-            .then((_) => {
-              this.loading = false;
-              this.onRedirectAuth(true);
-            })
-            .catch((err) => {
-              this.loading = false;
-              if (this.is_login)
-                this.$toasted.global.error_post({ message: 'Please register first' });
-              else
+          if (byEmail && this.isLogin) {
+            this.loading = false;
+            this.$toasted.global.error_post({ message: 'No such account exists, register first.' });
+          }
+          else {
+            this.$recaptcha("login")
+              .then((recaptchaToken) => {
+                this._register(idToken, name, this.referral, recaptchaToken)
+              })
+              .then((_) => {
+                this.loading = false;
+                this.onRedirectAuth(true);
+              })
+              .catch((err) => {
+                this.loading = false;
                 this.$toasted.global.error_post({ message: err.message });
-            });
+              });
+          }
         });
     },
     _login(idToken) {
