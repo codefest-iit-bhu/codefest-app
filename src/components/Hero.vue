@@ -32,9 +32,9 @@
         </div>
         <div :class="$style.cftext">
           <span :class="$style.smalltagline" ref="tagline"></span>
-          <!--<p :class="$style.loc">
+          <p :class="$style.loc">
 	            <i class="fas fa-map-marked-alt"></i> IIT (BHU), Varanasi
-          </p>-->
+          </p>
         </div>
         <div :class="$style.linkbtn" v-if="!$store.getters.isLoggedIn">
           <router-link to="/login">
