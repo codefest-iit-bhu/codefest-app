@@ -205,6 +205,8 @@ export default {
     },
     submitCreateTeam() {
       this.startLoading();
+      const textBoxId = `${this.event.name}__teamName`;
+      this.teamName = document.getElementById(textBoxId).value;
       this.$store
         .dispatch("createEventTeam", {
           eventId: this.event.id,
@@ -221,6 +223,8 @@ export default {
     },
     submitJoinTeam() {
       this.startLoading();
+      const textBoxId = `${this.event.name}__accessCode`;
+      this.accessCode = document.getElementById(textBoxId).value;
       this.$store
         .dispatch("joinEventTeam", { accessCode: this.accessCode })
         .then(({ data }) => {
