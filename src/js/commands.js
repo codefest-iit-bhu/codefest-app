@@ -53,7 +53,7 @@ class BaseOutput extends Object {
 
 class NullOutput extends Object {
   html() {
-    return null
+    return null;
   }
 }
 
@@ -134,7 +134,7 @@ class ClearCommand extends BaseCommand {
 
   run() {
     terminal.clearHistory();
-    return new NullOutput()
+    return new NullOutput();
   }
 }
 
