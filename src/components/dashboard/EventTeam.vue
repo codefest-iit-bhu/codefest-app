@@ -26,7 +26,6 @@
             type="text"
             :class="[$style.field]"
             placeholder="Team Name"
-            @blur="inputBtnBlur"
             @keyup="collectInput"
             :data-button-target="`${event.name}__createTeam`"
             v-model="teamName"
@@ -36,7 +35,7 @@
             value=">"
             :class="$style.submit"
             :data-event-id="event.id"
-            @mousedown="submitCreateTeam"
+            @click="submitCreateTeam"
           >
             <i class="fas fa-arrow-circle-right"></i>
           </button>
@@ -61,7 +60,6 @@
             :data-button-target="`${event.name}__joinTeam`"
             placeholder="Access Code"
             v-model="accessCode"
-            @blur="inputBtnBlur"
             @keyup="collectInput"
             :id="`${event.name}__accessCode`"
           />
@@ -69,7 +67,7 @@
             value=">"
             :class="$style.submit"
             :data-event-id="event.id"
-            @mousedown="submitJoinTeam"
+            @click="submitJoinTeam"
           >
             <i class="fas fa-arrow-circle-right"></i>
           </button>
@@ -125,7 +123,7 @@
 
 <script>
 import { copyToClipboard } from "@js/utils";
-
+import eventsStore from "@store/events";
 import { BounceLoader } from "@saeris/vue-spinners";
 
 export default {
@@ -174,6 +172,15 @@ export default {
     },
   },
   methods: {
+    closeOtherButtons(btn, clickedBtn) {
+      if (btn && btn !== clickedBtn) {
+        btn.style.animation = "none";
+        btn.classList.remove(this.$style.animateHideBtn);
+        // Trigger reflow of element to restart CSS animation (source: https://stackoverflow.com/a/45036752/10623486)
+        btn.offsetWidth;
+        btn.style.animation = null;
+      }
+    },
     displayBtnClick(e) {
       const { target: btn } = e;
       const inputId = btn.getAttribute("data-input-target");
@@ -183,16 +190,12 @@ export default {
       // Trigger reflow of element to restart CSS animation (source: https://stackoverflow.com/a/45036752/10623486)
       btn.offsetWidth;
       btn.style.animation = null;
-    },
-    inputBtnBlur(e) {
-      const btnId = e.target.getAttribute("data-button-target");
-
-      const btn = document.getElementById(btnId);
-      btn.style.animation = "none";
-      btn.classList.remove(this.$style.animateHideBtn);
-      // Trigger reflow of element to restart CSS animation (source: https://stackoverflow.com/a/45036752/10623486)
-      btn.offsetWidth;
-      btn.style.animation = null;
+      eventsStore.events.forEach((event) => {
+        const createTeamBtn = document.getElementById(`${event.name}__createTeam`);
+        const joinTeamBtn = document.getElementById(`${event.name}__joinTeam`);
+        this.closeOtherButtons(createTeamBtn, btn);
+        this.closeOtherButtons(joinTeamBtn, btn);
+      })
     },
     collectInput(e) {
       if (e.keyCode == 13) {
