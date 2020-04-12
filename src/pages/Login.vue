@@ -3,7 +3,7 @@
     <AppBar />
     <main :class="$style.wrapper">
       <div :class="$style.authContainer">
-        <TabLayout :tabs="tabs">
+        <TabLayout :tabs="tabs" @onToggleTab="onToggleTab">
           <div :class="$style.formContainer" slot="login">
             <BarLoader
               :loading="loading"
@@ -174,9 +174,17 @@ export default {
       ],
       loading: false,
       __stubbed: 0,
+      isLogin: true,
     };
   },
   methods: {
+    onToggleTab(tabIndex) {
+      if (tabIndex === 0) {
+        this.isLogin = true;
+      } else {
+        this.isLogin = false;
+      }
+    },
     emailLogin() {
       this.loading = true;
       auth()
@@ -210,7 +218,11 @@ export default {
         })
         .catch((err) => {
           this.loading = false;
-          this.$toasted.global.error_post({ message: err.message });
+          if (err.code === "auth/email-already-in-use") {
+            this.emailLogin();
+          } else {
+            this.$toasted.global.error_post({ message: err.message });
+          }
         });
     },
     googleLogin() {
@@ -244,7 +256,8 @@ export default {
         .then((idToken) => {
           this.tryLoginAndRegister(
             idToken,
-            byEmail ? this.name : result.user.displayName
+            byEmail ? this.name : result.user.displayName,
+            byEmail
           );
         })
         .catch((err) => {
@@ -253,7 +266,7 @@ export default {
           result.user.delete();
         });
     },
-    tryLoginAndRegister(idToken, name) {
+    tryLoginAndRegister(idToken, name, byEmail) {
       this._login(idToken)
         .then((_) => {
           this.loading = false;
@@ -261,18 +274,23 @@ export default {
         })
         .catch((_) => {
           console.log(_);
-          this.$recaptcha("login")
-            .then((recaptchaToken) =>
-              this._register(idToken, name, this.referral, recaptchaToken)
-            )
-            .then((_) => {
-              this.loading = false;
-              this.onRedirectAuth(true);
-            })
-            .catch((err) => {
-              this.loading = false;
-              this.$toasted.global.error_post({ message: err.message });
-            });
+          if (byEmail && this.isLogin) {
+            this.loading = false;
+            this.$toasted.global.error_post({ message: 'No such account exists, register first.' });
+          } else {
+            this.$recaptcha("login")
+              .then((recaptchaToken) => {
+                this._register(idToken, name, this.referral, recaptchaToken)
+              })
+              .then((_) => {
+                this.loading = false;
+                this.onRedirectAuth(true);
+              })
+              .catch((err) => {
+                this.loading = false;
+                this.$toasted.global.error_post({ message: err.message });
+              });
+          }
         });
     },
     _login(idToken) {
