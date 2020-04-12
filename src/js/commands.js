@@ -51,6 +51,12 @@ class BaseOutput extends Object {
   }
 }
 
+class NullOutput extends Object {
+  html() {
+    return null
+  }
+}
+
 class ColumnOutput extends BaseOutput {
   processData(envs) {
     let vue = envs.vue;
@@ -128,10 +134,7 @@ class ClearCommand extends BaseCommand {
 
   run() {
     terminal.clearHistory();
-    return new BaseOutput(
-      `clear`,
-      this.envs
-    );
+    return new NullOutput()
   }
 }
 
