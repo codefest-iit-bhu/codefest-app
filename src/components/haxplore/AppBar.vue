@@ -1,31 +1,16 @@
 <template>
   <div :class="[$style.wrapper, $style[$mq]]">
     <AppbarLayout v-bind="this.$attrs">
-      <li
-        :id="$style.toggleSidebar"
-        slot="left"
-        v-if="['xs', 'sm'].includes(this.$mq)"
-      >
+      <li :id="$style.toggleSidebar" slot="left" v-if="['xs', 'sm'].includes(this.$mq)">
         <a class="bm-toggle" @click="openSidebar">
           <i class="fa fa-bars"></i>
         </a>
       </li>
 
-      <li
-        :class="$style.link"
-        slot="right"
-        v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
-      >
-        <a @click="toggleTheme">
-          <i v-if="isThemeLight" class="fa fa-sun"></i>
-          <i v-else class="fa fa-moon fa-xs"></i>
-        </a>
-      </li>
-
-      <li v-else :id="$style.toggleTheme" slot="right">
-        <a @click="toggleTheme">
-          <i v-if="isThemeLight" class="fa fa-sun"></i>
-          <i v-else class="fa fa-moon fa-xs"></i>
+      <li :class="$style.link" @click="toggleTheme" slot="right">
+        <a :class="$style.toggleTheme">
+          <img v-if="isThemeLight" :id="$style.sun" src="assets/sun-white.svg" />
+          <img v-else :id="$style.moon" src="assets/moon-white.svg" />
         </a>
       </li>
 
@@ -49,23 +34,13 @@
       </router-link>
     </AppbarLayout>
     <div :class="$style.sidebar" ref="sidebar">
-      <SectionSidebar
-        v-bind="$attrs"
-        v-if="['md', 'lg', 'xl', 'xxl'].includes($mq)"
-      >
+      <SectionSidebar v-bind="$attrs" v-if="['md', 'lg', 'xl', 'xxl'].includes($mq)">
         <slot></slot>
       </SectionSidebar>
       <mq-layout :mq="['xs', 'sm']">
-        <Slide
-          :isOpen="isSidebarOpen"
-          @closeSideBar="onCloseSideBar"
-          :width="sideBarWidth"
-        >
+        <Slide :isOpen="isSidebarOpen" @closeSideBar="onCloseSideBar" :width="sideBarWidth">
           <router-link to="/">
-            <img
-              src="@assets/white-cf20-logo.svg"
-              :class="$style.sidebarLogo"
-            />
+            <img src="@assets/white-cf20-logo.svg" :class="$style.sidebarLogo" />
           </router-link>
           <!-- <ul v-scroll-spy-active="{class: $style.active}" v-scroll-spy-link>
             <slot></slot>
@@ -80,22 +55,18 @@
             <li :class="$style.link">
               <router-link to="/haxplore">
                 HaXplore
-                <span
-                  class="fa fa-circle fa-xs"
-                  :class="$style.awesome"
-                  aria-hidden="true"
-                ></span>
+                <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
               </router-link>
             </li>
             <!-- <li :class="$style.link">
               <router-link to="/ca">CA</router-link>
-            </li> -->
+            </li>-->
             <!-- <li :class="$style.link">
               <router-link to="/team">Team</router-link>
-            </li> -->
+            </li>-->
             <!-- <li :class="$style.link">
               <router-link to="/referral">Referrals</router-link>
-            </li> -->
+            </li>-->
             <li :class="$style.link" v-show="showDashboardActions">
               <router-link to="/dashboard">
                 Dashboard
@@ -185,7 +156,7 @@ export default {
 @require '~@styles/anims';
 
 .wrapper {
- .link {
+  .link {
     margin-top: 5px;
 
     a {
@@ -212,20 +183,30 @@ export default {
     }
   }
 
-  #toggleTheme{
-    margin: 5px 10px;
+  .toggleTheme {
+    margin: -5px;
 
-    a {
-      transition: 0.5s;
-      color: $waterloo;
-    }
-    a:hover {
-      color: var(--text-color);
+    #sun {
+      height: 1.2em;
+      position: relative;
+      top: 3px;
     }
 
+    #moon {
+      height: 1em;
+      position: relative;
+      top: 3px;
+    }
+
+    ~/.xs #sun, ~/.sm #sun {
+      height: 1.5em;
+    }
+
+    ~/.xs #moon, ~/.sm #moon {
+      height: 1.3em;
+      top: 2px;
+    }
   }
-
-
 
   .appbarLogo {
     display: inline-block;
