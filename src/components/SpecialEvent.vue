@@ -20,7 +20,7 @@
       </div>
     </div>
     <div :class="$style.note">
-      Note: People not registered on CodeFest are not eligible to recieve any
+      Note: People not registered on CodeFest are not eligible to receive any
       prizes.
     </div>
   </div>
