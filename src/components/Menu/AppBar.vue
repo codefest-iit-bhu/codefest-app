@@ -30,9 +30,7 @@
         </router-link>
       </li>-->
       <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
-        <router-link to="/referral">
-          Referrals
-        </router-link>
+        <router-link to="/referral">Referrals</router-link>
       </li>
       <li
         :class="$style.link"
@@ -75,17 +73,10 @@
         <router-link to="/login">Login / Register</router-link>
       </li>
 
-      <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
-        <a @click="toggleTheme">
-          <i v-if="isThemeLight" class="fa fa-sun"></i>
-          <i v-else class="fa fa-moon fa-xs"></i>
-        </a>
-      </li>
-
-      <li v-else :id="$style.toggleTheme" slot="right">
-        <a @click="toggleTheme">
-          <i v-if="isThemeLight" class="fa fa-sun"></i>
-          <i v-else class="fa fa-moon fa-xs"></i>
+      <li :class="$style.link" @click="toggleTheme" slot="right">
+        <a :class="$style.toggleTheme">
+          <img v-if="isThemeLight" :id="$style.sun" src="assets/sun-white.svg" />
+          <img v-else :id="$style.moon" src="assets/moon-white.svg" />
         </a>
       </li>
 
@@ -280,16 +271,29 @@ export default {
     }
   }
 
-  #toggleTheme {
-    margin: 5px 10px;
+  .toggleTheme {
+    margin: -5px;
 
-    a {
-      color: $waterloo;
-      $font-size: 25px;
+    #sun {
+      height: 1.2em;
+      position: relative;
+      top: 3px;
+      fill: blue !important;
     }
 
-    a:hover {
-      color: var(--text-color);
+    #moon {
+      height: 1em;
+      position: relative;
+      top: 3px;
+    }
+
+    ~/.xs #sun, ~/.sm #sun {
+      height: 1.5em;
+    }
+
+    ~/.xs #moon, ~/.sm #moon {
+      height: 1.3em;
+      top: 2px;
     }
   }
 
