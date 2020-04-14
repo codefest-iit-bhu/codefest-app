@@ -1,0 +1,57 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "pwa build && rm build/*.map && rm build/*.map.gz",
+    "start": "sirv build -s",
+    "watch": "pwa watch"
+  },
+  "dependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@saeris/vue-spinners": "^1.0.8",
+    "anchorme": "^1.1.2",
+    "firebase": "^7.7.0",
+    "frisbee": "^2.0.8",
+    "ganalytics": "^3.1.1",
+    "sirv-cli": "^0.2.0",
+    "vue": "~2.6.7",
+    "vue-carousel": "^0.18.0",
+    "vue-mq": "^1.0.1",
+    "vue-recaptcha-v3": "^1.4.0",
+    "vue-router": "~3.0.0",
+    "vue-template-compiler": "~2.6.7",
+    "vue-toasted": "^1.1.26",
+    "vue-youtube": "^1.3.4",
+    "vue2-scrollspy": "^2.3.1",
+    "vuex": "^3.1.0"
+  },
+  "devDependencies": {
+    "@pwa/cli": "latest",
+    "@pwa/plugin-brotli": "latest",
+    "@pwa/plugin-gzip": "latest",
+    "@pwa/preset-vue": "latest",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babelify": "^10.0.0",
+    "eslint": "^5.12.1",
+    "eslint-loader": "^2.1.1",
+    "stylus": "^0.54.0",
+    "stylus-loader": "^3.0.0",
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.3.1",
+    "workbox-webpack-plugin": "^5.1.2"
+  },
+  "browserslist": [
+    ">0.25%",
+    "last 1 version",
+    "not ie_mob 11",
+    "not ie 11",
+    "not dead"
+  ],
+  "name": "codefest",
+  "version": "2020.2.0",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

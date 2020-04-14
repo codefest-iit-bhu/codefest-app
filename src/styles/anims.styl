@@ -1,0 +1,139 @@
+@keyframes blink {
+  from {
+    opacity 0
+  }
+  to {
+    opacity 1
+  }
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
+}
+
+@keyframes neon-text {
+  from {
+    text-shadow: 0 0 2.5px $white, 0 0 5px $white, 0 0 7.5px $white, 0 0 10px $white, 0 0 12.5px $white, 0 0 15px $marauder-brown, 0 0 25px $marauder-brown;
+  }
+
+  to {
+    text-shadow: 0 0 1px $white, 0 0 2px $white, 0 0 3px $white, 0 0 4px $white, 0 0 5px $white, 0 0 6px $marauder-brown, 0 0 10px $marauder-brown;
+  }
+}
+
+@keyframes neon-text-white {
+  from {
+    text-shadow: 0 0 2.5px $midnight-green, 0 0 5px $midnight-green, 0 0 7.5px $white, 0 0 10px $white, 0 0 12.5px $white, 0 0 15px $white, 0 0 25px $white;
+  }
+
+  to {
+    text-shadow: 0 0 1px $midnight-green, 0 0 2px $midnight-green, 0 0 3px $white, 0 0 4px $white, 0 0 5px $white, 0 0 6px $white, 0 0 10px $white;
+  }
+}
+
+@keyframes neon-box {
+  from {
+    box-shadow: 0 0 15px $white, 0 0 17.5px $white, 0 0 10px $orange, 0 0 52.5px $orange, 0 0 55px $darkorange, 0 0 70px $darkorange, 0 0 90px $darkorange;
+  }
+
+  to {
+    box-shadow: 0 0 1px $white, 0 0 2px $white, 0 0 3px $white, 0 0 6px $white, 0 0 8px $orange, 0 0 12px $orange, 0 0 20px $darkorange, 0 0 30px $darkorange, 0 0 55px $darkorange, 0 0 70px $darkorange;
+  }
+}
+
+@keyframes timeline-border-green {
+  from {
+    box-shadow: 0 0 0 2px alpha($vermilion, 0.5)
+  }
+
+  to {
+    box-shadow: 0 0 0 5px alpha($vermilion, 0.5)
+  }
+}
+
+@keyframes timeline-border-white {
+  from {
+    box-shadow: 0 0 0 2px alpha($white, 0.5)
+  }
+
+  to {
+    box-shadow: 0 0 0 5px alpha($white, 0.5)
+  }
+}
+
+@keyframes timeline-border-full {
+  from {
+    box-shadow: 0 0 0 10px alpha($vermilion, 0.7)
+  }
+
+  to {
+    box-shadow: 0 0 0 20px alpha($vermilion, 0.7)
+  }
+}
+
+@keyframes svg-transform {
+  from,{
+    fill: $vermilion;
+    stroke-width: 1px;
+    stroke: $vermilion;
+  }
+
+  to{
+    fill: transparent;
+    stroke: $vermilion;
+    stroke-width: 5px;
+  }
+}
+
+@keyframes svg-transform-hero {
+  from,{
+    fill: var(--hero-text-color);
+    stroke-width: 1px;
+    stroke: var(--hero-text-color);
+  }
+
+  to{
+    fill: transparent;
+    stroke: var(--hero-text-color);
+    stroke-width: 5px;
+  }
+}
+
+
+
+@keyframes ContentFadeIn {
+  0% {
+    transform: translateY(-1rem);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes ImageFadeIn {
+  0% {
+    transform: translate(-0.5rem, -0.5rem) scale(1.05);
+    opacity: 0;
+    filter: blur(2px);
+  }
+
+  50% {
+    opacity: 1;
+    filter: blur(2px);
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+}

@@ -1,0 +1,22 @@
+[[redirects]]
+  # For our Rest API.
+  from = "/api/*"
+  to = "https://api.codefest.tech/:splat"
+  status = 200
+
+[[redirects]]
+  # For robots.txt
+  from = "/robots.txt"
+  to = "/assets/robots.txt"
+  status = 200
+
+[[redirects]]
+  # For our VueJs SPA.
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "no-cache, must-revalidate"
