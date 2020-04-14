@@ -143,8 +143,5 @@ export default {
     }
   }
 
-  &.md, &.lg {
-    background: linear-gradient(to right, alpha($mine-shaft, 0.8), alpha($mine-shaft, 0.1));
-  }
 }
 </style>
