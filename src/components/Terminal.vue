@@ -59,7 +59,7 @@ export default {
       shouldShow: true,
       isShown: false,
       isHelpShown: false,
-      angle: 0,
+      angle: 180,
       historyItems: terminal.getHistory(),
       pwd: [],
     };
@@ -134,7 +134,6 @@ export default {
       this.showTerminal();
     },
     toggleShowTerminal() {
-      this.shouldShow = !this.shouldShow;
       if (this.shouldShow) {
         TweenLite.to(this.$data, 0.35, { angle: 0 });
         this.showTerminal();
@@ -148,6 +147,8 @@ export default {
         this.hideTerminal();
         this.changeTerminalState(false);
       }
+      this.shouldShow = !this.shouldShow;
+
     },
     blurTerminalInput(e) {
       setTimeout(() => {
