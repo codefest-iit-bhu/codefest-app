@@ -124,5 +124,13 @@ export default {
         $font-size: 30px;
       }
     }
+
+  &:hover {
+    box-shadow: var(--inset-box-shadow);
+
+    .linkText {
+      color: var(--text-color);
+    }
+  }
 }
 </style>
