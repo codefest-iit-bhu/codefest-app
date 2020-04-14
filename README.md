@@ -33,10 +33,4 @@ Source code for the frontend of Codefest 2020 PWA app. Uses Vue.Js library to de
 
 ### Hall of Fame
 
-<<<<<<< HEAD
-Backend is built using Django Web Framework, and its code is in the **backend** branch.
-Frontend is built using Vue.Js Framework, and its code is in the **frontend** branch.
-
-=======
 [![](https://sourcerer.io/fame/shivanshs9/codefest-iit-bhu/codefest-app/images/0)](https://sourcerer.io/fame/shivanshs9/codefest-iit-bhu/codefest-app/links/0)[![](https://sourcerer.io/fame/shivanshs9/codefest-iit-bhu/codefest-app/images/1)](https://sourcerer.io/fame/shivanshs9/codefest-iit-bhu/codefest-app/links/1)[![](https://sourcerer.io/fame/shivanshs9/codefest-iit-bhu/codefest-app/images/2)](https://sourcerer.io/fame/shivanshs9/codefest-iit-bhu/codefest-app/links/2)[![](https://sourcerer.io/fame/shivanshs9/codefest-iit-bhu/codefest-app/images/3)](https://sourcerer.io/fame/shivanshs9/codefest-iit-bhu/codefest-app/links/3)[![](https://sourcerer.io/fame/shivanshs9/codefest-iit-bhu/codefest-app/images/4)](https://sourcerer.io/fame/shivanshs9/codefest-iit-bhu/codefest-app/links/4)[![](https://sourcerer.io/fame/shivanshs9/codefest-iit-bhu/codefest-app/images/5)](https://sourcerer.io/fame/shivanshs9/codefest-iit-bhu/codefest-app/links/5)[![](https://sourcerer.io/fame/shivanshs9/codefest-iit-bhu/codefest-app/images/6)](https://sourcerer.io/fame/shivanshs9/codefest-iit-bhu/codefest-app/links/6)[![](https://sourcerer.io/fame/shivanshs9/codefest-iit-bhu/codefest-app/images/7)](https://sourcerer.io/fame/shivanshs9/codefest-iit-bhu/codefest-app/links/7)
->>>>>>> 70f523760460c1b839f97d420216b23a3154d34d
