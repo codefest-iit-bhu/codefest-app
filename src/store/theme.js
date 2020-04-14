@@ -8,13 +8,23 @@ function saveThemePreference(theme) {
   localStorage.setItem(KEY_THEME, theme);
 }
 
+function getThemeAccordingToCurrentTime() {
+  const today = new Date();
+  const currentHour = today.getHours();
+  return (currentHour <= 19 && currentHour >= 5) ? "light" : "dark";
+}
+
 export default {
   state: {
-    theme: loadThemePreference() || "light"
+    theme: loadThemePreference() || getThemeAccordingToCurrentTime(),
+    inTransition: false
   },
   getters: {
     currentTheme: state => {
       return state.theme;
+    },
+    inTransition: state => {
+      return state.inTransition;
     }
   },
   mutations: {
@@ -26,6 +36,10 @@ export default {
   actions: {
     toggle_theme({ state, commit }) {
       commit("TOGGLE_THEME");
+      state.inTransition = true;
+      setTimeout(() => {
+        state.inTransition = false;
+      }, 400);
     }
   }
 };
