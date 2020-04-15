@@ -86,6 +86,7 @@ export default {
   },
   mounted() {
     this.pwd = navigation.getPwdFromCurrent(this.current);
+    this.$nextTick(() => this.$emit("init"));
   },
   watch: {
     current: function(newValue, oldValue) {

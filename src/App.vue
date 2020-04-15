@@ -10,6 +10,7 @@
       v-model="terminalExpanded"
       ref="terminal"
       v-if="shouldShowTerminal"
+      @init="showTerminal"
       @onTerminalStateChanged="terminalStateChanged"
     />
   </div>
@@ -50,7 +51,11 @@ export default {
   methods: {
     showTerminal() {
       const { terminal } = this.$refs;
-      if (!terminal) return;
+      if (!terminal) {
+        console.log("Bye");
+        return;
+      };
+      console.log("No Bye");
       if (this.$route.meta.animateTerminal) terminal.animateScrollShow();
       else terminal.noAnimateScrollShow();
     },
@@ -63,6 +68,7 @@ export default {
       if (to === from) return;
       this.current = to.path;
       this.$nextTick(() => {
+        console.log("Hi");
         this.showTerminal();
       });
     },
