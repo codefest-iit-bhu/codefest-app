@@ -51,10 +51,7 @@ export default {
   methods: {
     showTerminal() {
       const { terminal } = this.$refs;
-      if (!terminal) {
-        console.log("Bye");
-        return;
-      };
+      if (!terminal) return;
       console.log("No Bye");
       if (this.$route.meta.animateTerminal) terminal.animateScrollShow();
       else terminal.noAnimateScrollShow();
@@ -68,7 +65,6 @@ export default {
       if (to === from) return;
       this.current = to.path;
       this.$nextTick(() => {
-        console.log("Hi");
         this.showTerminal();
       });
     },
