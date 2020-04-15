@@ -52,7 +52,6 @@ export default {
     showTerminal() {
       const { terminal } = this.$refs;
       if (!terminal) return;
-      console.log("No Bye");
       if (this.$route.meta.animateTerminal) terminal.animateScrollShow();
       else terminal.noAnimateScrollShow();
     },
