@@ -51,7 +51,7 @@ class BaseOutput extends Object {
   }
 }
 
-class NullOutput extends Object {
+class NullOutput extends BaseOutput {
   html() {
     return null;
   }
