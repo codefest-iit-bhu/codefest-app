@@ -86,6 +86,7 @@ export default {
   },
   mounted() {
     this.pwd = navigation.getPwdFromCurrent(this.current);
+    this.$nextTick(() => this.$emit("init"));
   },
   watch: {
     current: function(newValue, oldValue) {
@@ -159,7 +160,7 @@ export default {
       const { cli } = this.$refs;
       if (!cli) return;
       const input = cli.input;
-      terminal.addToHistory(this.pwd, status, input, output);
+      if(output !== null)terminal.addToHistory(this.pwd, status, input, output);
       this.$refs.cli.clearInput();
       this.scrollToBottom();
     },

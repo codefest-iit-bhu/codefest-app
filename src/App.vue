@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="$style.app"
+    :class="[$style.app, themeTransitionStyle]"
     :data-theme="currentTheme"
     :style="`padding-bottom: ${this.appBottomPadding}`"
   >
@@ -10,6 +10,7 @@
       v-model="terminalExpanded"
       ref="terminal"
       v-if="shouldShowTerminal"
+      @init="showTerminal"
       @onTerminalStateChanged="terminalStateChanged"
     />
   </div>
@@ -43,6 +44,9 @@ export default {
     currentTheme: function() {
       return this.$store.getters.currentTheme;
     },
+    themeTransitionStyle: function() {
+      return this.$store.getters.inTransition ? this.$style.themeTransition : null;
+    }
   },
   methods: {
     showTerminal() {
@@ -88,5 +92,9 @@ export default {
   background: var(--background-color);
   height: 100%;
   width: 100%;
+}
+
+.themeTransition {
+  transition: all 0.4s !important;
 }
 </style>
