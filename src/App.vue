@@ -10,6 +10,7 @@
       v-model="terminalExpanded"
       ref="terminal"
       v-if="shouldShowTerminal"
+      @init="showTerminal"
       @onTerminalStateChanged="terminalStateChanged"
     />
   </div>
