@@ -118,30 +118,12 @@ export default {
         cursor: pointer;
 
         span {
-          color: $white;
+          // color: $white;
           $font-size: 14px;
           margin-right: 5px;
-        }
-
-        &:hover {
-          background: unset;
-          color: $vermilion;
-        }
-      }
-
-      &.active {
-        a {
-          color: $vermilion;
-          font-weight: bold;
-
-          span {
-            color: $white;
-            animation: neon-text 1s ease-in-out infinite alternate;
-          }
         }
       }
     }
   }
-
 }
 </style>

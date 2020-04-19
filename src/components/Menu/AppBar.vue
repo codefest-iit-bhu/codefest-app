@@ -333,7 +333,6 @@ export default {
 
         a, .subList a {
           font: 500 15px 'Roboto Slab';
-          color: $white;
           text-decoration: none;
           cursor: pointer;
           padding: 10px;
@@ -344,22 +343,6 @@ export default {
             color: $waterloo;
             $font-size: 14px;
             border-radius: 100%;
-          }
-
-          &:hover {
-            color: $vermilion;
-          }
-        }
-
-        &.active, .subList li.active {
-          a {
-            color: $vermilion;
-            font-weight: bold;
-
-            span {
-              color: $white;
-              animation: neon-text 1s ease-in-out infinite alternate;
-            }
           }
         }
       }

@@ -72,7 +72,6 @@ export default {
 </script>
 
 <style module lang="stylus">
-
 @require '~@styles/anims';
 
 .root {
@@ -87,14 +86,12 @@ export default {
     padding: 100px 0;
   }
 
-  .active {
-    a {
-      color: $vermilion;
-      font-weight: bold;
-
-      span {
-        color: $white;
-        animation: neon-text 1s ease-in-out infinite alternate;
+  li {
+    &.active {
+      a {
+        span {
+          color: var(--text-color) !important;
+        }
       }
     }
   }
