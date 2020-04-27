@@ -621,5 +621,6 @@
     {"id":620, "name": "ZAKIR HUSSAIN COLLEGE OF ENGINEERING AND TECHNOLOGY, AMU"},
     {"id":621,"name": "BLDEA'S ENGINEERING COLLEGE, VIJAYAPUR"},
     {"id":622,"name": "MAHATMA GANDHI INSTITUTE OF TECHNOLOGY, HYDERABAD"},
-    {"id":623, "name": "OTHER INSTITUTE"}
+    {"id":623, "name": "IIIT RANCHI"},
+    {"id":624, "name": "OTHER INSTITUTE"}
 ]
