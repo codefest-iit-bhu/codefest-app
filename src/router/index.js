@@ -154,6 +154,17 @@ const router = new Router({
       },
     },
     {
+      name: "~/privacy",
+      path: "/privacy",
+      component: () => import(`@pages/Privacy`),
+      meta: {
+        title: "Privacy Policy | Codefest",
+        metaTags: [],
+        noTerminal: true,
+        requiresAuth: false,
+      },
+    },
+    {
       name: "404",
       path: "/*",
       component: () => import(`@pages/404`),
