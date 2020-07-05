@@ -26,9 +26,9 @@
       <p> The app does use third-party services that may collect information used to identify you. Link to the privacy policy of third party service providers used by the app:</p>
 
       <ul>
-          <li><a href="https://www.google.com">Google </a></li>
-          <li><a href="https://www.google.com">Facebook </a></li>
-          <li><a href="https://www.google.com">Github </a></li>
+          <li><a href="https://policies.google.com/privacy/">Google </a></li>
+          <li><a href="https://www.facebook.com/about/privacy/">Facebook </a></li>
+          <li><a href="https://enterprise.github.com/privacy">Github </a></li>
       </ul>
 
       <br />
