@@ -5,6 +5,7 @@
         <img src="@assets/white-cf20-logo.svg" />
       </div>
       <p>Copyright © CodeFest'20</p>
+      <p><a href="/privacy">Privacy Policy</a></p>
     </div>
     <i :class="$style.heart" />
     <span :class="$style.socialIcons">
