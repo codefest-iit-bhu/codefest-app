@@ -281,14 +281,14 @@ export default {
             this.$recaptcha("login")
               .then((recaptchaToken) => {
                 this._register(idToken, name, this.referral, recaptchaToken)
-              })
-              .then((_) => {
-                this.loading = false;
-                this.onRedirectAuth(true);
-              })
-              .catch((err) => {
-                this.loading = false;
-                this.$toasted.global.error_post({ message: err.message });
+                .then((_) => {
+                  this.loading = false;
+                  this.onRedirectAuth(true);
+                })
+                .catch((err) => {
+                  this.loading = false;
+                  this.$toasted.global.error_post({ message: err.message });
+                });
               });
           }
         });
