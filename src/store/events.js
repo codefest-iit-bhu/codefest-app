@@ -101,40 +101,6 @@ export default {
       ]
     },
     {
-      name: "mathmania",
-      title: "Mathmania",
-      summary: "Push your limits and gear up your brain by solving some challenging mathematical problems.",
-      description: "Mathmania is a programming contest wherein a contestant is put to test his mathematical reasoning. Although Mathematical insights and tricks would help you find the logic in the problem, programming will be your way out for the full solution. Mathmania brings a delectable collection of problems which we guarantee will be a delight for the mathematical geeks. So charge up your brains and get ready for Codefest's mathematical fiesta!",
-      link: "/events/mathmania",
-      url: "https://www.hackerrank.com/mathmania-codefest19",
-      icon: "/assets/events/mathamania.png",
-      coordinators: [
-        "Naman Jain- naman.jain.cse17@iitbhu.ac.in",
-        "Abhishek Mittal - abhishek.mittal.cse17@iitbhu.ac.in"
-      ],
-      faq: [{
-          question: "Will the event be online?",
-          answer: "Yes, the event will be completely online and platform will be announced soon."
-        },
-        {
-          question: "Where can I get past problems of the event?",
-          answer: "Mathmania’19: https://www.hackerrank.com/mathmania-codefest19/<br/> Mathmania'18: https://www.topcoder.com/blog/topcoder-and-codefest-iit-bhu-are-happy-to-announce-mathmania/<br/> Mathmania'17: https://www.hackerrank.com/contests/mathmania-codefest17/challenges"
-        },
-        {
-          question: "Will we get a participation certificate?",
-          answer: "Yes, everyone will get a participation certificate."
-        },
-        {
-          question: "How to register for the event?",
-          answer: "You can register by clicking on the register button or going to the events section and click on the Create Team button."
-        },
-        {
-          question: "What is the team size?",
-          answer: "Only individual participation is allowed in this event."
-        }
-      ]
-    },
-    {
       name: "manthan",
       title: "Manthan",
       summary: "Compete with the best competitive programmers of the world in data structures and algorithms.",
@@ -157,40 +123,6 @@ export default {
         {
           question: "Where can I get past problems of the event?",
           answer: "Manthan'19: https://codeforces.com/contest/1208/<br/> Manthan'18: https://codeforces.com/contest/1037/<br/> Manthan'17: https://codeforces.com/contest/855"
-        },
-        {
-          question: "Will we get a participation certificate?",
-          answer: "Yes, everyone will get a participation certificate."
-        },
-        {
-          question: "How to register for the event?",
-          answer: "You can register by clicking on the register button or going to the events section and click on the Create Team button."
-        },
-        {
-          question: "What is the team size?",
-          answer: "Only individual participation is allowed in this event."
-        }
-      ]
-    },
-    {
-      name: "perplexed",
-      title: "Perplexed",
-      summary: "Adapt to challenging situations by trying your hands at constrained programming.",
-      link: "/events/perplexed",
-      url: "https://www.hackerrank.com/perplexed-codefest19",
-      icon: "/assets/events/perplexed.png",
-      description: "Perplexed is one of the most innovative events of Codefest, whose target is not only to gauge a contestant's coding abilities, but to also test how one tackles different situations and constraints.The problemset will include all mind boggling coding problems, ranging from code obfuscation to stricter memory limits, character limits, time limits, etc.This contest will be an individual contest and the contest duration is 5 hours",
-      coordinators: [
-        "Pranav Dalal - pranavd.cd.cse17@iitbhu.ac.in",
-        "Hritwik Singhai - hritwik.singhai.cse17@iitbhu.ac.in"
-      ],
-      faq: [{
-          question: "Will the event be online?",
-          answer: "Yes, the event will be completely online on HackerRank."
-        },
-        {
-          question: "Where can I get past problems of the event?",
-          answer: "Perplexed’19: https://www.hackerrank.com/perplexed-codefest19/<br/> Perplexed'18: https://www.hackerrank.com/perplexed-codefest18-1/<br/> Perplexed'17: https://www.hackerrank.com/perplexed-codefest17/"
         },
         {
           question: "Will we get a participation certificate?",

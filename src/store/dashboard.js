@@ -9,7 +9,9 @@ export default {
         return data.map(event => {
           const extraData = eventsData.find(e => e.name === event.slug);
           return { ...event, ...extraData };
-        });
+        }).filter((event) => !!event.title);
+        // NOTE: The above filter skips the events present in backend but not
+        // in events.js.
       });
     },
     createEventTeam({ state }, { eventId, teamName }) {
