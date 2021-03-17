@@ -46,14 +46,38 @@
       <h2>Registrations will be live soon.</h2>
     </div> -->
 
-    <div :class="$style.link">
-      <router-link to="/dashboard/events/" :class="$style.linkText">
-        <h4>Register</h4>
-      </router-link>
-      <!-- <a v-else :href="event.url" target="_blank"  :class="$style.linkText">
-        <h4>Problem Statement</h4>
-      </a> -->
-    </div>
+    <span v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)" :class="$style.multipleLinkContainer">
+      <div v-if="event.url" :class="[$style.link, $style.leftButton]">
+        <router-link to="/dashboard/events/" :class="$style.linkText">
+          <h4>Register</h4>
+        </router-link>
+      </div>
+      <div v-else :class="$style.link">
+        <router-link to="/dashboard/events/" :class="$style.linkText">
+          <h4>Register</h4>
+        </router-link>
+      </div>
+
+      <div v-if="event.url" :class="[$style.link, $style.rightButton]">
+        <a :href="event.url" target="_blank"  :class="$style.linkText">
+          <h4>Problem Statement</h4>
+        </a>
+      </div>
+    </span>
+
+    <span v-else>
+       <div :class="$style.link">
+        <router-link to="/dashboard/events/" :class="$style.linkText">
+          <h4>Register</h4>
+        </router-link>
+      </div>
+      <div v-if="event.url" :class="$style.link">
+        <a :href="event.url" target="_blank"  :class="$style.linkText">
+          <h4>Problem Statement</h4>
+        </a>
+      </div>
+    </span>
+
   </div>
 </template>
 
@@ -97,6 +121,21 @@ export default {
 
 <style lang="stylus" module>
 @require '~@styles/anims';
+
+.multipleLinkContainer {
+  display: inline-flex;
+  width: 100%;
+}
+
+.leftButton {
+  margin-left: auto !important;
+  margin-right: 20px !important;
+}
+
+.rightButton {
+  margin-right: auto !important;
+  margin-left: 20px !important;
+}
 
 .link {
   margin: auto;
