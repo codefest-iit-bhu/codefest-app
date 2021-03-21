@@ -162,10 +162,39 @@ class ToggleThemeCommand extends BaseCommand {
   }
 }
 
+class CodestartCommand extends BaseCommand {
+  static getCommandName() {
+    return "codestart";
+  }
+
+  validateInput() {
+    if (this.args.length != 2) {
+      throw new Exception.CommandInvalidInput(1, "Please provide exactly two arguments.");
+    }
+  }
+
+  async run() {
+    const response = await fetch(`https://codestart20-09-codefest-app.vercel.app/api?param_l=${this.args[0]}&param_r=${this.args[1]}`);
+    return await response.text();
+  }
+
+  execute() {
+    return new Promise(async (resolve, reject) => {
+      try {
+        this.validateInput();
+        resolve(await this.run());
+      } catch (error) {
+        reject(error);
+      }
+    });
+  }
+}
+
 export const CommandList = [
   ListDirCommand,
   ChangeDirCommand,
   ClearCommand,
   HelpCommand,
   ToggleThemeCommand,
+  CodestartCommand,
 ];

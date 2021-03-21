@@ -67,20 +67,6 @@ export default {
             "Individual participants will not be shortlisted. Only complete teams will be considered for shortlisting. Further details to be released soon!",
         },
         {
-          question: "Will travel reimbursement be provided?",
-          answer: "Yes, the travel reimbursement will be provided to everyone.",
-        },
-        {
-          question: "Will food and accommodation be provided?",
-          answer:
-            "Full 3 meals would be provided for 2 days, Saturday and Sunday. Snacks would be provided regularly during the entire course of the hackathon. Accommodation will be provided from Friday evening to Monday morning.",
-        },
-        {
-          question: "How to reach IIT BHU?",
-          answer:
-            "There are three stations available in, and near Varanasi; Varanasi Junction(BSB), Manduadih Station(MUV) and Pt. Deen Dayal Upadhyaya Junction(DDU), Manduadih being the nearest. Flight and bus options are also available.",
-        },
-        {
           question:
             "What will be expected from us to build during the hackathon?",
           answer:

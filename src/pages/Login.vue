@@ -280,7 +280,7 @@ export default {
           } else {
             this.$recaptcha("login")
               .then((recaptchaToken) => {
-                this._register(idToken, name, this.referral, recaptchaToken)
+                return this._register(idToken, name, this.referral, recaptchaToken);
               })
               .then((_) => {
                 this.loading = false;

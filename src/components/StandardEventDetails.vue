@@ -46,14 +46,20 @@
       <h2>Registrations will be live soon.</h2>
     </div> -->
 
-    <div :class="$style.link">
-      <router-link to="/dashboard/events/" :class="$style.linkText">
-        <h4>Register</h4>
-      </router-link>
-      <!-- <a v-else :href="event.url" target="_blank"  :class="$style.linkText">
-        <h4>Problem Statement</h4>
-      </a> -->
-    </div>
+    <span :class="$style.multipleLinkContainer">
+      <div :class="$style.link">
+        <router-link to="/dashboard/events/" :class="$style.linkText">
+          <h4>Register</h4>
+        </router-link>
+      </div>
+
+      <div v-if="event.url" :class="$style.link">
+        <a :href="event.url" target="_blank"  :class="$style.linkText">
+          <h4>Problem Statement</h4>
+        </a>
+      </div>
+    </span>
+
   </div>
 </template>
 
@@ -98,8 +104,15 @@ export default {
 <style lang="stylus" module>
 @require '~@styles/anims';
 
+.multipleLinkContainer {
+  flex-wrap: wrap;
+  display: inline-flex;
+  width: 100%;
+  justify-content: center;
+}
+
 .link {
-  margin: auto;
+  margin: 20px;
   margin-top: 30px;
   width: 290px;
   height: auto;

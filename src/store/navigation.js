@@ -16,12 +16,6 @@ export const navigation = {
         linguipedia: {
           ".": "/events/linguipedia"
         },
-        perplexed: {
-          ".": "/events/perplexed"
-        },
-        mathmania: {
-          ".": "/events/mathmania"
-        },
         ctf: {
           ".": "/events/ctf"
         },
@@ -31,7 +25,7 @@ export const navigation = {
       },
       dashboard: {
         ".": "/dashboard"
-      },  
+      },
       referrals: {
         ".": "/referral"
       }
