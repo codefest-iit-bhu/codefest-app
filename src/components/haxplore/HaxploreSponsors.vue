@@ -23,7 +23,7 @@
         >
           <div :class="$style.cell" v-for="(stat, i) in stats" :key="i" :slot="`item${i}`">
 
-                <a  :href="stat.link">
+                <a target="_blank" :href="stat.link">
 
                 <div :class="$style.clip">
                   <img :src="stat.image" :class="$style.img">

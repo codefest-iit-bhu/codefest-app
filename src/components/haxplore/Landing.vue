@@ -12,8 +12,8 @@
       </div>
       <div :class="$style.heroText" class="absolute-center" slot="right">
         <span :class="$style.haxplore">
-          <img src="@assets/haxplore/logo-text.svg" v-if="$store.getters.currentTheme === 'dark'" />
-          <img src="@assets/haxplore/logo-text-black.svg" v-else />
+          <img src="@assets/haxplore/hax_white.svg" v-if="$store.getters.currentTheme === 'dark'" />
+          <img src="@assets/haxplore/hax.svg" v-else />
         </span>
         <br />
         <br />
