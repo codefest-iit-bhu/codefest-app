@@ -36,9 +36,7 @@ $card-large-size = 200px;
 $card-small-size = 150px;
 
 whiteCard() {
-  background: $white;
-  box-shadow: 2px 2px 2px $black;
-  color: $black;
+  color: var(--text-color);
 }
 
 .cardWrapper {

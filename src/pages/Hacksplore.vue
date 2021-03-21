@@ -14,7 +14,7 @@
           <Testimonials :testimonials="testimonials" />
         </SectionLayout>
         <!-- <Timeline/> -->
-        <!-- <Prizes/> -->
+        <Prizes/>
         <HaxploreSponsors />
       </div>
     </main>
@@ -29,6 +29,7 @@ const About = () => import("@components/haxplore/About");
 const FAQ = () => import("@components/haxplore/FAQ");
 const Landing = () => import("@components/haxplore/Landing");
 const Lookback = () => import("@components/Lookback");
+const Prizes = () => import("@components/haxplore/Prizes");
 const HaxploreSponsors = () => import("@components/haxplore/HaxploreSponsors");
 const FooterN = () => import("@components/haxplore/FooterN");
 const SectionLayout = () => import("@components/layouts/SectionLayout");
@@ -43,6 +44,7 @@ export default {
     SectionLayout,
     Landing,
     Lookback,
+    Prizes,
     HaxploreSponsors,
     FooterN,
     Testimonials

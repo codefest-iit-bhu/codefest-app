@@ -8,7 +8,7 @@
         >
           <img src="@assets/haxplore/prize-first.svg" slot="header" />
           <span :class="$style.txt" slot="content">
-            <h2>Rs 35, 000</h2>
+            <h2>Rs 15, 000</h2>
             <h4>First Prize</h4>
           </span>
         </CardLayout>
@@ -18,7 +18,7 @@
         >
           <img src="@assets/haxplore/prize-second.svg" slot="header" />
           <span :class="$style.txt" slot="content">
-            <h2>Rs 20, 000</h2>
+            <h2>Rs 10, 000</h2>
             <h4>Second Prize</h4>
           </span>
         </CardLayout>
@@ -28,28 +28,8 @@
         >
           <img src="@assets/haxplore/prize-third.svg" slot="header" />
           <span :class="$style.txt" slot="content">
-            <h2>Rs 10, 000</h2>
+            <h2>Rs 5, 000</h2>
             <h4>Third Prize</h4>
-          </span>
-        </CardLayout>
-        <CardLayout
-          :class="$style.prize__fourth"
-          :extraCardClass="$style.whiteCard"
-        >
-          <img src="@assets/haxplore/prize-fourth.png" slot="header" />
-          <span :class="$style.txt" slot="content">
-            <h2>Kindle</h2>
-            <h4>Fourth Prize</h4>
-          </span>
-        </CardLayout>
-        <CardLayout
-          :class="$style.prize__fifth"
-          :extraCardClass="$style.whiteCard"
-        >
-          <img src="@assets/haxplore/prize-fifth.jpg" slot="header" />
-          <span :class="$style.txt" slot="content">
-            <h2>Echo Dot</h2>
-            <h4>Fifth Prize</h4>
           </span>
         </CardLayout>
         <CardLayout
@@ -58,8 +38,8 @@
         >
           <img src="@assets/haxplore/prize-consolation.png" slot="header" />
           <span :class="$style.txt" slot="content">
-            <h2>Gadgets</h2>
-            <h4>6th, 7th & 8th Prize</h4>
+            <h2>Exlusive goodies</h2>
+            <h4>4th, 5th & 6th Prize</h4>
           </span>
         </CardLayout>
 
@@ -73,28 +53,7 @@
             <h4>Best All girls</h4>
           </span>
         </CardLayout>
-        <CardLayout
-          :class="$style.prize__bhu"
-          :extraCardClass="$style.whiteCard"
-        >
-          <img src="@assets/haxplore/prize-iitbhu.svg" slot="header" />
-          <span :class="$style.txt" slot="content">
-            <h2>Rs 5, 000</h2>
-            <h4>Best IIT (BHU)</h4>
-          </span>
-        </CardLayout>
       </div>
-      <CardLayout :class="$style.benefits" :extraCardClass="$style.assured">
-        <p slot="header">
-          HaXplore is going to be the ultimate pit-stop for developers. From
-          taking care of your accomodation to providing you with savoury treats;
-          food facilities and refreshments throughout the competition. Don't
-          worry about your travel costs as well, we'll have them covered for
-          you! And even if you don't win anything, fret not my friend! You'll go
-          home with loads of goodies, a lot of experience and memories for a
-          lifetime.
-        </p>
-      </CardLayout>
     </div>
   </SectionLayout>
 </template>
@@ -180,27 +139,18 @@ export default {
         }
       }
 
-      &__fourth, &__fifth, &__consolation {
-        flex: 1 1 calc((100% / 3));
-        height: 250px;
-
-        img {
-          width: unset;
-        }
-      }
-
-      &__consolation {
-        ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-          flex: 1 1 calc((100% / 0.8));
-        }
-      }
-
-      &__girls, &__bhu {
+      &__consolation, &__girls, &__bhu {
         flex: 0 1 calc((100% / 2.5));
         height: 250px;
 
         ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
           flex: 0 1 calc((100% / 2));
+        }
+      }
+
+      &__consolation {
+        img {
+          width: unset;
         }
       }
     }
@@ -209,7 +159,6 @@ export default {
   .whiteCard {
     width: 90%;
     height: 90%;
-    box-shadow: 8px 8px #bcbcbc;
     border-radius: 5px;
     text-align: center;
 
