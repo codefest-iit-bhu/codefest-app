@@ -75,7 +75,7 @@ export default {
     return {
       stats: [
         {
-          image: "assets/Sponsors/devfolio_logo.svg",
+          image: "assets/Sponsors/Devfolio_Logo-Colored.svg",
           text: "Associate Sponsor",
           link: "https://devfolio.co/"
         },
