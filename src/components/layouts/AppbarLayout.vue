@@ -129,12 +129,13 @@ $notch-color = $mine-shaft;
       position: absolute;
       bottom: 1px;
       left: 2px;
-      padding: 20px 20px 0 25px;
+      // padding: 20px 20px 0 25px;
       // clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
       border-radius: 0 0 20px 20px;
       background: $notch-color;
       height: 100%;
       width: $notch-width - 2 * @left;
+      
       box-shadow: 0 4px 30px var(--appbar-shadow-color);
     }
 
@@ -151,11 +152,11 @@ $notch-color = $mine-shaft;
     img {
       width: 80%;
       margin-left: 10%;
-      margin-top: -2%;
+      margin-top: -3%;
 
-      ~/.xs ^[1..-1] {
-        margin-top: 1%;
-      }
+      // ~/.xs ^[1..-1] {
+      //   margin-top: -3%;
+      // }
     }
   }
 }

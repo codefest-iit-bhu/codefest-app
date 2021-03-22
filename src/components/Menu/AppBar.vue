@@ -89,7 +89,7 @@
         <img src="@assets/white-cf20-logo.svg" @click="clickNotch" />
       </router-link>
       <router-link to="/haxplore" slot="notch" v-else>
-        <img src="@assets/haxplore/logo-text.svg" :class="$style.haxploreNotch" @click="clickNotch" />
+        <img src="@assets/haxplore/hax_white.svg" :class="$style.haxploreNotch" @click="clickNotch" />
       </router-link>
     </AppbarLayout>
     <div :class="$style.sidebar" ref="sidebar">
@@ -362,7 +362,7 @@ export default {
   }
 
   .haxploreNotch {
-    margin-top: 5% !important;
+    // margin-top: 5% !important;
   }
 }
 </style>
