@@ -15,9 +15,6 @@
           <img src="@assets/haxplore/hax_white.svg" v-if="$store.getters.currentTheme === 'dark'" />
           <img src="@assets/haxplore/hax.svg" v-else />
         </span>
-        <br />
-        <br />
-        <br />
         <span :class="$style.tagline" ref="tagline"></span>
         <br />
         <br />
@@ -213,6 +210,9 @@ $wd = 100vw;
       left: calc(var(--hero-wd) * 0.5);
       top: calc(var(--hero-ht) * 0.75);
     }
+
+    justify-content: center;
+    text-align: center;
   }
 
   .heroText {
@@ -221,7 +221,7 @@ $wd = 100vw;
 
       img {
         width: calc(var(--hero-wd) * 0.3);
-        
+
       }
 
       ~/.xs ^[1..-1] img {
