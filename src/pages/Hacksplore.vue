@@ -147,7 +147,8 @@ export default {
 .wrapper {
   width: 80%;
   margin: 0 auto;
-  padding: 50px 0;
+  padding: 0px;
+  padding-bottom: 50px;
   z-index: 1;
   position: relative;
   font: 500 18px 'Quicksand';

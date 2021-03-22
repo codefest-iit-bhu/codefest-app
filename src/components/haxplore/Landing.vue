@@ -110,6 +110,7 @@ $wd = 100vw;
 .landing {
   position: relative;
   height: 100vh;
+  padding-bottom: 50px;
 
   .heroImage {
     --hero-ht: $ht;
@@ -225,7 +226,6 @@ $wd = 100vw;
       }
 
       ~/.xs ^[1..-1] img {
-        padding-top: 150px;
         width: calc(var(--hero-wd) * 0.7);
       }
 
