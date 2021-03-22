@@ -1,6 +1,6 @@
 <template>
   <div :class="[$style.wrapper, $style[$mq]]">
-    <AppbarLayout v-bind="this.$attrs">
+    <AppbarLayout :haxplorePage = "haxplorePage" v-bind="this.$attrs">
       <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
         <router-link to="/" v-if="haxplorePage">
           Home
