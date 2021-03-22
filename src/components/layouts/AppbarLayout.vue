@@ -12,7 +12,7 @@
       </ul>
     </div>
     <div :class="$style.notch">
-      <div :class="$style.logo">
+      <div :class="[$style.logo, !haxplorePage ? $style.codefestLogo : ' ']">
         <slot name="notch" />
       </div>
     </div>
@@ -23,6 +23,10 @@
 export default {
   props: {
     doAnimate: {
+      type: Boolean,
+      default: false,
+    },
+    haxplorePage: {
       type: Boolean,
       default: false,
     },
@@ -67,7 +71,6 @@ export default {
 </script>
 
 <style module lang="stylus">
-
 @require '~@styles/anims';
 
 $appbar-height = 50px;
@@ -83,7 +86,7 @@ $notch-color = $mine-shaft;
   user-select: none;
 
   &.animate {
-    moveAnimation(side: 'top', startDistance: ((-($notch-height + 20))), targetDistance: 0px);
+    moveAnimation(side: 'top', startDistance: (-($notch-height + 20)), targetDistance: 0px);
   }
 
   .nav {
@@ -129,13 +132,17 @@ $notch-color = $mine-shaft;
       position: absolute;
       bottom: 1px;
       left: 2px;
-      padding: 20px 20px 0 25px;
+      padding: 0;
       // clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
       border-radius: 0 0 20px 20px;
       background: $notch-color;
       height: 100%;
       width: $notch-width - 2 * @left;
       box-shadow: 0 4px 30px var(--appbar-shadow-color);
+    }
+
+    .codefestLogo {
+      padding: 20px 20px 0 25px;
     }
 
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
@@ -151,11 +158,11 @@ $notch-color = $mine-shaft;
     img {
       width: 80%;
       margin-left: 10%;
-      margin-top: -2%;
+      margin-top: -3%;
 
-      ~/.xs ^[1..-1] {
-        margin-top: 1%;
-      }
+      // ~/.xs ^[1..-1] {
+      //   margin-top: -3%;
+      // }
     }
   }
 }

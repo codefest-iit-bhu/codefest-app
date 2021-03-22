@@ -1,22 +1,42 @@
 <template>
-  <SectionLayout title="Previous Sponsors" id="sponsors">
+  <SectionLayout title="Sponsors" id="sponsors">
     <div :class="[$style.sponsors, $style[$mq]]">
+      <ResponsiveTwoColumnLayout :class="$style.offset">
+        <div :class="$style.title" slot="left">
+          <div :class="$style.cell">
+            <div :class="$style.clip">
+              <a :href="title.link" target="_blank">
+                <img :src="title.image" :class="$style.img">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div :class="$style.titleText" slot="right">
+            <div :class="$style.txt">Title Sponsor</div>
+        </div>
+      </ResponsiveTwoColumnLayout>
       <div :class="$style.container">
         <GridLayout
-          :columns="$mq | mq({ xs: 1, sm: 1, md: 2, lg: 2, xl: 2 })"
+          :columns="$mq | mq({xs: 1, sm: 1, md: 2, lg: 2, xl: 2})"
           itemWidth="260px"
           itemHeight="260px"
         >
           <div :class="$style.cell" v-for="(stat, i) in stats" :key="i" :slot="`item${i}`">
-            <div :class="$style.clip">
-              <img :src="stat.image" :class="$style.img" />
-            </div>
+
+                <a target="_blank" :href="stat.link">
+
+                <div :class="$style.clip">
+                  <img :src="stat.image" :class="$style.img">
+                </div>
+                <br>
+                <span :class="$style.txt">{{ stat.text }}</span>
+
+                </a>
           </div>
         </GridLayout>
       </div>
-
       <div :class="$style.buttonContainer">
-        <div :class="$style.link">
+      <div :class="$style.link">
           <a
             href="https://drive.google.com/file/d/1ABFiTwX8Eb7w--0DOqpzJOPqjiE-WQ9D/view?usp=sharing"
             :class="[$style.linkText]"
@@ -55,24 +75,41 @@ export default {
     return {
       stats: [
         {
-          image: "assets/Sponsors/aws.png",
-          link: "#",
+          image: "assets/Sponsors/Devfolio_Logo-Colored.svg",
+          text: "Associate Sponsor",
+          link: "https://devfolio.co/"
         },
         {
           image: "assets/Sponsors/github.png",
-          link: "#",
+          text: "Associate Sponsor",
+          link: "https://github.com/"
         },
         {
-          image: "assets/Sponsors/devfolio_logo.svg",
-          link: "#",
+          image: "assets/Sponsors/polygon.svg",
+          text: "Season Partner",
+          link: "https://polygon.technology/"
         },
         {
-          image: "assets/Sponsors/matic-gr1.png",
-          link: "#",
+          image: "assets/Sponsors/Portis_Logo-Black.svg",
+          text: "Season Partner",
+          link: "https://www.portis.io"
         },
+        {
+          image: "assets/Sponsors/Tezos_Logo-Colored.svg",
+          text: "Season Partner",
+          link: "https://tezos.com"
+          
+        }
+
+
+        
       ],
+      title: {
+        image: "assets/Sponsors/aws.png",
+        link: "https://aws.amazon.com/"
+      }
     };
-  },
+  }
 };
 </script>
 
@@ -147,6 +184,11 @@ $box-width = 250px;
     .cell {
       width: $cell-size;
       height: $cell-size;
+
+      a{
+        text-decoration: none;
+        color: var(--text-color);
+      }
 
       .clip {
         background-color: white;

@@ -1,8 +1,8 @@
 <template>
   <footer :class="$style.footer">
     <div :class="$style.logo">
-      <div :class="$style.image">
-        <img src="@assets/haxplore/logo-text.svg" />
+      <div   :class="$style.image">
+        <img  src="@assets/haxplore/hax_white.svg" />
       </div>
       <p>Copyright © 2020 Haxplore</p>
     </div>
@@ -57,10 +57,23 @@ export default {};
     width: 100%;
     margin-top: 20px;
 
+
     .image {
-      height: 20px;
-      width: 160px;
+
+      height: 50px;
+      width: 170px;
       margin: 0 auto;
+      position: relative;
+    }
+
+    img{
+      position: absolute;
+      margin: auto;
+      top: -10px;
+      right: -83px;
+      width: 200%;
+      height: 200%;
+      
     }
 
     p {
