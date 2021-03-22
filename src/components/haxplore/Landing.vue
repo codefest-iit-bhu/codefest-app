@@ -23,7 +23,8 @@
         <br />
         <span :class="$style.venue">
           <span :id="$style.loc">
-            <i class="fas fa-map-marked-alt"></i> IIT (BHU), Varanasi
+            <i class="fas fa-university"></i> IIT (BHU), Varanasi <br>
+            <i class="fas fa-calendar" aria-hidden="true"></i> March 27 - 28, 2021
           </span>
         </span>
         <DevfolioButton />
@@ -220,9 +221,11 @@ $wd = 100vw;
 
       img {
         width: calc(var(--hero-wd) * 0.3);
+        
       }
 
       ~/.xs ^[1..-1] img {
+        padding-top: 150px;
         width: calc(var(--hero-wd) * 0.7);
       }
 
