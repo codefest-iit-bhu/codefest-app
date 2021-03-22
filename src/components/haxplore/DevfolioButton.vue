@@ -51,6 +51,7 @@ export default {
 <style module lang="stylus">
 $btn-height = 65px;
 $btn-width = 250px;
+$devfolio-color = #3770FF;
 
 .link {
   margin: auto;
@@ -63,7 +64,7 @@ $btn-width = 250px;
   // box-shadow: var(--box-shadow);
   text-align: center;
   cursor: pointer;
-  background-color: white;
+  background-color: $devfolio-color;
 
   .linkText {
     color: var(--text-color);
@@ -81,10 +82,11 @@ $btn-width = 250px;
 .devfolioButton {
   display: flex;
   justify-content: center;
+  color: white;
 }
 
 .devfolioLogo {
-  fill: var(--text-color);
+  fill: white;
 }
 
 .floatBtn {
