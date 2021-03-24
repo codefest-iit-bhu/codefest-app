@@ -25,6 +25,7 @@
           </span>
         </span>
         <DevfolioButton />
+        <DiscordButton />
       </div>
     </ResponsiveTwoColumnLayout>
   </div>
@@ -34,6 +35,7 @@
 import { TypingAnim } from "@js/utils";
 const Countdown = () => import("@components/Countdown");
 const DevfolioButton = () => import("@components/haxplore/DevfolioButton");
+const DiscordButton = () => import("@components/haxplore/DiscordButton");
 const ResponsiveTwoColumnLayout = () =>
   import("@components/layouts/ResponsiveTwoColumnLayout");
 
@@ -41,6 +43,7 @@ export default {
   components: {
     Countdown,
     DevfolioButton,
+    DiscordButton,
     ResponsiveTwoColumnLayout
   },
   data() {

@@ -38,7 +38,7 @@
         >
           <img src="@assets/haxplore/prize-consolation.png" slot="header" />
           <span :class="$style.txt" slot="content">
-            <h2>Exlusive goodies</h2>
+            <h2>Exclusive goodies</h2>
             <h4>4th, 5th & 6th Prize</h4>
           </span>
         </CardLayout>
