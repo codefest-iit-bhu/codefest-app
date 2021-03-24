@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.link">
-    <div :class="$style.discordButton" id="devfolio-apply-now" ref="devfolioBtn" @click="inviteToDiscord">
+    <div :class="$style.discordButton" @click="inviteToDiscord">
       <i class="fab fa-discord" :class="$style.discordLogo"></i>
       Discord Server
     </div>
