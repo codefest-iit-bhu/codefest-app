@@ -25,9 +25,7 @@ export default {
   position: relative;
   height: 100%;
   width: 100%;
-  padding: 0 5%;
   margin-bottom: 50px;
-  margin-left: 10%;
   float: left;
 }
 </style>

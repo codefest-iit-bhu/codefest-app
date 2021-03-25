@@ -142,10 +142,9 @@ $circle-transparent-background = transparent;
 
   .dateTime, .event {
     position: relative;
-    left: 25px;
     background: transparent;
     margin: 0;
-    color: white;
+    color: var(--text-color);
     border-radius: 4px;
   }
 
@@ -153,6 +152,7 @@ $circle-transparent-background = transparent;
     width: 200px;
     height: 36px;
     padding: 2px 5px;
+    margin-left: 25px;
     $font-size: 14px;
     line-height: 30px;
     text-align: center;
@@ -173,6 +173,7 @@ $circle-transparent-background = transparent;
 
   .event {
     padding: 5px;
+    padding-left: 25px;
 
     span h4 {
       margin: 0;
