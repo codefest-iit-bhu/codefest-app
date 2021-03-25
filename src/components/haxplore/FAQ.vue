@@ -59,7 +59,7 @@ export default {
         },
         {
           question: "What is the allowed team size?",
-          answer: "Form a team, comprising of minimum 2 and maximum 3 members.",
+          answer: "Form a team, comprising of minimum 1 and maximum 4 members.",
         },
         {
           question: "What will be the criteria for shortlisting?",
