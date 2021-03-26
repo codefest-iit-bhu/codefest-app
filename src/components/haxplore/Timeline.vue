@@ -23,14 +23,14 @@ export default {
       timeline: [
         {
           isMajor: true,
-          start: new Date(2021, 3, 27, 12, 0),
+          start: new Date(2021, 2, 27, 12, 0),
           end: null,
           title: "",
           summary: "",
         },
         {
           isMajor: false,
-          start: new Date(2021, 3, 27, 12, 0),
+          start: new Date(2021, 2, 27, 12, 0),
           end: null,
           title: "Coding Phase Starts",
           summary: "",
@@ -38,28 +38,28 @@ export default {
 
         {
           isMajor: true,
-          start: new Date(2021, 3, 28, 12, 0),
+          start: new Date(2021, 2, 28, 12, 0),
           end: null,
           title: "",
           summary: "",
         },
         {
           isMajor: false,
-          start: new Date(2021, 3, 28, 0, 0),
+          start: new Date(2021, 2, 28, 0, 0),
           end: null,
-          title: "Mid Evalulation",
+          title: "Mid Evaluation",
           summary: "",
         },
         {
           isMajor: false,
-          start: new Date(2021, 3, 28, 12, 0),
+          start: new Date(2021, 2, 28, 12, 0),
           end: null,
           title: "Coding Phase Ends",
           summary: "",
         },
         {
           isMajor: false,
-          start: new Date(2021, 3, 28, 16, 0),
+          start: new Date(2021, 2, 28, 16, 0),
           end: null,
           title: "Presentations",
           summary: "",
@@ -67,7 +67,7 @@ export default {
 
         {
           isMajor: false,
-          start: new Date(2021, 3, 28, 20, 0),
+          start: new Date(2021, 2, 28, 20, 0),
           end: null,
           title: "Conclusion and Prizes",
           summary: "",
