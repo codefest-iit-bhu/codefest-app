@@ -62,11 +62,6 @@ export default {
           answer: "Form a team, comprising of minimum 1 and maximum 4 members.",
         },
         {
-          question: "What will be the criteria for shortlisting?",
-          answer:
-            "Individual participants will not be shortlisted. Only complete teams will be considered for shortlisting. Further details to be released soon!",
-        },
-        {
           question:
             "What will be expected from us to build during the hackathon?",
           answer:
