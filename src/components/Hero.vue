@@ -571,7 +571,7 @@ export default {
       display: block;
       margin: 10px auto;
       height: 32px;
-      font: 26px 'Harry';
+      font: 36px 'Harry';
       font-weight: 600;
       text-align: center;
       text-shadow: 1px 1px #000;
