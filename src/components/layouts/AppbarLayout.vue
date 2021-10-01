@@ -73,7 +73,7 @@ export default {
 <style module lang="stylus">
 @require '~@styles/anims';
 
-$appbar-height = 50px;
+$appbar-height = 40px;
 $notch-height = 100px;
 $notch-width = 320px;
 $notch-color = $mine-shaft;
@@ -120,7 +120,7 @@ $notch-color = $mine-shaft;
   .notch {
     position: relative;
     top: -($appbar-height);
-    // clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+    clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
     border-radius: 0 0 20px 20px;
     margin: 0 auto;
     width: $notch-width;
