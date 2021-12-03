@@ -26,11 +26,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = int(os.environ.get('DEBUG','1'))
+DEBUG = int(os.environ.get('DEBUG', '1'))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 if(DEBUG):
-    SECRET_KEY="2xnn%tj(@mc(n^io&c^j0*=bq$7kwe&)o$+mk8d=!jujiueb(s"
+    SECRET_KEY = "2xnn%tj(@mc(n^io&c^j0*=bq$7kwe&)o$+mk8d=!jujiueb(s"
 else:
     SECRET_KEY = config('SECRET_KEY')
 
@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'drf_yasg',
-
+    'display_projects',
 ]
 
 MIDDLEWARE = [
@@ -148,7 +148,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 if not DEBUG:
@@ -156,14 +156,14 @@ if not DEBUG:
         with open("service_account.json", "wb") as decrypted_file:
             # decrypt file stream
             pyAesCrypt.decryptStream(
-                encrypted_file, 
-                decrypted_file, 
-                config('SERVICE_ACCOUNT_DECRYPT_KEY'), 
-                64*1024, 
+                encrypted_file,
+                decrypted_file,
+                config('SERVICE_ACCOUNT_DECRYPT_KEY'),
+                64*1024,
                 int(config('SERVICE_ACCOUNT_ENC_SIZE'))
             )
 
-cred = credentials.Certificate(os.path.join(BASE_DIR,'service_account.json'))
+cred = credentials.Certificate(os.path.join(BASE_DIR, 'service_account.json'))
 default_app = firebase_admin.initialize_app(cred)
 
 CORS_ORIGIN_REGEX_WHITELIST = (
@@ -187,19 +187,19 @@ GOOGLE_RECAPTCHA_URL = 'https://www.google.com/recaptcha/api/siteverify'
 SENDGRID_API_KEY = config('SENDGRID_API_KEY')
 
 DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
-GS_BUCKET_NAME = 'codefest19.appspot.com'
+GS_BUCKET_NAME = 'shalecodefest.appspot.com'
 GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
-    os.path.join(BASE_DIR,'service_account.json')
+    os.path.join(BASE_DIR, 'service_account.json')
 )
 
 SWAGGER_SETTINGS = {
-   'SECURITY_DEFINITIONS': {
-      'Token': {
+    'SECURITY_DEFINITIONS': {
+        'Token': {
             'type': 'apiKey',
             'name': 'Authorization',
             'in': 'header'
-      }
-   }
+        }
+    }
 }
 
 LOGGING = {
@@ -220,4 +220,4 @@ LOGGING = {
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_BROKER_URL = 'amqp://localhost'
 if not DEBUG:
-    CELERY_BROKER_URL=config('CLOUDAMQP_URL')
+    CELERY_BROKER_URL = config('CLOUDAMQP_URL')
