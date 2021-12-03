@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
-class project(models.Model):
+class ProjectModel(models.Model):
     creator = models.ForeignKey(
         User, blank=True, null=True, related_name="creator", on_delete=models.CASCADE)
     title = models.CharField(max_length=20)
