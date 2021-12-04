@@ -6,6 +6,7 @@
 <article>
     <h3>{{ project.title }}</h3>
     <h4>{{project.creator.username}}</h4>
+    <img src="{{ project.screenshot.url }}"" width=" 100px" alt="My image">
     <p>{{ project.description|linebreaksbr }}</p>
 </article>
 {% endfor %}
