@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from .models import ProjectModel
 from .forms import ProjectForm
 # Create your views here.
@@ -22,4 +22,25 @@ def Submit_project(request):
             post.save()
     else:
         form = ProjectForm
-    return render(request, 'projects/submit_project.html', {'form': form})
+    return render(request, 'projects/project_edit.html', {'form': form, 'type': 'submit'})
+
+
+def Project_detail(request, pk):
+    project = ProjectModel.objects.get(pk=pk)
+    return render(request, 'projects/project_detail.html', {'project': project})
+
+
+def Project_edit(request, pk):
+    project = get_object_or_404(ProjectModel, pk=pk)
+    if request.user != project.creator:
+        return render(request, 'projects/unauthorised.html')
+    if request.method == "POST":
+        form = ProjectForm(request.project, instance=project)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.screenshot = form.cleaned_data.get("screenshot")
+            post.save()
+            return redirect('post_detail', pk=project.pk)
+    else:
+        form = ProjectForm(instance=project)
+    return render(request, 'projects/project_edit.html', {'form': form, 'type': 'edit'})

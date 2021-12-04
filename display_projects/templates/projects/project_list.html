@@ -4,7 +4,7 @@
 
 {% for project in projects %}
 <article>
-    <h3>{{ project.title }}</h3>
+    <h2><a href="{% url 'project_detail' pk=project.pk %}">{{ project.title }}</a></h2>
     <h4>{{project.creator.username}}</h4>
     <img src="{{ project.screenshot.url }}"" width=" 100px" alt="My image">
     <p>{{ project.description|linebreaksbr }}</p>
