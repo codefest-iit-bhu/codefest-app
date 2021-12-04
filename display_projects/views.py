@@ -20,6 +20,7 @@ def Submit_project(request):
                 print("No user")
             post.screenshot = form.cleaned_data.get("screenshot")
             post.save()
+            return redirect('/projects/')
     else:
         form = ProjectForm
     return render(request, 'projects/project_edit.html', {'form': form, 'type': 'submit'})
@@ -35,12 +36,23 @@ def Project_edit(request, pk):
     if request.user != project.creator:
         return render(request, 'projects/unauthorised.html')
     if request.method == "POST":
-        form = ProjectForm(request.project, instance=project)
+        form = ProjectForm(request.POST, instance=project)
         if form.is_valid():
             post = form.save(commit=False)
             post.screenshot = form.cleaned_data.get("screenshot")
             post.save()
-            return redirect('post_detail', pk=project.pk)
+            return redirect('/projectdetails/' + str(project.pk) + '/')
     else:
         form = ProjectForm(instance=project)
-    return render(request, 'projects/project_edit.html', {'form': form, 'type': 'edit'})
+    return render(request, 'projects/project_edit.html', {'form': form, 'type': 'edit',  'project': project})
+
+
+def Project_delete(request, pk):
+    project = get_object_or_404(ProjectModel, pk=pk)
+    if request.user != project.creator:
+        return render(request, 'projects/unauthorised.html')
+    if request.method == 'POST':
+        project.delete()
+        return redirect('/projects/')
+    else:
+        return render(request, 'projects/project_delete.html', {"project": project})

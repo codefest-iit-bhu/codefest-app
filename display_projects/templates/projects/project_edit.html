@@ -11,4 +11,11 @@
     {{ form.as_p }}
     <input type="submit" value="Submit">
 </form>
+
+{% if type == 'edit' %}
+<form action="{% url 'project_delete' project.id %}" method="get">
+    {% csrf_token %}
+    <input type="submit" value="Delete Project">
+</form>
+{% endif %}
 {% endblock %}
