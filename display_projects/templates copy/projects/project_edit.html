@@ -1,0 +1,21 @@
+{% block content %}
+{% if type == 'edit' %}
+<h2>Edit Project</h2>
+{% elif type == 'submit'%}
+<h2>New Project</h2>
+{% else %}
+<h2>Unknown Source</h2>
+{% endif %}
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
+</form>
+
+{% if type == 'edit' %}
+<form action="{% url 'project_delete' project.id %}" method="get">
+    {% csrf_token %}
+    <input type="submit" value="Delete Project">
+</form>
+{% endif %}
+{% endblock %}

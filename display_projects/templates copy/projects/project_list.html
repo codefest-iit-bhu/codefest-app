@@ -67,7 +67,9 @@
                     <p><input type="submit" value="Add comment"></p>
                 </form>
                 {% endif %}
-                <button><a href="{% url 'project_detail' pk=project.pk %}">Edit</a></button>
+                {% if request.user.is_superuser %}
+                <button><a href="{% url 'project_edit' pk=project.pk %}">Edit</a></button>
+                {% endif %}
                 <button><a href="{% url 'project_like' pk=project.pk %}">Like</a></button>
             </div>
         </div>
