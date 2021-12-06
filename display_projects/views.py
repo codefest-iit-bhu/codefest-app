@@ -1,9 +1,10 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from .models import *
-from .forms import ProjectForm 
+from .forms import ProjectForm
+from django.views.decorators.cache import cache_control
 # Create your views here.
 
-
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def Project_list(request):
     projects = ProjectModel.objects.all()
     if request.method == 'POST':
