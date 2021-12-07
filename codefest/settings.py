@@ -181,13 +181,13 @@ CSRF_TRUSTED_ORIGINS = (
     '0.0.0.0:8080',
 )
 
-GOOGLE_RECAPTCHA_SECRET_KEY = 'random thing'
+GOOGLE_RECAPTCHA_SECRET_KEY = config('GOOGLE_RECAPTCHA_SECRET_KEY')
 GOOGLE_RECAPTCHA_URL = 'https://www.google.com/recaptcha/api/siteverify'
 
-SENDGRID_API_KEY = 'random thing'
+SENDGRID_API_KEY = config('SENDGRID_API_KEY')
 
 DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
-GS_BUCKET_NAME = 'codefestproj.appspot.com'
+GS_BUCKET_NAME = 'shalecodefest.appspot.com'
 GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
     os.path.join(BASE_DIR, 'service_account.json')
 )

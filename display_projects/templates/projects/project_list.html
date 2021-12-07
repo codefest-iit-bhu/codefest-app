@@ -1,81 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<header>
+    <h1>Projects</h1>
+</header>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proj</title>
-    <style>
-        .container {
-            display: flex;
-            height: auto;
-
-        }
-
-        .card {
-            text-align: center;
-            min-width: 180px;
-            width: auto;
-            border: 2px solid black;
-            margin: 10px;
-        }
-    </style>
-</head>
-
-<body>
-    <header>
-        <h1>Projects</h1>
-    </header>
-    <div class="container">
-        {% for project in projects %}
-        <div class="card">
-
-            <article>
-                <h2><a href="{% url 'project_view' pk=project.pk %}" id="view_link">{{ project.title }}</a></h2>
-                <h4>{{project.creator.username}}</h4>
-                <img src="{{ project.screenshot.url }}" width="100px" alt="My image">
-                <p>{{ project.description|linebreaksbr }}</p>
-                <p> total like : {{ project.likes_count }}</p>
-                <p> total views : {{ project.views_count }}</p>
-            </article>
-
-            <div class="commentsec" style="background-color: #000; padding: 5rem; margin-top: 30px; color:white; ">
-                {% for comment in project.comments.all %}
-                <div class="comment" style="background-color:#222 ; border:1px solid #fff; display:block; width:100%;">
-                    {{ comment.comment|linebreaks }} 
-                    <button><a href="{% url 'comment_like' pk=comment.pk %}">Like</a></button>
-                    <p> Total Likes : {{ comment.likes_count }} </p>
-                    {% ifequal user comment.commentor %}
-                    <button><a href="{% url 'comment_del' pk=comment.pk %}">Del</a></button>
-                    {% endifequal %}
-                    <p class="infopara" style="font-weight: 700; font-size: 12px;">{{ comment.commentor }} <span
-                            style="font-weight: 400; font-size: 10px;">{{ comment.created }}</span>
-                    </p>
-                </div>
-                {% empty %}
-                <p>There are no comments yet.</p>
-                {% endfor %}
-                {% if new_comment or commented %}
-                <h5>Already Commented.</h5>
-                {% else %}
-                <h4>Add a new comment</h4>
-                <form action="." method="post">
-                    {% csrf_token %}
-                    <input type="text" name="comment" id="comment" placeholder='add your comment'>
-                    <input type="hidden" name="key" id="key" value={{ project.pk }}>
-                    <p><input type="submit" value="Add comment"></p>
-                </form>
-                {% endif %}
-                {% if request.user.is_superuser %}
-                <button><a href="{% url 'project_edit' pk=project.pk %}">Edit</a></button>
-                {% endif %}
-                <button><a href="{% url 'project_like' pk=project.pk %}">Like</a></button>
-            </div>
-        </div>
-        
-        {% endfor %}
-    </div>
-</body>
-
-</html>
+{% for project in projects %}
+<article>
+    <h2><a href="{% url 'project_detail' pk=project.pk %}">{{ project.title }}</a></h2>
+    <h4>{{project.creator.username}}</h4>
+    <img src="{{ project.screenshot.url }}"" width=" 100px" alt="My image">
+    <p>{{ project.description|linebreaksbr }}</p>
+</article>
+{% endfor %}

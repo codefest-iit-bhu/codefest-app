@@ -5,15 +5,15 @@ from django.db.models.deletion import CASCADE
 
 
 class ProjectModel(models.Model):
-    creator = models.ForeignKey(User, blank=True, null=True, related_name="creator", on_delete=models.CASCADE)
+    # TODO: change to teams later
+    creator = models.ForeignKey(
+        User, blank=True, null=True, related_name="creator", on_delete=models.CASCADE)
     title = models.CharField(max_length=20)
     screenshot = models.ImageField(upload_to="screenshots")
     description = models.TextField(default="Enter the description here")
     link = models.URLField(blank=True, null=True)
-    likes_count = models.PositiveIntegerField(default=0)
-    views_count = models.PositiveIntegerField(default=0)
-
-
+    # likes = models.PositiveSmallIntegerField(default=0)
+    # dislikes = models.PositiveSmallIntegerField(default=0)
 
     def __str__(self) -> str:
         return self.creator.username + " - " + self.title
@@ -24,37 +24,25 @@ class ProjectRating(models.Model):
         User, related_name="user_rating", on_delete=CASCADE)
     project = models.ForeignKey(
         ProjectModel, related_name="rated_project", on_delete=CASCADE)
-    like = models.BooleanField(default=False)
-    view = models.BooleanField(default=False)
+
+    # like -> true, dislike -> false, neither -> null/delete row.
+    rating = models.BooleanField(null=True)
 
     class Meta:
         unique_together = ("user", "project")
 
     def __str__(self) -> str:
-        return self.user.username + " - " + self.project.title +" rating model"
+        return 'Rating \'{}\' by \'{}\' on \'{}\''.format(self.rating, self.user, self.project)
 
-class Comment(models.Model): 
-    post = models.ForeignKey(ProjectModel,on_delete=models.CASCADE,related_name='comments')
-    comment=models.CharField(max_length=100,null=False)
-    commentor = models.ForeignKey(User, related_name='commentor', null=True, blank=True, on_delete=models.CASCADE)
-    created = models.DateTimeField(auto_now_add=True) 
-    updated = models.DateTimeField(auto_now=True) 
-    likes_count = models.PositiveIntegerField(default=0)
-    active = models.BooleanField(default=True) 
 
-    class Meta: 
-        ordering = ('created',) 
-
-    def __str__(self): 
-        return 'Comment by {} on {}'.format(self.commentor, self.post) 
-    
-class CommentRating(models.Model):
-    user = models.ForeignKey(User, related_name="user_comment", on_delete=CASCADE)
-    comment = models.ForeignKey(Comment, related_name="rated_comment", on_delete=CASCADE)
-    like = models.BooleanField(default=False)
-
-    class Meta:
-        unique_together = ("user", "comment")
+class ProjectComment(models.Model):
+    user = models.ForeignKey(
+        User, related_name='user_comment', on_delete=models.CASCADE)
+    project = models.ForeignKey(
+        ProjectModel, related_name='commented_project', on_delete=models.CASCADE)
+    comment = models.TextField(null=False, blank=False)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
-        return self.user.username + " - " + self.project.title +" comment model"
+        return 'Comment by \'{}\' on \'{}\' at \'{}\''.format(self.user, self.project, self.created)
