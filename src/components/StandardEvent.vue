@@ -1,16 +1,34 @@
 <template>
   <div :class="[$style.event, $style[$mq], eventActiveClass]">
     <div :class="eventCellClass" @click="navigateToDetails">
-      <div :class="$style.whiteTitle">
-        <h3>{{ event.title }}</h3>
+      <div style="display: flex">
+        <div :class="$style.eventCardLeft" v-if="event.id%2==0" >
+          <div :class="$style.iconLeft">
+            <img :src="event.icon" :class="$style.imgLeft" />
+          </div>
+          <Button  :text= "event.title"
+            @mouseenter="toggleOpen"
+            @mouseleave="toggleOpen"
+          />
+        </div>
+        <div :class="$style.eventCardRight" v-else>
+          <ButtonRev  :text= "event.title"/>
+          <div :class="$style.iconRight">
+            <img :src="event.icon" :class="$style.imgRight" />
+          </div>
+        </div>
       </div>
-      <div
+      <!-- <div>
+        <EventCard :title="event.title" :summary="event.summary" />
+      </div> -->
+      
+      <!-- <div
         :class="$style.cell"
-        :style="eventWidthStyle"
+        :style="eventWidthStyle" 
         @mouseenter="toggleOpen"
         @mouseleave="toggleOpen"
-      >
-        <canvas
+      > -->
+        <!-- <canvas
           :class="$style.normalCanvas"
           ref="initialCanvas"
           :style="canvasOpacityStyle(true)"
@@ -20,22 +38,32 @@
           :class="$style.glitchedCanvas"
           ref="finalCanvas"
           :style="canvasOpacityStyle(false)"
-        />
-        <div :class="$style.txt">
-          <p :class="$style.summary">
+        /> -->
+        <!-- <div :class="$style.txt"> -->
+          <!-- <p :class="$style.summary" style="display:block;">{{event.title}}</p> -->
+          <!-- <span :class="$style.summary">{{event.title}}</span> -->
+          <!-- <p :class="$style.summary">
+            <span>{{event.title}}<br></span>
             <span ref="eventSummary"></span>
             <span :class="$style.blink">|</span>
-          </p>
-        </div>
-      </div>
+          </p> -->
+        <!-- </div> -->
+      <!-- </div> -->
     </div>
   </div>
 </template>
 
 <script>
 import { TypingAnim, getRandom, isMinimal } from "@js/utils";
-
+import Button from "./layouts/Button.vue"
+import ButtonRev from "./layouts/ButtonRev.vue"
+import EventCard from './layouts/EventCard.vue';
 export default {
+  components: {
+    Button,
+    ButtonRev,
+    EventCard,
+  },
   data() {
     return {
       shouldOpen: false,
@@ -145,7 +173,9 @@ export default {
 
     this.animTyping = new TypingAnim(
       this.$refs.eventSummary,
-      this.event.summary
+      this.event.summary,
+      // this.$refs.eventTitle,
+      // this.event.title,
     );
 
     var img = new Image();
@@ -204,9 +234,50 @@ export default {
 @require '~@styles/anims';
 
 $cell-collapsed-size = 150px;
+$cell-expanded-size = 200px;
+
+.evntCardLeft{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.evntCardRight{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.iconLeft{
+  height: 108px;
+  width:108px;
+  border: 2px solid $vermilion;
+  border-radius: 50%;
+  padding: 30px;
+  margin-right: 120px; 
+}
+.iconRight{
+  height: 108px;
+  width:108px;
+  border: 2px solid $vermilion;
+  border-radius: 50%;
+  padding 30px;
+  margin-left: 120px;
+}
+
+.imgLeft{
+  height: 100%;
+}
+.imgRight{
+  height: 100%;
+}
 
 .event {
-  --event-size: $cell-collapsed-size;
+  --event-collapsed-size: $cell-collapsed-size;
+  --event-size: $cell-expanded-size;
   height: var(--event-size);
   position: relative;
   margin: 0 20px 25px;
@@ -214,6 +285,7 @@ $cell-collapsed-size = 150px;
 }
 
 .whiteTitle {
+  display: flex;
   color: var(--text-color);
   font-family: 'Baloo Bhaina 2';
 
@@ -223,18 +295,19 @@ $cell-collapsed-size = 150px;
 }
 
 .cell {
-  box-shadow: var(--icon-shadow);
-  width: var(--event-size);
+  // box-shadow: var(--icon-shadow);
+  width: 800px;
   height: 100%;
-  background: $vermilion;
-  border-radius: calc((var(--event-size) / 2));
+  // background: $vermilion;
+  // border-radius: calc((var(--event-size) / 2));
+  background: radial-gradient(circle, rgba(7, 249, 254, 0.1), rgba(7, 249, 254, 0.2));
 }
 
 .odd {
-  height: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  // height: 100%;
+  // display: flex;
+  // justify-content: flex-start;
+  // align-items: center;
 
   .normalCanvas {
     float: left;
@@ -256,10 +329,10 @@ $cell-collapsed-size = 150px;
 }
 
 .even {
-  height: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  // height: 100%;
+  // display: flex;
+  // justify-content: flex-end;
+  // align-items: center;
 
   .normalCanvas {
     float: right;
@@ -303,7 +376,13 @@ $cell-collapsed-size = 150px;
   }
 }
 
-.normalCanvas, .glitchedCanvas {
+.normalCanvas{
+  width: calc((var(--event-collapsed-size) / 1));
+  height: calc((var(--event-collapsed-size) / 1));
+  padding: 30px;
+  border-radius: calc((var(--event-size) / 2));
+} 
+.glitchedCanvas {
   width: calc((var(--event-size) / 1));
   height: calc((var(--event-size) / 1));
   padding: 30px;
@@ -354,6 +433,8 @@ $cell-collapsed-size = 150px;
     }
 
     .cell {
+      // clip-path: polygon(20% 0,100% 0,100% 70%,80% 100%,0 100%,0 30% );
+      clip-path: polygon(0 0,90% 0,100% 30%,100% 100%,10% 100%,0 70% );
       width: 70%;
     }
 
@@ -362,4 +443,7 @@ $cell-collapsed-size = 150px;
     }
   }
 }
+
+
+
 </style>

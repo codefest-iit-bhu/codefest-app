@@ -6,7 +6,7 @@
         <router-link :to="event.link">View Details</router-link>
       </span>
     </div>
-    <BounceLoader :loading="loading" color="#E47718" :class="$style.loader" />
+    <BounceLoader :loading="loading" color="#4298a7" :class="$style.loader" />
     <div
       :class="$style.registerWrapper"
       v-if="showRegistration"

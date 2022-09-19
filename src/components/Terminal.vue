@@ -56,7 +56,7 @@ export default {
   },
   data() {
     return {
-      shouldShow: true,
+      shouldShow: false,
       isShown: false,
       isHelpShown: false,
       angle: 0,
@@ -234,7 +234,7 @@ $collapsed-height = 90px;
   background: $mine-shaft;
   width: 100%;
   z-index: 25;
-  box-shadow: var(--appbar-shadow-color) 0 -1px 10px 3px;
+  box-shadow: rgb(7 249 250) 0 0px 10px 0px;
   stick('bottom');
   font: 400 18px 'Roboto Slab';
   color: $cli-text;

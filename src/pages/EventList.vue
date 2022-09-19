@@ -9,7 +9,7 @@
           v-for="(event, i) in events"
           :key="i"
           :event="event"
-          :id="i"
+          :id=i
           :keepOpen="isMinimal"
         />
       </mq-layout>

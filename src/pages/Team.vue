@@ -13,7 +13,7 @@
         <carousel
           :scrollPerPage="false"
           paginationColor="#6F2232"
-          paginationActiveColor="#E47718"
+          paginationActiveColor="#4298a7"
           :perPageCustom="[
             [768, 3],
             [1400, 4],

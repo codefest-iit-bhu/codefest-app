@@ -1,8 +1,8 @@
 <template>
-  <footer :class="$style.footer">
+  <footer :class="$style.footer" >
     <div :class="$style.logo">
       <div :class="$style.image">
-        <img src="@assets/white-cf20-logo.svg" />
+        <img src="@assets/sepia-cf20-logo.svg" />
       </div>
       <p>Copyright © CodeFest'20</p>
       <p><a href="/privacy">Privacy Policy</a></p>
@@ -37,6 +37,7 @@ export default {};
 
 <style module lang="stylus">
 .footer {
+  border-top: 2px solid #4298a7!important;
   $font-size: 10px;
   font-weight: 800;
   background: $mine-shaft;
@@ -44,7 +45,8 @@ export default {};
   text-transform: uppercase;
   font-family: 'Quicksand';
   border-top: 2px solid rgba(34, 40, 49, 0.3);
-  color: rgba($white, 0.65);
+  // color: rgba($white, 0.65);
+  color: #4298a7;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -68,7 +70,8 @@ export default {};
 
     p {
       text-align: center;
-      color: $white;
+      // color: $white;
+      color: #4298a7;
     }
   }
 
@@ -76,7 +79,8 @@ export default {};
     font-family: 'Quicksand';
 
     a {
-      color: inherit;
+      // color: inherit;
+      color: #4298a7;
       transition: color var(--transition-duration);
     }
   }

@@ -6,7 +6,7 @@
   "description": "Computer Science department fest organised at IIT (BHU), India.",
   "background_color": "#222222",
   "orientation": "portrait",
-  "theme_color": "#E47718",
+  "theme_color": "#4298a7",
   "display": "standalone",
   "start_url": "/",
   "icons": [

@@ -30,30 +30,33 @@
       </div>
 
       <div :class="$style.buttonContainer">
-        <div :class="$style.link">
+        <!-- <div :class="$style.link"> -->
           <a
             href="https://drive.google.com/file/d/15BYqDZwShgFFqkgBPKqr0j-AcFF-_Umm"
             :class="[$style.linkText]"
             target="_blank"
           >
-            <h4>Sponsor Brochure</h4>
+            <!-- <h4>Sponsor Brochure</h4> -->
+            <Button text="Sponsor Brochure"/>
           </a>
-        </div>
-        <div :class="$style.link">
+        <!-- </div> -->
+        <!-- <div :class="$style.link"> -->
           <a
             href="https://docs.google.com/forms/d/e/1FAIpQLScinI5YpU61F8Re4wFooBgH18Q8iE1_Du-nW1IIExruqLwRpw/viewform"
             :class="[$style.linkText]"
             target="_blank"
           >
-            <h4>Sponsor Us</h4>
+            <!-- <h4>Sponsor Us</h4> -->
+            <Button text="Sponsor Us" />
           </a>
-        </div>
+        <!-- </div> -->
       </div>
     </div>
   </SectionLayout>
 </template>
 
 <script>
+import Button from "./layouts/Button.vue"
 const GridLayout = () => import("./layouts/GridLayout");
 const SectionLayout = () => import("@components/layouts/SectionLayout");
 const ResponsiveTwoColumnLayout = () =>
@@ -61,6 +64,7 @@ const ResponsiveTwoColumnLayout = () =>
 
 export default {
   components: {
+    Button,
     SectionLayout,
     GridLayout,
     ResponsiveTwoColumnLayout,

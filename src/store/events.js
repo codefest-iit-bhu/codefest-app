@@ -1,5 +1,6 @@
 export default {
   events: [{
+      id:1,
       name: "ctf",
       title: "Capture The Flag",
       summary: "A platform for the aspiring hackers to get acquainted with real computer security practices.",
@@ -33,6 +34,7 @@ export default {
       ]
     },
     {
+      id:2,
       name: "enigma",
       title: "Enigma",
       summary: "Solve real-life problems by letting your machine learn patterns in the data for you.",
@@ -67,6 +69,7 @@ export default {
       ]
     },
     {
+      id:3,
       name: "linguipedia",
       title: "Linguipedia",
       summary: "Solve challenging problems in the field of Natural Language Processing.",
@@ -101,6 +104,7 @@ export default {
       ]
     },
     {
+      id:4,
       name: "manthan",
       title: "Manthan",
       summary: "Compete with the best competitive programmers of the world in data structures and algorithms.",
@@ -139,6 +143,7 @@ export default {
       ]
     },
     {
+      id:5,
       name: "vista",
       title: "Vista",
       summary: "Make machines understand how we perceive and hone your skills in Computer Vision.",
