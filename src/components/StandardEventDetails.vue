@@ -176,8 +176,8 @@ export default {
 
     .eventLogo {
       order: -2;
-      border-bottom: 3px solid $vermilion;
-      border-right: 3px solid $vermilion;
+      border: 3px solid $vermilion;
+      // border-right: 3px solid $vermilion;
       // border-top: 3px solid $vermilion;
       // border-top: 3px solid $vermilion;
       // background: $vermilion;
@@ -185,11 +185,14 @@ export default {
       border-radius: 50%;
       width: 108px;
       height: 108px;
-      padding: 18px;
+      padding: 20px;
+      border-left-color:transparent;
+      transform: rotateY(0deg) rotate(45deg);
 
       img {
         height: 100%;
-        margin: 0;
+        // margin: 5px;
+        transform: rotateY(0deg) rotate(-45deg);
       }
 
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {

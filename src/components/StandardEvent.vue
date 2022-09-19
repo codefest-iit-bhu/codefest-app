@@ -256,22 +256,22 @@ $cell-expanded-size = 200px;
 
 
 .btn{
-  margin-left: 50px;
+  margin-left: 30px;
 }
 
 .btnRev{
-  margin-right: 50px;
+  margin-right: 30px;
 }
 
 .cnctrRev {
   position: absolute;
-  right: 80px;
+  right: 60px;
   top: 25px;
 }
 
 .cnctr{
   position: absolute;
-  left: -110px;
+  left: -130px;
   top: 25px;
 }
 .eventCardLeft{
@@ -296,6 +296,7 @@ $cell-expanded-size = 200px;
   border-radius: 50%;
   //padding: 30px;
   margin-right: 120px; 
+  margin-bottom:70px;
 }
 
 .iconInnerLeft{
@@ -318,6 +319,7 @@ $cell-expanded-size = 200px;
   border-radius: 50%;
   //padding: 30px;
   margin-left: 120px;
+  margin-bottom: 70px;
 }
 
 
