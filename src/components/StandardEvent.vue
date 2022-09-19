@@ -1,18 +1,31 @@
 <template>
   <div :class="[$style.event, $style[$mq], eventActiveClass]">
-    <div :class="eventCellClass" @click="navigateToDetails">
-      <div style="display: flex">
+    <div :class="eventCellClass" >
+      <div style="display: flex" >
         <div :class="$style.eventCardLeft" v-if="event.id%2==0" >
-          <div :class="$style.iconLeft">
+          <div :class="$style.iconLeft" @click="navigateToDetails">
             <img :src="event.icon" :class="$style.imgLeft" />
           </div>
+
+          <svg :class="$style.cnctr">
+            <line x1="220" y1="15" x2="260" y2="15" style="stroke:rgb(7,249,254);stroke-width:1" />
+            <line x1="240" y1="10" x2="265" y2="10" style="stroke:rgb(7,249,254);stroke-width:1" />
+            <line x1="265" y1="10" x2="285" y2="25" style="stroke:rgb(7,249,254);stroke-width:1" />
+          </svg>
+          
           <Button  :text= "event.title"
+            :class="$style.btn"
             @mouseenter="toggleOpen"
             @mouseleave="toggleOpen"
           />
         </div>
-        <div :class="$style.eventCardRight" v-else>
-          <ButtonRev  :text= "event.title"/>
+        <div :class="$style.eventCardRight" v-else @click="navigateToDetails">
+          <ButtonRev  :text= "event.title" :class="$style.btnRev"/>
+          <svg :class="$style.cnctrRev">
+            <line x1="230" y1="15" x2="270" y2="15" style="stroke:rgb(7,249,254);stroke-width:1" />
+            <line x1="225" y1="10" x2="250" y2="10" style="stroke:rgb(7,249,254);stroke-width:1" />
+            <line x1="225" y1="10" x2="205" y2="25" style="stroke:rgb(7,249,254);stroke-width:1" />
+          </svg>
           <div :class="$style.iconRight">
             <img :src="event.icon" :class="$style.imgRight" />
           </div>
@@ -236,14 +249,35 @@ export default {
 $cell-collapsed-size = 150px;
 $cell-expanded-size = 200px;
 
-.evntCardLeft{
+
+.btn{
+  margin-left: 50px;
+}
+
+.btnRev{
+  margin-right: 50px;
+}
+
+.cnctrRev {
+  position: absolute;
+  right: 80px;
+  top: 25px;
+}
+
+.cnctr{
+  position: absolute;
+  left: -110px;
+  top: 25px;
+}
+
+.eventCardLeft{
   height: 100%;
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
 }
-.evntCardRight{
+.eventCardRight{
   height: 100%;
   width: 100%;
   display: flex;
