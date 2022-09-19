@@ -1,10 +1,12 @@
 <template>
   <div :class="[$style.event, $style[$mq], eventActiveClass]">
     <div :class="eventCellClass" @click="navigateToDetails">
-      <div style="display: flex">
+      <div :class="$style.eventCardLeft">
         <div :class="$style.eventCardLeft" v-if="event.id%2==0" >
           <div :class="$style.iconLeft">
-            <img :src="event.icon" :class="$style.imgLeft" />
+            <div :class="$style.iconInnerLeft">
+              <img :src="event.icon" :class="$style.imgLeft" />
+            </div>
           </div>
           <Button  :text= "event.title"
             @mouseenter="toggleOpen"
@@ -13,9 +15,12 @@
         </div>
         <div :class="$style.eventCardRight" v-else>
           <ButtonRev  :text= "event.title"/>
-          <div :class="$style.iconRight">
-            <img :src="event.icon" :class="$style.imgRight" />
-          </div>
+            <div :class="$style.iconRight">
+              <div :class="$style.iconInnerRight">
+                <img :src="event.icon" :class="$style.imgRight" />
+              </div>
+            </div>
+
         </div>
       </div>
       <!-- <div>
@@ -236,14 +241,14 @@ export default {
 $cell-collapsed-size = 150px;
 $cell-expanded-size = 200px;
 
-.evntCardLeft{
+.eventCardLeft{
   height: 100%;
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
 }
-.evntCardRight{
+.eventCardRight{
   height: 100%;
   width: 100%;
   display: flex;
@@ -256,23 +261,54 @@ $cell-expanded-size = 200px;
   width:108px;
   border: 2px solid $vermilion;
   border-radius: 50%;
-  padding: 30px;
+  //padding: 30px;
   margin-right: 120px; 
 }
+
+.iconInnerLeft{
+  height: 90px;
+  width:90px;
+  border: 2px solid rgba(7,249,254,.5);
+  border-radius: 50%;
+  //padding: 30px;
+  //margin-right: 120px;
+  margin:7px; 
+  transform: rotateY(0deg) rotate(-45deg);
+  border-left-color:transparent;
+
+}
+
 .iconRight{
   height: 108px;
   width:108px;
   border: 2px solid $vermilion;
   border-radius: 50%;
-  padding 30px;
+  //padding: 30px;
   margin-left: 120px;
 }
 
+
+.iconInnerRight{
+  height: 90px;
+  width:90px;
+  border: 2px solid rgba(7,249,254,.5);
+  border-radius: 50%;
+  margin: 7px;
+  transform: rotateY(0deg) rotate(45deg);
+  border-right-color:transparent;
+  // margin-left: 120px;
+}
+
 .imgLeft{
-  height: 100%;
+  height: 50%;
+  margin: 19px;
+  transform: rotateY(0deg) rotate(45deg);
 }
 .imgRight{
-  height: 100%;
+  height: 50%;
+  margin:22px;
+  transform: rotateY(0deg) rotate(-45deg);
+
 }
 
 .event {
