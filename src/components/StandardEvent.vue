@@ -257,8 +257,8 @@ $cell-expanded-size = 200px;
 }
 
 .iconLeft{
-  height: 108px;
-  width:108px;
+  height: 88px;
+  width: 88px;
   border: 2px solid $vermilion;
   border-radius: 50%;
   //padding: 30px;
@@ -266,8 +266,8 @@ $cell-expanded-size = 200px;
 }
 
 .iconInnerLeft{
-  height: 90px;
-  width:90px;
+  height: 70px;
+  width:  70px;
   border: 2px solid rgba(7,249,254,.5);
   border-radius: 50%;
   //padding: 30px;
@@ -279,8 +279,8 @@ $cell-expanded-size = 200px;
 }
 
 .iconRight{
-  height: 108px;
-  width:108px;
+  height: 88px;
+  width: 88px;
   border: 2px solid $vermilion;
   border-radius: 50%;
   //padding: 30px;
@@ -289,8 +289,8 @@ $cell-expanded-size = 200px;
 
 
 .iconInnerRight{
-  height: 90px;
-  width:90px;
+  height: 70px;
+  width:  70px;
   border: 2px solid rgba(7,249,254,.5);
   border-radius: 50%;
   margin: 7px;
@@ -301,12 +301,12 @@ $cell-expanded-size = 200px;
 
 .imgLeft{
   height: 50%;
-  margin: 19px;
+  margin: 15px;
   transform: rotateY(0deg) rotate(45deg);
 }
 .imgRight{
   height: 50%;
-  margin:22px;
+  margin:15px;
   transform: rotateY(0deg) rotate(-45deg);
 
 }
