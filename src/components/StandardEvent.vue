@@ -1,10 +1,12 @@
 <template>
   <div :class="[$style.event, $style[$mq], eventActiveClass]">
-    <div :class="eventCellClass" >
-      <div style="display: flex" >
+    <div :class="eventCellClass" @click="navigateToDetails">
+      <div :class="$style.eventCardLeft">
         <div :class="$style.eventCardLeft" v-if="event.id%2==0" >
-          <div :class="$style.iconLeft" @click="navigateToDetails">
-            <img :src="event.icon" :class="$style.imgLeft" />
+          <div :class="$style.iconLeft">
+            <div :class="$style.iconInnerLeft">
+              <img :src="event.icon" :class="$style.imgLeft" />
+            </div>
           </div>
 
           <svg :class="$style.cnctr">
@@ -27,8 +29,10 @@
             <line x1="225" y1="10" x2="205" y2="25" style="stroke:rgb(7,249,254);stroke-width:1" />
           </svg>
           <div :class="$style.iconRight">
-            <img :src="event.icon" :class="$style.imgRight" />
-          </div>
+              <div :class="$style.iconInnerRight">
+                <img :src="event.icon" :class="$style.imgRight" />
+              </div>
+           </div>
         </div>
       </div>
       <!-- <div>
@@ -250,6 +254,7 @@ $cell-collapsed-size = 150px;
 $cell-expanded-size = 200px;
 
 
+
 .btn{
   margin-left: 50px;
 }
@@ -269,7 +274,6 @@ $cell-expanded-size = 200px;
   left: -110px;
   top: 25px;
 }
-
 .eventCardLeft{
   height: 100%;
   width: 100%;
@@ -286,27 +290,58 @@ $cell-expanded-size = 200px;
 }
 
 .iconLeft{
-  height: 108px;
-  width:108px;
+  height: 88px;
+  width: 88px;
   border: 2px solid $vermilion;
   border-radius: 50%;
-  padding: 30px;
+  //padding: 30px;
   margin-right: 120px; 
 }
+
+.iconInnerLeft{
+  height: 70px;
+  width:  70px;
+  border: 2px solid rgba(7,249,254,.5);
+  border-radius: 50%;
+  //padding: 30px;
+  //margin-right: 120px;
+  margin:7px; 
+  transform: rotateY(0deg) rotate(-45deg);
+  border-left-color:transparent;
+
+}
+
 .iconRight{
-  height: 108px;
-  width:108px;
+  height: 88px;
+  width: 88px;
   border: 2px solid $vermilion;
   border-radius: 50%;
-  padding 30px;
+  //padding: 30px;
   margin-left: 120px;
 }
 
+
+.iconInnerRight{
+  height: 70px;
+  width:  70px;
+  border: 2px solid rgba(7,249,254,.5);
+  border-radius: 50%;
+  margin: 7px;
+  transform: rotateY(0deg) rotate(45deg);
+  border-right-color:transparent;
+  // margin-left: 120px;
+}
+
 .imgLeft{
-  height: 100%;
+  height: 50%;
+  margin: 15px;
+  transform: rotateY(0deg) rotate(45deg);
 }
 .imgRight{
-  height: 100%;
+  height: 50%;
+  margin:15px;
+  transform: rotateY(0deg) rotate(-45deg);
+
 }
 
 .event {
