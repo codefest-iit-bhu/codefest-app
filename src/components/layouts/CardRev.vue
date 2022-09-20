@@ -2,6 +2,7 @@
     <div :class="$style.container">
         <div :class="$style.brdr">
         <div :class="$style.bck"></div>
+            
             <button :class="$style.btn">
                 <span :class="$style.ttl"><strong>{{ title }}</strong></span>
                 <p :class="$style.cntnt">{{ text }}</p>
@@ -13,51 +14,43 @@
 </template>
 
 <script>
-// var canvas=document.querySelector('canvas');
-// var c=canvas.getContext('2d');
-// c.beginPath();
-// c.moveTo(150, 25);
-// c.lineTo(250, 25);
-// c.strokeStyle='rgb(7,249,254)';
-// c.stroke();
 export default {
-    
-    name: 'Cards',
+    name: 'CardRev',
     props: {
         text: String,
         title: String,
-    },
-    
+    }
 }
 </script>
 
 <style module lang="stylus" scoped>
-$btn-width=830px;
+$btn-width=800px;
 $btn-height=100px;
 $margin=1.5px;
+
     .cntnt{
         display: flex;
-        justify-content: flex-start;
-        margin-left: 50px;
+        justify-content: flex-end;
+        margin-right: 50px;
     }
+
     .ttl{
         font-size:larger;
-        justify-content: flex-start;
+        justify-content: flex-end;
         display: flex;
         margin-top: 10px;
         margin-bottom: -15px;
-        margin-left: 50px;
+        margin-right: 50px;
     }
     .container{
         display: flex;
         align-items: center;
         justify-content: center;
         height: $btn-height;
-
         .brdr{
 
             position: absolute;
-            clip-path: polygon(5% 0,100% 0,100% 70%,95% 100%,0 100%,0 30% );
+            clip-path: polygon(0 0,95% 0,100% 30%,100% 100%,5% 100%,0 70% );
             margin: -2px auto;
             width: $btn-width;
             height: $btn-height;
@@ -72,7 +65,7 @@ $margin=1.5px;
                 bottom: 1px;
                 left: 2px;
                 padding: 0;
-                clip-path: polygon(5% 0,100% 0,100% 70%,95% 100%,0 100%,0 30% );
+                clip-path: polygon(0 0,95% 0,100% 30%,100% 100%,5% 100%,0 70% );
                 background: radial-gradient(circle, rgba(7, 249, 254, 0.1), rgba(7, 249, 254, 0.2));
                 height: 100%;
                 width: $btn-width - 2 * @left;
@@ -82,7 +75,7 @@ $margin=1.5px;
                 height: 100-((($margin*2)/$btn-height)*100)%;
                 width: 100-((($margin*2)/$btn-width)*100)%;
                 margin: 1.5px;
-                clip-path: polygon(5% 0,100% 0,100% 70%,95% 100%,0 100%,0 30% );
+                clip-path: polygon(0 0,95% 0,100% 30%,100% 100%,5% 100%,0 70% );
             }
         }
     }

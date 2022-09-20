@@ -1,9 +1,9 @@
 <template>
   <div :class="[$style.event, $style[$mq], eventActiveClass]">
-    <div :class="eventCellClass" @click="navigateToDetails">
+    <div :class="eventCellClass" >
       <div :class="$style.eventCardLeft">
-        <div :class="$style.eventCardLeft" v-if="event.id%2==0" >
-          <div :class="$style.iconLeft">
+        <div :class="$style.eventCardLeft" v-if="event.id%2==0" @mouseenter="toggleOpen" @mouseleave="toggleOpen">
+          <div :class="$style.iconLeft" >
             <div :class="$style.iconInnerLeft">
               <img :src="event.icon" :class="$style.imgLeft" />
             </div>
@@ -16,23 +16,32 @@
           </svg>
           
           <Button  :text= "event.title"
+            class="btnn"
             :class="$style.btn"
-            @mouseenter="toggleOpen"
-            @mouseleave="toggleOpen"
           />
+          <Card :title="event.title" :text="event.summary" :class="$style.crd" 
+            class="card"
+          />
+
+
         </div>
-        <div :class="$style.eventCardRight" v-else @click="navigateToDetails">
-          <ButtonRev  :text= "event.title" :class="$style.btnRev"/>
-          <svg :class="$style.cnctrRev">
+        <div :class="$style.eventCardRight" @mouseenter="toggleOpen" @mouseleave="toggleOpen" v-else >
+          <CardRev :title="event.title" :text="event.summary" :class="$style.crdRev" 
+            class="card"
+          />
+          <ButtonRev  :text= "event.title" :class="$style.btnRev" 
+            class="btnn"
+          />
+          <svg :class="$style.cnctrRev" >
             <line x1="230" y1="15" x2="270" y2="15" style="stroke:rgb(7,249,254);stroke-width:1" />
             <line x1="225" y1="10" x2="250" y2="10" style="stroke:rgb(7,249,254);stroke-width:1" />
             <line x1="225" y1="10" x2="205" y2="25" style="stroke:rgb(7,249,254);stroke-width:1" />
           </svg>
-          <div :class="$style.iconRight">
-              <div :class="$style.iconInnerRight">
-                <img :src="event.icon" :class="$style.imgRight" />
-              </div>
-           </div>
+          <div :class="$style.iconRight" >
+            <div :class="$style.iconInnerRight">
+              <img :src="event.icon" :class="$style.imgRight" />
+            </div>
+          </div>
         </div>
       </div>
       <!-- <div>
@@ -74,16 +83,23 @@
 import { TypingAnim, getRandom, isMinimal } from "@js/utils";
 import Button from "./layouts/Button.vue"
 import ButtonRev from "./layouts/ButtonRev.vue"
-import EventCard from './layouts/EventCard.vue';
+import EventCard from './layouts/EventCard.vue'
+import Card from './layouts/Card.vue'
+import CardRev from './layouts/CardRev.vue'
 export default {
   components: {
     Button,
     ButtonRev,
     EventCard,
+    Card,
+    CardRev
   },
   data() {
     return {
       shouldOpen: false,
+      shouldOpenRight: false,
+      shouldOpenLeft: false,
+      e_id:-1,
       openProgress: 0,
       maxWidth: 0,
       minSize: 0,
@@ -168,16 +184,36 @@ export default {
       if (shouldOpen) this.animTyping.type();
       else this.animTyping.erase();
     },
+    toggleopac(){
+      const id=this.e_id
+      console.log("in "+id)
+      const a=document.getElementsByClassName("btnn")[id-1];
+      const c=document.getElementsByClassName("card")[id-1];
+      if (this.shouldOpen) {
+        console.log("inRight")
+        a.setAttribute("style", "display:none !important");
+        c.setAttribute("style", "display:flex !important");
+      }
+      else{
+        console.log("else")
+        a.setAttribute("style", "display:flex !important");
+        c.setAttribute("style", "display:none !important");
+      }
+    },
     toggleOpen() {
-      if (!this.isMinimal) this.shouldOpen = !this.shouldOpen;
+      
+      const dir=this.event.id
+      console.log(dir);
+      this.shouldOpen= !this.shouldOpen
+      this.e_id=dir;
     },
     resetState() {
       this.maxWidth = (this.isMinimal ? 1.0 : 0.7) * window.innerWidth;
       this.minSize = this.isMinimal ? 0.75 * 150 : 150;
     },
-    navigateToDetails() {
-      this.$router.push(`/events/${this.event.name}`);
-    },
+    // navigateToDetails() {
+    //   this.$router.push(`/events/${this.event.name}`);
+    // },
   },
   mounted() {
     function drawInCanvas(canvas, image) {
@@ -238,12 +274,13 @@ export default {
   watch: {
     shouldOpen: function(shouldOpen, oldVal) {
       if (oldVal == shouldOpen) return;
-      this.toggleEvent(shouldOpen);
+      this.toggleopac();
     },
     $mq: function() {
       this.resetState();
     },
   },
+  
 };
 </script>
 
@@ -255,11 +292,22 @@ $cell-expanded-size = 200px;
 
 
 
+.crd{
+  display: none !important;
+  margin-left: 340px;
+}
+.crdRev{
+  display: none !important;
+  margin-right: 340px;
+}
+
 .btn{
+  display: flex;
   margin-left: 30px;
 }
 
 .btnRev{
+  display: flex;
   margin-right: 30px;
 }
 
