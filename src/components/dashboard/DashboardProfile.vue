@@ -269,7 +269,7 @@ export default {
 
     .userinit {
       order: -2;
-      background: $vermilion;
+      background: $waterloo;
       border-radius: 50%;
       box-shadow: var(--icon-shadow);
       width: 108px;
@@ -312,7 +312,7 @@ export default {
 
   hr {
     height: 8px;
-    background-color: $vermilion;
+    background-color: $waterloo;
     display: block;
     width: 70%;
     border: none;
@@ -322,7 +322,7 @@ export default {
     margin-top: 5px;
     margin-bottom: 72px;
     margin-left: 30%;
-    background-image: linear-gradient(to right, var(--background-color), $vermilion);
+    background-image: linear-gradient(to right, var(--background-color), $waterloo);
     border-radius: 10px;
 
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
@@ -412,8 +412,8 @@ export default {
             border-radius: inherit;
             border-bottom-right-radius: 0;
             border-top-right-radius: 0;
-            border-right: 1px solid $vermilion;
-            background: alpha($vermilion, 0.7);
+            border-right: 1px solid $waterloo;
+            background: alpha($waterloo, 0.7);
           }
 
           .value {
@@ -437,7 +437,7 @@ export default {
           width: 200px;
           height: 200px;
           border-radius: 30px;
-          border: 3px solid $vermilion;
+          border: 3px solid $waterloo;
           animation: timeline-border-green 1s ease-in-out infinite alternate;
           margin: auto;
 
@@ -455,7 +455,7 @@ export default {
             width: 100%;
             $font-size: 60px;
             padding: 24px 0;
-            color: $vermilion;
+            color: $waterloo;
           }
         }
       }
@@ -464,7 +464,7 @@ export default {
     .helptext {
       $font-size: 14px;
       display: inline-block;
-      border: 3px solid $vermilion;
+      border: 3px solid $waterloo;
       border-radius: 10px;
       padding: 8px 16px;
       margin-top: 40px;
@@ -505,12 +505,12 @@ export default {
         order: 1;
         padding: 30px 0;
         font: 600 60px 'Roboto Slab';
-        color: $vermilion;
+        color: $waterloo;
       }
     }
 
     .verified {
-      border: 5px solid $vermilion;
+      border: 5px solid $waterloo;
       animation: timeline-border-green 1s ease-in-out infinite alternate;
     }
 
@@ -548,7 +548,7 @@ export default {
           padding: 6px 15px;
           height: 100%;
           color: $white;
-          background: alpha($vermilion, 0.8);
+          background: alpha($waterloo, 0.8);
 
           span {
             display: inline-block;

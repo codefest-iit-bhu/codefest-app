@@ -93,6 +93,7 @@ $notch-color = $mine-shaft;
   .nav {
     // background: var(--background-color);
     background: radial-gradient(circle, rgba(7,249,254,0.1), rgba(7,249,254,0.2));
+    backdrop-filter: blur(10px);
     height: $appbar-height;
     // box-shadow: var(--appbar-shadow-color) 0 1px 10px 3px;
     box-shadow: rgb(7 249 254) 0 0px 0px 2px;

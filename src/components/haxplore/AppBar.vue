@@ -247,13 +247,13 @@ export default {
           }
 
           &:hover {
-            color: $vermilion;
+            color: $waterloo;
           }
         }
 
         &.active {
           a {
-            color: $vermilion;
+            color: $waterloo;
             font-weight: bold;
 
             span {

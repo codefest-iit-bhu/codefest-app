@@ -69,7 +69,7 @@ export default {
     border-radius: 100%;
     margin: 20px auto 40px;
     // box-shadow: var(--box-shadow), inset 8px 8px 20px $crown-of-thorns;
-    // background-color: $vermilion;
+    // background-color: $waterloo;
     background: radial-gradient(circle, rgba(7,249,250,0.1), rgba(7,249,250,0.2));
     border:2px solid rgb(7,249,250);
 
@@ -81,7 +81,7 @@ export default {
       border-radius: 100%;
       margin: 25px auto 40px;
       // box-shadow: var(--box-shadow), inset 8px 8px 20px $crown-of-thorns;
-      // background-color: $vermilion;
+      // background-color: $waterloo;
       background: radial-gradient(circle, rgba(7,249,250,0.2), rgba(7,249,250,0.3));
       border:2px solid rgb(7,249,250);
 
@@ -91,7 +91,7 @@ export default {
         margin :10px;
 
         ~/.xxl ^[1..-1] {
-          padding: 80px;
+          padding: 20px;
         }
 
         ~/.xl ^[1..-1] {

@@ -446,7 +446,7 @@ export default {
       cursor: pointer;
 
       &.active {
-        color: $vermilion;
+        color: $waterloo;
       }
     }
   }
@@ -471,7 +471,7 @@ export default {
       left: calc(50% - 30px);
       border: 5px solid $white;
       border-radius: 50%;
-      border-top: 5px solid $vermilion;
+      border-top: 5px solid $waterloo;
       width: 60px;
       height: 60px;
       -webkit-animation: spin 2s linear infinite; /* Safari */
@@ -570,7 +570,7 @@ export default {
         text-align: center;
 
         &:hover {
-          color: $vermilion;
+          color: $waterloo;
         }
       }
 

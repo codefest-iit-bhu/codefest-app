@@ -46,15 +46,15 @@ export default {
   width: 100%;
   border-radius: 15px;
   padding: 15px;
-  box-shadow: 0 0 12px $vermilion inset;
+  box-shadow: 0 0 12px $waterloo inset;
   table-layout: fixed;
 
   .head {
     font-family: 'Roboto Slab';
-    color: $vermilion;
+    color: $waterloo;
     padding: 12px 0;
     $font-size: 16px;
-    border-bottom: 1px solid $vermilion;
+    border-bottom: 1px solid $waterloo;
   }
 
   .tablerow {

@@ -162,7 +162,7 @@ export default {
     border-radius: 5px;
     text-align: center;
 
-    // color: $vermilion;
+    // color: $waterloo;
     // background: transparent;
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
       width: 95%;
@@ -172,7 +172,7 @@ export default {
   .assured {
     background: transparent;
     margin-top: 36px;
-    box-shadow: 0 0 10px $vermilion inset;
+    box-shadow: 0 0 10px $waterloo inset;
     border-radius: 10px;
 
     p {

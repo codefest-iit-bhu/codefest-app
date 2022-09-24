@@ -186,24 +186,19 @@ export default {
     },
     toggleopac(){
       const id=this.e_id
-      console.log("in "+id)
       const a=document.getElementsByClassName("btnn")[id-1];
       const c=document.getElementsByClassName("card")[id-1];
       if (this.shouldOpen) {
-        console.log("inRight")
         a.setAttribute("style", "display:none !important");
         c.setAttribute("style", "display:flex !important");
       }
       else{
-        console.log("else")
         a.setAttribute("style", "display:flex !important");
         c.setAttribute("style", "display:none !important");
       }
     },
     toggleOpen() {
-      
       const dir=this.event.id
-      console.log(dir);
       this.shouldOpen= !this.shouldOpen
       this.e_id=dir;
     },
@@ -340,7 +335,7 @@ $cell-expanded-size = 200px;
 .iconLeft{
   height: 88px;
   width: 88px;
-  border: 2px solid $vermilion;
+  border: 2px solid $waterloo;
   border-radius: 50%;
   //padding: 30px;
   margin-right: 120px; 
@@ -363,7 +358,7 @@ $cell-expanded-size = 200px;
 .iconRight{
   height: 88px;
   width: 88px;
-  border: 2px solid $vermilion;
+  border: 2px solid $waterloo;
   border-radius: 50%;
   //padding: 30px;
   margin-left: 120px;
@@ -417,7 +412,7 @@ $cell-expanded-size = 200px;
   // box-shadow: var(--icon-shadow);
   width: 800px;
   height: 100%;
-  // background: $vermilion;
+  // background: $waterloo;
   // border-radius: calc((var(--event-size) / 2));
   background: radial-gradient(circle, rgba(7, 249, 254, 0.1), rgba(7, 249, 254, 0.2));
 }
