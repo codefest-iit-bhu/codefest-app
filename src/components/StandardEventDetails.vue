@@ -176,11 +176,11 @@ export default {
 
     .eventLogo {
       order: -2;
-      border: 3px solid $waterloo;
-      // border-right: 3px solid $waterloo;
-      // border-top: 3px solid $waterloo;
-      // border-top: 3px solid $waterloo;
-      // background: $waterloo;
+      border: 3px solid $vermilion;
+      // border-right: 3px solid $vermilion;
+      // border-top: 3px solid $vermilion;
+      // border-top: 3px solid $vermilion;
+      // background: $vermilion;
       // box-shadow: var(--box-shadow);
       border-radius: 50%;
       width: 108px;
@@ -205,7 +205,7 @@ export default {
       // margin-top: 50px;
       order: -1;
       // color: var(--heading-color);
-      color: $waterloo;
+      color: $vermilion;
       font-family: 'Baloo Bhaina 2';
       font-weight: 700;
       text-align: right;
@@ -223,7 +223,7 @@ export default {
 
   hr {
     height: 6px;
-    background-color: $waterloo;
+    background-color: $vermilion;
     // border-radius: 10px;
     display: block;
     width: 50%;
@@ -238,13 +238,13 @@ export default {
     ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
       margin-bottom: 16px;
     }
-    // background-image: linear-gradient(to right, var(--background-color), $waterloo);
+    // background-image: linear-gradient(to right, var(--background-color), $vermilion);
   }
 
   .leftHr {
     margin-top: 0;
     margin-right: 30%;
-    // background-image: linear-gradient(to left, var(--background-color), $waterloo);
+    // background-image: linear-gradient(to left, var(--background-color), $vermilion);
   }
 
   .bottomHr {
@@ -268,7 +268,7 @@ export default {
       box-shadow: var(--inset-box-shadow);
 
       .tabTitle {
-        color:$waterloo;
+        color:$vermilion;
         $font-size: 36px;
         font-family: 'Baloo Bhaina 2';
         font-wright: 600;
@@ -277,7 +277,7 @@ export default {
       }
 
       .text {
-        color:$waterloo;
+        color:$vermilion;
         margin-top: 36px;
         margin-bottom: 20px;
         font-family: 'Quicksand';
@@ -292,7 +292,7 @@ export default {
         padding-left: 25px;
 
         .ruleText {
-          color:$waterloo;
+          color:$vermilion;
           font-family: 'Quicksand';
           font-weight: 500;
           margin-bottom: 10px;

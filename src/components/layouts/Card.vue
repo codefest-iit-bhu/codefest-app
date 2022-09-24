@@ -65,7 +65,7 @@ $margin=1.5px;
             background: rgb(7,249,254);
 
             .btn{
-                pointer-events: none;
+
                 border-width: 0px;
                 color: rgb(7,249,254);
                 position: absolute;

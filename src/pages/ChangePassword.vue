@@ -174,7 +174,7 @@ export default {
       cursor: pointer;
 
       &.active {
-        color: $waterloo;
+        color: $vermilion;
       }
     }
   }
@@ -263,7 +263,7 @@ export default {
         text-align: center;
 
         &:hover {
-          color: $waterloo;
+          color: $vermilion;
         }
       }
     }

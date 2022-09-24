@@ -61,7 +61,7 @@ export default {
 }
 
 .video {
-  box-shadow: 0 0 10px $waterloo;
+  box-shadow: 0 0 10px $vermilion;
   width: 100%;
 
   & > iframe {

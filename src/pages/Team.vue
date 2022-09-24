@@ -400,7 +400,7 @@ export default {
 
   .heading {
     text-align: center;
-    color: $waterloo;
+    color: $vermilion;
     font-family: 'Aldo the Apache';
     padding: 12px 0;
     letter-spacing: 2px;
@@ -423,7 +423,7 @@ export default {
   .line {
     height: 3px;
     border: none;
-    background-image: linear-gradient(to right, $black, alpha($waterloo, 0.7), $black);
+    background-image: linear-gradient(to right, $black, alpha($vermilion, 0.7), $black);
   }
 
   .teamHero {
@@ -463,13 +463,13 @@ export default {
     padding: 40px 0;
     width: 250px;
     margin: 50px auto 25px;
-    border-top: 4px solid $waterloo;
-    border-bottom: 4px solid $waterloo;
+    border-top: 4px solid $vermilion;
+    border-bottom: 4px solid $vermilion;
     border-radius: 100px 0 100px 0;
 
     img, object {
       border-radius: 100%;
-      border: 2px solid $waterloo;
+      border: 2px solid $vermilion;
       animation: timeline-border-green 1.5s ease-in-out infinite alternate;
       width: 200px;
       height: 200px;

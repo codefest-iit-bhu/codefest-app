@@ -96,7 +96,6 @@ $notch-color = $mine-shaft;
     height: $appbar-height;
     // box-shadow: var(--appbar-shadow-color) 0 1px 10px 3px;
     box-shadow: rgb(7 249 254) 0 0px 0px 2px;
-    backdrop-filter: blur(10px);
     font-family: 'Roboto Slab';
     $font-size: 25px;
 

@@ -107,7 +107,7 @@ export default {
 @require '~@styles/anims';
 
 $breadcrumb-hovered = $crown-of-thorns;
-$breadcrumb-unselected = $waterloo;
+$breadcrumb-unselected = $vermilion;
 $breadcrumb-arrow = $white;
 $breadcrumb-text = $white;
 $cli-text = $white;

@@ -102,11 +102,11 @@ export default {
           padding: 20px 0;
 
           span {
-            color: $waterloo;
+            color: $vermilion;
           }
 
           .textStart {
-            color: $waterloo;
+            color: $vermilion;
             font-weight: 600;
             letter-spacing: 1px;
             font-family: 'Roboto Slab';
@@ -136,7 +136,7 @@ export default {
   }
 
   .para {
-    box-shadow: inset 0 0 20px $waterloo;
+    box-shadow: inset 0 0 20px $vermilion;
     border-radius: 20px 0 20px 0;
     padding: 30px;
     text-align: center;

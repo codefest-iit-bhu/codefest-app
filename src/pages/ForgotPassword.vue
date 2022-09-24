@@ -135,7 +135,7 @@ export default {
   text-align: right;
 
   a {
-    color: $waterloo;
+    color: $vermilion;
   }
 }
 
@@ -157,7 +157,7 @@ export default {
   text-align: right;
 
   &:hover {
-    color: $waterloo;
+    color: $vermilion;
   }
 }
 

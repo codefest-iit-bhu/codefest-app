@@ -88,10 +88,10 @@ export default {
   width: 100%;
   text-align: left;
   clear: both;
-  border-bottom: 2px solid $waterloo;
+  border-bottom: 2px solid $vermilion;
 
   a {
-    color: $waterloo;
+    color: $vermilion;
   }
 
   .question {

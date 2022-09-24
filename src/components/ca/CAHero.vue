@@ -88,7 +88,7 @@ export default {
       margin: 48px 0;
 
       span {
-        color: $waterloo;
+        color: $vermilion;
         margin: 0 2px;
       }
 
@@ -126,9 +126,9 @@ export default {
       height: auto;
       padding: 25px;
       border-radius: 50px;
-      box-shadow: inset 0px 0px 20px $waterloo;
+      box-shadow: inset 0px 0px 20px $vermilion;
       animation: neon-box 1.5s ease-in-out infinite alternate;
-      border: 2px solid $waterloo;
+      border: 2px solid $vermilion;
 
       ~/.xs ^[1..-1], ~/.sm ^[1..-1], ~/.md ^[1..-1] {
         width: 220px;
@@ -150,7 +150,7 @@ export default {
       .linkText {
         text-align: center;
         font-family: 'Aldo the Apache';
-        color: $waterloo;
+        color: $vermilion;
         margin-top: 20px;
         display: inline;
 
