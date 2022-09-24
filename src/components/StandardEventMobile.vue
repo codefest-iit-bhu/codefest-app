@@ -59,7 +59,7 @@ export default {
 
 .card_top{
   height: 50%;
-  background: $vermilion;
+  background: $waterloo;
   padding: 1rem 1rem 1rem 1rem;
 }
 
@@ -76,7 +76,7 @@ export default {
   display: flex;
   flex-flow: column;
   position: relative;
-  background: $vermilion;
+  background: $waterloo;
   height: 60vh;
   border-radius: 10px;
   color: var(--text-color);

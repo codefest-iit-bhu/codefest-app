@@ -99,11 +99,11 @@ export default {
           padding: 20px 0;
 
           span {
-            color: $vermilion;
+            color: $waterloo;
           }
 
           .textStart {
-            color: $vermilion;
+            color: $waterloo;
             font-weight: 600;
             letter-spacing: 1px;
             font-family: 'Roboto Slab';

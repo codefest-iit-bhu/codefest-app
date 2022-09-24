@@ -99,13 +99,13 @@ export default {
     padding: 40px 0;
     width: 300px;
     margin: 50px auto 25px;
-    border-top: 4px solid $vermilion;
-    border-bottom: 4px solid $vermilion;
+    border-top: 4px solid $waterloo;
+    border-bottom: 4px solid $waterloo;
     border-radius: 100px 0 100px 0;
 
     img {
       border-radius: 100%;
-      border: 2px solid $vermilion;
+      border: 2px solid $waterloo;
       animation: timeline-border-green 1.5s ease-in-out infinite alternate;
       width: 200px;
       height: 200px;

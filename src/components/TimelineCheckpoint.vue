@@ -66,10 +66,10 @@ export default {
 $circle-small-size = 15px;
 $circle-large-size = 20px;
 $line-empty-background = $white;
-$line-filled-background = $vermilion;
-$circle-border-color = $vermilion;
+$line-filled-background = $waterloo;
+$circle-border-color = $waterloo;
 $circle-empty-background = $white;
-$circle-filled-background = $vermilion;
+$circle-filled-background = $waterloo;
 $circle-transparent-background = transparent;
 
 .checkpointWrapper {
@@ -96,7 +96,7 @@ $circle-transparent-background = transparent;
 
     ~/.notdone^[1..-1] {
       background-color: $circle-transparent-background;
-      border: 3px solid $vermilion70;
+      border: 3px solid $waterloo70;
     }
 
     ~/.major^[1..-1] {
@@ -156,7 +156,7 @@ $circle-transparent-background = transparent;
     $font-size: 14px;
     line-height: 30px;
     text-align: center;
-    border: 2px solid $vermilion;
+    border: 2px solid $waterloo;
     border-radius: 18px;
     font-family: 'Quicksand';
     font-weight: 600;

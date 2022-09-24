@@ -84,7 +84,7 @@ $rd = 60px;
 
       .text {
         order: 3;
-        background: $vermilion;
+        background: $waterloo;
         padding: 15px calc(var(--item-round) * 0.68);
 
         h3 {

@@ -104,7 +104,7 @@ export default {
       position: relative;
       border-radius: 50%;
       box-shadow: var(--box-shadow);
-      background: $vermilion;
+      background: $waterloo;
       position: relative;
 
       .faqImageText {

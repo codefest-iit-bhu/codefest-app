@@ -2,7 +2,7 @@
   <div :class="[$style.event, $style[$mq], eventActiveClass]">
     <div :class="eventCellClass" >
       <div :class="$style.eventCardLeft">
-        <div :class="$style.eventCardLeft" v-if="event.id%2==0" @mouseenter="toggleOpen" @mouseleave="toggleOpen">
+        <div :class="$style.eventCardLeft" v-if="event.id%2==0" @mouseenter="toggleOpen" @mouseleave="toggleOpen" @click="navigateToDetails">
           <div :class="$style.iconLeft" >
             <div :class="$style.iconInnerLeft">
               <img :src="event.icon" :class="$style.imgLeft" />
@@ -25,7 +25,7 @@
 
 
         </div>
-        <div :class="$style.eventCardRight" @mouseenter="toggleOpen" @mouseleave="toggleOpen" v-else >
+        <div :class="$style.eventCardRight" @mouseenter="toggleOpen" @mouseleave="toggleOpen" @click="navigateToDetails" v-else >
           <CardRev :title="event.title" :text="event.summary" :class="$style.crdRev" 
             class="card"
           />
@@ -211,9 +211,9 @@ export default {
       this.maxWidth = (this.isMinimal ? 1.0 : 0.7) * window.innerWidth;
       this.minSize = this.isMinimal ? 0.75 * 150 : 150;
     },
-    // navigateToDetails() {
-    //   this.$router.push(`/events/${this.event.name}`);
-    // },
+    navigateToDetails() {
+      this.$router.push(`/events/${this.event.name}`);
+    },
   },
   mounted() {
     function drawInCanvas(canvas, image) {
@@ -340,7 +340,7 @@ $cell-expanded-size = 200px;
 .iconLeft{
   height: 88px;
   width: 88px;
-  border: 2px solid $vermilion;
+  border: 2px solid $waterloo;
   border-radius: 50%;
   //padding: 30px;
   margin-right: 120px; 
@@ -363,7 +363,7 @@ $cell-expanded-size = 200px;
 .iconRight{
   height: 88px;
   width: 88px;
-  border: 2px solid $vermilion;
+  border: 2px solid $waterloo;
   border-radius: 50%;
   //padding: 30px;
   margin-left: 120px;
@@ -417,7 +417,7 @@ $cell-expanded-size = 200px;
   // box-shadow: var(--icon-shadow);
   width: 800px;
   height: 100%;
-  // background: $vermilion;
+  // background: $waterloo;
   // border-radius: calc((var(--event-size) / 2));
   background: radial-gradient(circle, rgba(7, 249, 254, 0.1), rgba(7, 249, 254, 0.2));
 }

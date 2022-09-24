@@ -454,7 +454,7 @@ export default {
   text-align: center;
 
   &:hover {
-    color: $vermilion;
+    color: $waterloo;
   }
 }
 

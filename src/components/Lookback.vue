@@ -61,7 +61,7 @@ export default {
       margin-right: auto;
       margin-bottom: 25px;
       padding: 10px;
-      background-color: $vermilion;
+      background-color: $waterloo;
     }
 
     .img {
