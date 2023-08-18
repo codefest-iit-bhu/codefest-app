@@ -33,7 +33,7 @@
         <!-- <div :class="$style.link"> -->
           <a
             href="https://drive.google.com/file/d/15BYqDZwShgFFqkgBPKqr0j-AcFF-_Umm"
-            :class="[$style.linkText]"
+            :class="$style.linkText"
             target="_blank"
           >
             <!-- <h4>Sponsor Brochure</h4> -->
@@ -43,7 +43,7 @@
         <!-- <div :class="$style.link"> -->
           <a
             href="https://docs.google.com/forms/d/e/1FAIpQLScinI5YpU61F8Re4wFooBgH18Q8iE1_Du-nW1IIExruqLwRpw/viewform"
-            :class="[$style.linkText]"
+            :class="$style.linkText"
             target="_blank"
           >
             <!-- <h4>Sponsor Us</h4> -->
@@ -138,42 +138,34 @@ $box-width = 250px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+
+    ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+      flex-flow: column;
+      margin: auto;
+    }
   }
 
-  .link {
-    margin: 20px 20px 20px 20px;
-    width: 250px;
-    height: 120px;
-    padding: 20px;
-    box-shadow: var(--box-shadow);
-    border-radius: 50px 0px 50px 0px;
-    text-align: center;
-    cursor: pointer;
+  .linkText {
+    // display: inline-block;
+    // text-decoration: none;
+    // color: $waterloo;
+    
 
-    .linkText {
-      display: inline-block;
-      text-decoration: none;
-      color: $waterloo;
-
-      h4 {
-        text-align: center;
-        position: relative;
-        top: 50%;
-        -ms-transform: translateY(-50%);
-        -webkit-transform: translateY(-50%);
-        transform: translateY(-50%);
-        font-family: 'Roboto Slab';
-        $font-size: 30px;
-      }
+    // h4 {
+    //   text-align: center;
+    //   position: relative;
+    //   top: 50%;
+    //   -ms-transform: translateY(-50%);
+    //   -webkit-transform: translateY(-50%);
+    //   transform: translateY(-50%);
+    //   font-family: 'Roboto Slab';
+    //   $font-size: 30px;
+    // }
+    ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+      margin: 20px;
+      margin-top:30px;
     }
 
-    &:hover {
-      box-shadow: var(--inset-box-shadow);
-
-      .linkText {
-        color: var(--text-color);
-      }
-    }
   }
 
   .txt {

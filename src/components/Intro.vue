@@ -21,16 +21,18 @@
       </p>
       <!-- <div v-if="!isMinimal" :class="$style.buttonContainer">
         <div :class="$style.link">
-          <router-link to="/login"
-            :class="[$style.linkText]"
-          >
+          
             <h4 v-if="!isLoggedIn">Register / Login</h4>
             <h4 v-if="isLoggedIn">Dashboard</h4>
-          </router-link>
+          
         </div>
       </div> -->
-      <Button v-if="!isLoggedIn" text="Register / Login" />
-      <Button v-if="isLoggedIn" text="Dashboard" />
+      <router-link to="/login"
+        :class="[$style.linkText]"
+      >
+        <Button v-if="!isLoggedIn" text="Register / Login" />
+        <Button v-if="isLoggedIn" text="Dashboard" />
+      </router-link>
     </div>
     
     <div :class="$style.video" slot="right">
