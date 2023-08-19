@@ -7,7 +7,7 @@
           <div :class="$style.formContainer" slot="login">
             <BarLoader
               :loading="loading"
-              color="#E47718"
+              color="#4298a7"
               :height="10"
               :class="$style.loader"
             />
@@ -68,7 +68,7 @@
           <div :class="$style.formContainer" slot="register">
             <BarLoader
               :loading="loading"
-              color="#E47718"
+              color="#4298a7"
               :height="10"
               :class="$style.loader"
             />
@@ -454,7 +454,7 @@ export default {
   text-align: center;
 
   &:hover {
-    color: $vermilion;
+    color: $waterloo;
   }
 }
 

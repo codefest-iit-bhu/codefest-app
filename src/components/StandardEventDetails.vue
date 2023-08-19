@@ -7,16 +7,19 @@
       <span :class="$style.eventTitle">{{ event.title }}</span>
     </div>
     <hr :class="$style.rightHr" />
+    <hr :class="$style.bottomHr" />
 
     <div :class="$style.eventDesc">
       <TabLayout :tabs="tabs">
-        <div :class="$style.tabContainer" slot="description">
+        <div :class="$style.tabContainer" slot="description" style="border:2px solid rgb(7,249,250);">
           <h4 :class="$style.tabTitle">Description</h4>
           <hr :class="$style.leftHr" />
           <p :class="$style.text">{{ event.description }}</p>
         </div>
 
-        <div :class="$style.tabContainer" slot="contact">
+        
+
+        <div :class="$style.tabContainer" slot="contact" style="border:2px solid rgb(7,249,250);">
           <h4 :class="$style.tabTitle">Co-ordinators</h4>
           <hr :class="$style.leftHr" />
           <ul>
@@ -29,7 +32,7 @@
           </ul>
         </div>
 
-        <div :class="$style.tabContainer" slot="faq">
+        <div :class="$style.tabContainer" slot="faq" style="border:2px solid rgb(7,249,250);">
           <h4 :class="$style.tabTitle">FAQ</h4>
           <hr :class="$style.leftHr" />
           <!-- <p :class="$style.text" :inner-html.prop="event.faqIntro | anchor">}</p> -->
@@ -37,25 +40,27 @@
         </div>
       </TabLayout>
     </div>
-    <div :class="$style.note">
-      Note: People not registered for this event on CodeFest are not eligible to
+    <!-- <div :class="$style.note"> -->
+      <!-- Note: People not registered for this event on CodeFest are not eligible to
       receive any prizes.
-    </div>
+    </div> -->
+
+    <Cards :text="'Note: People not registered for this event on CodeFest are not eligible to receive any prizes.'"/>
 
     <!-- <div :class="$style.register">
       <h2>Registrations will be live soon.</h2>
     </div> -->
 
     <span :class="$style.multipleLinkContainer">
-      <div :class="$style.link">
+      <div :class="$style.temp">
         <router-link to="/dashboard/events/" :class="$style.linkText">
-          <h4>Register</h4>
+          <Button :text="'Register'" />
         </router-link>
       </div>
 
-      <div v-if="event.url" :class="$style.link">
+      <div v-if="event.url" :class="$style.temp">
         <a :href="event.url" target="_blank"  :class="$style.linkText">
-          <h4>Problem Statement</h4>
+          <Button :text="'Problem Statement'" />
         </a>
       </div>
     </span>
@@ -64,11 +69,16 @@
 </template>
 
 <script>
+import Cards from "./layouts/Card.vue";
+import Button from "./layouts/Button.vue";
+
 const TabLayout = () => import("@components/layouts/TabLayout");
 const FAQ = () => import("@components/FAQ");
 
 export default {
   components: {
+    Cards,
+    Button,
     TabLayout,
     FAQ,
   },
@@ -106,9 +116,19 @@ export default {
 
 .multipleLinkContainer {
   flex-wrap: wrap;
-  display: inline-flex;
+  display: flex;
   width: 100%;
   justify-content: center;
+}
+
+.temp{
+  margin: 20px;
+  margin-top: 30px;
+  width: 290px;
+  height: auto;
+  padding: 15px;
+  text-align: center;
+  cursor: pointer;
 }
 
 .link {
@@ -116,9 +136,9 @@ export default {
   margin-top: 30px;
   width: 290px;
   height: auto;
-  box-shadow: var(--box-shadow);
+  // box-shadow: var(--box-shadow);
   padding: 15px;
-  border-radius: 0px 30px 0px 30px;
+  // border-radius: 0px 30px 0px 30px;
   text-align: center;
   cursor: pointer;
 
@@ -135,7 +155,7 @@ export default {
   }
 
   &:hover {
-    box-shadow: var(--inset-box-shadow);
+    // box-shadow: var(--inset-box-shadow);
 
     .linkText {
       color: var(--text-color);
@@ -156,16 +176,23 @@ export default {
 
     .eventLogo {
       order: -2;
-      background: $vermilion;
-      box-shadow: var(--box-shadow);
+      border: 3px solid $waterloo;
+      // border-right: 3px solid $waterloo;
+      // border-top: 3px solid $waterloo;
+      // border-top: 3px solid $waterloo;
+      // background: $waterloo;
+      // box-shadow: var(--box-shadow);
       border-radius: 50%;
       width: 108px;
       height: 108px;
-      padding: 18px;
+      padding: 20px;
+      border-left-color:transparent;
+      transform: rotateY(0deg) rotate(45deg);
 
       img {
         height: 100%;
-        margin: 0;
+        // margin: 5px;
+        transform: rotateY(0deg) rotate(-45deg);
       }
 
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
@@ -175,13 +202,15 @@ export default {
     }
 
     .eventTitle {
+      // margin-top: 50px;
       order: -1;
-      color: var(--heading-color);
+      // color: var(--heading-color);
+      color: $waterloo;
       font-family: 'Baloo Bhaina 2';
       font-weight: 700;
       text-align: right;
       $font-size: 50px;
-      margin: 0;
+      // margin: 0;
       float: right;
 
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
@@ -190,26 +219,44 @@ export default {
     }
   }
 
+  
+
   hr {
-    height: 8px;
-    background-color: $vermilion;
-    border-radius: 10px;
+    height: 6px;
+    background-color: $waterloo;
+    // border-radius: 10px;
     display: block;
-    width: 70%;
+    width: 50%;
     border: none;
   }
 
   .rightHr {
-    margin-top: 5px;
-    margin-bottom: 72px;
-    margin-left: 30%;
-    background-image: linear-gradient(to right, var(--background-color), $vermilion);
+    margin-top:-30px;
+    
+    margin-left:50%;
+
+    ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+      margin-bottom: 16px;
+    }
+    // background-image: linear-gradient(to right, var(--background-color), $waterloo);
   }
 
   .leftHr {
     margin-top: 0;
     margin-right: 30%;
-    background-image: linear-gradient(to left, var(--background-color), $vermilion);
+    // background-image: linear-gradient(to left, var(--background-color), $waterloo);
+  }
+
+  .bottomHr {
+      width:35%;
+      height:1px;
+      margin-top:8px;
+    margin-bottom: 72px;
+    margin-left: 65%;
+
+    ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+      margin-bottom: 16px;
+    }
   }
 
   .eventDesc {
@@ -221,6 +268,7 @@ export default {
       box-shadow: var(--inset-box-shadow);
 
       .tabTitle {
+        color:$waterloo;
         $font-size: 36px;
         font-family: 'Baloo Bhaina 2';
         font-wright: 600;
@@ -229,6 +277,7 @@ export default {
       }
 
       .text {
+        color:$waterloo;
         margin-top: 36px;
         margin-bottom: 20px;
         font-family: 'Quicksand';
@@ -243,6 +292,7 @@ export default {
         padding-left: 25px;
 
         .ruleText {
+          color:$waterloo;
           font-family: 'Quicksand';
           font-weight: 500;
           margin-bottom: 10px;

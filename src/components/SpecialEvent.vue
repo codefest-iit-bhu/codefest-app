@@ -2,21 +2,31 @@
   <div :class="[$style.hero, $style[$mq]]">
     <div>
       <router-link to="haxplore">
-        <div :class="$style.logoContainer">
-          <img :class="$style.logo" src="@assets/haxplore/logo-landing.svg" />
+        <div :class="$style.logoCContainer">
+          <div :class="$style.logoContainer">
+            <img :class="$style.logo" src="@assets/haxplore/logo-landing.svg" />
+          </div> 
         </div>
+        
       </router-link>
-      <div :class="$style.title">
-        <a>
-          <router-link to="haxplore">
-            <h1>HaXplore</h1>
-          </router-link>
-        </a>
-        <p>
-          Join the Codefest '20 team to bring out the absolute best ideas and
-          implementations from some of the best developers in the country, while
-          they join us for a 24 hours long hackathon under a single roof.
-        </p>
+      <div :class="$style.title" >
+        <div>
+          <a>
+            <router-link to="haxplore">
+              <!-- <h1>HaXplore</h1> -->
+              <Button text="Haxplore" />
+            </router-link>
+          </a>
+        </div>
+        
+        <div >
+          <p>
+            Join the Codefest '20 team to bring out the absolute best ideas and
+            implementations from some of the best developers in the country, while
+            they join us for a 24 hours long hackathon under a single roof.
+          </p>
+        </div>
+        
       </div>
     </div>
     <div :class="$style.note">
@@ -27,8 +37,13 @@
 </template>
 
 <script>
+import ButtonRev from "./layouts/ButtonRev.vue"
+import Button from "./layouts/Button.vue"
 export default {
-  components: {},
+  components: {
+    ButtonRev,
+    Button,
+  },
   mounted() {}
 };
 </script>
@@ -46,44 +61,64 @@ export default {
   padding: 10vh 16px;
   text-align: center;
 
-  .logoContainer {
-    width: 20%;
-    min-width: 100px;
+  .logoCContainer{
+    width: 250px;
+    height: 250px;
+    // min-width: 200px;
+    // min-height: 250px;
     border-radius: 100%;
     margin: 20px auto 40px;
-    box-shadow: var(--box-shadow), inset 8px 8px 20px $crown-of-thorns;
-    background-color: $vermilion;
+    // box-shadow: var(--box-shadow), inset 8px 8px 20px $crown-of-thorns;
+    // background-color: $waterloo;
+    background: radial-gradient(circle, rgba(7,249,250,0.1), rgba(7,249,250,0.2));
+    border:2px solid rgb(7,249,250);
 
-    .logo {
-      width: 90%;
-      height: 90%;
 
-      ~/.xxl ^[1..-1] {
-        padding: 80px;
-      }
+    .logoContainer {
+      width: 200px;
+      height:200px
+      // min-width: 200px;
+      border-radius: 100%;
+      margin: 25px auto 40px;
+      // box-shadow: var(--box-shadow), inset 8px 8px 20px $crown-of-thorns;
+      // background-color: $waterloo;
+      background: radial-gradient(circle, rgba(7,249,250,0.2), rgba(7,249,250,0.3));
+      border:2px solid rgb(7,249,250);
 
-      ~/.xl ^[1..-1] {
-        padding: 35px;
-      }
+      .logo {
+        width: 90%;
+        height: 90%;
+        margin :10px;
 
-      ~/.lg ^[1..-1] {
-        padding: 30px;
-      }
+        ~/.xxl ^[1..-1] {
+          padding: 20px;
+        }
 
-      ~/.md ^[1..-1] {
-        padding: 20px;
+        ~/.xl ^[1..-1] {
+          padding: 20px;
+        }
+
+        ~/.lg ^[1..-1] {
+          padding: 20px;
+        }
+
+        ~/.md ^[1..-1] {
+          padding: 20px;
+        }
+
+        ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+          padding: 45px;
+        }
       }
 
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-        padding: 45px;
+        width: 80%;
+        margin: 20px auto;
       }
     }
-
-    ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-      width: 80%;
-      margin: 20px auto;
-    }
   }
+
+  
 
   .title {
     width: 100%;

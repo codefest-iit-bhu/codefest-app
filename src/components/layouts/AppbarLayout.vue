@@ -12,6 +12,7 @@
       </ul>
     </div>
     <div :class="$style.notch">
+      <div :class="$style.back"></div>
       <div :class="[$style.logo, !haxplorePage ? $style.codefestLogo : ' ']">
         <slot name="notch" />
       </div>
@@ -90,9 +91,12 @@ $notch-color = $mine-shaft;
   }
 
   .nav {
-    background: var(--background-color);
+    // background: var(--background-color);
+    background: radial-gradient(circle, rgba(7,249,254,0.1), rgba(7,249,254,0.2));
+    backdrop-filter: blur(10px);
     height: $appbar-height;
-    box-shadow: var(--appbar-shadow-color) 0 1px 10px 3px;
+    // box-shadow: var(--appbar-shadow-color) 0 1px 10px 3px;
+    box-shadow: rgb(7 249 254) 0 0px 0px 2px;
     font-family: 'Roboto Slab';
     $font-size: 25px;
 
@@ -120,22 +124,27 @@ $notch-color = $mine-shaft;
   .notch {
     position: relative;
     top: -($appbar-height);
-    // clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
-    border-radius: 0 0 20px 20px;
-    margin: 0 auto;
+    clip-path: polygon(0 0,100% 0,90% 100%,10% 100%);
+    // border-radius: 0 0 20px 20px;
+    margin: -2px auto;
     width: $notch-width;
-    height: 100%;
+    height: 70%;
     z-index: 11;
-    background: var(--appbar-shadow-color);
+    // background: var(--appbar-shadow-color);
+    // background: #60d7d2;
+    background: rgb(7,249,254);
+  
 
     .logo {
       position: absolute;
       bottom: 1px;
       left: 2px;
       padding: 0;
-      // clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
-      border-radius: 0 0 20px 20px;
-      background: $notch-color;
+      clip-path: polygon(0 0,100% 0,90% 100%,10% 100%);
+      // border-radius: 0 0 20px 20px;
+      // background: $notch-color;
+      // background: #234845;
+      background: radial-gradient(circle, rgba(7, 249, 254, 0.1), rgba(7, 249, 254, 0.2));
       height: 100%;
       width: $notch-width - 2 * @left;
       box-shadow: 0 4px 30px var(--appbar-shadow-color);
@@ -164,6 +173,13 @@ $notch-color = $mine-shaft;
       //   margin-top: -3%;
       // }
     }
+  }
+  .back{
+    background: rgba(0,0,0,0.85);
+    height: 98%;
+    width: 99%;
+    margin: 1.5px;
+    clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
   }
 }
 </style>

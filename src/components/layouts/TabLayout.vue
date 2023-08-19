@@ -1,9 +1,9 @@
 <template>
   <div :class="$style.tabbedWindow">
-    <div :class="$style.tabsContainer">
+    <div :class="$style.tabsContainer" >
       <div ref="tabWrapper">
         <div
-          :class="[$style.tabWrapper, isActiveTab(i)]"
+          :class="[$style.tabWrapper,$style.border, isActiveTab(i)]"
           :id="`${idPrefix}_${i}`"
           v-for="(tab, i) in tabs"
           :key="i"
@@ -11,6 +11,8 @@
         >
           <div :class="$style.tabTitle" @click="toggleTab(i)" :id="tab.title">
             {{ tab.title }}
+          </div>
+          <div :class=" $style.back" @click="toggleTab(i)" >
           </div>
         </div>
       </div>
@@ -81,30 +83,36 @@ export default {
 
 $tab-width = 130px;
 $tab-height = 30px;
-
+$margin= 2px;
 .tabbedWindow {
   width: 100%;
   height: 100%;
 
   .tabsContainer {
-    border-radius: 0 20px 0px 0;
+    // border-radius: 0 20px 0px 0;
+    // clip-path:polygon(14px 0,320px 0,334px 100%,0 100%);
     position: relative;
     overflow-x: hidden;
     overflow-y: hidden;
     width: 100%;
-    height: $tab-height;
+    height: $tab-height+2*$margin;
     float: left;
+    bottom: 2.5px;
+    z-index :1;
 
     .tabWrapper {
-      width: 100%;
-      height: $tab-height;
+      width: $tab-width+2*$margin;
+      height: $tab-height+2*$margin;
       position: absolute;
       top: 0;
+      margin:0px;
+      background: rgb(7,249,250);
+      clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
 
       .tabTitle {
         z-index: 20;
         cursor: pointer;
-        background: var(--dark-shadow-color);
+        background: radial-gradient(circle, rgba(7, 249, 254, 0.1), rgba(7, 249, 254, 0.2));
         font: 12pt 'Roboto Slab';
         font-weight: 600;
         clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
@@ -113,14 +121,37 @@ $tab-height = 30px;
         width: $tab-width;
         text-align: center;
         color: var(--text-color);
+        margin: $margin;
       }
+      
+    }
+    .back{
+      cursor: pointer;
+      // background: var(--dark-shadow-color);
+      font: 12pt 'Roboto Slab';
+      font-weight: 600;
+      clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+      // clip-path:polygon(10px 0,$tab-width 0,100% 100%,0 100%);
+      height: $tab-height;
+      line-height: 30px;
+      width: $tab-width;
+      text-align: center;
+      color: var(--text-color);
+      margin: $margin;
+      background: rgba(0,0,0,0.85);
+      bottom:$tab-height+$margin;
+      position:relative;
+      z-index: -1;
     }
 
     .active {
       .tabTitle {
-        background: $vermilion;
+        background: radial-gradient(circle, rgba(7, 249, 254, 0.1), rgba(7, 249, 254, 0.2));
         color: $white;
         z-index: 25;
+      }
+      .back{
+        height:$tab-height+$margin;
       }
     }
   }

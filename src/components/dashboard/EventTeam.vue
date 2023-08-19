@@ -6,7 +6,7 @@
         <router-link :to="event.link">View Details</router-link>
       </span>
     </div>
-    <BounceLoader :loading="loading" color="#E47718" :class="$style.loader" />
+    <BounceLoader :loading="loading" color="#4298a7" :class="$style.loader" />
     <div
       :class="$style.registerWrapper"
       v-if="showRegistration"
@@ -416,7 +416,7 @@ $btn-width = 240px;
     text-align: center;
 
     &:hover {
-      color: $vermilion;
+      color: $waterloo;
     }
   }
 
@@ -444,7 +444,7 @@ $btn-width = 240px;
       text-align: center;
 
       .validTeam {
-        color: $vermilion;
+        color: $waterloo;
       }
 
       .invalidTeam {
@@ -491,7 +491,7 @@ $btn-width = 240px;
   }
 
   .infoBox {
-    border: 2px solid $vermilion;
+    border: 2px solid $waterloo;
     border-radius: 10px;
     height: 40px;
     text-align: center;
@@ -508,8 +508,8 @@ $btn-width = 240px;
       border-radius: inherit;
       border-bottom-right-radius: 0;
       border-top-right-radius: 0;
-      border-right: 1px solid $vermilion;
-      background: alpha($vermilion, 0.7);
+      border-right: 1px solid $waterloo;
+      background: alpha($waterloo, 0.7);
       height: 100%;
       padding: 5px;
     }

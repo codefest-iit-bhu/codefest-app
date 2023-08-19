@@ -1,16 +1,60 @@
 <template>
   <div :class="[$style.event, $style[$mq], eventActiveClass]">
-    <div :class="eventCellClass" @click="navigateToDetails">
-      <div :class="$style.whiteTitle">
-        <h3>{{ event.title }}</h3>
+    <div :class="eventCellClass" >
+      <div :class="$style.eventCardLeft">
+        <div :class="$style.eventCardLeft" v-if="event.id%2==0" @mouseenter="toggleOpen" @mouseleave="toggleOpen" @click="navigateToDetails">
+          <div :class="$style.iconLeft" >
+            <div :class="$style.iconInnerLeft">
+              <img :src="event.icon" :class="$style.imgLeft" />
+            </div>
+          </div>
+
+          <svg :class="$style.cnctr">
+            <line x1="220" y1="15" x2="260" y2="15" style="stroke:rgb(7,249,254);stroke-width:1" />
+            <line x1="240" y1="10" x2="265" y2="10" style="stroke:rgb(7,249,254);stroke-width:1" />
+            <line x1="265" y1="10" x2="285" y2="25" style="stroke:rgb(7,249,254);stroke-width:1" />
+          </svg>
+          
+          <Button  :text= "event.title"
+            class="btnn"
+            :class="$style.btn"
+          />
+          <Card :title="event.title" :text="event.summary" :class="$style.crd" 
+            class="card"
+          />
+
+
+        </div>
+        <div :class="$style.eventCardRight" @mouseenter="toggleOpen" @mouseleave="toggleOpen" @click="navigateToDetails" v-else >
+          <CardRev :title="event.title" :text="event.summary" :class="$style.crdRev" 
+            class="card"
+          />
+          <ButtonRev  :text= "event.title" :class="$style.btnRev" 
+            class="btnn"
+          />
+          <svg :class="$style.cnctrRev" >
+            <line x1="230" y1="15" x2="270" y2="15" style="stroke:rgb(7,249,254);stroke-width:1" />
+            <line x1="225" y1="10" x2="250" y2="10" style="stroke:rgb(7,249,254);stroke-width:1" />
+            <line x1="225" y1="10" x2="205" y2="25" style="stroke:rgb(7,249,254);stroke-width:1" />
+          </svg>
+          <div :class="$style.iconRight" >
+            <div :class="$style.iconInnerRight">
+              <img :src="event.icon" :class="$style.imgRight" />
+            </div>
+          </div>
+        </div>
       </div>
-      <div
+      <!-- <div>
+        <EventCard :title="event.title" :summary="event.summary" />
+      </div> -->
+      
+      <!-- <div
         :class="$style.cell"
-        :style="eventWidthStyle"
+        :style="eventWidthStyle" 
         @mouseenter="toggleOpen"
         @mouseleave="toggleOpen"
-      >
-        <canvas
+      > -->
+        <!-- <canvas
           :class="$style.normalCanvas"
           ref="initialCanvas"
           :style="canvasOpacityStyle(true)"
@@ -20,25 +64,42 @@
           :class="$style.glitchedCanvas"
           ref="finalCanvas"
           :style="canvasOpacityStyle(false)"
-        />
-        <div :class="$style.txt">
-          <p :class="$style.summary">
+        /> -->
+        <!-- <div :class="$style.txt"> -->
+          <!-- <p :class="$style.summary" style="display:block;">{{event.title}}</p> -->
+          <!-- <span :class="$style.summary">{{event.title}}</span> -->
+          <!-- <p :class="$style.summary">
+            <span>{{event.title}}<br></span>
             <span ref="eventSummary"></span>
             <span :class="$style.blink">|</span>
-          </p>
-        </div>
-      </div>
+          </p> -->
+        <!-- </div> -->
+      <!-- </div> -->
     </div>
   </div>
 </template>
 
 <script>
 import { TypingAnim, getRandom, isMinimal } from "@js/utils";
-
+import Button from "./layouts/Button.vue"
+import ButtonRev from "./layouts/ButtonRev.vue"
+import EventCard from './layouts/EventCard.vue'
+import Card from './layouts/Card.vue'
+import CardRev from './layouts/CardRev.vue'
 export default {
+  components: {
+    Button,
+    ButtonRev,
+    EventCard,
+    Card,
+    CardRev
+  },
   data() {
     return {
       shouldOpen: false,
+      shouldOpenRight: false,
+      shouldOpenLeft: false,
+      e_id:-1,
       openProgress: 0,
       maxWidth: 0,
       minSize: 0,
@@ -123,8 +184,23 @@ export default {
       if (shouldOpen) this.animTyping.type();
       else this.animTyping.erase();
     },
+    toggleopac(){
+      const id=this.e_id
+      const a=document.getElementsByClassName("btnn")[id-1];
+      const c=document.getElementsByClassName("card")[id-1];
+      if (this.shouldOpen) {
+        a.setAttribute("style", "display:none !important");
+        c.setAttribute("style", "display:flex !important");
+      }
+      else{
+        a.setAttribute("style", "display:flex !important");
+        c.setAttribute("style", "display:none !important");
+      }
+    },
     toggleOpen() {
-      if (!this.isMinimal) this.shouldOpen = !this.shouldOpen;
+      const dir=this.event.id
+      this.shouldOpen= !this.shouldOpen
+      this.e_id=dir;
     },
     resetState() {
       this.maxWidth = (this.isMinimal ? 1.0 : 0.7) * window.innerWidth;
@@ -145,7 +221,9 @@ export default {
 
     this.animTyping = new TypingAnim(
       this.$refs.eventSummary,
-      this.event.summary
+      this.event.summary,
+      // this.$refs.eventTitle,
+      // this.event.title,
     );
 
     var img = new Image();
@@ -191,12 +269,13 @@ export default {
   watch: {
     shouldOpen: function(shouldOpen, oldVal) {
       if (oldVal == shouldOpen) return;
-      this.toggleEvent(shouldOpen);
+      this.toggleopac();
     },
     $mq: function() {
       this.resetState();
     },
   },
+  
 };
 </script>
 
@@ -204,9 +283,115 @@ export default {
 @require '~@styles/anims';
 
 $cell-collapsed-size = 150px;
+$cell-expanded-size = 200px;
+
+
+
+.crd{
+  display: none !important;
+  margin-left: 340px;
+}
+.crdRev{
+  display: none !important;
+  margin-right: 340px;
+}
+
+.btn{
+  display: flex;
+  margin-left: 30px;
+}
+
+.btnRev{
+  display: flex;
+  margin-right: 30px;
+}
+
+.cnctrRev {
+  position: absolute;
+  right: 60px;
+  top: 25px;
+}
+
+.cnctr{
+  position: absolute;
+  left: -130px;
+  top: 25px;
+}
+.eventCardLeft{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.eventCardRight{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.iconLeft{
+  height: 88px;
+  width: 88px;
+  border: 2px solid $waterloo;
+  border-radius: 50%;
+  //padding: 30px;
+  margin-right: 120px; 
+  margin-bottom:70px;
+}
+
+.iconInnerLeft{
+  height: 70px;
+  width:  70px;
+  border: 2px solid rgba(7,249,254,.5);
+  border-radius: 50%;
+  //padding: 30px;
+  //margin-right: 120px;
+  margin:7px; 
+  transform: rotateY(0deg) rotate(-45deg);
+  border-left-color:transparent;
+
+}
+
+.iconRight{
+  height: 88px;
+  width: 88px;
+  border: 2px solid $waterloo;
+  border-radius: 50%;
+  //padding: 30px;
+  margin-left: 120px;
+  margin-bottom: 70px;
+}
+
+
+.iconInnerRight{
+  height: 70px;
+  width:  70px;
+  border: 2px solid rgba(7,249,254,.5);
+  border-radius: 50%;
+  margin: 7px;
+  transform: rotateY(0deg) rotate(45deg);
+  border-right-color:transparent;
+  // margin-left: 120px;
+}
+
+.imgLeft{
+  height: 50%;
+  margin: 15px;
+  transform: rotateY(0deg) rotate(45deg);
+}
+.imgRight{
+  height: 50%;
+  margin:15px;
+  transform: rotateY(0deg) rotate(-45deg);
+
+}
 
 .event {
-  --event-size: $cell-collapsed-size;
+  --event-collapsed-size: $cell-collapsed-size;
+  --event-size: $cell-expanded-size;
   height: var(--event-size);
   position: relative;
   margin: 0 20px 25px;
@@ -214,6 +399,7 @@ $cell-collapsed-size = 150px;
 }
 
 .whiteTitle {
+  display: flex;
   color: var(--text-color);
   font-family: 'Baloo Bhaina 2';
 
@@ -223,18 +409,19 @@ $cell-collapsed-size = 150px;
 }
 
 .cell {
-  box-shadow: var(--icon-shadow);
-  width: var(--event-size);
+  // box-shadow: var(--icon-shadow);
+  width: 800px;
   height: 100%;
-  background: $vermilion;
-  border-radius: calc((var(--event-size) / 2));
+  // background: $waterloo;
+  // border-radius: calc((var(--event-size) / 2));
+  background: radial-gradient(circle, rgba(7, 249, 254, 0.1), rgba(7, 249, 254, 0.2));
 }
 
 .odd {
-  height: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  // height: 100%;
+  // display: flex;
+  // justify-content: flex-start;
+  // align-items: center;
 
   .normalCanvas {
     float: left;
@@ -256,10 +443,10 @@ $cell-collapsed-size = 150px;
 }
 
 .even {
-  height: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  // height: 100%;
+  // display: flex;
+  // justify-content: flex-end;
+  // align-items: center;
 
   .normalCanvas {
     float: right;
@@ -303,7 +490,13 @@ $cell-collapsed-size = 150px;
   }
 }
 
-.normalCanvas, .glitchedCanvas {
+.normalCanvas{
+  width: calc((var(--event-collapsed-size) / 1));
+  height: calc((var(--event-collapsed-size) / 1));
+  padding: 30px;
+  border-radius: calc((var(--event-size) / 2));
+} 
+.glitchedCanvas {
   width: calc((var(--event-size) / 1));
   height: calc((var(--event-size) / 1));
   padding: 30px;
@@ -354,6 +547,8 @@ $cell-collapsed-size = 150px;
     }
 
     .cell {
+      // clip-path: polygon(20% 0,100% 0,100% 70%,80% 100%,0 100%,0 30% );
+      clip-path: polygon(0 0,90% 0,100% 30%,100% 100%,10% 100%,0 70% );
       width: 70%;
     }
 
@@ -362,4 +557,7 @@ $cell-collapsed-size = 150px;
     }
   }
 }
+
+
+
 </style>

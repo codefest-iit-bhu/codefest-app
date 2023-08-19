@@ -1,0 +1,117 @@
+%!PS-Adobe-3.0
+%%Creator: GNU libplot drawing library 4.1
+%%For: (Unknown) (Unknown)
+%%Title: (Untitled)
+%%CreationDate: 
+%%BoundingBox: 0 0 716 681
+%%HiResBoundingBox: 0.0000 0.0000 716.00 681.00
+%%DocumentProcessColors: Cyan Magenta Yellow Black
+%%DocumentFonts: 
+%%DocumentNeededResources: procset Adobe_level2_AI5 1.0 0
+%%+ procset Adobe_typography_AI5 1.0 0
+%%+ procset Adobe_Illustrator_AI6_vars Adobe_Illustrator_AI6
+%%+ procset Adobe_Illustrator_AI5 1.0 0
+%AI5_FileFormat 3
+%AI3_ColorUsage: Color
+%AI7_ImageSettings: 0
+%AI3_DocumentPreview: None
+%AI5_ArtSize: 716 681
+%AI5_RulerUnits: 0
+%AI5_ArtFlags: 1 0 0 1 0 0 1 1 0
+%AI5_TargetResolution: 800
+%AI5_NumLayers: 1
+%AI5_OpenViewLayers: 7
+%%PageOrigin:0 0
+%%AI3_PaperRect:0 0716 681
+%%AI3_Margin:0 0 0 0
+%AI7_GridSettings: 72 8 72 8 1 0 0.8 0.8 0.8 0.9 0.9 0.9
+%%EndComments
+%%BeginProlog
+%%IncludeResource: procset Adobe_level2_AI5 1.0 0
+%%IncludeResource: procset Adobe_typography_AI5 1.0 0
+%%IncludeResource: procset Adobe_Illustrator_AI6_vars Adobe_Illustrator_AI6
+%%IncludeResource: procset Adobe_Illustrator_AI5 1.0 0
+%%EndProlog
+%%BeginSetup
+Adobe_level2_AI5 /initialize get exec
+Adobe_Illustrator_AI5_vars Adobe_Illustrator_AI5 Adobe_typography_AI5 /initialize get exec
+Adobe_ColorImage_AI6 /initialize get exec
+Adobe_Illustrator_AI5 /initialize get exec
+%%EndSetup
+%AI5_BeginLayer
+1 1 1 1 0 0 0 79 128 255 Lb
+(Layer 1) Ln
+10.43 M
+0.09375 w
+[] 0.0000 d
+u
+0.000 0.000 0.000 Xa
+214.14 648.72 m
+218.25 651.22 223.29 651.21 227.90 650.52  C
+236.79 648.44 243.37 639.87 243.48 630.79  C
+259.85 607.01 282.81 587.96 309.01 575.89  C
+336.54 562.84 366.81 556.52 396.96 553.42  C
+412.24 551.68 427.64 551.37 442.98 550.76  C
+505.34 550.24 566.51 527.91 617.26 492.14  C
+626.61 485.66 635.41 478.43 643.95 470.92  C
+612.41 458.73 580.24 447.86 549.80 433.01  C
+522.17 419.89 496.06 403.23 473.53 382.46  C
+467.06 376.26 460.74 369.91 454.59 363.39  C
+447.20 354.77 439.98 345.99 432.35 337.57  C
+414.79 319.61 393.85 304.26 369.85 296.23  C
+369.20 295.78 L
+341.17 286.15 310.33 286.00 281.88 293.92  C
+268.63 297.53 255.72 302.44 243.51 308.75  C
+243.20 235.91 243.47 163.06 243.38 90.22  C
+230.01 90.23 216.65 90.18 203.29 90.24  C
+203.38 270.49 203.30 450.73 203.34 630.98  C
+203.23 638.28 207.57 645.48 214.14 648.72  C
+f
+0.000 0.000 0.000 Xa
+85.57 177.24 m
+109.06 191.97 136.07 200.28 163.26 204.86  C
+163.36 191.40 163.15 177.93 163.37 164.47  C
+159.97 163.23 156.33 162.96 152.89 161.88  C
+134.27 157.10 115.66 150.47 100.19 138.76  C
+91.96 132.05 83.90 123.22 83.26 112.07  C
+82.43 104.23 85.86 96.64 90.65 90.64  C
+98.53 81.05 109.40 74.50 120.51 69.29  C
+137.74 61.37 156.31 56.81 174.96 53.72  C
+177.29 53.36 179.64 53.33 181.99 53.34  C
+180.63 53.11 179.27 52.87 177.92 52.61  C
+182.67 53.10 187.27 51.77 191.97 51.50  C
+225.50 48.63 259.61 49.93 292.41 57.86  C
+310.39 62.35 328.31 68.57 343.60 79.27  C
+351.91 85.21 359.65 92.97 362.53 103.04  C
+364.05 107.57 363.53 112.43 363.00 117.08  C
+362.88 115.47 362.83 113.84 362.56 112.23  C
+361.82 114.11 362.26 116.17 362.35 118.11  C
+357.94 130.67 346.96 139.36 335.82 145.80  C
+319.59 155.00 301.52 160.36 283.38 164.26  C
+283.50 177.81 283.35 191.35 283.46 204.89  C
+304.45 201.22 325.25 195.54 344.51 186.31  C
+362.82 177.61 380.16 165.45 391.62 148.43  C
+404.25 130.16 407.16 105.63 398.76 85.01  C
+391.23 66.24 375.88 51.78 358.95 41.32  C
+332.51 25.31 302.04 17.22 271.63 13.08  C
+246.94 9.58 221.87 9.56 196.97 10.71  C
+192.02 11.38 187.03 11.82 182.03 11.57  C
+183.74 11.90 185.45 12.23 187.17 12.55  C
+181.36 11.76 175.65 13.16 169.91 13.77  C
+150.24 16.88 130.66 21.43 112.21 29.06  C
+95.44 35.70 79.63 45.10 66.52 57.56  C
+56.69 67.44 48.64 79.49 45.23 93.14  C
+40.34 110.80 43.68 130.34 53.31 145.84  C
+61.15 158.89 72.88 169.08 85.57 177.24  C
+f
+U
+LB
+%AI5_EndLayer--
+%%PageTrailer
+gsave annotatepage grestore showpage
+%%Trailer
+Adobe_Illustrator_AI5 /terminate get exec
+Adobe_ColorImage_AI6 /terminate get exec
+Adobe_typography_AI5 /terminate get exec
+Adobe_level2_AI5 /terminate get exec
+%%EOF

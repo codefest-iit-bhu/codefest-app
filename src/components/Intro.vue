@@ -19,16 +19,20 @@
         provides the perfect platform for fresh enthusiasts, as well as the
         experienced ones, to code together and compete for ultimate glory.
       </p>
-      <div v-if="!isMinimal" :class="$style.buttonContainer">
+      <!-- <div v-if="!isMinimal" :class="$style.buttonContainer">
         <div :class="$style.link">
-          <router-link to="/login"
-            :class="[$style.linkText]"
-          >
+          
             <h4 v-if="!isLoggedIn">Register / Login</h4>
             <h4 v-if="isLoggedIn">Dashboard</h4>
-          </router-link>
+          
         </div>
-      </div>
+      </div> -->
+      <router-link to="/login"
+        :class="[$style.linkText]"
+      >
+        <Button v-if="!isLoggedIn" text="Register / Login" />
+        <Button v-if="isLoggedIn" text="Dashboard" />
+      </router-link>
     </div>
     
     <div :class="$style.video" slot="right">
@@ -42,10 +46,12 @@
 const ResponsiveTwoColumnLayout = () =>
   import("@components/layouts/ResponsiveTwoColumnLayout");
   import { isMinimal } from "@js/utils";
+  import Button from "./layouts/Button.vue"
 
 export default {
   components: {
     ResponsiveTwoColumnLayout,
+    Button,
   },
   data: () => {
     return {
