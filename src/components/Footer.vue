@@ -4,10 +4,10 @@
       <div :class="$style.image">
         <img src="@assets/white-cf20-logo.svg" />
       </div>
-      <p>Copyright © CodeFest'20</p>
+      <p>Copyright © CodeFest'24</p>
       <p><a href="/privacy">Privacy Policy</a></p>
     </div>
-    <i :class="$style.heart" />
+    <i :class="$style.heart" /> 
     <span :class="$style.socialIcons">
       <a href="https://www.facebook.com/codefest/">
         <span class="fa-stack fa-lg">
@@ -21,7 +21,7 @@
           <i class="fab fa-twitter fa-stack-1x"></i>
         </span>
       </a>
-      <a href="https://www.instagram.com/codefest.iitbhu">
+      <a href="https://www.instagram.com/codefest_iitbhu">
         <span class="fa-stack fa-lg">
           <!-- <i class="fa fa-circle-notch fa-rotate fa-stack-2x"></i> -->
           <i class="fab fa-instagram fa-stack-1x"></i>

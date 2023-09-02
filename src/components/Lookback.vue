@@ -1,6 +1,7 @@
 <template>
   <div :class="[$style.lookback, $style[$mq]]">
     <GridLayout :itemWidth="computedWidth">
+      <!-- TO DO UPDATE DETAILS -->
       <div
         :class="$style.stat"
         v-for="(stat, i) in this.stats"
