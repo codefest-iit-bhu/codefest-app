@@ -1,5 +1,5 @@
 <template>
-  <SectionLayout title="Sponsors" id="sponsors">
+  <SectionLayout title="Past Sponsors" id="sponsors">
     <div :class="[$style.sponsors, $style[$mq]]">
       <ResponsiveTwoColumnLayout :class="$style.offset">
         <div :class="$style.title" slot="left">
@@ -42,7 +42,7 @@
             :class="[$style.linkText]"
             target="_blank"
           >
-            <h4>Sponsor Brochure</h4>
+            <h4> Sponsor Brochure(TODO)</h4>
           </a>
         </div>
         <div :class="$style.link">
@@ -51,7 +51,7 @@
             :class="[$style.linkText]"
             target="_blank"
           >
-            <h4>Sponsor Us</h4>
+            <h4>Sponsor Us(TODO)</h4>
           </a>
         </div>
       </div>

@@ -2,7 +2,7 @@
   <div :class="$style.link">
     <div :class="$style.discordButton" @click="inviteToDiscord">
       <i class="fab fa-discord" :class="$style.discordLogo"></i>
-      Discord Server
+      Discord Server(TODO)
     </div>
   </div>
 </template>
