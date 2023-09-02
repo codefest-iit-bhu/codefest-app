@@ -14,7 +14,7 @@
             <a
               href="mailto:events.codefest@iitbhu.ac.in?subject = Query&body = Message"
               :class="$style.email"
-              >events.codefest@iitbhu.ac.in</a
+              >events.codefest@iitbhu.ac.in<b style="font-weight: 900; color: black;">CHECK IF WORKING</b></a
             >
             <br />
             <a href="https://facebook.com/codefest" :class="$style.facebook"

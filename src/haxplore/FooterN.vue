@@ -1,14 +1,15 @@
 <template>
   <footer :class="$style.footer">
     <div :class="$style.logo">
-      <div :class="$style.image">
-        <img src="@assets/white-cf20-logo.svg" />
+      <div   :class="$style.image">
+        <span>Image(TODO)</span>
+        <img  src="@assets/haxplore/hax_white.svg" />
       </div>
-      <p>Copyright © CodeFest'20</p>
-      <p><a href="/privacy">Privacy Policy</a></p>
+      <p>Copyright © 2024 Haxplore</p>
     </div>
     <i :class="$style.heart" />
     <span :class="$style.socialIcons">
+      Codefest' 24
       <a href="https://www.facebook.com/codefest/">
         <span class="fa-stack fa-lg">
           <!-- <i class="fa fa-circle-notch fa-stack-2x"></i> -->
@@ -21,7 +22,7 @@
           <i class="fab fa-twitter fa-stack-1x"></i>
         </span>
       </a>
-      <a href="https://www.instagram.com/codefest.iitbhu">
+      <a href="https://www.instagram.com/codefest_iitbhu">
         <span class="fa-stack fa-lg">
           <!-- <i class="fa fa-circle-notch fa-rotate fa-stack-2x"></i> -->
           <i class="fab fa-instagram fa-stack-1x"></i>
@@ -57,13 +58,23 @@ export default {};
     width: 100%;
     margin-top: 20px;
 
-    .image {
-      width: 160px;
-      margin: 0 auto;
 
-      img {
-        width: 100%;
-      }
+    .image {
+
+      height: 50px;
+      width: 170px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    img{
+      position: absolute;
+      margin: auto;
+      top: -10px;
+      right: -83px;
+      width: 200%;
+      height: 200%;
+      
     }
 
     p {

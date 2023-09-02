@@ -1,5 +1,5 @@
 <template>
-  <SectionLayout title="Prizes" id="prizes">
+  <SectionLayout title="Prizes(DEKHLO BHAI SAHI HAI YA NHI TODO)" id="prizes">
     <div :class="[$style.wrapper, $style[$mq]]">
       <div :class="$style.prizesContainer">
         <CardLayout
@@ -62,7 +62,6 @@
 const SectionLayout = () => import("@components/layouts/SectionLayout");
 const GridLayout = () => import("@components/layouts/GridLayout");
 const CardLayout = () => import("@components/layouts/CardLayout");
-
 export default {
   components: {
     SectionLayout,

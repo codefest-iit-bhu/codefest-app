@@ -1,5 +1,5 @@
 <template>
-  <SectionLayout title="Timeline" id="timeline">
+  <SectionLayout title="Timeline (DEKHLO BHAI KYA KRNA TODO)" id="timeline">
     <div :class="[$style.timelineContainer, $style[$mq]]">
       <Timeline :timeline="timeline" slot="left" />
     </div>
@@ -20,6 +20,7 @@ export default {
   },
   data() {
     return {
+      //Yahan sari dates galat hai;
       timeline: [
         {
           isMajor: true,
