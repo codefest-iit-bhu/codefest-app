@@ -1,14 +1,14 @@
 <template>
   <footer :class="$style.footer">
     <div :class="$style.logo">
-      <div   :class="$style.image">
-        <img  src="@assets/haxplore/hax_white.svg" />
+      <div :class="$style.image">
+        <img src="@assets/white-cf20-logo.svg" />
       </div>
-      <p>Copyright © 2020 Haxplore</p>
+      <p>Copyright © CodeFest'20</p>
+      <p><a href="/privacy">Privacy Policy</a></p>
     </div>
     <i :class="$style.heart" />
     <span :class="$style.socialIcons">
-      Codefest' 20
       <a href="https://www.facebook.com/codefest/">
         <span class="fa-stack fa-lg">
           <!-- <i class="fa fa-circle-notch fa-stack-2x"></i> -->
@@ -57,23 +57,13 @@ export default {};
     width: 100%;
     margin-top: 20px;
 
-
     .image {
-
-      height: 50px;
-      width: 170px;
+      width: 160px;
       margin: 0 auto;
-      position: relative;
-    }
 
-    img{
-      position: absolute;
-      margin: auto;
-      top: -10px;
-      right: -83px;
-      width: 200%;
-      height: 200%;
-      
+      img {
+        width: 100%;
+      }
     }
 
     p {

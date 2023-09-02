@@ -2,12 +2,12 @@
   <footer :class="$style.footer">
     <div :class="$style.container">
       <div :class="$style.logo">
-        <img src="@assets/haxplore/logo-text.svg" />
+        <img src="@assets/haxplore/logo-text.svg" /> <!-- TODO -->
       </div>
 
       <div :class="$style.content">
         <span>
-          Copyright 2020 Haxplore | Codefest' 20
+          Copyright 2024 Haxplore | Codefest' 24
           <i :class="$style.heart"></i>
         </span>
       </div>
@@ -29,7 +29,7 @@
             </a>
           </li>
           <li>
-            <a href="https://www.instagram.com/codefest.iitbhu">
+            <a href="https://www.instagram.com/codefest_iitbhu">
               <span class="fa-stack fa-lg">
                 <i class="fab fa-instagram fa-stack-1x"></i>
               </span>

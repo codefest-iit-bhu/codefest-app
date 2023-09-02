@@ -76,7 +76,7 @@
               </router-link>
             </li>
             <li :class="$style.link" v-show="!showDashboardActions">
-              <router-link to="/login">Login / Register</router-link>
+              <router-link to="/login">Login / Register <!-- TODO -->></router-link>
             </li>
             <li :class="$style.link" v-show="showDashboardActions">
               <a @click="authLogout">Logout</a>
@@ -94,6 +94,8 @@ import { isMinimal } from "@js/utils";
 const AppbarLayout = () => import("@components/layouts/AppbarLayout");
 const SectionSidebar = () => import("@components/SectionSidebar");
 const Slide = () => import("@components/Menu/Slide");
+
+
 
 export default {
   components: {

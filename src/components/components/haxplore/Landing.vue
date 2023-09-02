@@ -21,7 +21,7 @@
         <span :class="$style.venue">
           <span :id="$style.loc">
             <i class="fas fa-university"></i> IIT (BHU), Varanasi <br>
-            <i class="fas fa-calendar" aria-hidden="true"></i> March 27 - 28, 2021
+            <i class="fas fa-calendar" aria-hidden="true"></i> March 27 - 28, 2021 <!-- TODO -->
           </span>
         </span>
         <DevfolioButton />
@@ -48,7 +48,7 @@ export default {
   },
   data() {
     return {
-      hackathonStart: new Date(2019, 8, 23),
+      hackathonStart: new Date(2019, 8, 23), // TODO
       isTyped: false
     };
   },

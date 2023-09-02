@@ -15,7 +15,7 @@
         </p>
       </div>
       <div :class="$style.video" slot="right">
-        <youtube :video-id="videoId" ref="youtube" @playing="playing"></youtube>
+        <youtube :video-id="videoId" ref="youtube" @playing="playing"></youtube> <!-- TODO -->
       </div>
     </ResponsiveTwoColumnLayout>
   </SectionLayout>
