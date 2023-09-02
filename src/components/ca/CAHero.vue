@@ -10,7 +10,7 @@
           </span>
           <span :id="$style.sep">|</span>
           <span :id="$style.date">
-            <i class="far fa-calendar-alt"></i> 23 - 25 August, 2019
+            <i class="far fa-calendar-alt"></i> enter date here
           </span>
         </span>
         <h1>
