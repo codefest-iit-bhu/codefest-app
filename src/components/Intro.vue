@@ -10,7 +10,7 @@
         brings to you yet another edition of its annual coding extravaganza,
         Codefest!
         <br />
-        <br />Being more diverse than ever, <span>Codefest '20</span> boasts of
+        <br />Being more diverse than ever, <span>Codefest '24</span> boasts of
         a plethora of events, ranging from competitive programming, algorithms
         and application development to upcoming trends like cryptography,
         machine learning, computer vision and cyber security.
@@ -30,10 +30,10 @@
         </div>
       </div>
     </div>
-    
-    <div :class="$style.video" slot="right">
+    <!-- TODO -->
+    <!-- <div :class="$style.video" slot="right">
       <youtube :video-id="videoId" ref="youtube" @playing="playing"></youtube>
-    </div>
+    </div> -->
 
   </ResponsiveTwoColumnLayout>
 </template>

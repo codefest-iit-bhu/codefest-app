@@ -1,7 +1,7 @@
 <template>
-  <SectionLayout title="Sponsors" id="sponsors">
+  <SectionLayout title="Previous Sponsors" id="sponsors">
     <div :class="[$style.sponsors, $style[$mq]]">
-      <ResponsiveTwoColumnLayout :class="$style.offset">
+      <!-- <ResponsiveTwoColumnLayout :class="$style.offset">
         <div :class="$style.title" slot="left">
           <div :class="$style.cell">
             <div :class="$style.clip">
@@ -14,7 +14,7 @@
         <div :class="$style.titleText" slot="right">
             <div :class="$style.txt">Title Sponsor</div>
         </div>
-      </ResponsiveTwoColumnLayout>
+      </ResponsiveTwoColumnLayout> -->
       <div :class="$style.container">
         <GridLayout
           :columns="$mq | mq({xs: 1, sm: 1, md: 2, lg: 2, xl: 2})"
@@ -35,7 +35,7 @@
           </div>
         </GridLayout>
       </div>
-      <div :class="$style.buttonContainer">
+      <!-- <div :class="$style.buttonContainer">
       <div :class="$style.link">
           <a
             href="https://drive.google.com/file/d/1ABFiTwX8Eb7w--0DOqpzJOPqjiE-WQ9D/view?usp=sharing"
@@ -54,7 +54,7 @@
             <h4>Sponsor Us</h4>
           </a>
         </div>
-      </div>
+      </div> -->
     </div>
   </SectionLayout>
 </template>
@@ -76,29 +76,27 @@ export default {
       stats: [
         {
           image: "assets/Sponsors/Devfolio_Logo-Colored.svg",
-          text: "Associate Sponsor",
           link: "https://devfolio.co/"
         },
         {
           image: "assets/Sponsors/github.png",
-          text: "Associate Sponsor",
           link: "https://github.com/"
         },
         {
           image: "assets/Sponsors/polygon.svg",
-          text: "Season Partner",
           link: "https://polygon.technology/"
         },
         {
           image: "assets/Sponsors/Portis_Logo-Black.svg",
-          text: "Season Partner",
           link: "https://www.portis.io"
         },
         {
           image: "assets/Sponsors/Tezos_Logo-Colored.svg",
-          text: "Season Partner",
           link: "https://tezos.com"
-          
+        },
+        {
+          image: "assets/Sponsors/aws.png",
+          link: "https://aws.amazon.com/"
         }
 
 

@@ -70,8 +70,13 @@ export default {
         {
           question: "Are there any special prizes for girls?",
           answer:
-            "Yes. In order to promote gender equality and diversity, we have a prize money of Rs.5000 for the best All-Girls team.",
+            "Details to be released soon.",
         },
+        // {
+        //   question: "Are there any special prizes for girls?",
+        //   answer:
+        //     "Yes. In order to promote gender equality and diversity, we have a prize money of Rs.5000 for the best All-Girls team.",
+        // },
       ],
     };
   },

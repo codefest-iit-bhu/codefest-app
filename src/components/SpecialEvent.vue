@@ -13,16 +13,16 @@
           </router-link>
         </a>
         <p>
-          Join the Codefest '20 team to bring out the absolute best ideas and
+          Join the Codefest '24 team to bring out the absolute best ideas and
           implementations from some of the best developers in the country, while
           they join us for a 24 hours long hackathon under a single roof.
         </p>
       </div>
     </div>
-    <div :class="$style.note">
+    <!-- <div :class="$style.note">
       Note: People not registered on CodeFest are not eligible to receive any
       prizes.
-    </div>
+    </div> -->
   </div>
 </template>
 
