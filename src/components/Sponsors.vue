@@ -30,6 +30,9 @@
       </div>
 
       <div :class="$style.buttonContainer">
+
+        <!-- Link for Sponsor Brochure and Spnosor Us need to be updated -->
+
         <div :class="$style.link">
           <a
             href="https://drive.google.com/file/d/15BYqDZwShgFFqkgBPKqr0j-AcFF-_Umm"
