@@ -13,7 +13,7 @@
           </router-link>
         </a>
         <p>
-          Join the Codefest '20 team to bring out the absolute best ideas and
+          Join the Codefest '24 team to bring out the absolute best ideas and
           implementations from some of the best developers in the country, while
           they join us for a 24 hours long hackathon under a single roof.
         </p>
