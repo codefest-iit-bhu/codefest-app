@@ -1,4 +1,4 @@
-## CodeFest 2020 [![Deploy to Zeit Now](https://zeit.co/button)](https://zeit.co/import/project?template=https://github.com/codefest-iit-bhu/codefest-app/tree/develop/frontend)
+## CodeFest [![Deploy to Zeit Now](https://zeit.co/button)](https://zeit.co/import/project?template=https://github.com/codefest-iit-bhu/codefest-app/tree/develop/frontend)
 
 [![develop/frontend status](https://badgen.net/github/status/codefest-iit-bhu/codefest-app/develop%2Ffrontend)](https://github.com/codefest-iit-bhu/codefest-app/tree/develop/frontend) [![Netlify Status](https://api.netlify.com/api/v1/badges/f2526137-ea4e-4860-bdb7-957d7a76c0cc/deploy-status)](https://app.netlify.com/sites/codefest19/deploys) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1d35eebacf0d4bb7b99f03629a07a375)](https://www.codacy.com/gh/codefest-iit-bhu/codefest-app?utm_source=github.com&utm_medium=referral&utm_content=codefest-iit-bhu/codefest19&utm_campaign=Badge_Grade)
 [![Last commit](https://badgen.net/github/last-commit/codefest-iit-bhu/codefest-app/develop%2Ffrontend)](https://github.com/codefest-iit-bhu/codefest-app/commits/develop/frontend)

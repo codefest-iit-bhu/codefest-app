@@ -8,7 +8,7 @@
       <div :class="$style.content">
         <span>
           Copyright 2020 Haxplore | Codefest' 20
-          <i :class="$style.heart"></i>
+          <!-- <i :class="$style.heart"></i> -->
         </span>
       </div>
 
@@ -29,12 +29,20 @@
             </a>
           </li>
           <li>
-            <a href="https://www.instagram.com/codefest.iitbhu">
+            <a href="https://www.instagram.com/codefest_iitbhu">
               <span class="fa-stack fa-lg">
                 <i class="fab fa-instagram fa-stack-1x"></i>
               </span>
             </a>
           </li>
+          <li>
+            <a href="https://www.linkedin.com/company/codefest/about/">
+              <span class="fa-stack fa-lg">
+                <i class="fab fa-linkedin fa-stack-1x"></i>
+              </span>
+            </a>
+          </li>
+          
         </ul>
       </div>
     </div>

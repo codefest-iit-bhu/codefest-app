@@ -4,11 +4,11 @@
       <div   :class="$style.image">
         <img  src="@assets/haxplore/hax_white.svg" />
       </div>
-      <p>Copyright © 2020 Haxplore</p>
+      <p>Copyright © 2024 Haxplore</p>
     </div>
-    <i :class="$style.heart" />
+    <!-- <i :class="$style.heart" /> -->
     <span :class="$style.socialIcons">
-      Codefest' 20
+      Codefest' 24
       <a href="https://www.facebook.com/codefest/">
         <span class="fa-stack fa-lg">
           <!-- <i class="fa fa-circle-notch fa-stack-2x"></i> -->
@@ -21,10 +21,16 @@
           <i class="fab fa-twitter fa-stack-1x"></i>
         </span>
       </a>
-      <a href="https://www.instagram.com/codefest.iitbhu">
+      <a href="https://www.instagram.com/codefest_iitbhu">
         <span class="fa-stack fa-lg">
           <!-- <i class="fa fa-circle-notch fa-rotate fa-stack-2x"></i> -->
           <i class="fab fa-instagram fa-stack-1x"></i>
+        </span>
+      </a>
+      <a href="https://www.linkedin.com/company/codefest/about/">
+        <span class="fa-stack fa-lg">
+          <!-- <i class="fa fa-circle-notch fa-rotate fa-stack-2x"></i> -->
+          <i class="fab fa-linkedin fa-stack-1x"></i>
         </span>
       </a>
     </span>

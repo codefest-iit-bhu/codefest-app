@@ -10,10 +10,11 @@ export default {
       coordinators: [
         "Shivansh Saini - shivansh.saini.cse17@iitbhu.ac.in",
       ],
-      faq: [{
-          question: "Will the event be online?",
-          answer: "Yes, the event will be completely online on HackerRank."
-        },
+      faq: [
+        // {
+        //   question: "Will the event be online?",
+        //   answer: "Yes, the event will be completely online on HackerRank."
+        // },
         {
           question: "Where can I get past problems of the event?",
           answer: "CTF’19: https://www.hackerrank.com/codefest19-ctf/<br/> CTF'18: https://www.hackerrank.com/codefest-ctf-18/"
@@ -44,10 +45,11 @@ export default {
         "Samyak -  samyak.jain.cse17@iitbhu.ac.in",
         "Prateek - prateek.saini.cse17@iitbhu.ac.in"
       ],
-      faq: [{
-          question: "Will the event be online?",
-          answer: "Yes, the event will be completely online on HackerRank."
-        },
+      faq: [
+        // {
+        //   question: "Will the event be online?",
+        //   answer: "Yes, the event will be completely online on HackerRank."
+        // },
         {
           question: "Where can I get past problems of the event?",
           answer: "Enigma’19: https://www.hackerearth.com/enigma-codefest19/<br/> Enigma'18: https://datahack.analyticsvidhya.com/contest/enigma-codefest-machine-learning/<br/> Enigma'17: https://datahack.analyticsvidhya.com/contest/codefest-enigma/"
@@ -78,10 +80,11 @@ export default {
         "Piyush Maurya - piyush.maurya.cse17@iitbhu.ac.in",
         "Dipesh Kumar - dipesh.kumar.cse17@iitbhu.ac.in"
       ],
-      faq: [{
-          question: "Will the event be online?",
-          answer: "Yes, the event will be completely online on HackerRank."
-        },
+      faq: [
+        // {
+        //   question: "Will the event be online?",
+        //   answer: "Yes, the event will be completely online on HackerRank."
+        // },
         {
           question: "Where can I get past problems of the event?",
           answer: "Linguipedia’19: https://www.hackerearth.com/linguipedia-codefest19/<br/> Linguipedia'18: https://datahack.analyticsvidhya.com/contest/linguipedia-codefest-natural-language-processing/<br/> Linguipedia'17: https://datahack.analyticsvidhya.com/contest/linguipedia-codefest-natural-language-processing/"
@@ -116,10 +119,10 @@ export default {
           question: "What are the rules?",
           answer: "Detailed rules of the contest can be found here - https://codeforces.com/blog/entry/4088."
         },
-        {
-          question: "Will the event be online?",
-          answer: "Yes, the event will be completely online and platform will be announced soon."
-        },
+        // {
+        //   question: "Will the event be online?",
+        //   answer: "Yes, the event will be completely online and platform will be announced soon."
+        // },
         {
           question: "Where can I get past problems of the event?",
           answer: "Manthan'19: https://codeforces.com/contest/1208/<br/> Manthan'18: https://codeforces.com/contest/1037/<br/> Manthan'17: https://codeforces.com/contest/855"
@@ -150,10 +153,11 @@ export default {
         "Lakshya Gupta - lakshya.gupta.cse17@iitbhu.ac.in",
         "Sayam Choudhary - sayam.choudhary.cse17@iitbhu.ac.in"
       ],
-      faq: [{
-          question: "Will the event be online?",
-          answer: "Yes, the event will be completely online on HackerRank."
-        },
+      faq: [
+        // {
+        //   question: "Will the event be online?",
+        //   answer: "Yes, the event will be completely online on HackerRank."
+        // },
         {
           question: "Where can I get past problems of the event?",
           answer: "Vista’19: https://www.hackerearth.com/vista-codefest19/<br/> Vista'18: https://datahack.analyticsvidhya.com/contest/vista-codefest-computer-vision/"
