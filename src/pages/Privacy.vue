@@ -3,7 +3,7 @@
     <AppBar :shouldShowSideNavigation="false" />
     <main :class="$style.wrapper">
       <SectionLayout title="Our Privacy Policy" id="about">
-	    <p>One of our main priorities at CodeFest is the privacy of our visitors. This Privacy Policy document below contains types of information that are collected and recorded by CodeFestand how we use it.<br /><br />
+	    <p>One of our main priorities at CodeFest is the privacy of our visitors. This Privacy Policy document below contains types of information that are collected and recorded by CodeFest and how we use it.<br /><br />
 
 	    This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in CodeFest. This policy is not applicable to any information collected offline or via channels other than this website.</p>
 
