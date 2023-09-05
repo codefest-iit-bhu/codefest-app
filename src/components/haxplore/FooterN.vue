@@ -8,7 +8,7 @@
     </div>
     <!-- <i :class="$style.heart" /> -->
     <span :class="$style.socialIcons">
-      Codefest' 24
+      CodeFest' 24
       <a href="https://www.facebook.com/codefest/">
         <span class="fa-stack fa-lg">
           <!-- <i class="fa fa-circle-notch fa-stack-2x"></i> -->

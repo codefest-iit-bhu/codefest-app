@@ -9,7 +9,7 @@
 
 #### Introduction
 
-Source code for the frontend of Codefest 2024 PWA app. Uses Vue.Js library to develop a PWA for both mobile and desktop alike with rich user-experience.
+Source code for the frontend of CodeFest 2024 PWA app. Uses Vue.Js library to develop a PWA for both mobile and desktop alike with rich user-experience.
 
 #### Technical Stack
 

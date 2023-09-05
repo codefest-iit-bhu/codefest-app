@@ -148,7 +148,7 @@ export default {
       link: "/events/vista",
       url: "",
       icon: "/assets/events/vista.png",
-      description: "The soaring vision perception over the years with the accelerating computation ability has made it possible to fabricate challenges tasks like autonomous vehicles. With limitless data to learn from and various applications to apply to, the need to make machines understand and react similar to how we perceive has become predominant in reaching complete Artificial Intelligence with this. With this aim in sight, and to give you a glimpse of the mesmerizing world of Computer Vision, Codefest'20 brings to you Vista. Join us and try your hands on challenging problems involving object detection, image segmentation, object classification, motion tracking and many more.",
+      description: "The soaring vision perception over the years with the accelerating computation ability has made it possible to fabricate challenges tasks like autonomous vehicles. With limitless data to learn from and various applications to apply to, the need to make machines understand and react similar to how we perceive has become predominant in reaching complete Artificial Intelligence with this. With this aim in sight, and to give you a glimpse of the mesmerizing world of Computer Vision, CodeFest'24 brings to you Vista. Join us and try your hands on challenging problems involving object detection, image segmentation, object classification, motion tracking and many more.",
       coordinators: [
         "Lakshya Gupta - lakshya.gupta.cse17@iitbhu.ac.in",
         "Sayam Choudhary - sayam.choudhary.cse17@iitbhu.ac.in"

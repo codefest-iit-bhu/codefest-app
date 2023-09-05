@@ -31,7 +31,7 @@ export default {
         {
           question: "What is the responsibility of a CA",
           answer:
-            "A CA's responsibility is to publicize Codefest among the students of\
+            "A CA's responsibility is to publicize CodeFest among the students of\
              their college and act as a representative of the fest in their college.",
         },
         {

@@ -3,7 +3,7 @@
     <AppBar :shouldShowSideNavigation="false" />
     <main :class="$style.wrapper">
       <SectionLayout title="What is a Referral?" id="about">
-	    <p>After successfully registering for Codefest'20, you can also invite interested folks to register for the event. To do so, you have to simply share the referral link that can be found on your dashboard. Each participant has a unique referral link and each successful registration using your referral link will increment your referral count by one, which is also displayed on your dashboard.<br /><br />
+	    <p>After successfully registering for CodeFest'24, you can also invite interested folks to register for the event. To do so, you have to simply share the referral link that can be found on your dashboard. Each participant has a unique referral link and each successful registration using your referral link will increment your referral count by one, which is also displayed on your dashboard.<br /><br />
 
 	    The top ten participants with the maximum referral count are displayed on the leaderboard below. So spread the word among your peers to claim several goodies and shwags.</p>
 	  </SectionLayout>

@@ -89,7 +89,7 @@ export default {
           name: "Raj Shukla",
           comment:
             "Thanks, thanks for organizing such amazing competitions.\
-                    I really enjoy spending time on Codefest hackathons.\
+                    I really enjoy spending time on CodeFest hackathons.\
                     This will help in my career growth as well.\
                     I am extremely happy to get rank 1 on enigma, I never thought of this can happen.",
           image: "assets/Testimonial/raj-shukla.jpeg",
