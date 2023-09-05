@@ -7,10 +7,10 @@
       <div :class="$style.aboutHead" slot="left">
         <p>
           A good leader is one who knows the way, goes the way and shows the
-          way. With this in mind, Codefest invites you to lead your college in
+          way. With this in mind, CodeFest invites you to lead your college in
           the sixth edition of the coding extravaganza by becoming a part of our
           team as a Campus Ambassador. Apply now to grab the opportunity of
-          becoming the face of Codefest in your college!
+          becoming the face of CodeFest in your college!
         </p>
       </div>
     </ResponsiveTwoColumnLayout>

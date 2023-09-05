@@ -35,7 +35,7 @@ export default {
         {
           start: "Connect : ",
           rest:
-            "Grow a strong network with peers inside your college as well as the Codefest team.",
+            "Grow a strong network with peers inside your college as well as the CodeFest team.",
         },
         {
           start: "Communication : ",
@@ -45,12 +45,12 @@ export default {
         {
           start: "Certificate : ",
           rest:
-            "Get Work Experience certificate as a Codefest Campus Ambassador.",
+            "Get Work Experience certificate as a CodeFest Campus Ambassador.",
         },
         {
           start: "Goodies : ",
           rest:
-            "Official Codefest goodies and/or tees depending upon the number of participants in Codefest from your college.",
+            "Official CodeFest goodies and/or tees depending upon the number of participants in CodeFest from your college.",
         },
       ],
     };
