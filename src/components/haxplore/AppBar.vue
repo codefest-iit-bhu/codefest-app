@@ -27,7 +27,7 @@
         <img src="@assets/haxplore/logo-text.svg" />
       </li>
       <router-link to="/" slot="notch" v-if="!isMinimal">
-        <img src="@assets/white-cf20-logo.svg" />
+        <img src="@assets/white-cf24-logo.svg" />
       </router-link>
       <router-link to="/haxplore" slot="notch" v-else>
         <img src="@assets/haxplore/logo-text.svg" @click="$emit('scrollTop')" />
@@ -40,7 +40,7 @@
       <mq-layout :mq="['xs', 'sm']">
         <Slide :isOpen="isSidebarOpen" @closeSideBar="onCloseSideBar" :width="sideBarWidth">
           <router-link to="/">
-            <img src="@assets/white-cf20-logo.svg" :class="$style.sidebarLogo" />
+            <img src="@assets/white-cf24-logo.svg" :class="$style.sidebarLogo" />
           </router-link>
           <!-- <ul v-scroll-spy-active="{class: $style.active}" v-scroll-spy-link>
             <slot></slot>

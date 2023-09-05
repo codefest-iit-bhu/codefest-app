@@ -3,7 +3,7 @@
     <div :class="$style.logo">
       <!-- TODO -->
       <div :class="$style.image">
-        <img src="@assets/white-cf20-logo.svg" />
+        <img src="@assets/white-cf24-logo.svg" />
       </div>
       <p>Copyright © CodeFest'24</p>
       <p><a href="/privacy">Privacy Policy</a></p>
