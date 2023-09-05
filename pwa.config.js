@@ -8,7 +8,7 @@ exports.webpack = function(config, env) {
   config.resolve.alias["@styles"] = join(src, "styles");
   config.resolve.alias["@js"] = join(src, "js");
   config.resolve.alias["@store"] = join(src, "store");
-  config.devServer.host = "0.0.0.0";
+  config.devServer.host = "127.0.0.1";
 
   // Add Workbox plugin
   config.plugins.push(
