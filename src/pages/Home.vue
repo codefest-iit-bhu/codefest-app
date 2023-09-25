@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.root">
-    <AppBar :doAnimate="true" @scrollTop="scrollToTop" />
+    <AppBar />
     <Hero />
     <main :class="$style.wrapper">
       <!-- Introduction -->
