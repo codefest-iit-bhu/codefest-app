@@ -132,6 +132,17 @@ const router = new Router({
       },
     },
     {
+      name: "~/codestart",
+      path: "/codestart",
+      component: () => import(`@pages/Codestart`),
+      meta: {
+        title: "CodeFest '23 | Codestart",
+        metaTags: [],
+        noTerminal: true,
+        requiresAuth: false,
+      },
+    },
+    {
       name: "~/password/reset",
       path: "/password/reset",
       component: () => import(`@pages/ForgotPassword`),
