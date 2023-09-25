@@ -15,7 +15,7 @@
           </SectionLayout>
           <Timeline/>
           <Prizes/>
-          <HaxploreSponsors />
+          <CodestartSponsors />
         </div>
       </main>
       <FooterN />
@@ -24,14 +24,14 @@
   
   <script>
   const AppBar = () => import("@components/Menu/AppBar");
-  const Timeline = () => import("@components/haxplore/Timeline");
-  const About = () => import("@components/haxplore/About");
-  const FAQ = () => import("@components/haxplore/FAQ");
-  const Landing = () => import("@components/haxplore/Landing");
+  const Timeline = () => import("@components/codestart/Timeline");
+  const About = () => import("@components/codestart/About");
+  const FAQ = () => import("@components/codestart/FAQ");
+  const Landing = () => import("@components/codestart/Landing");
   const Lookback = () => import("@components/Lookback");
-  const Prizes = () => import("@components/haxplore/Prizes");
-  const HaxploreSponsors = () => import("@components/haxplore/HaxploreSponsors");
-  const FooterN = () => import("@components/haxplore/FooterN");
+  const Prizes = () => import("@components/codestart/Prizes");
+  const CodestartSponsors = () => import("@components/codestart/CodestartSponsors");
+  const FooterN = () => import("@components/codestart/FooterN");
   const SectionLayout = () => import("@components/layouts/SectionLayout");
   const Testimonials = () => import("@components/Testimonials");
   
@@ -45,7 +45,7 @@
       Landing,
       Lookback,
       Prizes,
-      HaxploreSponsors,
+      CodestartSponsors,
       FooterN,
       Testimonials
     },
@@ -57,17 +57,12 @@
         lookbackStats: [
           {
             name: "Prizes worth",
-            value: "200,00",
+            value: "20,000",
             image: "assets/Lookback/lb_prize.svg"
           },
           {
-            name: "Time",
-            value: "24 Hours",
-            image: "assets/Lookback/time.svg"
-          },
-          {
             name: "Participants",
-            value: "100+",
+            value: "1000+",
             image: "assets/Lookback/lb_participant.svg"
           },
           {
