@@ -672,8 +672,10 @@ export default {
 
   .cftext {
     width: 100%;
-    display: block;
+    display: flex;
+    flex-direction:column
     padding-top: 50px;
+    align-items : center;
 
     .smalltagline {
       display: block;
@@ -715,10 +717,10 @@ export default {
 
 .linkbtn {
   text-align: center;
-  padding-top: 20px;
+  margin-top : 20px;
 
   .link {
-    margin: auto;
+    margin: 10px auto;
     margin-top: 10px;
     margin-bottom: 10px;
     height: auto;
