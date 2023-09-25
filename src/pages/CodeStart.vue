@@ -57,7 +57,7 @@
         lookbackStats: [
           {
             name: "Prizes worth",
-            value: "200,000",
+            value: "200,00",
             image: "assets/Lookback/lb_prize.svg"
           },
           {
