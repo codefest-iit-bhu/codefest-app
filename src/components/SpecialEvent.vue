@@ -1,15 +1,15 @@
 <template>
   <div :class="[$style.hero, $style[$mq]]">
     <div>
-      <router-link to="haxplore">
+      <router-link to="codestart">
         <div :class="$style.logoContainer">
           <img :class="$style.logo" src="@assets/haxplore/logo-landing.svg" />
         </div>
       </router-link>
       <div :class="$style.title">
         <a>
-          <router-link to="haxplore">
-            <h1>HaXplore</h1>
+          <router-link to="codestart">
+            <h1>CodeStart</h1>
           </router-link>
         </a>
         <p>

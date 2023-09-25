@@ -47,11 +47,11 @@ export default {
         {
           question: "What is the eligibility criteria?",
           answer:
-            "Any college student, pursuing undergraduate, post-graduate or PhD, can be a part of HaXplore.",
+            "Any IIT BHU undergraduate student in their first or second year of studies can participate in Codestart. Prizes exclusively for freshers!",
         },
         {
           question: "How to participate?",
-          answer: "Details to be released soon.",
+          answer: "Register here",
         },
         {
           question: "Is there any registration fee?",
@@ -59,19 +59,19 @@ export default {
         },
         {
           question: "What is the allowed team size?",
-          answer: "Form a team, comprising of minimum 1 and maximum 4 members.",
+          answer: "It would be an individual event",
         },
         {
           question:
-            "What will be expected from us to build during the hackathon?",
+            "Where will the event be conducted?",
           answer:
-            "Tracks and other details will be released soon! Stay connected to know more.",
+            "It would be conducted on the Hackerrank platform. The link will be shared on registration.",
         },
-        {
+        /* {
           question: "Are there any special prizes for girls?",
           answer:
             "Details to be released soon.",
-        },
+        }, */
         // {
         //   question: "Are there any special prizes for girls?",
         //   answer:

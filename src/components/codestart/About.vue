@@ -1,8 +1,10 @@
 <template>
   <SectionLayout title="About" id="about">
-    <p>Since its inception in 2010, CodeFest has always aspired to be the torchbearer of technology. The idea of HaXplore began with drawing inspiration from the way technology has revolutionized the world. From reminding us for a class to taking a spaceship on another planet, software has transformed almost every sphere of our life. The idea that few lines of code could do such tasks is almost inconceivable.</p>
-    <p>HaXplore aims to provide a venue where creative heads assemble together to express their world-changing ideas and compete in their endeavour for excellence.</p>We at HaXplore, promote people from every domain irrespective of their field of study, experience, gender, background or ethnicity. To foster this spirit of inclusivity and diversity, HaXplore also has special prizes for all-girls teams participating in the hackathon.
-    <p>In essence, HaXplore strives to be the commemoration of the creative attempts by developers across history in order to make a better and a more accessible world; it is the celebration of the spirit of developers who imagine the unimaginable.</p>
+    <p>CodeStart, being the first milestone in the journey of CodeFest, is designed to inspire beginners and provide them with a level platform to explore the dynamic world of technology. It has always strived to be the foundational stepping stone for budding talents, waiting to be discovered and nurtured.</p>
+    <p>CodeStart offers an immersive experience through a series of insightful workshops, competitive programming events, quant contests, and enlightening talks.
+Our primary objective as part of CodeStart is to empower first-year students with the knowledge, skills, and confidence needed to embark on an exciting adventure in the technology arena. We understand that the early years of a student’s academic life are critical, and CodeStart is tailored with a lot of care to lay a strong foundation for their future endeavors.</p>
+    <p>CodeStart’s focus is not only on technical aspects but also on encouraging the development of problem-solving skills, teamwork, and creativity. It connects students with like-minded peers and professionals, creating a supportive community of future tech leaders.
+CodeStart stands for fostering the growth of young minds and becoming a guiding light for them as they venture into the vast world of computer science. It is an invitation to shape the future, one line of code at a time.</p>
   </SectionLayout>
 </template>
 
