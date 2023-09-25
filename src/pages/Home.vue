@@ -1,13 +1,10 @@
 <template>
   <div :class="$style.root">
-    <AppBar />
+    <AppBar :currentPage="'home'" @scrollTop="scrollToTop" />
     <Hero />
     <main :class="$style.wrapper">
       <!-- Introduction -->
-      <SectionLayout
-        title="A Byte About Us"
-        :contentStyle="{ 'text-align': 'justify' }"
-      >
+      <SectionLayout title="A Byte About Us" :contentStyle="{ 'text-align': 'justify' }">
         <Intro />
       </SectionLayout>
       <!-- Lookback at CF'18 -->

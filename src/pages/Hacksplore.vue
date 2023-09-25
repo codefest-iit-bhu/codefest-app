@@ -1,6 +1,6 @@
 <template>
   <div :class="[$style.root, $style[$mq]]">
-    <AppBar :haxplorePage="true" @scrollTop="scrollToTop" />
+    <AppBar currentPage="haxplore" @scrollTop="scrollToTop" />
     <Landing />
     <main :class="$style.wrapper">
       <div v-scroll-spy="{ data: 'section' }" ref="scroller">

@@ -1,8 +1,5 @@
 <template>
-  <div
-    :class="[$style.appbar, $style[$mq], { [$style.animate]: doAnimate }]"
-    ref="appbar"
-  >
+  <div :class="[$style.appbar, $style[$mq], { [$style.animate]: doAnimate }]" ref="appbar">
     <div :class="$style.nav">
       <ul :class="$style.lNav">
         <slot name="left"></slot>
@@ -12,7 +9,7 @@
       </ul>
     </div>
     <div :class="$style.notch">
-      <div :class="[$style.logo, !haxplorePage ? $style.codefestLogo : ' ']">
+      <div :class="[$style.logo, currentPage != 'haxplore' ? $style.codefestLogo : ' ']">
         <slot name="notch" />
       </div>
     </div>
@@ -26,9 +23,8 @@ export default {
       type: Boolean,
       default: false,
     },
-    haxplorePage: {
-      type: Boolean,
-      default: false,
+    currentPage: {
+      type: String
     },
     codeStartPage: {
       type: Boolean,

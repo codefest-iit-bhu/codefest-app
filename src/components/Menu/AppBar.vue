@@ -1,29 +1,20 @@
 <template>
   <div :class="[$style.wrapper, $style[$mq]]">
-    <AppbarLayout :haxplorePage="haxplorePage" :codeStartPage="codeStartPage" v-bind="this.$attrs">
-      <!-- <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
-        <router-link to="/" v-if="haxplorePage">
-          Home
-          <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
-        </router-link>
-        <router-link to="/haxplore" v-else>
-          HaXplore
-          <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
-        </router-link>
-      </li> -->
+    <AppbarLayout :currentPage="currentPage" v-bind="this.$attrs">
       <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
-        <router-link to="/" v-if="codeStartPage">
+        <router-link to="/" v-if="currentPage != 'home'">
           Home
           <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
         </router-link>
-        <router-link to="/codestart" v-else>
-          CodeStart
-          <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
-        </router-link>
-
       </li>
       <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
-        <router-link to="/events">
+        <router-link to="/haxplore" v-if="currentPage != 'haxplore'">
+          HaXplore
+          <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
+        </router-link>
+      </li>
+      <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
+        <router-link to="/events" v-if="currentPage != 'events'">
           Events
           <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
         </router-link>
@@ -43,44 +34,28 @@
       <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
         <router-link to="/referral">Referrals</router-link>
       </li>
-      <li
-        :class="$style.link"
-        slot="right"
-        v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
-        v-show="showDashboardActions"
-      >
+      <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
+        v-show="showDashboardActions">
         <router-link to="/dashboard">
           <i class="fas fa-id-badge" title="Dashboard"></i>
           <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
         </router-link>
       </li>
-      <li
-        :class="$style.link"
-        slot="right"
-        v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
-        v-show="showDashboardActions"
-      >
+      <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
+        v-show="showDashboardActions">
         <router-link to="/dashboard/events">
           <i class="fas fa-user-plus" title="My Teams"></i>
         </router-link>
       </li>
-      <li
-        :class="$style.link"
-        slot="right"
-        v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
-        v-show="showDashboardActions"
-      >
+      <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
+        v-show="showDashboardActions">
         <a @click="authLogout">
           <i class="fas fa-power-off" title="Logout"></i>
           <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
         </a>
       </li>
-      <li
-        :class="$style.link"
-        slot="right"
-        v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
-        v-show="!showDashboardActions"
-      >
+      <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
+        v-show="!showDashboardActions">
         <router-link to="/login">Login / Register</router-link>
       </li>
 
@@ -96,10 +71,10 @@
           <i class="fa fa-bars"></i>
         </a>
       </li>
-      <router-link to="/haxplore" slot="notch" v-if="haxplorePage">
+      <router-link to="/haxplore" slot="notch" v-if="currentPage == 'haxplore'">
         <img src="@assets/haxplore/hax_white.svg" @click="clickNotch" />
       </router-link>
-      <router-link to="/codestart" slot="notch" v-else-if="codeStartPage">
+      <router-link to="/codestart" slot="notch" v-else-if="currentPage == 'codestart'">
         <img src="@assets/codestart/codestart.png" :class="$style.codestartNotch" @click="clickNotch" />
       </router-link>
       <router-link to="/" slot="notch" v-else>
@@ -116,17 +91,22 @@
         <Slide :isOpen="isSidebarOpen" @closeSideBar="onCloseSideBar" :width="sideBarWidth">
           <ul :class="$style.sidebarList">
             <li :class="$style.link">
-              <router-link to="/events">Events</router-link>
+              <router-link to="/events" v-if="currentPage != 'events'">Events</router-link>
               <div :class="$style.subList">
                 <slot name="events"></slot>
               </div>
             </li>
             <li :class="$style.link">
-              <router-link to="/" v-if="haxplorePage">
+              <router-link to="/" v-if="currentPage != 'home'">
                 Home
                 <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
               </router-link>
-              <router-link to="/haxplore" v-else>HaXplore</router-link>
+            </li>
+            <li :class="$style.link">
+              <router-link to="/haxplore" v-if="currentPage != 'haxplore'">
+                HaXplore
+                <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
+              </router-link>
             </li>
             <!-- <li :class="$style.link">
               <router-link to="/ca">CA</router-link>
@@ -172,18 +152,13 @@ export default {
     Slide
   },
   props: {
-    haxplorePage: {
-      type: Boolean,
-      default: false
-    },
-    codeStartPage: {
-      type: Boolean,
-      default: false
+    currentPage: {
+      type: String
     }
   },
   data() {
     return {
-      isSidebarOpen: false
+      isSidebarOpen: false,
     };
   },
   computed: {
@@ -206,7 +181,7 @@ export default {
       this.isSidebarOpen = false;
     },
     clickNotch() {
-      if (this.haxplorePage) {
+      if (this.currentPage === "haxplore") {
         this.$emit("scrollTop");
       } else {
         if (this.$route.name === "~") this.$emit("scrollTop");
