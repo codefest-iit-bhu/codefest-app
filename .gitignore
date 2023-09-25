@@ -345,3 +345,6 @@ $RECYCLE.BIN/
 
 # End of https://www.gitignore.io/api/vue,node,vuejs,linux,macos,python,django,windows
 .now
+
+# TODO - Adding package.json to .gitignore due to node version migrations
+package-lock.json

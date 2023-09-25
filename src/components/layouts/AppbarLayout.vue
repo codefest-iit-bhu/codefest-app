@@ -30,6 +30,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    codeStartPage: {
+      type: Boolean,
+      default: false,
+    }
   },
   methods: {
     handleScroll(event) {

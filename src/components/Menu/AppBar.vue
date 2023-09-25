@@ -1,15 +1,26 @@
 <template>
   <div :class="[$style.wrapper, $style[$mq]]">
-    <AppbarLayout :haxplorePage = "haxplorePage" v-bind="this.$attrs">
-      <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
+    <AppbarLayout :haxplorePage = "haxplorePage" :codeStartPage="codeStartPage" v-bind="this.$attrs">
+      <!-- <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
         <router-link to="/" v-if="haxplorePage">
           Home
-          <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
+          <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
         </router-link>
         <router-link to="/haxplore" v-else>
           HaXplore
+          <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
+        </router-link>
+      </li> -->
+      <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
+        <router-link to="/" v-if="codeStartPage">
+          Home
           <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
         </router-link>
+        <router-link to="/codestart" v-else>
+          CodeStart
+          <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
+        </router-link>
+
       </li>
       <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
         <router-link to="/events">
@@ -159,6 +170,10 @@ export default {
   },
   props: {
     haxplorePage: {
+      type: Boolean,
+      default: false
+    },
+    codeStartPage: {
       type: Boolean,
       default: false
     }

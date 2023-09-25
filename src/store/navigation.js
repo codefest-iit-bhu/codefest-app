@@ -28,7 +28,10 @@ export const navigation = {
       },
       referrals: {
         ".": "/referral"
-      }
+      },
+      codestart: {
+        ".": "/codestart"
+      },
     },
     "404": {
       "~": {
