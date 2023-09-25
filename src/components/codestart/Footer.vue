@@ -2,12 +2,12 @@
   <footer :class="$style.footer">
     <div :class="$style.container">
       <div :class="$style.logo">
-        <img src="@assets/haxplore/logo-text.svg" />
+        <img src="@assets/codestart/codestart.png" />
       </div>
 
       <div :class="$style.content">
         <span>
-          Copyright 2024 Haxplore | CodeFest' 24
+          Copyright 2024 CodeStart | CodeFest' 24
           <!-- <i :class="$style.heart"></i> -->
         </span>
       </div>

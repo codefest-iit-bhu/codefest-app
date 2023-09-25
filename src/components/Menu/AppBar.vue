@@ -1,6 +1,6 @@
 <template>
   <div :class="[$style.wrapper, $style[$mq]]">
-    <AppbarLayout :haxplorePage = "haxplorePage" :codeStartPage="codeStartPage" v-bind="this.$attrs">
+    <AppbarLayout :haxplorePage="haxplorePage" :codeStartPage="codeStartPage" v-bind="this.$attrs">
       <!-- <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
         <router-link to="/" v-if="haxplorePage">
           Home
@@ -96,11 +96,14 @@
           <i class="fa fa-bars"></i>
         </a>
       </li>
-      <router-link to="/" slot="notch" v-if="!haxplorePage">
-        <img src="@assets/white-cf24-logo.svg" @click="clickNotch" />
+      <router-link to="/haxplore" slot="notch" v-if="haxplorePage">
+        <img src="@assets/haxplore/hax_white.svg" @click="clickNotch" />
       </router-link>
-      <router-link to="/haxplore" slot="notch" v-else>
-        <img src="@assets/haxplore/hax_white.svg" :class="$style.haxploreNotch" @click="clickNotch" />
+      <router-link to="/codestart" slot="notch" v-else-if="codeStartPage">
+        <img src="@assets/codestart/codestart.png" :class="$style.codestartNotch" @click="clickNotch" />
+      </router-link>
+      <router-link to="/" slot="notch" v-else>
+        <img src="@assets/white-cf24-logo.svg" :class="$style.haxploreNotch" @click="clickNotch" />
       </router-link>
     </AppbarLayout>
     <div :class="$style.sidebar" ref="sidebar">
@@ -377,7 +380,11 @@ export default {
   }
 
   .haxploreNotch {
-    // margin-top: 5% !important;
+    margin-top: 5% !important;
+  }
+
+  .codestartNotch {
+    margin-top: 2% !important;
   }
 }
 </style>

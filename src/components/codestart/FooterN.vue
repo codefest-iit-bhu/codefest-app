@@ -1,10 +1,10 @@
 <template>
   <footer :class="$style.footer">
     <div :class="$style.logo">
-      <div   :class="$style.image">
-        <img  src="@assets/haxplore/hax_white.svg" />
+      <div :class="$style.image">
+        <img  src="@assets/codestart/codestart.png" />
       </div>
-      <p>Copyright © 2024 Haxplore</p>
+      <p>Copyright © 2024 CodeStart</p>
     </div>
     <!-- <i :class="$style.heart" /> -->
     <span :class="$style.socialIcons">
@@ -75,11 +75,7 @@ export default {};
     img{
       position: absolute;
       margin: auto;
-      top: -10px;
-      right: -83px;
-      width: 200%;
-      height: 200%;
-      
+      width: 100%;
     }
 
     p {

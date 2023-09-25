@@ -1,5 +1,5 @@
 <template>
-  <SectionLayout title="FAQ" id="faq">
+  <SectionLayout title="FAQs" id="faq">
     <div :class="[$style.faqContainer, $style[$mq]]">
       <ResponsiveTwoColumnLayout>
         <div :class="$style.faqHeader" slot="left">
@@ -51,7 +51,7 @@ export default {
         },
         {
           question: "How to participate?",
-          answer: "Register here",
+          answer: "Register on the CodeFest website, and stay tuned for further updates via email and our discord channel.",
         },
         {
           question: "Is there any registration fee?",
