@@ -78,26 +78,20 @@
         ],
         testimonials: [
           {
-            name: "Shravan",
+            name: "Testimonial 1",
             comment:
-              "Haxplore was a highly challenging and refreshing experience. \
-              There was so much energy and enthusiasm in the competition, it was inspiring to discover \
-              the different teams, approaches and experiments towards building solutions to a variety of \
-              problems within 24hrs. It was perhaps the best hackathon I have participated till date. I would like \
-              to express my gratitude to the organizers for wonderfully organizing the event.",
+              "Participating in Codestart was an amazing experience. The challenging problems pushed me to think critically, optimize my code, and find elegant solutions to complex problems. I also met supportive fellow participants, and the event was well-organized. I'm grateful for the opportunity and look forward to competing again.",
             image: "assets/Testimonial/shravan.jpeg"
           },
           {
-            name: "Daksh Miglani",
+            name: "Testimonial 2",
             comment:
-              "HaXplore at IIT BHU is one of the finest hackathons our country has to offer. \
-              I had a great time there, the wifi was fast as well, and the mentors were really helpful. \
-              All in all a great place to hack.",
+              "Codestart was a blast! It sharpened my coding skills with tricky problems and friendly competition. I can't wait to do it again!",
             image: "assets/Testimonial/daksh.jpeg"
           },
           {
-            name: "Akshay",
-            comment: "Great team, great jury members. Waiting for Haxplore 2.0",
+            name: "Testimonial 3",
+            comment: "Codestart was a coding adrenaline rush that improved my problem-solving skills immensely.",
             image: "assets/Testimonial/akshay.jpeg"
           }
         ],
