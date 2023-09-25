@@ -134,9 +134,9 @@ const router = new Router({
     {
       name: "~/codestart",
       path: "/codestart",
-      component: () => import(`@pages/Codestart`),
+      component: () => import(`@pages/CodeStart`),
       meta: {
-        title: "CodeFest '23 | Codestart",
+        title: "CodeFest '24 | Codestart",
         metaTags: [],
         noTerminal: true,
         requiresAuth: false,
