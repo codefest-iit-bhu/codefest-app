@@ -11,6 +11,7 @@
 export default {
   methods: {
     inviteToDiscord() {
+      // TODO
       window.open(
         `https://discord.gg/sz7ecWnz`,
         "_blank"

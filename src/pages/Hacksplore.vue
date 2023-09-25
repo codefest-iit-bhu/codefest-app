@@ -13,8 +13,8 @@
         <SectionLayout title="Testimonials">
           <Testimonials :testimonials="testimonials" />
         </SectionLayout>
-        <Timeline/>
-        <Prizes/>
+        <!-- <Timeline/> -->
+        <!-- <Prizes/> -->
         <HaxploreSponsors />
       </div>
     </main>

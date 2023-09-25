@@ -93,16 +93,17 @@ if (process.env.NODE_ENV === "production") {
 // Service Worker registration
 Vue.prototype.$workbox = wb;
 
-const config = {
-  apiKey: "AIzaSyDgx3hMDrBTQ6ci9hKg0MMmbR36rBaH6Bo",
-  authDomain: "auth.codefest.tech",
-  databaseURL: "https://codefest19.firebaseio.com",
-  projectId: "codefest19",
-  storageBucket: "codefest19.appspot.com",
-  messagingSenderId: "800543243585",
+const firebaseConfig = {
+  apiKey: "AIzaSyBfkhzmR8nf1vwTLj9upIVo3QoOTDte6zU",
+  authDomain: "codefest-iit-bhu.firebaseapp.com",
+  projectId: "codefest-iit-bhu",
+  storageBucket: "codefest-iit-bhu.appspot.com",
+  messagingSenderId: "934000349180",
+  appId: "1:934000349180:web:abd404ec2aa2ee8b5f2c79",
+  measurementId: "G-CMRT89PN1N"
 };
 
-firebase.initializeApp(config);
+firebase.initializeApp(firebaseConfig);
 
 // Mount w/ Hydration
 // ~> because HTML already exists from`pwa export`

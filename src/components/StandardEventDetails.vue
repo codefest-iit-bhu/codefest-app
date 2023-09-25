@@ -37,16 +37,16 @@
         </div>
       </TabLayout>
     </div>
-    <div :class="$style.note">
+    <!-- <div :class="$style.note">
       Note: People not registered for this event on CodeFest are not eligible to
       receive any prizes.
-    </div>
-
-    <!-- <div :class="$style.register">
-      <h2>Registrations will be live soon.</h2>
     </div> -->
 
-    <span :class="$style.multipleLinkContainer">
+    <div :class="$style.register">
+      <h2>Registrations will be live soon.</h2>
+    </div>
+
+    <!-- <span :class="$style.multipleLinkContainer">
       <div :class="$style.link">
         <router-link to="/dashboard/events/" :class="$style.linkText">
           <h4>Register</h4>
@@ -58,7 +58,7 @@
           <h4>Problem Statement</h4>
         </a>
       </div>
-    </span>
+    </span> -->
 
   </div>
 </template>
@@ -84,10 +84,10 @@ export default {
           name: "description",
           title: "Summary",
         },
-        {
-          name: "contact",
-          title: "Contact",
-        },
+        // {
+        //   name: "contact",
+        //   title: "Contact",
+        // },
         {
           name: "faq",
           title: "FAQ",

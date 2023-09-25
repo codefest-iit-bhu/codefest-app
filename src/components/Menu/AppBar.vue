@@ -86,7 +86,7 @@
         </a>
       </li>
       <router-link to="/" slot="notch" v-if="!haxplorePage">
-        <img src="@assets/white-cf20-logo.svg" @click="clickNotch" />
+        <img src="@assets/white-cf24-logo.svg" @click="clickNotch" />
       </router-link>
       <router-link to="/haxplore" slot="notch" v-else>
         <img src="@assets/haxplore/hax_white.svg" :class="$style.haxploreNotch" @click="clickNotch" />

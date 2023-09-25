@@ -8,14 +8,14 @@
           Varanasi</span
         >
         brings to you yet another edition of its annual coding extravaganza,
-        Codefest!
+        CodeFest!
         <br />
-        <br />Being more diverse than ever, <span>Codefest '20</span> boasts of
+        <br />Being more diverse than ever, <span>CodeFest '24</span> boasts of
         a plethora of events, ranging from competitive programming, algorithms
         and application development to upcoming trends like cryptography,
         machine learning, computer vision and cyber security.
         <br />
-        <br />With problems being of varying difficulty levels, Codefest
+        <br />With problems being of varying difficulty levels, CodeFest
         provides the perfect platform for fresh enthusiasts, as well as the
         experienced ones, to code together and compete for ultimate glory.
       </p>
@@ -30,10 +30,10 @@
         </div>
       </div>
     </div>
-    
-    <div :class="$style.video" slot="right">
+    <!-- TODO -->
+    <!-- <div :class="$style.video" slot="right">
       <youtube :video-id="videoId" ref="youtube" @playing="playing"></youtube>
-    </div>
+    </div> -->
 
   </ResponsiveTwoColumnLayout>
 </template>

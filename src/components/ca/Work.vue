@@ -20,7 +20,7 @@
     </ResponsiveTwoColumnLayout>
     <div :class="$style.para">
       The number of participants from your college will determine the number of
-      goodies you get as a Campus Ambassador of Codefest.
+      goodies you get as a Campus Ambassador of CodeFest.
     </div>
   </div>
 </template>
@@ -39,17 +39,17 @@ export default {
         {
           start: "Connect ",
           rest:
-            "Codefest with the student community inside your campus and circle.",
+            "CodeFest with the student community inside your campus and circle.",
         },
         {
           start: "Publicize",
           rest:
-            "Codefest by sharing the posts and updates on social media, through word-of-mouth, posters and e-mails.",
+            "CodeFest by sharing the posts and updates on social media, through word-of-mouth, posters and e-mails.",
         },
         {
           start: "Encourage",
           rest:
-            "the students of your campus for active participation in Codefest.",
+            "the students of your campus for active participation in CodeFest.",
         },
       ],
     };

@@ -2,10 +2,11 @@ import Frisbee from "frisbee";
 import {
   MakeQuerablePromise
 } from "@js/utils";
+import { BACKEND_URL } from "@js/constants";
 import store from "@store";
 
 const api = new Frisbee({
-  baseURI: "https://codefest-api.herokuapp.com",
+  baseURI: BACKEND_URL,
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json"

@@ -3,9 +3,9 @@
     <AppBar :shouldShowSideNavigation="false" />
     <main :class="$style.wrapper">
       <SectionLayout title="Our Privacy Policy" id="about">
-	    <p>One of our main priorities at Codefest is the privacy of our visitors. This Privacy Policy document below contains types of information that are collected and recorded by Codefest and how we use it.<br /><br />
+	    <p>One of our main priorities at CodeFest is the privacy of our visitors. This Privacy Policy document below contains types of information that are collected and recorded by CodeFest and how we use it.<br /><br />
 
-	    This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in Codefest. This policy is not applicable to any information collected offline or via channels other than this website.</p>
+	    This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in CodeFest. This policy is not applicable to any information collected offline or via channels other than this website.</p>
 
       <br />
       <h2>Consent</h2>
@@ -45,19 +45,19 @@
 
       <br />
       <h2>Cookies and Analytics.</h2>
-      <p>Like any other website, Codefest uses 'cookies'. These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users' experience by customizing our web page content based on visitors' browser type and/or other information.</br></br>
-      Codefest also uses cookies from third-party partners such as Google for the purpose of analysis of visitor behavior and demographic information to improve the visitor experience.</br></br>
+      <p>Like any other website, CodeFest uses 'cookies'. These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users' experience by customizing our web page content based on visitors' browser type and/or other information.</br></br>
+      CodeFest also uses cookies from third-party partners such as Google for the purpose of analysis of visitor behavior and demographic information to improve the visitor experience.</br></br>
       You can choose to disable cookies through your individual browser options. To know more detailed information about cookie management with specific web browsers, it can be found at the browsers' respective websites. For more general information on cookies, please read "What Are Cookies".</p>
 
       <br />
       <h2>Third-Party Privacy Policies.</h2>
-      <p>Codefest's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information. It may include their practices and instructions about how to opt-out of certain options.
+      <p>CodeFest's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information. It may include their practices and instructions about how to opt-out of certain options.
       </p>
 
       <br />
       <h2>Children's Information.</h2>
       <p>Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity.</br></br>
-      Codefest does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.
+      CodeFest does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.
       </p>
 
       <br />

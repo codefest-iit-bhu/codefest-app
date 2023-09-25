@@ -29,7 +29,7 @@
         </GridLayout>
       </div>
 
-      <div :class="$style.buttonContainer">
+      <!-- <div :class="$style.buttonContainer">
         <div :class="$style.link">
           <a
             href="https://drive.google.com/file/d/15BYqDZwShgFFqkgBPKqr0j-AcFF-_Umm"
@@ -48,7 +48,7 @@
             <h4>Sponsor Us</h4>
           </a>
         </div>
-      </div>
+      </div> -->
     </div>
   </SectionLayout>
 </template>
