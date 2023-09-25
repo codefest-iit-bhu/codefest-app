@@ -1,6 +1,6 @@
 <template>
   <div :class="[$style.root, $style[$mq]]">
-    <AppBar currentPage="haxplore" @scrollTop="scrollToTop" />
+    <AppBar :currentPage="'haxplore'" @scrollTop="scrollToTop" />
     <Landing />
     <main :class="$style.wrapper">
       <div v-scroll-spy="{ data: 'section' }" ref="scroller">
@@ -137,7 +137,7 @@ export default {
     //   };
     // },
   },
-  mounted() {}
+  mounted() { }
 };
 </script>
 
