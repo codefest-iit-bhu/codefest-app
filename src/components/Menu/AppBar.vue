@@ -38,7 +38,7 @@
         </router-link>
       </li>-->
       <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
-        <router-link to="/referral">Referrals</router-link>
+        <router-link to="/referral"><b>Referrals</b></router-link>
       </li>
       <!-- <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
         v-show="showDashboardActions">
@@ -104,7 +104,7 @@
             </li>
             <li :class="$style.link">
               <router-link to="/" v-if="currentPage != 'home'">
-                Home
+                <b>Home</b>
                 <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
               </router-link>
             </li>
@@ -116,7 +116,7 @@
             </li> -->
             <li :class="$style.link">
               <router-link to="/codestart" v-if="currentPage != 'codestart'">
-                CodeStart
+                <b>CodeStart</b>
                 <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
               </router-link>
             </li>
@@ -127,7 +127,7 @@
               <router-link to="/team">Team</router-link>
             </li>-->
             <li :class="$style.link">
-              <router-link to="/referral">Referrals</router-link>
+              <router-link to="/referral"><b>Referrals</b></router-link>
             </li>
             <!-- <li :class="$style.link" v-show="showDashboardActions">
               <router-link to="/dashboard">
@@ -138,10 +138,10 @@
               </router-link>
             </li> -->
             <li :class="$style.link" v-show="!showDashboardActions">
-              <router-link to="/login">Login / Register</router-link>
+              <router-link to="/login"><b>Login / Register</b></router-link>
             </li>
             <li :class="$style.link" v-show="showDashboardActions">
-              <a @click="authLogout">Logout</a>
+              <a @click="authLogout"><b>Logout</b></a>
             </li>
           </ul>
         </Slide>
