@@ -40,19 +40,19 @@
       <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
         <router-link to="/referral">Referrals</router-link>
       </li>
-      <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
+      <!-- <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
         v-show="showDashboardActions">
         <router-link to="/dashboard">
           <i class="fas fa-id-badge" title="Dashboard"></i>
-          <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
+          <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
         </router-link>
-      </li>
-      <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
+      </li> -->
+      <!-- <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
         v-show="showDashboardActions">
         <router-link to="/dashboard/events">
           <i class="fas fa-user-plus" title="My Teams"></i>
         </router-link>
-      </li>
+      </li> -->
       <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
         v-show="showDashboardActions">
         <a @click="authLogout">
@@ -129,14 +129,14 @@
             <li :class="$style.link">
               <router-link to="/referral">Referrals</router-link>
             </li>
-            <li :class="$style.link" v-show="showDashboardActions">
+            <!-- <li :class="$style.link" v-show="showDashboardActions">
               <router-link to="/dashboard">
                 Dashboard
                 <div :class="$style.subList">
                   <slot name="dashboard"></slot>
                 </div>
               </router-link>
-            </li>
+            </li> -->
             <li :class="$style.link" v-show="!showDashboardActions">
               <router-link to="/login">Login / Register</router-link>
             </li>
