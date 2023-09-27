@@ -28,7 +28,7 @@
           <i class="fab fa-instagram fa-stack-1x"></i>
         </span>
       </a>
-      <a href="https://www.linkedin.com/company/codefest/about/">
+      <a href="https://www.linkedin.com/company/codefest/">
         <span class="fa-stack fa-lg">
           <!-- <i class="fa fa-circle-notch fa-rotate fa-stack-2x"></i> -->
           <i class="fab fa-linkedin fa-stack-1x"></i>
