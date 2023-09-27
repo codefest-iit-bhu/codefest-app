@@ -28,12 +28,12 @@
   const About = () => import("@components/codestart/About");
   const FAQ = () => import("@components/codestart/FAQ");
   const Landing = () => import("@components/codestart/Landing");
-  const Lookback = () => import("@components/Lookback");
+  const Lookback = () => import("@components/Lookback2");
   const Prizes = () => import("@components/codestart/Prizes");
   const CodestartSponsors = () => import("@components/codestart/CodestartSponsors");
   const FooterN = () => import("@components/codestart/FooterN");
-  const SectionLayout = () => import("@components/layouts/SectionLayout");
-  const Testimonials = () => import("@components/Testimonials");
+  const SectionLayout = () => import("@components/layouts/SectionLayout2");
+  const Testimonials = () => import("@components/Testimonials2");
   
   export default {
     components: {
