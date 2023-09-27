@@ -7,15 +7,15 @@
           <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
         </router-link>
       </li>
-      <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
+      <!-- <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
         <router-link to="/haxplore" v-if="currentPage != 'haxplore'">
           HaXplore
-          <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
+          <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
         </router-link>
-      </li>
+      </li> -->
       <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
         <router-link to="/codestart" v-if="currentPage != 'codestart'">
-          Codestart
+          CodeStart
           <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
         </router-link>
       </li>
@@ -108,15 +108,15 @@
                 <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
               </router-link>
             </li>
-            <li :class="$style.link">
+            <!-- <li :class="$style.link">
               <router-link to="/haxplore" v-if="currentPage != 'haxplore'">
                 HaXplore
-                <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
+                <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
               </router-link>
-            </li>
+            </li> -->
             <li :class="$style.link">
               <router-link to="/codestart" v-if="currentPage != 'codestart'">
-                Codestart
+                CodeStart
                 <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
               </router-link>
             </li>
