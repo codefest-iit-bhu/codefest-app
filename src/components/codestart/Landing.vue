@@ -161,7 +161,7 @@ $wd = 100vw;
       }
 
       .circle1 {
-        background-color: $vermilion;
+        background-color: #66FF66;
         width: calc((var(--hero-dia) / 1.3));
         height: calc((var(--hero-dia) / 1.3));
         margin-top: calc((var(--hero-dia) / -2.6));
@@ -181,7 +181,7 @@ $wd = 100vw;
                   filter: invert(.75);
       }
       .circle3 {
-        background-color: $vermilion;
+        background-color: #66FF66;
         background-image: url('../../assets/codestart/codestart-S.png');
         background-size: calc((var(--hero-dia) / 2.5)) calc((var(--hero-dia) / 2.5));
         background-position: center;

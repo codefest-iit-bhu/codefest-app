@@ -30,8 +30,8 @@
 </template>
 
 <script>
-const FAQ = () => import("@components/FAQ");
-const SectionLayout = () => import("@components/layouts/SectionLayout");
+const FAQ = () => import("@components/FAQ2");
+const SectionLayout = () => import("@components/layouts/SectionLayout2");
 const ResponsiveTwoColumnLayout = () =>
   import("@components/layouts/ResponsiveTwoColumnLayout");
 
@@ -109,7 +109,7 @@ export default {
       position: relative;
       border-radius: 50%;
       box-shadow: var(--box-shadow);
-      background: $vermilion;
+      background: #66FF66;
       position: relative;
 
       .faqImageText {

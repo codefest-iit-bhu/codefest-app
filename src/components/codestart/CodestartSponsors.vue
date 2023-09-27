@@ -61,7 +61,7 @@
 
 <script>
 const GridLayout = () => import("../layouts/GridLayout");
-const SectionLayout = () => import("@components/layouts/SectionLayout");
+const SectionLayout = () => import("@components/layouts/SectionLayout2");
 const ResponsiveTwoColumnLayout = () =>
   import("@components/layouts/ResponsiveTwoColumnLayout");
 

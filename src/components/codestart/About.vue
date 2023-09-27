@@ -9,7 +9,7 @@ CodeStart stands for fostering the growth of young minds and becoming a guiding 
 </template>
 
 <script>
-const SectionLayout = () => import("@components/layouts/SectionLayout");
+const SectionLayout = () => import("@components/layouts/SectionLayout2");
 
 export default {
   components: {
