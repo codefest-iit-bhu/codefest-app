@@ -7,7 +7,7 @@
         :key="i"
         :slot="`item${i}`"
       >
-        <div :class="$style.clip">
+        <div :class="$style.clip" :style="computeStyles">
           <img :src="stat.image" :class="$style.img" />
         </div>
         <div :class="$style.name">{{ stat.name }}</div>
@@ -24,6 +24,10 @@ export default {
     stats: {
       type: Array,
     },
+    codestart: {
+      required: false,
+      type: Boolean,
+    }
   },
   components: {
     GridLayout,
@@ -33,6 +37,14 @@ export default {
       if (this.$mq == "lg") return "160px";
       return "220px";
     },
+    computeStyles() {
+      const sdict = {
+        'box-shadow': '0px 0px 20px 0px #66ff66',
+        'background-color': '#222'
+      }
+      const cstyle = this.codestart ? sdict : {}
+      return cstyle
+    }
   },
 };
 </script>
@@ -61,7 +73,7 @@ export default {
       margin-right: auto;
       margin-bottom: 25px;
       padding: 10px;
-      background-color: $vermilion;
+      background-color: #222;
     }
 
     .img {

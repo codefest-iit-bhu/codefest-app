@@ -7,6 +7,7 @@
       ref="faqs"
       :index="i"
       @onToggleQuestion="closeOtherQuestions"
+      v-bind:codestart="pcodestart"
     >
       <slot :name="i">
         <p :inner-html.prop="item.answer | anchor"></p>
@@ -22,10 +23,19 @@ export default {
   components: {
     QuesAns
   },
+  data() {
+    return {
+      pcodestart : this.codestart,
+    }
+  },
   props: {
     faqItems: {
       type: Array,
       required: true
+    },
+    codestart: {
+      required: false,
+      type:Boolean,
     }
   },
   methods: {

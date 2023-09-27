@@ -12,15 +12,18 @@
       </div>
       <div :class="$style.heroText" class="absolute-center" slot="right">
         <span :class="$style.haxplore">
-          <img src="@assets/codestart/codestart.png" v-if="$store.getters.currentTheme === 'dark'" />
+          <img
+            src="@assets/codestart/codestart.png"
+            v-if="$store.getters.currentTheme === 'dark'"
+          />
           <img src="@assets/codestart/codestart-light.png" v-else />
         </span>
         <span :class="$style.tagline" ref="tagline"></span>
         <br />
         <br />
-        <span :class="$style.venue" style="margin-bottom: 40px;">
+        <span :class="$style.venue" style="margin-bottom: 40px">
           <span :id="$style.loc">
-            <i class="fas fa-university"></i> IIT (BHU), Varanasi <br>
+            <i class="fas fa-university"></i> IIT (BHU), Varanasi <br />
             <!-- <i class="fas fa-calendar" aria-hidden="true"></i> March 27 - 28, 2021 -->
           </span>
         </span>
@@ -46,12 +49,12 @@ export default {
     DiscordButton,
     LoginButton,
     ResponsiveTwoColumnLayout,
-    LoginButton
-},
+    LoginButton,
+  },
   data() {
     return {
       hackathonStart: new Date(2019, 8, 23),
-      isTyped: false
+      isTyped: false,
     };
   },
   computed: {
@@ -84,7 +87,7 @@ export default {
           {
             opacity: 1,
             scale: 1,
-            ease: Power1.easeIn
+            ease: Power1.easeIn,
           },
           0.2
         )
@@ -98,7 +101,7 @@ export default {
             boxShadow: "0 25px 25px rgba(0, 0, 0, 0.4)",
             repeat: -1,
             yoyo: true,
-            ease: Power1.easeOut
+            ease: Power1.easeOut,
           },
           0.2
         ),
@@ -108,8 +111,8 @@ export default {
     initLanding() {
       this.initTypingAnimation();
       this.initCircleAnimation();
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -144,7 +147,6 @@ $wd = 100vw;
     .preloader {
       .circle {
         border-radius: var(--hero-dia);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
         position: absolute;
         left: calc(var(--hero-wd) * -0.25);
         opacity: 0;
@@ -161,7 +163,8 @@ $wd = 100vw;
       }
 
       .circle1 {
-        background-color: $vermilion;
+        background-color: #66ff66;
+        filter: blur(50px);
         width: calc((var(--hero-dia) / 1.3));
         height: calc((var(--hero-dia) / 1.3));
         margin-top: calc((var(--hero-dia) / -2.6));
@@ -169,7 +172,8 @@ $wd = 100vw;
       }
 
       .circle2 {
-        background-color: var(--background-color);
+        background-color: #222;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
         width: calc((var(--hero-dia) / 1.6));
         height: calc((var(--hero-dia) / 1.6));
         margin-top: calc((var(--hero-dia) / -3.2));
@@ -181,7 +185,7 @@ $wd = 100vw;
                   filter: invert(.75);
       }
       .circle3 {
-        background-color: $vermilion;
+        background-color: #222;
         background-image: url('../../assets/codestart/codestart-S.png');
         background-size: calc((var(--hero-dia) / 2.5)) calc((var(--hero-dia) / 2.5));
         background-position: center;

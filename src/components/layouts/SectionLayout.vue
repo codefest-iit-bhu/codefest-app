@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.sectionContainer">
     <h1 :class="[$style.sectionTitle, $style[$mq], tooLong]">{{ title }}</h1>
-    <hr :class="$style.sectionLine" />
+    <hr :class="$style.sectionLine" :style="cssVars" />
     <div :style="contentStyle">
       <slot></slot>
     </div>
@@ -19,6 +19,10 @@ export default {
       required: false,
       type: Object,
     },
+    codestart: {
+      required: false,
+      type: Boolean,
+    }
   },
   computed: {
     tooLong() {
@@ -27,6 +31,12 @@ export default {
         return this.$style.tooLong;
       }
     },
+    cssVars() {
+      const color = this.codestart ? '#66ff66' : '$vermilion'
+      return {
+        'background-image': `linear-gradient(to left, var(--background-color), ${color})`
+      }
+    }
   },
 };
 </script>

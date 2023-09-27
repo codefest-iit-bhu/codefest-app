@@ -1,5 +1,5 @@
 <template>
-  <SectionLayout title="CodeFest Previous Sponsors" id="sponsors">
+  <SectionLayout title="CodeFest Previous Sponsors" id="sponsors" codestart="true">
     <div :class="[$style.sponsors, $style[$mq]]">
       <!-- <ResponsiveTwoColumnLayout :class="$style.offset">
         <div :class="$style.title" slot="left">
@@ -100,7 +100,7 @@ export default {
         }
 
 
-        
+
       ],
       title: {
         image: "assets/Sponsors/aws.png",

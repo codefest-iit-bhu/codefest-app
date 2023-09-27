@@ -1,5 +1,5 @@
 <template>
-  <div :class="[$style.faqItem, $style[$mq]]">
+  <div :class="[$style.faqItem, $style[$mq]]" :style="computeStyles">
     <div :class="$style.question" @click="toggleQues">
       <p>
         {{ item.question }}
@@ -35,10 +35,14 @@ export default {
       required: true,
       type: Number,
     },
+    codestart: {
+      required: false,
+      type: Boolean,
+    },
   },
 
   methods: {
-    toggleQues: function() {
+    toggleQues: function () {
       this.open = !this.open;
       this.$emit("onToggleQuestion", this.index, this.open);
     },
@@ -64,10 +68,14 @@ export default {
     chevronRotateStyle() {
       return { transform: `rotate(${this.angle}deg)` };
     },
+    computeStyles() {
+      console.log(this.codestart);
+      return this.codestart ? { "border-bottom": "2px solid #66ff66" } : {};
+    },
   },
 
   watch: {
-    open: function(val) {
+    open: function (val) {
       TweenLite.to(this.$data, 0.4, { openProgress: val ? 1 : 0 });
     },
   },

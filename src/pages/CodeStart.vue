@@ -7,10 +7,10 @@
           <div></div>
           <About />
           <FAQ />
-          <SectionLayout title="Lookback">
-            <Lookback :stats="lookbackStats" />
+          <SectionLayout title="Lookback" codestart="true">
+            <Lookback :stats="lookbackStats" codestart="true"/>
           </SectionLayout>
-          <SectionLayout title="Testimonials">
+          <SectionLayout title="Testimonials" codestart="true">
             <Testimonials :testimonials="testimonials" />
           </SectionLayout>
           <!-- <Timeline/> -->
@@ -21,7 +21,7 @@
       <FooterN />
     </div>
   </template>
-  
+
   <script>
   const AppBar = () => import("@components/Menu/AppBar");
   const Timeline = () => import("@components/codestart/Timeline");
@@ -34,7 +34,7 @@
   const FooterN = () => import("@components/codestart/FooterN");
   const SectionLayout = () => import("@components/layouts/SectionLayout");
   const Testimonials = () => import("@components/Testimonials");
-  
+
   export default {
     components: {
       AppBar,
@@ -129,10 +129,10 @@
     mounted() {}
   };
   </script>
-  
+
   <style module lang="stylus">
   @require '~@styles/anims';
-  
+
   .wrapper {
     width: 80%;
     margin: 0 auto;
@@ -143,50 +143,50 @@
     font: 500 18px 'Quicksand';
     font-kerning: auto;
   }
-  
+
   .faqContainer {
     width: 100%;
     $font-size: 20px;
-  
+
     .faqHeader {
       line-height: 30px;
       font-weight: bold;
       text-align: center;
-  
+
       img {
         width: 300px;
         height: 300px;
       }
     }
   }
-  
+
   .root.xs, .root.sm {
     .faqContainer {
       margin-top: 50px;
-  
+
       .faqHeader {
         display: flex;
         flex-direction: row;
         align-items: flex-end;
-  
+
         img {
           width: 100px;
           height: 100px;
         }
-  
+
         .faqMessage {
           $font-size: 13px;
           line-height: 20px;
           margin-left: 20px;
         }
       }
-  
+
       .faqList {
         margin: 20px 0;
       }
     }
   }
-  
+
   .link {
     margin: auto;
     width: 290px;
@@ -197,32 +197,31 @@
     border-radius: 50px 0px 50px 0px;
     text-align: center;
     cursor: pointer;
-  
+
     .hoverColor {
       color: var(--text-color) !important;
     }
-  
+
     .linkText {
       color: $waterloo;
       display: inline;
       text-decoration: none;
-  
+
       h4 {
         font-family: 'Roboto Slab';
         $font-size: 30px;
         margin: 0;
       }
     }
-  
+
     &:hover {
       box-shadow: var(--inset-box-shadow);
     }
   }
-  
+
   @media screen and (max-width: 769px) {
     .wrapper {
       width: 90%;
     }
   }
   </style>
-  

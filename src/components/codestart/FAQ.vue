@@ -1,5 +1,5 @@
 <template>
-  <SectionLayout title="FAQs" id="faq">
+  <SectionLayout title="FAQs" id="faq" codestart="true">
     <div :class="[$style.faqContainer, $style[$mq]]">
       <ResponsiveTwoColumnLayout>
         <div :class="$style.faqHeader" slot="left">
@@ -23,7 +23,7 @@
             <br />
           </div>
         </div>
-        <FAQ :faqItems="faq" slot="right" />
+        <FAQ :faqItems="faq" slot="right" codestart="true"/>
       </ResponsiveTwoColumnLayout>
     </div>
   </SectionLayout>
@@ -108,8 +108,8 @@ export default {
       padding: 25px;
       position: relative;
       border-radius: 50%;
-      box-shadow: var(--box-shadow);
-      background: $vermilion;
+      box-shadow: 0px 0px 20px 0px #66ff66;
+      background: #222;
       position: relative;
 
       .faqImageText {

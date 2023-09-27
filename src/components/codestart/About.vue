@@ -1,5 +1,5 @@
 <template>
-  <SectionLayout title="About" id="about">
+  <SectionLayout title="About" id="about" codestart="'true'">
     <p>CodeStart, being the first milestone in the journey of CodeFest, is designed to inspire beginners and provide them with a level platform to explore the dynamic world of technology. It has always strived to be the foundational stepping stone for budding talents, waiting to be discovered and nurtured.</p>
     <p>CodeStart offers an immersive experience through a series of insightful workshops, competitive programming events, quant contests, and enlightening talks.
 Our primary objective as part of CodeStart is to empower first-year students with the knowledge, skills, and confidence needed to embark on an exciting adventure in the technology arena. We understand that the early years of a student’s academic life are critical, and CodeStart is tailored with a lot of care to lay a strong foundation for their future endeavors.</p>
