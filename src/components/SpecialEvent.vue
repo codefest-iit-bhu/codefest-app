@@ -1,21 +1,21 @@
 <template>
   <div :class="[$style.hero, $style[$mq]]">
     <div>
-      <router-link to="haxplore">
+      <router-link to="codestart">
         <div :class="$style.logoContainer">
-          <img :class="$style.logo" src="@assets/haxplore/logo-landing.svg" />
+          <img :class="$style.logo" src="@assets/codestart/codestart-S.png" />
         </div>
       </router-link>
       <div :class="$style.title">
         <a>
-          <router-link to="haxplore">
-            <h1>HaXplore</h1>
+          <router-link to="codestart">
+            <h1>CodeStart</h1>
           </router-link>
         </a>
         <p>
           Join the CodeFest '24 team to bring out the absolute best ideas and
-          implementations from some of the best developers in the country, while
-          they join us for a 24 hours long hackathon under a single roof.
+          implementations from some of the best minds in the country, while
+          they join us for workshops, competitions, hackathons and a lot more.
         </p>
       </div>
     </div>

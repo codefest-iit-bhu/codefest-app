@@ -13,9 +13,9 @@
           <SectionLayout title="Testimonials">
             <Testimonials :testimonials="testimonials" />
           </SectionLayout>
-          <Timeline/>
-          <Prizes/>
-          <HaxploreSponsors />
+          <!-- <Timeline/> -->
+          <!-- <Prizes/> -->
+          <CodestartSponsors />
         </div>
       </main>
       <FooterN />
@@ -24,14 +24,14 @@
   
   <script>
   const AppBar = () => import("@components/Menu/AppBar");
-  const Timeline = () => import("@components/haxplore/Timeline");
-  const About = () => import("@components/haxplore/About");
-  const FAQ = () => import("@components/haxplore/FAQ");
-  const Landing = () => import("@components/haxplore/Landing");
+  const Timeline = () => import("@components/codestart/Timeline");
+  const About = () => import("@components/codestart/About");
+  const FAQ = () => import("@components/codestart/FAQ");
+  const Landing = () => import("@components/codestart/Landing");
   const Lookback = () => import("@components/Lookback");
-  const Prizes = () => import("@components/haxplore/Prizes");
-  const HaxploreSponsors = () => import("@components/haxplore/HaxploreSponsors");
-  const FooterN = () => import("@components/haxplore/FooterN");
+  const Prizes = () => import("@components/codestart/Prizes");
+  const CodestartSponsors = () => import("@components/codestart/CodestartSponsors");
+  const FooterN = () => import("@components/codestart/FooterN");
   const SectionLayout = () => import("@components/layouts/SectionLayout");
   const Testimonials = () => import("@components/Testimonials");
   
@@ -45,7 +45,7 @@
       Landing,
       Lookback,
       Prizes,
-      HaxploreSponsors,
+      CodestartSponsors,
       FooterN,
       Testimonials
     },
@@ -57,17 +57,12 @@
         lookbackStats: [
           {
             name: "Prizes worth",
-            value: "200,00",
+            value: "20,000",
             image: "assets/Lookback/lb_prize.svg"
           },
           {
-            name: "Time",
-            value: "24 Hours",
-            image: "assets/Lookback/time.svg"
-          },
-          {
             name: "Participants",
-            value: "100+",
+            value: "1000+",
             image: "assets/Lookback/lb_participant.svg"
           },
           {
@@ -83,27 +78,21 @@
         ],
         testimonials: [
           {
-            name: "Shravan",
+            name: "Raghav Sangar",
             comment:
-              "Haxplore was a highly challenging and refreshing experience. \
-              There was so much energy and enthusiasm in the competition, it was inspiring to discover \
-              the different teams, approaches and experiments towards building solutions to a variety of \
-              problems within 24hrs. It was perhaps the best hackathon I have participated till date. I would like \
-              to express my gratitude to the organizers for wonderfully organizing the event.",
-            image: "assets/Testimonial/shravan.jpeg"
+              "Participating in Codestart was an amazing experience. The challenging problems pushed me to think critically, optimize my code, and find elegant solutions to complex problems. I also met supportive fellow participants, and the event was well-organized. I'm grateful for the opportunity and look forward to competing again.",
+            image: "assets/Testimonial/raghav.jpeg"
           },
           {
-            name: "Daksh Miglani",
+            name: "Khushi Agrawal",
             comment:
-              "HaXplore at IIT BHU is one of the finest hackathons our country has to offer. \
-              I had a great time there, the wifi was fast as well, and the mentors were really helpful. \
-              All in all a great place to hack.",
-            image: "assets/Testimonial/daksh.jpeg"
+              "Codestart was a blast! It sharpened my coding skills with tricky problems and friendly competition. I can't wait to do it again!",
+            image: "assets/Testimonial/khushi.jpeg"
           },
           {
-            name: "Akshay",
-            comment: "Great team, great jury members. Waiting for Haxplore 2.0",
-            image: "assets/Testimonial/akshay.jpeg"
+            name: "Shivansh Saini",
+            comment: "Codestart was a coding adrenaline rush that improved my problem-solving skills immensely.",
+            image: "assets/Testimonial/shivansh.jpeg"
           }
         ],
         buttonHovered: false

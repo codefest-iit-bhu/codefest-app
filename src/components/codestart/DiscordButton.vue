@@ -51,3 +51,5 @@ $discord-color = #7289da;
     margin-right: 10px;
 }
 </style>
+
+// #1a73e8
