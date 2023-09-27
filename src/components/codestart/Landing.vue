@@ -13,7 +13,7 @@
       <div :class="$style.heroText" class="absolute-center" slot="right">
         <span :class="$style.haxplore">
           <img src="@assets/codestart/codestart.png" v-if="$store.getters.currentTheme === 'dark'" />
-          <img src="@assets/codestart/codestart.png" v-else />
+          <img src="@assets/codestart/codestart-light.png" v-else />
         </span>
         <span :class="$style.tagline" ref="tagline"></span>
         <br />

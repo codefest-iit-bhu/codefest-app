@@ -80,19 +80,19 @@
           {
             name: "Raghav Sangar",
             comment:
-              "Participating in Codestart was an amazing experience. The challenging problems pushed me to think critically, optimize my code, and find elegant solutions to complex problems. I also met supportive fellow participants, and the event was well-organized. I'm grateful for the opportunity and look forward to competing again.",
-            image: "assets/Testimonial/shravan.jpeg"
+              "Participating in CodeStart was an amazing experience. The challenging problems pushed me to think critically, optimize my code, and find elegant solutions to complex problems. I also met supportive fellow participants, and the event was well-organized. I'm grateful for the opportunity and look forward to competing again.",
+            image: "assets/Testimonial/raghav.jpeg"
           },
           {
             name: "Khushi Agrawal",
             comment:
-              "Codestart was a blast! It sharpened my coding skills with tricky problems and friendly competition. I can't wait to do it again!",
-            image: "assets/Testimonial/daksh.jpeg"
+              "CodeStart was a blast! It sharpened my coding skills with tricky problems and friendly competition. I can't wait to do it again!",
+            image: "assets/Testimonial/khushi.jpeg"
           },
           {
             name: "Shivansh Saini",
-            comment: "Codestart was a coding adrenaline rush that improved my problem-solving skills immensely.",
-            image: "assets/Testimonial/akshay.jpeg"
+            comment: "CodeStart was a coding adrenaline rush that improved my problem-solving skills immensely.",
+            image: "assets/Testimonial/shivansh.jpeg"
           }
         ],
         buttonHovered: false
