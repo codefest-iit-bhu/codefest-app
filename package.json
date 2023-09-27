@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "build": "pwa build && rm build/*.map && rm build/*.map.gz",
-    "start": "sirv build -s",
+    "start": "rm -rf dist && mv build dist && sirv dist -s",
     "watch": "pwa watch"
   },
   "dependencies": {

@@ -6,7 +6,7 @@
     <button :class="$style.togglebtn" @click="toggleShowTerminal">
       <div>
         <span class="absolute-center">
-          <i class="fas fa-chevron-down" :style="chevronRotateStyle"></i>
+          <i class="fas fa-chevron-up" :style="chevronRotateStyle"></i>
         </span>
       </div>
     </button>
@@ -56,7 +56,7 @@ export default {
   },
   data() {
     return {
-      shouldShow: true,
+      shouldShow: false,
       isShown: false,
       isHelpShown: false,
       angle: 0,
@@ -86,7 +86,7 @@ export default {
   },
   mounted() {
     this.pwd = navigation.getPwdFromCurrent(this.current);
-    this.$nextTick(() => this.$emit("init"));
+    // this.$nextTick(() => this.$emit("init"));
   },
   watch: {
     current: function(newValue, oldValue) {
