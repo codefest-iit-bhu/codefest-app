@@ -1,136 +1,136 @@
 <template>
-    <div :class="[$style.root, $style[$mq]]">
-      <AppBar :codeStartPage="true" @scrollTop="scrollToTop" />
-      <Landing />
-      <main :class="$style.wrapper">
-        <div v-scroll-spy="{ data: 'section' }" ref="scroller">
-          <div></div>
-          <About />
-          <FAQ />
-          <SectionLayout title="Lookback">
-            <Lookback :stats="lookbackStats" />
-          </SectionLayout>
-          <SectionLayout title="Testimonials">
-            <Testimonials :testimonials="testimonials" />
-          </SectionLayout>
-          <!-- <Timeline/> -->
-          <!-- <Prizes/> -->
-          <CodestartSponsors />
-        </div>
-      </main>
-      <FooterN />
-    </div>
-  </template>
+  <div :class="[$style.root, $style[$mq]]">
+    <AppBar :currentPage="'codestart'" @scrollTop="scrollToTop" />
+    <Landing />
+    <main :class="$style.wrapper">
+      <div v-scroll-spy="{ data: 'section' }" ref="scroller">
+        <div></div>
+        <About />
+        <FAQ />
+        <SectionLayout title="Lookback">
+          <Lookback :stats="lookbackStats" />
+        </SectionLayout>
+        <SectionLayout title="Testimonials">
+          <Testimonials :testimonials="testimonials" />
+        </SectionLayout>
+        <!-- <Timeline/> -->
+        <!-- <Prizes/> -->
+        <CodestartSponsors />
+      </div>
+    </main>
+    <FooterN />
+  </div>
+</template>
   
-  <script>
-  const AppBar = () => import("@components/Menu/AppBar");
-  const Timeline = () => import("@components/codestart/Timeline");
-  const About = () => import("@components/codestart/About");
-  const FAQ = () => import("@components/codestart/FAQ");
-  const Landing = () => import("@components/codestart/Landing");
-  const Lookback = () => import("@components/Lookback");
-  const Prizes = () => import("@components/codestart/Prizes");
-  const CodestartSponsors = () => import("@components/codestart/CodestartSponsors");
-  const FooterN = () => import("@components/codestart/FooterN");
-  const SectionLayout = () => import("@components/layouts/SectionLayout");
-  const Testimonials = () => import("@components/Testimonials");
+<script>
+const AppBar = () => import("@components/Menu/AppBar");
+const Timeline = () => import("@components/codestart/Timeline");
+const About = () => import("@components/codestart/About");
+const FAQ = () => import("@components/codestart/FAQ");
+const Landing = () => import("@components/codestart/Landing");
+const Lookback = () => import("@components/Lookback");
+const Prizes = () => import("@components/codestart/Prizes");
+const CodestartSponsors = () => import("@components/codestart/CodestartSponsors");
+const FooterN = () => import("@components/codestart/FooterN");
+const SectionLayout = () => import("@components/layouts/SectionLayout");
+const Testimonials = () => import("@components/Testimonials");
+
+export default {
+  components: {
+    AppBar,
+    About,
+    FAQ,
+    Timeline,
+    SectionLayout,
+    Landing,
+    Lookback,
+    Prizes,
+    CodestartSponsors,
+    FooterN,
+    Testimonials
+  },
+  data() {
+    return {
+      section: 0,
+      // titles: [null, "About", "FAQ", "Lookback", "Testimonials", "Prizes"],
+      devfolioKey: "haxplore",
+      lookbackStats: [
+        {
+          name: "Prizes worth",
+          value: "20,000",
+          image: "assets/Lookback/lb_prize.svg"
+        },
+        {
+          name: "Participants",
+          value: "1000+",
+          image: "assets/Lookback/lb_participant.svg"
+        },
+        {
+          name: "Github repos",
+          value: "30+",
+          image: "assets/Lookback/github-repos.svg"
+        },
+        {
+          name: "Lines of code",
+          value: "100,000+",
+          image: "assets/Lookback/lines-of-code.svg"
+        }
+      ],
+      testimonials: [
+        {
+          name: "Raghav Sangar",
+          comment:
+            "Participating in CodeStart was an amazing experience. The challenging problems pushed me to think critically, optimize my code, and find elegant solutions to complex problems. I also met supportive fellow participants, and the event was well-organized. I'm grateful for the opportunity and look forward to competing again.",
+          image: "assets/Testimonial/raghav.jpeg"
+        },
+        {
+          name: "Khushi Agrawal",
+          comment:
+            "CodeStart was a blast! It sharpened my coding skills with tricky problems and friendly competition. I can't wait to do it again!",
+          image: "assets/Testimonial/khushi.jpeg"
+        },
+        {
+          name: "Shivansh Saini",
+          comment: "CodeStart was a coding adrenaline rush that improved my problem-solving skills immensely.",
+          image: "assets/Testimonial/shivansh.jpeg"
+        }
+      ],
+      buttonHovered: false
+    };
+  },
+  computed: {
+    isPastLanding() {
+      return this.section > 0;
+    },
+    devfolioRegisterLink() {
+      return `https://devfolio.co/external-apply/${this.devfolioKey}`;
+    },
+    linkColorStyle() {
+      if (this.buttonHovered) return this.$style.hoverColor;
+    }
+  },
+  methods: {
+    scrollToTop() {
+      TweenLite.to(window, 1, { scrollTo: 0, ease: Power4.easeInOut });
+    }
+    // landingMounted() {
+    //   let devfolioOptions = {
+    //     buttonSelector: `#devfolio-apply-now`,
+    //     key: this.devfolioKey,
+    //   };
+    //   let script = document.createElement("script");
+    //   script.src = "https://apply.devfolio.co";
+    //   document.body.append(script);
+    //   script.onload = function() {
+    //     new Devfolio(devfolioOptions);
+    //   };
+    // },
+  },
+  mounted() { }
+};
+</script>
   
-  export default {
-    components: {
-      AppBar,
-      About,
-      FAQ,
-      Timeline,
-      SectionLayout,
-      Landing,
-      Lookback,
-      Prizes,
-      CodestartSponsors,
-      FooterN,
-      Testimonials
-    },
-    data() {
-      return {
-        section: 0,
-        // titles: [null, "About", "FAQ", "Lookback", "Testimonials", "Prizes"],
-        devfolioKey: "haxplore",
-        lookbackStats: [
-          {
-            name: "Prizes worth",
-            value: "20,000",
-            image: "assets/Lookback/lb_prize.svg"
-          },
-          {
-            name: "Participants",
-            value: "1000+",
-            image: "assets/Lookback/lb_participant.svg"
-          },
-          {
-            name: "Github repos",
-            value: "30+",
-            image: "assets/Lookback/github-repos.svg"
-          },
-          {
-            name: "Lines of code",
-            value: "100,000+",
-            image: "assets/Lookback/lines-of-code.svg"
-          }
-        ],
-        testimonials: [
-          {
-            name: "Raghav Sangar",
-            comment:
-              "Participating in CodeStart was an amazing experience. The challenging problems pushed me to think critically, optimize my code, and find elegant solutions to complex problems. I also met supportive fellow participants, and the event was well-organized. I'm grateful for the opportunity and look forward to competing again.",
-            image: "assets/Testimonial/raghav.jpeg"
-          },
-          {
-            name: "Khushi Agrawal",
-            comment:
-              "CodeStart was a blast! It sharpened my coding skills with tricky problems and friendly competition. I can't wait to do it again!",
-            image: "assets/Testimonial/khushi.jpeg"
-          },
-          {
-            name: "Shivansh Saini",
-            comment: "CodeStart was a coding adrenaline rush that improved my problem-solving skills immensely.",
-            image: "assets/Testimonial/shivansh.jpeg"
-          }
-        ],
-        buttonHovered: false
-      };
-    },
-    computed: {
-      isPastLanding() {
-        return this.section > 0;
-      },
-      devfolioRegisterLink() {
-        return `https://devfolio.co/external-apply/${this.devfolioKey}`;
-      },
-      linkColorStyle() {
-        if (this.buttonHovered) return this.$style.hoverColor;
-      }
-    },
-    methods: {
-      scrollToTop() {
-        TweenLite.to(window, 1, { scrollTo: 0, ease: Power4.easeInOut });
-      }
-      // landingMounted() {
-      //   let devfolioOptions = {
-      //     buttonSelector: `#devfolio-apply-now`,
-      //     key: this.devfolioKey,
-      //   };
-      //   let script = document.createElement("script");
-      //   script.src = "https://apply.devfolio.co";
-      //   document.body.append(script);
-      //   script.onload = function() {
-      //     new Devfolio(devfolioOptions);
-      //   };
-      // },
-    },
-    mounted() {}
-  };
-  </script>
-  
-  <style module lang="stylus">
+<style module lang="stylus">
   @require '~@styles/anims';
   
   .wrapper {
