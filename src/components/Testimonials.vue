@@ -5,8 +5,8 @@
         <img :src="item.image" />
       </div>
       <div :class="$style.textbox">
-        <div :class="$style.corner"></div>
-        <div :class="$style.text">
+        <div :class="$style.corner" :style='computeImage(i)'></div>
+        <div :class="$style.text" :style="computeStyles">
           <h3>{{ item.name }}</h3>
           <p>{{ item.comment }}</p>
         </div>
@@ -19,7 +19,30 @@
 export default {
   props: {
     testimonials: Array,
+    codestart : {
+      required: false,
+      type: Boolean
+    }
   },
+  computed: {
+    computeStyles() {
+      const sdict = {
+        'box-shadow': '0px 6px 0px #66ff66b3',
+        'background': '#ffff'
+      }
+      const cstyle = this.codestart ? sdict : {}
+      return cstyle
+    }
+  },
+  methods: {
+    computeImage(index) {
+      console.log(index)
+      const img = index % 2 ? 'even' : 'odd'
+      return this.codestart ? {
+         'background-image': `url(${require(`../assets/Testimonial/corner-${img}.svg`)})`
+      } : {}
+    }
+  }
 };
 </script>
 
@@ -122,7 +145,7 @@ $rd = 60px;
       flex-flow: row;
 
       .corner {
-        background-image: url('~@assets/Testimonial/corner-odd.svg');
+        background-image: url('~@assets/Testimonial/corner-even-rest.svg');
       }
 
       .text {
@@ -145,7 +168,7 @@ $rd = 60px;
       text-align: right;
 
       .corner {
-        background-image: url('~@assets/Testimonial/corner-even.svg');
+        background-image: url('~@assets/Testimonial/corner-odd-rest.svg');
       }
 
       .text {

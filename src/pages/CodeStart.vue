@@ -11,7 +11,7 @@
             <Lookback :stats="lookbackStats" codestart="true"/>
           </SectionLayout>
           <SectionLayout title="Testimonials" codestart="true">
-            <Testimonials :testimonials="testimonials" />
+            <Testimonials :testimonials="testimonials" codestart="true"/>
           </SectionLayout>
           <!-- <Timeline/> -->
           <!-- <Prizes/> -->
