@@ -49,7 +49,7 @@ export default {
       { state, commit },
       { idToken, name, referralCode, recaptchaToken }
     ) {
-      const names = name.split(/\s+/);
+      const names = (name || "Anonymous").split(/\s+/);
       const body = {
         id_token: idToken,
         first_name: names[0],
