@@ -4,7 +4,7 @@
       <div :class="$style.heroImage" slot="left">
         <div :class="$style.logo">
           <div class="absolute-center" :class="$style.preloader">
-            <div :class="[$style.circle, $style.circle1]"></div>
+            <div :class="[$style.circle, $style.circle1]" :style="circleStyle"></div>
             <div :class="[$style.circle, $style.circle2]"></div>
             <div :class="[$style.circle, $style.circle3]"></div>
           </div>
@@ -61,6 +61,14 @@ export default {
     showLoginStaus() {
       return this.$store.getters.isLoggedIn;
     },
+    circleStyle() {
+      var theme = localStorage.getItem('theme');
+      if(theme =='light') {
+        return {
+          'background-color': '#00a100'
+        }
+      }
+    }
   },
   methods: {
     initTypingAnimation() {

@@ -5,7 +5,7 @@
         <img :src="item.image" />
       </div>
       <div :class="$style.textbox">
-        <div :class="$style.corner" :style='computeImage(i)'></div>
+        <div :class="$style.corner" :style="computeImage(i)"></div>
         <div :class="$style.text" :style="computeStyles">
           <h3>{{ item.name }}</h3>
           <p>{{ item.comment }}</p>
@@ -19,30 +19,44 @@
 export default {
   props: {
     testimonials: Array,
-    codestart : {
+    codestart: {
       required: false,
-      type: Boolean
-    }
+      type: Boolean,
+    },
   },
   computed: {
     computeStyles() {
+      var theme = localStorage.getItem("theme");
+      var color = theme == "light" ? "#00a100" : "#66ff66";
+      var bg = theme == "light" ? "#222" : "@ffff";
       const sdict = {
-        'box-shadow': '0px 6px 0px #66ff66b3',
-        'background': '#ffff'
-      }
-      const cstyle = this.codestart ? sdict : {}
-      return cstyle
-    }
+        "box-shadow": `0px 6px 0px ${color}`,
+        background: bg,
+      };
+      const cstyle = this.codestart ? sdict : {};
+      return cstyle;
+    },
   },
   methods: {
     computeImage(index) {
-      console.log(index)
-      const img = index % 2 ? 'even' : 'odd'
-      return this.codestart ? {
-         'background-image': `url(${require(`../assets/Testimonial/corner-${img}.svg`)})`
-      } : {}
-    }
-  }
+      console.log(index);
+      const img = index % 2 ? "even" : "odd";
+      var theme = localStorage.getItem("theme");
+      if (theme == "light") {
+
+        return this.codestart
+          ? {
+              "background-image": `url(${require(`../assets/Testimonial/corner-${img}-dark.svg`)})`,
+            }
+          : {};
+      }
+      return this.codestart
+        ? {
+            "background-image": `url(${require(`../assets/Testimonial/corner-${img}.svg`)})`,
+          }
+        : {};
+    },
+  },
 };
 </script>
 

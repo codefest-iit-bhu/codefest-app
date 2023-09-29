@@ -3,7 +3,7 @@
     <div :class="[$style.faqContainer, $style[$mq]]">
       <ResponsiveTwoColumnLayout>
         <div :class="$style.faqHeader" slot="left">
-          <div :class="$style.faqImage">
+          <div :class="$style.faqImage" :style="cssVars">
             <div class="absolute-center" :class="$style.faqImageText">?</div>
           </div>
           <div :class="$style.faqMessage">
@@ -23,7 +23,7 @@
             <br />
           </div>
         </div>
-        <FAQ :faqItems="faq" slot="right" codestart="true"/>
+        <FAQ :faqItems="faq" slot="right" codestart="true" />
       </ResponsiveTwoColumnLayout>
     </div>
   </SectionLayout>
@@ -51,7 +51,8 @@ export default {
         },
         {
           question: "How to participate?",
-          answer: "Register on the CodeFest website, and stay tuned for further updates via email and our discord channel.",
+          answer:
+            "Register on the CodeFest website, and stay tuned for further updates via email and our discord channel.",
         },
         {
           question: "Is there any registration fee?",
@@ -62,8 +63,7 @@ export default {
           answer: "It would be an individual event",
         },
         {
-          question:
-            "Where will the event be conducted?",
+          question: "Where will the event be conducted?",
           answer:
             "It would be conducted on the Hackerrank platform. The link will be shared on registration.",
         },
@@ -79,6 +79,16 @@ export default {
         // },
       ],
     };
+  },
+  computed: {
+    cssVars() {
+      var theme = localStorage.getItem("theme");
+      return theme == "light"
+        ? {
+            "box-shadow": "0px 0px 20px 0px #00a100",
+          }
+        : {};
+    },
   },
 };
 </script>

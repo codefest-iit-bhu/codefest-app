@@ -32,7 +32,9 @@ export default {
       }
     },
     cssVars() {
-      const color = this.codestart ? '#66ff66' : '$vermilion'
+      var theme = localStorage.getItem('theme');
+      var colortheme = theme == 'light' ? '#00a100' : '#66ff66'
+      const color = this.codestart ? colortheme : '$vermilion'
       return {
         'background-image': `linear-gradient(to left, var(--background-color), ${color})`
       }

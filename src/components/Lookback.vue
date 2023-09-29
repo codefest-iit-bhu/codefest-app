@@ -38,8 +38,10 @@ export default {
       return "220px";
     },
     computeStyles() {
+      var theme = localStorage.getItem('theme');
+      var color = theme == 'light' ? '#00a100' : '#66ff66'
       const sdict = {
-        'box-shadow': '0px 0px 20px 0px #66ff66',
+        'box-shadow': `0px 0px 20px 0px ${color}`,
         'background-color': '#222'
       }
       const cstyle = this.codestart ? sdict : {}

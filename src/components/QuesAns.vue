@@ -69,8 +69,9 @@ export default {
       return { transform: `rotate(${this.angle}deg)` };
     },
     computeStyles() {
-      console.log(this.codestart);
-      return this.codestart ? { "border-bottom": "2px solid #66ff66" } : {};
+      var theme = localStorage.getItem('theme');
+      var color = theme == 'light' ? '#00a100' : '#66ff66'
+      return this.codestart ? { "border-bottom": `2px solid ${color}` } : {};
     },
   },
 
