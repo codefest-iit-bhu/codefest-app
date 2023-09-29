@@ -97,19 +97,19 @@
                     >
                     <span v-else>Institute</span>
                   </label>
-                  <input
-                    type="text"
+                  <select
+                    :class="$style.field"
                     id="institute_name"
-                    placeholder="Type out your institute"
                     v-model="profile.institute_name"
-                    required
-                  />
+                    required>
+                    <option selected disabled>Select your Institute</option>
+                  </select>
                 </div>
                 <div :class="$style.field">
                   <label for="study_year" :class="$style.label">
-                    <span v-if="profile.institute_type == 0">class</span>
+                    <span v-if="profile.institute_type == 0">Class</span>
                     <span v-if="profile.institute_type == 1">Study Year</span>
-                    <span v-if="profile.institute_type == 2">experience</span>
+                    <span v-if="profile.institute_type == 2">Experience</span>
                   </label>
                   <input
                     type="number"
@@ -123,13 +123,13 @@
                 </div>
                 <div :class="$style.field" v-show="profile.institute_type == 1">
                   <label for="branch" :class="$style.label">Branch</label>
-                  <input
-                    type="text"
+                  <select
+                    :class="$style.field"
                     id="branch"
-                    name="branch"
-                    placeholder="Type out your branch"
                     v-model="profile.branch"
-                  />
+                    required>
+                    <option selected disabled>Select your Branch</option>
+                  </select>
                 </div>
                 <div :class="$style.field" v-show="profile.institute_type != 0">
                   <label for="degree" :class="$style.label">Degree</label>
@@ -240,9 +240,9 @@
               ></i>
             </div>
           </form>
-          <datalist id="instituteList"></datalist>
+          <!-- <datalist id="instituteList"></datalist>
           <datalist id="countryList"></datalist>
-          <datalist id="branchList"></datalist>
+          <datalist id="branchList"></datalist> -->
         </div>
       </div>
     </main>
@@ -389,10 +389,18 @@ export default {
   mounted() {
     this.fillDropdown(
       "assets/institutes.json",
-      "instituteList",
-      "institute_name"
+      "institute_name",
+      "institute_name",
+      "name",
+      "name",
     );
-    this.fillDropdown("assets/branches.json", "branchList", "branch");
+    this.fillDropdown(
+      "assets/branches.json",
+      "branch",
+      "branch",
+      "name",
+      "name",
+    );
     this.fillDropdown(
       "assets/countries.json",
       "country",
@@ -540,7 +548,7 @@ export default {
       }
 
       option {
-        color: black;
+        color: var(--text-color);
       }
 
       .label {

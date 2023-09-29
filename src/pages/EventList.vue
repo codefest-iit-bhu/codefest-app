@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.root">
-    <AppBar />
+    <AppBar :currentPage="'events'"/>
     <main :class="$style.wrapper">
       <SpecialEvent />
 

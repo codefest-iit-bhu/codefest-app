@@ -38,7 +38,7 @@ export default {
     },
     appBottomPadding: function() {
       if (this.shouldShowTerminal && this.isTerminalShown)
-        return this.terminalExpanded ? "200px" : "90px";
+        return this.terminalExpanded ? "200px" : "0px";
       else return "0px";
     },
     currentTheme: function() {
@@ -52,8 +52,9 @@ export default {
     showTerminal() {
       const { terminal } = this.$refs;
       if (!terminal) return;
-      if (this.$route.meta.animateTerminal) terminal.animateScrollShow();
-      else terminal.noAnimateScrollShow();
+      console.log(this.$route.meta.animateTerminal);
+      // if (this.$route.meta.animateTerminal) terminal.animateScrollShow();
+      // else terminal.noAnimateScrollShow();
     },
     terminalStateChanged(isShown) {
       this.isTerminalShown = isShown;

@@ -47,7 +47,7 @@ export default {
         {
           question: "What is the eligibility criteria?",
           answer:
-            "Any IIT BHU undergraduate student in their first or second year of studies can participate in Codestart. Prizes exclusively for freshers!",
+            "Any IIT BHU student pursuing any course can participate in CodeStart. Prizes exclusively for Freshers!",
         },
         {
           question: "How to participate?",

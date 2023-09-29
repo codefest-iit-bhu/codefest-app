@@ -1,4 +1,5 @@
 [
+    {"id":236, "name": "IIT (BHU) VARANASI"}, 
     {"id":1, "name": "AAA COLLEGE OF ENGINEERING AND TECHNOLOGY"}, 
     {"id":2, "name": "AARVAVART INSTITUTE OF TECHNOLOGY AND MANAGEMENT, LUCKNOW"}, 
     {"id":3, "name": "ABES ENGINEERING COLLEGE, GHAZIABAD"}, 
@@ -234,7 +235,6 @@
     {"id":233, "name": "IIMT ENGINEERING COLLEGE (127) , MEERUT"}, 
     {"id":234, "name": "IISER , BHOPAL"}, 
     {"id":235, "name": "IIT BOMBAY"}, 
-    {"id":236, "name": "IIT (BHU) VARANASI"}, 
     {"id":237, "name": "IIT (ISM) DHANBAD"}, 
     {"id":238, "name": "IIT BHILAI"}, 
     {"id":239, "name": "IIT BHUBANESWAR"}, 
