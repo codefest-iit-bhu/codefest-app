@@ -391,14 +391,14 @@ export default {
       "assets/institutes.json",
       "institute_name",
       "institute_name",
-      "id",
+      "name",
       "name",
     );
     this.fillDropdown(
       "assets/branches.json",
       "branch",
       "branch",
-      "id",
+      "name",
       "name",
     );
     this.fillDropdown(
