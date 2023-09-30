@@ -371,13 +371,16 @@ export default {
     API.fetch("profile/")
       .then(({ data }) => {
         this.profile = data;
-        if (!data.is_profile_complete) {
-          this.nav("basic");
-        } else {
-          this.isDisabled["basic"] = true;
-          this.isDisabled["academic"] = true;
-          this.nav("handles");
-        }
+        // if (!data.is_profile_complete) {
+        //   this.nav("basic");
+        // } else {
+        //   this.isDisabled["basic"] = true;
+        //   this.isDisabled["academic"] = true;
+        //   this.nav("handles");
+        // }
+        this.isDisabled["handles"] = true;
+        this.isDisabled["academic"] = true;
+        this.nav("basic");
       })
       .catch(console.log);
     API.fetch("profile/handles/")
