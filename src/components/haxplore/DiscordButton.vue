@@ -13,7 +13,7 @@ export default {
     inviteToDiscord() {
       // TODO
       window.open(
-        `https://discord.gg/QZBtntYH`,
+        `https://discord.gg/QnnwpteyJs`,
         "_blank"
       );
     }
