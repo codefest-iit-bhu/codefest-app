@@ -161,7 +161,7 @@ const router = new Router({
         title: "Referral Leaderboard",
         metaTags: [],
         noTerminal: true,
-        requiresAuth: false,
+        requiresAuth: true,
       },
     },
     {
