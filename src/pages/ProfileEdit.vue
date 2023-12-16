@@ -105,6 +105,19 @@
                     <option selected disabled>Select your Institute</option>
                   </select>
                 </div>
+                <div :class="$style.field" v-if="profile.institute_type != 2">
+                  <label for="is_campus_ambassador" :class="$style.label">
+                    <span>Role</span>
+                  </label>
+                  <select
+                    :class="$style.field"
+                    id="is_campus_ambassador"
+                    v-model="profile.is_campus_ambassador"
+                    required>
+                    <option selected :value="false">Participant</option>
+                    <option :value="true">Campus Ambassador</option>
+                  </select>
+                </div>
                 <div :class="$style.field">
                   <label for="study_year" :class="$style.label">
                     <span v-if="profile.institute_type == 0">Class</span>
