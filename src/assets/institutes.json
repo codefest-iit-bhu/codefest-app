@@ -622,5 +622,6 @@
     {"id":621,"name": "BLDEA'S ENGINEERING COLLEGE, VIJAYAPUR"},
     {"id":622,"name": "MAHATMA GANDHI INSTITUTE OF TECHNOLOGY, HYDERABAD"},
     {"id":623, "name": "IIIT RANCHI"},
-    {"id":624, "name": "OTHER INSTITUTE"}
+    {"id":624, "name": "OTHER INSTITUTE"},
+    {"id":625, "name": "IIIT DELHI"}
 ]
