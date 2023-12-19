@@ -52,6 +52,13 @@
           </div>
           <div :class="$style.row">
             <span :class="$style.pkey">
+              <span>Role</span>
+            </span>
+            <span v-if="profile.is_campus_ambassador == 1" :class="$style.pvalue"> Campus Ambassador</span>
+            <span v-if="profile.is_campus_ambassador != 1" :class="$style.pvalue"> Participant</span>
+          </div>
+          <div :class="$style.row">
+            <span :class="$style.pkey">
               <span>Country</span>
             </span>
             <span :class="$style.pvalue">{{ profile.country }}</span>
