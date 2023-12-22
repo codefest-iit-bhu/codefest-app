@@ -2,7 +2,7 @@
   <div :class="[$style.faqContainer, $style[$mq]]">
     <ResponsiveTwoColumnLayout>
       <div :class="$style.faqHeader" slot="left">
-        <img src="#" />
+        <img src="@assets/ca/faq.svg" />
       </div>
       <FAQ :faqItems="faq" slot="right" />
     </ResponsiveTwoColumnLayout>
@@ -23,26 +23,29 @@ export default {
     return {
       faq: [
         {
-          question: "Who is eligible for being a campus ambassador?",
+          question: "What is the role of a Campus Ambassador?",
           answer:
-            "Anyone currently enrolled in any technical institute, who is \
-            connected to people who might be interested in coding competitions and hackathons can be a Campus ambassador.",
+            "Campus Ambassadors are passionate student representatives who spark excitement for CodeFest within their colleges. They act as a bridge between the organizers and their peers, ensuring smooth participation and offering valuable insights into the event.",
         },
         {
-          question: "What is the responsibility of a CA",
+          question: "Am I suitable to become a Campus Ambassador?",
           answer:
-            "A CA's responsibility is to publicize CodeFest among the students of\
-             their college and act as a representative of the fest in their college.",
+            "Any passionate and motivated college student from any academic background or technical skill level is eligible to apply.",
         },
         {
-          question: "How to apply for the CA programme?",
+          question: "Can there be multiple Campus Ambassadors from a particular college?",
           answer:
-            "Visit our facebook page/website and register as a CA by filling up the Google form available.",
+            "The number of Campus Ambassadors chosen from each college may vary depending on the college size and number of applications.",
         },
         {
-          question: "Can a CA register as a participant too?",
+          question: "How much time do I need to invest once selected as a Campus Ambassador?",
           answer:
-            "Ofcourse! Any CA can participate in whatever event he/she wishes to, there is no such restriction.",
+            "The time commitment will vary depending on the tasks allotted and the stage of the CodeFest cycle.",
+        },
+        {
+          question: "Will my progress be monitored?",
+          answer:
+            "Yes, your dedication will shine on our leaderboard. We will track your progress based on the number of referrals you bring to CodeFest and reward the top scorers with exciting prizes, so stay motivated and keep the CodeFest spirit alive!",
         },
       ],
     };

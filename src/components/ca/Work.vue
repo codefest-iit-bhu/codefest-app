@@ -2,7 +2,7 @@
   <div :class="[$style.workContainer, $style[$mq]]">
     <ResponsiveTwoColumnLayout>
       <div :class="$style.workImage" slot="left">
-        <img src="#" />
+        <img src="@assets/ca/work.svg" />
       </div>
       <div :class="$style.workHead" slot="right">
         <div :class="$style.taskList">
@@ -18,10 +18,10 @@
         </div>
       </div>
     </ResponsiveTwoColumnLayout>
-    <div :class="$style.para">
+    <!-- <div :class="$style.para">
       The number of participants from your college will determine the number of
       goodies you get as a Campus Ambassador of CodeFest.
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -37,19 +37,29 @@ export default {
     return {
       tasks: [
         {
-          start: "Connect ",
+          start: "Coordinating ",
           rest:
-            "CodeFest with the student community inside your campus and circle.",
+            "with our organizing team to facilitate the participation process for students from your college",
         },
         {
-          start: "Publicize",
+          start: "Creating awareness ",
           rest:
-            "CodeFest by sharing the posts and updates on social media, through word-of-mouth, posters and e-mails.",
+            "about CodeFest in your respective colleges by circulating posters, mails or messages in the official college groups",
         },
         {
-          start: "Encourage",
+          start: "Promoting CodeFest ",
           rest:
-            "the students of your campus for active participation in CodeFest.",
+            "in your college campus and through various social media platforms, including but not limited to Facebook, Instagram, and LinkedIn",
+        },
+        {
+          start: "Encouraging students ",
+          rest:
+            "from your college to participate in the event and engage in the various activities and competitions",
+        },
+        {
+          start: "Providing feedback and suggestions ",
+          rest:
+            "to enhance the overall experience of participants",
         },
       ],
     };

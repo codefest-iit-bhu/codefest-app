@@ -2,15 +2,14 @@
   <div :class="[$style.aboutContainer, $style[$mq]]">
     <ResponsiveTwoColumnLayout :isRightAbove="true">
       <div :class="$style.aboutImage" slot="right">
-        <img src="#" />
+        <img src="@assets/ca/about.svg" />
       </div>
       <div :class="$style.aboutHead" slot="left">
         <p>
-          A good leader is one who knows the way, goes the way and shows the
-          way. With this in mind, CodeFest invites you to lead your college in
-          the sixth edition of the coding extravaganza by becoming a part of our
-          team as a Campus Ambassador. Apply now to grab the opportunity of
-          becoming the face of CodeFest in your college!
+          The CA program is our warm invitation to all you dynamic and enthusiastic students who are eager to represent the spirit of CodeFest’24 team in your campus. 
+        </p>
+        <p>
+          Accompanied with the opportunity to foster innovation and build connections, are the exclusive perks, exciting goodies and well-deserved rewards.
         </p>
       </div>
     </ResponsiveTwoColumnLayout>

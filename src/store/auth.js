@@ -16,18 +16,21 @@ export default {
   state: {
     token: getTokenFromStorage() || "",
     userId: -1,
+    isCampusAmbassador: true,
   },
   getters: {
     isLoggedIn: (state) => {
       return !!state.token;
     },
     authToken: (state) => state.token,
+    isCampusAmbassador: (state) => state.isCampusAmbassador,
   },
   mutations: {
     AUTH_SUCCESS(state, data) {
-      const { token, user_id } = data;
+      const { token, user_id, is_campus_ambassador } = data;
       state.token = token;
       state.userId = user_id;
+      state.isCampusAmbassador = is_campus_ambassador;
       putTokenToStorage(token);
     },
     AUTH_LOGOUT(state) {
