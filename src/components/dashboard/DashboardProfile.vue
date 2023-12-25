@@ -10,10 +10,16 @@
     <div :class="$style.profile">
       <div :class="$style.about">
         <div :class="[$style.countdiv, is_verified]">
-          <span :class="$style.reftext">Referral Count</span>
-          <span :class="$style.refcount" v-if="profile.is_verified">
+          <span v-show="!isCampusAmbassador" :class="$style.reftext">Referral Count</span>
+          <span v-show="!isCampusAmbassador" :class="$style.refcount" v-if="profile.is_verified">
             {{
             profile.referral_count
+            }}
+          </span>
+          <span v-show="isCampusAmbassador" :class="$style.reftext">CA Score</span>
+          <span v-show="isCampusAmbassador" :class="$style.refcount" v-if="profile.is_verified">
+            {{
+            profile.ca_score
             }}
           </span>
           <span :class="$style.refcount" v-else>
@@ -176,7 +182,9 @@ export default {
         return this.$style.notverified;
       }
     },
-
+    isCampusAmbassador() {
+      return this.$store.getters.isCampusAmbassador;
+    },
     routerLocation() {
       return {
         name: "~/login",
