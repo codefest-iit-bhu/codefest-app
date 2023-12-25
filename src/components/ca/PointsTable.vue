@@ -1,44 +1,45 @@
 <template>
-  <div :class="$style.container">
-    <table :class="[$style.points, $style[$mq]]" id="points">
+  <SectionLayout title="CA Leaderboard" id="container">
+    <table :class="[$style.leaderboard, $style[$mq]]" id="leaderboard">
       <thead>
         <tr :class="$style.tablerow">
           <th :class="$style.head">Rank</th>
-          <th :class="$style.head">ID</th>
           <th :class="$style.head">Name</th>
-          <th :class="$style.head">Points</th>
+          <th :class="$style.head">CA Score</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(person, i) in cas" :key="i" :class="$style.tablerow">
+        <tr
+          v-for="(person, i) in leaderboard"
+          :key="i"
+          :class="$style.tablerow"
+        >
           <td>{{ i + 1 }}</td>
-          <td>{{ person.caid }}</td>
           <td>{{ person.name }}</td>
-          <td>{{ person.points }}</td>
+          <td>{{ person.ca_score }}</td>
         </tr>
       </tbody>
     </table>
-    <br />
-    <span :class="$style.lastUpdated"> Last Updated : {{ last_updated }}</span>
-  </div>
+  </SectionLayout>
 </template>
 
 <script>
 import API from "@js/api";
+const SectionLayout = () => import("@components/layouts/SectionLayout");
 
 export default {
+  components: {
+    SectionLayout,
+  },
   data() {
     return {
-      cas: [],
-      last_updated: "",
+      leaderboard: [],
     };
   },
   created() {
-    API.fetch("cas/")
+    API.fetch("leaderboard/")
       .then(({ data }) => {
-        this.cas = data;
-        this.last_updated = this.cas[0].last_updated;
-        console.log(this.last_updated);
+        this.leaderboard = data;
       })
       .catch((err) => {
         this.$toasted.global.error_post({
@@ -48,9 +49,9 @@ export default {
   },
 };
 </script>
-
 <style module lang="stylus">
-.points{
+
+.leaderboard {
   text-align: center;
   margin: auto;
   width: 100%;
@@ -74,21 +75,6 @@ export default {
       padding: 12px 0;
       font-weight: 600;
     }
-  }
-}
-
-.container{
-  text-align: center;
-
-  .lastUpdated {
-    display: inline-block;
-    box-shadow: 0 0 12px $vermilion inset;
-    padding: 15px 25px;
-    font-weight: 600;
-    border-radius: 10px;
-    margin: auto;
-    font-family: 'QuickSand';
-    color: white;
   }
 }
 </style>

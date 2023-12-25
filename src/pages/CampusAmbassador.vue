@@ -15,12 +15,8 @@
       <SectionLayout title="FAQ">
         <FaqCA />
       </SectionLayout>
-      <!-- <SectionLayout title="Contact Us">
-        <ContactCA />
-      </SectionLayout> -->
-      <!-- <SectionLayout title="Points Table">
+     
         <PointsTable />
-      </SectionLayout> -->
     </main>
     <Footer />
   </div>
