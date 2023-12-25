@@ -1,5 +1,5 @@
 <template>
-  <SectionLayout title="CA Leaderboard" id="container">
+  <SectionLayout v-show="isLoggedIn && isCampusAmbassador" title="CA Leaderboard" id="container">
     <table :class="[$style.leaderboard, $style[$mq]]" id="leaderboard">
       <thead>
         <tr :class="$style.tablerow">
@@ -35,6 +35,14 @@ export default {
     return {
       leaderboard: [],
     };
+  },
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.isLoggedIn;
+    },
+    isCampusAmbassador() {
+      return this.$store.getters.isCampusAmbassador;
+    }
   },
   created() {
     API.fetch("leaderboard/")
