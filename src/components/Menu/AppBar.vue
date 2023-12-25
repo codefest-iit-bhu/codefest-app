@@ -37,10 +37,10 @@
           <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
         </router-link>
       </li>-->
-      <li v-show="!isCampusAmbassador" :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
+      <li v-show="isLoggedIn && !isCampusAmbassador" :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
         <router-link to="/referral"><b>Referrals</b></router-link>
       </li>
-      <li v-show="isCampusAmbassador" :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
+      <li v-show="!isLoggedIn || isCampusAmbassador" :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
         <router-link to="/ca"><b>Campus Ambassadors</b></router-link>
       </li>
       <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
@@ -185,6 +185,9 @@ export default {
       else return 300;
     },
     showDashboardActions() {
+      return this.$store.getters.isLoggedIn;
+    },
+    isLoggedIn() {
       return this.$store.getters.isLoggedIn;
     },
     isCampusAmbassador() {

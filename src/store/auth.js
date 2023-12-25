@@ -16,7 +16,7 @@ export default {
   state: {
     token: getTokenFromStorage() || "",
     userId: -1,
-    isCampusAmbassador: true,
+    isCampusAmbassador: false,
   },
   getters: {
     isLoggedIn: (state) => {

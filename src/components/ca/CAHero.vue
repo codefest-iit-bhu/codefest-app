@@ -21,7 +21,7 @@
           Be part of
           <span>CODEFEST'24</span> by becoming our CAMPUS AMBASSADOR.
         </h3>
-        <div :class="$style.link">
+        <div v-show="!isCampusAmbassador" :class="$style.link">
           <a
             href="/login"
             :class="$style.linkText"
@@ -44,6 +44,11 @@ const ResponsiveTwoColumnLayout = () =>
 export default {
   components: {
     ResponsiveTwoColumnLayout,
+  },
+  computed: {
+    isCampusAmbassador() {
+      return this.$store.getters.isCampusAmbassador;
+    }
   },
 };
 </script>
