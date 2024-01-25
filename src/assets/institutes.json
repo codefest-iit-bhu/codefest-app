@@ -624,5 +624,6 @@
     {"id":623, "name": "IIIT RANCHI"},
     {"id":624, "name": "OTHER INSTITUTE"},
     {"id":625, "name": "IIIT DELHI"},
-    {"id":626, "name": "Odisha University of Technology and Research"}
+    {"id":626, "name": "Odisha University of Technology and Research"},
+    {"id":627, "name": "IIITDM Kancheepuram"}
 ]
