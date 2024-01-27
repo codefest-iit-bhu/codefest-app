@@ -1,10 +1,10 @@
 <template>
   <div :class="$style.root">
     <AppBar :currentPage="'events'"/>
-    <main :class="$style.wrapper">
-      <SpecialEvent />
+    <div :class="$style.wrapper">
+    <SpecialEvent v-for="(event,i) in events" :eventName="event" :key="i" :id="i"/>
 
-      <mq-layout :mq="['md', 'lg', 'xl', 'xxl']">
+      <!-- <mq-layout :mq="['md', 'lg', 'xl', 'xxl']">
         <StandardEvent
           v-for="(event, i) in events"
           :key="i"
@@ -20,8 +20,8 @@
           :event="event"
           :id="i"
         />
-      </mq-layout>
-    </main>
+      </mq-layout> -->
+    </div>
     <Footer />
   </div>
 </template>
@@ -38,19 +38,27 @@ import { isMinimal } from "@js/utils";
 export default {
   components: {
     AppBar,
-    SpecialEvent,
     StandardEventMobile,
     StandardEvent,
     Footer,
+    SpecialEvent,
   },
   data() {
-    return events;
+    return {
+      events:{
+        type: Array,
+      }
+    }
+    // return events;
   },
   computed: {
     isMinimal() {
       return isMinimal(this.$mq);
     },
   },
+  created(){
+    this.events=["Try1","Try2","Try3"];
+  }
 };
 </script>
 
@@ -64,6 +72,9 @@ export default {
   z-index: 1;
   font-family: 'Roboto Mono';
   $font-size: 18px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .root {
