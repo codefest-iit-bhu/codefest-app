@@ -11,7 +11,7 @@
         </div>
       </div>
       <div :class="$style.heroText" class="absolute-center" slot="right">
-        <span :class="$style.haxplore">
+        <span :class="$style.eventName">
           <!-- <img src="@assets/haxplore/hax_white.svg" v-if="$store.getters.currentTheme === 'dark'" />
           <img src="@assets/haxplore/hax.svg" v-else /> -->
           {{ eventName }}
@@ -21,14 +21,18 @@
         <br />
         <span :class="$style.venue">
           <span :id="$style.loc">
-            <i class="fas fa-university"></i> IIT (BHU), Varanasi <br>
+            <i class="fas fa-university"></i> IIT (BHU), Varanasi <br />
             <!-- <i class="fas fa-calendar" aria-hidden="true"></i> March 27 - 28, 2021 -->
           </span>
         </span>
-        <!-- <DevfolioButton /> -->
-        <div v-if="showRegisterButton">
+        <DevfolioButton />
         <DiscordButton />
-      </div>
+        <div v-if="showRegisterButton">
+          <RegisterButton />
+        </div>
+        <!-- <div v-if="showGoogleFormLink"> -->
+          <GoogleFormButton />
+        <!-- </div> -->
       </div>
     </ResponsiveTwoColumnLayout>
   </div>
@@ -41,13 +45,19 @@ const DevfolioButton = () => import("@components/haxplore/DevfolioButton");
 const DiscordButton = () => import("@components/haxplore/DiscordButton");
 const ResponsiveTwoColumnLayout = () =>
   import("@components/layouts/ResponsiveTwoColumnLayout");
+const RegisterButton = () => import("@components/EventDetails/RegisterButton");
+const GoogleFormButton = () =>
+  import("@components/EventDetails/GoogleFormButton");
 
 export default {
-  props:{
-    eventName:{
+  props: {
+    eventName: {
       type: String,
     },
-    showRegisterButton:{
+    showRegisterButton: {
+      type: Boolean,
+    },
+    showGoogleFormButton: {
       type: Boolean,
     },
   },
@@ -55,12 +65,14 @@ export default {
     Countdown,
     DevfolioButton,
     DiscordButton,
-    ResponsiveTwoColumnLayout
+    ResponsiveTwoColumnLayout,
+    RegisterButton,
+    GoogleFormButton,
   },
   data() {
     return {
       hackathonStart: new Date(2019, 8, 23),
-      isTyped: false
+      isTyped: false,
     };
   },
   methods: {
@@ -88,7 +100,7 @@ export default {
           {
             opacity: 1,
             scale: 1,
-            ease: Power1.easeIn
+            ease: Power1.easeIn,
           },
           0.2
         )
@@ -102,7 +114,7 @@ export default {
             boxShadow: "0 25px 25px rgba(0, 0, 0, 0.4)",
             repeat: -1,
             yoyo: true,
-            ease: Power1.easeOut
+            ease: Power1.easeOut,
           },
           0.2
         ),
@@ -112,10 +124,11 @@ export default {
     initLanding() {
       this.initTypingAnimation();
       this.initCircleAnimation();
-      console.log(this.showRegisterButton)
-      console.log(this.eventName)
-    }
-  }
+      console.log(this.showRegisterButton);
+      console.log(this.showGoogleFormButton);
+      console.log(this.eventName);
+    },
+  },
 };
 </script>
 
@@ -127,6 +140,13 @@ $wd = 100vw;
   position: relative;
   height: 100vh;
   padding-bottom: 50px;
+  
+  .eventName {
+    font-size: 50px;
+    font-weight: 1000;
+    color: #ff9900;
+    text-align: center;
+  }
 
   .heroImage {
     --hero-ht: $ht;
