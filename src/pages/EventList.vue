@@ -57,7 +57,7 @@ export default {
     },
   },
   created(){
-    this.events=["Try1","Try2","Try3"];
+    this.events=["Try1","Try2","Try3","Try4","Try5"];
   }
 };
 </script>

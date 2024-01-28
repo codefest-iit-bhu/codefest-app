@@ -32,7 +32,7 @@ const router = new Router({
     {
       name: "~/events/name",
       path: "/events/:name",
-      component: () => import("@pages/EventDetails"),
+      component: () => import(`@pages/NewEventDetails`),
       meta: {
         title: "CodeFest '24 | Event",
         metaTags: [],
