@@ -9,8 +9,13 @@ export default {
   methods: {
     openGoogleForm() {
       // Implement logic to open the Google Form link
-      window.open('https://your-google-form-link', '_blank');
+      window.open(this.form_link, '_blank');
     },
+  },
+  props: {
+    form_link: {
+      type: String
+    }
   },
 };
 </script>

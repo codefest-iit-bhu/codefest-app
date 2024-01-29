@@ -9,7 +9,7 @@ export default {
   methods: {
     registerEvent() {
       // Implement the registration logic here
-      alert('Registration logic goes here!');
+      this.$router.push("/dashboard/events")
     },
   },
 };

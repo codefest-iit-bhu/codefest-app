@@ -1,11 +1,10 @@
 <template>
   <GridLayout :itemWidth="eventCardWidth" :class="$style.eventWrapper">
     <EventTeam
-      v-for="(event, i) in events"
-      :key="i"
+      v-for="event in events"
+      :key="event.id"
       :event="event"
       :class="$style.eventCard"
-      :slot="i"
     />
   </GridLayout>
 </template>
@@ -29,7 +28,7 @@ export default {
   },
   data() {
     return {
-      events: eventsStore.events
+      events: []
     };
   },
   computed: {
@@ -38,9 +37,18 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch("getProfileEvents").then(data => {
-      this.events = data;
-    });
+    API.fetch("events/")
+      .then(({ data }) => {
+        if (data.length === 0) {
+          this.events = [];
+        }
+        this.events = data
+      })
+      .catch(err => {
+        this.events = []
+        console.log(err);
+      })
+    // this.events=["Try1","Try2","Try3","Try4","Try5"];
   }
 };
 </script>

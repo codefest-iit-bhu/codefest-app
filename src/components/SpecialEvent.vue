@@ -6,11 +6,9 @@
       </router-link>
     </div>
       <div :class="$style.title">
-        <a>
           <router-link :to="getPath">
             <h1>{{eventName}}</h1>
           </router-link>
-        </a>
         <!-- <p>
           Join the CodeFest '24 team to bring out the absolute best ideas and
           implementations from some of the best minds in the country, while
@@ -39,7 +37,7 @@ export default {
   },
   computed:{
     getPath(){
-      return `/events/${this.eventName}`
+      return `/events/${this.id}`
     }
   },
 };

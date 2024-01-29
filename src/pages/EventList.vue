@@ -1,8 +1,8 @@
 <template>
   <div :class="$style.root">
-    <AppBar :currentPage="'events'"/>
+    <AppBar :currentPage="'events'" />
     <div :class="$style.wrapper">
-    <SpecialEvent v-for="(event,i) in events" :eventName="event" :key="i" :id="i"/>
+      <SpecialEvent v-for="event in events" :eventName="event.name" :key="event.id" :id="event.id" />
 
       <!-- <mq-layout :mq="['md', 'lg', 'xl', 'xxl']">
         <StandardEvent
@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import API from "@js/api";
 const AppBar = () => import("@components/Menu/AppBar");
 const SpecialEvent = () => import("@components/SpecialEvent");
 const StandardEvent = () => import("@components/StandardEvent");
@@ -45,9 +46,7 @@ export default {
   },
   data() {
     return {
-      events:{
-        type: Array,
-      }
+      events: []
     }
     // return events;
   },
@@ -56,8 +55,24 @@ export default {
       return isMinimal(this.$mq);
     },
   },
-  created(){
-    this.events=["Try1","Try2","Try3","Try4","Try5"];
+  created() {
+    API.fetch("events/")
+      .then(({ data }) => {
+        if (data.length === 0) {
+          this.events = [];
+        }
+        this.events = data.map(event => {
+          return {
+            id: event.id,
+            name: event.name
+          }
+        })
+      })
+      .catch(err => {
+        this.events = []
+        console.log(err);
+      })
+    // this.events=["Try1","Try2","Try3","Try4","Try5"];
   }
 };
 </script>
@@ -66,6 +81,7 @@ export default {
 
 .wrapper {
   width: 80%;
+  height: 100%;
   margin: 0 auto;
   padding: 100px 0;
   position: relative;

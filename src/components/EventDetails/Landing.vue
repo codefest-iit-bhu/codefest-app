@@ -25,13 +25,12 @@
             <!-- <i class="fas fa-calendar" aria-hidden="true"></i> March 27 - 28, 2021 -->
           </span>
         </span>
-        <DevfolioButton />
-        <DiscordButton />
+        <!-- <DevfolioButton /> -->
         <div v-if="showRegisterButton">
           <RegisterButton />
         </div>
         <!-- <div v-if="showGoogleFormLink"> -->
-          <GoogleFormButton />
+          <GoogleFormButton :form_link="form_link"/>
         <!-- </div> -->
       </div>
     </ResponsiveTwoColumnLayout>
@@ -60,6 +59,12 @@ export default {
     showGoogleFormButton: {
       type: Boolean,
     },
+    tagline: {
+      type: String
+    },
+    form_link: {
+      type: String
+    }
   },
   components: {
     Countdown,
@@ -78,7 +83,7 @@ export default {
   methods: {
     initTypingAnimation() {
       const elem = this.$refs.tagline;
-      this.animTyping = new TypingAnim(elem, "Init. Develop. Deploy.");
+      this.animTyping = new TypingAnim(elem, this.tagline);
 
       window.setInterval(() => {
         this.isTyped ? this.animTyping.erase() : this.animTyping.type();
@@ -124,9 +129,6 @@ export default {
     initLanding() {
       this.initTypingAnimation();
       this.initCircleAnimation();
-      console.log(this.showRegisterButton);
-      console.log(this.showGoogleFormButton);
-      console.log(this.eventName);
     },
   },
 };

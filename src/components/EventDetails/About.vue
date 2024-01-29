@@ -1,17 +1,33 @@
 <template>
   <SectionLayout title="About" id="about">
-    <p>Since its inception in 2010, CodeFest has always aspired to be the torchbearer of technology. The idea of HaXplore began with drawing inspiration from the way technology has revolutionized the world. From reminding us for a class to taking a spaceship on another planet, software has transformed almost every sphere of our life. The idea that few lines of code could do such tasks is almost inconceivable.</p>
-    <p>HaXplore aims to provide a venue where creative heads assemble together to express their world-changing ideas and compete in their endeavour for excellence.</p>We at HaXplore, promote people from every domain irrespective of their field of study, experience, gender, background or ethnicity. To foster this spirit of inclusivity and diversity, HaXplore also has special prizes for all-girls teams participating in the hackathon.
-    <p>In essence, HaXplore strives to be the commemoration of the creative attempts by developers across history in order to make a better and a more accessible world; it is the celebration of the spirit of developers who imagine the unimaginable.</p>
+    <p v-for="para in sentences">{{ para }}</p>
   </SectionLayout>
 </template>
 
 <script>
+import events from "@store/events";
 const SectionLayout = () => import("@components/layouts/SectionLayout");
 
 export default {
   components: {
     SectionLayout
+  },
+  props: {
+    about: {
+      type: String,
+      default: ""
+    }
+  },
+  computed: {
+    sentences() {
+      const sentencesArray = this.about.split('.');
+      const result = [];
+      for (let i = 0; i < sentencesArray.length; i += 2) {
+        const currentSentence = sentencesArray[i] + (sentencesArray[i + 1] ? '. ' + sentencesArray[i + 1] + '.' : '.');
+        result.push(currentSentence);
+      }
+      return result;
+    }
   }
 };
 </script>

@@ -1,9 +1,9 @@
 <template>
   <div :class="[$style.eventBox, $style[$mq]]">
     <div :class="$style.title">
-      <span :class="$style.txt">{{ event.title }}</span>
+      <span :class="$style.txt">{{ getTitle }}</span>
       <span :class="$style.txt2">
-        <router-link :to="event.link">View Details</router-link>
+        <router-link :to="getPath">View Details</router-link>
       </span>
     </div>
     <BounceLoader :loading="loading" color="#E47718" :class="$style.loader" />
@@ -170,6 +170,12 @@ export default {
         return `Missing ${this.event.min_members -
           this.teamMembers.length} members.`;
     },
+    getPath() {
+      return `/events/${this.event.id}`
+    },
+    getTitle() {
+      return eventsStore.events.filter(e => e.name === this.event.name)[0].title;
+    }
   },
   methods: {
     closeOtherButtons(btn, clickedBtn) {
@@ -336,6 +342,7 @@ $btn-width = 240px;
     .txt {
       $font-size: 20px;
       font-family: 'Baloo Bhaina 2';
+      text-align: center;
     }
 
     .txt2 {

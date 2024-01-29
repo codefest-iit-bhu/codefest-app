@@ -1,11 +1,11 @@
 <template>
     <div :class="[$style.root, $style[$mq]]">
-      <AppBar :currentPage="eventName" @scrollTop="scrollToTop" />
-      <Landing :eventName="eventName" :showRegisterButton="showRegisterButton"/>
+      <AppBar :currentPage="eventDetails.name" @scrollTop="scrollToTop" />
+      <Landing :eventName="eventFromStore.title" :showRegisterButton="eventDetails.is_registration_on" :tagline="eventFromStore.tagline" :form_link="eventDetails.form_link"/>
       <main :class="$style.wrapper">
         <div v-scroll-spy="{ data: 'section' }" ref="scroller">
           <div></div>
-          <About />
+          <About :about="eventFromStore.description"/>
           <!-- <FAQ />
           <SectionLayout title="Lookback">
             <Lookback :stats="lookbackStats" />
@@ -18,11 +18,14 @@
           <HaxploreSponsors /> -->
         </div>
       </main>
-      <FooterN />
+      <Footer />
     </div>
   </template>
   
   <script>
+  import API from "@js/api";
+  import events from "@store/events";
+
   const AppBar = () => import("@components/Menu/AppBar");
   const Timeline = () => import("@components/EventDetails/Timeline");
   const About = () => import("@components/EventDetails/About");
@@ -31,7 +34,7 @@
   const Lookback = () => import("@components/Lookback");
   const Prizes = () => import("@components/EventDetails/Prizes");
   const HaxploreSponsors = () => import("@components/EventDetails/HaxploreSponsors");
-  const FooterN = () => import("@components/EventDetails/FooterN");
+  const Footer = () => import("@components/Footer");
   const SectionLayout = () => import("@components/layouts/SectionLayout");
   const Testimonials = () => import("@components/Testimonials");
   
@@ -46,82 +49,22 @@
       Lookback,
       Prizes,
       HaxploreSponsors,
-      FooterN,
+      Footer,
       Testimonials
     },
     data() {
       return {
-        section: 0,
-        // titles: [null, "About", "FAQ", "Lookback", "Testimonials", "Prizes"],
-        devfolioKey: "haxplore",
-        lookbackStats: [
-          {
-            name: "Prizes worth",
-            value: "200,000",
-            image: "assets/Lookback/lb_prize.svg"
-          },
-          {
-            name: "Time",
-            value: "24 Hours",
-            image: "assets/Lookback/time.svg"
-          },
-          {
-            name: "Participants",
-            value: "100+",
-            image: "assets/Lookback/lb_participant.svg"
-          },
-          {
-            name: "Github repos",
-            value: "30+",
-            image: "assets/Lookback/github-repos.svg"
-          },
-          {
-            name: "Lines of code",
-            value: "100,000+",
-            image: "assets/Lookback/lines-of-code.svg"
-          }
-        ],
-        testimonials: [
-          {
-            name: "Shravan",
-            comment:
-              "Haxplore was a highly challenging and refreshing experience. \
-              There was so much energy and enthusiasm in the competition, it was inspiring to discover \
-              the different teams, approaches and experiments towards building solutions to a variety of \
-              problems within 24hrs. It was perhaps the best hackathon I have participated till date. I would like \
-              to express my gratitude to the organizers for wonderfully organizing the event.",
-            image: "assets/Testimonial/shravan.jpeg"
-          },
-          {
-            name: "Daksh Miglani",
-            comment:
-              "HaXplore at IIT BHU is one of the finest hackathons our country has to offer. \
-              I had a great time there, the wifi was fast as well, and the mentors were really helpful. \
-              All in all a great place to hack.",
-            image: "assets/Testimonial/daksh.jpeg"
-          },
-          {
-            name: "Akshay",
-            comment: "Great team, great jury members. Waiting for Haxplore 2.0",
-            image: "assets/Testimonial/akshay.jpeg"
-          }
-        ],
-        buttonHovered: false,
-        eventName:{
-            type:String
-        },
-        showRegisterButton:{
-            type:Boolean
-        }
+        eventDetails: {},
+        eventFromStore: {}
       };
     },
     computed: {
       isPastLanding() {
         return this.section > 0;
       },
-      devfolioRegisterLink() {
-        return `https://devfolio.co/external-apply/${this.devfolioKey}`;
-      },
+      // devfolioRegisterLink() {
+      //   return `https://devfolio.co/external-apply/${this.devfolioKey}`;
+      // },
       linkColorStyle() {
         if (this.buttonHovered) return this.$style.hoverColor;
       }
@@ -144,9 +87,15 @@
       // },
     },
     created() {
-      this.eventName= this.$route.params.name;
-      this.showRegisterButton=true;
-     }
+      API.fetch(`events/${this.$route.params.id}/`)
+        .then(({data}) => {
+          this.eventDetails = data;
+          this.eventFromStore = events.events.filter(event => event.name === data.name)[0]
+        })
+        .catch(console.log)
+      // this.eventName= this.$route.params.name;
+      // this.showRegisterButton=true;
+    }
   };
   </script>
   
