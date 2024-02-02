@@ -1,35 +1,45 @@
 <template>
   <div :class="[$style.hero, $style[$mq]]">
-    <div>
-      <router-link to="codestart">
-        <div :class="$style.logoContainer">
-          <img :class="$style.logo" src="@assets/codestart/codestart-S.png" />
-        </div>
+    <div :class="$style.logoContainer">
+      <router-link :to="getPath">
+        <img :class="$style.logo" src="@assets/codestart/codestart-S.png" />
       </router-link>
+    </div>
       <div :class="$style.title">
-        <a>
-          <router-link to="codestart">
-            <h1>CodeStart</h1>
+          <router-link :to="getPath">
+            <h1>{{eventName}}</h1>
           </router-link>
-        </a>
-        <p>
+        <!-- <p>
           Join the CodeFest '24 team to bring out the absolute best ideas and
           implementations from some of the best minds in the country, while
           they join us for workshops, competitions, hackathons and a lot more.
-        </p>
+        </p> -->
       </div>
-    </div>
     <!-- <div :class="$style.note">
       Note: People not registered on CodeFest are not eligible to receive any
       prizes.
-    </div> -->
+    </div>-->
   </div>
 </template>
 
 <script>
 export default {
   components: {},
-  mounted() {}
+  props:{
+  eventName: {
+      required: true,
+      type: String,
+    },
+  id:{
+    required: true,
+      type: Number,
+  }
+  },
+  computed:{
+    getPath(){
+      return `/events/${this.id}`
+    }
+  },
 };
 </script>
 
@@ -45,10 +55,12 @@ export default {
   overflow: hidden;
   padding: 10vh 16px;
   text-align: center;
+  max-width: 400px;
+  margin: 10px 40px;
 
   .logoContainer {
-    width: 20%;
-    min-width: 100px;
+    width: 100%;
+    max-width: 300px;
     border-radius: 100%;
     margin: 20px auto 40px;
     box-shadow: var(--box-shadow), inset 8px 8px 20px $crown-of-thorns;
@@ -97,20 +109,19 @@ export default {
     h1 {
       font-family: 'Ubuntu';
       letter-spacing: 3px;
-      $font-size: 48px;
+      $font-size: 40px;
       padding-top: 16px;
       padding: 20px;
       color: var(--text-color);
       box-shadow: var(--box-shadow);
-      width: 360px;
+      width: 100%;
       border-radius: 30px 0;
       margin: 0 auto;
 
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-        $font-size: 24px;
+        $font-size: 30px;
         padding-top: 12px;
         padding: 10px;
-        width: 250px;
       }
     }
 

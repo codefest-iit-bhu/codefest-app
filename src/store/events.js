@@ -2,11 +2,12 @@ export default {
   events: [{
       name: "ctf",
       title: "Capture The Flag",
+      tagline: "Init. Develop. Deploy.",
       summary: "A platform for the aspiring hackers to get acquainted with real computer security practices.",
       link: "/events/ctf",
       url: "https://ctf21.cf/",
       icon: "/assets/events/ctf.png",
-      description: "Capture The Flag (CTF) invites all hackers to show off their skills on a global platform. The problems have been designed taking into account recent technological advances in the field of cyber security and will capture the imagination of both beginners and expert hackers.This contest will let you learn and understand the importance of the security practises being followed across the globe and make you to come up with more exciting alleviations to the existing vulnerabilities in security norms. So let’s get ready to explore the real world computer security arena. Please use the same team name while registering here and on the CTF platform.",
+      description: "Capture The Flag (CTF) invites all hackers to show off their skills on a global platform. The problems have been designed taking into account recent technological advances in the field of cyber security and will capture the imagination of both beginners and expert hackers.This contest will let you learn and understand the importance of the security practises being followed across the globe and make you to come up with more exciting alleviations to the existing vulnerabilities in security norms. So let's get ready to explore the real world computer security arena. Please use the same team name while registering here and on the CTF platform.",
       coordinators: [
         "Shivansh Saini - shivansh.saini.cse17@iitbhu.ac.in",
       ],
@@ -17,7 +18,7 @@ export default {
         // },
         {
           question: "Where can I get past problems of the event?",
-          answer: "CTF’19: https://www.hackerrank.com/codefest19-ctf/<br/> CTF'18: https://www.hackerrank.com/codefest-ctf-18/"
+          answer: "CTF'19: https://www.hackerrank.com/codefest19-ctf/<br/> CTF'18: https://www.hackerrank.com/codefest-ctf-18/"
         },
         {
           question: "Will we get a participation certificate?",
@@ -36,6 +37,7 @@ export default {
     {
       name: "enigma",
       title: "Enigma",
+      tagline: "Init. Develop. Deploy.",
       summary: "Solve real-life problems by letting your machine learn patterns in the data for you.",
       link: "/events/enigma",
       url: "",
@@ -52,7 +54,7 @@ export default {
         // },
         {
           question: "Where can I get past problems of the event?",
-          answer: "Enigma’19: https://www.hackerearth.com/enigma-codefest19/<br/> Enigma'18: https://datahack.analyticsvidhya.com/contest/enigma-codefest-machine-learning/<br/> Enigma'17: https://datahack.analyticsvidhya.com/contest/codefest-enigma/"
+          answer: "Enigma'19: https://www.hackerearth.com/enigma-codefest19/<br/> Enigma'18: https://datahack.analyticsvidhya.com/contest/enigma-codefest-machine-learning/<br/> Enigma'17: https://datahack.analyticsvidhya.com/contest/codefest-enigma/"
         },
         {
           question: "Will we get a participation certificate?",
@@ -71,6 +73,7 @@ export default {
     {
       name: "linguipedia",
       title: "Linguipedia",
+      tagline: "Init. Develop. Deploy.",
       summary: "Solve challenging problems in the field of Natural Language Processing.",
       link: "/events/linguipedia",
       url: "",
@@ -87,7 +90,7 @@ export default {
         // },
         {
           question: "Where can I get past problems of the event?",
-          answer: "Linguipedia’19: https://www.hackerearth.com/linguipedia-codefest19/<br/> Linguipedia'18: https://datahack.analyticsvidhya.com/contest/linguipedia-codefest-natural-language-processing/<br/> Linguipedia'17: https://datahack.analyticsvidhya.com/contest/linguipedia-codefest-natural-language-processing/"
+          answer: "Linguipedia'19: https://www.hackerearth.com/linguipedia-codefest19/<br/> Linguipedia'18: https://datahack.analyticsvidhya.com/contest/linguipedia-codefest-natural-language-processing/<br/> Linguipedia'17: https://datahack.analyticsvidhya.com/contest/linguipedia-codefest-natural-language-processing/"
         },
         {
           question: "Will we get a participation certificate?",
@@ -106,6 +109,7 @@ export default {
     {
       name: "manthan",
       title: "Manthan",
+      tagline: "Init. Develop. Deploy.",
       summary: "Compete with the best competitive programmers of the world in data structures and algorithms.",
       description: "This contest invites all the competitive programmers to put on their coding hats and pull out their coding swords. Manthan offers a problem set which is diverse and covers all aspects of data structures and algorithms, in which even a beginner could attempt a few problems and even the best coders would find it tough to crack the hard ones.",
       link: "/events/manthan",
@@ -114,7 +118,7 @@ export default {
         "Mihil Gupta - mihil.gupta.cse17@iitbhu.ac.in",
         "Anshul Asawa - anshul.asawa.cse17@iitbhu.ac.in"
       ],
-      faqIntro: "All the FAQ’s regarding the contest can be found here - https://codeforces.com/help",
+      faqIntro: "All the FAQ's regarding the contest can be found here - https://codeforces.com/help",
       faq: [{
           question: "What are the rules?",
           answer: "Detailed rules of the contest can be found here - https://codeforces.com/blog/entry/4088."
@@ -144,6 +148,7 @@ export default {
     {
       name: "vista",
       title: "Vista",
+      tagline: "Init. Develop. Deploy.",
       summary: "Make machines understand how we perceive and hone your skills in Computer Vision.",
       link: "/events/vista",
       url: "",
@@ -160,7 +165,7 @@ export default {
         // },
         {
           question: "Where can I get past problems of the event?",
-          answer: "Vista’19: https://www.hackerearth.com/vista-codefest19/<br/> Vista'18: https://datahack.analyticsvidhya.com/contest/vista-codefest-computer-vision/"
+          answer: "Vista'19: https://www.hackerearth.com/vista-codefest19/<br/> Vista'18: https://datahack.analyticsvidhya.com/contest/vista-codefest-computer-vision/"
         },
         {
           question: "Will we get a participation certificate?",
