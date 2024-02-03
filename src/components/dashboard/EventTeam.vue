@@ -174,7 +174,9 @@ export default {
       return `/events/${this.event.id}`
     },
     getTitle() {
-      return eventsStore.events.filter(e => e.name === this.event.name)[0].title;
+      const event=eventsStore.events.find(e => e.name === this.event.name)
+      if(event)return event.title
+      return ""
     }
   },
   methods: {
@@ -321,11 +323,14 @@ $btn-width = 240px;
 .eventBox {
   --event-team-box-width: $box-large-width;
   --event-team-button-width: $btn-width;
-  width: var(--event-team-box-width);
-  padding: 10px 10px 20px;
+  width: 70vw;
+  max-width: 700px;
+  height: 400px;
+  padding: 10px 20px 40px;
   box-shadow: var(--box-shadow);
   background-color: var(--background-color);
   border-radius: 0 30px;
+  margin: 40px 0px; 
 
   &.xs, &.sm {
     --event-team-box-width: $box-small-width;
@@ -337,10 +342,11 @@ $btn-width = 240px;
   }
 
   .title {
-    height: 50px;
+    height: 70px;
+    margin-bottom: 50px;
 
     .txt {
-      $font-size: 20px;
+      $font-size: 30px;
       font-family: 'Baloo Bhaina 2';
       text-align: center;
     }
@@ -348,16 +354,17 @@ $btn-width = 240px;
     .txt2 {
       float: right;
       font-weight: 700;
-      $font-size: 14px;
+      $font-size: 25px;
     }
   }
 
   .btnBox {
-    height: 50px;
+    height: 60px;
     position: relative;
     text-align: center;
-    width: var(--event-team-button-width);
-    margin: 0 auto;
+    width: 60vw;
+    max-width: 500px;
+    margin: 20px auto;
   }
 
   .btn {
@@ -374,7 +381,8 @@ $btn-width = 240px;
     $font-size: 20px;
     border: none;
     border-radius: 5px;
-    width: inherit;
+    width: 100%;
+    height: 100%;
 
     &:hover {
       box-shadow: var(--inset-small-icon-shadow);
@@ -387,8 +395,8 @@ $btn-width = 240px;
     display: table;
     width: 100%;
     margin: 10px;
-    height: 40px;
     font-family: QuickSand;
+    font-size: 25px;
 
     span {
       display: table-cell;
@@ -399,10 +407,10 @@ $btn-width = 240px;
   .field {
     padding: 5px;
     clear: both;
-    height: 30px;
+    height: 40px;
     border: 0;
     outline: 0;
-    max-width: calc(var(--event-team-button-width) - 50px);
+    width: calc(100% - 50px);
     color: var(--text-color);
     box-shadow: var(--inset-box-shadow);
     background-color: var(--background-color);
@@ -416,7 +424,7 @@ $btn-width = 240px;
     background: transparent;
     color: var(--text-color);
     border-radius: 100%;
-    $font-size: 22px;
+    $font-size: 28px;
     height: 40px;
     width: 40px;
     cursor: pointer;
@@ -430,6 +438,7 @@ $btn-width = 240px;
   .behindBtn {
     position: absolute;
     width: 100%;
+    height: 100%;
     top: 0;
     left: 0
     z-index: 4;
