@@ -48,7 +48,7 @@ export default {
 
 .hero {
   position: relative;
-  background-color: var(--background-color);
+  background-color: var(--background-color-invert);
   max-height: 140px;
   width: 100%;
   overflow: hidden;
@@ -110,7 +110,7 @@ export default {
       $font-size: 40px;
       padding-top: 16px;
       padding: 20px;
-      color: var(--text-color);
+      color: var(--text-color-inverted);
       box-shadow: var(--box-shadow);
       width: 100%;
       border-radius: 30px 0;
