@@ -30,7 +30,7 @@
           <RegisterButton />
         </div>
         <!-- <div v-if="showGoogleFormLink"> -->
-        <div :class="$style.button">
+        <div v-if="form_link" :class="$style.button">
           <GoogleFormButton :form_link="form_link"/>
         </div>
         <!-- </div> -->

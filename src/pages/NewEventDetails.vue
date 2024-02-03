@@ -5,12 +5,15 @@
       <main :class="$style.wrapper">
         <div v-scroll-spy="{ data: 'section' }" ref="scroller">
           <div></div>
-          <Section title="About" :html="eventFromStore.description"/>
-          <Section title="Overview" :html="eventFromStore.description"/>
-          <Section title="Detailed Description" :html="eventFromStore.description"/>
-          <Section title="Rules" :html="eventFromStore.description"/>
-          <Section title="Scoring" :html="eventFromStore.description"/>
-          <Section title="Contact" :html="eventFromStore.contact"/>
+          <!-- <Section title="About" :html="eventFromStore.description"/> -->
+          <Section v-if="eventFromStore.overview" title="Overview" :html="eventFromStore.overview"/>
+          <Section v-if="eventFromStore.duration" title="Event Duration" :html="eventFromStore.duration"/>
+          <Section v-if="eventFromStore.description" title="Detailed Description" :html="eventFromStore.description"/>
+          <Section v-if="eventFromStore.rules" title="Rules and Regulations" :html="eventFromStore.rules"/>
+          <Section v-if="eventFromStore.scoring" title="Scoring" :html="eventFromStore.scoring"/>
+          <Section v-if="eventFromStore.howto" title="How do we register as a team?" :html="eventFromStore.howto"/>
+          <Section v-if="eventFromStore.submission" title="Submission Guidelines" :html="eventFromStore.submission"/>
+          <Section v-if="eventFromStore.contact" title="Contact" :html="eventFromStore.contact"/>
         </div>
       </main>
       <Footer />
