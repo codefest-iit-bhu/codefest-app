@@ -49,13 +49,17 @@ export default {
 .hero {
   position: relative;
   background-color: var(--background-color-invert);
-  max-height: 140px;
   width: 100%;
   overflow: hidden;
   padding: 10px 16px;
   text-align: center;
   max-width: 400px;
   margin: 20px 40px;
+  border-radius: 30px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 140px;
 
   .logoContainer {
     width: 100%;
@@ -107,14 +111,11 @@ export default {
     h1 {
       font-family: 'Ubuntu';
       letter-spacing: 3px;
-      $font-size: 40px;
-      padding-top: 16px;
-      padding: 20px;
+      $font-size: 35px;
+      padding: 16px 25px;
       color: var(--text-color-inverted);
-      box-shadow: var(--box-shadow);
       width: 100%;
-      border-radius: 30px 0;
-      margin: 0 auto;
+      margin: auto;
 
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
         $font-size: 30px;
