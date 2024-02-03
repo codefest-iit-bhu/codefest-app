@@ -1,7 +1,7 @@
 <template>
     <div :class="[$style.root, $style[$mq]]">
-      <AppBar :currentPage="eventDetails.name" @scrollTop="scrollToTop" />
-      <Landing :eventName="eventDetails.name" :showRegisterButton="eventDetails.is_registration_on" :tagline="eventFromStore.tagline" :form_link="eventDetails.form_link"/>
+      <AppBar :currentPage="eventFromStore.title" @scrollTop="scrollToTop" />
+      <Landing :eventName="eventFromStore.title" :showRegisterButton="eventDetails.is_registration_on" :tagline="eventFromStore.tagline" :form_link="eventDetails.form_link"/>
       <main :class="$style.wrapper">
         <div v-scroll-spy="{ data: 'section' }" ref="scroller">
           <div></div>
@@ -10,18 +10,8 @@
           <Section title="Detailed Description" :html="eventFromStore.description"/>
           <Section title="Rules" :html="eventFromStore.description"/>
           <Section title="Scoring" :html="eventFromStore.description"/>
-          <!-- <FAQ />
-          <SectionLayout title="Lookback">
-            <Lookback :stats="lookbackStats" />
-          </SectionLayout>
-          <SectionLayout title="Testimonials">
-            <Testimonials :testimonials="testimonials" />
-          </SectionLayout>
-          <Timeline/>
-          <Prizes/>
-          <HaxploreSponsors /> -->
+          <Section title="Contact" :html="eventFromStore.contact"/>
         </div>
-        <div :class="$style.contact"><span>Contact: {{eventDetails.name}}</span></div>
       </main>
       <Footer />
     </div>
@@ -95,7 +85,7 @@
       API.fetch(`events/${this.$route.params.id}/`)
         .then(({data}) => {
           this.eventDetails = data;
-          this.eventFromStore = events.events.filter(event => event.name === "ctf")[0]
+          this.eventFromStore = events.events.filter(event => event.name === data.name)[0]
         })
         .catch(console.log)
       // this.eventName= this.$route.params.name;
