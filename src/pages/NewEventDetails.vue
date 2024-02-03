@@ -1,11 +1,15 @@
 <template>
     <div :class="[$style.root, $style[$mq]]">
       <AppBar :currentPage="eventDetails.name" @scrollTop="scrollToTop" />
-      <Landing :eventName="eventFromStore.title" :showRegisterButton="eventDetails.is_registration_on" :tagline="eventFromStore.tagline" :form_link="eventDetails.form_link"/>
+      <Landing :eventName="eventDetails.name" :showRegisterButton="eventDetails.is_registration_on" :tagline="eventFromStore.tagline" :form_link="eventDetails.form_link"/>
       <main :class="$style.wrapper">
         <div v-scroll-spy="{ data: 'section' }" ref="scroller">
           <div></div>
-          <About :about="eventFromStore.description"/>
+          <Section title="About" :html="eventFromStore.description"/>
+          <Section title="Overview" :html="eventFromStore.description"/>
+          <Section title="Detailed Description" :html="eventFromStore.description"/>
+          <Section title="Rules" :html="eventFromStore.description"/>
+          <Section title="Scoring" :html="eventFromStore.description"/>
           <!-- <FAQ />
           <SectionLayout title="Lookback">
             <Lookback :stats="lookbackStats" />
@@ -17,6 +21,7 @@
           <Prizes/>
           <HaxploreSponsors /> -->
         </div>
+        <div :class="$style.contact"><span>Contact: {{eventDetails.name}}</span></div>
       </main>
       <Footer />
     </div>
@@ -28,7 +33,7 @@
 
   const AppBar = () => import("@components/Menu/AppBar");
   const Timeline = () => import("@components/EventDetails/Timeline");
-  const About = () => import("@components/EventDetails/About");
+  const Section = () => import("@components/EventDetails/Section");
   const FAQ = () => import("@components/EventDetails/FAQ");
   const Landing = () => import("@components/EventDetails/Landing");
   const Lookback = () => import("@components/Lookback");
@@ -41,7 +46,7 @@
   export default {
     components: {
       AppBar,
-      About,
+      Section,
       FAQ,
       Timeline,
       SectionLayout,
@@ -90,7 +95,7 @@
       API.fetch(`events/${this.$route.params.id}/`)
         .then(({data}) => {
           this.eventDetails = data;
-          this.eventFromStore = events.events.filter(event => event.name === data.name)[0]
+          this.eventFromStore = events.events.filter(event => event.name === "ctf")[0]
         })
         .catch(console.log)
       // this.eventName= this.$route.params.name;
@@ -111,6 +116,14 @@
     position: relative;
     font: 500 18px 'Quicksand';
     font-kerning: auto;
+  }
+
+  .contact{
+    display: flex
+    align-items: center
+    span{
+      margin: 0px auto
+    }
   }
   
   .faqContainer {

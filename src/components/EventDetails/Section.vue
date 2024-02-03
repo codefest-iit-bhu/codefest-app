@@ -1,11 +1,10 @@
 <template>
-  <SectionLayout title="About" id="about">
-    <p v-for="para in sentences">{{ para }}</p>
+  <SectionLayout :title="title">
+    <div v-html="html"></div>
   </SectionLayout>
 </template>
 
 <script>
-import events from "@store/events";
 const SectionLayout = () => import("@components/layouts/SectionLayout");
 
 export default {
@@ -13,9 +12,13 @@ export default {
     SectionLayout
   },
   props: {
-    about: {
+    html: {
       type: String,
       default: ""
+    },
+    title:{
+      type: String,
+      default: "",
     }
   },
   computed: {
@@ -28,7 +31,7 @@ export default {
       }
       return result;
     }
-  }
+  },
 };
 </script>
 

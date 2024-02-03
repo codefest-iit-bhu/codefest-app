@@ -1,6 +1,6 @@
 <template>
   <div :class="[$style.landing, $style[$mq]]" id="landing">
-    <ResponsiveTwoColumnLayout :isRightAbove="false" @init="initLanding">
+    <!-- <ResponsiveTwoColumnLayout :isRightAbove="false" @init="initLanding">
       <div :class="$style.heroImage" slot="left">
         <div :class="$style.logo">
           <div class="absolute-center" :class="$style.preloader">
@@ -9,15 +9,15 @@
             <div :class="[$style.circle, $style.circle3]"></div>
           </div>
         </div>
-      </div>
-      <div :class="$style.heroText" class="absolute-center" slot="right">
+      </div> -->
+      <div :class="$style.heroText" class="absolute-center">
         <span :class="$style.eventName">
           <!-- <img src="@assets/haxplore/hax_white.svg" v-if="$store.getters.currentTheme === 'dark'" />
           <img src="@assets/haxplore/hax.svg" v-else /> -->
           {{ eventName }}
         </span>
-        <span :class="$style.tagline" ref="tagline"></span>
-        <br />
+        <!-- <span :class="$style.tagline" ref="tagline"></span> -->
+        <!-- <br /> -->
         <br />
         <span :class="$style.venue">
           <span :id="$style.loc">
@@ -26,14 +26,16 @@
           </span>
         </span>
         <!-- <DevfolioButton /> -->
-        <div v-if="showRegisterButton">
+        <div v-if="showRegisterButton" :class="$style.button">
           <RegisterButton />
         </div>
         <!-- <div v-if="showGoogleFormLink"> -->
+        <div :class="$style.button">
           <GoogleFormButton :form_link="form_link"/>
+        </div>
         <!-- </div> -->
       </div>
-    </ResponsiveTwoColumnLayout>
+    <!-- </ResponsiveTwoColumnLayout> -->
   </div>
 </template>
 
@@ -126,10 +128,10 @@ export default {
         "-=0.4"
       );
     },
-    initLanding() {
-      this.initTypingAnimation();
-      this.initCircleAnimation();
-    },
+    // initLanding() {
+    //   this.initTypingAnimation();
+    //   this.initCircleAnimation();
+    // },
   },
 };
 </script>
@@ -140,8 +142,20 @@ $wd = 100vw;
 
 .landing {
   position: relative;
-  height: 100vh;
+  height: 50vh;
   padding-bottom: 50px;
+  display: flex;
+  justify-content: center
+
+  .button{
+    max-width: 312px;
+    margin: 10px auto;
+  }
+  
+  .heroText{
+    text-align: center;
+    padding-top: 200px;
+  }
   
   .eventName {
     font-size: 50px;
@@ -237,22 +251,6 @@ $wd = 100vw;
     }
   }
 
-  .heroText {
-    left: calc(var(--hero-wd) * 0.7);
-
-    ~/.sm ^[1..-1], ~/.xs ^[1..-1] {
-      left: calc(var(--hero-wd) * 0.5);
-      top: calc(var(--hero-ht) * 0.75);
-    }
-
-    ~/.md ^[1..-1] {
-      left: calc(var(--hero-wd) * 0.5);
-      top: calc(var(--hero-ht) * 0.75);
-    }
-
-    justify-content: center;
-    text-align: center;
-  }
 
   .heroText {
     .haxplore {
