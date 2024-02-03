@@ -1,10 +1,10 @@
 <template>
   <div :class="[$style.hero, $style[$mq]]">
-    <div :class="$style.logoContainer">
+    <!-- <div :class="$style.logoContainer">
       <router-link :to="getPath">
         <img :class="$style.logo" src="@assets/codestart/codestart-S.png" />
       </router-link>
-    </div>
+    </div> -->
       <div :class="$style.title">
           <router-link :to="getPath">
             <h1>{{eventName}}</h1>
@@ -49,14 +49,13 @@ export default {
 .hero {
   position: relative;
   background-color: var(--background-color);
-  min-height: 300px;
-  height: 100%;
+  max-height: 140px;
   width: 100%;
   overflow: hidden;
-  padding: 10vh 16px;
+  padding: 10px 16px;
   text-align: center;
   max-width: 400px;
-  margin: 10px 40px;
+  margin: 20px 40px;
 
   .logoContainer {
     width: 100%;
@@ -99,7 +98,6 @@ export default {
 
   .title {
     width: 100%;
-    margin: 30px auto 0;
     text-align: center;
 
     a:hover {

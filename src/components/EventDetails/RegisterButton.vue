@@ -17,8 +17,7 @@ export default {
 <style module lang="stylus">
 
   .link {
-    margin: auto;
-    margin-top: 10px;
+    margin: 15 px auto;
     max-width: 312px;
     height: auto;
     padding: 10px;

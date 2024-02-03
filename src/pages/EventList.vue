@@ -81,7 +81,6 @@ export default {
 
 .wrapper {
   width: 80%;
-  height: 100%;
   margin: 0 auto;
   padding: 100px 0;
   position: relative;
@@ -91,6 +90,7 @@ export default {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin-top: 50px;
 }
 
 .root {
