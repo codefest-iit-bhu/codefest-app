@@ -6,10 +6,15 @@
 
 <script>
 export default {
+  props: {
+    eventId: {
+      type: Number,
+    }
+  },
   methods: {
     registerEvent() {
       // Implement the registration logic here
-      this.$router.push("/dashboard/events")
+      this.$router.push(`/dashboard/events/${this.eventId}`)
     },
   },
 };
@@ -17,9 +22,7 @@ export default {
 <style module lang="stylus">
 
   .link {
-    margin: 15 px auto;
-    max-width: 312px;
-    height: auto;
+    margin: 15px auto;
     padding: 10px;
 
     border-radius: 5px
@@ -32,5 +35,6 @@ export default {
   display: flex;
   justify-content: center;
   color: white;
+  font-size: 25px;
 }
 </style>

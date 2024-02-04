@@ -110,6 +110,17 @@ const router = new Router({
       },
     },
     {
+      name: "~/dashboard/events/id",
+      path: "/dashboard/events/:id",
+      component: () => import(`@pages/EventRegistration`),
+      meta: {
+        title: "CodeFest '24 | Event Registration",
+        metaTags: [],
+        noTerminal: true,
+        requiresAuth: true,
+      },
+    },
+    {
       name: "~/profile/edit",
       path: "/profile/edit",
       component: () => import(`@pages/ProfileEdit`),

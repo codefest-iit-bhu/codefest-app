@@ -19,15 +19,13 @@
         <!-- <span :class="$style.tagline" ref="tagline"></span> -->
         <!-- <br /> -->
         <br />
-        <span :class="$style.venue">
-          <span :id="$style.loc">
+        <div :class="$style.venue">
             <i class="fas fa-university"></i> IIT (BHU), Varanasi <br />
             <!-- <i class="fas fa-calendar" aria-hidden="true"></i> March 27 - 28, 2021 -->
-          </span>
-        </span>
+        </div>
         <!-- <DevfolioButton /> -->
         <div v-if="showRegisterButton" :class="$style.button">
-          <RegisterButton />
+          <RegisterButton :eventId="eventId"/>
         </div>
         <!-- <div v-if="showGoogleFormLink"> -->
         <div v-if="form_link" :class="$style.button">
@@ -58,14 +56,11 @@ export default {
     showRegisterButton: {
       type: Boolean,
     },
-    showGoogleFormButton: {
-      type: Boolean,
-    },
-    tagline: {
-      type: String
-    },
     form_link: {
       type: String
+    },
+    eventId: {
+      type: Number
     }
   },
   components: {
@@ -142,14 +137,17 @@ $wd = 100vw;
 
 .landing {
   position: relative;
-  height: 50vh;
-  padding-bottom: 50px;
+  height: 40vh;
+  min-height: 500px;
   display: flex;
-  justify-content: center
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
 
   .button{
-    max-width: 312px;
-    margin: 10px auto;
+    width: 80vw;
+    margin: 20px auto;
+    max-width: 600px;
   }
   
   .heroText{
@@ -158,10 +156,17 @@ $wd = 100vw;
   }
   
   .eventName {
-    font-size: 50px;
+    font-size: 100px;
     font-weight: 1000;
     color: #ff9900;
     text-align: center;
+    ~/.md ^[1..-1] {
+      $font-size: 90px;
+    }
+
+    ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
+      $font-size: 80px;
+    }
   }
 
   .heroImage {
@@ -274,7 +279,7 @@ $wd = 100vw;
       }
     }
 
-    .tagline, .venue {
+    .tagline {
       display: inline-block;
       width: calc(var(--hero-wd) * 0.3);
       margin: 0 auto;
@@ -322,12 +327,10 @@ $wd = 100vw;
     }
 
     .venue {
-      $font-size: 22px;
-
-      #loc, #date {
-        display: inline-block;
-        padding: 4px;
-      }
+      margin-top: 20px;
+      $font-size: 40px;
+      margin-bottom: 40px;
+      display: inline-block;
 
       #loc::after {
         // content: '|';
@@ -339,13 +342,13 @@ $wd = 100vw;
       }
 
       ~/.md ^[1..-1] {
-        $font-size: 16px;
-        width: calc(var(--hero-wd) * 0.5);
+        $font-size: 35px;
+        margin-bottom: 30px;
       }
 
       ~/.xs ^[1..-1], ~/.sm ^[1..-1] {
-        $font-size: 14px;
-        width: calc(var(--hero-wd) * 0.7);
+        $font-size: 30px;
+        margin-bottom: 25px;
       }
     }
 

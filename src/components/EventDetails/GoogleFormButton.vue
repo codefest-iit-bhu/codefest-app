@@ -24,8 +24,6 @@ export default {
 
   .link {
     margin: 15px auto;
-    max-width: 312px;
-    height: auto;
     padding: 10px;
 
     border-radius: 5px
@@ -38,5 +36,6 @@ export default {
     display: flex;
     justify-content: center;
     color: white;
+    font-size: 25px;
 }
 </style>

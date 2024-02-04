@@ -1,6 +1,6 @@
 <template>
   <SectionLayout :title="title">
-    <div v-html="html"></div>
+    <div v-html="html" :class="$style.text"></div>
   </SectionLayout>
 </template>
 
@@ -35,4 +35,8 @@ export default {
 };
 </script>
 
-<style module lang="stylus"></style>
+<style module lang="stylus">
+.text{
+  font-size: 33px;
+}
+</style>
