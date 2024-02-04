@@ -37,6 +37,6 @@ export default {
 
 <style module lang="stylus">
 .text{
-  font-size: 33px;
+  font-size: 28px;
 }
 </style>
