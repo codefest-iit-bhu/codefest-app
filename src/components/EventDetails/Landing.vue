@@ -10,30 +10,38 @@
           </div>
         </div>
       </div> -->
-      <div :class="$style.heroText" class="absolute-center">
-        <span :class="$style.eventName">
-          <!-- <img src="@assets/haxplore/hax_white.svg" v-if="$store.getters.currentTheme === 'dark'" />
+    <div :class="$style.heroText" class="absolute-center">
+      <span :class="$style.eventName">
+        <!-- <img src="@assets/haxplore/hax_white.svg" v-if="$store.getters.currentTheme === 'dark'" />
           <img src="@assets/haxplore/hax.svg" v-else /> -->
-          {{ eventName }}
-        </span>
-        <!-- <span :class="$style.tagline" ref="tagline"></span> -->
-        <!-- <br /> -->
-        <br />
-        <div :class="$style.venue">
-            <i class="fas fa-university"></i> IIT (BHU), Varanasi <br />
-            <h3><i class="fas fa-calendar" aria-hidden="true"></i> Event Start Date: {{ eventDate }}</h3> 
-            <h3><i class="fas fa-calendar" aria-hidden="true"></i> Last Date of Registration: {{ eventLastDateRegistration }}</h3> 
-        </div>
-        <!-- <DevfolioButton /> -->
-        <div v-if="showRegisterButton" :class="$style.button">
-          <RegisterButton :eventId="eventId"/>
-        </div>
-        <!-- <div v-if="showGoogleFormLink"> -->
-        <div v-if="form_link" :class="$style.button">
-          <GoogleFormButton :form_link="form_link"/>
-        </div>
-        <!-- </div> -->
+        {{ eventName }}
+      </span>
+      <!-- <span :class="$style.tagline" ref="tagline"></span> -->
+      <!-- <br /> -->
+      <br />
+      <div :class="$style.venue">
+        <i class="fas fa-university"></i> IIT (BHU), Varanasi <br />
+        <h3><i class="fas fa-calendar" aria-hidden="true"></i> Event Start Date: {{ eventDate }}</h3>
+        <h3><i class="fas fa-calendar" aria-hidden="true"></i> Last Date of Registration: {{ eventLastDateRegistration }}
+        </h3>
       </div>
+      <!-- <DevfolioButton /> -->
+      <div v-if="showRegisterButton" :class="$style.button">
+        <div v-if="isRegistered">
+          <RegisterButton :eventId="eventId" text="Registered" />
+        </div>
+        <div v-else>
+          <RegisterButton :eventId="eventId" text="Register" />
+        </div>
+      </div>
+      <div v-else :class="$style.button">
+        <RegisterButton :eventId="eventId" text="RegistrationClosed" />
+      </div>
+      <div v-if="form_link" :class="$style.button">
+        <GoogleFormButton :form_link="form_link" />
+      </div>
+      <!-- </div> -->
+    </div>
     <!-- </ResponsiveTwoColumnLayout> -->
   </div>
 </template>
@@ -65,6 +73,9 @@ export default {
     showRegisterButton: {
       type: Boolean,
     },
+    isRegistered: {
+      type: Boolean,
+    },
     form_link: {
       type: String
     },
@@ -79,6 +90,7 @@ export default {
     ResponsiveTwoColumnLayout,
     RegisterButton,
     GoogleFormButton,
+    RegisterButton
   },
   data() {
     return {
