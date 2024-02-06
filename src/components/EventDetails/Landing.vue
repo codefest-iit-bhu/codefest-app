@@ -25,7 +25,7 @@
         </div>
         <!-- <DevfolioButton /> -->
         <div v-if="showRegisterButton" :class="$style.button">
-          <RegisterButton :eventId="eventId"/>
+          <RegisterButton :eventId="eventId" :username="username"/>
         </div>
         <!-- <div v-if="showGoogleFormLink"> -->
         <div v-if="form_link" :class="$style.button">
@@ -39,6 +39,7 @@
 
 <script>
 import { TypingAnim } from "@js/utils";
+import API from "@js/api";
 const Countdown = () => import("@components/Countdown");
 const DevfolioButton = () => import("@components/haxplore/DevfolioButton");
 const DiscordButton = () => import("@components/haxplore/DiscordButton");
@@ -75,6 +76,7 @@ export default {
     return {
       hackathonStart: new Date(2019, 8, 23),
       isTyped: false,
+      username: ''
     };
   },
   methods: {
@@ -128,6 +130,18 @@ export default {
     //   this.initCircleAnimation();
     // },
   },
+  created() {
+    API.fetch("profile/")
+      .then(({ data }) => {
+        console.log("Data: ",data);
+        this.username = data.name;
+      })
+      .catch((err) => {
+        this.$toasted.global.error_post({
+          message: err.message,
+        });
+      });
+  }
 };
 </script>
 

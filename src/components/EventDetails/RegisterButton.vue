@@ -9,12 +9,27 @@ export default {
   props: {
     eventId: {
       type: Number,
+    },
+    username: {
+      type: String,
     }
   },
   methods: {
     registerEvent() {
       // Implement the registration logic here
-      this.$router.push(`/dashboard/events/${this.eventId}`)
+      if (this.eventId == 4) {
+        this.$store
+        .dispatch("createEventTeam", {
+          eventId: this.eventId,
+          teamName: this.username,
+        })
+        .then(({ data }) => {
+          this.$router.push(`/dashboard/events/${this.eventId}`);
+        })
+        .catch((err) => {
+          this.$toasted.global.error_post({ message: err.message });
+        });
+      }
     },
   },
 };
