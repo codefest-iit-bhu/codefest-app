@@ -1,10 +1,14 @@
 <template>
   <div :class="$style.root">
     <AppBar :currentPage="'events'" />
-    <div :class="$style.wrapper">
-      <SpecialEvent v-for="event in events" :eventName="event.name" :key="event.id" :id="event.id" />
+    <div :class="$style.wrapper2">
+      <div :class="$style.wrapper">
+        <Timeline></Timeline>
+      </div>
+      <div :class="$style.wrapper">
+        <SpecialEvent v-for="event in events" :eventName="event.name" :key="event.id" :id="event.id" />
 
-      <!-- <mq-layout :mq="['md', 'lg', 'xl', 'xxl']">
+        <!-- <mq-layout :mq="['md', 'lg', 'xl', 'xxl']">
         <StandardEvent
           v-for="(event, i) in events"
           :key="i"
@@ -21,7 +25,9 @@
           :id="i"
         />
       </mq-layout> -->
+      </div>
     </div>
+
     <Footer />
   </div>
 </template>
@@ -32,6 +38,7 @@ const AppBar = () => import("@components/Menu/AppBar");
 const SpecialEvent = () => import("@components/SpecialEvent");
 const StandardEvent = () => import("@components/StandardEvent");
 const StandardEventMobile = () => import("@components/StandardEventMobile");
+const Timeline = () => import("@components/EventDetails/Timeline");
 const Footer = () => import("@components/Footer");
 import events from "@store/events";
 import { isMinimal } from "@js/utils";
@@ -43,6 +50,7 @@ export default {
     StandardEvent,
     Footer,
     SpecialEvent,
+    Timeline,
   },
   data() {
     return {
@@ -80,9 +88,8 @@ export default {
 <style module lang="stylus">
 
 .wrapper {
-  width: 80%;
+  width: 40%;
   margin: 0 auto;
-  padding: 100px 0;
   position: relative;
   z-index: 1;
   font-family: 'Roboto Mono';
@@ -90,7 +97,19 @@ export default {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 50px;
+}
+
+.wrapper2 {
+  width: 80%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  font-family: 'Roboto Mono';
+  $font-size: 18px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 80px;
 }
 
 .root {

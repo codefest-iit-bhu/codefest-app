@@ -19,13 +19,13 @@
           :data-input-target="`${event.name}__teamName`"
           :id="`${event.name}__createTeam`"
         >
-          Create Team
+          Create Team/Participate Individually
         </button>
         <div :class="$style.behindBtn">
           <input
             type="text"
             :class="[$style.field]"
-            placeholder="Team Name"
+            placeholder="Team Name/Your Name"
             @keyup="collectInput"
             :data-button-target="`${event.name}__createTeam`"
             v-model="teamName"

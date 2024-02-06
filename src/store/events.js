@@ -1,7 +1,10 @@
 export default {
-  events: [{
+  events: [
+    {
       name: "Vista",
       title: "Vista",
+      date: '26 February, 2024',
+      last_date_reg: '20 February, 2024',
       // tagline: "Init. Develop. Deploy.",
       // summary: "A platform for the aspiring hackers to get acquainted with real computer security practices.",
       // link: "/events/ctf",
@@ -68,6 +71,8 @@ export default {
     {
       name: "Enigma",
       title: "Enigma",
+      date: '4 March, 2024',
+      last_date_reg: '29 February, 2024',
       // tagline: "Init. Develop. Deploy.",
       // summary: "A platform for the aspiring hackers to get acquainted with real computer security practices.",
       // link: "/events/ctf",
@@ -136,6 +141,8 @@ export default {
     {
       name: "Capture The Flag",
       title: "Capture The Flag",
+      date: '17 February, 2024',
+      last_date_reg: '15 February, 2024',
       // tagline: "Init. Develop. Deploy.",
       // summary: "A platform for the aspiring hackers to get acquainted with real computer security practices.",
       // link: "/events/ctf",
@@ -152,9 +159,9 @@ export default {
       <p>• Each category would have at least 3-4 challenges of difficulty ranging from Easy to Hard level.</p>
       <p>• For information related to challenges and announcements/queries, join the following <a href="https://discord.gg/6U3YmHenZw">discord server</a></p>
       <p>• Participants have to register on the CodeFest website</p>
-      <p>• The registrations on the CodeFest CTF website will start on 9th Feb at 10:00 AM. (Note that this registration has to be done after registering on the CodeFest website).</p>
-      <p>• The CTF event will start on 11th February.</p>
-      <p>• The link to the competition will be shared via email to registered participants on 11th February at 12 PM IST.</p>
+      <p>• The registrations on the CodeFest CTF website will start on 16th Feb at 10:00 AM. (Note that this registration has to be done after registering on the CodeFest website).</p>
+      <p>• The CTF event will start on 17th February.</p>
+      <p>• The link to the competition will be shared via email to registered participants on 17th February at 12 PM IST.</p>
       `,
       rules: `
       <p>• The organizers of this event reserve the right to refuse the eligibility of prizes if any a situation of malpractice arises.</p>
@@ -204,6 +211,8 @@ export default {
     {
       name: "Manthan",
       title: "Manthan",
+      date: 'Tentatively in March',
+      last_date_reg: '29 February, 2024',
       // tagline: "Init. Develop. Deploy.",
       // summary: "A platform for the aspiring hackers to get acquainted with real computer security practices.",
       // link: "/events/ctf",
@@ -260,6 +269,8 @@ export default {
     {
       name: "HaXplore",
       title: "HaXplore",
+      date: '1 March, 2024',
+      last_date_reg: '25 February, 2024',
       // tagline: "Init. Develop. Deploy.",
       // summary: "A platform for the aspiring hackers to get acquainted with real computer security practices.",
       // link: "/events/ctf",

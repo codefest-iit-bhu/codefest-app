@@ -21,7 +21,8 @@
         <br />
         <div :class="$style.venue">
             <i class="fas fa-university"></i> IIT (BHU), Varanasi <br />
-            <!-- <i class="fas fa-calendar" aria-hidden="true"></i> March 27 - 28, 2021 -->
+            <h3><i class="fas fa-calendar" aria-hidden="true"></i> Event Start Date: {{ eventDate }}</h3> 
+            <h3><i class="fas fa-calendar" aria-hidden="true"></i> Last Date of Registration: {{ eventLastDateRegistration }}</h3> 
         </div>
         <!-- <DevfolioButton /> -->
         <div v-if="showRegisterButton" :class="$style.button">
@@ -51,6 +52,14 @@ const GoogleFormButton = () =>
 export default {
   props: {
     eventName: {
+      type: String,
+    },
+    eventDate: {
+      required: true,
+      type: String,
+    },
+    eventLastDateRegistration: {
+      required: true,
       type: String,
     },
     showRegisterButton: {

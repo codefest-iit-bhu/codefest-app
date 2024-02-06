@@ -13,12 +13,12 @@
           <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
         </router-link>
       </li> -->
-      <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
+      <!-- <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
         <router-link to="/codestart" v-if="currentPage != 'codestart'">
           CodeStart
-          <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
+          <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
         </router-link>
-      </li>
+      </li> -->
       <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
         <router-link to="/events" v-if="currentPage != 'events'">
           Events
@@ -117,12 +117,12 @@
                 <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
               </router-link>
             </li> -->
-            <li :class="$style.link">
+            <!-- <li :class="$style.link">
               <router-link to="/codestart" v-if="currentPage != 'codestart'">
                 <b>CodeStart</b>
-                <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
+                <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
               </router-link>
-            </li>
+            </li> -->
             <!-- <li :class="$style.link">
               <router-link to="/ca">CA</router-link>
             </li>-->

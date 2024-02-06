@@ -1,7 +1,7 @@
 <template>
     <div :class="[$style.root, $style[$mq]]">
       <AppBar :currentPage="eventFromStore.title" @scrollTop="scrollToTop" />
-      <Landing :eventName="eventFromStore.title" :showRegisterButton="eventDetails.is_registration_on" :form_link="eventDetails.form_link" :eventId="eventDetails.id"/>
+      <Landing :eventName="eventFromStore.title" :eventDate="eventFromStore.date" :eventLastDateRegistration="eventFromStore.last_date_reg" :showRegisterButton="eventDetails.is_registration_on" :form_link="eventDetails.form_link" :eventId="eventDetails.id"/>
       <main :class="$style.wrapper">
         <div v-scroll-spy="{ data: 'section' }" ref="scroller">
           <div></div>

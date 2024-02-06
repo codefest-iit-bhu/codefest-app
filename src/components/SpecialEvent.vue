@@ -5,16 +5,16 @@
         <img :class="$style.logo" src="@assets/codestart/codestart-S.png" />
       </router-link>
     </div> -->
-      <div :class="$style.title">
-          <router-link :to="getPath">
-            <h1>{{eventName}}</h1>
-          </router-link>
-        <!-- <p>
+    <div :class="$style.title">
+      <router-link :to="getPath">
+        <h1>{{ eventName }}</h1>
+      </router-link>
+      <!-- <p>
           Join the CodeFest '24 team to bring out the absolute best ideas and
           implementations from some of the best minds in the country, while
           they join us for workshops, competitions, hackathons and a lot more.
         </p> -->
-      </div>
+    </div>
     <!-- <div :class="$style.note">
       Note: People not registered on CodeFest are not eligible to receive any
       prizes.
@@ -25,18 +25,22 @@
 <script>
 export default {
   components: {},
-  props:{
-  eventName: {
+  props: {
+    eventName: {
       required: true,
       type: String,
     },
-  id:{
-    required: true,
+    event: {
+      required: true,
+      type: String,
+    },
+    id: {
+      required: true,
       type: Number,
-  }
+    }
   },
-  computed:{
-    getPath(){
+  computed: {
+    getPath() {
       return `/events/${this.id}`
     }
   },

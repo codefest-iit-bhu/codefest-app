@@ -1,9 +1,10 @@
 <template>
-  <SectionLayout title="Timeline" id="timeline">
+  <div>
+    <h1 :class="[$style.sectionTitle, $style[$mq], tooLong]">Timeline</h1>
     <div :class="[$style.timelineContainer, $style[$mq]]">
       <Timeline :timeline="timeline" slot="left" />
     </div>
-  </SectionLayout>
+  </div>
 </template>
 
 <script>
@@ -23,55 +24,74 @@ export default {
       timeline: [
         {
           isMajor: true,
-          start: new Date(2021, 2, 27, 12, 0),
+          start: new Date(2024, 1, 15, 12, 0),
           end: null,
-          title: "",
+          title: "Last Date of Registration - CTF",
           summary: "",
         },
-        {
-          isMajor: false,
-          start: new Date(2021, 2, 27, 12, 0),
-          end: null,
-          title: "Coding Phase Starts",
-          summary: "",
-        },
-
         {
           isMajor: true,
-          start: new Date(2021, 2, 28, 12, 0),
+          start: new Date(2024, 1, 17, 12, 0),
           end: null,
-          title: "",
+          title: "Event Starts - CTF",
           summary: "",
         },
         {
-          isMajor: false,
-          start: new Date(2021, 2, 28, 0, 0),
+          isMajor: true,
+          start: new Date(2024, 1, 20, 12, 0),
           end: null,
-          title: "Mid Evaluation",
+          title: "Last Date of Registration - Vista",
           summary: "",
         },
         {
-          isMajor: false,
-          start: new Date(2021, 2, 28, 12, 0),
+          isMajor: true,
+          start: new Date(2024, 1, 25, 12, 0),
           end: null,
-          title: "Coding Phase Ends",
+          title: "Last Date of Registration - HaXplore",
           summary: "",
         },
         {
-          isMajor: false,
-          start: new Date(2021, 2, 28, 16, 0),
+          isMajor: true,
+          start: new Date(2024, 1, 26, 12, 0),
           end: null,
-          title: "Presentations",
+          title: "Event Starts - Vista",
           summary: "",
         },
-
         {
-          isMajor: false,
-          start: new Date(2021, 2, 28, 20, 0),
+          isMajor: true,
+          start: new Date(2024, 1, 29, 12, 0),
           end: null,
-          title: "Conclusion and Prizes",
+          title: "Last Date of Registration - Enigma",
           summary: "",
         },
+        {
+          isMajor: true,
+          start: new Date(2024, 1, 29, 12, 0),
+          end: null,
+          title: "Last Date of Registration - Manthan",
+          summary: "",
+        },
+        // {
+        //   isMajor: true,
+        //   start: new Date(2024, 2, 27, 12, 0),
+        //   end: null,
+        //   title: "Event Starts - TBD",
+        //   summary: "",
+        // },
+        {
+          isMajor: true,
+          start: new Date(2024, 2, 1, 12, 0),
+          end: null,
+          title: "Event Starts - HaXplore",
+          summary: "",
+        },
+        {
+          isMajor: true,
+          start: new Date(2024, 2, 4, 12, 0),
+          end: null,
+          title: "Event Starts - Enigma",
+          summary: "",
+        }
       ],
     };
   },
@@ -81,12 +101,10 @@ export default {
 <style module lang="stylus">
 
 .timelineContainer {
-  width: 100%;
   font-family: 'Roboto Slab';
   $font-size: 20px;
 
   .timelineHeader {
-    margin-top: 78px;
 
     img {
       width: 600px;
@@ -113,6 +131,33 @@ export default {
     ~/.xs ^[1..-1] {
       margin-top: 0px;
     }
+  } 
+}
+
+h1.sectionTitle {
+  font-family: 'Baloo Bhaina 2';
+  color: var(--heading-color);
+  letter-spacing: 2px;
+  $font-size: 64px;
+  margin-bottom: 0px;
+
+  &.xs {
+    $font-size: 52px;
+  }
+
+  ~/:nth-child(even) h1.sectionTitle {
+    text-align: start;
+  }
+
+  ~/:nth-child(odd) h1.sectionTitle {
+    text-align: end;
   }
 }
+
+h1.tooLong {
+  &.xs {
+    $font-size: 36px;
+  }
+}
+
 </style>
