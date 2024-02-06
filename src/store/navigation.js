@@ -3,21 +3,21 @@ export const navigation = {
     "~": {
       ".": "/",
       events: {
-        ".": "/events",
+        ".": "/events-timeline",
         enigma: {
-          ".": "/events/enigma"
+          ".": "/events-timeline/enigma"
         },
         vista: {
-          ".": "/events/vista"
+          ".": "/events-timeline/vista"
         },
         manthan: {
-          ".": "/events/manthan"
+          ".": "/events-timeline/manthan"
         },
         linguipedia: {
-          ".": "/events/linguipedia"
+          ".": "/events-timeline/linguipedia"
         },
         ctf: {
-          ".": "/events/ctf"
+          ".": "/events-timeline/ctf"
         },
       },
       haxplore: {

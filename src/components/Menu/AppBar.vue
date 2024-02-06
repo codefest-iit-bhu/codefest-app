@@ -20,7 +20,7 @@
         </router-link>
       </li> -->
       <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
-        <router-link to="/events" v-if="currentPage != 'events'">
+        <router-link to="/events-timeline" v-if="currentPage != 'events'">
           Events
           <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
         </router-link>
@@ -100,7 +100,7 @@
         <Slide :isOpen="isSidebarOpen" @closeSideBar="onCloseSideBar" :width="sideBarWidth">
           <ul :class="$style.sidebarList">
             <li :class="$style.link">
-              <router-link to="/events" v-if="currentPage != 'events'">Events</router-link>
+              <router-link to="/events-timeline" v-if="currentPage != 'events'">Events</router-link>
               <div :class="$style.subList">
                 <slot name="events"></slot>
               </div>

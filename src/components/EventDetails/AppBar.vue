@@ -47,7 +47,7 @@
           </ul>-->
           <ul :class="$style.sidebarList">
             <li :class="$style.link">
-              <router-link to="/events">Events</router-link>
+              <router-link to="/events-timeline">Events</router-link>
               <div :class="$style.subList">
                 <slot name="events"></slot>
               </div>

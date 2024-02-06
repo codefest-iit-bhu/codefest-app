@@ -171,7 +171,7 @@ export default {
           this.teamMembers.length} members.`;
     },
     getPath() {
-      return `/events/${this.event.id}`
+      return `/events-timeline/${this.event.id}`
     },
     getTitle() {
       const event=eventsStore.events.find(e => e.name === this.event.name)

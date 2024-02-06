@@ -7,7 +7,7 @@
         :class="{ [$style.active]: i === currentEventIndex }"
         slot="events"
       >
-        <router-link :to="'/events/' + event.name">
+        <router-link :to="'/events-timeline/' + event.name">
           <span class="fa fa-circle fa-xs" aria-hidden="true"></span>
           {{ event.title }}
         </router-link>

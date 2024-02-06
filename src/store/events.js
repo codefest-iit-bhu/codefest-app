@@ -159,7 +159,7 @@ export default {
       <p>• Each category would have at least 3-4 challenges of difficulty ranging from Easy to Hard level.</p>
       <p>• For information related to challenges and announcements/queries, join the following <a href="https://discord.gg/6U3YmHenZw">discord server</a></p>
       <p>• Participants have to register on the CodeFest website</p>
-      <p>• The registrations on the CodeFest CTF website will start on 16th Feb at 10:00 AM. (Note that this registration has to be done after registering on the CodeFest website).</p>
+      <p>• The registrations on the CTFd website will start on 16th Feb at 10:00 AM. (Note that this registration has to be done after registering on the CodeFest website).</p>
       <p>• The CTF event will start on 17th February.</p>
       <p>• The link to the competition will be shared via email to registered participants on 17th February at 12 PM IST.</p>
       `,

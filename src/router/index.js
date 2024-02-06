@@ -19,8 +19,8 @@ const router = new Router({
       },
     },
     {
-      name: "~/events",
-      path: "/events",
+      name: "~/events-timeline",
+      path: "/events-timeline",
       component: () => import(`@pages/EventList`),
       meta: {
         title: "CodeFest '24 | Events",
@@ -30,8 +30,8 @@ const router = new Router({
       },
     },
     {
-      name: "~/events/id",
-      path: "/events/:id",
+      name: "~/events-timeline/id",
+      path: "/events-timeline/:id",
       component: () => import(`@pages/NewEventDetails`),
       meta: {
         title: "CodeFest '24 | Event",

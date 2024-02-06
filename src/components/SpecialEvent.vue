@@ -41,7 +41,7 @@ export default {
   },
   computed: {
     getPath() {
-      return `/events/${this.id}`
+      return `/events-timeline/${this.id}`
     }
   },
 };
