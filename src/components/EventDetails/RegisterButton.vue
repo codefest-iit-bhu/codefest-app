@@ -14,11 +14,20 @@ export default {
       required: true,
       type: String,
     },
+    redirectLink: {
+      required: false,
+      type: String,
+    }
   },
   methods: {
     registerEvent() {
-      // Implement the registration logic here
-      this.$router.push(`/dashboard/events/${this.eventId}`)
+      if(this.redirectLink){
+        this.$router.push(`${this.redirectLink}`)
+      }
+      else{
+        // Implement the registration logic here
+        this.$router.push(`/dashboard/events/${this.eventId}`)
+      }
     },
   },
 };
@@ -36,9 +45,9 @@ export default {
   }
 
   .registerButton {
-  display: flex;
-  justify-content: center;
-  color: white;
-  font-size: 25px;
-}
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 25px;
+  }
 </style>

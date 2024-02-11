@@ -28,14 +28,14 @@
       <!-- <DevfolioButton /> -->
       <div v-if="showRegisterButton" :class="$style.button">
         <div v-if="isRegistered">
-          <RegisterButton :eventId="eventId" text="Registered" />
+          <RegisterButton :eventId="eventId" redirectLink="/dashboard/events" text='Registered, Go to "My Teams"' />
         </div>
         <div v-else>
           <RegisterButton :eventId="eventId" text="Register" />
         </div>
       </div>
       <div v-else :class="$style.button">
-        <RegisterButton :eventId="eventId" text="RegistrationClosed" />
+        <RegisterButton :eventId="eventId" text="Registration Closed" />
       </div>
       <div v-if="form_link" :class="$style.button">
         <GoogleFormButton :form_link="form_link" />
