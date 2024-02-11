@@ -75,7 +75,7 @@ export default {
 @require '~@styles/anims';
 
 .root {
-  height: 100vh;
+  min-height: 100vh;
 
   .wrapper {
     width: 80%;
