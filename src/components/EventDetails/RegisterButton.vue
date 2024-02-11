@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.link">
-    <div :class="$style.registerButton" @click="registerEvent">Register</div>
+    <div :class="$style.registerButton" @click="registerEvent">{{ text }}</div>
   </div>
 </template>
 
@@ -9,7 +9,11 @@ export default {
   props: {
     eventId: {
       type: Number,
-    }
+    },
+    text: {
+      required: true,
+      type: String,
+    },
   },
   methods: {
     registerEvent() {
