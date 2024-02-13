@@ -12,11 +12,20 @@ function putTokenToStorage(token) {
   else localStorage.setItem(KEY_AUTH_TOKEN, token);
 }
 
+function saveCampusAmbassadorStatus(status) {
+  localStorage.setItem("is_campus_ambassador", status);
+}
+
+function getCampusAmbassadorStatus() {
+  if(localStorage.getItem("is_campus_ambassador")) return localStorage.getItem("is_campus_ambassador");
+  return false;
+}
+
 export default {
   state: {
     token: getTokenFromStorage() || "",
     userId: -1,
-    isCampusAmbassador: false,
+    isCampusAmbassador: getCampusAmbassadorStatus(),
   },
   getters: {
     isLoggedIn: (state) => {
@@ -31,6 +40,7 @@ export default {
       state.token = token;
       state.userId = user_id;
       state.isCampusAmbassador = is_campus_ambassador;
+      saveCampusAmbassadorStatus(is_campus_ambassador);
       putTokenToStorage(token);
     },
     AUTH_LOGOUT(state) {
