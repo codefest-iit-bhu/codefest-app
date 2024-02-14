@@ -24,7 +24,7 @@ export default {
       timeline: [
         {
           isMajor: true,
-          start: new Date(2024, 1, 15, 12, 0),
+          start: new Date(2024, 1, 16, 12, 0),
           end: null,
           title: "Last Date of Registration - CTF",
           summary: "",
