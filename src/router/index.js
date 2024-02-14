@@ -210,6 +210,21 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   // This goes through the matched routes from last to first, finding the closest route with a title.
   // eg. if we have /some/deep/nested/route and /some, /deep, and /nested have titles, nested's will be chosen.
+  const { isCampusAmbassador } = store.getters;
+  if (isCampusAmbassador){
+    if(to.name=="~/referral"){
+      return next({
+        name: "~/ca",
+      });
+    }
+  }
+  else{
+    if(to.name=="~/ca"){
+      return next({
+        name: "~/referral",
+      });
+    }
+  }
   const nearestWithTitle = to.matched
     .slice()
     .reverse()
