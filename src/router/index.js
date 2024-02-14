@@ -210,15 +210,15 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   // This goes through the matched routes from last to first, finding the closest route with a title.
   // eg. if we have /some/deep/nested/route and /some, /deep, and /nested have titles, nested's will be chosen.
-  const { isCampusAmbassador } = store.getters;
-  if (isCampusAmbassador){
+  const { isCampusAmbassador, isLoggedIn } = store.getters;
+  if (isCampusAmbassador && isLoggedIn){
     if(to.name=="~/referral"){
       return next({
         name: "~/ca",
       });
     }
   }
-  else{
+  else if(isLoggedIn){
     if(to.name=="~/ca"){
       return next({
         name: "~/referral",
@@ -269,7 +269,6 @@ router.beforeEach((to, from, next) => {
     .forEach((tag) => document.head.appendChild(tag));
 
   // Handle secure routes
-  const { isLoggedIn } = store.getters;
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (isLoggedIn) return next();
 
