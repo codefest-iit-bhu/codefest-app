@@ -47,6 +47,10 @@ export default {
       state.token = "";
       putTokenToStorage(null);
     },
+    CA_STATUS_UPDATE(state, is_campus_ambassador) {
+      state.isCampusAmbassador = is_campus_ambassador
+      saveCampusAmbassadorStatus(is_campus_ambassador)
+    }
   },
   actions: {
     login({ state, commit }, { idToken }) {
@@ -79,5 +83,11 @@ export default {
       firebase.auth().signOut();
       commit("AUTH_LOGOUT");
     },
+    update_ca_status(
+      {state, commit},
+      {new_status}
+    ) {
+      commit("CA_STATUS_UPDATE", new_status)
+    }
   },
 };

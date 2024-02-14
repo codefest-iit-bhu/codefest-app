@@ -368,6 +368,7 @@ export default {
           })
             .then((_) => {
               const msg = "Your profile has been updated successfully!";
+              this.$store.dispatch("update_ca_status", { new_status: this.profile.is_campus_ambassador})
               this.$toasted.global.success({ message: msg });
               this.$router.push({ name: "~/dashboard" });
             })
