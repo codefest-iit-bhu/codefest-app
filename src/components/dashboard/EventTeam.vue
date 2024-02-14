@@ -18,18 +18,39 @@
           @click="displayBtnClick"
           :data-input-target="`${event.name}__teamName`"
           :id="`${event.name}__createTeam`"
+          v-show="!isEventManthan"
         >
           Create Team/Participate Individually
+        </button>
+        <button
+          :class="$style.btn"
+          @click="displayBtnClick"
+          :data-input-target="`${event.name}__teamName`"
+          :id="`${event.name}__createTeam`"
+          v-show="isEventManthan"
+        >
+          Participate Individually
         </button>
         <div :class="$style.behindBtn">
           <input
             type="text"
             :class="[$style.field]"
-            placeholder="Team Name/Your Name"
+            placeholder="Team Name"
             @keyup="collectInput"
             :data-button-target="`${event.name}__createTeam`"
             v-model="teamName"
             :id="`${event.name}__teamName`"
+            v-show="!isEventManthan"
+          />
+          <input
+            type="text"
+            :class="[$style.field]"
+            placeholder="Your Name"
+            @keyup="collectInput"
+            :data-button-target="`${event.name}__createTeam`"
+            v-model="teamName"
+            :id="`${event.name}__teamName`"
+            v-show="isEventManthan"
           />
           <button
             value=">"
@@ -41,10 +62,10 @@
           </button>
         </div>
       </div>
-      <div :class="$style.orBox">
+      <div v-show="!isEventManthan" :class="$style.orBox">
         <span>OR</span>
       </div>
-      <div :class="$style.btnBox">
+      <div v-show="!isEventManthan" :class="$style.btnBox">
         <button
           :class="$style.btn"
           @click="displayBtnClick"
@@ -85,7 +106,7 @@
           ></span>
         </h3>
         <div :class="$style.infoBox" v-show="!isTeamFull">
-          <span :class="$style.key">Access Code:</span>
+          <span v-show="!isEventManthan" :class="$style.key">Access Code:</span>
           <span :class="$style.value">{{ team.access_code }}</span>
           <i
             class="fas fa-clipboard"
@@ -114,7 +135,7 @@
         </ul>
       </div>
       <button :class="$style.teamLeave" @click="leaveTeam">
-        {{ isTeamLeader ? "Delete Team" : "Leave Team" }}
+        {{ isTeamLeader ? (isEventManthan ? "Delete Registration" : "Delete Team") : "Leave Team" }}
       </button>
       <div :class="$style.teamInfo" v-if="!isTeamValid">* {{ teamInfo }}</div>
     </div>
@@ -144,6 +165,9 @@ export default {
     },
   },
   computed: {
+    isEventManthan() {
+      return this.$route.params.id==4;
+    },
     showRegistration() {
       return !this.team;
     },
