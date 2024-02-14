@@ -17,6 +17,7 @@ function saveCampusAmbassadorStatus(status) {
 }
 
 function getCampusAmbassadorStatus() {
+  console.log(localStorage.getItem("is_campus_ambassador"))
   if(localStorage.getItem("is_campus_ambassador")) return localStorage.getItem("is_campus_ambassador");
   return false;
 }
@@ -32,7 +33,12 @@ export default {
       return !!state.token;
     },
     authToken: (state) => state.token,
-    isCampusAmbassador: (state) => state.isCampusAmbassador,
+    isCampusAmbassador: (state) => {
+      if(typeof(state.isCampusAmbassador)=="string"){
+        return state.isCampusAmbassador=="true"
+      }
+      return state.isCampusAmbassador
+    },
   },
   mutations: {
     AUTH_SUCCESS(state, data) {
