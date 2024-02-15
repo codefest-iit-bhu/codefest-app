@@ -239,7 +239,7 @@ export default {
       scoring: `
       <p>• Normal scoring policies of Codechef contests apply.</p>
       `,
-      contact: "For further queries about this event, please contact Archit (+918851103299)",
+      contact: "For further queries about this event, please contact Kushagra (+919566204257)",
       // coordinators: [
       //   "Shivansh Saini - shivansh.saini.cse17@iitbhu.ac.in",
       // ],
