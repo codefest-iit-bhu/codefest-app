@@ -619,8 +619,8 @@
     {"id":618, "name": "YMCA UNIVERSITY OF SCIENCE AND TECHNOLOGY, FARIDABAD"}, 
     {"id":619, "name": "YOGANANDHA INSTITUTE OF SCIENCE AND TECHNOLOGY"}, 
     {"id":620, "name": "ZAKIR HUSSAIN COLLEGE OF ENGINEERING AND TECHNOLOGY, AMU"},
-    {"id":621,"name": "BLDEA'S ENGINEERING COLLEGE, VIJAYAPUR"},
-    {"id":622,"name": "MAHATMA GANDHI INSTITUTE OF TECHNOLOGY, HYDERABAD"},
+    {"id":621, "name": "BLDEA'S ENGINEERING COLLEGE, VIJAYAPUR"},
+    {"id":622, "name": "MAHATMA GANDHI INSTITUTE OF TECHNOLOGY, HYDERABAD"},
     {"id":623, "name": "IIIT RANCHI"},
     {"id":624, "name": "IIIT DELHI"},
     {"id":625, "name": "Odisha University of Technology and Research"},
@@ -628,5 +628,7 @@
     {"id":627, "name": "Jawaharlal Nehru University, Delhi"},
     {"id":628, "name": "NIMS University, Jaipur, Rajasthan"},
     {"id":629, "name": "IIIT LUCKNOW"},
-    {"id":630, "name": "OTHER INSTITUTE"}
+    {"id":630, "name": "Shri Ramdeobaba College of Engineering & Technology, Nagpur"},
+    {"id":631, "name": "OTHER INSTITUTE"}
 ]
+
