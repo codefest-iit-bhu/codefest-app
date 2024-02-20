@@ -38,7 +38,7 @@ export default {
         },
         {
           isMajor: true,
-          start: new Date(2024, 1, 20, 12, 0),
+          start: new Date(2024, 1, 24, 12, 0),
           end: null,
           title: "Last Date of Registration - Vista",
           summary: "",
