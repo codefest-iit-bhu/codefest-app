@@ -3,8 +3,8 @@ export default {
     {
       name: "Vista",
       title: "Vista",
-      date: '26 February, 2024',
-      last_date_reg: '20 February, 2024',
+      date: '24 March, 2024',
+      last_date_reg: '20 March, 2024',
       // tagline: "Init. Develop. Deploy.",
       // summary: "A platform for the aspiring hackers to get acquainted with real computer security practices.",
       // link: "/events/ctf",
@@ -20,8 +20,8 @@ export default {
       <p>• We will be conducting it on Kaggle.</p>
       <p>• For information related to challenges and announcements/queries, join the following <a href="https://discord.gg/6U3YmHenZw">discord server</a>.</p>
       <p>• Participants and their teams should be registered on the codefest website.</p>
-      <p>• Vista’24 will start on 26th February.</p>
-      <p>• The link to the competition will be shared via email to registered participants on 26th February at 12 PM IST.</p>
+      <p>• Vista’24 will start on 24th March.</p>
+      <p>• The link to the competition will be shared via email to registered participants on 24th March at 12 PM IST.</p>
       `,
       rules: `
       <p>• The organizers of this event reserve the right to refuse the eligibility of prizes if any situation of malpractice arises.</p>
@@ -71,8 +71,8 @@ export default {
     {
       name: "Enigma",
       title: "Enigma",
-      date: '4 March, 2024',
-      last_date_reg: '29 February, 2024',
+      date: '29 March, 2024',
+      last_date_reg: '25 March, 2024',
       // tagline: "Init. Develop. Deploy.",
       // summary: "A platform for the aspiring hackers to get acquainted with real computer security practices.",
       // link: "/events/ctf",
@@ -88,8 +88,8 @@ export default {
       <p>• We will be conducting it on Kaggle.</p>
       <p>• For information related to challenges and announcements/queries, join the following <a href="https://discord.gg/6U3YmHenZw">discord server</a></p>
       <p>• Participants and their teams should be registered on the codefest website.</p>
-      <p>• Enigma’24 will start on 4th March.</p>
-      <p>• The link to the competition will be shared via email to registered participants on 4th March at 12 PM IST.</p>
+      <p>• Enigma’24 will start on 29th March.</p>
+      <p>• The link to the competition will be shared via email to registered participants on 29th March at 12 PM IST.</p>
       `,
       rules: `
       <p>• The organizers of this event reserve the right to refuse the eligibility of prizes if any situation of malpractice arises.</p>
@@ -211,8 +211,8 @@ export default {
     {
       name: "Manthan",
       title: "Manthan",
-      date: 'Tentatively in March',
-      last_date_reg: '29 February, 2024',
+      date: 'Tentatively in April',
+      last_date_reg: '25 March, 2024',
       // tagline: "Init. Develop. Deploy.",
       // summary: "A platform for the aspiring hackers to get acquainted with real computer security practices.",
       // link: "/events/ctf",
@@ -225,7 +225,7 @@ export default {
       `,
       description: `
       <p>• Platform: Codechef</p>
-      <p>• Contest date: Will be conducted in March. Exact dates will be announced later.</p>
+      <p>• Contest date: Will be conducted in April. Exact dates will be announced later.</p>
       <p>• Contest duration: 2-3 hours, from 8 PM.</p>
       <p>• For information related to the contest and announcements/queries, join the following <a href="https://discord.gg/6U3YmHenZw">discord server</a></p>
       <p>• Participants have to register on the CodeFest website</p>
@@ -269,8 +269,8 @@ export default {
     {
       name: "HaXplore",
       title: "HaXplore",
-      date: '1 March, 2024',
-      last_date_reg: '25 February, 2024',
+      date: '29 March, 2024',
+      last_date_reg: '25 March, 2024',
       // tagline: "Init. Develop. Deploy.",
       // summary: "A platform for the aspiring hackers to get acquainted with real computer security practices.",
       // link: "/events/ctf",
@@ -278,7 +278,7 @@ export default {
       // icon: "/assets/events/ctf.png",
       overview: `
       <p>HaXplore stands as the premier hackathon organized as part of Codefest, the annual departmental fest of the Department of Computer Science and Engineering at IIT (BHU) Varanasi. This esteemed event serves as a dynamic platform where innovative minds from diverse domains converge to articulate their groundbreaking ideas. Participants come together to not only showcase their creativity but also engage in spirited competition as they strive for excellence. HaXplore fosters an environment that encourages collaboration and the exploration of cutting-edge solutions, making it a hub for transformative technological endeavors.</p>`, 
-      duration: `<p><b>From March 1st through March 3rd</b>, the annual 72-Hour Hackathon will take place. This hackathon is a weekend-long event that challenges participants to form teams and use their technical and creative skills to develop new software or hardware projects within a tight 72-hour time constraint. By the deadline at the end of the day on March 3rd, teams must have working prototypes of their projects ready to be judged and showcase their accomplishments from the intense but stimulating three days of collaboration and innovation.</p>
+      duration: `<p><b>From March 29th through April 1st</b>, the annual 72-Hour Hackathon will take place. This hackathon is a weekend-long event that challenges participants to form teams and use their technical and creative skills to develop new software or hardware projects within a tight 72-hour time constraint. By the deadline at the end of the day on March 3rd, teams must have working prototypes of their projects ready to be judged and showcase their accomplishments from the intense but stimulating three days of collaboration and innovation.</p>
       `,
       rules: `
       <ol>
@@ -287,16 +287,16 @@ export default {
       <li>This hackathon is open to all.</li>
       <li>Teams can consist of upto 4 members.</li>
       <li>Each participant must register individually on the Unstop Page and the CodeFest website. Please use the same email ID to register.</li>
-      <li>Registration opens on 5 February 2024 and closes on 25 February 2024.</li>
+      <li>Registration closes on 25 March 2024.</li>
       <li>Teams must submit their details and confirm their participation before the deadline. Late registrations will not be entertained.</li>
       </ul>
       </li>
       <li><b>Prototype Submission and Presentation</b>
       <ul>
-      <li>The hackathon will officially commence  on March 1st at 00:00 hours and conclude on March 3rd at 23:59 hours.</li>
-      <li>Themes will be emailed to registered participants on March 1st at 00:00 itself.</li>
+      <li>The hackathon will officially commence  on March 29th at 00:00 hours and conclude on April 1st at 23:59 hours.</li>
+      <li>Themes will be emailed to registered participants on March 29th at 00:00 itself.</li>
       <li>Teams can work on developing a prototype based on their idea during this period.</li>
-      <li>Teams must submit their final prototypes along with a presentation by 3rd March EoD.</li>
+      <li>Teams must submit their final prototypes along with a presentation by 1st April EoD.</li>
       <li>Submissions will be judged based on creativity, functionality, and the impact of the solution.</li>
       <li>Shortlisted teams will be called and required to present their prototype in front of the judges (online meet).</li>
       </ul>
