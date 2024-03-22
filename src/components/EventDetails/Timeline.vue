@@ -66,7 +66,7 @@ export default {
         },
         {
           isMajor: true,
-          start: new Date(2024, 2, 25, 12, 0),
+          start: new Date(2024, 3, 1, 12, 0),
           end: null,
           title: "Last Date of Registration - Manthan",
           summary: "",
