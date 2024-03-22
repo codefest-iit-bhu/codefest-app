@@ -38,7 +38,7 @@ export default {
         },
         {
           isMajor: true,
-          start: new Date(2024, 2, 20, 12, 0),
+          start: new Date(2024, 2, 23, 12, 0),
           end: null,
           title: "Last Date of Registration - Vista",
           summary: "",
@@ -52,32 +52,18 @@ export default {
         },
         {
           isMajor: true,
-          start: new Date(2024, 2, 25, 12, 0),
+          start: new Date(2024, 2, 27, 12, 0),
           end: null,
           title: "Last Date of Registration - HaXplore",
           summary: "",
         },
         {
           isMajor: true,
-          start: new Date(2024, 2, 25, 12, 0),
+          start: new Date(2024, 2, 27, 12, 0),
           end: null,
           title: "Last Date of Registration - Enigma",
           summary: "",
         },
-        {
-          isMajor: true,
-          start: new Date(2024, 3, 1, 12, 0),
-          end: null,
-          title: "Last Date of Registration - Manthan",
-          summary: "",
-        },
-        // {
-        //   isMajor: true,
-        //   start: new Date(2024, 2, 27, 12, 0),
-        //   end: null,
-        //   title: "Event Starts - TBD",
-        //   summary: "",
-        // },
         {
           isMajor: true,
           start: new Date(2024, 2, 29, 12, 0),
@@ -90,6 +76,13 @@ export default {
           start: new Date(2024, 2, 29, 12, 0),
           end: null,
           title: "Event Starts - Enigma",
+          summary: "",
+        },
+        {
+          isMajor: true,
+          start: new Date(2024, 3, 1, 12, 0),
+          end: null,
+          title: "Last Date of Registration - Manthan",
           summary: "",
         }
       ],
