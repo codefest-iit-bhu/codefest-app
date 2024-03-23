@@ -61,6 +61,17 @@ const router = new Router({
       },
     },
     {
+      name: "~/sponsors",
+      path: "/sponsors",
+      component: () => import(`@pages/Sponsors`),
+      meta: {
+        title: "CodeFest '24 | Sponsors",
+        metaTags: [],
+        noTerminal: true,
+        requiresAuth: false,
+      },
+    },
+    {
       name: "~/login",
       path: "/login",
       component: () => import(`@pages/Login`),
