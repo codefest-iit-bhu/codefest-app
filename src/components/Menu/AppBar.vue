@@ -24,6 +24,10 @@
           Events
           <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
         </router-link>
+        <router-link to="/sponsors" v-if="currentPage != 'sponsors'">
+          Sponsors
+          <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
+        </router-link>
       </li>
       <!-- <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
         <router-link to="/ca">
@@ -103,6 +107,12 @@
               <router-link to="/events-timeline" v-if="currentPage != 'events'">Events</router-link>
               <div :class="$style.subList">
                 <slot name="events"></slot>
+              </div>
+            </li>
+            <li :class="$style.link">
+              <router-link to="/sponsors" v-if="currentPage != 'sponsors'">Sponsors</router-link>
+              <div :class="$style.subList">
+                <slot name="sponsors"></slot>
               </div>
             </li>
             <li :class="$style.link">
