@@ -108,7 +108,9 @@ export default {
   },
   computed: {
     isEventManthan() {
-      return this.event.id == 4;
+      let event_id = this.event.id
+      if(!event_id) event_id = this.$route.params.id;
+      return event_id == 4;
     },
     showRegistration() {
       return !this.team;
@@ -263,7 +265,9 @@ export default {
     },
   },
   created() {
-    API.fetch(`events/${this.event.id}/`)
+    let event_id = this.event.id
+    if(!event_id) event_id = this.$route.params.id;
+    API.fetch(`events/${event_id}/`)
       .then(({ data }) => {
         this.isRegOn = data.is_registration_on
       })
