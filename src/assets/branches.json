@@ -32,5 +32,6 @@
     {"id": 31, "name": "Physics"},
     {"id": 32, "name": "Textile Engineering"},
     {"id": 33, "name": "Geological Technology"},
-    {"id": 34, "name": "Information Technology"}
+    {"id": 34, "name": "Information Technology"},
+    {"id": 35, "name": "Statistics"}
 ]
