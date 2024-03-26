@@ -12,84 +12,42 @@
       v-if="showRegistration"
       v-show="!loading"
     >
-      <div :class="$style.btnBox">
-        <button
-          :class="$style.btn"
-          @click="displayBtnClick"
-          :data-input-target="`${event.name}__teamName`"
-          :id="`${event.name}__createTeam`"
-          v-show="!isEventManthan"
-        >
+      <div v-if="!isRegOn" v-show="!isEventManthan" :class="$style.orBox">
+        <span>Registration Closed</span>
+      </div>
+      <div v-if="isRegOn" :class="$style.btnBox">
+        <button :class="$style.btn" @click="displayBtnClick" :data-input-target="`${event.name}__teamName`"
+          :id="`${event.name}__createTeam`" v-show="!isEventManthan">
           Create Team/Participate Individually
         </button>
-        <button
-          :class="$style.btn"
-          @click="displayBtnClick"
-          :data-input-target="`${event.name}__teamName`"
-          :id="`${event.name}__createTeam`"
-          v-show="isEventManthan"
-        >
+        <button :class="$style.btn" @click="displayBtnClick" :data-input-target="`${event.name}__teamName`"
+          :id="`${event.name}__createTeam`" v-show="isEventManthan">
           Participate Individually
         </button>
-        <div :class="$style.behindBtn">
-          <input
-            type="text"
-            :class="[$style.field]"
-            placeholder="Team Name"
-            @keyup="collectInput"
-            :data-button-target="`${event.name}__createTeam`"
-            v-model="teamName"
-            :id="`${event.name}__teamName`"
-            v-show="!isEventManthan"
-          />
-          <input
-            type="text"
-            :class="[$style.field]"
-            placeholder="Your Name"
-            @keyup="collectInput"
-            :data-button-target="`${event.name}__createTeam`"
-            v-model="teamName"
-            :id="`${event.name}__teamName`"
-            v-show="isEventManthan"
-          />
-          <button
-            value=">"
-            :class="$style.submit"
-            :data-event-id="event.id"
-            @click="submitCreateTeam"
-          >
+        <div v-if="isRegOn" :class="$style.behindBtn">
+          <input type="text" :class="[$style.field]" placeholder="Team Name" @keyup="collectInput"
+            :data-button-target="`${event.name}__createTeam`" v-model="teamName" :id="`${event.name}__teamName`"
+            v-show="!isEventManthan" />
+          <input type="text" :class="[$style.field]" placeholder="Your Name" @keyup="collectInput"
+            :data-button-target="`${event.name}__createTeam`" v-model="teamName" :id="`${event.name}__teamName`"
+            v-show="isEventManthan" />
+          <button value=">" :class="$style.submit" :data-event-id="event.id" @click="submitCreateTeam">
             <i class="fas fa-arrow-circle-right"></i>
           </button>
         </div>
       </div>
-      <div v-show="!isEventManthan" :class="$style.orBox">
+      <div v-if="isRegOn" v-show="!isEventManthan" :class="$style.orBox">
         <span>OR</span>
       </div>
-      <div v-show="!isEventManthan" :class="$style.btnBox">
-        <button
-          :class="$style.btn"
-          @click="displayBtnClick"
-          :data-input-target="`${event.name}__accessCode`"
-          :id="`${event.name}__joinTeam`"
-        >
+      <div v-if="isRegOn" v-show="!isEventManthan" :class="$style.btnBox">
+        <button :class="$style.btn" @click="displayBtnClick" :data-input-target="`${event.name}__accessCode`"
+          :id="`${event.name}__joinTeam`">
           Join Team
         </button>
         <div :class="$style.behindBtn">
-          <input
-            type="text"
-            :class="[$style.field]"
-            :data-button-target="`${event.name}__joinTeam`"
-            placeholder="Access Code"
-            v-model="accessCode"
-            @keyup="collectInput"
-            :id="`${event.name}__accessCode`"
-          />
-          <button
-            value=">"
-            :class="$style.submit"
-            :data-event-id="event.id"
-            @click="submitJoinTeam"
-          >
+          <input type="text" :class="[$style.field]" :data-button-target="`${event.name}__joinTeam`"
+            placeholder="Access Code" v-model="accessCode" @keyup="collectInput" :id="`${event.name}__accessCode`" />
+          <button value=">" :class="$style.submit" :data-event-id="event.id" @click="submitJoinTeam">
             <i class="fas fa-arrow-circle-right"></i>
           </button>
         </div>
@@ -99,38 +57,21 @@
       <div :class="$style.teamHeader">
         <h3>
           {{ team.name }}
-          <span
-            class="fas fa-circle"
-            :class="isTeamValid ? $style.validTeam : $style.invalidTeam"
-            :title="teamInfo"
-          ></span>
+          <span class="fas fa-circle" :class="isTeamValid ? $style.validTeam : $style.invalidTeam"
+            :title="teamInfo"></span>
         </h3>
         <div :class="$style.infoBox" v-show="!isTeamFull">
           <span v-show="!isEventManthan" :class="$style.key">Access Code:</span>
           <span :class="$style.value">{{ team.access_code }}</span>
-          <i
-            class="fas fa-clipboard"
-            :class="$style.copyIcon"
-            @click="clickToCopy"
-          ></i>
+          <i class="fas fa-clipboard" :class="$style.copyIcon" @click="clickToCopy"></i>
         </div>
       </div>
       <div :class="$style.memberList">
         <ul>
-          <li
-            :class="$style.teamMember"
-            v-for="(member, i) in teamMembers"
-            :key="i"
-          >
+          <li :class="$style.teamMember" v-for="(member, i) in teamMembers" :key="i">
             {{ member.name }}
-            <i
-              class="fas fa-times"
-              :class="$style.removeIcon"
-              :data-member-id="member.id"
-              :data-index="i"
-              @click="deleteMember"
-              v-if="isTeamLeader"
-            ></i>
+            <i class="fas fa-times" :class="$style.removeIcon" :data-member-id="member.id" :data-index="i"
+              @click="deleteMember" v-if="isTeamLeader"></i>
           </li>
         </ul>
       </div>
@@ -146,7 +87,7 @@
 import { copyToClipboard } from "@js/utils";
 import eventsStore from "@store/events";
 import { BounceLoader } from "@saeris/vue-spinners";
-
+import API from "@js/api";
 export default {
   components: {
     BounceLoader,
@@ -156,6 +97,7 @@ export default {
       teamName: "",
       accessCode: "",
       loading: false,
+      isRegOn: false,
     };
   },
   props: {
@@ -166,7 +108,7 @@ export default {
   },
   computed: {
     isEventManthan() {
-      return this.$route.params.id==4;
+      return this.event.id == 4;
     },
     showRegistration() {
       return !this.team;
@@ -198,8 +140,8 @@ export default {
       return `/events-timeline/${this.event.id}`
     },
     getTitle() {
-      const event=eventsStore.events.find(e => e.name === this.event.name)
-      if(event)return event.title
+      const event = eventsStore.events.find(e => e.name === this.event.name)
+      if (event) return event.title
       return ""
     }
   },
@@ -319,6 +261,13 @@ export default {
     _stopLoading() {
       this.loading = false;
     },
+  },
+  created() {
+    API.fetch(`events/${this.event.id}/`)
+      .then(({ data }) => {
+        this.isRegOn = data.is_registration_on
+      })
+      .catch(console.log)
   },
   mounted() {
     document
