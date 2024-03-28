@@ -287,14 +287,14 @@ export default {
       <li>This hackathon is open to all.</li>
       <li>Teams can consist of upto 4 members.</li>
       <li>Each participant must register individually on the Unstop Page and the CodeFest website. Please use the same email ID to register.</li>
-      <li>Registration closes on 25 March 2024.</li>
+      <li>Registration closes on 27 March 2024.</li>
       <li>Teams must submit their details and confirm their participation before the deadline. Late registrations will not be entertained.</li>
       </ul>
       </li>
       <li><b>Prototype Submission and Presentation</b>
       <ul>
-      <li>The hackathon will officially commence  on March 29th at 00:00 hours and conclude on April 1st at 23:59 hours.</li>
-      <li>Themes will be emailed to registered participants on March 29th at 00:00 itself.</li>
+      <li>The hackathon will officially commence  on March 29th at 12:00 hours and conclude on April 1st at 12:00 hours.</li>
+      <li>Themes will be emailed to registered participants on March 29th at 12:00 itself.</li>
       <li>Teams can work on developing a prototype based on their idea during this period.</li>
       <li>Teams must submit their final prototypes along with a presentation by 1st April EoD.</li>
       <li>Submissions will be judged based on creativity, functionality, and the impact of the solution.</li>
