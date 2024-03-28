@@ -1,4 +1,5 @@
 [
+    {"id":236, "name": "IIT (BHU) VARANASI"}, 
     {"id":1, "name": "AAA COLLEGE OF ENGINEERING AND TECHNOLOGY"}, 
     {"id":2, "name": "AARVAVART INSTITUTE OF TECHNOLOGY AND MANAGEMENT, LUCKNOW"}, 
     {"id":3, "name": "ABES ENGINEERING COLLEGE, GHAZIABAD"}, 
@@ -234,7 +235,6 @@
     {"id":233, "name": "IIMT ENGINEERING COLLEGE (127) , MEERUT"}, 
     {"id":234, "name": "IISER , BHOPAL"}, 
     {"id":235, "name": "IIT BOMBAY"}, 
-    {"id":236, "name": "IIT (BHU) VARANASI"}, 
     {"id":237, "name": "IIT (ISM) DHANBAD"}, 
     {"id":238, "name": "IIT BHILAI"}, 
     {"id":239, "name": "IIT BHUBANESWAR"}, 
@@ -619,8 +619,16 @@
     {"id":618, "name": "YMCA UNIVERSITY OF SCIENCE AND TECHNOLOGY, FARIDABAD"}, 
     {"id":619, "name": "YOGANANDHA INSTITUTE OF SCIENCE AND TECHNOLOGY"}, 
     {"id":620, "name": "ZAKIR HUSSAIN COLLEGE OF ENGINEERING AND TECHNOLOGY, AMU"},
-    {"id":621,"name": "BLDEA'S ENGINEERING COLLEGE, VIJAYAPUR"},
-    {"id":622,"name": "MAHATMA GANDHI INSTITUTE OF TECHNOLOGY, HYDERABAD"},
+    {"id":621, "name": "BLDEA'S ENGINEERING COLLEGE, VIJAYAPUR"},
+    {"id":622, "name": "MAHATMA GANDHI INSTITUTE OF TECHNOLOGY, HYDERABAD"},
     {"id":623, "name": "IIIT RANCHI"},
-    {"id":624, "name": "OTHER INSTITUTE"}
+    {"id":624, "name": "IIIT DELHI"},
+    {"id":625, "name": "Odisha University of Technology and Research"},
+    {"id":626, "name": "IIITDM Kancheepuram"},
+    {"id":627, "name": "Jawaharlal Nehru University, Delhi"},
+    {"id":628, "name": "NIMS University, Jaipur, Rajasthan"},
+    {"id":629, "name": "IIIT LUCKNOW"},
+    {"id":630, "name": "Shri Ramdeobaba College of Engineering & Technology, Nagpur"},
+    {"id":631, "name": "OTHER INSTITUTE"}
 ]
+

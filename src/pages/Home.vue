@@ -49,27 +49,27 @@ export default {
       lookbackStats: [
         {
           name: "Prize Money",
-          value: "650,000",
+          value: "Rs 500,000",
           image: "assets/Lookback/lb_prize.svg",
         },
         {
           name: "Countries",
-          value: "104",
+          value: "98",
           image: "assets/Lookback/lb_countries.svg",
         },
         {
           name: "Participants",
-          value: "29,800",
+          value: "24,654",
           image: "assets/Lookback/lb_participant.svg",
         },
         {
           name: "Unique Visitors",
-          value: "664,300",
+          value: "328,902",
           image: "assets/Lookback/lb_visitor.svg",
         },
         {
           name: "Registrations",
-          value: "23,000",
+          value: "16,302",
           image: "assets/Lookback/lb_registration.svg",
         },
       ],

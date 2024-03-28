@@ -2,7 +2,7 @@
   <div :class="[$style.workContainer, $style[$mq]]">
     <ResponsiveTwoColumnLayout :isRightAbove="true">
       <div :class="$style.workImage" slot="right">
-        <img src="#" />
+        <img src="@assets/ca/perks.svg" />
       </div>
       <div :class="$style.workHead" slot="left">
         <div :class="$style.taskList">
@@ -33,24 +33,34 @@ export default {
     return {
       tasks: [
         {
-          start: "Connect : ",
+          start: "A certificate of recognition, authenticated by the HoD ",
           rest:
-            "Grow a strong network with peers inside your college as well as the CodeFest team.",
+            "of the Department of Computer Science and Engineering, IIT(BHU),  that will boost your resume and showcase your leadership skills.",
         },
         {
-          start: "Communication : ",
+          start: "Unlock a treasure chest of exciting goodies ",
           rest:
-            "Develop communication skills and get an edge over competition.",
+            "– perks you won't find anywhere else!",
         },
         {
-          start: "Certificate : ",
+          start: "Free access ",
           rest:
-            "Get Work Experience certificate as a CodeFest Campus Ambassador.",
+            "to exclusive workshops, seminars, and events organized by CodeFest that will enhance your knowledge and skills in various domains of coding.",
         },
         {
-          start: "Goodies : ",
+          start: "Build lasting connections and professional networks ",
           rest:
-            "Official CodeFest goodies and/or tees depending upon the number of participants in CodeFest from your college.",
+            "with like-minded peers within the vibrant CodeFest community.",
+        },
+        {
+          start: "Track your impact ",
+          rest:
+            "and see your hard work pay off with the dynamic leaderboard on CodeFest's official website. The top-ranked Campus Ambassadors will unlock exclusive rewards and recognition.",
+        },
+        {
+          start: "A lifetime experience ",
+          rest:
+            "of being part of a dynamic community of coders eager to learn, innovate, and create an impact.",
         },
       ],
     };

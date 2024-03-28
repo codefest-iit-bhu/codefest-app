@@ -3,24 +3,20 @@
     <AppBar />
     <main :class="$style.wrapper">
       <CAHero />
-      <SectionLayout title="About">
+      <SectionLayout title="What is the Campus Ambassador Program?">
         <AboutCA />
       </SectionLayout>
-      <SectionLayout title="What you need to do">
+      <SectionLayout title="What is a Campus Ambassador’s job?">
         <Work />
       </SectionLayout>
-      <SectionLayout title="Perks and Benefits">
+      <SectionLayout title="Why should you become a Campus Ambassador?">
         <Perks />
       </SectionLayout>
       <SectionLayout title="FAQ">
         <FaqCA />
       </SectionLayout>
-      <SectionLayout title="Contact Us">
-        <ContactCA />
-      </SectionLayout>
-      <SectionLayout title="Points Table">
+     
         <PointsTable />
-      </SectionLayout>
     </main>
     <Footer />
   </div>

@@ -1,9 +1,9 @@
 <template>
   <div :class="[$style.eventBox, $style[$mq]]">
     <div :class="$style.title">
-      <span :class="$style.txt">{{ event.title }}</span>
+      <span :class="$style.txt">{{ getTitle }}</span>
       <span :class="$style.txt2">
-        <router-link :to="event.link">View Details</router-link>
+        <router-link :to="getPath">View Details</router-link>
       </span>
     </div>
     <BounceLoader :loading="loading" color="#E47718" :class="$style.loader" />
@@ -12,63 +12,42 @@
       v-if="showRegistration"
       v-show="!loading"
     >
-      <div :class="$style.btnBox">
-        <button
-          :class="$style.btn"
-          @click="displayBtnClick"
-          :data-input-target="`${event.name}__teamName`"
-          :id="`${event.name}__createTeam`"
-        >
-          Create Team
+      <div v-if="!isRegOn" v-show="!isEventManthan" :class="$style.orBox">
+        <span>Registration Closed</span>
+      </div>
+      <div v-if="isRegOn" :class="$style.btnBox">
+        <button :class="$style.btn" @click="displayBtnClick" :data-input-target="`${event.name}__teamName`"
+          :id="`${event.name}__createTeam`" v-show="!isEventManthan">
+          Create Team/Participate Individually
         </button>
-        <div :class="$style.behindBtn">
-          <input
-            type="text"
-            :class="[$style.field]"
-            placeholder="Team Name"
-            @keyup="collectInput"
-            :data-button-target="`${event.name}__createTeam`"
-            v-model="teamName"
-            :id="`${event.name}__teamName`"
-          />
-          <button
-            value=">"
-            :class="$style.submit"
-            :data-event-id="event.id"
-            @click="submitCreateTeam"
-          >
+        <button :class="$style.btn" @click="displayBtnClick" :data-input-target="`${event.name}__teamName`"
+          :id="`${event.name}__createTeam`" v-show="isEventManthan">
+          Participate Individually
+        </button>
+        <div v-if="isRegOn" :class="$style.behindBtn">
+          <input type="text" :class="[$style.field]" placeholder="Team Name" @keyup="collectInput"
+            :data-button-target="`${event.name}__createTeam`" v-model="teamName" :id="`${event.name}__teamName`"
+            v-show="!isEventManthan" />
+          <input type="text" :class="[$style.field]" placeholder="Your Name" @keyup="collectInput"
+            :data-button-target="`${event.name}__createTeam`" v-model="teamName" :id="`${event.name}__teamName`"
+            v-show="isEventManthan" />
+          <button value=">" :class="$style.submit" :data-event-id="event.id" @click="submitCreateTeam">
             <i class="fas fa-arrow-circle-right"></i>
           </button>
         </div>
       </div>
-      <div :class="$style.orBox">
+      <div v-if="isRegOn" v-show="!isEventManthan" :class="$style.orBox">
         <span>OR</span>
       </div>
-      <div :class="$style.btnBox">
-        <button
-          :class="$style.btn"
-          @click="displayBtnClick"
-          :data-input-target="`${event.name}__accessCode`"
-          :id="`${event.name}__joinTeam`"
-        >
+      <div v-if="isRegOn" v-show="!isEventManthan" :class="$style.btnBox">
+        <button :class="$style.btn" @click="displayBtnClick" :data-input-target="`${event.name}__accessCode`"
+          :id="`${event.name}__joinTeam`">
           Join Team
         </button>
         <div :class="$style.behindBtn">
-          <input
-            type="text"
-            :class="[$style.field]"
-            :data-button-target="`${event.name}__joinTeam`"
-            placeholder="Access Code"
-            v-model="accessCode"
-            @keyup="collectInput"
-            :id="`${event.name}__accessCode`"
-          />
-          <button
-            value=">"
-            :class="$style.submit"
-            :data-event-id="event.id"
-            @click="submitJoinTeam"
-          >
+          <input type="text" :class="[$style.field]" :data-button-target="`${event.name}__joinTeam`"
+            placeholder="Access Code" v-model="accessCode" @keyup="collectInput" :id="`${event.name}__accessCode`" />
+          <button value=">" :class="$style.submit" :data-event-id="event.id" @click="submitJoinTeam">
             <i class="fas fa-arrow-circle-right"></i>
           </button>
         </div>
@@ -78,43 +57,26 @@
       <div :class="$style.teamHeader">
         <h3>
           {{ team.name }}
-          <span
-            class="fas fa-circle"
-            :class="isTeamValid ? $style.validTeam : $style.invalidTeam"
-            :title="teamInfo"
-          ></span>
+          <span class="fas fa-circle" :class="isTeamValid ? $style.validTeam : $style.invalidTeam"
+            :title="teamInfo"></span>
         </h3>
         <div :class="$style.infoBox" v-show="!isTeamFull">
-          <span :class="$style.key">Access Code:</span>
+          <span v-show="!isEventManthan" :class="$style.key">Access Code:</span>
           <span :class="$style.value">{{ team.access_code }}</span>
-          <i
-            class="fas fa-clipboard"
-            :class="$style.copyIcon"
-            @click="clickToCopy"
-          ></i>
+          <i class="fas fa-clipboard" :class="$style.copyIcon" @click="clickToCopy"></i>
         </div>
       </div>
       <div :class="$style.memberList">
         <ul>
-          <li
-            :class="$style.teamMember"
-            v-for="(member, i) in teamMembers"
-            :key="i"
-          >
+          <li :class="$style.teamMember" v-for="(member, i) in teamMembers" :key="i">
             {{ member.name }}
-            <i
-              class="fas fa-times"
-              :class="$style.removeIcon"
-              :data-member-id="member.id"
-              :data-index="i"
-              @click="deleteMember"
-              v-if="isTeamLeader"
-            ></i>
+            <i class="fas fa-times" :class="$style.removeIcon" :data-member-id="member.id" :data-index="i"
+              @click="deleteMember" v-if="isTeamLeader"></i>
           </li>
         </ul>
       </div>
       <button :class="$style.teamLeave" @click="leaveTeam">
-        {{ isTeamLeader ? "Delete Team" : "Leave Team" }}
+        {{ isTeamLeader ? (isEventManthan ? "Delete Registration" : "Delete Team") : "Leave Team" }}
       </button>
       <div :class="$style.teamInfo" v-if="!isTeamValid">* {{ teamInfo }}</div>
     </div>
@@ -125,7 +87,7 @@
 import { copyToClipboard } from "@js/utils";
 import eventsStore from "@store/events";
 import { BounceLoader } from "@saeris/vue-spinners";
-
+import API from "@js/api";
 export default {
   components: {
     BounceLoader,
@@ -135,6 +97,7 @@ export default {
       teamName: "",
       accessCode: "",
       loading: false,
+      isRegOn: false,
     };
   },
   props: {
@@ -144,6 +107,11 @@ export default {
     },
   },
   computed: {
+    isEventManthan() {
+      let event_id = this.event.id
+      if(!event_id) event_id = this.$route.params.id;
+      return event_id == 4;
+    },
     showRegistration() {
       return !this.team;
     },
@@ -170,6 +138,14 @@ export default {
         return `Missing ${this.event.min_members -
           this.teamMembers.length} members.`;
     },
+    getPath() {
+      return `/events-timeline/${this.event.id}`
+    },
+    getTitle() {
+      const event = eventsStore.events.find(e => e.name === this.event.name)
+      if (event) return event.title
+      return ""
+    }
   },
   methods: {
     closeOtherButtons(btn, clickedBtn) {
@@ -288,6 +264,15 @@ export default {
       this.loading = false;
     },
   },
+  created() {
+    let event_id = this.event.id
+    if(!event_id) event_id = this.$route.params.id;
+    API.fetch(`events/${event_id}/`)
+      .then(({ data }) => {
+        this.isRegOn = data.is_registration_on
+      })
+      .catch(console.log)
+  },
   mounted() {
     document
       .querySelectorAll(`.${this.$style.btn}`)
@@ -315,11 +300,14 @@ $btn-width = 240px;
 .eventBox {
   --event-team-box-width: $box-large-width;
   --event-team-button-width: $btn-width;
-  width: var(--event-team-box-width);
-  padding: 10px 10px 20px;
+  width: 70vw;
+  max-width: 700px;
+  height: 400px;
+  padding: 10px 20px 40px;
   box-shadow: var(--box-shadow);
   background-color: var(--background-color);
   border-radius: 0 30px;
+  margin: 40px 0px; 
 
   &.xs, &.sm {
     --event-team-box-width: $box-small-width;
@@ -331,26 +319,29 @@ $btn-width = 240px;
   }
 
   .title {
-    height: 50px;
+    height: 70px;
+    margin-bottom: 50px;
 
     .txt {
-      $font-size: 20px;
+      $font-size: 30px;
       font-family: 'Baloo Bhaina 2';
+      text-align: center;
     }
 
     .txt2 {
       float: right;
       font-weight: 700;
-      $font-size: 14px;
+      $font-size: 25px;
     }
   }
 
   .btnBox {
-    height: 50px;
+    height: 60px;
     position: relative;
     text-align: center;
-    width: var(--event-team-button-width);
-    margin: 0 auto;
+    width: 60vw;
+    max-width: 500px;
+    margin: 20px auto;
   }
 
   .btn {
@@ -367,7 +358,8 @@ $btn-width = 240px;
     $font-size: 20px;
     border: none;
     border-radius: 5px;
-    width: inherit;
+    width: 100%;
+    height: 100%;
 
     &:hover {
       box-shadow: var(--inset-small-icon-shadow);
@@ -380,8 +372,8 @@ $btn-width = 240px;
     display: table;
     width: 100%;
     margin: 10px;
-    height: 40px;
     font-family: QuickSand;
+    font-size: 25px;
 
     span {
       display: table-cell;
@@ -392,10 +384,10 @@ $btn-width = 240px;
   .field {
     padding: 5px;
     clear: both;
-    height: 30px;
+    height: 40px;
     border: 0;
     outline: 0;
-    max-width: calc(var(--event-team-button-width) - 50px);
+    width: calc(100% - 50px);
     color: var(--text-color);
     box-shadow: var(--inset-box-shadow);
     background-color: var(--background-color);
@@ -409,7 +401,7 @@ $btn-width = 240px;
     background: transparent;
     color: var(--text-color);
     border-radius: 100%;
-    $font-size: 22px;
+    $font-size: 28px;
     height: 40px;
     width: 40px;
     cursor: pointer;
@@ -423,6 +415,7 @@ $btn-width = 240px;
   .behindBtn {
     position: absolute;
     width: 100%;
+    height: 100%;
     top: 0;
     left: 0
     z-index: 4;

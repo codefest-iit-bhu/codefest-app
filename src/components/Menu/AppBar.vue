@@ -13,15 +13,19 @@
           <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
         </router-link>
       </li> -->
-      <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
+      <!-- <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
         <router-link to="/codestart" v-if="currentPage != 'codestart'">
           CodeStart
+          <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
+        </router-link>
+      </li> -->
+      <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
+        <router-link to="/events-timeline" v-if="currentPage != 'events'">
+          Events
           <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
         </router-link>
-      </li>
-      <li :class="$style.link" slot="left" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
-        <router-link to="/events" v-if="currentPage != 'events'">
-          Events
+        <router-link to="/sponsors" v-if="currentPage != 'sponsors'">
+          Sponsors
           <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
         </router-link>
       </li>
@@ -37,16 +41,19 @@
           <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
         </router-link>
       </li>-->
-      <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
+      <li v-show="isLoggedIn && !isCampusAmbassador" :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
         <router-link to="/referral"><b>Referrals</b></router-link>
       </li>
-      <!-- <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
+      <li v-show="!isLoggedIn || isCampusAmbassador" :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)">
+        <router-link to="/ca"><b>Campus Ambassadors</b></router-link>
+      </li>
+      <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
         v-show="showDashboardActions">
         <router-link to="/dashboard">
           <i class="fas fa-id-badge" title="Dashboard"></i>
-          <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
+          <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
         </router-link>
-      </li> -->
+      </li>
       <!-- <li :class="$style.link" slot="right" v-if="['md', 'lg', 'xl', 'xxl'].includes(this.$mq)"
         v-show="showDashboardActions">
         <router-link to="/dashboard/events">
@@ -97,9 +104,15 @@
         <Slide :isOpen="isSidebarOpen" @closeSideBar="onCloseSideBar" :width="sideBarWidth">
           <ul :class="$style.sidebarList">
             <li :class="$style.link">
-              <router-link to="/events" v-if="currentPage != 'events'">Events</router-link>
+              <router-link to="/events-timeline" v-if="currentPage != 'events'">Events</router-link>
               <div :class="$style.subList">
                 <slot name="events"></slot>
+              </div>
+            </li>
+            <li :class="$style.link">
+              <router-link to="/sponsors" v-if="currentPage != 'sponsors'">Sponsors</router-link>
+              <div :class="$style.subList">
+                <slot name="sponsors"></slot>
               </div>
             </li>
             <li :class="$style.link">
@@ -114,20 +127,23 @@
                 <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
               </router-link>
             </li> -->
-            <li :class="$style.link">
+            <!-- <li :class="$style.link">
               <router-link to="/codestart" v-if="currentPage != 'codestart'">
                 <b>CodeStart</b>
-                <!-- <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span> -->
+                <span class="fa fa-circle fa-xs" :class="$style.awesome" aria-hidden="true"></span>
               </router-link>
-            </li>
+            </li> -->
             <!-- <li :class="$style.link">
               <router-link to="/ca">CA</router-link>
             </li>-->
             <!-- <li :class="$style.link">
               <router-link to="/team">Team</router-link>
             </li>-->
-            <li :class="$style.link">
+            <li v-show="!isCampusAmbassador" :class="$style.link">
               <router-link to="/referral"><b>Referrals</b></router-link>
+            </li>
+            <li v-show="isCampusAmbassador" :class="$style.link">
+              <router-link to="/ca"><b>Campus Ambassadors</b></router-link>
             </li>
             <!-- <li :class="$style.link" v-show="showDashboardActions">
               <router-link to="/dashboard">
@@ -180,6 +196,12 @@ export default {
     },
     showDashboardActions() {
       return this.$store.getters.isLoggedIn;
+    },
+    isLoggedIn() {
+      return this.$store.getters.isLoggedIn;
+    },
+    isCampusAmbassador() {
+      return this.$store.getters.isCampusAmbassador;
     },
     isThemeLight() {
       return this.$store.getters.currentTheme === "light";

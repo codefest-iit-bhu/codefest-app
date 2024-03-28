@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     navigateToDetails() {
-      this.$router.push(`/events/${this.event.name}`);
+      this.$router.push(`/events-timeline/${this.event.name}`);
     },
   },
 };

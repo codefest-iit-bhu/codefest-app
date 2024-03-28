@@ -19,8 +19,8 @@ const router = new Router({
       },
     },
     {
-      name: "~/events",
-      path: "/events",
+      name: "~/events-timeline",
+      path: "/events-timeline",
       component: () => import(`@pages/EventList`),
       meta: {
         title: "CodeFest '24 | Events",
@@ -30,9 +30,9 @@ const router = new Router({
       },
     },
     {
-      name: "~/events/name",
-      path: "/events/:name",
-      component: () => import("@pages/EventDetails"),
+      name: "~/events-timeline/id",
+      path: "/events-timeline/:id",
+      component: () => import(`@pages/NewEventDetails`),
       meta: {
         title: "CodeFest '24 | Event",
         metaTags: [],
@@ -58,6 +58,17 @@ const router = new Router({
         metaTags: [],
         noTerminal: true,
         animateTerminal: true,
+      },
+    },
+    {
+      name: "~/sponsors",
+      path: "/sponsors",
+      component: () => import(`@pages/Sponsors`),
+      meta: {
+        title: "CodeFest '24 | Sponsors",
+        metaTags: [],
+        noTerminal: true,
+        requiresAuth: false,
       },
     },
     {
@@ -102,6 +113,17 @@ const router = new Router({
       props: {
         isEventsView: true,
       },
+      meta: {
+        title: "CodeFest '24 | Event Registration",
+        metaTags: [],
+        noTerminal: true,
+        requiresAuth: true,
+      },
+    },
+    {
+      name: "~/dashboard/events/id",
+      path: "/dashboard/events/:id",
+      component: () => import(`@pages/EventRegistration`),
       meta: {
         title: "CodeFest '24 | Event Registration",
         metaTags: [],
@@ -161,7 +183,7 @@ const router = new Router({
         title: "Referral Leaderboard",
         metaTags: [],
         noTerminal: true,
-        requiresAuth: false,
+        requiresAuth: true,
       },
     },
     {
@@ -199,6 +221,21 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   // This goes through the matched routes from last to first, finding the closest route with a title.
   // eg. if we have /some/deep/nested/route and /some, /deep, and /nested have titles, nested's will be chosen.
+  const { isCampusAmbassador, isLoggedIn } = store.getters;
+  if (isCampusAmbassador && isLoggedIn){
+    if(to.name=="~/referral"){
+      return next({
+        name: "~/ca",
+      });
+    }
+  }
+  else if(isLoggedIn){
+    if(to.name=="~/ca"){
+      return next({
+        name: "~/referral",
+      });
+    }
+  }
   const nearestWithTitle = to.matched
     .slice()
     .reverse()
@@ -243,7 +280,6 @@ router.beforeEach((to, from, next) => {
     .forEach((tag) => document.head.appendChild(tag));
 
   // Handle secure routes
-  const { isLoggedIn } = store.getters;
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (isLoggedIn) return next();
 

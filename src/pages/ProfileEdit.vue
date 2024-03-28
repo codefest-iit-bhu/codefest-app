@@ -97,19 +97,32 @@
                     >
                     <span v-else>Institute</span>
                   </label>
-                  <input
-                    type="text"
+                  <select
+                    :class="$style.field"
                     id="institute_name"
-                    placeholder="Type out your institute"
                     v-model="profile.institute_name"
-                    required
-                  />
+                    required>
+                    <option selected disabled>Select your Institute</option>
+                  </select>
+                </div>
+                <div :class="$style.field" v-if="profile.institute_type != 2">
+                  <label for="is_campus_ambassador" :class="$style.label">
+                    <span>Role</span>
+                  </label>
+                  <select
+                    :class="$style.field"
+                    id="is_campus_ambassador"
+                    v-model="profile.is_campus_ambassador"
+                    required>
+                    <option selected :value="false">Participant</option>
+                    <option :value="true">Campus Ambassador</option>
+                  </select>
                 </div>
                 <div :class="$style.field">
                   <label for="study_year" :class="$style.label">
-                    <span v-if="profile.institute_type == 0">class</span>
+                    <span v-if="profile.institute_type == 0">Class</span>
                     <span v-if="profile.institute_type == 1">Study Year</span>
-                    <span v-if="profile.institute_type == 2">experience</span>
+                    <span v-if="profile.institute_type == 2">Experience</span>
                   </label>
                   <input
                     type="number"
@@ -123,13 +136,13 @@
                 </div>
                 <div :class="$style.field" v-show="profile.institute_type == 1">
                   <label for="branch" :class="$style.label">Branch</label>
-                  <input
-                    type="text"
+                  <select
+                    :class="$style.field"
                     id="branch"
-                    name="branch"
-                    placeholder="Type out your branch"
                     v-model="profile.branch"
-                  />
+                    required>
+                    <option selected disabled>Select your Branch</option>
+                  </select>
                 </div>
                 <div :class="$style.field" v-show="profile.institute_type != 0">
                   <label for="degree" :class="$style.label">Degree</label>
@@ -240,9 +253,9 @@
               ></i>
             </div>
           </form>
-          <datalist id="instituteList"></datalist>
+          <!-- <datalist id="instituteList"></datalist>
           <datalist id="countryList"></datalist>
-          <datalist id="branchList"></datalist>
+          <datalist id="branchList"></datalist> -->
         </div>
       </div>
     </main>
@@ -355,6 +368,7 @@ export default {
           })
             .then((_) => {
               const msg = "Your profile has been updated successfully!";
+              this.$store.dispatch("update_ca_status", { new_status: this.profile.is_campus_ambassador})
               this.$toasted.global.success({ message: msg });
               this.$router.push({ name: "~/dashboard" });
             })
@@ -371,13 +385,16 @@ export default {
     API.fetch("profile/")
       .then(({ data }) => {
         this.profile = data;
-        if (!data.is_profile_complete) {
-          this.nav("basic");
-        } else {
-          this.isDisabled["basic"] = true;
-          this.isDisabled["academic"] = true;
-          this.nav("handles");
-        }
+        // if (!data.is_profile_complete) {
+        //   this.nav("basic");
+        // } else {
+        //   this.isDisabled["basic"] = true;
+        //   this.isDisabled["academic"] = true;
+        //   this.nav("handles");
+        // }
+        this.isDisabled["handles"] = true;
+        this.isDisabled["academic"] = true;
+        this.nav("basic");
       })
       .catch(console.log);
     API.fetch("profile/handles/")
@@ -389,10 +406,18 @@ export default {
   mounted() {
     this.fillDropdown(
       "assets/institutes.json",
-      "instituteList",
-      "institute_name"
+      "institute_name",
+      "institute_name",
+      "name",
+      "name",
     );
-    this.fillDropdown("assets/branches.json", "branchList", "branch");
+    this.fillDropdown(
+      "assets/branches.json",
+      "branch",
+      "branch",
+      "name",
+      "name",
+    );
     this.fillDropdown(
       "assets/countries.json",
       "country",
@@ -540,7 +565,7 @@ export default {
       }
 
       option {
-        color: black;
+        color: var(--text-color);
       }
 
       .label {

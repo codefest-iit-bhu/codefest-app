@@ -2,7 +2,7 @@
   <div :class="[$style.heroContainer, $style[$mq]]">
     <ResponsiveTwoColumnLayout :isRightAbove="true">
       <div :class="$style.caHead" slot="left">
-        <img src="#" />
+        <h1><span>CodeFest'24</span></h1>  
         <span :class="$style.tagline">Imagine. Create. Iterate.</span>
         <span :class="$style.venue">
           <span :id="$style.loc">
@@ -10,7 +10,7 @@
           </span>
           <span :id="$style.sep">|</span>
           <span :id="$style.date">
-            <i class="far fa-calendar-alt"></i> 23 - 25 August, 2019
+            <i class="far fa-calendar-alt"></i> February 2024
           </span>
         </span>
         <h1>
@@ -19,11 +19,11 @@
         </h1>
         <h3>
           Be part of
-          <span>CODEFEST'20</span> by becoming our CAMPUS AMBASSADOR.
+          <span>CODEFEST'24</span> by becoming our CAMPUS AMBASSADOR.
         </h3>
-        <div :class="$style.link">
+        <div v-show="!isCampusAmbassador" :class="$style.link">
           <a
-            href="https://forms.gle/BDcmVFr4K7o2GjRn9"
+            href="/login"
             :class="$style.linkText"
           >
             <h4>Register</h4>
@@ -31,7 +31,7 @@
         </div>
       </div>
       <div :class="$style.caImage" slot="right">
-        <img src="#" />
+        <img src="@assets/ca/hero.svg" />
       </div>
     </ResponsiveTwoColumnLayout>
   </div>
@@ -44,6 +44,11 @@ const ResponsiveTwoColumnLayout = () =>
 export default {
   components: {
     ResponsiveTwoColumnLayout,
+  },
+  computed: {
+    isCampusAmbassador() {
+      return this.$store.getters.isCampusAmbassador;
+    }
   },
 };
 </script>

@@ -131,7 +131,7 @@ export default {
       this.minSize = this.isMinimal ? 0.75 * 150 : 150;
     },
     navigateToDetails() {
-      this.$router.push(`/events/${this.event.name}`);
+      this.$router.push(`/events-timeline/${this.event.name}`);
     },
   },
   mounted() {
