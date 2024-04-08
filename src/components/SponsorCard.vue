@@ -19,11 +19,6 @@
                         <a :href="item.linkedin" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
-               
-                <!-- <a :href="item.linkedin" target="_blank" rel="noopener noreferrer">-->
-                       
-                <!-- </a> -->
-                <p>Email: {{ item.email }}</p>
                 <p>Portfolio: {{ item.portfolio }}</p>
                     
                 <p>Graduation Year: {{ item.graduationYear }}</p>
@@ -71,7 +66,7 @@
         flex-direction: column;
         height: 100%;
 
-        .imgContainer {
+        .imgContainer {       
             width: 240px;
             height: 230px;
             overflow: hidden; 
@@ -88,6 +83,7 @@
         }
     
         .cardInfo {
+            margin-top: 5px;
             width: 240px;
             text-align: left;
             h2 {
