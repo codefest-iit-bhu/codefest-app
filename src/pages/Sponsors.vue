@@ -38,49 +38,13 @@
       return {
         alumniData: [
           {
-            email: "vikas.gupt@gmail.com",
-            name: "Vikas Gupta",
-            company: "Broadcom",
-            portfolio: "Principal Software Engineer at Broadcom",
-            graduationYear: 2003,
-            linkedin: "https://www.linkedin.com/in/vikas-gupta-43309317?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-            photoUrl: "assets/alums/Vikas_Gupta.jpg"
-          },
-          {
-            email: "himanshu.bhalla@gmail.com",
-            name: "Himanshu Bhalla",
-            company: "Intel",
-            portfolio: "Software Architect at Intel",
-            graduationYear: 2003,
-            linkedin: "https://www.linkedin.com/in/hbhalla/?originalSubdomain=in",
-            photoUrl: "assets/alums/Himanshu_Bhalla.jpg"
-          },
-          {
-            email: "pawan.kumar@outlook.com",
-            name: "Pawan Kumar",
+            email: "ajeet.kumar@gmail.com",
+            name: "Ajeet Kumar",
             company: "Microsoft",
-            portfolio: "Software Engineer at Microsoft",
+            portfolio: "Microsoft",
             graduationYear: 2003,
-            linkedin: "https://www.linkedin.com/in/pawan-kumar-47bbba8/",
-            photoUrl: "assets/alums/Pawan_kumar.jpg"
-          },
-          {
-            email: "viveklakwal@gmail.com",
-            name: "Vivek Lakwal",
-            company: "SAP",
-            portfolio: "Solution Architect at SAP",
-            graduationYear: 2003,
-            linkedin: "https://www.linkedin.com/in/vivek-lakwal-2073096/?originalSubdomain=in",
-            photoUrl: "assets/alums/vivek_lakwal.png"
-          },
-          {
-            email: "prabhat.tr@gmail.vom",
-            name: "Prabhat Tripathi",
-            company: "Société Générale Securities",
-            portfolio: "Director Cash Equities IT at Société Générale Securities",
-            graduationYear: 2003,
-            linkedin: "https://www.linkedin.com/in/prabhat-tripathi-2b851313/?originalSubdomain=hk",
-            photoUrl: "assets/alums/prabhat_tripathi.jpg"
+            linkedin: "https://wwww.linkedin.com/in/ajeet-kumar-1995862",
+            photoUrl: "assets/alums/Ajeet_Kumar.JPG"
           },
           {
             email: "atul.tiwari@gmail.com",
@@ -101,6 +65,15 @@
             photoUrl: "assets/alums/Dheerendra_Pandey.jpeg"
           },
           {
+            email: "himanshu.bhalla@gmail.com",
+            name: "Himanshu Bhalla",
+            company: "Intel",
+            portfolio: "Software Architect at Intel",
+            graduationYear: 2003,
+            linkedin: "https://www.linkedin.com/in/hbhalla/?originalSubdomain=in",
+            photoUrl: "assets/alums/Himanshu_Bhalla.jpg"
+          },
+          {
             email: "kamlesh.madheshiya@gmail.com",
             name: "Kamlesh Madheshiya",
             company: "Cadence Design Systems",
@@ -108,15 +81,6 @@
             graduationYear: 2003,
             linkedin: "https://www.linkedin.com/in/kamleshmadheshiya",
             photoUrl: "assets/alums/Kamlesh_Madheshiya.jpg"
-          },
-          {
-            email: "rajucse@yahoo.com",
-            name: "Rajesh Kumar Tripathi",
-            company: "Google",
-            portfolio: "Google",
-            graduationYear: 2003,
-            linkedin: "https://www.linkedin.com/in/rajesh-kumar-ucsb/",
-            photoUrl: "assets/alums/Rajesh_Kumar.jpg"
           },
           {
             email: "mayur.prakash@gmail.com",
@@ -128,13 +92,49 @@
             photoUrl: "assets/alums/Mayur_Srivastava.jpeg"
           },
           {
-            email: "ajeet.kumar@gmail.com",
-            name: "Ajeet Kumar",
+            email: "pawan.kumar@outlook.com",
+            name: "Pawan Kumar",
             company: "Microsoft",
-            portfolio: "Microsoft",
+            portfolio: "Software Engineer at Microsoft",
             graduationYear: 2003,
-            linkedin: "https://wwww.linkedin.com/in/ajeet-kumar-1995862",
-            photoUrl: "assets/alums/Ajeet_Kumar.JPG"
+            linkedin: "https://www.linkedin.com/in/pawan-kumar-47bbba8/",
+            photoUrl: "assets/alums/Pawan_kumar.jpg"
+          },
+          {
+            email: "prabhat.tr@gmail.vom",
+            name: "Prabhat Tripathi",
+            company: "Société Générale Securities",
+            portfolio: "Director Cash Equities IT at Société Générale Securities",
+            graduationYear: 2003,
+            linkedin: "https://www.linkedin.com/in/prabhat-tripathi-2b851313/?originalSubdomain=hk",
+            photoUrl: "assets/alums/prabhat_tripathi.jpg"
+          },
+          {
+            email: "rajucse@yahoo.com",
+            name: "Rajesh Kumar Tripathi",
+            company: "Google",
+            portfolio: "Google",
+            graduationYear: 2003,
+            linkedin: "https://www.linkedin.com/in/rajesh-kumar-ucsb/",
+            photoUrl: "assets/alums/Rajesh_Kumar.jpg"
+          },
+          {
+            email: "vikas.gupt@gmail.com",
+            name: "Vikas Gupta",
+            company: "Broadcom",
+            portfolio: "Principal Software Engineer at Broadcom",
+            graduationYear: 2003,
+            linkedin: "https://www.linkedin.com/in/vikas-gupta-43309317?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+            photoUrl: "assets/alums/Vikas_Gupta.jpg"
+          },         
+          {
+            email: "viveklakwal@gmail.com",
+            name: "Vivek Lakwal",
+            company: "SAP",
+            portfolio: "Solution Architect at SAP",
+            graduationYear: 2003,
+            linkedin: "https://www.linkedin.com/in/vivek-lakwal-2073096/?originalSubdomain=in",
+            photoUrl: "assets/alums/vivek_lakwal.png"
           }]
       };
     },
