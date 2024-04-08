@@ -38,34 +38,6 @@
       return {
         alumniData: [
           {
-            email: "ajeet.kumar@gmail.com",
-            name: "Ajeet Kumar",
-            company: "Microsoft",
-            portfolio: "Microsoft",
-            graduationYear: 2003,
-            linkedin: "https://wwww.linkedin.com/in/ajeet-kumar-1995862",
-            photoUrl: "assets/alums/Ajeet_Kumar.JPG"
-          },
-          {
-            email: "atul.tiwari@gmail.com",
-            name: "Atul Tiwari",
-            company: "Citi",
-            portfolio: "Citi",
-            graduationYear: 2003,
-            linkedin: "https://www.linkedin.com/in/atul tiwari",
-            photoUrl: "assets/alums/Atul_Tiwari.jpg"
-          },
-          {
-            email: "dheeru.itbhu@gmail.com",
-            name: "Dheerendra Vikram Pandey",
-            company: "Pan Science Innovations",
-            portfolio: "MD and Group Chief Technology Officer at Pan Science Innovations",
-            graduationYear: 2003,
-            linkedin: "https://www.linkedin.com/in/dheerendra-pandey-0152b982",
-            photoUrl: "assets/alums/Dheerendra_Pandey.jpeg"
-          },
-          {
-            email: "himanshu.bhalla@gmail.com",
             name: "Himanshu Bhalla",
             company: "Intel",
             portfolio: "Software Architect at Intel",
@@ -74,25 +46,22 @@
             photoUrl: "assets/alums/Himanshu_Bhalla.jpg"
           },
           {
-            email: "kamlesh.madheshiya@gmail.com",
-            name: "Kamlesh Madheshiya",
-            company: "Cadence Design Systems",
-            portfolio: "Sr Eng Group Director at Cadence Design Systems",
+            name: "Vikas Gupta",
+            company: "Broadcom",
+            portfolio: "Principal Software Engineer at Broadcom",
             graduationYear: 2003,
-            linkedin: "https://www.linkedin.com/in/kamleshmadheshiya",
-            photoUrl: "assets/alums/Kamlesh_Madheshiya.jpg"
+            linkedin: "https://www.linkedin.com/in/vikas-gupta-43309317?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+            photoUrl: "assets/alums/Vikas_Gupta.jpg"
+          }, 
+          {
+            name: "Ajeet Kumar",
+            company: "Microsoft",
+            portfolio: "Microsoft",
+            graduationYear: 2003,
+            linkedin: "https://wwww.linkedin.com/in/ajeet-kumar-1995862",
+            photoUrl: "assets/alums/Ajeet_Kumar.JPG"
           },
           {
-            email: "mayur.prakash@gmail.com",
-            name: "Mayur Srivastava",
-            company: "Two Sigma Investments",
-            portfolio: "Vice President, Architect in Storage group at Two Sigma Investments",
-            graduationYear: 2003,
-            linkedin: "https://www.linkedin.com/in/mayur-s-basic",
-            photoUrl: "assets/alums/Mayur_Srivastava.jpeg"
-          },
-          {
-            email: "pawan.kumar@outlook.com",
             name: "Pawan Kumar",
             company: "Microsoft",
             portfolio: "Software Engineer at Microsoft",
@@ -101,7 +70,46 @@
             photoUrl: "assets/alums/Pawan_kumar.jpg"
           },
           {
-            email: "prabhat.tr@gmail.vom",
+            name: "Vivek Lakwal",
+            company: "SAP",
+            portfolio: "Solution Architect at SAP",
+            graduationYear: 2003,
+            linkedin: "https://www.linkedin.com/in/vivek-lakwal-2073096/?originalSubdomain=in",
+            photoUrl: "assets/alums/vivek_lakwal.png"
+          },
+          {
+            name: "Kamlesh Madheshiya",
+            company: "Cadence Design Systems",
+            portfolio: "Sr Eng Group Director at Cadence Design Systems",
+            graduationYear: 2003,
+            linkedin: "https://www.linkedin.com/in/kamleshmadheshiya",
+            photoUrl: "assets/alums/Kamlesh_Madheshiya.jpg"
+          },
+          {
+            name: "Dheerendra Vikram Pandey",
+            company: "Pan Science Innovations",
+            portfolio: "MD and Group Chief Technology Officer at Pan Science Innovations",
+            graduationYear: 2003,
+            linkedin: "https://www.linkedin.com/in/dheerendra-pandey-0152b982",
+            photoUrl: "assets/alums/Dheerendra_Pandey.jpeg"
+          },
+          {
+            name: "Mayur Srivastava",
+            company: "Two Sigma Investments",
+            portfolio: "Vice President, Architect in Storage group at Two Sigma Investments",
+            graduationYear: 2003,
+            linkedin: "https://www.linkedin.com/in/mayur-s-basic",
+            photoUrl: "assets/alums/Mayur_Srivastava.jpeg"
+          },
+          {
+            name: "Atul Tiwari",
+            company: "Citi",
+            portfolio: "Citi",
+            graduationYear: 2003,
+            linkedin: "https://www.linkedin.com/in/atul tiwari",
+            photoUrl: "assets/alums/Atul_Tiwari.jpg"
+          },
+          {
             name: "Prabhat Tripathi",
             company: "Société Générale Securities",
             portfolio: "Director Cash Equities IT at Société Générale Securities",
@@ -110,31 +118,12 @@
             photoUrl: "assets/alums/prabhat_tripathi.jpg"
           },
           {
-            email: "rajucse@yahoo.com",
             name: "Rajesh Kumar Tripathi",
             company: "Google",
             portfolio: "Google",
             graduationYear: 2003,
             linkedin: "https://www.linkedin.com/in/rajesh-kumar-ucsb/",
             photoUrl: "assets/alums/Rajesh_Kumar.jpg"
-          },
-          {
-            email: "vikas.gupt@gmail.com",
-            name: "Vikas Gupta",
-            company: "Broadcom",
-            portfolio: "Principal Software Engineer at Broadcom",
-            graduationYear: 2003,
-            linkedin: "https://www.linkedin.com/in/vikas-gupta-43309317?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-            photoUrl: "assets/alums/Vikas_Gupta.jpg"
-          },         
-          {
-            email: "viveklakwal@gmail.com",
-            name: "Vivek Lakwal",
-            company: "SAP",
-            portfolio: "Solution Architect at SAP",
-            graduationYear: 2003,
-            linkedin: "https://www.linkedin.com/in/vivek-lakwal-2073096/?originalSubdomain=in",
-            photoUrl: "assets/alums/vivek_lakwal.png"
           }]
       };
     },
