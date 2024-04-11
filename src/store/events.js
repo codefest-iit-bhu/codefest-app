@@ -211,8 +211,8 @@ export default {
     {
       name: "Manthan",
       title: "Manthan",
-      date: 'Tentatively in April',
-      last_date_reg: '1 April, 2024',
+      date: '17 April, 2024',
+      last_date_reg: '16 April, 2024',
       // tagline: "Init. Develop. Deploy.",
       // summary: "A platform for the aspiring hackers to get acquainted with real computer security practices.",
       // link: "/events/ctf",
