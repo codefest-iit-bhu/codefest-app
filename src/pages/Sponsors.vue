@@ -38,12 +38,44 @@ export default {
     return {
       alumniData: [
         {
+          name: "Nitin Agrawal",
+          company: "Google",
+          portfolio: "Software",
+          graduationYear: 2003,
+          linkedin: "https://www.linkedin.com/in/nitin-agrawal-sys/",
+          photoUrl: "assets/alums/Nitin_Agrawal.jpeg"
+        },
+        {
+          name: "Pranay Arya",
+          company: "Bank of America",
+          portfolio: "VP, Finance Manager - Enterprise Capital Management",
+          graduationYear: 2003,
+          linkedin: "https://www.linkedin.com/in/pranay-arya-20aa6343",
+          photoUrl: "assets/alums/Pranay_Arya.jpeg"
+        },
+        {
+          name: "Abhay",
+          company: "Oracle india pvt ltd",
+          portfolio: "Director development",
+          graduationYear: 2003,
+          linkedin: "https://www.linkedin.com/in/abhay-kumar-89433683",
+          photoUrl: "assets/alums/Abhay.jpeg"
+        },
+        {
           name: "Himanshu Bhalla",
           company: "Intel",
           portfolio: "Software Architect at Intel",
           graduationYear: 2003,
-          linkedin: "https://www.linkedin.com/in/hbhalla/?originalSubdomain=in",
+          linkedin: "https://www.linkedin.com/in/hbhalla",
           photoUrl: "assets/alums/Himanshu_Bhalla.jpg"
+        },
+        {
+          name: "Sudeep Ghosh",
+          company: "Microsoft",
+          portfolio: "Software developer",
+          graduationYear: 2003,
+          linkedin: "https://www.linkedin.com/in/sudeepkghosh",
+          photoUrl: "assets/alums/Sudeep_Ghosh.jpg"
         },
         {
           name: "Vikas Gupta",
@@ -52,6 +84,14 @@ export default {
           graduationYear: 2003,
           linkedin: "https://www.linkedin.com/in/vikas-gupta-43309317?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
           photoUrl: "assets/alums/Vikas_Gupta.jpg"
+        }, 
+        {
+          name: "Prashant Joshi",
+          company: "SITA",
+          portfolio: "Lead Analyst in SITA",
+          graduationYear: 2003,
+          linkedin: "https://www.linkedin.com/in/prashant-joshi-548b64158",
+          photoUrl: "assets/alums/Prashant_Joshi.jpg"
         }, 
         {
           name: "Ajeet Kumar",
@@ -94,6 +134,30 @@ export default {
           photoUrl: "assets/alums/Dheerendra_Pandey.jpeg"
         },
         {
+          name: "Animesh Pathak",
+          company: "myKaarma",
+          portfolio: "PhD from USC, ex-Research Scientist at Inria (France), Head of R&D and Engineering at myKaarma, President IBGAA",
+          graduationYear: 2003,
+          linkedin: "https://www.linkedin.com/in/animeshpathak",
+          photoUrl: "assets/alums/Animesh_Pathak.jpeg"
+        },
+        {
+          name: "Manish Poddar",
+          company: "Qualcomm",
+          portfolio: "Software",
+          graduationYear: 2003,
+          linkedin: "https://www.linkedin.com/in/manish-poddar-2381091",
+          photoUrl: "assets/alums/Manish_Poddar.jpeg"
+        },
+        {
+          name: "Manoj Poddar",
+          company: "IBM",
+          portfolio: "Software",
+          graduationYear: 2003,
+          linkedin: "https://www.linkedin.com/in/manoj-poddar-6010721a5/",
+          photoUrl: "assets/alums/Manoj_Poddar.jpeg"
+        },
+        {
           name: "Mayur Srivastava",
           company: "Two Sigma Investments",
           portfolio: "Vice President, Architect in Storage group at Two Sigma Investments",
@@ -124,6 +188,14 @@ export default {
           graduationYear: 2003,
           linkedin: "https://www.linkedin.com/in/rajesh-kumar-ucsb/",
           photoUrl: "assets/alums/Rajesh_Kumar.jpg"
+        },
+        {
+          name: "Dhirendra Trivedi",
+          company: "Juniper Networks",
+          portfolio: "Sr Staff Engineer",
+          graduationYear: 2003,
+          linkedin: "http://www.linkedin.com/in/dhirendra-trivedi-92a3001",
+          photoUrl: "assets/alums/Dhirendra_Trivedi.jpeg"
         }]
     };
   },
