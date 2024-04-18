@@ -59,7 +59,7 @@ export default {
           portfolio: "Director development",
           graduationYear: 2003,
           linkedin: "https://www.linkedin.com/in/abhay-kumar-89433683",
-          photoUrl: "assets/alums/Abhay.jpeg"
+          photoUrl: "assets/alums/Abhay.jpg"
         },
         {
           name: "Himanshu Bhalla",
@@ -91,7 +91,7 @@ export default {
           portfolio: "Lead Analyst in SITA",
           graduationYear: 2003,
           linkedin: "https://www.linkedin.com/in/prashant-joshi-548b64158",
-          photoUrl: "assets/alums/Prashant_Joshi.jpg"
+          photoUrl: "assets/alums/Prashant_Joshi.jpeg"
         }, 
         {
           name: "Ajeet Kumar",
@@ -147,7 +147,7 @@ export default {
           portfolio: "Software",
           graduationYear: 2003,
           linkedin: "https://www.linkedin.com/in/manish-poddar-2381091",
-          photoUrl: "assets/alums/Manish_Poddar.jpeg"
+          photoUrl: "assets/alums/Manish_Poddar.jpg"
         },
         {
           name: "Manoj Poddar",
@@ -155,7 +155,7 @@ export default {
           portfolio: "Software",
           graduationYear: 2003,
           linkedin: "https://www.linkedin.com/in/manoj-poddar-6010721a5/",
-          photoUrl: "assets/alums/Manoj_Poddar.jpeg"
+          photoUrl: "assets/alums/Manoj_Poddar.jpg"
         },
         {
           name: "Mayur Srivastava",
